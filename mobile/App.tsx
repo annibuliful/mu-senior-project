@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Text, View, Button} from 'react-native';
+import { Text, View, Button, StyleSheet} from 'react-native';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -41,11 +41,20 @@ function VaccineScreen({ navigation }:any) {
 
 function VaccineDetailsScreen({ navigation }:any) {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={VaccineDetailsStyles.container}>
       <Text>Vaccine Details Details!</Text>
     </View>
   );
 }
+
+const VaccineDetailsStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fffff',
+    alignItems: 'center',
+    padding: 20,
+  },
+});
 
 function FamilyScreen({ navigation }:any) {
   return (
