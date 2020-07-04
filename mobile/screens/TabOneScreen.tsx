@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
-import styled, { css } from "@emotion/native";
+// import styled, { css } from "@emotion/native"; 
 export default function TabOneScreen() {
   return <View style={styles.container}></View>;
 }
