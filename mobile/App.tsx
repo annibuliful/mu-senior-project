@@ -6,15 +6,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// ---------- Screen Section Start ----------
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Details!</Text>
-    </View>
-  );
-}
 
+
+
+
+
+//  ------ Home Start -----
 function HomeScreen({ navigation }:any) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -27,6 +24,20 @@ function HomeScreen({ navigation }:any) {
   );
 }
 
+const HomeStack = createStackNavigator();
+
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="Details" component={DetailsScreen} />
+    </HomeStack.Navigator>
+  );
+}
+//  ------ Home End -----
+
+
+//  ------ VaccineScreen Start -----
 function VaccineScreen({ navigation }:any) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -39,6 +50,20 @@ function VaccineScreen({ navigation }:any) {
   );
 }
 
+const VaccineStack = createStackNavigator();
+
+function VaccineStackScreen(){
+  return (
+    <VaccineStack.Navigator>
+    <VaccineStack.Screen name="Vaccine" component={VaccineScreen} />
+    <VaccineStack.Screen name="VaccineDetails" component={VaccineDetailsScreen} />
+  </VaccineStack.Navigator>
+  )
+}
+
+//  ------ VaccineScreen End -----
+
+//  ------ VaccineDetailsScreen Start -----
 function VaccineDetailsScreen({ navigation }:any) {
   return (
     <View style={VaccineDetailsStyles.container}>
@@ -56,6 +81,9 @@ const VaccineDetailsStyles = StyleSheet.create({
   },
 });
 
+//  ------ VaccineDetailsScreen End -----
+
+//  ------ FamilyScreen Start -----
 function FamilyScreen({ navigation }:any) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -69,6 +97,20 @@ function FamilyScreen({ navigation }:any) {
 }
 
 
+const FamilyStack = createStackNavigator();
+
+function FamilyStackScreen(){
+  return (
+    <FamilyStack.Navigator>
+    <FamilyStack.Screen name="Family" component={FamilyScreen} />
+    <FamilyStack.Screen name="FamilyDetails" component={FamilyDetailsScreen} />
+  </FamilyStack.Navigator>
+  )
+}
+//  ------ FamilyScreen End -----
+
+
+//  ------ FamilyDetailsScreen Start -----
 function FamilyDetailsScreen({ navigation }:any) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -77,6 +119,9 @@ function FamilyDetailsScreen({ navigation }:any) {
   );
 }
 
+//  ------ FamilyDetailsScreen End -----
+
+//  ------ PackagerScreen Start -----
 function PackagerScreen({ navigation }:any) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -89,58 +134,6 @@ function PackagerScreen({ navigation }:any) {
   );
 }
 
-function PackagerDetailsScreen({ navigation }:any) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Packager Details Details!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen({ navigation }:any) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings screen</Text>
-    </View>
-  );
-}
-
-// ---------- Screen Section End ----------
-
-
-// ---------- Stack Nav Section Start ----------
-const HomeStack = createStackNavigator();
-
-function HomeStackScreen() {
-  return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Details" component={DetailsScreen} />
-    </HomeStack.Navigator>
-  );
-}
-
-const VaccineStack = createStackNavigator();
-
-function VaccineStackScreen(){
-  return (
-    <VaccineStack.Navigator>
-    <VaccineStack.Screen name="Vaccine" component={VaccineScreen} />
-    <VaccineStack.Screen name="VaccineDetails" component={VaccineDetailsScreen} />
-  </VaccineStack.Navigator>
-  )
-}
-
-const FamilyStack = createStackNavigator();
-
-function FamilyStackScreen(){
-  return (
-    <FamilyStack.Navigator>
-    <FamilyStack.Screen name="Family" component={FamilyScreen} />
-    <FamilyStack.Screen name="FamilyDetails" component={FamilyDetailsScreen} />
-  </FamilyStack.Navigator>
-  )
-}
 
 const PackagerStack = createStackNavigator();
 
@@ -153,6 +146,28 @@ function PackagerStackScreen(){
   )
 }
 
+//  ------ PackagerScreen End -----
+
+
+//  ------ PackagerDetailsScreen Start -----
+function PackagerDetailsScreen({ navigation }:any) {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Packager Details Details!</Text>
+    </View>
+  );
+}
+//  ------ PackagerDetailsScreen End -----
+
+//  ------ Setting Start -----
+function SettingsScreen({ navigation }:any) {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings screen</Text>
+    </View>
+  );
+}
+
 const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen() {
@@ -163,7 +178,20 @@ function SettingsStackScreen() {
   );
 }
 
-// ---------- Stack Nav Section End ----------
+//  ------ Setting End -----
+
+// MOCK not-implement Page
+function DetailsScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Test Link to another stack page!</Text>
+    </View>
+  );
+}
+// MOCK not-implement Page
+
+
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
