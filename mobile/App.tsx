@@ -458,8 +458,5 @@ const navStyle = StyleSheet.create({
     flexDirection: "column",
     width: 32,
     height: 32,
-    // margin:10,
-    // backgroundColor: "red",
-    color: "red",
   },
 });
