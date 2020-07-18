@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
-import TabOneScreen from "../screens/TabOneScreen";
+import TabOneScreen from "../screens/_deprecated_TabOneScreen";
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
