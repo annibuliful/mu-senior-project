@@ -16,8 +16,10 @@ export default function HomeScreen({ navigation }: any) {
         >
           <Text style={styles.calendarText}>Mock Calendar Area</Text>
         </TouchableOpacity>
-    
-    </View>
+    {/* <View style={styles.welcomeArea}> */}
+      {/* <Text style={styles.welcome} >Report Immunity Status</Text> */}
+      </View>
+    // </View>
   );
 }
 

@@ -11,8 +11,11 @@ import {
 } from "react-native";
 import Toast from 'react-native-simple-toast';
 export default function CreateAppointmentScreen({ navigation }: any) {
-  const [selectedValue, setSelectedValue] = useState("java");
+  const [selectedValue, setSelectedValue] = useState("choice");
+  const [selectedValue2, setSelectedValue2] = useState("choice");
+  const [selectedValue3, setSelectedValue3] = useState("choice");
   const [value, onChangeText] = React.useState("");
+  // const [value2, onChangeText2] = React.useState("");
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
       <View style={styles.qaGroup}>
@@ -34,9 +37,9 @@ export default function CreateAppointmentScreen({ navigation }: any) {
         <Text style={styles.header}>Vaccine</Text>
         <View style={styles.dropdown}>
           <Picker
-            selectedValue={selectedValue}
+            selectedValue={selectedValue2}
             onValueChange={(itemValue, itemIndex) =>
-              setSelectedValue(itemValue)
+              setSelectedValue2(itemValue)
             }
           >
             <Picker.Item label="Hepatitis B Vaccine (HB)" value="0001" />
@@ -50,9 +53,9 @@ Calmette-Guerin Vaccine (BCG)" value="0002" />
         <Text style={styles.header}>Date</Text>
         <View style={styles.dropdown}>
           <Picker
-            selectedValue={selectedValue}
+            selectedValue={selectedValue3}
             onValueChange={(itemValue, itemIndex) =>
-              setSelectedValue(itemValue)
+              setSelectedValue3(itemValue)
             }
           >
             <Picker.Item label="Mock Date Picker" value="0001" />
@@ -74,11 +77,11 @@ Calmette-Guerin Vaccine (BCG)" value="0002" />
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Home")
-            Toast.show('This is a toast.');
+            Toast.show('Your Plan has been saved');
           } }
           style={styles.button}
         >
-          <Text style={styles.btnText}>Record Vaccine</Text>
+          <Text style={styles.btnText}>Submit</Text>
         </TouchableOpacity>
       </View>
     </View>

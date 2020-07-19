@@ -20,6 +20,8 @@ import FamilyDetailsScreen from "./screens/FamilyDetailsScreen";
 import SettingsScreen from "./screens/SettingScreen";
 import DetailsScreen from "./screens/DetailsScreen";
 import CreateAppointmentScreen from "./screens/CreateAppointmentScreen";
+import RecordVaccineScreen from './screens/RecordVaccineScreen'
+import PackagerScreen from './screens/PackagerScreen'
 
 
 
@@ -121,6 +123,7 @@ function VaccineStackScreen() {
         name="VaccineDetails"
         component={VaccineDetailsScreen}
       />
+       <HomeStack.Screen name="RecordVaccine" component={RecordVaccineScreen} />
     </VaccineStack.Navigator>
   );
 }
@@ -134,7 +137,7 @@ function VaccineDetailsStackScreen() {
         name="VaccineDetails"
         component={VaccineDetailsScreen}
       />
-      <VaccineDetailsStack.Screen name="Details" component={DetailsScreen} />
+      <VaccineDetailsStack.Screen name="CreateAppointment" component={CreateAppointmentScreen} />
     </VaccineDetailsStack.Navigator>
   );
 }
@@ -153,17 +156,7 @@ function FamilyStackScreen() {
   );
 }
 
-function PackagerScreen({ navigation }: any) {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Packager Screen</Text>
-      <Button
-        title="Go to Packager Details"
-        onPress={() => navigation.navigate("PackagerDetails")}
-      />
-    </View>
-  );
-}
+
 
 const PackagerStack = createStackNavigator();
 
