@@ -19,6 +19,7 @@ import FamilyScreen from "./screens/FamilyScreen";
 import FamilyDetailsScreen from "./screens/FamilyDetailsScreen";
 import SettingsScreen from "./screens/SettingScreen";
 import DetailsScreen from "./screens/DetailsScreen";
+import CreateAppointmentScreen from "./screens/CreateAppointmentScreen";
 
 
 
@@ -105,7 +106,7 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Details" component={DetailsScreen} />
+      <HomeStack.Screen name="CreateAppointment" component={CreateAppointmentScreen} />
     </HomeStack.Navigator>
   );
 }

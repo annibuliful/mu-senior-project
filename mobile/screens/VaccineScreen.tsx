@@ -7,6 +7,8 @@ import {
   Text,
 } from "react-native";
 import Constants from "expo-constants";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Input } from 'react-native-elements';
 
 const VaccineDATA = [
   {

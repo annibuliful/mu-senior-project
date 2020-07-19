@@ -43,7 +43,7 @@ export default function VaccineDetailsScreen({ route,navigation }: any) {
         </View>
         <View style={VaccineDetailsStyles.buttonArea}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Details")}
+            onPress={() => navigation.navigate("CreateAppointment")}
             style={VaccineDetailsStyles.button}
           >
             <Text style={VaccineDetailsStyles.btnText}>
@@ -51,7 +51,7 @@ export default function VaccineDetailsScreen({ route,navigation }: any) {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Details")}
+            onPress={() => navigation.navigate("RecordVaccine")}
             style={VaccineDetailsStyles.button}
           >
             <Text style={VaccineDetailsStyles.btnText}>Record Vaccine</Text>
@@ -89,13 +89,15 @@ export default function VaccineDetailsScreen({ route,navigation }: any) {
       fontSize: 16,
       marginLeft: 30,
       marginRight: 30,
-      borderWidth: 1,
+      // borderWidth: 1,
       borderBottomWidth: 1,
       borderBottomColor:"#bfbfbf",
       // backgroundColor: "#f2f2f2",
     },
     recommendedTo: {
       marginLeft: 30,
+      marginBottom:10,
+      marginTop:10,
     },
   
     buttonArea: {
@@ -104,15 +106,21 @@ export default function VaccineDetailsScreen({ route,navigation }: any) {
     button: {
       marginTop: 5,
       padding: 5,
-      width: 200,
-      borderWidth: 3,
+      // width: 200,
+      // borderWidth: 3,
+      height:43,
+      width:285,
       borderColor: "#000000",
       borderRadius: 20,
       backgroundColor: "#01579B",
       textAlign: "center",
+
     },
   
     btnText: {
       color: "white",
+      textAlign: "center",
+      fontSize:24,
+      fontWeight:"bold"
      },
   });
