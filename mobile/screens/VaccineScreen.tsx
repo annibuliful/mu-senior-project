@@ -7,19 +7,24 @@ import {
   Text,
 } from "react-native";
 import Constants from "expo-constants";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Input } from 'react-native-elements';
 
 const VaccineDATA = [
   {
     id: "0001",
     title: "Vaccine Name 1",
+    desease: "Desease Name 1"
   },
   {
     id: "0002",
     title: "Vaccine Name2",
+    desease: "Desease Name 2"
   },
   {
     id: "0003",
     title: "Vaccine Name3",
+    desease: "Desease Name 3"
   },
 ];
 //  ------ VaccineScreen Start -----
@@ -40,7 +45,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Item({ id, title, selected, onSelect }: any) {
+function Item({ id, title,desease, selected, onSelect }: any) {
   return (
     <TouchableOpacity
       onPress={() => onSelect(id)}
@@ -86,12 +91,5 @@ export default function VaccineScreen({ navigation }: any) {
         />
       </SafeAreaView>
   
-      // <View style={{ flex: 1, alignItems: "center" }}>
-      //   <Text>Vaccine Screen</Text>
-      //   <Button
-      //     title="Go to Vaccine Details"
-      //     onPress={() => navigation.navigate("VaccineDetails")}
-      //   />
-      // </View>
     );
   }
