@@ -1,114 +1,34 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-  Text,
-  View,
-  Button,
-  StyleSheet,
-  Image,
-
-} from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+// redux
+import { Provider, connect } from "react-redux";
+import { createStore } from "redux";
+import rootReducer from "./store";
+//screens
 import HomeScreen from "./screens/HomeScreen";
 import VaccineScreen from "./screens/VaccineScreen";
 import VaccineDetailsScreen from "./screens/VaccineDetailsScreen";
 import FamilyScreen from "./screens/FamilyScreen";
 import FamilyDetailsScreen from "./screens/FamilyDetailsScreen";
 import SettingsScreen from "./screens/SettingScreen";
-import DetailsScreen from "./screens/DetailsScreen";
+// import DetailsScreen from "./screens/DetailsScreen";
 import CreateAppointmentScreen from "./screens/CreateAppointmentScreen";
-import RecordVaccineScreen from './screens/RecordVaccineScreen'
-import PackagerScreen from './screens/PackagerScreen'
-
-
-
-export default function App() {
-  return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen
-            name="Home"
-            component={HomeStackScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Image
-                  source={require("./assets/images/botttom_nav/home.png")}
-                  resizeMode="contain"
-                  style={navStyle.navIcon}
-                ></Image>
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Vaccine"
-            component={VaccineStackScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Image
-                  source={require("./assets/images/botttom_nav/vaccine.png")}
-                  resizeMode="contain"
-                  style={navStyle.navIcon}
-                ></Image>
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Family"
-            component={FamilyStackScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Image
-                  source={require("./assets/images/botttom_nav/family.png")}
-                  resizeMode="contain"
-                  style={navStyle.navIcon}
-                ></Image>
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Packager"
-            component={PackagerStackScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Image
-                  source={require("./assets/images/botttom_nav/packager.png")}
-                  resizeMode="contain"
-                  style={navStyle.navIcon}
-                ></Image>
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Settings"
-            component={SettingsStackScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Image
-                  source={require("./assets/images/botttom_nav/setting.png")}
-                  resizeMode="contain"
-                  style={navStyle.navIcon}
-                ></Image>
-              ),
-            }}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
-  );
-}
-
-
+import RecordVaccineScreen from "./screens/RecordVaccineScreen";
+import PackagerScreen from "./screens/PackagerScreen";
 const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="CreateAppointment" component={CreateAppointmentScreen} />
+      <HomeStack.Screen
+        name="CreateAppointment"
+        component={CreateAppointmentScreen}
+      />
     </HomeStack.Navigator>
   );
 }
@@ -123,7 +43,7 @@ function VaccineStackScreen() {
         name="VaccineDetails"
         component={VaccineDetailsScreen}
       />
-       <HomeStack.Screen name="RecordVaccine" component={RecordVaccineScreen} />
+      <HomeStack.Screen name="RecordVaccine" component={RecordVaccineScreen} />
     </VaccineStack.Navigator>
   );
 }
@@ -137,7 +57,10 @@ function VaccineDetailsStackScreen() {
         name="VaccineDetails"
         component={VaccineDetailsScreen}
       />
-      <VaccineDetailsStack.Screen name="CreateAppointment" component={CreateAppointmentScreen} />
+      <VaccineDetailsStack.Screen
+        name="CreateAppointment"
+        component={CreateAppointmentScreen}
+      />
     </VaccineDetailsStack.Navigator>
   );
 }
@@ -155,8 +78,6 @@ function FamilyStackScreen() {
     </FamilyStack.Navigator>
   );
 }
-
-
 
 const PackagerStack = createStackNavigator();
 
@@ -190,15 +111,109 @@ function SettingsStackScreen() {
   );
 }
 
-
 const Tab = createBottomTabNavigator();
-
 
 // css
 const navStyle = StyleSheet.create({
   navIcon: {
     flexDirection: "column",
     width: 32,
-    height: 32,
-  },
+    height: 32
+  }
 });
+
+const indexScreen = (props: any) => {
+  const { home, vaccine, family, packager, setting } = props;
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen
+            name={home}
+            component={HomeStackScreen}
+            options={{
+              tabBarIcon: () => (
+                <Image
+                  source={require("./assets/images/botttom_nav/home.png")}
+                  resizeMode="contain"
+                  style={navStyle.navIcon}
+                />
+              )
+            }}
+          />
+          <Tab.Screen
+            name={vaccine}
+            component={VaccineStackScreen}
+            options={{
+              tabBarIcon: () => (
+                <Image
+                  source={require("./assets/images/botttom_nav/vaccine.png")}
+                  resizeMode="contain"
+                  style={navStyle.navIcon}
+                />
+              )
+            }}
+          />
+          <Tab.Screen
+            name={family}
+            component={FamilyStackScreen}
+            options={{
+              tabBarIcon: () => (
+                <Image
+                  source={require("./assets/images/botttom_nav/family.png")}
+                  resizeMode="contain"
+                  style={navStyle.navIcon}
+                />
+              )
+            }}
+          />
+          <Tab.Screen
+            name={packager}
+            component={PackagerStackScreen}
+            options={{
+              tabBarIcon: () => (
+                <Image
+                  source={require("./assets/images/botttom_nav/packager.png")}
+                  resizeMode="contain"
+                  style={navStyle.navIcon}
+                />
+              )
+            }}
+          />
+          <Tab.Screen
+            name={setting}
+            component={SettingsStackScreen}
+            options={{
+              tabBarIcon: () => (
+                <Image
+                  source={require("./assets/images/botttom_nav/setting.png")}
+                  resizeMode="contain"
+                  style={navStyle.navIcon}
+                />
+              )
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+};
+
+const maptStateToProps = ({ locale: { translation } }: any) => {
+  return {
+    home: translation.home,
+    vaccine: translation.vaccine,
+    family: translation.family,
+    packager: translation.packager,
+    setting: translation.setting
+  };
+};
+const App = connect(maptStateToProps)(indexScreen);
+const store = createStore(rootReducer);
+export default () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};
