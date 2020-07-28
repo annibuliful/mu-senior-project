@@ -4,7 +4,12 @@ import { connect } from "react-redux";
 const SettingScreen = (props: any) => {
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
-      <Text>Settings screen</Text>
+      
+      
+      <View style={{ flex: 1, alignItems: "center", flexDirection:"row" }}>
+      <View style={{  flexDirection:"row" }}>
+         <Text style={styles.text}>Languages </Text>
+       </View>
       <TouchableOpacity
         onPress={() => {
           props.dispatch({ type: "th" });
@@ -22,6 +27,16 @@ const SettingScreen = (props: any) => {
       >
         <Text style={styles.btnText}>EN</Text>
       </TouchableOpacity>
+      </View>
+      <TouchableOpacity
+        onPress={() => {
+          console.log("logout")
+        }}
+        style={styles.redButton}
+      >
+        <Text style={styles.btnText}>Logout</Text>
+      </TouchableOpacity>
+
     </View>
   );
 };
@@ -62,17 +77,33 @@ const styles = StyleSheet.create({
     marginBottom: 11
   },
   button: {
-    marginTop: 5,
+    margin:5,
     padding: 5,
-    width: 200,
+    width: 80,
     height: 44,
     borderRadius: 20,
     backgroundColor: "#01579B",
     textAlign: "center"
   },
 
+  redButton: {
+    marginBottom: 15,
+    padding: 5,
+    width: 200,
+    height: 44,
+    borderRadius: 20,
+    backgroundColor: "#FF0000",
+    textAlign: "center"
+  },
+
   btnText: {
     color: "white",
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  text: {
+    color: "#3D3D3D",
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center"

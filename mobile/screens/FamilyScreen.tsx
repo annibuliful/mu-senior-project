@@ -15,13 +15,13 @@ import { View } from "../components/Themed";
 const FamilyData = [
   {
     id: "0001",
-    title: "Benz",
+    title: "Somsri Deejai",
     age:"21",
-    imgUrl:require("../assets/images/family/mock-user-profile.png")
+    imgUrl:require("../assets/images/family/mock-user-profile2.png")
   },
   {
     id: "0002",
-    title: "Bo",
+    title: "I am a little girl",
     age:"11",
     imgUrl:require("../assets/images/family/mock-user-profile.png")
   },

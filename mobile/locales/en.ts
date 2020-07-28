@@ -3,5 +3,5 @@ export default {
   vaccine: "Vaccine",
   family: "Family",
   packager: "Packager",
-  setting: "Settings"
+  setting: "Settings",
 };

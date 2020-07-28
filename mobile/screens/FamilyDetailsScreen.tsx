@@ -17,10 +17,13 @@ export default function FamilyDetailsScreen({ route,navigation }: any) {
     const { itemName,itemAge,itemUrl } = route.params;
     return (
       <ScrollView style={{ flex: 1 }}>
-        <Text>Mock Family Screen  (Test sending profile data)</Text>
+        <View style={VaccineDetailsStyles.profileDetailsContainer}>
+        <Image style={VaccineDetailsStyles.profileImg} source={itemUrl} />
+        <View style={VaccineDetailsStyles.profileInfo}>
         <Text style={VaccineDetailsStyles.profileName}> Name : {JSON.parse(JSON.stringify(itemName))}</Text>
         <Text style={VaccineDetailsStyles.profileName}> Age : {JSON.parse(JSON.stringify(itemAge))}</Text>
-        {/* <Text style={VaccineDetailsStyles.profileName}> ImgUrl : {JSON.parse(JSON.stringify(itemUrl))}</Text> */}
+        </View>
+        </View>
       </ScrollView>
     );
   }
@@ -33,5 +36,19 @@ export default function FamilyDetailsScreen({ route,navigation }: any) {
     profileName: {
       fontSize: 18,
     },
+    profileDetailsContainer:{
+      flexDirection:"row",
+      marginTop:20,
+      justifyContent:"center"
+    },
+    profileInfo:{
+      marginLeft:20,
+      flexDirection:"column"
+    },
+    profileImg:{
+      width:70,
+      height:70,
+      
+    }
   
   });
