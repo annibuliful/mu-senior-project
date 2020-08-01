@@ -4,28 +4,36 @@
     <div class="flex pb-2 pt-2 flex-auto justify-center">
       <div class="mb-auto cursor-pointer flex-auto">
         <router-link :to="{ name: 'dashboard-home' }">
-          <img class="inline w-8" src="@/assets/icons/home.svg" />
+          <img
+            class="inline w-8 pb-2"
+            src="@/assets/icons/home.svg"
+            :class="[currentPath === '/dashboard/home' ? 'link-active' : '']"
+          />
         </router-link>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
         <div class="ml-10">
-          <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
+          <img class="inline w-8 pb-2" src="@/assets/icons/vaccine.svg" />
         </div>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
         <div class="ml-10">
-          <img class="inline w-8" src="@/assets/icons/family.svg" />
+          <img class="inline w-8 pb-2" src="@/assets/icons/family.svg" />
         </div>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
         <div class="ml-10">
-          <img class="inline w-8" src="@/assets/icons/packager.svg" />
+          <img class="inline w-8 pb-2" src="@/assets/icons/packager.svg" />
         </div>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
-        <div class="ml-10">
-          <img class="inline w-8" src="@/assets/icons/setting.svg" />
-        </div>
+        <router-link :to="{ name: 'dashboard-setting' }" class="ml-10">
+          <img
+            class="inline w-8 pb-2"
+            src="@/assets/icons/setting.svg"
+            :class="[currentPath === '/dashboard/setting' ? 'link-active' : '']"
+          />
+        </router-link>
       </div>
     </div>
   </div>
@@ -45,8 +53,7 @@ export default {
 
 <style scoped>
 .link-active {
-  /* border-bottom: 2px solid #2b6cb0; */
-  background-color: #2b6cb0;
+  border-bottom: 2px solid #2b6cb0;
 }
 
 .mobile-bar {

@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     calendarLocale: "en-US",
     locale: locale["en-US"],
-    profileName: "test",
+    profileName: "Jarupong",
     calendarEvents: [
       {
         id: 1,
@@ -27,8 +27,9 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    changeLocale(state, type) {
+    changeLanguage(state, type) {
       state.locale = locale[type];
+      state.calendarLocale = type;
     }
   },
   actions: {},

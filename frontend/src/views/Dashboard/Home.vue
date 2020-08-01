@@ -1,6 +1,8 @@
 <template>
   <div>
-    <p class="text-2xl mb-10">{{ welcomeWord }} {{ profileName }}</p>
+    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
+      {{ welcomeWord }} {{ profileName }}
+    </p>
     <Calendar />
   </div>
 </template>

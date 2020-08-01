@@ -5,5 +5,6 @@ export default {
   packager: "รูปแบบพัสดุ",
   setting: "ตั้งค่า",
   event: "กิจกรรมที่ต้องทำ",
-  welcome: "ยินดีต้อนรับคุณ "
+  welcome: "ยินดีต้อนรับคุณ ",
+  language: "ภาษา"
 };

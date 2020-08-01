@@ -5,5 +5,6 @@ export default {
   packager: "Packager",
   setting: "Settings",
   event: "events",
-  welcome: "Welcome Dear,"
+  welcome: "Welcome Dear,",
+  language: "Language"
 };
