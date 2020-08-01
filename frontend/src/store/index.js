@@ -1,8 +1,35 @@
-import { createStore } from "vuex";
+import Vue from "vue";
+import Vuex from "vuex";
+import locale from "../locale";
 
-export default createStore({
-  state: {},
-  mutations: {},
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  state: {
+    locale: locale["th-TH"],
+    profileName: "test",
+    calendarEvents: [
+      {
+        id: 1,
+        description: "Clean the house.",
+        date: new Date(),
+        isCompleted: false,
+        color: "red"
+      },
+      {
+        id: 2,
+        description: "Clean the house2",
+        date: new Date(2020, 4, 14),
+        isCompleted: false,
+        color: "red"
+      }
+    ]
+  },
+  mutations: {
+    changeLocale(state, type) {
+      state.locale = locale[type];
+    }
+  },
   actions: {},
   modules: {}
 });
