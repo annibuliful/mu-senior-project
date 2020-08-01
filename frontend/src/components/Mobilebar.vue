@@ -1,37 +1,30 @@
 <template>
-  <div
-    class="flex shadow w-2/12 flex-col h-screen lg:visible md:visible sm-hidden"
-  >
-    <img src="@/assets/people.png" class="ml-auto mr-auto ml-auto mt-8" />
-    <div class="flex">
-      <div class="mt-auto mb-auto cursor-pointer pb-2 pt-2">
-        <router-link :to="{ name: 'dashboard-home' }" class="ml-10">
+  <div class="flex shadow mobile-bar sm-hidden bg-gray-200">
+    <!-- <img src="@/assets/people.png" class="ml-auto mr-auto ml-auto mt-8" /> -->
+    <div class="flex pb-2 pt-2 flex-auto justify-center">
+      <div class="mb-auto cursor-pointer flex-auto">
+        <router-link :to="{ name: 'dashboard-home' }">
           <img class="inline w-8" src="@/assets/icons/home.svg" />
-          <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
         </router-link>
       </div>
-      <div class=" mb-auto cursor-pointer">
+      <div class="m-auto cursor-pointer flex-auto">
         <div class="ml-10">
           <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
-          <p class="inline mt-2 pl-3">{{ listItem.vaccine }}</p>
         </div>
       </div>
-      <div class="mb-auto cursor-pointer">
+      <div class="m-auto cursor-pointer flex-auto">
         <div class="ml-10">
           <img class="inline w-8" src="@/assets/icons/family.svg" />
-          <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
         </div>
       </div>
-      <div class=" mb-auto cursor-pointer">
+      <div class="m-auto cursor-pointer flex-auto">
         <div class="ml-10">
           <img class="inline w-8" src="@/assets/icons/packager.svg" />
-          <p class="inline mt-2 pl-3">{{ listItem.packager }}</p>
         </div>
       </div>
-      <div class=" mb-auto cursor-pointer">
+      <div class="m-auto cursor-pointer flex-auto">
         <div class="ml-10">
           <img class="inline w-8" src="@/assets/icons/setting.svg" />
-          <p class="inline mt-2 pl-3">{{ listItem.setting }}</p>
         </div>
       </div>
     </div>
@@ -56,7 +49,16 @@ export default {
   background-color: #2b6cb0;
 }
 
-@media only screen and (min-width: 640px) {
+.mobile-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+@media only screen and (min-width: 900px) {
   .sm-hidden {
     display: none;
   }

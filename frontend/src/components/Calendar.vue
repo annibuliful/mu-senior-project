@@ -2,7 +2,7 @@
   <div class="w-full">
     <v-date-picker
       mode="range"
-      locale="th-TH"
+      :locale="locale"
       :attributes="listEvents"
       @dayclick="dayClicked"
       @drag="dragValue = $event"
@@ -25,6 +25,9 @@ export default {
         dates: t.date,
         customData: t
       }));
+    },
+    locale() {
+      return this.$store.state.calendarLocale;
     }
   }
 };

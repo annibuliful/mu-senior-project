@@ -4,5 +4,6 @@ export default {
   family: "Family",
   packager: "Packager",
   setting: "Settings",
-  event: "events"
+  event: "events",
+  welcome: "Welcome Dear,"
 };

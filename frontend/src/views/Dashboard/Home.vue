@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p class="text-2xl mb-10">{{ welcomeWord }} {{ profileName }}</p>
     <Calendar />
   </div>
 </template>
@@ -9,8 +10,11 @@ import Calendar from "@/components/Calendar.vue";
 export default {
   components: { Calendar },
   computed: {
-    username() {
+    profileName() {
       return this.$store.state.profileName;
+    },
+    welcomeWord() {
+      return this.$store.state.locale.welcome;
     }
   }
 };

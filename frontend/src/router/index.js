@@ -19,10 +19,23 @@ const routes = [
     children: [
       {
         path: "/",
+        name: "dashboard-index",
+        redirect: { name: "dashboard-home" }
+      },
+      {
+        path: "home",
         name: "dashboard-home",
         component: () =>
           import(
             /* webpackChunkName: "dashboard" */ "../views/Dashboard/Home.vue"
+          )
+      },
+      {
+        path: "setting",
+        name: "dashboard-setting",
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ "../views/Dashboard/Setting.vue"
           )
       }
     ]

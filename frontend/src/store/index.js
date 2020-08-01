@@ -6,7 +6,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    locale: locale["th-TH"],
+    calendarLocale: "en-US",
+    locale: locale["en-US"],
     profileName: "test",
     calendarEvents: [
       {
