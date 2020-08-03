@@ -3,13 +3,13 @@ import db from '../../knex';
 import * as argon from 'argon2';
 
 // interface
-import { CreateUser, IUser, Query } from './user.interface';
+import { ICreateUser, IUser, IQuery } from './user.interface';
 
 @Injectable()
 export class UserService {
   private readonly serviceName = 'users';
 
-  async create(data: CreateUser): Promise<IUser> {
+  async create(data: ICreateUser): Promise<IUser> {
     try {
       const hashPassword = await argon.hash(data.password);
       const result = await db
@@ -29,7 +29,7 @@ export class UserService {
     }
   }
 
-  async update(id: number, data: CreateUser): Promise<IUser> {
+  async update(id: number, data: ICreateUser): Promise<IUser> {
     try {
       const hashPassword = await argon.hash(data.password);
       const result = await db('users')
@@ -88,7 +88,33 @@ export class UserService {
     }
   }
 
-  async getByQuery(query: Query): Promise<IUser[]> {
-    return null;
+  async getByQuery({ search, orderBy }: IQuery): Promise<IUser[]> {
+    let baseQuery = db
+      .select(
+        'userId',
+        'role',
+        'username',
+        'password',
+        'fullname',
+        'birthDate',
+        'profileImage',
+        'gender',
+        'phone',
+        'createAt',
+        'updateAt',
+      )
+      .from('users');
+
+    if (search) {
+      baseQuery = baseQuery.where('fullname', 'like', `%${search}%`);
+    }
+
+    const isOrderByExist = orderBy !== undefined;
+    if (isOrderByExist) {
+      baseQuery = baseQuery.orderBy(orderBy);
+    }
+
+    const result = await baseQuery;
+    return result;
   }
 }
