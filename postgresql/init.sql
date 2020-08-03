@@ -1,9 +1,31 @@
 CREATE TYPE ROLES AS ENUM('user','admin');
+CREATE TYPE FAMILY_TYPE AS ENUM('child','husband','caretaker');
+CREATE TYPE SEX AS ENUM('male','female');
+
 CREATE TABLE users(
   "userId" SERIAL PRIMARY KEY,
   "role" ROLES DEFAULT 'user',
   "username" VARCHAR(32) UNIQUE NOT NULL,
   "password" VARCHAR(128) NOT NULL,
+  "fullname" VARCHAR(128) DEFAULT NULL,
+  "birthDate" TIMESTAMP DEFAULT NULL,
+  "profileImage" VARCHAR(256) DEFAULT NULL,
+  "gender" SEX NOT NULL,
+  "phone" VARCHAR[] DEFAULT NULL,
   "createAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   "updateAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE families(
+  "member_id" SERIAL PRIMARY KEY,
+  "fullname" VARCHAR(128) DEFAULT NULL,
+  "type" FAMILY_TYPE DEFAULT 'child',
+  "birthDate" TIMESTAMP NOT NULL,
+  "phone" VARCHAR(15) DEFAULT NULL,
+  "createAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  "updateAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CREATE TABLE diseases(
+--
+-- );
