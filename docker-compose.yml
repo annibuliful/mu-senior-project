@@ -11,7 +11,7 @@ services:
   api:
     build: ./backend
     container_name: "senior-api"
-    command: npm run start:dev
+    command: npm run start:debug
     volumes:
       - ./backend:/usr/src/service
       - ./backend/images:/usr/src/service/images
@@ -45,8 +45,8 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=1234
-      - POSTGRES_USER=election
-      - POSTGRES_DB=election
+      - POSTGRES_USER=senior
+      - POSTGRES_DB=senior
   redis:
     image: "redis:4-alpine"
     container_name: "senior-redis"
