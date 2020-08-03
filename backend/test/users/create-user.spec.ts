@@ -2,6 +2,10 @@ import { UserService } from '../../src/api/user/user.service';
 import generateCode from '../../src/utils/generator/code-pattern';
 
 let userService: UserService;
+const baseMockData = {
+  fullname: generateCode('xxxxxxxxx'),
+  phone: [generateCode('xxxxxx'), generateCode('xxxxxxx')],
+};
 describe('user service', () => {
   beforeAll(() => {
     userService = new UserService();
@@ -96,6 +100,49 @@ describe('user service', () => {
           gender: 'female',
           role: 'user',
         });
+      } catch (e) {
+        expect(e.error.message).toEqual('user id not found');
+      }
+    });
+  });
+
+  describe('get user by id', () => {
+    test('get correct user id', async () => {
+      const username = generateCode('xxxxxx');
+      const password = generateCode('xxxxxx');
+
+      const createdResult = await userService.create({
+        username,
+        password,
+        gender: 'female',
+        role: 'user',
+        ...baseMockData,
+      });
+
+      const result = await userService.getById(createdResult.userId);
+      expect(result.username).toEqual(createdResult.username);
+      expect(result.gender).toEqual(createdResult.gender);
+      expect(result.role).toEqual(createdResult.role);
+      expect(result.fullname).toEqual(baseMockData.fullname);
+      expect(result.phone.length).toEqual(baseMockData.phone.length);
+      result.phone.forEach((value, index) => {
+        expect(value).toEqual(baseMockData.phone[index]);
+      });
+    });
+
+    test('get wrong user id', async () => {
+      const username = generateCode('xxxxxx');
+      const password = generateCode('xxxxxx');
+
+      const createdResult = await userService.create({
+        username,
+        password,
+        gender: 'female',
+        role: 'user',
+        ...baseMockData,
+      });
+      try {
+        await userService.getById(createdResult.userId);
       } catch (e) {
         expect(e.error.message).toEqual('user id not found');
       }
