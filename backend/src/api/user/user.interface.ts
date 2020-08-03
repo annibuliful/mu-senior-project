@@ -12,6 +12,7 @@ export interface CreateUser {
   role: Role;
 }
 
+export interface Query {}
 export interface IUser extends CreateUser {
   message?: string;
   userId: number;
