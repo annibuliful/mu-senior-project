@@ -1,4 +1,6 @@
 import { UserService } from '../../src/api/user/user.service';
+import { IUser } from '../../src/api/user/user.interface';
+
 import generateCode from '../../src/utils/generator/code-pattern';
 
 let userService: UserService;
@@ -146,6 +148,31 @@ describe('user service', () => {
       } catch (e) {
         expect(e.error.message).toEqual('user id not found');
       }
+    });
+    describe('get user by query', () => {
+      test('query with search', async () => {
+        const data: IUser[] = [];
+        for (let i = 0; i < 10; i++) {
+          const createdResult = await userService.create({
+            username: generateCode('xxxxxx'),
+            password: generateCode('xxxxxx'),
+            gender: 'female',
+            role: 'user',
+            ...baseMockData,
+          });
+          data.push(createdResult);
+        }
+        const searchKeyword = data[0].fullname;
+
+        const searchResult = await userService.getByQuery({
+          search: searchKeyword,
+        });
+
+        expect(searchResult.length).toBeGreaterThan(0);
+        searchResult.forEach(({ fullname }) => {
+          expect(fullname).toMatch(searchKeyword);
+        });
+      });
     });
   });
 });
