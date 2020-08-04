@@ -11,6 +11,27 @@ import { UserService } from '../user/user.service';
 export class AuthService {
   private readonly serviceName = 'auth';
   constructor(private readonly userService: UserService) {}
+  async refreshToken(token: string) {
+    try {
+      const { isValid } = jwt.verify(token);
+      if (!isValid) {
+        throw 'token is invalid';
+      }
+
+      // const newToken = jwt.sign(
+      //   {
+      //     userId: userInfo.userId,
+      //     role: userInfo.role,
+      //   },
+      //   '1d',
+      // );
+    } catch (e) {
+      throw {
+        service: this.serviceName,
+        error: new Error(e),
+      };
+    }
+  }
   async login({ username, password }: ILogin) {
     try {
       const listResult = await this.userService.getByQuery({
