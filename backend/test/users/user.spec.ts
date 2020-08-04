@@ -149,29 +149,36 @@ describe('user service', () => {
         expect(e.error.message).toEqual('user id not found');
       }
     });
-    describe('get user by query', () => {
-      test('query with search', async () => {
-        const data: IUser[] = [];
-        for (let i = 0; i < 10; i++) {
-          const createdResult = await userService.create({
-            username: generateCode('xxxxxx'),
-            password: generateCode('xxxxxx'),
-            gender: 'female',
-            role: 'user',
-            ...baseMockData,
-          });
-          data.push(createdResult);
-        }
-        const searchKeyword = data[0].fullname;
+  });
 
-        const searchResult = await userService.getByQuery({
-          search: searchKeyword,
+  describe('get user by query', () => {
+    test('query with search', async () => {
+      const data: IUser[] = [];
+      for (let i = 0; i < 10; i++) {
+        const createdResult = await userService.create({
+          username: generateCode('xxxxxx'),
+          password: generateCode('xxxxxx'),
+          gender: 'female',
+          role: 'user',
+          ...baseMockData,
         });
+        data.push(createdResult);
+      }
+      const searchKeyword = data[0].fullname;
 
-        expect(searchResult.length).toBeGreaterThan(0);
-        searchResult.forEach(({ fullname }) => {
-          expect(fullname).toMatch(searchKeyword);
-        });
+      const searchResult = await userService.getByQuery({
+        query: [
+          {
+            column: 'fullname',
+            operator: 'like',
+            method: 'where',
+            value: searchKeyword,
+          },
+        ],
+      });
+      expect(searchResult.length).toBeGreaterThan(0);
+      searchResult.forEach(({ fullname }) => {
+        expect(fullname).toMatch(searchKeyword);
       });
     });
   });
