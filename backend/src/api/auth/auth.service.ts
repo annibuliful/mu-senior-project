@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import jwt from '../../jwt';
-import db from '../../knex';
 import * as argon from 'argon2';
 
 // interface
@@ -14,15 +13,54 @@ export class AuthService {
   constructor(private readonly userService: UserService) {}
   async login({ username, password }: ILogin) {
     try {
-      // const listResult = await this.userService.getByQuery();
-      // const isUserNotExist = listResult.length === 0;
-      // if (isUserNotExist) {
-      //   throw 'username or password incorrect';
-      // }
-      //
-      // const userInfo = listResult[0];
-      //
-      // const isPasswordNotCorrect = await argon.verify(userInfo.password,userInfo.password);
+      const listResult = await this.userService.getByQuery({
+        query: [
+          {
+            column: 'username',
+            operator: '=',
+            method: 'where',
+            value: username,
+          },
+        ],
+      });
+      const isUserNotExist = listResult.length === 0;
+      if (isUserNotExist) {
+        throw 'username or password incorrect';
+      }
+
+      const userInfo = listResult[0];
+
+      const isPasswordNotCorrect =
+        (await argon.verify(userInfo.password, password)) === false;
+      if (isPasswordNotCorrect) {
+        throw 'username or password incorrect';
+      }
+
+      const accessToken = jwt.sign(
+        {
+          userId: userInfo.userId,
+          role: userInfo.role,
+        },
+        '1d',
+      );
+
+      const refreshToken = jwt.sign(
+        {
+          userId: userInfo.userId,
+          role: userInfo.role,
+        },
+        '2d',
+      );
+
+      return {
+        accessToken,
+        refreshToken,
+        userInfo: {
+          ...userInfo,
+          username: null,
+          password: null,
+        },
+      };
     } catch (e) {
       throw {
         service: this.serviceName,
