@@ -1,9 +1,6 @@
-import { Method, Operator } from '../../shared/interface/sql';
-
 type Gender = 'female' | 'male';
 type Role = 'admin' | 'user';
 type Order = 'desc' | 'asc';
-
 export interface ICreateUser {
   username: string;
   password: string;
@@ -19,17 +16,9 @@ interface ISortQuery {
   order: Order;
 }
 
-interface ICustomQuery {
-  column: string;
-  operator: Operator;
-  method: Method;
-  value: any;
-}
 export interface IQuery {
+  search?: string;
   orderBy?: ISortQuery[];
-  query?: ICustomQuery[];
-  limit?: number;
-  offset?: number;
 }
 
 export interface IUser extends ICreateUser {
