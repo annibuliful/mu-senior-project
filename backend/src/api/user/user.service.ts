@@ -88,33 +88,68 @@ export class UserService {
     }
   }
 
-  async getByQuery({ search, orderBy }: IQuery): Promise<IUser[]> {
-    let baseQuery = db
-      .select(
-        'userId',
-        'role',
-        'username',
-        'password',
-        'fullname',
-        'birthDate',
-        'profileImage',
-        'gender',
-        'phone',
-        'createAt',
-        'updateAt',
-      )
-      .from('users');
+  async getByQuery({
+    orderBy,
+    query,
+    limit,
+    offset,
+  }: IQuery): Promise<IUser[]> {
+    try {
+      let baseQuery = db
+        .select(
+          'userId',
+          'role',
+          'username',
+          'password',
+          'fullname',
+          'birthDate',
+          'profileImage',
+          'gender',
+          'phone',
+          'createAt',
+          'updateAt',
+        )
+        .from('users');
 
-    if (search) {
-      baseQuery = baseQuery.where('fullname', 'like', `%${search}%`);
+      const isQueryExist = query !== undefined;
+      if (isQueryExist) {
+        query.forEach(({ column, operator, value, method }) => {
+          const valueQuery =
+            operator === 'like' || operator === 'not like'
+              ? `%${value}%`
+              : value;
+
+          baseQuery = baseQuery[method].call(
+            baseQuery,
+            column,
+            operator,
+            valueQuery,
+          );
+        });
+      }
+
+      const isOrderByExist = orderBy !== undefined;
+      if (isOrderByExist) {
+        baseQuery = baseQuery.orderBy(orderBy);
+      }
+
+      const isLimitExist = limit !== undefined;
+      if (isLimitExist) {
+        baseQuery = baseQuery.limit(limit);
+      }
+
+      const isOffsetExist = offset !== undefined;
+      if (isOffsetExist) {
+        baseQuery = baseQuery.offset(offset);
+      }
+
+      const result = await baseQuery;
+      return result;
+    } catch (e) {
+      throw {
+        service: this.serviceName,
+        error: new Error(e),
+      };
     }
-
-    const isOrderByExist = orderBy !== undefined;
-    if (isOrderByExist) {
-      baseQuery = baseQuery.orderBy(orderBy);
-    }
-
-    const result = await baseQuery;
-    return result;
   }
 }
