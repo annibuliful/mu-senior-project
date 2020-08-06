@@ -36,6 +36,7 @@
 <script>
 import LoginForm from "@/components/auth/Login.vue";
 import RegisterForm from "@/components/auth/Register.vue";
+import services from "@/services";
 import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
@@ -73,8 +74,9 @@ export default {
       console.log(username, password);
       this.$router.push({ name: "dashboard" });
     },
-    onRegister({ username, password }) {
-      console.log(username, password);
+    async onRegister({ username, password }) {
+      await services().register({ username, password });
+      this.mode = "login";
     }
   }
 };
