@@ -3,13 +3,13 @@ import db from '../../knex';
 import * as argon from 'argon2';
 
 // interface
-import { CreateUser, IUser, Query } from './user.interface';
+import { ICreateUser, IUser, IQuery } from './user.interface';
 
 @Injectable()
 export class UserService {
   private readonly serviceName = 'users';
 
-  async create(data: CreateUser): Promise<IUser> {
+  async create(data: ICreateUser): Promise<IUser> {
     try {
       const hashPassword = await argon.hash(data.password);
       const result = await db
@@ -29,7 +29,7 @@ export class UserService {
     }
   }
 
-  async update(id: number, data: CreateUser): Promise<IUser> {
+  async update(id: number, data: ICreateUser): Promise<IUser> {
     try {
       const hashPassword = await argon.hash(data.password);
       const result = await db('users')
@@ -88,7 +88,68 @@ export class UserService {
     }
   }
 
-  async getByQuery(query: Query): Promise<IUser[]> {
-    return null;
+  async getByQuery({
+    orderBy,
+    query,
+    limit,
+    offset,
+  }: IQuery): Promise<IUser[]> {
+    try {
+      let baseQuery = db
+        .select(
+          'userId',
+          'role',
+          'username',
+          'password',
+          'fullname',
+          'birthDate',
+          'profileImage',
+          'gender',
+          'phone',
+          'createAt',
+          'updateAt',
+        )
+        .from('users');
+
+      const isQueryExist = query !== undefined;
+      if (isQueryExist) {
+        query.forEach(({ column, operator, value, method }) => {
+          const valueQuery =
+            operator === 'like' || operator === 'not like'
+              ? `%${value}%`
+              : value;
+
+          baseQuery = baseQuery[method].call(
+            baseQuery,
+            column,
+            operator,
+            valueQuery,
+          );
+        });
+      }
+
+      const isOrderByExist = orderBy !== undefined;
+      if (isOrderByExist) {
+        baseQuery = baseQuery.orderBy(orderBy);
+      }
+
+      const isLimitExist = limit !== undefined;
+      if (isLimitExist) {
+        baseQuery = baseQuery.limit(limit);
+      }
+
+      const isOffsetExist = offset !== undefined;
+      if (isOffsetExist) {
+        baseQuery = baseQuery.offset(offset);
+      }
+
+      const result = await baseQuery;
+      return result;
+    } catch (e) {
+      throw {
+        service: this.serviceName,
+        error: new Error(e),
+      };
+    }
   }
 }
