@@ -70,9 +70,13 @@ export default {
     onChangeFormMode(mode) {
       this.mode = mode;
     },
-    onLogin({ username, password }) {
-      console.log(username, password);
-      this.$router.push({ name: "dashboard" });
+    async onLogin({ username, password }) {
+      try {
+        await services().login({ username, password });
+        this.$router.push({ name: "dashboard-home" });
+      } catch (e) {
+        this.error = e.message;
+      }
     },
     async onRegister({ username, password }) {
       await services().register({ username, password });
