@@ -3,6 +3,22 @@
     <router-view />
   </div>
 </template>
+<script>
+import { setMode } from "@/services";
+export default {
+  mounted() {
+    window.navigator.onLine ? setMode("online") : setMode("offline");
+    window.addEventListener("online", () => {
+      setMode("online");
+      this.$store.commit("changeNetworkMode", "online");
+    });
+    window.addEventListener("offline", () => {
+      this.$store.commit("changeNetworkMode", "offline");
+      setMode("offline");
+    });
+  }
+};
+</script>
 
 <style>
 /* #app {

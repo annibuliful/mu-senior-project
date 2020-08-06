@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    networkMode: "online",
     calendarLocale: "en-US",
     locale: locale["en-US"],
     profileName: "Jarupong",
@@ -30,6 +31,9 @@ export default new Vuex.Store({
     changeLanguage(state, type) {
       state.locale = locale[type];
       state.calendarLocale = type;
+    },
+    changeNetworkMode(state, mode) {
+      state.networkMode = mode;
     }
   },
   actions: {},
