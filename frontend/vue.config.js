@@ -4,9 +4,10 @@ module.exports = {
     disableHostCheck: true
   },
   pwa: {
-    name: "VidChat",
-    themeColor: "#4DBA87",
-    msTileColor: "#000000",
+    name: "Vaccinet",
+    themeColor: "#2196f3",
+    backgroundColor: "#2196f3",
+    display: "standalone",
     appleMobileWebAppCapable: "yes",
     appleMobileWebAppStatusBarStyle: "black"
   }
