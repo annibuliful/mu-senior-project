@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="@/assets/people.png" style="margin:auto" />
+    <img src="@/assets/people.png" class="mx-auto mt-24" />
     <div
       class="max-w-xs max-w-lg my-8 rounded bg-white pt-6 shadow p-8"
       style="margin-top: 10vh; margin-left: auto; margin-right: auto; width: 80vw;"
@@ -72,14 +72,14 @@ export default {
     },
     async onLogin({ username, password }) {
       try {
-        await services().login({ username, password });
+        await services().auth.login({ username, password });
         this.$router.push({ name: "dashboard-home" });
       } catch (e) {
         this.error = e.message;
       }
     },
     async onRegister({ username, password }) {
-      await services().register({ username, password });
+      await services().auth.register({ username, password });
       this.mode = "login";
     }
   }

@@ -1,6 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import DashboardIndex from "../views/Dashboard/Index.vue";
+import DashboardHome from "../views/Dashboard/Home.vue";
+import DashboardSetting from "../views/Dashboard/Setting.vue";
+import DashboardFamily from "../views/Dashboard/Family.vue";
 
 Vue.use(VueRouter);
 
@@ -12,10 +16,7 @@ const routes = [
   },
   {
     path: "/dashboard",
-    component: () =>
-      import(
-        /* webpackChunkName: "dashboard" */ "../views/Dashboard/Index.vue"
-      ),
+    component: DashboardIndex,
     children: [
       {
         path: "/",
@@ -25,18 +26,17 @@ const routes = [
       {
         path: "home",
         name: "dashboard-home",
-        component: () =>
-          import(
-            /* webpackChunkName: "dashboard" */ "../views/Dashboard/Home.vue"
-          )
+        component: DashboardHome
       },
       {
         path: "setting",
         name: "dashboard-setting",
-        component: () =>
-          import(
-            /* webpackChunkName: "dashboard" */ "../views/Dashboard/Setting.vue"
-          )
+        component: DashboardSetting
+      },
+      {
+        path: "family",
+        name: "dashboard-family",
+        component: DashboardFamily
       }
     ]
   }

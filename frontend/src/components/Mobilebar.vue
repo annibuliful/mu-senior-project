@@ -17,9 +17,13 @@
         </div>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
-        <div class="ml-10">
-          <img class="inline w-8 pb-2" src="@/assets/icons/family.svg" />
-        </div>
+        <router-link :to="{ name: 'dashboard-family' }" class="ml-10">
+          <img
+            class="inline w-8 pb-2"
+            src="@/assets/icons/family.svg"
+            :class="[currentPath === '/dashboard/family' ? 'link-active' : '']"
+          />
+        </router-link>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
         <div class="ml-10">

@@ -21,10 +21,14 @@
         </div>
       </div>
       <div class="mb-auto cursor-pointer">
-        <div class="ml-10">
+        <router-link
+          :to="{ name: 'dashboard-family' }"
+          class="ml-10 pb-4 "
+          :class="[currentPath === '/dashboard/family' ? 'link-active' : '']"
+        >
           <img class="inline w-8" src="@/assets/icons/family.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
-        </div>
+        </router-link>
       </div>
       <div class=" mb-auto cursor-pointer">
         <div class="ml-10">
