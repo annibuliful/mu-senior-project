@@ -1,7 +1,7 @@
-import register from "./auth/register";
-import login from "./auth/login";
+import auth from "./auth";
+import family from "./family";
 
 export default {
-  register,
-  login
+  auth,
+  family
 };

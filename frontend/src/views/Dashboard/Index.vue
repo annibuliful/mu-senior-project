@@ -2,10 +2,7 @@
   <div>
     <div class="flex">
       <SideBar />
-      <div
-        class="flex-auto mt-10"
-        style="margin-left: 30px; margin-right: 30px;"
-      >
+      <div class="flex-auto mt-10 lg:ml-64 lg:mr-10">
         <router-view />
       </div>
     </div>

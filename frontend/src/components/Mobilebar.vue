@@ -1,5 +1,5 @@
 <template>
-  <div class="flex shadow mobile-bar sm-hidden bg-gray-200">
+  <div class="flex shadow mobile-bar sm-hidden opacity-100">
     <!-- <img src="@/assets/people.png" class="ml-auto mr-auto ml-auto mt-8" /> -->
     <div class="flex pb-2 pt-2 flex-auto justify-center">
       <div class="mb-auto cursor-pointer flex-auto">
@@ -17,9 +17,13 @@
         </div>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
-        <div class="ml-10">
-          <img class="inline w-8 pb-2" src="@/assets/icons/family.svg" />
-        </div>
+        <router-link :to="{ name: 'dashboard-family' }" class="ml-10">
+          <img
+            class="inline w-8 pb-2"
+            src="@/assets/icons/family.svg"
+            :class="[currentPath === '/dashboard/family' ? 'link-active' : '']"
+          />
+        </router-link>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
         <div class="ml-10">
@@ -63,6 +67,7 @@ export default {
   width: 100%;
   color: white;
   text-align: center;
+  background-color: #e2e8f0;
 }
 
 @media only screen and (min-width: 900px) {
