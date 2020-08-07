@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import * as helmet from 'helmet';
 import * as rateLimit from 'express-rate-limit';
 
+const { SERVER_PORT } = process.env;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(helmet());
@@ -13,6 +14,6 @@ async function bootstrap() {
     }),
   );
   app.enableCors();
-  await app.listen(3000);
+  await app.listen(Number(SERVER_PORT), '0.0.0.0');
 }
 bootstrap();

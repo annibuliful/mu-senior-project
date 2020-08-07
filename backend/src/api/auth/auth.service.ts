@@ -13,8 +13,9 @@ export class AuthService {
   constructor(private readonly userService: UserService) {}
   async refreshToken(token: string) {
     try {
-      const { isValid } = jwt.verify(token);
-      if (!isValid) {
+      const result = jwt.verify(token);
+      console.log(result);
+      if (!result.isValid) {
         throw 'token is invalid';
       }
 

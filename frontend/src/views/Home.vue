@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="@/assets/people.png" style="margin:auto" />
+    <img src="@/assets/people.png" class="mx-auto mt-24" />
     <div
       class="max-w-xs max-w-lg my-8 rounded bg-white pt-6 shadow p-8"
       style="margin-top: 10vh; margin-left: auto; margin-right: auto; width: 80vw;"
@@ -36,6 +36,7 @@
 <script>
 import LoginForm from "@/components/auth/Login.vue";
 import RegisterForm from "@/components/auth/Register.vue";
+import services from "@/services";
 import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
@@ -69,12 +70,20 @@ export default {
     onChangeFormMode(mode) {
       this.mode = mode;
     },
-    onLogin({ username, password }) {
-      console.log(username, password);
-      this.$router.push({ name: "dashboard" });
+    async onLogin({ username, password }) {
+      try {
+        const result = await services().auth.login({ username, password });
+        this.$store.commit("setUserInfo", result);
+        localStorage.setItem("userInfo", JSON.stringify(result));
+
+        this.$router.push({ name: "dashboard-home" });
+      } catch (e) {
+        this.error = e.message;
+      }
     },
-    onRegister({ username, password }) {
-      console.log(username, password);
+    async onRegister({ username, password }) {
+      await services().auth.register({ username, password });
+      this.mode = "login";
     }
   }
 };

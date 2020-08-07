@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex shadow w-2/12 flex-col h-screen lg:visible md:visible sm-hidden"
+    class="flex shadow w-2/12 flex-col h-screen lg:visible md:visible sm-hidden fixed"
   >
     <img src="@/assets/people.png" class="ml-auto mr-auto ml-auto mt-8" />
     <div class="flex flex-col h-full ">
@@ -21,10 +21,14 @@
         </div>
       </div>
       <div class="mb-auto cursor-pointer">
-        <div class="ml-10">
+        <router-link
+          :to="{ name: 'dashboard-family' }"
+          class="ml-10 pb-4 "
+          :class="[currentPath === '/dashboard/family' ? 'link-active' : '']"
+        >
           <img class="inline w-8" src="@/assets/icons/family.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
-        </div>
+        </router-link>
       </div>
       <div class=" mb-auto cursor-pointer">
         <div class="ml-10">
