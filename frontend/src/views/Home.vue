@@ -72,7 +72,10 @@ export default {
     },
     async onLogin({ username, password }) {
       try {
-        await services().auth.login({ username, password });
+        const result = await services().auth.login({ username, password });
+        this.$store.commit("setUserInfo", result);
+        localStorage.setItem("userInfo", JSON.stringify(result));
+
         this.$router.push({ name: "dashboard-home" });
       } catch (e) {
         this.error = e.message;

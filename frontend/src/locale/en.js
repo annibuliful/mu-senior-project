@@ -14,6 +14,7 @@ export default {
     vaccine: "Received vaccine"
   },
   button: {
-    add: "add"
+    add: "add",
+    save: "save"
   }
 };

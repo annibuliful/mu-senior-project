@@ -11,6 +11,5 @@ export default async ({ username, password }) => {
 
   const passwordIsNotCorrect = listUsers[0].password !== password;
   if (passwordIsNotCorrect) throw new Error("password incorrect");
-
-  localStorage.setItem("userInfo", JSON.stringify(listUsers[0]));
+  return listUsers[0];
 };

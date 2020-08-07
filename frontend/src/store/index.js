@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import locale from "../locale";
+import services from "@/services";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -25,18 +26,9 @@ export default new Vuex.Store({
         color: "red"
       }
     ],
-    listFamilies: [
-      {
-        fullname: "test1",
-        birthDate: new Date(2016, 4, 14),
-        diseases: ["a1", "b2", "c3"]
-      },
-      {
-        fullname: "test2",
-        birthDate: new Date(2014, 4, 14),
-        diseases: ["a", "b", "c"]
-      }
-    ]
+    listFamilies: [],
+    listDiseases: ["da", "db", "dc"],
+    listVaccines: ["va", "vb", "vc"]
   },
   mutations: {
     changeLanguage(state, type) {
@@ -46,8 +38,18 @@ export default new Vuex.Store({
     changeNetworkMode(state, mode) {
       state.networkMode = mode;
     },
-    async listFamilies(state, data) {
+    async listFamilies(state) {
+      const user = localStorage.getItem("userInfo");
+      const { userId } = JSON.parse(user);
+      const data = await services().family.list(userId);
+      console.log(data);
       state.listFamilies = data;
+    },
+    addNewFamilyMember(state, data) {
+      state.listFamilies.push(data);
+    },
+    setUserInfo(state, data) {
+      state.userInfo = data;
     }
   },
   actions: {},

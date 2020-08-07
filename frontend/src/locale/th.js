@@ -14,6 +14,7 @@ export default {
     vaccine: "วัคซีนที่เคยได้รับ"
   },
   button: {
-    add: "เพิ่ม"
+    add: "เพิ่ม",
+    save: "บันทึก"
   }
 };

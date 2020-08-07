@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex shadow w-2/12 flex-col h-screen lg:visible md:visible sm-hidden"
+    class="flex shadow w-2/12 flex-col h-screen lg:visible md:visible sm-hidden fixed"
   >
     <img src="@/assets/people.png" class="ml-auto mr-auto ml-auto mt-8" />
     <div class="flex flex-col h-full ">

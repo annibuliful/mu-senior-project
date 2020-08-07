@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="w-1/4 rounded overflow-hidden shadow-lg mx-12 sm:w-9/12 xs:w-full"
-  >
+  <div class="lg:rounded overflow-hidden lg:shadow-lg mx-12">
     <div class="px-6 py-4">
       <div class="font-bold text-xl mb-2">
         {{ name }}
@@ -10,8 +8,11 @@
         >
       </div>
       <p class="text-gray-700 text-base">
-        {{ diseases }}
+        {{ lebels.disease }}
       </p>
+      <ul class="list-disc px-6">
+        <li v-for="disease in diseases" :key="disease">{{ disease }}</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -21,6 +22,11 @@ export default {
   filters: {
     oldWithBirthDate: function(value) {
       return formatDistanceToNow(new Date(value));
+    }
+  },
+  computed: {
+    lebels: function() {
+      return this.$store.state.locale.label;
     }
   },
   props: {
