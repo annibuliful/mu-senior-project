@@ -6,5 +6,14 @@ export default {
   setting: "Settings",
   event: "events",
   welcome: "Welcome Dear,",
-  language: "Language"
+  language: "Language",
+  label: {
+    name: "Fullname",
+    birthDate: "BirthDate",
+    disease: "Congenital disease",
+    vaccine: "Received vaccine"
+  },
+  button: {
+    add: "add"
+  }
 };

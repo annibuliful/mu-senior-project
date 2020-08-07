@@ -1,5 +1,5 @@
 <template>
-  <div class="flex shadow mobile-bar sm-hidden bg-gray-200">
+  <div class="flex shadow mobile-bar sm-hidden opacity-100">
     <!-- <img src="@/assets/people.png" class="ml-auto mr-auto ml-auto mt-8" /> -->
     <div class="flex pb-2 pt-2 flex-auto justify-center">
       <div class="mb-auto cursor-pointer flex-auto">
@@ -67,6 +67,7 @@ export default {
   width: 100%;
   color: white;
   text-align: center;
+  background-color: #e2e8f0;
 }
 
 @media only screen and (min-width: 900px) {

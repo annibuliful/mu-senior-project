@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import locale from "../locale";
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -25,6 +24,18 @@ export default new Vuex.Store({
         isCompleted: false,
         color: "red"
       }
+    ],
+    listFamilies: [
+      {
+        fullname: "test1",
+        birthDate: new Date(2016, 4, 14),
+        diseases: ["a1", "b2", "c3"]
+      },
+      {
+        fullname: "test2",
+        birthDate: new Date(2014, 4, 14),
+        diseases: ["a", "b", "c"]
+      }
     ]
   },
   mutations: {
@@ -34,6 +45,9 @@ export default new Vuex.Store({
     },
     changeNetworkMode(state, mode) {
       state.networkMode = mode;
+    },
+    async listFamilies(state, data) {
+      state.listFamilies = data;
     }
   },
   actions: {},

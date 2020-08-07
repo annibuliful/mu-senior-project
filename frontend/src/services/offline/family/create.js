@@ -1,11 +1,11 @@
 import db from "../db";
 
-export default ({ name, birthDate, diseases, vaccines }) => {
+export default ({ fullname, birthDate, diseases, receivedVaccines }) => {
   return db.table("families").add({
-    name,
+    fullname,
     birthDate,
     diseases,
-    vaccines,
+    receivedVaccines,
     isSync: false
   });
 };
