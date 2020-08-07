@@ -33,6 +33,7 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./nginx/log:/etc/nginx/log
+      - ./nginx/web-frontend:/web-frontend
     depends_on:
       - web
       - api
