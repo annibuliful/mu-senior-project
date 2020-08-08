@@ -51,9 +51,9 @@
       </p>
       <p
         class="text-xs text-red-600"
-        v-if="!$v.username.minLength && $v.password.$error"
+        v-if="!$v.password.minLength && $v.password.$error"
       >
-        Password must have at least {{ $v.username.$params.minLength.min }}
+        Password must have at least {{ $v.password.$params.minLength.min }}
       </p>
     </div>
     <button
@@ -87,6 +87,7 @@ export default {
   },
   methods: {
     onLogin() {
+      this.$v.$reset();
       this.$v.$touch();
       if (!this.$v.$invalid) {
         const data = {

@@ -27,8 +27,8 @@ export default new Vuex.Store({
       }
     ],
     listFamilies: [],
-    listDiseases: ["da", "db", "dc"],
-    listVaccines: ["va", "vb", "vc"]
+    listDiseases: ["ภูมิคุ้มกันบกพร่อง", "หอบหืด", "HIV"],
+    listVaccines: ["ไวรัสตับอักเสบ A", "ไวรัสตับอักเสบ B", "ไวรัสตับอักเสบ C"]
   },
   mutations: {
     changeLanguage(state, type) {
