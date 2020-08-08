@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <img src="@/assets/people.png" class="mx-auto mt-24" />
+    <img src="@/assets/people.png" class="mx-auto mt-2" />
     <div
-      class="max-w-xs max-w-lg my-8 rounded bg-white pt-6 shadow p-8"
-      style="margin-top: 10vh; margin-left: auto; margin-right: auto; width: 80vw;"
+      class="max-w-xs max-w-lg rounded bg-white pt-6 shadow p-8"
+      style="margin-top: 2vh; margin-left: auto; margin-right: auto; width: 80vw;"
     >
       <div class="inline-flex justify-center w-full pb-8">
         <h4
@@ -37,8 +37,6 @@
 import LoginForm from "@/components/auth/Login.vue";
 import RegisterForm from "@/components/auth/Register.vue";
 import services from "@/services";
-import { required, minLength } from "vuelidate/lib/validators";
-
 export default {
   components: {
     LoginForm,
@@ -46,25 +44,9 @@ export default {
   },
   data() {
     return {
-      username: "",
-      password: "",
-      repeatPassword: "",
       error: "",
       mode: "register"
     };
-  },
-  validations: {
-    username: {
-      required,
-      minLength: minLength(8)
-    },
-    password: {
-      required,
-      minLength: minLength(8)
-    },
-    repeatPassword: {
-      minLength: minLength(8)
-    }
   },
   methods: {
     onChangeFormMode(mode) {
@@ -72,12 +54,15 @@ export default {
     },
     async onLogin({ username, password }) {
       try {
+        console.log(username);
         const result = await services().auth.login({ username, password });
+        console.log(result);
         this.$store.commit("setUserInfo", result);
         localStorage.setItem("userInfo", JSON.stringify(result));
 
         this.$router.push({ name: "dashboard-home" });
       } catch (e) {
+        console.log(e);
         this.error = e.message;
       }
     },
