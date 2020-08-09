@@ -7,6 +7,7 @@ export default {
   event: "กิจกรรมที่ต้องทำ",
   welcome: "ยินดีต้อนรับคุณ ",
   language: "ภาษา",
+  accountSetting: "ตั้งค่าบัญชี",
   label: {
     name: "ชื่อ - นามสกุล",
     birthDate: "วันเกิด",
