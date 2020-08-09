@@ -1,62 +1,213 @@
 <template>
   <div>
-    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
-      {{ settingWord }}
+    <p
+      class="text-2xl mb-10 border-b-2 border-blue-700 lg:px-0 px-4"
+      style="width: auto;"
+    >
+      {{ locale.setting }}
     </p>
-    <div class="flex flex-auto">
-      <div class="md:flex md:items-center mb-6">
-        <div class="md:w-1/3">
+    <div class="flex md:items-center mb-6 ml-2">
+      <div class="w-32">
+        <label
+          class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
+          for="inline-full-name"
+        >
+          {{ locale.language }}
+        </label>
+      </div>
+
+      <div class="inline-block relative w-64">
+        <select
+          class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          :value="calendarLocale"
+          @input="onChangeLanguage"
+        >
+          <option value="en-US">English</option>
+          <option value="th-TH">ภาษาไทย</option>
+        </select>
+        <div
+          class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+        >
+          <CaretIcon />
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-10 mt-10">
+      <p class="text-md mb-10 border-b-2 border-blue-700 lg:px-0 px-4">
+        {{ locale.accountSetting }}
+      </p>
+
+      <div class="flex items-center mb-6 ml-2">
+        <div class="w-32">
           <label
             class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
             for="inline-full-name"
           >
-            {{ languageSetting }}
+            {{ label.name }}
           </label>
         </div>
 
         <div class="inline-block relative w-64">
-          <select
-            class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-            :value="language"
-            @input="onChangeLanguage"
-          >
-            <option value="en-US">English</option>
-            <option value="th-TH">ภาษาไทย</option>
-          </select>
-          <div
-            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-          >
-            <svg
-              class="fill-current h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path
-                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-              />
-            </svg>
-          </div>
+          <input
+            type="text"
+            v-model="fullname"
+            class=" w-full text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="password"
+            placeholder="Full name"
+            autocomplete="off"
+          />
         </div>
+      </div>
+
+      <div class="flex items-center mb-6 ml-2">
+        <div class="w-32">
+          <label
+            class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
+            for="inline-full-name"
+          >
+            {{ label.birthDate }}
+          </label>
+        </div>
+
+        <div class="inline-block relative w-64">
+          <v-date-picker v-model="birthDate" :locale="calendarLocale" />
+        </div>
+      </div>
+
+      <div class="flex items-center mb-6 ml-2">
+        <div class="w-32">
+          <label
+            class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
+            for="inline-full-name"
+          >
+            {{ label.disease }}
+          </label>
+        </div>
+
+        <div class="inline-block relative w-64">
+          <TagInput
+            :placeholder="label.disease"
+            :listTags="listDiseases"
+            :selectedTags="selectedDiseases"
+            v-on:on-enter="onAddNewDisease"
+            v-on:on-remove="onDeleteDisease"
+          />
+        </div>
+      </div>
+
+      <div class="flex items-center mb-6 ml-2">
+        <div class="w-32">
+          <label
+            class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
+            for="inline-full-name"
+          >
+            {{ label.vaccine }}
+          </label>
+        </div>
+
+        <div class="inline-block relative w-64">
+          <TagInput
+            :placeholder="label.vaccine"
+            :listTags="listVaccines"
+            :selectedTags="selectedVaccines"
+            v-on:on-enter="onAddNewVaccine"
+            v-on:on-remove="onDeleteVaccine"
+          />
+        </div>
+      </div>
+      <div class="lg:w-2/3 md:w-2/3 sm:w-full">
+        <p v-if="error !== ''" class="text-red-500 text-center text-xl m-2">
+          {{ error }}
+        </p>
+      </div>
+      <div class="w-11/12">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
+          @click="submit"
+        >
+          {{ buttonLabel.save }}
+        </button>
       </div>
     </div>
   </div>
 </template>
 <script>
+import CaretIcon from "@/components/icons/Caret.vue";
+import TagInput from "@/components/input/TagInput.vue";
+import service from "@/services";
 export default {
+  components: {
+    CaretIcon,
+    TagInput
+  },
   computed: {
-    language() {
+    listVaccines() {
+      return this.$store.state.listVaccines;
+    },
+    listDiseases() {
+      return this.$store.state.listDiseases;
+    },
+    calendarLocale() {
       return this.$store.state.calendarLocale;
     },
-    settingWord() {
-      return this.$store.state.locale.setting;
+    locale() {
+      return this.$store.state.locale;
     },
-    languageSetting() {
-      return this.$store.state.locale.language;
+    label() {
+      return this.$store.state.locale.label;
+    },
+    buttonLabel() {
+      return this.$store.state.locale.button;
+    },
+    userInfo() {
+      return this.$store.state.userInfo;
     }
   },
+  data() {
+    return {
+      fullname: "",
+      birthDate: new Date(),
+      selectedVaccines: this.userInfo.diseases,
+      selectedDiseases: this.userInfo.receivedVaccines,
+      error: ""
+    };
+  },
+  created() {
+    this.fullname = this.userInfo.fullname;
+    this.birthDate = this.userInfo.birthDate;
+    this.selectedVaccines = this.userInfo.diseases;
+    this.selectedDiseases = this.userInfo.receivedVaccines;
+  },
   methods: {
+    async submit() {
+      try {
+        const data = {
+          fullname: this.fullname,
+          birthDate: this.birthDate,
+          receivedVaccines: this.selectedVaccines,
+          diseases: this.selectedDiseases
+        };
+        this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
+        await service().user.update(this.userInfo.userId, data);
+      } catch (e) {
+        this.error = e.message;
+      }
+    },
     onChangeLanguage(e) {
       this.$store.commit("changeLanguage", e.target.value);
+    },
+    onAddNewDisease(disease) {
+      this.selectedDiseases.push(disease);
+    },
+    onDeleteDisease(index) {
+      this.selectedDiseases.splice(index, 1);
+    },
+    onAddNewVaccine(vaccine) {
+      this.selectedVaccines.push(vaccine);
+    },
+    onDeleteVaccine(index) {
+      this.selectedVaccines.splice(index, 1);
     }
   }
 };
