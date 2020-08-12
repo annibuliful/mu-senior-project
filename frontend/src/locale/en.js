@@ -7,6 +7,7 @@ export default {
   event: "events",
   welcome: "Welcome Dear,",
   language: "Language",
+  accountSetting: "Account Setting",
   label: {
     name: "Fullname",
     birthDate: "BirthDate",

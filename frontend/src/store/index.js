@@ -42,7 +42,6 @@ export default new Vuex.Store({
       const user = localStorage.getItem("userInfo");
       const { userId } = JSON.parse(user);
       const data = await services().family.list(userId);
-      console.log(data);
       state.listFamilies = data;
     },
     addNewFamilyMember(state, data) {
