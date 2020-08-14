@@ -1,7 +1,16 @@
 <template>
   <div>
-    <div class="text-center">Search Components</div>
-    <div v-for="item in vaccineList" :key="item.vaccineId">
+    <div class="search-area mb-3 flex justify-center">
+      <input class="border border-black mr-2" type="text" v-model="searchQuery" />
+      <div class="text-center border mr-2" @click="vaccineFilter(searchQuery)">
+        Search
+      </div>
+       <div class="text-center border" @click="resetSearch">
+        reset
+      </div>
+    </div>
+
+    <div v-for="item in displayVaccineList" :key="item.vaccineId">
       <VaccineCard
         :vaccineId="item.vaccineId"
         :vaccineNameMedical="item.vaccineNameMedical"
@@ -18,11 +27,14 @@ export default {
     VaccineCard,
   },
   created() {
-    console.log("Created", this.vaccineList);
+    this.displayVaccineList = this.vaccineList;
+    console.log("displayVaccineList", this.displayVaccineList);
   },
   data() {
     return {
       isOpenAddForm: false,
+      searchQuery: "",
+      displayVaccineList: [],
     };
   },
   computed: {
@@ -30,10 +42,19 @@ export default {
       return this.$store.state.locale.vaccines;
     },
   },
-  methods: {},
+  methods: {
+    vaccineFilter(inputSearchQuery) {
+      const filteredVaccineList = this.vaccineList.filter((vcObj) => {
+        return vcObj.vaccineNameMedical.includes(inputSearchQuery);
+      });
+      this.displayVaccineList = filteredVaccineList;
+    },
+     resetSearch() {
+      this.displayVaccineList = this.vaccineList;
+    },
+  },
 };
 </script>
 <style scoped>
-@media only screen and (max-width: 900px) {
-}
+
 </style>
