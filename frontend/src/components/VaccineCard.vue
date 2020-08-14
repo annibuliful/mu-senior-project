@@ -28,7 +28,8 @@ export default {
   },
    methods: {
       onCardClicked() {
-      alert("test clicking card id : " +this.vaccineId)
+      // alert("test clicking card id : " +this.vaccineId)
+      this.$router.push({ path: `/dashboard/vaccine/details/${this.vaccineId}` })
     },
    }
 };

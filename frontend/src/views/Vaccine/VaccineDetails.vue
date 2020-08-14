@@ -1,6 +1,7 @@
 <template>
   <div >
-        <h1>sofakapdsfkpdac</h1>
+        <h1>This is Vaccine Details</h1>
+        <h2>{{$route.params.id}}</h2>
   </div>
 </template>
 <script>
