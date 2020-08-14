@@ -8,6 +8,11 @@ export default {
   welcome: "Welcome Dear,",
   language: "Language",
   accountSetting: "Account Setting",
+  vaccineDetailsPage: {
+    title: "Vaccine Description",
+    appointmentBtn: "Create an appointment",
+    recordBtn: "Record Vaccine",
+  },
   label: {
     name: "Fullname",
     birthDate: "BirthDate",
