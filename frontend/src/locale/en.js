@@ -8,6 +8,10 @@ export default {
   welcome: "Welcome Dear,",
   language: "Language",
   accountSetting: "Account Setting",
+  networkMode: {
+    offline: "You are Offline now",
+    online: "You are Online now"
+  },
   vaccineDetailsPage: {
     title: "Vaccine Description",
     appointmentBtn: "Create an appointment",
