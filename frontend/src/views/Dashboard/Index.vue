@@ -2,7 +2,7 @@
   <div>
     <div class="flex">
       <SideBar />
-      <div class="flex-auto mt-10 lg:ml-64 lg:mr-10">
+      <div class="flex-auto mt-10 mb-24 lg:mb-0 lg:ml-64 lg:mr-10">
         <router-view />
       </div>
     </div>
