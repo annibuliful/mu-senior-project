@@ -6,5 +6,6 @@ export const setMode = newMode => {
   mode = newMode;
 };
 export default () => {
-  return mode === "online" ? {} : offlineService;
+  // return mode === "online" ? {} : offlineService;
+  return offlineService;
 };
