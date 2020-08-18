@@ -54,8 +54,8 @@ export default {
     },
     currentPath() {
       return this.$route.path;
-    },
-  },
+    }
+  }
 };
 </script>
 

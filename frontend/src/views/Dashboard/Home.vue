@@ -13,7 +13,7 @@ export default {
   components: { Calendar },
   computed: {
     profileName() {
-      return this.$store.state.userInfo.username;
+      return this.$store.state.userInfo;
     },
     welcomeWord() {
       return this.$store.state.locale.welcome;
