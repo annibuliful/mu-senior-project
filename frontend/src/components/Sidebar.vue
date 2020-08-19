@@ -15,10 +15,14 @@
         </router-link>
       </div>
       <div class=" mb-auto cursor-pointer">
-        <div class="ml-10">
+        <router-link
+          :to="{ name: 'dashboard-vaccine' }"
+          class="ml-10 pb-4 "
+          :class="[currentPath === '/dashboard/vaccine' ? 'link-active' : '']"
+        >
           <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.vaccine }}</p>
-        </div>
+        </router-link>
       </div>
       <div class="mb-auto cursor-pointer">
         <router-link

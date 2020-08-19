@@ -21,14 +21,15 @@ export default new Vuex.Store({
       {
         id: 2,
         description: "Clean the house2",
-        date: new Date(2020, 4, 14),
+        date: new Date(2020, 0, 14),
         isCompleted: false,
         color: "red"
       }
     ],
     listFamilies: [],
     listDiseases: ["ภูมิคุ้มกันบกพร่อง", "หอบหืด", "HIV"],
-    listVaccines: ["ไวรัสตับอักเสบ A", "ไวรัสตับอักเสบ B", "ไวรัสตับอักเสบ C"]
+    listVaccines: ["ไวรัสตับอักเสบ A", "ไวรัสตับอักเสบ B", "ไวรัสตับอักเสบ C"],
+    selectedVaccineDetails: {}
   },
   mutations: {
     changeLanguage(state, type) {
@@ -49,6 +50,11 @@ export default new Vuex.Store({
     },
     setUserInfo(state, data) {
       state.userInfo = data;
+    },
+    getVaccineDetail(state, id) {
+      state.selectedVaccineDetails = state.locale.vaccines.find(
+        x => x.vaccineId === id
+      );
     }
   },
   actions: {},

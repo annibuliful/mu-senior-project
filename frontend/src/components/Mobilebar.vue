@@ -12,9 +12,13 @@
         </router-link>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
-        <div class="ml-10">
-          <img class="inline w-8 pb-2" src="@/assets/icons/vaccine.svg" />
-        </div>
+        <router-link :to="{ name: 'dashboard-vaccine' }" class="ml-10">
+          <img
+            class="inline w-8 pb-2"
+            src="@/assets/icons/vaccine.svg"
+            :class="[currentPath === '/dashboard/vaccine' ? 'link-active' : '']"
+          />
+        </router-link>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
         <router-link :to="{ name: 'dashboard-family' }" class="ml-10">
