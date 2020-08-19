@@ -117,8 +117,11 @@
         </div>
       </div>
       <div class="lg:w-2/3 md:w-2/3 sm:w-full">
-        <p v-if="error !== ''" class="text-red-500 text-center text-xl m-2">
-          {{ error }}
+        <p
+          v-if="errorMessage !== ''"
+          class="text-red-500 text-center text-xl m-2"
+        >
+          {{ errorMessage }}
         </p>
       </div>
       <div class="w-11/12">
@@ -168,14 +171,14 @@ export default {
     return {
       fullname: "",
       birthDate: new Date(),
-      selectedVaccines: this.userInfo.diseases,
-      selectedDiseases: this.userInfo.receivedVaccines,
-      error: ""
+      selectedVaccines: [],
+      selectedDiseases: [],
+      errorMessage: ""
     };
   },
   created() {
     this.fullname = this.userInfo.fullname;
-    this.birthDate = this.userInfo.birthDate;
+    this.birthDate = new Date(this.userInfo.birthDate);
     this.selectedVaccines = this.userInfo.diseases;
     this.selectedDiseases = this.userInfo.receivedVaccines;
   },
@@ -189,9 +192,11 @@ export default {
           diseases: this.selectedDiseases
         };
         this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
+        localStorage.setItem("userInfo", JSON.stringify(data));
+
         await service().user.update(this.userInfo.userId, data);
       } catch (e) {
-        this.error = e.message;
+        this.errorMessage = e.message;
       }
     },
     onChangeLanguage(e) {

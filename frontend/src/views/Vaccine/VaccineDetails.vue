@@ -27,17 +27,17 @@
 export default {
   data() {
     return {
-      vaccineDetails: {},
+      vaccineDetails: {}
     };
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale.vaccineDetailsPage;
-    },
+    }
   },
   created() {
     this.$store.commit("getVaccineDetail", this.$route.params.id);
     this.vaccineDetails = this.$store.state.selectedVaccineDetails;
-  },
+  }
 };
 </script>

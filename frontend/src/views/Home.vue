@@ -48,21 +48,26 @@ export default {
       mode: "register"
     };
   },
+  created: function() {
+    const userInfo = localStorage.getItem("userInfo");
+    const isUserInfoExist = userInfo !== null;
+    if (isUserInfoExist) {
+      this.$store.commit("setUserInfo", JSON.parse(userInfo));
+      this.$router.push({ name: "dashboard-home" });
+    }
+  },
   methods: {
     onChangeFormMode(mode) {
       this.mode = mode;
     },
     async onLogin({ username, password }) {
       try {
-        console.log(username);
         const result = await services().auth.login({ username, password });
-        console.log(result);
         this.$store.commit("setUserInfo", result);
         localStorage.setItem("userInfo", JSON.stringify(result));
 
         this.$router.push({ name: "dashboard-home" });
       } catch (e) {
-        console.log(e);
         this.error = e.message;
       }
     },

@@ -8,6 +8,10 @@ export default {
   welcome: "ยินดีต้อนรับคุณ ",
   language: "ภาษา",
   accountSetting: "ตั้งค่าบัญชี",
+  networkMode: {
+    offline: "คุณออฟไลน์อยู่",
+    online: "คุณออนไลน์อยู่"
+  },
   vaccineDetailsPage: {
     title: "รายละเอียดวัคซีน",
     appointmentBtn: "กำหนดวันฉีดวัคซีน",
