@@ -8,6 +8,7 @@ import DashboardFamily from "../views/Dashboard/Family.vue";
 import DashboardVaccineList from "../views/Dashboard/VaccineList.vue";
 import VaccineDetails from "../views/Vaccine/VaccineDetails.vue";
 import VaccinePackager from "../views/Dashboard/VaccinePackager.vue"
+import VaccinePackagerDetails from "../views/Packager/VaccinePackagerDetails.vue"
 
 Vue.use(VueRouter);
 
@@ -45,15 +46,10 @@ const routes = [
         name: "dashboard-packager",
         component: VaccinePackager
       },
-      // {
-      //   path: "vaccine",
-      //   name: "dashboard-vaccine",
-      //   component: VaccineIndex,
-      //   children: [
-      //     { path: "/", component: DashboardVaccineList },
-      //     { path: "details/:id", component: VaccineDetails },
-      //   ],
-      // },
+      {
+        path: "vaccinepackager/details/:id",
+        component: VaccinePackagerDetails
+      },
       {
         path: "setting",
         name: "dashboard-setting",

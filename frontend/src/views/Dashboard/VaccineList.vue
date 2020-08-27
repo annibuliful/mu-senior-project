@@ -36,7 +36,6 @@ export default {
   },
   data() {
     return {
-      isOpenAddForm: false,
       searchQuery: "",
       displayVaccineList: []
     };
@@ -49,12 +48,13 @@ export default {
   methods: {
     vaccineFilter(inputSearchQuery) {
       const filteredVaccineList = this.vaccineList.filter(vcObj => {
-        return vcObj.vaccineNameMedical.includes(inputSearchQuery);
+        return vcObj.vaccineNameMedical.includes(inputSearchQuery) || vcObj.vaccineNameNormal.includes(inputSearchQuery) ;
       });
       this.displayVaccineList = filteredVaccineList;
     },
     resetSearch() {
       this.displayVaccineList = this.vaccineList;
+      this.searchQuery = "";
     }
   }
 };

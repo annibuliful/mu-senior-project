@@ -18,12 +18,12 @@
     </div>
 
     <button
-      class="bg-blue-500 hover:bg-blue-800 w-5/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-3/12"
+      class="bg-blue-500 hover:bg-blue-800 w-8/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-4/12"
     >
       {{ localeText.appointmentBtn }}
     </button>
     <button
-      class="bg-blue-500 hover:bg-blue-800 w-5/12  text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-3/12"
+      class="bg-blue-500 hover:bg-blue-800 w-8/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-4/12"
     >
       {{ localeText.recordBtn }}
     </button>
