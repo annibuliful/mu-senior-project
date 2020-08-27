@@ -35,10 +35,14 @@
         </router-link>
       </div>
       <div class=" mb-auto cursor-pointer">
-        <div class="ml-10">
+        <router-link
+          :to="{ name: 'dashboard-packager' }"
+          class="ml-10 pb-4 "
+          :class="[currentPath === '/dashboard/vaccinepackager' ? 'link-active' : '']"
+        >
           <img class="inline w-8" src="@/assets/icons/packager.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.packager }}</p>
-        </div>
+        </router-link>
       </div>
       <div class=" mb-auto cursor-pointer">
         <router-link

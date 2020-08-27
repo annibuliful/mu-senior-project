@@ -20,6 +20,9 @@ export default {
     vaccineReference:
       "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)",
   },
+  vaccinePackagerPage: {
+    title: "Vaccine Packager",
+  },
   label: {
     name: "Fullname",
     birthDate: "BirthDate",

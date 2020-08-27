@@ -30,9 +30,13 @@
         </router-link>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
-        <div class="ml-10">
-          <img class="inline w-8 pb-2" src="@/assets/icons/packager.svg" />
-        </div>
+        <router-link :to="{ name: 'dashboard-packager' }" class="ml-10">
+          <img
+            class="inline w-8 pb-2"
+            src="@/assets/icons/packager.svg"
+            :class="[currentPath === '/dashboard/vaccinepackager' ? 'link-active' : '']"
+          />
+        </router-link>
       </div>
       <div class="m-auto cursor-pointer flex-auto">
         <router-link :to="{ name: 'dashboard-setting' }" class="ml-10">

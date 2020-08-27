@@ -2,7 +2,7 @@ export default {
   home: "หน้าหลัก",
   vaccine: "วัคซีน",
   family: "ครอบครัว",
-  packager: "รูปแบบพัสดุ",
+  packager: "แพ็กเกจวัคซีนเสริม",
   setting: "ตั้งค่า",
   event: "กิจกรรมที่ต้องทำ",
   welcome: "ยินดีต้อนรับคุณ ",
@@ -19,6 +19,9 @@ export default {
     recordBtn: "บันทึกวัคซีน",
     vaccineReference:
       "ที่มาข้อมูล: ตำราวัคซีนและการสร้างเสริมภูมิคุ้มกันโรค ปี 2562 กรมควบคุมโรค กระทรวงสาธารณะสุข",
+  },
+  vaccinePackagerPage: {
+    title: "แพ็กเกจวัคซีนเสริม",
   },
   label: {
     name: "ชื่อ - นามสกุล",
