@@ -1,17 +1,20 @@
 <template>
   <div class="mb-20">
-    <div class="text-center font-bold text-lg">{{ localeText.title }}</div>
+    <div class="text-center font-bold text-xl lg:text-2xl text-blue-800">
+      {{ localeText.title }}
+    </div>
 
-    <div class="vaccine-title-area text-center mb-4">
+    <div class="vaccine-title-area text-center mb-4 text-lg lg:text-xl">
       <div>{{ vaccineDetails.vaccineNameMedical }}</div>
       <div>{{ vaccineDetails.vaccineNameNormal }}</div>
     </div>
 
-    <div class="border w-10/12 mx-auto">
+    <div class="border w-10/12 mx-auto p-5 shadow-lg">
+      <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
+        {{ localeText.who }}
+      </div>
       <div>{{ vaccineDetails.shortDes }}</div>
-    </div>
-    <div class="w-10/12 mx-auto">
-      <div>{{ localeText.vaccineReference }}</div>
+      <div class="mt-8 text-blue-800">{{ localeText.vaccineReference }}</div>
     </div>
 
     <button
