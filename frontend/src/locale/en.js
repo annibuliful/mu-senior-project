@@ -142,213 +142,138 @@ export default {
   ],
   vaccines: [
     {
-      vaccineId: "vc0001",
-      vaccineNameMedical: "BCG Vaccine",
-      vaccineNameNormal: "[ENG]วัคซีนป้องกันวัณโรค",
-      shortDes:
-        "เนื่องจากอัตราการเกิดวัณโรคในประเทศไทยสูง เด็กทุกคนในประเทศไทยจึงควรรับวัคซีน โดยให้อุดตั้งแต่แรกเกิด และให้ฉีดในทารกที่เกิดจากมารดาที่ติดเชื้อเอชไอวีด้วย (ในประเด็นนี้จะต่างจาก คําแนะนําขององค์การอนามัยโลก เพราะประเทศไทยมีการวินิจฉัยและเข้าถึงยาต้านไวรัสเอชไอวีที่ดีมาก ฉีดเพียงครั้งเดียว หากไม่ได้รับวัคซีนตอนแรกเกิดสามารถให้ได้ทันที่ทุกอายุ หากไม่มีข้อห้าม สําหรับ ผู้ที่ไม่เคยได้รับวัคซีนและเดินทางมาพักอาศัยในประเทศไทยเป็นเวลายาวนาน อาจพิจารณาให้วัคซีน เป็นรายๆ ไป",
+      "vaccineId": "vc0001",
+      "vaccineNameMedical": "BCG Vaccine",
+      "vaccineNameNormal": "tuberculosis",
+      "shortDes": "Children -BCG vaccination should only be considered for children who have a negative tuberculin skin test and who are continually exposed, and cannot be separated from, adults who\n-Are untreated or ineffectively treated for TB disease (if the child cannot be given long-term treatment for infection); or\n-Have TB caused by strains resistant to isoniazid and rifampin.\nHealth Care Workers \n-BCG vaccination of health care workers should be considered on an individual basis in settings in which\n-A high percentage of TB patients are infected with M. tuberculosis strains resistant to both isoniazid and rifampin;\n-There is ongoing transmission of such drug-resistant M. tuberculosis strains to health care workers and subsequent infection is likely; or\nComprehensive TB infection-control precautions have been implemented, but have not been successful.\n-Health care workers considered for BCG vaccination should be counseled regarding the risks and benefits associated with both BCG vaccination and treatment of Latent TB Infection (LTBI)."
     },
     {
-      vaccineId: "vc0002",
-      vaccineNameMedical: "Hepatitis B Vaccine : HB",
-      vaccineNameNormal: "[ENG]วัคซีนป้องกันโรคไวรัสตับอักเสบบี",
-      shortDes:
-        "เด็กทุกคนควรได้รับวัคซีนนี้ตั้งแต่แรกเกิดเพราะจะช่วยป้องกันการติดเชื้อตั้งแต่แรกเกิด ซึ่งการ ติดเชื้อในวัยเด็ก มีโอกาสที่จะเป็นพาหะได้สูง จึงควรฉีดวัคซีนครั้งแรกโดยเร็วที่สุดหรือภายใน 24 ชั่วโมง หลังคลอด ครั้งที่สองอายุ 1-2 เดือน และครั้งที่สามอายุ 6-7 เดือน (อย่างน้อยอายุต้องมากกว่า 24 สัปดาห์) ในกรณีที่ใช้วัคซีนรวมเป็นเข็มเดียวกับวัคซีน DTP ให้ฉีดที่อายุ 2, 4, 6 เดือน เนื่องจากทารกคลอดก่อน กําหนดที่น้ําหนักตัวแรกเกิดน้อยกว่า 2,000 กรัม อาจสร้างภูมิคุ้มกันจากวัคซีนได้ไม่ดี ดังนั้น สําหรับ ทารกแรกเกิดที่น้ําหนักน้อยกว่า 2,000 กรัม ที่ทราบว่ามารดาไม่เป็นพาหะควรเริ่มให้วัคซีนเข็มแรก",
+      "vaccineId": "vc0002",
+      "vaccineNameMedical": "Hepatitis B Vaccine : HB",
+      "vaccineNameNormal": "Hepatitis B",
+      "shortDes": "-Mother is HBsAg-negative: 1 dose within 24 hours of birth for all medically stable infants ≥2,000 grams. Infants\n<2,000 grams: administer 1 dose at chronological age 1 month or hospital discharge.\n-Mother is HBsAg-positive:\nAdminister HepB vaccine and hepatitis B immune globulin (HBIG) (in separate limbs) within 12 hours of birth, regardless of birth weight. For infants <2,000 grams, administer 3 additional doses of vaccine (total of 4 doses) beginning at age 1 month.\nTest for HBsAg and anti-HBs at age 9–12 months. If HepB series is delayed, test 1–2 months after final dose.\n-Mother’s HBsAg status is unknown:\nAdminister HepB vaccine within 12 hours of birth, regardless of birth weight.\nFor infants <2,000 grams, administer HBIG in addition to HepB vaccine (in separate limbs) within 12 hours of birth. Administer 3 additional doses of vaccine (total of 4 doses) beginning at age 1 month.\nDetermine mother’s HBsAg status as soon as possible. If mother is HBsAg-positive, administer HBIG to infants ≥2,000 grams as soon as possible, but no later than 7 days of age."
     },
     {
-      vaccineId: "vc0003",
-      vaccineNameMedical: "Haemophilus influenzaetype b Vaccine: Hib",
-      vaccineNameNormal:
-        "[ENG]วัคซีนป้องกันโรคจากเชื้อฮีโมฟิลุสอินฟลูเอ็นเซ่ชนิดบี หรือ ฮิบ",
-      shortDes:
-        "เด็กปกติทุกคนที่มีความประสงค์จะลดความเสี่ยงต่อการติดเชื้อฮิบชนิดรุนแรง สามารถ ฉีดวัคซีนนี้ได้โดยแนะนําให้ฉีดตั้งแต่อายุ 2 เดือน อายุน้อยที่สุดที่สามารถเริ่มให้วัคซีนได้ คือ 6 สัปดาห์ โดยในเด็กปกติจะฉีดหรือไม่ฉีดเข็มกระตุ้นที่อายุ 12-18 เดือนก็ได้ เพราะมักมีภูมิคุ้มกันขึ้นเพียงพอ จากการฉีดชุดแรก (primary Series) จนพ้นอายุ 2 ปีที่เสี่ยงต่อการติดโรครุนแรงเนื่องจากความเสี่ยงต่อโรครุนแรงจากเชื้อฮิบในเด็กไทยอยู่ในช่วงอายุต่ํากว่า 2 ปี (ในต่างประเทศ ใช้เกณฑ์ต่ํากว่า 5 ปี) จึงไม่แนะนําให้ฉีดในเด็กไทยที่อายุมากกว่า 2 ปี ยกเว้นแต่จะมีความเสี่ยงต่อโรคฮิบ มากกว่าปกติ เช่น เป็นผู้ที่มีภูมิคุ้มกันบกพร่อง ม้ามทํางานผิดปกติ ในกรณีเช่นนี้ แนะนําให้ฉีดแม้จะอายุ มากกว่า 2 ปี และฉีดกระตุ้นด้วย โดยต้องห่างจากเข็มสุดท้ายอย่างน้อย 2 เดือน จํานวนเข็มและช่วงเวลา ที่ฉีดวัคซีนขึ้นอยู่กับอายุที่เริ่มฉีด และชนิดของวัคซีนที่ใช้ ดังในตารางที่ 8.2-1 ในกรณีที่จะตัดม้ามแนะนํา ให้ฉีดวัคซีนก่อนตัดม้าม 7-10 วันอย่างน้อย 14 วัน",
+      "vaccineId": "vc0003",
+      "vaccineNameMedical": "Haemophilus influenzae\ntype b Vaccine: Hib",
+      "vaccineNameNormal": "Haemophilus influenzae type b",
+      "shortDes": "-ActHIB, Hiberix, or Pentacel: 4-dose series at 2, 4, 6, 12–15 months\n-PedvaxHIB: 3-dose series at 2, 4, 12–15 months\n-Dose 1 at 7–11 months: Administer dose 2 at least 4 weeks later and dose 3 (final dose) at 12–15 months or 8 weeks after dose 2 (whichever is later).\n-Dose 1 at 12–14 months: Administer dose 2 (final dose) at least 8 weeks after dose 1.\n-Dose 1 before 12 months and dose 2 before 15 months: Administer dose 3 (final dose) 8 weeks after dose 2.\n-2 doses of PedvaxHIB before 12 months: Administer dose 3 (final dose) at 12–59 months and at least 8 weeks after dose 2.\n-Unvaccinated at 15–59 months: 1 dose\nPreviously unvaccinated children age 60 months or older who are not considered high risk do not require catch-up vaccination.\nFor other catch-up guidance, see Table 2."
     },
     {
-      vaccineId: "vc0004",
-      vaccineNameMedical: "Diphtheria-Tetanus-Pertussis",
-      vaccineNameNormal: "[ENG]วัคซีนรวมป้องกันโรคคอตีบ-บาดทะยัก-ไอกรน",
-      shortDes:
-        "• เด็กทุกคนที่อายุน้อยกว่า 7 ปี และไม่มีข้อห้ามสําหรับวัคซีน ควรได้รับวัคซีน DTwP หรือ DTaP เมื่ออายุ 2, 4, 6, 15-18 เดือน และ 4-6 ปี• กรณีเกิดการระบาดของ pertussis ในชุมชน ให้ฉีด DTaP ในเด็กให้เร็วที่สุด โดยอายุที่เริ่ม ให้ได้คือ 6 สัปดาห์และให้เข็ม 2 และ 3 เพื่อให้ครบ primary Series โดยระยะห่างระหว่างเข็มที่สั้นที่สุด คือ 4 สัปดาห์• เด็กอายุ 7 ปีที่มีประวัติสัมผัสผู้ป่วยไอกรนและได้รับวัคซีนคอตีบ-บาดทะยัก-ไอกรนไม่ครบ ควรฉีดวัคซีนคอตีบ-บาดทะยัก-ไอกรนทันที ยกเว้นว่าเคยได้รับเข็ม 3 ภายในเวลา 6 เดือนหรือเข็มที่ 4 ภายในเวลา 3 ปี• สามารถใช้ชนิดไร้เซลล์ (DTaP) แทนชนิดทั้งเซลล์ (DTwP) ได้ทุกครั้ง ควรเลือกใช้ DTaP ในกรณีที่ต้องการลดความเสี่ยงต่อปฏิกิริยาข้างเคียงของ DTwPเด็กที่มีปัญหาทางสมอง โรคชัก หรือเด็ก ที่เคยมีปฏิกิริยามากต่อ DTwP• เด็กอายุ 4-6 ปี อาจใช้ DTwP, DTaP หรือ Tdap (BoostrixTM หรือ AdacelTV) ก็ได้• เด็กอายุระหว่าง 7-10 ปี ที่ได้รับวัคซีนไม่ครบหรือไม่ทราบประวัติการได้รับวัคซีน ควรให้ Tdap 1 โต๊ส และตามด้วย Td ที่ 2 และ 6-12 เดือน• สําหรับเด็กที่มารับวัคซีนไม่ต่อเนื่องตามกําหนดนัด ไม่จําเป็นต้องเริ่มตั้งต้นใหม่ ให้นับรวมเข็ม ที่ฉีดไปแล้วทั้งหมด โดยยึดหลักว่าเด็กที่มีอายุครบ 2 ปี และ 5 ปี ควรจะได้รับวัคซีนรวมคอตีบ-บาดทะยักไอกรน ครบจํานวน 4 และ 5 ครั้ง ตามลําดับ แต่ไม่ควรให้เกิน 6 ครั้ง ก่อนอายุ 7 ปี สําหรับเด็กที่ไม่เคยได้รับ วัคซีนมาก่อน• เด็กอายุ 11-12 ปี ควรได้รับการฉีด Td หรือ Tdap หรือ TdaP (BoostagenTM) ไม่ว่าจะเคย ได้รับ Tdap เมื่ออายุ 4-6 ปี มาก่อนหรือไม่ หลังจากนั้นฉีดกระตุ้นด้วย Td ทุก 10 ปี 10• ห้ามใช้วัคซีน DTwP หรือ DTaP ในเด็กอายุมากกว่า 7 ปี และผู้ใหญ่ ให้ใช้วัคซีน dT หรือ Tdap แทน โดยถ้ายังไม่เคยได้รับวัคซีน คอตีบ หรือบาดทะยักมาก่อนเลยให้ฉีด dT 3 ครั้ง 0, 1, 6 เดือน และควรใช้ Tdap แทนdT 1 ครั้ง จากนั้นฉีด dT ทุก10 ปี และถ้าเคยรับ dT หรือ DTP มาครบแล้วในอดีต ให้ฉีด Tdap 1 ครั้ง ไม่ว่าจะเคยได้ DTP, dT หรือ TT มานานเท่าใดก็ตาม จากนั้นฉีดกระตุ้น dT ทุก 10 ปี โดยกระทรวงสาธารณสุขได้รณรงค์ให้ประชาชนไปฉีดวัคซีน dT เมื่ออายุลงท้ายด้วยเลข 0 เช่น 20, 30, 40, 50, 60 และใช้ Tdap อย่างน้อย 1 ครั้ง• ปัจจุบัน Tdap แนะนําให้ใช้ได้ในหญิงตั้งครรภ์ทุกครรภ์ในมารดาหลังคลอดบุตร และมารดา ที่ให้นมบุตร โดยมีข้อบ่งใช้ในหญิงตั้งครรภ์ดังนี้ 1-131. ในหญิงตั้งครรภ์ที่ไม่มีประวัติได้รับ Tdap ไม่ว่าจะเคยรับ dT หรือ T มาครบถ้วนหรือไม่ ก็ตาม แพทย์ควรพิจารณาให้ Tdap ระหว่างตั้งครรภ์ได้โดยแนะนําให้ 1 เข็มเมื่ออายุครรภ์ 27-36 สัปดาห์ โดยไม่ต้องคํานึงถึงระยะเวลาที่ห่างจากวัคซีนบาดทะยัก หรือคอตีบเข็มล่าสุด เพื่อให้ภูมิคุ้มกันส่งผ่าน ถึงทารกได้มากที่สุด หากไม่ได้รับระหว่างตั้งครรภ์ ควรให้เร็วที่สุดหลังคลอด2. ในกรณีหญิงตั้งครรภ์ได้รับวัคซีนไม่ครบหรือไม่ทราบประวัติรับวัคซีน เพื่อสร้างภูมิคุ้มกัน ต่อเชื้อบาดทะยักและคอตีบแก่แม่และทารก หญิงตั้งครรภ์ควรได้รับวัคซีนป้องกันเชื้อบาดทะยักและ คอตีบ (dT) 3 ครั้ง แนะนํา 2 เข็มแรกห่างกัน 4 สัปดาห์ ต่อจากนั้นให้เข็มที่ 3 อีก 6-12 เดือน ต่อมาอาจใช้ Tdap แทน dT 1 ครั้งโดยแนะนําให้ใช้ในช่วงอายุครรภ์ 27-36 สัปดาห์3. ในหญิงตั้งครรภ์ที่มีแผล จําเป็นต้องใช้วัคซีน dT กระตุ้น หากไม่เคยได้รับ Tdap ควรให้ Tdap แทน dT ได้• สมาชิกในบ้านที่มีทารกแรกเกิด ควรได้รับ Tdap หรือ TdaP 1 เข็มเพื่อป้องกันการก “The Cocoon Strategy/13 โดยไม่ต้องคํานึงว่าห่างจาก Td หรือ TT ครั้งสุดท้ายเท่าใด• บุคลากรทางการแพทย์ที่ไม่เคยได้รับวัคซีน Tdap มาก่อน ควรได้ Tdap หรือ TdaP 1 โต๊ส ไม่ว่าจะเคยได้ TT หรือ Td มานานเท่าใดก็ตาม จากนั้นให้ฉีดกระตุ้นด้วย Td ทุก 10 ปี14• นอกจากนี้ในผู้ใหญ่ทั่วไป ที่มีบาดแผลที่อาจเสี่ยงต่อโรคบาดทะยัก ซึ่งจําเป็นต้องได้รับ dT อาจให้วัคซีน Tdap แทน dT 1 ครั้ง แล้วฉีด dT ในเข็มต่อๆ มาตามปกติทุก 10 ปี (โปรดดูรายละเอียด ในบทวัคซีนคอตีบ-บาดทะยัก)• สําหรับผู้ที่เกิดปฏิกิริยาแพ้รุนแรง anaphylaxis หรือ encephalopathy ภายใน 7 วันหลัง ได้รับวัคซีนคอตีบ-บาดทะยัก-ไอกรนเป็นข้อห้ามการได้รับวัคซีนโต๊สต่อๆไป• ไม่ควรฉีดวัคซีนคอตีบ-บาดทะยัก-ไอกรนในผู้ป่วยที่มีโรคทางสมอง ยกเว้นกรณี stable neurological disorder ผู้ป่วยโรคลมชักหรือมีประวัติไข้ชักไม่ถือเป็นข้อห้ามในการฉีดวัคซีน• ควรให้วัคซีน DTP แก่ผู้ป่วยคอตีบ หรือบาดทะยัก ในระยะฟื้นไข้เสมอ เพราะการเป็นโรคนี้ ไม่ก่อให้เกิดภูมิต้านทาน และอาจเป็นซ้ําได้ถ้าไม่ฉีดวัคซีน5-16 โปรดสังเกตว่าปัจจุบันไม่แนะนําให้ใช้ วัคซีนป้องกันบาดทะยักชนิดเดียว (T) ในผู้ใหญ่และหญิงตั้งครรภ์อีกแล้ว แต่แนะนําให้ใช้ dT แทนเสมอ เพราะโรคคอตีบ พบได้มากขึ้นในผู้ใหญ่ เนื่องจากภูมิคุ้มกันที่เคยได้รับจากวัคซีนในเด็กลดลงเมื่อโตขึ้น เช่นเดียวกับภูมิคุ้มกันต่อบาดทะยัก ดังนั้นจึงควรให้มีการกระตุ้นภูมิคุ้มกันต่อเชื้อคอตีบ และบาดทะยัก ในเวลาเดียวกันเสมอ",
+      "vaccineId": "vc0004",
+      "vaccineNameMedical": "Diphtheria-Tetanus-Pertussis",
+      "vaccineNameNormal": "Diphtheria-Tetanus-Pertussis",
+      "shortDes": "-Adolescents age 11–12 years: 1 dose Tdap\n-Pregnancy: 1 dose Tdap during each pregnancy, preferably in early part of gestational weeks 27–36\n-Tdap may be administered regardless of the interval since the last tetanus- and diphtheria-toxoid-containing vaccine.\n-Adolescents age 13–18 years who have not received Tdap: 1 dose Tdap, then Td or Tdap booster every 10 years\n-Persons age 7–18 years not fully vaccinated* with DTaP: 1 dose Tdap as part of the catch-up series (preferably the first dose); if additional doses are needed, use Td or Tdap.\n-Tdap administered at 7–10 years\n-Children age 7–9 years who receive Tdap should receive the routine Tdap dose at age 11–12 years.\n-Children age 10 years who receive Tdap do not need to receive the routine Tdap dose at age 11–12 years.\n-DTaP inadvertently administered at or after age 7 years:\n-Children age 7–9 years: DTaP may count as part of catch-up series. Routine Tdap dose at age 11–12 years should be administered.\n-Children age 10–18 years: Count dose of DTaP as the adolescent Tdap booster."
     },
     {
-      vaccineId: "vc0005",
-      vaccineNameMedical: "Diphtheria and Tetanus toxoidscombined : DT หรือ dT",
-      vaccineNameNormal: "[ENG]วัคซีนรวมป้องกันโรคคอตีบและบาดทะยัก",
-      shortDes:
-        "เด็กทุกคนที่อายุน้อยกว่า 7 ปีที่ไม่สามารถรับวัคซีนไอกรนได้ ควรรับวัคซีน DT แทนDTP ทุกครั้ง เมื่ออายุ 2, 4, 6, 18 เดือน และ4-6 ปีในเด็กที่ได้รับการฉีดวัคซีน DTP, DT ครบถ้วนตามกําหนดข้างต้น ควรรับวัคซีน dT (หรือ Tdap แทนก็ได้) เมื่ออายุ 11-12 ปี หรือเร็วที่สุด หลังจากนั้นกระตุ้นด้วย dT ทุก10 ปีหญิงมีครรภ์และผู้ใหญ่ทุกคน ควรได้รับ dT ดังนี้ สําหรับหญิงมีครรภ์ควรฉีดวัคซีน dT ดัง - หากไม่เคยได้รับวัคซีนมาก่อน ให้วัคซีนเข็มแรกเมื่อมาฝากครรภ์ครั้งแรก และนัดฉีดครั้งต่อไปจนครบอย่างน้อย 3 เข็ม โดยมีระยะห่าง 0, 1, 6 เดือน จากนั้นให้กระตุ้นทุก 10 ปี - หากเคยได้รับวัคซีนมาแล้ว 1 เข็มให้ฉีดอีก 2 เข็ม โดยมีระยะห่าง 0, 6 เดือน หากได้วัคซีนแล้ว 2 เข็ม ให้ฉีดเพิ่มอีก 1 เข็ม โดยมีระยะห่างระหว่างเข็ม 2 และเข็ม 3 อย่างน้อย 6 เดือนจากนั้นให้กระตุ้นทุก 10 ปี - หากเคยได้รับวัคซีนมาก่อนอย่างน้อย 3 เข็ม และเข็มสุดท้ายนานกว่า 10 ปี ให้ฉีดซ้ําอีก 1 ครั้งจากนั้นให้วัคซีนกระตุ้นทุก 10 ปี - ปัจจุบันแนะนําให้ Tdap 1 ครั้งที่อายุครรภ์ 27-36 สัปดาห์ทุกการตั้งครรภ์ หรือให้ทันทีหลังคลอดถ้าไม่ได้รับระหว่างตั้งครรภ์โดยไม่คํานึงถึงประวัติการได้รับวัคซีน Tdap, dT, ITในอดีต เพื่อกระตุ้นภูมิคุ้มกันให้สูงและผ่านรกไปยังลูกได้ 4.7 สําหรับผู้ใหญ่ทั่วไปให้ฉีดวัคซีน dT ดังนี้ผู้ที่ไม่เคยได้รับวัคซีนมาก่อนให้ฉีดเข็มแรกเมื่อมีโอกาส เช่น มีการรณรงค์ มีบาดแผล และ นัดให้วัคซีนต่อจนครบอย่างน้อย 3 เข็ม โดยมีระยะห่าง 0, 1, 6 เดือนและเมื่อมีโอกาสให้ ฉีดกระตุ้นทุก 10 ปี",
+      "vaccineId": "vc0005",
+      "vaccineNameMedical": "Diphtheria and Tetanus toxoids\ncombined : DT or dT",
+      "vaccineNameNormal": "Diphtheria and Tetanus toxoids",
+      "shortDes": "-Adolescents age 11–12 years: 1 dose Tdap\n-Pregnancy: 1 dose Tdap during each pregnancy, preferably in early part of gestational weeks 27–36\n-Tdap may be administered regardless of the interval since the last tetanus- and diphtheria-toxoid-containing vaccine.\n-Adolescents age 13–18 years who have not received Tdap: 1 dose Tdap, then Td or Tdap booster every 10 years\n-Persons age 7–18 years not fully vaccinated* with DTaP: 1 dose Tdap as part of the catch-up series (preferably the first dose); if additional doses are needed, use Td or Tdap.\n-Tdap administered at 7–10 years\n-Children age 7–9 years who receive Tdap should receive the routine Tdap dose at age 11–12 years.\n-Children age 10 years who receive Tdap do not need to receive the routine Tdap dose at age 11–12 years.\n-DTaP inadvertently administered at or after age 7 years:\n-Children age 7–9 years: DTaP may count as part of catch-up series. Routine Tdap dose at age 11–12 years should be administered.\n-Children age 10–18 years: Count dose of DTaP as the adolescent Tdap booster."
     },
     {
-      vaccineId: "vc0006",
-      vaccineNameMedical:
-        "Diphtheria,Tetanus toxoids, Pertussis,Hepatitis B and Haemophilus influenzatype b vaccine combined: DTwP-HBV-Hib",
-      vaccineNameNormal:
-        "[ENG]คอตีบ-บาดทะยัก-ไอกรน ชนิดทั้งเซลล์-ตับอักเสบบีและฮิบ",
-      shortDes:
-        "วัคซีนรวม DTwP-HBV-Hib ใช้ในเด็กอายุ 2,4,6 เดือน ซึ่งเด็กจะต้องการวัคซีน 5 โรคนี้พร้อมกัน",
+      "vaccineId": "vc0006",
+      "vaccineNameMedical": "Diphtheria,Tetanus toxoids, Pertussis,\nHepatitis B and Haemophilus influenza\ntype b vaccine combined: DTwP-HBV-Hib",
+      "vaccineNameNormal": "Diphtheria,Tetanus toxoids, Pertussis,\nHepatitis B and Haemophilus influenza\ntype b",
+      "shortDes": "Google "
     },
     {
-      vaccineId: "vc0007",
-      vaccineNameMedical: "Poliomyelitis vaccine: OPV, IPV",
-      vaccineNameNormal:
-        "[ENG]วัคซีนป้องกันโรคโปลิโอ (ไข้ไขสันหลังอักเสบ โปลิโอ",
-      shortDes:
-        "เด็กทุกคนควรได้รับวัคซีนโปลิโอ ในเด็กที่แข็งแรงปกติจะให้ OPV หรือ IPV ก็ได้ แต่ถ้าเป็นเด็ก ที่มีภูมิคุ้มกันผิดปกติ หรืออยู่ในบ้านเดียวกับผู้ที่มีภูมิคุ้มกันผิดปกติ ต้องใช้ IPV เท่านั้นวัคซีน OPV มักให้พร้อมกับวัคซีน DTP การให้ชุดแรกควรให้ 4 ครั้ง เมื่ออายุประมาณ 2,4,6 เดือน และครั้งที่ 4 เมื่ออายุประมาณ 18 เดือน และให้วัคซีนเสริมกระตุ้นอีกครั้ง ซึ่งเป็นการให้ครั้งที่ 5 เมื่ออายุ 4-6 ปีเด็กที่ไม่ได้รับวัคซีนในขวบปีแรก ควรให้วัคซีนรับประทาน3 ครั้ง เว้นระยะห่างแต่ละครั้ง 2 เดือน และครั้งที่ 4 อีก 6 เดือน ถึง 1 ปีถัดมา และให้กระตุ้นอีกครั้งเป็นครั้งที่ 5 เมื่ออายุ 4-6 ปี เว้นแต่ว่าได้รับ ครั้งที่ 4 เมื่ออายุมากกว่า 4 ปีเด็กที่อายุมากกว่า 6 ปี แต่ยังไม่เคยได้รับวัคซีนโปลิโอมาก่อน ควรให้วัคซีน 3 ครั้ง ในเดือนที่ 0, 2 และ 12วัคซีน IPV เนื่องจากวัคซีน IPV ที่ใช้ในปัจจุบันมีคุณภาพสูงและสามารถกระตุ้นภูมิคุ้มกันได้ดี การฉีดวัคซีนครั้งแรกอาจให้เพียง 2 เข็ม เมื่ออายุประมาณ 2 และ 4 เดือน และฉีดเข็มที่ 3 เมื่ออายุ 6-18 เดือน และให้ซ้ําอีกครั้งเมื่ออายุ 4-6 ปี (ถ้าครั้งที่ 3 ฉีดที่อายุประมาณ 4 ปี ไม่จําเป็น ต้องฉีดครั้งที่ 4) แต่ เนื่องจากวัคซีน IPVอาจอยู่ในรูปวัคซีนรวมกับ DTP ดังนั้นหากจะให้ 5 ครั้งเหมือนวัคซีน DTP และ OPV ก็ได้ สามารถใช้วัคซีน IPV แทน OPV ได้ทุกโต๊สในกรณีที่ประสงค์จะใช้ IPV เพื่อลดความเสี่ยงต่อ VAPP อาจใช้ IPV เพียง 2 โต๊สแรกเมื่ออายุ 2,4 เดือนและใช้ OPV เมื่ออายุ 6-18 เดือน และ 4-6 ปี (Sequential IPV - OPV) คาดว่าการทําแบบนี้ จะช่วยลดอัตราการเกิด VAPP ลงได้ อย่างน้อยร้อยละ 5019สําหรับการให้วัคซีนในแผนการสร้างเสริมภูมิคุ้มกันโรคของกระทรวงสาธารณสุข ได้มีการฉีด วัคซีน IPV ให้แก่เด็กทุกคน 1 ครั้ง เมื่ออายุ 4 เดือน ควบคู่ไปกับการใช้ bOPV5 ครั้ง โดยเริ่มตั้งแต่ เดือนเมษายน พ.ศ.2559 การใช้ trivalent IPV ควบคู่ไปกับ OPV นั้น มีผลทําให้เด็กมีภูมิคุ้มกันต่อ serotype 2 ซึ่งไม่มีบรรจุในbOPV แล้ว และยังเสริมการสร้างภูมิคุ้มกันต่อ serotype 1 และ 3 ด้วยเพื่อป้องกัน การเกิด VDPV อย่างไรก็ดีเด็กยังอาจเสี่ยงต่อ VAPP ก่อนอายุ 4 เดือนได้ เนื่องจากยังใช้ bOPVที่ 2 เดือน หากเป็นไปได้ ควรฉีด IPV ที่อายุ 2 เดือนร่วมด้วย ก็จะมีผลป้องกัน VAPP ได้ด้วย เพื่อเสริมการป้องกัน โรคโปลิโอเพิ่มจากแผนการสร้างเสริมภูมิคุ้มกันโรคของกระทรวงสาธารณสุข",
+      "vaccineId": "vc0007",
+      "vaccineNameMedical": "Poliomyelitis vaccine: OPV, IPV",
+      "vaccineNameNormal": "Poliomyelitis",
+      "shortDes": "-4-dose series at ages 2, 4, 6–18 months, 4–6 years; administer the final dose at or after age 4 years and at least 6 months after the previous dose.\n-4 or more doses of IPV can be administered before age 4 years when a combination vaccine containing IPV is used. However, a dose is still recommended at or after age 4 years and at least 6 months after the previous dose.\n-In the first 6 months of life, use minimum ages and intervals only for travel to a polio-endemic region or during an outbreak.\n-IPV is not routinely recommended for U.S. residents 18 years and older."
     },
     {
-      vaccineId: "vc0008",
-      vaccineNameMedical: "Measles Mumps and Rubella Vaccine: MMR",
-      vaccineNameNormal: "[ENG]วัคซีนรวมป้องกันโรคหัด-คางทูม-หัดเยอรมัน",
-      shortDes:
-        "เด็กทุกคนที่แข็งแรงดี ควรได้รับวัคซีนป้องกันโรคหัด-คางทูม-หัดเยอรมัน อย่างน้อย 2 ครั้ง กําหนดให้ฉีดครั้งแรกเมื่ออายุ 9-12 เดือน ส่วนเข็มที่สองแนะนําให้ฉีดเมื่ออายุ 2 ปีครึ่งการฉีดเข็มที่ 2 นี้ มีความสําคัญเพื่อเร่งสร้างภูมิคุ้มกันในเด็กที่ได้รับวัคซีนครั้งแรกแล้วไม่ได้ผล (primary failure) จากการ ฉีดเข็มแรกที่อายุ 9 เดือน ซึ่งยังมีภูมิคุ้มกันจากแม่ที่ส่งผ่านมาแต่เกิดมารบกวนการสร้างภูมิคุ้มกัน หรือ อาจพลาดโอกาสที่จะได้รับวัคซีนครั้งแรกมิฉะนั้นจะมีจํานวนเด็กที่ไม่มีภูมิต้านทานสะสมมากจนอาจเกิด การระบาดขึ้นได้ ส่วนในภาคเอกชนที่แพทย์นัดฉีดเข็มแรกที่ 12 เดือนอาจฉีดเข็มที่ 2 ที่อายุ 22 หรือ ที่ 4-6 ปีก็ได้ แต่แนะนํา 21 ปีมากกว่า เพื่อให้สอดคล้องกันทั่วประเทศในกรณีที่มีการระบาดหรือเกิดความเสี่ยงต่อการติดเชื้อหัดในเด็กเล็ก สามารถให้วัคซีน เข็ม แรกได้ตั้งแต่อายุ 6 เดือน ในกรณีนี้ควรให้วัคซีนเมื่ออายุ 12 เดือน และ อายุ 22 ปี ตามปกติ และถ้า ความเสี่ยงในการสัมผัสเชื้อนี้เกิดขึ้นในเด็กที่เคยฉีดเข็มที่ 1 มาแล้ว อาจให้เข็มที่ 2 ได้เร็วขึ้นแต่ต้องห่าง จากเข็มแรกอย่างน้อย 1 เดือน แต่ควรระวังว่าในกรณีนี้เข็มที่ 2 ต้องฉีดหลังอายุ 12 เดือนขึ้นไปเท่านั้นในเด็กที่ติดเชื้อเอชไอวีให้ฉีดวัคซีน MMR เช่นเดียวกับเด็กปกติ ไม่จําเป็นต้องตรวจภาวะการ ติดเชื้อเอชไอวีก่อนฉีดวัคซีน MMR ทั้งนี้ยกเว้นกรณีที่มีอาการเอดส์เต็มขั้นหรือ clinical category “C” (CDC classification) หรือมีภาวะภูมิคุ้มกันบกพร่องอย่างรุนแรงหรือ immunological category “3” ซึ่งมีระดับ CD4 <15% (CDC classification) 1ซึ่งไม่ควรให้ฉีดวัคซีนมีชีวิตรวมทั้งวัคซีน MMR เพราะอาจ เกิดผลแทรกซ้อนที่รุนแรงและการสร้างภูมิคุ้มกันต่อวัคซีนไม่ดีหญิงวัยเจริญพันธุ์ทุกคนที่แข็งแรงดี และไม่เคยได้รับวัคซีนนี้มาก่อนในวัยเด็ก ควรได้รับวัคซีน - MMR หรือ MR อย่างน้อย 1 ครั้งและควรฉีดก่อนการตั้งครรภ์ 1 เดือนบุคลากรทางการแพทย์ทุกคนที่ยังไม่เคยรับวัคซีน MMR มาก่อนควรได้รับ MMR หรือ MR เร็วที่สุด",
+      "vaccineId": "vc0008",
+      "vaccineNameMedical": "Measles Mumps and Rubella Vaccine: MMR",
+      "vaccineNameNormal": "Measles Mumps and Rubella",
+      "shortDes": "-2-dose series at 12–15 months, 4–6 years\n-Dose 2 may be administered as early as 4 weeks after dose 1.\n-Unvaccinated children and adolescents: 2-dose series at least 4 weeks apart\n-The maximum age for use of MMRV is 12 years."
     },
     {
-      vaccineId: "vc0009",
-      vaccineNameMedical: "Japanese Encephalitis Vaccine: JE",
-      vaccineNameNormal: "[ENG]วัคซีนป้องกันโรคไข้สมองอักเสบชนิดเจอี",
-      shortDes:
-        "ตามแผนการสร้างเสริมภูมิคุ้มกันโรคของกระทรวงสาธารณสุข ปัจจุบันแนะนําให้เด็กทุกคนใน ประเทศไทยได้รับวัคซีนเชื้อมีชีวิตอ่อนฤทธิ์สายพันธุ์ SA 14-14-2 ชนิดใดก็ได้ (วัคซีน CD.JEVAX” หรือ วัคซีน IMOJEV) โดยเริ่มฉีดเข็มแรกที่อายุ 9-12 เดือน และฉีดกระตุ้นเข็มที่ 2 ตามคําแนะนําของวัคซีน ชนิดนั้นๆ หากมีข้อห้ามในการฉีดวัคซีนเชื้อมีชีวิตอ่อนฤทธิ์ให้พิจารณาใช้วัคซีนเชื้อตายการฉีดวัคซีนในนักท่องเที่ยว แนะนําให้ฉีดวัคซีนถ้าต้องการพํานักในเมืองไทยนานกว่า 4 สัปดาห์ ทั้งนี้ให้พิจารณาระหว่างความเสี่ยงต่อการได้รับเชื้อ (พฤติกรรมการท่องเที่ยวไปในชนบทและถูกยุงกัด) กับความเสี่ยงที่จะเกิดปฏิกิริยาจากวัคซีน โดยใช้วัคซีนเชื้อตาย JEVACIM หรือ XIAROV ฉีด 2 เข็ม ห่างกัน 7-28 วันการใช้วัคซีนสลับชนิดกัน ในขณะนี้มีข้อมูลยืนยันว่าวัคซีนเชื้อมีชีวิตอ่อนฤทธิ์ต่างชนิดกัน สามารถให้ทดแทนกันได้ นอกจากนี้วัคซีนเชื้อมีชีวิตอ่อนฤทธิ์และวัคซีนชนิดเชื้อตายก็สามารถให้สลับ ทดแทนกันได้ ในกรณีที่เคยได้รับวัคซีนเชื้อมีชีวิตอ่อนฤทธิ์มาก่อน 1 ครั้ง หากมีความจําเป็นต้องฉีด กระตุ้นด้วยวัคซีนชนิดเชื้อตายให้ฉีดซ้ํา 1 ครั้งห่างกันอย่างน้อย 12 เดือน ในกรณีที่เคยได้รับวัคซีนชนิด เชื้อตายมาก่อนและต้องการฉีดกระตุ้นด้วยวัคซีนเชื้อมีชีวิตอ่อนฤทธิ์ ให้ปฏิบัติตามคําแนะนําโดยสมาคม โรคติดเชื้อในเด็กแห่งประเทศไทย",
+      "vaccineId": "vc0009",
+      "vaccineNameMedical": "Japanese Encephalitis Vaccine: JE",
+      "vaccineNameNormal": "Japanese Encephalitis",
+      "shortDes": "Vaccines Recommended for Travel and Some Specific Groups\n-Japanese encephalitis (JE) is a serious infection caused by the Japanese encephalitis virus.\n-It occurs mainly in rural parts of Asia.\n-It is spread through the bite of an infected mosquito. It does not spread from person to person.\n-Risk is very low for most travelers. It is higher for people living in areas where the disease is common, or for people traveling there for long periods of time.\n-Most people infected with JE virus don’t have any symptoms. Others might have symptoms as mild as a fever and headache, or as serious as encephalitis (brain infection).\n-A person with encephalitis can experience fever, neck stiffness, seizures, and coma. About 1 person in 4 with encephalitis dies. Up to half of those who don’t die have permanent disability.\n-It is believed that infection in a pregnant woman could harm her unborn baby.\n-JE vaccine can help protect travelers from JE disease."
     },
     {
-      vaccineId: "vc0010",
-      vaccineNameMedical: "Influenza vaccine",
-      vaccineNameNormal: "[ENG]วัคซีนป้องกันไข้หวัดใหญ่",
-      shortDes:
-        "วัคซีนชนิดเชื้อไม่มีชีวิต13 แนะนําให้ฉีดแก่บุคคลที่มีอายุ 6 เดือนขึ้นไปที่ไม่มีข้อห้ามในการ รับวัคซีน หากมีวัคซีนไม่เพียงพอ แนะนําพิจารณาให้ในผู้ที่มีความเสี่ยงสูงต่อการเกิดภาวะแทรกซ้อน จากไข้หวัดใหญ่รุนแรง รวมถึงบุคคลที่ดูแลคนกลุ่มเสี่ยงนี้ก่อน1. ผู้ที่มีความเสี่ยงสูงต่อการเกิดภาวะแทรกซ้อนของโรคไข้หวัดใหญ่ ได้แก่• เด็กอายุ 6 เดือนถึง 4 ปี (59 เดือน) • ผู้ที่มีอายุ 55 ปี ขึ้นไป • เด็กและผู้ใหญ่ที่มีโรคปอดเรื้อรัง โรคหอบหืด โรคหัวใจและหลอดเลือด ยกเว้นผู้ที่มีความดันโลหิตสูง โรคไต โรคตับ โรคทางระบบประสาท โรคเลือด หรือโรคทางเมตาบอลิกรวมถึงโรคเบาหวาน • ผู้ป่วยเรื้อรังที่อยู่ในสถานบริบาลหรือสถานพักฟื้น • ผู้ที่มีภูมิคุ้มกันบกพร่องจากสาเหตุต่างๆ รวมทั้งที่เกิดจากยา และจากการติดเชื้อเอชไอวี • เด็กและวัยรุ่น (6 เดือน ถึง 18 ปี) ที่ต้องได้รับยาแอสไพรินเป็นเวลานาน ซึ่งจะเสี่ยงต่อการเกิด Reye syndrome ภายหลังเป็นไข้หวัดใหญ่• หญิงตั้งครรภ์ที่ไตรมาส 2 ขึ้นไป• คนอ้วนมาก (BMI 240) 2. บุคคลที่มีโอกาสแพร่เชื้อให้แก่ผู้ที่มีความเสี่ยงสูง • แพทย์ พยาบาล และบุคลากรทางการแพทย์ รวมถึงนักศึกษาที่เกี่ยวข้องกับการดูแลรักษาผู้ป่วย • บุคลากรในสถานบริบาลหรือสถานพักฟื้นคนชรา หรือผู้ป่วยเรื้อรัง • ผู้ให้การบริบาลผที่มีความเสี่ยงสูง รวมถึงผู้ที่ดูแลเด็กอายุน้อยกว่า 6 เดือน• เด็กและผู้ใหญ่ที่อยู่บ้านเดียวกับผู้ที่มีความเสี่ยงสูง 3. บุคคลกลุ่มอื่นๆ ได้แก่• ผู้ที่ต้องเดินทาง นักทัศนาจร • ผู้ที่ต้องพบปะผู้คนจํานวนมาก หรืออาศัยร่วมกับคนจํานวนมาก เช่น ผู้อยู่หอพัก• ผู้ใดก็ตามที่ไม่ต้องการป่วยเป็นโรคไข้หวัดใหญ่ และประสงค์จะได้รับวัคซีนตั้งแต่ปี พ.ศ. 2549 กระทรวงสาธารณสุขได้เริ่มจัดสรรวัคซีนไข้หวัดใหญ่ให้แก่ผู้ที่มีความเสี่ยงสูง การยอมรับวัคซีนมีมากขึ้นหลังจากที่มีการระบาดของเชื้อ 2009 (H1N1) ซึ่งกระทรวงได้เพิ่มปริมาณวัคซีน ที่จัดสรรนี้ขึ้นทุกปี ในปี พ.ศ. 2561 ได้จัดสรรวัคซีน 3.5 ล้านโต๊ส โดยกําหนดกลุ่มเป้าหมาย ดังนี้1. เด็กอายุ 6 เดือน - 2 ปี 2. ผู้สูงอายุ 65 ปีขึ้นไป 3. หญิงตั้งครรภ์อายุครรภ์ 4 เดือนขึ้นไป 4. ผู้พิการทางสมองช่วยเหลือตัวเองไม่ได้ 5. ผู้มีน้ําหนักตัวมากกว่า 100 กิโลกรัม หรือ BMI > 35 กิโลกรัมต่อตารางเมตร 6. ผู้ป่วยโรคเรื้อรัง ได้แก่ โรคปอดอุดกั้นเรื้อรัง หอบหืด โรคหัวใจ โรคหลอดเลือดสมอง โรคไตวายเรื้อรังมะเร็งที่กําลังรับเคมีบําบัด เบาหวาน ธาลัสซีเมีย และภูมิคุ้มกันบกพร่อง รวมทั้งผู้ติดเชื้อเอชไอวีที่มีอาการ 7. บุคลากรทางการแพทย์เจ้าหน้าที่ที่ให้การดูแลรักษาผู้เจ็บป่วย และเจ้าหน้าที่เกี่ยวข้องกับการกําจัดสัตว์ปีกวัคซีนชนิดเชื้อมีชีวิต ได้รับการขึ้นทะเบียนในประเทศสหรัฐอเมริกาในปี พ.ศ. 2546 ให้ใช้ใน ผู้ที่มีสุขภาพดีอายุ 2-49 ปี ไม่ให้ใช้ในเด็กอายุต่ํากว่า 2 ปี ผู้ที่เป็นโรคหอบหืด โรคปอดเรื้อรัง โรคหัวใจ โรคเรื้อรังอื่นๆ เด็กและวัยรุ่นที่ต้องรับประทานยาแอสไพรินเป็นประจํา หญิงตั้งครรภ์ และผู้ที่มีภูมิคุ้มกัน บกพร่อง ปัจจุบันวัคซีนชนิดนี้ยังไม่มีใช้ในประเทศไทย",
+      "vaccineId": "vc0010",
+      "vaccineNameMedical": "Influenza vaccine",
+      "vaccineNameNormal": "Influenza ",
+      "shortDes": "-Use any influenza vaccine appropriate for age and health status annually:\n  -2 doses, separated by at least 4 weeks, for children age 6 months–8 years who have received fewer than 2 influenza vaccine doses before July 1, 2019, or whose influenza vaccination history is unknown (administer dose 2 even if the child turns 9 between receipt of dose 1 and dose 2)\n  -1 dose for children age 6 months–8 years who have received at least 2 influenza vaccine doses before July 1, 2019\n  -1 dose for all persons age 9 years and older\n-For the 2020–21 season, see the 2020–21 ACIP influenza vaccine recommendations."
     },
     {
-      vaccineId: "vc0011",
-      vaccineNameMedical: "Hepatitis A",
-      vaccineNameNormal: "[ENG]ตับอักเสบเอ",
-      shortDes:
-        "วัคซีนไวรัสตับอักเสบเอ เป็นวัคซีนที่มีประสิทธิภาพและความปลอดภัยสูง แต่ยังไม่อยู่ในแผน ของกระทรวงสาธารณสุข การใช้วัคซีนจึงขึ้นกับการพิจารณาเป็นรายบุคคล สามารถแนะนําให้ฉีดในเด็ก ทุกคน และในผู้ใหญ่ที่ยังไม่มีภูมิคุ้มกัน ซึ่งควรตรวจเลือดเพื่อดูว่ามีภูมิคุ้มกันหรือไม่ ก่อนจะฉีด แนะนํา ให้ตรวจเลือดเฉพาะผู้ใหญ่ ไม่ต้องตรวจในเด็ก เพราะโอกาสที่เด็กจะติดเชื้อมาก่อนน้อยมาก ควรพิจารณา ให้ฉีดอย่างยิ่งในผู้ที่มีความเสี่ยงต่อโรคตับรุนแรงเช่น ผู้ที่เป็นโรคตับเรื้อรัง ควรให้วัคซีนแก่ผู้ประกอบอาหาร ผู้ที่อยู่ในสถาบันที่มีคนอยู่ด้วยกันเป็นจํานวนมาก เช่น เด็กที่อาศัยอยู่รวมกันในสถานเลี้ยงเด็กประจํา โดยเฉพาะเด็กที่มีความพิการทางสมอง ที่อาจเกิดการระบาดของโรคได้บ่อย สถานกักกัน และกองทัพ ชายรักร่วมเพศ คนที่ติดยาเสพติดทั้งชนิดฉีดและไม่ได้ฉีดเข้าเส้นสําหรับผู้ที่จะเดินทางไปในที่ที่มีการระบาดหรือมีความชุกของโรคสูง ควรฉีดวัคซีนอย่างน้อย 2-4 สัปดาห์ก่อนเดินทาง โดยสามารถฉีดวัคซีนชนิดเชื้อตายสําหรับป้องกันก่อนสัมผัสโรคได้ในเด็กอายุ ตั้งแต่ 6 เดือนขึ้นไป วัคซีนป้องกันตับอักเสบเอที่ให้ในเด็กอายุ 6-11 เดือนจะไม่นับเข็มนั้น และจะต้อง ให้วัคซีนอีก 2 ครั้งที่อายุ 12 เดือนขึ้นไป สําหรับผู้ที่อายุ 40 ปีขึ้นไป ผู้ที่มีภูมิคุ้มกันบกพร่อง และผู้ที่เป็น โรคตับเรื้อรัง รวมทั้งผู้ที่จะรีบเดินทางภายใน 2 สัปดาห์ ซึ่งวัคซีนจะยังไม่ทันกระตุ้นภูมิคุ้มกันได้อย่างเพียงพอ บุคคลเหล่านี้ควรได้รับทั้งวัคซีนและอิมมูโนโกลบูลิน สําหรับเด็กอายุน้อยกว่า 6 เดือน และผู้ที่ไม่สามารถ ให้วัคซีนได้ ควรได้รับอิมมูโนโกลบูลินก่อนเดินทางโดยให้อิมมูโนโกลบูลินเข้ากล้ามเนื้อ (คนละตําแหน่ง กับวัคซีน ถ้าให้วัคซีนร่วมด้วย) ในขนาด 0.1 มล./กก. สําหรับการอยู่ในพื้นที่เสี่ยงนานน้อยกว่า 1 เดือน และขนาด 0.2 มล./กก. สําหรับการอยู่ในพื้นที่เสี่ยงนานถึง 2 เดือน และให้ขนาด 0.2 มล./กก. ซ้ําทุก 2 เดือน ในกรณีที่อยู่ในพื้นที่เสี่ยงมากกว่า 2 เดือนขึ้นไป10",
+      "vaccineId": "vc0011",
+      "vaccineNameMedical": "Hepatitis A",
+      "vaccineNameNormal": "Hepatitis A",
+      "shortDes": "-2-dose series (minimum interval: 6 months) beginning at age 12 months\n-Unvaccinated persons through 18 years should complete a 2-dose series (minimum interval: 6 months).\n-Persons who previously received 1 dose at age 12 months or older should receive dose 2 at least 6 months after dose 1.\n-Adolescents 18 years and older may receive the combined HepA and HepB vaccine, Twinrix®, as a 3-dose series (0, 1, and 6 months) or 4-dose series (0, 7, and 21–30 days, followed by a dose at 12 months)"
     },
     {
-      vaccineId: "vc0012",
-      vaccineNameMedical: "Varicella-zoster",
-      vaccineNameNormal: "[ENG]อีสุกอีใส",
-      shortDes:
-        "- บุคคลทั่วไปที่ยังไม่เคยเป็นโรคอีสุกอีใสหรือยังไม่มีภูมิคุ้มกัน โดยให้ได้ในเด็กอายุตั้งแต่ 1 ปีขึ้นไปจนถึงผู้ใหญ่- ผู้ที่อยู่ใกล้ชิดหรืออยู่บ้านเดียวกันกับผู้ที่มีภูมิคุ้มกันบกพร่อง และยังไม่เคยเป็นโรคอีสุกอีใส หรือยังไม่มีภูมิคุ้มกัน ให้ได้ตั้งแต่อายุ 1 ปีขึ้นไป- บุคลากรทางการแพทย์ ที่ยังไม่เคยเป็นโรคหรือยังไม่มีภูมิคุ้มกัน- ห้ามให้ในผู้ที่มีภูมิคุ้มกันบกพร่องทุกสาเหตุ ยกเว้นผู้ติดเชื้อเอชไอวีทีมี CD4 ่มากกว่าร้อยละ 15หรือยังไม่มีภูมิคุ้มกัน โดยให้ได้ในเด็กอายุตั้งแต่ 1 ปีขึ้นไปจนถึงผู้ใหญ่- ผู้ที่อยู่ใกล้ชิดหรืออยู่บ้านเดียวกันกับผู้ที่มีภูมิคุ้มกันบกพร่อง และยังไม่เคยเป็นโรคอีสุกอีใส หรือยังไม่มีภูมิคุ้มกัน ให้ได้ตั้งแต่อายุ 1 ปีขึ้นไป- บุคลากรทางการแพทย์ ที่ยังไม่เคยเป็นโรคหรือยังไม่มีภูมิคุ้มกัน- ห้ามให้ในผู้ที่มีภูมิคุ้มกันบกพร่องทุกสาเหตุ ยกเว้นผู้ติดเชื้อเอชไอวีทีมี CD4 ่มากกว่าร้อยละ 15- เด็กอายุ 1-12 ปี ให้ 2 เข็ม เข็มแรกแนะนำให้ฉีดเมื่ออายุ 12-18 เดือน เข็มที่ 2 ฉีดเมื่ออายุ 2 ปี ถึง 4 ปี โดยทั่วไปแนะนำให้ฉีดพร้อมวัคซีนหัด-คางทูม-หัดเยอรมัน (MMR)กรณีที่มีการระบาด อาจฉีดครั้งที่สองก่อนอายุ 4 ปีได้โดยต้องห่างจากเข็มแรกอย่างน้อย 3 เดือน- เด็กอายุตั้งแต่ 13 ปีขึ้นไปและผู้ใหญ่ให้ฉีด 2 เข็ม ห่างกันอย่างน้อย 4 สัปดาห์- ผู้ที่ติดเชื้อเอชไอวีที่ไม่มีอาการของภาวะภูมิคุ้มกันบกพร่อง และมี CD4 มากกว่าร้อยละ 15 แนะนำให้ 2เข็ม ห่างกัน 3 เดือน",
+      "vaccineId": "vc0012",
+      "vaccineNameMedical": "Varicella-zoster",
+      "vaccineNameNormal": "Varicella",
+      "shortDes": "-2-dose series (minimum interval: 6 months) beginning at age12 months\n-Unvaccinated persons through 18 years should complete a 2-dose series (minimum interval: 6 months).\n-Persons who previously received 1 dose at age 12 months or older should receive dose 2 at least 6 months after dose 1.\n-Adolescents 18 years and older may receive the combined HepA and HepB vaccine, Twinrix®, as a 3-dose series (0, 1, and 6 months) or 4-dose series (0, 7, and 21–30 days, followed by a dose at 12 months).\n"
     },
     {
-      vaccineId: "vc0013",
-      vaccineNameMedical: "Rabies",
-      vaccineNameNormal: "[ENG]พิษสุนัขบ้า",
-      shortDes:
-        "- ทุกคนที่มีความเสี่ยง เช่น ถูกสัตว์เลี้ยงลูกด้วยนมกัด- ผู้ที่มีโอกาสสัมผัสเชื้อพิษสุนัขบ้า เช่นสัตวแพทย์ ผู้ทำงานในห้องปฏิบัติการ หรือผู้เดินทางเข้าไปในถิ่นที่มีโรคพิษสุนัขบ้าชุกชุม- ฉีดก่อนสัมผัส ฉีดเข้ากล้าม 1 vial (0.5 มล. หรือ 1มล.แล้วแต่ชนิดของวัคซีน) วันที่ 0 และ 7 หรือฉีดเข้าในหนัง 0.1 มล. 2 จุด วันที่ 0 และ 7- ฉีดหลังสัมผัส ฉีดเข้ากล้ามวันที่ 0, 3, 7, 14, และ 28หรือฉีดเข้าในหนัง โดยใช้ปริมาณ 0.1 มล. ฉีด 2 จุด ในวันที่ 0, 3, 7, และ 28-30 (2-2-2-0-2)",
+      "vaccineId": "vc0013",
+      "vaccineNameMedical": "Rabies",
+      "vaccineNameNormal": "Rabies",
+      "shortDes": "Vaccines Recommended for Travel and Some Specific Groups\nPreexposure vaccination is recommended for persons in high-risk groups, such as veterinarians, animal handlers, and certain laboratory workers. Although preexposure vaccination does not eliminate the need for additional medical attention after a rabies exposure, it can decrease the number of vaccine doses needed, and it minimizes adverse reactions to multiple doses of vaccine."
     },
     {
-      vaccineId: "vc0014",
-      vaccineNameMedical: "PPSV23",
-      vaccineNameNormal: "[ENG]นิวโมคอคคัส ชนิด 23",
-      shortDes:
-        "- บุคคลที่มีความเสี่ยงต่อการติดเชื้อนิวโมคอคคัสมากกว่าคนปกติหรือรุนแรงกว่าคนปกติ ที่มีอายุ 2 ปีขึ้นไป เช่น ผู้ที่มีภูมิคุ้มกันบกพร่อง ผู้ป่ วยที่ไม่มีม้ามหรือม้ามทำงานผิดปกติ ผู้ป่ วยโรคเรื้อรังโรคหัวใจพิการแต่กำเนิดโดยเฉพาะชนิดเขียวและผู้ป่ วยภาวะหัวใจวาย โรคปอดเรื้อรังโรคเบาหวาน ผู้ป่ วยที่มีน้ำไขสันหลังรั่วและผู้ป่วยปลูกถ่าย cochlear - อายุ 2 ปี ขึ้นไป แนะนำให้ฉีดวัคซีน 1 เข็ม และหากเป็นเด็กเสี่ยงประเภทภูมิคุ้มกันบกพร่อง ภาวะไม่มีม้าม หรือธาลัสซีเมีย ควรฉีด PPSV23 ซ้ำอีก 1 ครั้ง ห่างจากครั้งแรก 5 ปี- อายุตั้งแต่ 65 ปีขึ้นไป แนะนำให้ฉีดวัคซีน 1 เข็ม",
+      "vaccineId": "vc0014",
+      "vaccineNameMedical": "PPSV23",
+      "vaccineNameNormal": "Pneumococcal polysaccharide",
+      "shortDes": "-4-dose series at 2, 4, 6, 12–15 months\n-1 dose for healthy children age 24–59 months with any incomplete* PCV13 series\n"
     },
     {
-      vaccineId: "vc0015",
-      vaccineNameMedical: "PCV-10",
-      vaccineNameNormal: "[ENG]นิวโมคอคคัส ชนิด 10",
-      shortDes:
-        "- เด็กปกติที่มีอายุตั้งแต่ 6 สัปดาห์ขึ้นไปจนถึง 5 ปี- เด็กที่มีความเสี่ยง ได้แก่ เด็กทุกอายุที่มีภูมิคุ้มกันบกพร่อง หรือมีความเสี่ยงต่อโรครุนแรงเช่น ไม่มีม้ามหรือม้ามทำงานผิดปกติธาลัสซีเมีย ผู้ป่ วยโรคเรื้อรัง โรคหัวใจพิการแต่กำเนิดโดยเฉพาะชนิดเขียว และผู้ป่ วยภาวะหัวใจวาย โรคปอดเรื้อรัง (รวมทั้งหอบหืรุนแรง) โรคตับ โรคไต โรคเบาหวานผู้ป่วยที่มีน้ำไขสันหลังรั่ว และผู้ป่วยปลูกถ่ายcochlear- ผู้ใหญ่ทุกคนที่อายุ 50 ปีขึ้นไป- เด็กปกติและเด็กเสี่ยงจำนวนครั้งที่ฉีด ขึ้นอยู่กับอายุที่เริ่มฉีด ดังนี้l ถ้าเริ่มฉีดที่อายุ 2-6 เดือน ให้ฉีด 3 ครั้ง ห่างกัน 6-8สัปดาห์ และฉีดกระตุ้น 1 ครั้ง ที่อายุ 12-15 เดือน(ในเด็กปกติ อาจพิจารณาให้ฉีดแบบ 2+1 (รวมเป็นการฉีด 3 ครั้ง) คือฉีดเมื่ออายุ 2, 4 และ 12-15 เดือน)l ถ้าเริ่มฉีดที่อายุ 7-12 เดือน ให้ฉีด 2 ครั้ง ห่างกัน-8 สัปดาห์ และฉีดกระตุ้น 1 ครั้ง ที่อายุ 12-15 เดือนl ถ้าเริ่มฉีดที่อายุ 12-23 เดือน ให้ฉีด 2 ครั้ง ห่างกัน6-8 สัปดาห์- เด็กปกติ ถ้าเริ่มฉีดที่อายุ 24-59 เดือน ให้ PCV-10 2 ครั้งหรือ PCV-13 ให้ครั้งเดียว- เด็กเสี่ยงl อายุ 2-5 ปี PCV-10 ให้ 2 ครั้ง ห่างกัน 8 สัปดาห์l อายุ 2-6 ปี PCV-13 ให้ 2 ครั้ง ห่างกัน 8 สัปดาห์l อายุ > 6-18 ปี PCV-13 ให้ 1 ครั้ง- ในเด็กกลุ่มเสี่ยงทั้งหมด ควรได้รับวัคซีน PCV ดังตารางและเด็กกลุ่มเสี่ยงที่มีอายุตั้งแต่ 2 ปีขึ้นไป ควรให้ฉีดวัคซีน PSSV23 ด้วยเสมอ ไม่ว่าจะสามารถฉีด PCV ได้หรือไม่ก็ตาม- ผู้ใหญ่อายุ 50 ปีขึ้นไป ฉีด PCV-13 ให้ 1 ครั้ง",
+      "vaccineId": "vc0015",
+      "vaccineNameMedical": "PCV-10, PCV-13",
+      "vaccineNameNormal": "Pneumococcal conjugate",
+      "shortDes": "CDC recommends  PCV13 for\n-All children younger than 2 years old\n-People 2 years or older with certain medical conditions\n-Adults 65 years or older also can discuss and decide, with their clinician, to get PCV13."
     },
     {
-      vaccineId: "vc0016",
-      vaccineNameMedical: "Rotavirus",
-      vaccineNameNormal: "[ENG]โรต้า",
-      shortDes: "ซ้ำ",
+      "vaccineId": "vc0016",
+      "vaccineNameMedical": "Rotavirus",
+      "vaccineNameNormal": "Rotavirus",
+      "shortDes": "-Rotarix: 2-dose series at 2 and 4 months\n-otaTeq: 3-dose series at 2, 4, and 6 months\n-for any dose in the series is either RotaTeq or unknown, default to 3-dose series.\n-Do not start the series on or after age 15 weeks, 0 days.\n-The maximum age for the final dose is 8 months, 0 days."
     },
     {
-      vaccineId: "vc0017",
-      vaccineNameMedical: "HumanPapillomavirus, HPV",
-      vaccineNameNormal: "[ENG]เอชพีวี",
-      shortDes:
-        "แนะนําให้วัคซีน HPV ชนิด 2 หรือ 4 สายพันธุ์ (หากต้องการป้องกันหูดอวัยวะเพศด้วย ต้องใช้ วัคซีนชนิด 4 สายพันธุ์) ในผู้หญิงและผู้ชายอายุระหว่าง 9-26 ปี เน้นให้ฉีดในช่วงอายุ 11-12 ปี ควรให้วัคซีน ก่อนเริ่มมีเพศสัมพันธ์ครั้งแรก ประสิทธิภาพของวัคซีนจะสูงหากฉีดในผู้ที่ไม่เคยได้รับเชื้อ HPV มาก่อน ได้แก่ ผู้ที่ไม่เคยมีเพศสัมพันธ์มาก่อนการฉีดในผู้ที่มีอายุมากกว่า 26 ปี อาจพิจารณาได้เป็นกรณีไป ส่วนสตรี ที่เคยมีเพศสัมพันธ์แล้วสามารถฉีดวัคซีนได้ แต่ควรให้คําแนะนําว่าวัคซีนอาจมีประสิทธิภาพลดลง แต่หาก เคยติดเชื้อ HPV มาก่อน วัคซีนยังให้ประโยชน์ในการป้องกันโรคจากสายพันธุ์ที่มีในวัคซีน ซึ่งยังไม่เคย ติดเชื้อมาก่อนได้ สําหรับกลุ่มเสี่ยงสูงเช่น ชายรักชาย ผู้ที่มีภูมิคุ้มกันบกพร่อง ติดเชื้อเอชไอวีแนะนําให้ ฉีดทุกรายจนถึงอายุ 26 ปีผู้ที่มีภูมิคุ้มกันบกพร่องสามารถรับวัคซีนได้ เพราะมิใช่วัคซีนชนิดเชื้อมีชีวิต ผู้ที่ติดเชื้อเอชไอวี จะมีความเสี่ยงที่จะเกิด persistent infection และเป็นมะเร็งหลังจากติดเชื้อได้สูงกว่าคนปกติ จึงสมควร พิจารณาให้วัคซีน โดยเฉพาะอย่างยิ่งในวัยรุ่นที่ติดเชื้อเอชไอวีจากมารดา โดยควรให้ช่วงอายุ 11-12 ปี ทั้งหญิงและชายหากให้ก่อนมีเพศสัมพันธ์จะได้ผลดีมากกว่า",
+      "vaccineId": "vc0017",
+      "vaccineNameMedical": "Human\nPapillomavirus, HPV",
+      "vaccineNameNormal": "Human Papillomavirus",
+      "shortDes": "-HPV vaccination routinely recommended at age 11–12 years (can start at age 9 years) and catch-up HPV vaccination recommended for all persons through age 18 years if not adequately vaccinated\n-2- or 3-dose series depending on age at initial vaccination:\n-Age 9 through 14 years at initial vaccination: 2-dose series at 0, 6–12 months (minimum interval: 5 months; repeat dose if administered too soon)\n-Age 15 years or older at initial vaccination: 3-dose series at 0, 1–2 months, 6 months (minimum intervals: dose 1 to dose 2: 4 weeks / dose 2 to dose 3: 12 weeks / dose 1 to dose 3: 5 months; repeat dose if administered too soon)\n-If completed valid vaccination series with any HPV vaccine, no additional doses needed"
     },
     {
-      vaccineId: "vc0018",
-      vaccineNameMedical: "InactivatedPoliomyelitisVaccine (IPV)",
-      vaccineNameNormal: "[ENG]โปลิโอชนิด InactivatedPoliomyelitisVaccine",
-      shortDes:
-        "-ใช้ได้ทั้งในเด็กปกติ และเด็กที่มีภูมิคุ้มกันบกพร่อง อายุตั้งแต่ 6 สัปดาห์ขึ้นไป-สามารถใช้ชนิดฉีดแทนชนิดกินได้ทุกครั้ง หากใช้ชนิดฉีดอย่างเดียวโดยตลอดอาจให้เพียง 4 ครั้ง โดยงดเมื่ออายุ 18 เดือนได้- ตามแผนกระทรวงสาธารณสุข ให้ IPV 1 ครั้งที่อายุ4 เดือน- ในกรณีที่ประสงค์จะใช้ IPV เพื่อลดความเสี่ยงต่อ VaccineAssociated Poliomyelitis Paralysis (VAPP) อาจใช้IPV เพียง 2 โด๊สแรกเมื่ออายุ 2, 4 เดือน และใช้ OPVเมื่ออายุ 6-18 เดือน และ 4-6 ปี (Sequential IPV – OPV)คาดว่าการทำแบบนี้จะช่วยลดอัตราการเกิด VAPP ลงได้อย่างน้อยร้อยละ 50",
+      "vaccineId": "vc0018",
+      "vaccineNameMedical": "Dengue vaccine",
+      "vaccineNameNormal": "Dengue",
+      "shortDes": "-Dengue is caused by any one of four related viruses transmitted by mosquitoes. Dengue virus is a leading cause of illness and death in the tropics and subtropics. The Dengue Vaccine Work Group reviews data on dengue vaccines and develops policy options for ACIP’s consideration.\n-Use of dengue vaccines in groups at risk for dengue, including people living in dengue endemic areas and for people traveling from non-endemic to endemic areas."
     },
     {
-      vaccineId: "vc0019",
-      vaccineNameMedical: "DTaP ,Tdap",
-      vaccineNameNormal:
-        "[ENG]วัคซีนรวมคอตีบ-บาดทะยัก-ไอกรนชนิดไร้เซลล์หรือ DTaPและสูตรเด็กโตที่อายุ 7 ปีขึ้นไป และผู้ใหญ่ หรือ Tdap,TdaP",
-      shortDes:
-        "- DTaP ใช้ได้ทั้งในเด็กปกติ และเด็กที่มีภูมิคุ้มกันบกพร่อง อายุตั้งแต่ 6 สัปดาห์ขึ้นไปจนถึงอายุ 7 ปี- เมื่ออายุ 4-6 ปี อาจใช้ DTwP, DTaP หรือTdap ก็ได้- เด็กอายุ 11-12 ปี ควรได้รับการฉีด Tdหรือ Tdap หรือ TdaP- ในกรณีเด็กอายุน้อยกว่า 7 ปี ใช้ DTaP ฉีดเหมือนDTwP โดยควรเริ่มต้นฉีด DTaP เมื่ออายุ 2 เดือน จำนวน5 ครั้ง สำหรับ 3 เข็มแรก แต่ละเข็มห่างกันประมาณ 2 เดือน(อายุ 2, 4, 6 เดือน) เข็มที่ 4 ฉีดเมื่อเด็กอายุ 18 เดือนสำหรับเข็มที่ 5 ซึ่งเป็นเข็มกระตุ้น ฉีดเมื่ออายุ 4-6 ปี อาจใช้DTaP หรือ Tdap ก็ได้ สามารถใช้ DTaP แทน DTwP ได้ทุกเข็ม- กรณีเด็กอายุมากกว่า 7 ปี และผู้ใหญ่ ห้ามให้วัคซีนDTaP หรือ DTwP ให้ใช้วัคซีน Td แทน โดยในผู้ที่เคยได้วัคซีนรวมคอตีบ-บาดทะยัก-ไอกรน (DTwP/DTaP) มาครบถ้วนในวัยเด็กแล้ว แนะนำฉีด Td กระตุ้นทุก 10 ปีถ้ายังไม่เคยได้วัคซีนมาก่อนเลยหรือได้ไม่ครบ ให้ฉีดให้ครบ 3 ครั้งโดยใช้ Td โดยมีระยะห่าง 0, 1, 6 เดือน และควรให้ Tdap แทน Td ได้ 1 ครั้ง เพื่อเสริมภูมิคุ้มกันต่อโรคไอกรนไปด้วย- เด็กอายุ 11-12 ปี ควรได้รับการฉีด Td หรือ Tdap หรือTdaP (BoostagenTM) ไม่ว่าจะเคยได้รับ Tdap เมื่ออายุ4-6 ปี มาก่อนหรือไม่ หลังจากนั้นควรฉีดกระตุ้นด้วย Tdทุก 10 ปี- ผู้ใหญ่ควรได้รับ Tdap หรือ TdaP 1 ครั้ง ไม่ว่าจะเคยได้ TT หรือ Td มานานเท่าใดก็ตาม จากนั้นให้ฉีดกระตุ้นด้วย Td ทุก 10 ปี- หญิงตั้งครรภ์ควรได้รับ Tdap 1 ครั้งที่อายุครรภ์ 27-36สัปดาห์ทุกการตั้งครรภ์",
+      "vaccineId": "vc0019",
+      "vaccineNameMedical": "Meningococcal conjugate or MenACWY vaccines",
+      "vaccineNameNormal": "Meningococcal Conjugated",
+      "shortDes": "All 11 to 12 year olds should get a MenACWY vaccine, with a booster dose at 16 years old. Teens may also get a MenB vaccine, preferably at 16 through 18 years old.\nWhile any teen may choose to get a MenB vaccine, certain preteens and teens should get it if they:\n-Have a rare type of immune disorder called complement component deficiency\n-Are taking a type of medicine called a complement inhibitor (for example, Soliris® or Ultomiris®)\n-Have a damaged spleen or their spleen has been removed\n-Are part of a population identified to be at increased risk because of a serogroup B meningococcal disease outbreak\na MenACWY vaccine for children who are between 2 months and 10 years old if they:\n-Have a rare type of immune disorder called complement component deficiency\n-Are taking a type of medicine called a complement inhibitor (for example, Soliris® or Ultomiris®)\n-Have a damaged spleen or their spleen has been removed\n-Have HIV\n-Are traveling to or residing in countries in which the disease is common\n-Are part of a population identified to be at increased risk because of a serogroup A, C, W, or Y meningococcal disease outbreak"
     },
     {
-      vaccineId: "vc0020",
-      vaccineNameMedical: "Dengue vaccine",
-      vaccineNameNormal: "[ENG]วัคซีนไข้เลือดออก",
-      shortDes:
-        "องค์การอนามัยโลก สมาคมโรคติดเชื้อแห่งประเทศไทย และสมาคมโรคติดเชื้อในเด็ก แห่งประเทศไทย แนะนําให้วัคซีนไข้เลือดออกสําหรับเด็กและผู้ใหญ่อายุ9-45 ปีที่เคยติดเชื้อไวรัสเดงกีมาก่อน เนื่องจากพบว่าประสิทธิภาพของวัคซีนจะสูงกว่ากลุ่มที่ไม่เคยติดเชื้อเดงกีมาก่อน นอกจากนี้ในเด็กอายุ 9-16 ปี ที่ไม่เคยติดเชื้อมาก่อน อาจเกิดโรครุนแรงได้ หากติดเชื้อหลังฉีดไปแล้ว 2-3 ปี จึงไม่แนะนําให้ฉีด ในผู้ที่ไม่เคยติดเชื้อมาก่อนการประเมินการติดเชื้อมาก่อนอาศัย 1) ประวัติป่วยเป็นไข้เลือดออก 2) การตรวจเลือดพบว่า มีแอนติบอดี ต่อไวรัสเด็งกี่ และ 3) อายุของผู้รับวัคซีนในเด็กควรซักประวัติ ร่วมกับพิจารณาตรวจเลือดเพื่อดูว่าเคยมีภูมิต่อเชื้อไวรัสไข้เลือดออกก่อน จะพิจารณาฉีดวัคซีน แต่ปัจจุบันวิธีที่เป็นมาตรฐานในการตรวจหาแอนติบอดีก่อนฉีดวัคซีนไข้เลือดออก ได้แก่การตรวจ Plague neutralization (PRNT) ยังไม่มีบริการ จึงต้องใช้การตรวจโดยชุดตรวจที่มีใช้ทั่วไป เพื่อการวินิจฉัยไข้เลือดออกเมื่อเจ็บป่วยแล้ว นํามาใช้เพื่อบอกว่าเคยติดเชื้อมาก่อนหรือไม่ ซึ่งชุดตรวจ เหล่านั้นเมื่อนํามาใช้เพื่อการนี้จะมีความแม่นยําต่ํา แต่สําหรับผู้ใหญ่ เนื่องจากมีข้อมูลจากการสํารวจ ทางระบาดวิทยาโดยการตรวจระดับภูมิคุ้มกัน พบว่าเคยมีการติดเชื้อไวรัสเดงกีแล้วมากกว่าร้อยละ 907 ดังนั้นผู้ใหญ่อาจพิจารณาฉีดวัคซีนไข้เลือดออกได้เลย",
+      "vaccineId": "vc0020",
+      "vaccineNameMedical": "Yellow fever vaccine",
+      "vaccineNameNormal": "Yellow fever",
+      "shortDes": "-Yellow fever is a serious disease caused by the yellow fever virus. There is no medicine to treat or cure yellow fever.\n-Yellow fever virus is spread by the bite of an infected mosquito. It is found in parts of Africa and South America.\n-Yellow fever vaccine is recommended for:\n-People 9 months through 59 years of age who are traveling to or living in areas at risk for yellow fever virus activity, or traveling to a country with an entry requirement for vaccination. (People younger than 9 months or older than 59 years who are at increased risk might receive yellow fever vaccine in some situations. Ask your health care provider for more information.)\n-Laboratory personnel who might be exposed to yellow fever virus or vaccine virus.\n"
     },
     {
-      vaccineId: "vc0021",
-      vaccineNameMedical: "Neisseriameningitidis",
-      vaccineNameNormal: "[ENG]ไข้กาฬหลังแอ่น ชนิดpolysaccharide(Mnc)",
-      shortDes:
-        "วัคซีนนี้ใช้ป้องกันโรคไข้กาฬหลังแอ่นจําเพาะซีโรกรุ๊ปที่บรรจุอยู่ในวัคซีน ใช้ได้ในเด็กอายุ มากกว่า 2 เดือน (ยกเว้นวัคซีน MCV4-DT ใช้ได้ตั้งแต่อายุ 9 เดือนขึ้นไป) และผู้ใหญ่ที่เสี่ยงต่อการเกิด โรคไข้กาฬหลังแอ่น หรืออยู่ในสถานที่ที่มีโรคนี้ประจําถิ่น ไม่แนะนําให้ฉีดวัคซีนแก่เด็กหรือผู้ใหญ่โดย ทั่วไปในประเทศไทย เนื่องจากอัตราการเกิดโรคในประเทศไทยค่อนข้างต่ําและเกือบร้อยละ 50 ของเชื้อ ที่แยกได้ในคนไทยเป็นซีโรกรุ๊ป B ซึ่งยังไม่มีจําหน่ายในประเทศไทย การพิจารณาให้วัคซีนในประเทศไทย ควรพิจารณาให้ในกรณีต่อไปนี้1. ผู้ที่จะเดินทางไปยังบริเวณที่มีการระบาดของเชื้อไข้กาฬหลังแอ่นซึ่งมี ชีโรกรุ๊ปที่วัคซีน ป้องกันได้ เช่น ผู้เดินทางไปในเขต meningitis belt ผู้เดินทางไปประกอบพิธีฮัจย์และอุมเราะห์ที่ประเทศ ซาอดิอาระเบีย จะต้องได้รับวัคซีนป้องกันโรคไข้กาฬหลังแอ่นล่วงหน้าก่อนเข้าประเทศอย่างน้อย 10 วัน และไม่เกิน 3 ปี ถ้าเป็น polysaccraride vaccine หรือไม่เกิน 5 ปีถ้าเคยได้รับ conjugated vaccine โดยต้องแสดงเอกสารรับรองการฉีดวัคซีนดังกล่าวในการเดินทาง (www.moph.gov.sa/en/hajj/pages/ healthregulation.aspx)232. กรณีที่มีการระบาดของเชื้อซีโรกรุ๊ปที่มีในวัคซีน การให้วัคซีนจะได้ผลดีมาก สามารถหยุด การระบาดได้ภายใน 2-3 สัปดาห์ แต่วัคซีนนี้ไม่สามารถป้องกันการติดเชื้อหลังสัมผัสโรค เพราะภูมิคุ้มกันโรค จากวัคซีนจะต้องใช้เวลาอย่างน้อย 2 สัปดาห์ แต่ระยะฟักตัวหลังสัมผัสโรคแล้วส่วนใหญ่สั้นกว่า 4 วัน จึงควรใช้ยาปฏิชีวนะ จึงจะป้องกันโรคได้ทันท่วงที่ ได้แก่ rifampicin, ciprofloxacin หรือ ceftriaxone เพื่อป้องกันการเกิดโรค” ไม่แนะนําใช้ยาปฏิชีวนะป้องกันแบบวงกว้าง (mass chemoprophylaxis) แต่ควรใช้วัคซีนเป็นวิธีป้องกันแบบวงกว้างที่ดีกว่า3. กรณีก่อนไปศึกษาต่อชั้นมัธยมศึกษาหรือมหาวิทยาลัยที่ประเทศสหรัฐอเมริกา หรือประเทศ อื่นที่กําหนดให้ต้องฉีดวัคซีนนี้ก่อนเข้าเรียน (ประเทศสหรัฐอเมริกามีคําแนะนําให้วัคซีน MCV4 ทุกราย ในวัยรุ่นอายุ 11-18 ปี) แนะนําให้เข็มแรกที่อายุ 11-12 ปี และฉีดกระตุ้นเข็มที่สองที่อายุ 16 ปี หากฉีดเข็มแรกที่อายุ 16 ปีขึ้นไปไม่ต้องฉีดกระต้นเข็มที่สอง4. สําหรับผู้ที่เสี่ยงต่อการเป็นโรคเพราะมีโอกาสสัมผัสโรคสูง เช่น ผู้ที่จะเดินทางไปหรืออาศัย อยู่ในแหล่งระบาด ทหารเกณฑ์ ผู้ที่ทํางานในห้องปฏิบัติการจุลชีววิทยาที่มีโอกาสสัมผัสเชื้อตลอดเวลา ควรให้ฉีด 1 เข็ม9,205. อาจพิจารณาให้วัคซีนในผู้ที่มีความเสี่ยงต่อการเป็นโรคไข้กาฬหลังแอ่นและเป็นรุนแรง เนื่องจากภูมิคุ้มกันบกพร่อง ได้แก่ ผู้ที่มีภาวะขาดสารคอมพลีเมนต์ส่วนปลาย (terminal complement Component C5-C9 deficiency) properdin, factor H หรือ factor D deficiency (รวมถึงผู้ได้รับยา eculizumab) ไม่มีม้ามหรือม้ามทํางานไม่ปกติ (รวมทั้งโรค sickle cell disease) และผู้ป่วยที่ติดเชื้อเอชไอวี",
+      "vaccineId": "vc0021",
+      "vaccineNameMedical": "Cholera vaccine",
+      "vaccineNameNormal": "Cholera",
+      "shortDes": "-Cholera is spread through contaminated food or water. It is not usually spread directly from person to person, but it can be spread through contact with the feces of an infected person. Cholera causes severe diarrhea and vomiting. If it isn’t treated quickly, it can lead to dehydration and even death.\n-Cholera is a risk mostly to people traveling to countries where the disease is common (Haiti, and parts of Africa, Asia, and the Pacific).  While it is rare in the United States, cholera has also occurred among people eating raw or undercooked seafood from the Gulf Coast."
     },
     {
-      vaccineId: "vc0022",
-      vaccineNameMedical: "MCV",
-      vaccineNameNormal: "[ENG]ไข้กาฬหลังแอ่นชนิดคอนจูเกต",
-      shortDes:
-        "- MCV-DT (MenactraTM) ในผู้ที่อายุ9 เดือน-55 ปี- MCV-CRM (MenveoTM) ในผู้ที่อายุ2-55 ปี- ข้อบ่งชึ้เหมือน MeningococcalPolysaccharide Vaccine ข้างต้น- เด็กอายุ 9-23 เดือน ฉีด 2 เข็ม ห่างกัน 3 เดือน- เด็กอายุ 2 ปีขึ้นไป และผู้ใหญ่ ถ้ามีความเสี่ยงต่อการไปสัมผัสโรคเท่านั้น (ข้อ 1-3) ให้ 1 เข็ม ถ้ามีความเสี่ยงเพราะม้ามไม่ทำงาน หรือขาดสารคอมพลีเม้นต์ให้ฉีด 2 เข็มห่างกัน 2 เดือน- เด็กอายุ 11-18 ปีแข็งแรงดีที่จะไปเรียนในประเทศที่กำหนดให้ต้องฉีด ให้ฉีด 1 เข็ม และฉีดซ้ำอีกครั้งเมื่ออายุ16 ปี ถ้าฉีดเข็มแรกก่อนอายุ 16 ปี โดยต้องห่างจากเข็มแรกอย่างน้อย 2 เดือน- การฉีดกระตุ้นซ้ำ ควรให้เมื่อยังมีความเสี่ยงโดยฉีด 5 ปีหลังเข็มสุดท้าย กรณีเป็นผู้มีภูมิคุ้มกันในการต้านทานเชื้อนี้บกพร่อง (ข้อ 4) ให้ฉีดทุก 5 ปี",
-    },
-    {
-      vaccineId: "vc0023",
-      vaccineNameMedical: "Yellow fever",
-      vaccineNameNormal: "[ENG]ไข้เหลือง",
-      shortDes:
-        "แนะนําให้วัคซีนในผู้มีอายุ9เดือนขึ้นไปที่จะเดินทางเข้าไปหรืออาศัยอยู่ในเขตติดโรคของทวีป อเมริกากลาง-อเมริกาใต้ และแอฟริกาที่มีความเสี่ยงของโรคไข้เหลือง และบุคลากรที่อาจสัมผัสเชื้อไวรัส ไข้เหลือง ทั้งทางตรงและทางอ้อม หรือจากละอองฝอยของทางเดินหายใจของผู้ป่วยสําหรับประเทศไทย กรมควบคุมโรค กระทรวงสาธารณสุขได้มีการประกาศรายชื่อประเทศที่ เป็นเขตติดต่อโรคไข้เหลือง จํานวน 42 ประเทศ ตามตารางด้านล่าง ประชาชนจากประเทศดังกล่าว หรือ ผู้เดินทางกลับจากพื้นที่ดังกล่าวจําเป็นต้องฉีดวัคซีนไข้เหลืองและต้องถือสมุดรับรองการฉีดวัคซีนไข้เหลือง มิฉะนั้นอาจถูกปฏิเสธไม่ให้เข้าราชอาณาจักรหรือถูกกักตัวไว้ดูอาการ",
-    },
-    {
-      vaccineId: "vc0024",
-      vaccineNameMedical: "Rotavirus Vaccine",
-      vaccineNameNormal: "[ENG]วัคซีนป้องกันโรคติดเชื้อไวรัสโรต้า",
-      shortDes:
-        "วัคซีนนี้ควรพิจารณาให้ในเด็กแข็งแรงที่มีอายุมากกว่า 6 สัปดาห์ โดยอายุและช่วงเวลาที่ให้ เป็นไปดังตารางที่ 7.1-1 วัคซีนทั้ง 3 ชนิดสามารถให้พร้อมกับ OPV ได้ หรือห่างกันเป็นเวลาเท่าใดก็ได้ แม้ว่าการให้พร้อมกันทําให้ระดับของภูมิคุ้มกันต่อไวรัสโรต้าต่ํากว่าการให้แยกกัน แต่ไม่พบว่า ประสิทธิภาพในการป้องกันโรคลดลงไม่ควรให้โต๊สแรกของวัคซีนทั้งสองชนิดนี้ในเด็กอายุเกินกว่ากําหนด เพราะเด็กที่อายุระหว่าง 5-12 เดือน เป็นอายุที่มีโอกาสเกิดลําไส้กลืนกัน (intussusception) ตามธรรมชาติได้มากที่สุด ทําให้มี ความเป็นไปได้ในทางทฤษฎีที่จะทําให้มีโอกาสเกิดปัญหานี้หลังจากรับวัคซีนได้มากขึ้น ในกรณีที่เด็ก อายุมากกว่า 15 สัปดาห์ มีความประสงค์จะรับวัคซีน อาจพิจารณาเป็นรายๆ ไปองค์การอนามัยโลกให้ คําแนะนําว่าควรให้วัคซีนโรต้าพร้อมกับวัคซีน คอตีบ-บาดทะยัก-ไอกรน ตั้งแต่ครั้งแรก แม้จะมีอายุ มากกว่า 15 สัปดาห์กระทรวงสาธารณสุข จะได้บรรจุวัคซีนโรต้าเข้าสู่แผนงานสร้างเสริมภูมิคุ้มกันโรคให้เด็กไทย คาดว่าจะเริ่มในปี พ.ศ. 2563 ซึ่งอาจใช้วัคซีนชนิดใดชนิดหนึ่งซึ่งได้รับการขึ้นทะเบียน",
-    },
-    {
-      vaccineId: "vc0025",
-      vaccineNameMedical: "Varicella Vaccine: VAR",
-      vaccineNameNormal: "[ENG]วัคซีนป้องกันโรคอีสุกอีใส",
-      shortDes:
-        "บุคคลที่ควรได้รับวัคซีน และอายุที่ควรรับวัคซีน 10 วัคซีนนี้ให้ได้ในบุคคลที่ยังไม่เคยเป็นโรคอีสุกอีใส หรือไม่มีภูมิต้านทานต่อโรคนี้ โดยให้ได้ในเด็กอายุตั้งแต่ 1 ปีขึ้นไปจนถึงผู้ใหญ่ โดยแนะนําให้ใช้วัคซีน ในกรณี ดังนี้1. เด็กโตและผู้ใหญ่ที่ยังไม่เคยเป็นโรคอีสุกอีใส ควรพิจารณาให้วัคซีนทุกราย เพราะโรค มีผลกระทบมาก และอาการอาจรุนแรงกว่าเด็กเล็ก ผู้ใหญ่ที่ไม่เคยเป็นอีสุกอีใส อาจเจาะเลือดเพื่อตรวจว่า มีภูมิต้านทานโรคอยู่แล้วหรือไม่ เพราะผู้ที่ให้ประวัติว่าไม่เคยเป็นโรคพบว่าแท้จริงมีภูมิคุ้มกันแล้ว ร้อยละ 68 ซึ่งอาจเพราะเป็นน้อยจนไม่รู้ว่าเป็นหรือจําไม่ได้ หากไม่มีภูมิคุ้มกันโรคจึงค่อยฉีดวัคซีน หากไม่สามารถตรวจเลือดได้ สามารถให้วัคซีนเลยโดยไม่มีอันตราย แม้ว่าจะมีภูมิต้านทานอยู่ก่อน2. วัคซีนนี้ควรให้ในบุคคลที่มีความเสี่ยงในการรับเชื้อและเป็นโรค แล้วแพร่เชื้อไปยังบุคคลอื่น โดยเฉพาะการแพร่เชื้อไปยังผู้ที่มีภูมิคุ้มกันบกพร่อง เช่น บุคลากรทางการแพทย์ ผู้ที่อาศัยอยู่ในบ้านเดียว กับผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง เป็นต้นเด็กปกติที่ยังไม่เคยเป็นโรคอีสุกอีใสมาก่อน หากมีความประสงค์ที่จะป้องกันโรคนี้ สามารถให้ วัคซีนนี้ได้ตั้งแต่อายุ 1 ปีขึ้นไป ในผู้ที่สัมผัสกับผู้ป่วยที่เป็นโรคอีสุกอีใส หากยังไม่เคยเป็นอีสุกอีใสและ ไม่มีภูมิคุ้มกัน สามารถให้วัคซีนป้องกันโรคหลังสัมผัสได้โดยวัคซีนมีประสิทธิภาพในการป้องกันโรคดี ถ้าให้ภายใน 3 วัน และอาจได้ผลถ้าให้ภายใน 5 วัน",
-    },
-    {
-      vaccineId: "vc0026",
-      vaccineNameMedical: "Pneumococcal Vaccine: Pnc",
-      vaccineNameNormal:
-        "[ENG]วัคซีนป้องกันโรคจากเชื้อStreptococcus pneumoniae",
-      shortDes:
-        "วัคซีน PCV แนะนําให้ เพื่อป้องกันโรค IPD ปอดอักเสบ และหูชั้นกลางอักเสบจากเชื้อ นิวโมคอคคัสในกรณีดังต่อไปนี้1. เด็กปกติแข็งแรงดีตั้งแต่อายุ 6 สัปดาห์ถึง 5 ปี (ไม่แนะนําให้ PCV ในเด็กแข็งแรงดีที่มีอายุ มากกว่า 5 ปี)2. เด็กอายุน้อยกว่า 6 ปีที่มีภาวะเสี่ยงต่อการเกิดโรคติดเชื้อนิวโมคอคคัสดังในตารางที่ 8.5-2 ควรได้รับวัคซีน PCV ชนิด PCV10 หรือ PCV13 ตามตาราง 8.4-3 โดยให้ PPSV23 ต่อไปด้วย3. เด็กกลุ่มเสี่ยงตามตารางที่ 74-2 ที่อายุ 6 ปีขึ้นไปและผู้ใหญ่ควรได้รับ PCV131 โต๊สไม่ว่า จะมีประวัติว่าเคยได้รับ PPSV23 มาก่อนหรือไม่ และหากยังไม่เคยรับวัคซีน PPSV23 ก็ควรได้รับด้วย4. แนะนําให้ PCV13 ในผู้ใหญ่แข็งแรงดีที่มีอายุตั้งแต่ 65 ปีขึ้นไป เพื่อป้องกันโรค IPD และ ปอดอักเสบ5. PCV10 ได้รับข้อบ่งชี้เพิ่มในการป้องกันหูชั้นกลางอักเสบจากเชื้อ NTHi ในเด็กอายุ6 สัปดาห์ ถึง 5 ปีวัคซีน PPSV23 แนะนําให้เฉพาะผู้ที่มีความเสี่ยงต่อการติดเชื้อนี้มากกว่าคนปกติหรือรุนแรง กว่าคนปกติที่มีอายุ 2 ปี ขึ้นไป ดังแสดงในตารางที่ 74-2 และแนะนําให้ PPSV23 2 โต๊สหลังอายุ 2 ปี ห่างกัน 5 ปี ซึ่งควรได้รับ PCV นํามาก่อนหน้า และแนะนําให้ 1 โต๊สในผู้มีอายุตั้งแต่ 65 ปีขึ้นไป”วัคซีน PPSV23 และ PCV ทั้ง 2 ชนิดนี้สามารถให้พร้อมกับวัคซีนชนิดอื่นได้โดยแยกเข็มฉีดยา และฉีดตําแหน่งที่ต่างกัน ไม่แนะนําให้ PCV พร้อมกับ PPSV239",
-    },
-    {
-      vaccineId: "vc0027",
-      vaccineNameMedical: "Rabies Vaccine and Rabies Immunoglobulin",
-      vaccineNameNormal: "[ENG]วัคซีนและอิมมูโนโกลบุลินป้องกันโรคพิษสุนัขบ้า",
-      shortDes: "",
-    },
-    {
-      vaccineId: "vc0028",
-      vaccineNameMedical: "Cholera",
-      vaccineNameNormal: "[ENG]อหิวาตกโรค",
-      shortDes:
-        "โดยทั่วไปวัคซีนป้องกันอหิวาตกโรค ไม่มีที่ใช้ในกรณีทั่วไป การเดินทางไปในพื้นที่ที่มีโรคนี้เป็น โรคประจําถิ่น ถ้าระมัดระวังเรื่องอาหารและน้ําดื่มจะมีโอกาสเสี่ยงต่อโรคนี้น้อยมาก ดังนั้น จึงควร พิจารณาให้วัคซีนเฉพาะเมื่อจะเดินทางไปในพื้นที่ที่มีการระบาดที่มีการสุขาภิบาลต่ํา หรือต้องเดินทางไป ในสถานการณ์เฉพาะที่มีความเสี่ยงต่อการระบาด เช่นภายหลังภัยธรรมชาติครั้งใหญ่แม้จะได้วัคซีนอนามัย ส่วนบุคคล ยังมีความจําเป็นเพราะยังสามารถเกิดโรคได้ แม้จะได้รับวัคซีน องค์การอนามัยโลกแนะนํา ให้พิจารณาใช้วัคซีนอหิวาตกโรคชนิดรับประทานเพื่อการป้องกันและควบคุมอหิวาตกโรค ในพื้นที่ที่เกิด การระบาดหรือเป็นโรคประจําถิ่นควบคู่ไปกับมาตรการป้องกันควบคุมโรคอื่นๆ",
-    },
-    {
-      vaccineId: "vc0029",
-      vaccineNameMedical: "Typhoid",
-      vaccineNameNormal: "[ENG]โรคทัยฟอยด์",
-      shortDes:
-        "เนื่องจากโรคนี้พบน้อยลงมากในประเทศไทย รวมทั้งประสิทธิภาพของวัคซีนมีจํากัดและป้องกัน ได้ระยะสั้นจึงไม่แนะนําให้ในเด็กปกติทั่วๆ ไป แต่แนะนําให้เฉพาะผู้ที่มีความเสี่ยง เช่น ผู้ที่จะเดินทางไป ในพื้นที่ที่มีการระบาด หรือพื้นที่ที่มีความชุกของโรคสูง เช่น ประเทศในแถบเอเชียใต้ เช่น อินเดีย เนปาล บังกลาเทศ และไม่มั่นใจว่าจะหลีกเลี่ยงน้ําหรืออาหารที่อาจปนเปื้อนเชื้อได้ หรือผู้ที่ต้องปฏิบัติงานใน ห้องปฏิบัติการเกี่ยวกับเชื้อทัยฟอยด์",
-    },
-  ],
+      "vaccineId": "vc0022",
+      "vaccineNameMedical": "Typhoid vaccine",
+      "vaccineNameNormal": "Typhoid",
+      "shortDes": "People who are actively ill with typhoid fever and people who are carriers of the bacteria that cause typhoid fever can both spread the bacteria to other people.  When someone eats or drinks contaminated food or drink, the bacteria can multiply and spread into the bloodstream, causing typhoid fever.\nThere are two vaccines to prevent typhoid fever. One is an inactivated (killed) vaccine and the other is a live, attenuated (weakened) vaccine.  Your health care provider can help you decide which type of typhoid vaccine is best for you.\n-Inactivated typhoid vaccine is administered as an injection (shot). It may be given to people 2 years and older. One dose is recommended at least 2 weeks before travel. Repeated doses are recommended every 2 years for people who remain at risk.\n-Live typhoid vaccine is administered orally (by mouth). It may be given to people 6 years and older. One capsule is taken every other day, for a total of 4 capsules. The last dose should be taken at least 1 week before travel. Each capsule should be swallowed whole (not chewed) about an hour before meals with cold or lukewarm water. A booster vaccine is needed every 5 years for people who remain at risk. Important: live typhoid vaccine capsules must be stored in a refrigerator (not frozen).\nRoutine typhoid vaccination is not recommended in the United States, but typhoid vaccine is recommended for:\n-Travelers to parts of the world where typhoid is common. (NOTE: typhoid vaccine is not 100% effective and is not a substitute for being careful about what you eat or drink.)\n-People in close contact with a typhoid carrier.\n-Laboratory workers who work with Salmonella typhi bacteria.\n-Typhoid vaccine may be given at the same time as other vaccines."
+    }
+   ],
   vaccinePackages: [
     {
       packageId: "pk0001",
@@ -356,18 +281,16 @@ export default {
       packageSubTitle: "",
       vaccineInPackage: [
         {
-          vaccineId: "vc0028",
-          vaccineNameMedical: "Cholera",
-          vaccineNameNormal: "[ENG]อหิวาตกโรค",
-          shortDes:
-            "โดยทั่วไปวัคซีนป้องกันอหิวาตกโรค ไม่มีที่ใช้ในกรณีทั่วไป การเดินทางไปในพื้นที่ที่มีโรคนี้เป็น โรคประจําถิ่น ถ้าระมัดระวังเรื่องอาหารและน้ําดื่มจะมีโอกาสเสี่ยงต่อโรคนี้น้อยมาก ดังนั้น จึงควร พิจารณาให้วัคซีนเฉพาะเมื่อจะเดินทางไปในพื้นที่ที่มีการระบาดที่มีการสุขาภิบาลต่ํา หรือต้องเดินทางไป ในสถานการณ์เฉพาะที่มีความเสี่ยงต่อการระบาด เช่นภายหลังภัยธรรมชาติครั้งใหญ่แม้จะได้วัคซีนอนามัย ส่วนบุคคล ยังมีความจําเป็นเพราะยังสามารถเกิดโรคได้ แม้จะได้รับวัคซีน องค์การอนามัยโลกแนะนํา ให้พิจารณาใช้วัคซีนอหิวาตกโรคชนิดรับประทานเพื่อการป้องกันและควบคุมอหิวาตกโรค ในพื้นที่ที่เกิด การระบาดหรือเป็นโรคประจําถิ่นควบคู่ไปกับมาตรการป้องกันควบคุมโรคอื่นๆ",
+          "vaccineId": "vc0008",
+          "vaccineNameMedical": "Measles Mumps and Rubella Vaccine: MMR",
+          "vaccineNameNormal": "Measles Mumps and Rubella",
+          "shortDes": "-2-dose series at 12–15 months, 4–6 years\n-Dose 2 may be administered as early as 4 weeks after dose 1.\n-Unvaccinated children and adolescents: 2-dose series at least 4 weeks apart\n-The maximum age for use of MMRV is 12 years."
         },
         {
-          vaccineId: "vc0029",
-          vaccineNameMedical: "Typhoid",
-          vaccineNameNormal: "[ENG]โรคทัยฟอยด์",
-          shortDes:
-            "เนื่องจากโรคนี้พบน้อยลงมากในประเทศไทย รวมทั้งประสิทธิภาพของวัคซีนมีจํากัดและป้องกัน ได้ระยะสั้นจึงไม่แนะนําให้ในเด็กปกติทั่วๆ ไป แต่แนะนําให้เฉพาะผู้ที่มีความเสี่ยง เช่น ผู้ที่จะเดินทางไป ในพื้นที่ที่มีการระบาด หรือพื้นที่ที่มีความชุกของโรคสูง เช่น ประเทศในแถบเอเชียใต้ เช่น อินเดีย เนปาล บังกลาเทศ และไม่มั่นใจว่าจะหลีกเลี่ยงน้ําหรืออาหารที่อาจปนเปื้อนเชื้อได้ หรือผู้ที่ต้องปฏิบัติงานใน ห้องปฏิบัติการเกี่ยวกับเชื้อทัยฟอยด์",
+          "vaccineId": "vc0011",
+          "vaccineNameMedical": "Hepatitis A",
+          "vaccineNameNormal": "Hepatitis A",
+          "shortDes": "-2-dose series (minimum interval: 6 months) beginning at age 12 months\n-Unvaccinated persons through 18 years should complete a 2-dose series (minimum interval: 6 months).\n-Persons who previously received 1 dose at age 12 months or older should receive dose 2 at least 6 months after dose 1.\n-Adolescents 18 years and older may receive the combined HepA and HepB vaccine, Twinrix®, as a 3-dose series (0, 1, and 6 months) or 4-dose series (0, 7, and 21–30 days, followed by a dose at 12 months)"
         },
 
       ],
@@ -379,18 +302,16 @@ export default {
       packageSubTitle: "",
       vaccineInPackage: [
         {
-          vaccineId: "vc0028",
-          vaccineNameMedical: "Cholera",
-          vaccineNameNormal: "[ENG]อหิวาตกโรค",
-          shortDes:
-            "โดยทั่วไปวัคซีนป้องกันอหิวาตกโรค ไม่มีที่ใช้ในกรณีทั่วไป การเดินทางไปในพื้นที่ที่มีโรคนี้เป็น โรคประจําถิ่น ถ้าระมัดระวังเรื่องอาหารและน้ําดื่มจะมีโอกาสเสี่ยงต่อโรคนี้น้อยมาก ดังนั้น จึงควร พิจารณาให้วัคซีนเฉพาะเมื่อจะเดินทางไปในพื้นที่ที่มีการระบาดที่มีการสุขาภิบาลต่ํา หรือต้องเดินทางไป ในสถานการณ์เฉพาะที่มีความเสี่ยงต่อการระบาด เช่นภายหลังภัยธรรมชาติครั้งใหญ่แม้จะได้วัคซีนอนามัย ส่วนบุคคล ยังมีความจําเป็นเพราะยังสามารถเกิดโรคได้ แม้จะได้รับวัคซีน องค์การอนามัยโลกแนะนํา ให้พิจารณาใช้วัคซีนอหิวาตกโรคชนิดรับประทานเพื่อการป้องกันและควบคุมอหิวาตกโรค ในพื้นที่ที่เกิด การระบาดหรือเป็นโรคประจําถิ่นควบคู่ไปกับมาตรการป้องกันควบคุมโรคอื่นๆ",
+          "vaccineId": "vc0018",
+          "vaccineNameMedical": "Dengue vaccine",
+          "vaccineNameNormal": "Dengue",
+          "shortDes": "-Dengue is caused by any one of four related viruses transmitted by mosquitoes. Dengue virus is a leading cause of illness and death in the tropics and subtropics. The Dengue Vaccine Work Group reviews data on dengue vaccines and develops policy options for ACIP’s consideration.\n-Use of dengue vaccines in groups at risk for dengue, including people living in dengue endemic areas and for people traveling from non-endemic to endemic areas."
         },
         {
-          vaccineId: "vc0029",
-          vaccineNameMedical: "Typhoid",
-          vaccineNameNormal: "[ENG]โรคทัยฟอยด์",
-          shortDes:
-            "เนื่องจากโรคนี้พบน้อยลงมากในประเทศไทย รวมทั้งประสิทธิภาพของวัคซีนมีจํากัดและป้องกัน ได้ระยะสั้นจึงไม่แนะนําให้ในเด็กปกติทั่วๆ ไป แต่แนะนําให้เฉพาะผู้ที่มีความเสี่ยง เช่น ผู้ที่จะเดินทางไป ในพื้นที่ที่มีการระบาด หรือพื้นที่ที่มีความชุกของโรคสูง เช่น ประเทศในแถบเอเชียใต้ เช่น อินเดีย เนปาล บังกลาเทศ และไม่มั่นใจว่าจะหลีกเลี่ยงน้ําหรืออาหารที่อาจปนเปื้อนเชื้อได้ หรือผู้ที่ต้องปฏิบัติงานใน ห้องปฏิบัติการเกี่ยวกับเชื้อทัยฟอยด์",
+          "vaccineId": "vc0019",
+          "vaccineNameMedical": "Meningococcal conjugate or MenACWY vaccines",
+          "vaccineNameNormal": "Meningococcal Conjugated",
+          "shortDes": "All 11 to 12 year olds should get a MenACWY vaccine, with a booster dose at 16 years old. Teens may also get a MenB vaccine, preferably at 16 through 18 years old.\nWhile any teen may choose to get a MenB vaccine, certain preteens and teens should get it if they:\n-Have a rare type of immune disorder called complement component deficiency\n-Are taking a type of medicine called a complement inhibitor (for example, Soliris® or Ultomiris®)\n-Have a damaged spleen or their spleen has been removed\n-Are part of a population identified to be at increased risk because of a serogroup B meningococcal disease outbreak\na MenACWY vaccine for children who are between 2 months and 10 years old if they:\n-Have a rare type of immune disorder called complement component deficiency\n-Are taking a type of medicine called a complement inhibitor (for example, Soliris® or Ultomiris®)\n-Have a damaged spleen or their spleen has been removed\n-Have HIV\n-Are traveling to or residing in countries in which the disease is common\n-Are part of a population identified to be at increased risk because of a serogroup A, C, W, or Y meningococcal disease outbreak"
         },
 
       ],

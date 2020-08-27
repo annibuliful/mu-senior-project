@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div>{{$store.state.calendarLocale}}</div>
     <div class="search-area mb-3 flex justify-center">
       <input
         class="border border-black mr-2"
@@ -32,7 +33,7 @@ export default {
   },
   created() {
     this.displayVaccineList = this.vaccineList;
-    console.log("displayVaccineList", this.displayVaccineList);
+    // console.log("displayVaccineList", this.displayVaccineList);
   },
   data() {
     return {
@@ -48,7 +49,7 @@ export default {
   methods: {
     vaccineFilter(inputSearchQuery) {
       const filteredVaccineList = this.vaccineList.filter(vcObj => {
-        return vcObj.vaccineNameMedical.includes(inputSearchQuery) || vcObj.vaccineNameNormal.includes(inputSearchQuery) ;
+        return vcObj.vaccineNameMedical.toLowerCase().includes(inputSearchQuery.toLowerCase()) || vcObj.vaccineNameNormal.toLowerCase().includes(inputSearchQuery.toLowerCase()) ;
       });
       this.displayVaccineList = filteredVaccineList;
     },

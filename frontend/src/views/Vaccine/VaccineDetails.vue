@@ -13,7 +13,8 @@
       <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
         {{ localeText.who }}
       </div>
-      <div>{{ vaccineDetails.shortDes }}</div>
+      <!-- <div>{{ vaccineDetails.shortDes }}</div> -->
+      <div v-html="vaccineDetails.shortDes"></div>
       <div class="mt-8 text-blue-800">{{ localeText.vaccineReference }}</div>
     </div>
 
