@@ -15,7 +15,8 @@ export default {
   vaccineDetailsPage: {
     title: "รายละเอียดวัคซีน",
     appointmentBtn: "กำหนดวันฉีดวัคซีน",
-    recordBtn: "บันทึกวัคซีน"
+    recordBtn: "บันทึกวัคซีน",
+    vaccineReference: "ที่มาข้อมูล: ตำราวัคซีนและการสร้างเสริมภูมิคุ้มกันโรค ปี 2562 กรมควบคุมโรค กระทรวงสาธารณะสุข",
   },
   label: {
     name: "ชื่อ - นามสกุล",

@@ -15,7 +15,8 @@ export default {
   vaccineDetailsPage: {
     title: "Vaccine Description",
     appointmentBtn: "Create an appointment",
-    recordBtn: "Record Vaccine"
+    recordBtn: "Record Vaccine",
+    vaccineReference: "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)",
   },
   label: {
     name: "Fullname",
