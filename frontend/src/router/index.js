@@ -19,7 +19,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: Home
   },
   {
     path: "/dashboard",
@@ -28,35 +28,35 @@ const routes = [
       {
         path: "/",
         name: "dashboard-index",
-        redirect: { name: "dashboard-home" },
+        redirect: { name: "dashboard-home" }
       },
       {
         path: "home",
         name: "dashboard-home",
-        component: DashboardHome,
+        component: DashboardHome
       },
       {
         path: "vaccine",
         name: "dashboard-vaccine",
-        component: DashboardVaccineList,
+        component: DashboardVaccineList
       },
       {
         path: "vaccine/details/:id",
-        component: VaccineDetails,
+        component: VaccineDetails
       },
       {
         path: "vaccinepackager",
         name: "dashboard-packager",
-        component: VaccinePackager,
+        component: VaccinePackager
       },
       {
         path: "vaccinepackager/details/:id",
-        component: VaccinePackagerDetails,
+        component: VaccinePackagerDetails
       },
       {
         path: "setting",
         name: "dashboard-setting",
-        component: DashboardSetting,
+        component: DashboardSetting
       },
       {
         path: "family",
@@ -70,18 +70,17 @@ const routes = [
       }
     ]
   },
-      {
-        path: "recordvaccine",
-        component: RecordVaccineForm,
-      },
-    ],
-  },
+  {
+    path: "recordvaccine",
+    name: "record-vaccine",
+    component: RecordVaccineForm
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes,
+  routes
 });
 
 export default router;
