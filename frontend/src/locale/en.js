@@ -6,6 +6,7 @@ export default {
   setting: "Settings",
   event: "events",
   welcome: "Welcome Dear,",
+  recentActivity: "Recent Activity",
   language: "Language",
   accountSetting: "Account Setting",
   networkMode: {

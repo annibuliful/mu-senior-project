@@ -7,6 +7,9 @@ export default {
     vaccineList: function() {
       return this.$store.state.locale.vaccines;
     }
+  },
+  created() {
+    console.log(this.$route.params.id);
   }
 };
 </script>
