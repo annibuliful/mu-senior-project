@@ -46,6 +46,13 @@ export default {
     disease: "โรคประจำตัว",
     vaccine: "วัคซีนที่เคยได้รับ"
   },
+  labelAddAppointment: {
+    child: "ชื่อเด็ก",
+    vaccineList: "รายการวัคซีน",
+    date: "วันที่",
+    time: "เวลา",
+    addAppointment: "เพิ่มการนัดหมาย"
+  },
   button: {
     add: "เพิ่ม",
     save: "บันทึก"

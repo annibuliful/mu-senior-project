@@ -9,6 +9,8 @@ import DashboardVaccineList from "../views/Dashboard/VaccineList.vue";
 import VaccineDetails from "../views/Vaccine/VaccineDetails.vue";
 // import VaccineIndex from "../views/Vaccine/Index.vue"
 import Appointment from "../views/Appointment/Index.vue";
+import CreateAppointment from "../views/Appointment/Create.vue";
+
 import VaccinePackager from "../views/Dashboard/VaccinePackager.vue";
 import VaccinePackagerDetails from "../views/Packager/VaccinePackagerDetails.vue";
 import RecordVaccineForm from "../views/RecordVaccine.vue";
@@ -64,9 +66,14 @@ const routes = [
         component: DashboardFamily
       },
       {
-        path: "/appointment/:id",
+        path: "/appointment",
         name: "appointment-index",
         component: Appointment
+      },
+      {
+        path: "/appointment/create-appointment",
+        name: "appointment-create",
+        component: CreateAppointment
       }
     ]
   },

@@ -26,6 +26,7 @@
     />
     <button
       class="rounded-full p-2 mt-8 mx-auto block border-2 border-black focus:outline-none"
+      @click="onLinkToAddAppointmentPage"
     >
       <img :src="`${require('@/assets/icons/plus.svg')}`" class="w-6 h-6" />
     </button>
@@ -71,17 +72,22 @@ export default {
       event =>
         format(event.dates, "MM/dd/yyyy") === format(new Date(), "MM/dd/yyyy")
     );
+    this.$store.commit("changeSelectedCalendarDate", new Date());
   },
   methods: {
-    onSelectDate: function(day) {
+    onSelectDate: function(date) {
       this.listEvents = this.sampleEvents.filter(
         event =>
           format(event.dates, "MM/dd/yyyy") ===
-          format(new Date(day), "MM/dd/yyyy")
+          format(new Date(date), "MM/dd/yyyy")
       );
-      this.selectedDate = format(new Date(day), "EEEE d MMMM, yyyy", {
+      this.selectedDate = format(new Date(date), "EEEE d MMMM, yyyy", {
         locale: this.locale === "th-TH" ? th : null
       });
+      this.$store.commit("changeSelectedCalendarDate", date);
+    },
+    onLinkToAddAppointmentPage: function() {
+      this.$router.push({ name: "appointment-create" });
     }
   },
   computed: {

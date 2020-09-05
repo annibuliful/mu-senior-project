@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex shadow w-2/12 flex-col h-screen lg:visible md:visible sm-hidden fixed"
+    class="flex shadow flex-col h-screen lg:visible md:visible sm-hidden fixed pr-8"
   >
     <img src="@/assets/people.png" class="ml-auto mr-auto ml-auto mt-8" />
     <div class="flex flex-col h-full ">
@@ -38,7 +38,9 @@
         <router-link
           :to="{ name: 'dashboard-packager' }"
           class="ml-10 pb-4 "
-          :class="[currentPath === '/dashboard/vaccinepackager' ? 'link-active' : '']"
+          :class="[
+            currentPath === '/dashboard/vaccinepackager' ? 'link-active' : ''
+          ]"
         >
           <img class="inline w-8" src="@/assets/icons/packager.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.packager }}</p>
