@@ -8,6 +8,10 @@ import DashboardFamily from "../views/Dashboard/Family.vue";
 import DashboardVaccineList from "../views/Dashboard/VaccineList.vue";
 import VaccineDetails from "../views/Vaccine/VaccineDetails.vue";
 // import VaccineIndex from "../views/Vaccine/Index.vue"
+import Appointment from "../views/Appointment/Index.vue";
+import VaccinePackager from "../views/Dashboard/VaccinePackager.vue";
+import VaccinePackagerDetails from "../views/Packager/VaccinePackagerDetails.vue";
+import RecordVaccineForm from "../views/RecordVaccine.vue";
 
 Vue.use(VueRouter);
 
@@ -40,15 +44,15 @@ const routes = [
         path: "vaccine/details/:id",
         component: VaccineDetails
       },
-      // {
-      //   path: "vaccine",
-      //   name: "dashboard-vaccine",
-      //   component: VaccineIndex,
-      //   children: [
-      //     { path: "/", component: DashboardVaccineList },
-      //     { path: "details/:id", component: VaccineDetails },
-      //   ],
-      // },
+      {
+        path: "vaccinepackager",
+        name: "dashboard-packager",
+        component: VaccinePackager
+      },
+      {
+        path: "vaccinepackager/details/:id",
+        component: VaccinePackagerDetails
+      },
       {
         path: "setting",
         name: "dashboard-setting",
@@ -58,8 +62,18 @@ const routes = [
         path: "family",
         name: "dashboard-family",
         component: DashboardFamily
+      },
+      {
+        path: "/appointment/:id",
+        name: "appointment-index",
+        component: Appointment
       }
     ]
+  },
+  {
+    path: "recordvaccine",
+    name: "record-vaccine",
+    component: RecordVaccineForm
   }
 ];
 
