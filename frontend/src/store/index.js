@@ -29,7 +29,8 @@ export default new Vuex.Store({
     listFamilies: [],
     listDiseases: ["ภูมิคุ้มกันบกพร่อง", "หอบหืด", "HIV"],
     listVaccines: ["ไวรัสตับอักเสบ A", "ไวรัสตับอักเสบ B", "ไวรัสตับอักเสบ C"],
-    selectedVaccineDetails: {}
+    selectedVaccineDetails: {},
+    selectedPackagerDetails:{}
   },
   mutations: {
     changeLanguage(state, type) {
@@ -55,6 +56,13 @@ export default new Vuex.Store({
       state.selectedVaccineDetails = state.locale.vaccines.find(
         x => x.vaccineId === id
       );
+    },
+    getPackagerDetail(state, id) {
+      
+      state.selectedPackagerDetails = state.locale.vaccinePackages.find(
+        x => x.packageId === id
+      );
+      console.log("TEST",state.selectedPackagerDetails )
     }
   },
   actions: {},
