@@ -9,6 +9,7 @@ export default {
   packager: "แพ็กเกจวัคซีนเสริม",
   setting: "ตั้งค่า",
   event: "กิจกรรมที่ต้องทำ",
+  recentActivity: "วันนัดที่กำลังจะถึงเร็วๆนี้",
   welcome: "ยินดีต้อนรับคุณ ",
   language: "ภาษา",
   accountSetting: "ตั้งค่าบัญชี",

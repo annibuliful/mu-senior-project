@@ -1,10 +1,10 @@
 import db from "../db";
 
-export default (
+export default async (
   userId,
   { fullname, birthDate, diseases, receivedVaccines }
 ) => {
-  return db.table("users").update(userId, {
+  return await db.table("users").update(userId, {
     fullname,
     birthDate,
     diseases,
