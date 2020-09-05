@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>{{$store.state.calendarLocale}}</div>
+    <!-- <div>{{$store.state.calendarLocale}}</div> -->
     <div class="search-area mb-3 flex justify-center">
       <input
         class="border border-black mr-2"

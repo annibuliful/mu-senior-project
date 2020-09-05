@@ -37,7 +37,7 @@ export default {
 </script>
 
 vaccinePackages: [ { packageId: "pk0001", packageTitle:
-"วัคซีนแนะนำสำหรับผู้เดินทางไปประเทศออสเตรเรีย", packageSubTitle: "",
+"วัคซีนแนะนำสำหรับผู้เดินทางไปประเทศออสเตรเลีย", packageSubTitle: "",
 vaccineInPackage: [ { vaccineId: "vc0028", vaccineNameMedical: "Cholera",
 vaccineNameNormal: "[ENG]อหิวาตกโรค", shortDes:
 "โดยทั่วไปวัคซีนป้องกันอหิวาตกโรค ไม่มีที่ใช้ในกรณีทั่วไป

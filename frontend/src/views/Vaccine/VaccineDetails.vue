@@ -9,7 +9,7 @@
       <div>{{ vaccineDetails.vaccineNameNormal }}</div>
     </div>
 
-    <div class="border w-10/12 mx-auto p-5 shadow-lg">
+    <div class="border w-10/12 mx-auto p-5 shadow-lg mb-6">
       <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
         {{ localeText.who }}
       </div>
@@ -23,7 +23,7 @@
     >
       {{ localeText.appointmentBtn }}
     </button>
-    <button
+    <button @click="onCardClicked"
       class="bg-blue-500 hover:bg-blue-800 w-8/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-4/12"
     >
       {{ localeText.recordBtn }}
@@ -36,6 +36,14 @@ export default {
     return {
       vaccineDetails: {},
     };
+  },
+    methods: {
+    onCardClicked() {
+      // alert("test clicking card id : " +this.vaccineId)
+      this.$router.push({
+        path: `/dashboard/recordVaccine`
+      });
+    }
   },
   computed: {
     localeText: function() {
