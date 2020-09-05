@@ -9,7 +9,6 @@ import DashboardVaccineList from "../views/Dashboard/VaccineList.vue";
 import VaccineDetails from "../views/Vaccine/VaccineDetails.vue";
 import VaccinePackager from "../views/Dashboard/VaccinePackager.vue";
 import VaccinePackagerDetails from "../views/Packager/VaccinePackagerDetails.vue";
-import VaccineAppointmentForm from "../views/CreateAppointment.vue";
 import RecordVaccineForm from "../views/RecordVaccine.vue";
 
 Vue.use(VueRouter);
@@ -61,10 +60,6 @@ const routes = [
         path: "family",
         name: "dashboard-family",
         component: DashboardFamily,
-      },
-      {
-        path: "appointment",
-        component: VaccineAppointmentForm,
       },
       {
         path: "recordvaccine",
