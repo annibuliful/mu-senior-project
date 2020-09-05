@@ -15,7 +15,7 @@ export default {
   accountSetting: "Account Setting",
   networkMode: {
     offline: "You are Offline now",
-    online: "You are Online now",
+    online: "You are Online now"
   },
   vaccineDetailsPage: {
     title: "Vaccine Description",
@@ -23,10 +23,10 @@ export default {
     recordBtn: "Record Vaccine",
     who: "Who Should Be Vaccinated ",
     vaccineReference:
-      "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)",
+      "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)"
   },
   vaccinePackagerPage: {
-    title: "Vaccine Packager",
+    title: "Vaccine Packager"
   },
   recordVaccinePage: {
     title: "Record Vaccine",
@@ -38,17 +38,17 @@ export default {
     freetext: "Note Messages",
     recordTo: "Record to",
     uploadImage: "Upload an evidence (Incluing The Batch Number)",
-    submitBtn: "Submit",
+    submitBtn: "Submit"
   },
   label: {
     name: "Fullname",
     birthDate: "BirthDate",
     disease: "Congenital disease",
-    vaccine: "Received vaccine",
+    vaccine: "Received vaccine"
   },
   button: {
     add: "add",
-    save: "save",
+    save: "save"
   },
 
   // FOR MOCK UI : Example of vaccine Packager
@@ -63,16 +63,16 @@ export default {
           vaccineNameMedical: "Measles Mumps and Rubella Vaccine: MMR",
           vaccineNameNormal: "Measles Mumps and Rubella",
           shortDes:
-            "-2-dose series at 12–15 months, 4–6 years\n-Dose 2 may be administered as early as 4 weeks after dose 1.\n-Unvaccinated children and adolescents: 2-dose series at least 4 weeks apart\n-The maximum age for use of MMRV is 12 years.",
+            "-2-dose series at 12–15 months, 4–6 years\n-Dose 2 may be administered as early as 4 weeks after dose 1.\n-Unvaccinated children and adolescents: 2-dose series at least 4 weeks apart\n-The maximum age for use of MMRV is 12 years."
         },
         {
           vaccineId: "vc0011",
           vaccineNameMedical: "Hepatitis A",
           vaccineNameNormal: "Hepatitis A",
           shortDes:
-            "-2-dose series (minimum interval: 6 months) beginning at age 12 months\n-Unvaccinated persons through 18 years should complete a 2-dose series (minimum interval: 6 months).\n-Persons who previously received 1 dose at age 12 months or older should receive dose 2 at least 6 months after dose 1.\n-Adolescents 18 years and older may receive the combined HepA and HepB vaccine, Twinrix®, as a 3-dose series (0, 1, and 6 months) or 4-dose series (0, 7, and 21–30 days, followed by a dose at 12 months)",
-        },
-      ],
+            "-2-dose series (minimum interval: 6 months) beginning at age 12 months\n-Unvaccinated persons through 18 years should complete a 2-dose series (minimum interval: 6 months).\n-Persons who previously received 1 dose at age 12 months or older should receive dose 2 at least 6 months after dose 1.\n-Adolescents 18 years and older may receive the combined HepA and HepB vaccine, Twinrix®, as a 3-dose series (0, 1, and 6 months) or 4-dose series (0, 7, and 21–30 days, followed by a dose at 12 months)"
+        }
+      ]
     },
 
     {
@@ -85,16 +85,16 @@ export default {
           vaccineNameMedical: "Dengue vaccine",
           vaccineNameNormal: "Dengue",
           shortDes:
-            "-Dengue is caused by any one of four related viruses transmitted by mosquitoes. Dengue virus is a leading cause of illness and death in the tropics and subtropics. The Dengue Vaccine Work Group reviews data on dengue vaccines and develops policy options for ACIP’s consideration.\n-Use of dengue vaccines in groups at risk for dengue, including people living in dengue endemic areas and for people traveling from non-endemic to endemic areas.",
+            "-Dengue is caused by any one of four related viruses transmitted by mosquitoes. Dengue virus is a leading cause of illness and death in the tropics and subtropics. The Dengue Vaccine Work Group reviews data on dengue vaccines and develops policy options for ACIP’s consideration.\n-Use of dengue vaccines in groups at risk for dengue, including people living in dengue endemic areas and for people traveling from non-endemic to endemic areas."
         },
         {
           vaccineId: "vc0019",
           vaccineNameMedical: "Meningococcal conjugate or MenACWY vaccines",
           vaccineNameNormal: "Meningococcal Conjugated",
           shortDes:
-            "All 11 to 12 year olds should get a MenACWY vaccine, with a booster dose at 16 years old. Teens may also get a MenB vaccine, preferably at 16 through 18 years old.\nWhile any teen may choose to get a MenB vaccine, certain preteens and teens should get it if they:\n-Have a rare type of immune disorder called complement component deficiency\n-Are taking a type of medicine called a complement inhibitor (for example, Soliris® or Ultomiris®)\n-Have a damaged spleen or their spleen has been removed\n-Are part of a population identified to be at increased risk because of a serogroup B meningococcal disease outbreak\na MenACWY vaccine for children who are between 2 months and 10 years old if they:\n-Have a rare type of immune disorder called complement component deficiency\n-Are taking a type of medicine called a complement inhibitor (for example, Soliris® or Ultomiris®)\n-Have a damaged spleen or their spleen has been removed\n-Have HIV\n-Are traveling to or residing in countries in which the disease is common\n-Are part of a population identified to be at increased risk because of a serogroup A, C, W, or Y meningococcal disease outbreak",
-        },
-      ],
-    },
-  ],
+            "All 11 to 12 year olds should get a MenACWY vaccine, with a booster dose at 16 years old. Teens may also get a MenB vaccine, preferably at 16 through 18 years old.\nWhile any teen may choose to get a MenB vaccine, certain preteens and teens should get it if they:\n-Have a rare type of immune disorder called complement component deficiency\n-Are taking a type of medicine called a complement inhibitor (for example, Soliris® or Ultomiris®)\n-Have a damaged spleen or their spleen has been removed\n-Are part of a population identified to be at increased risk because of a serogroup B meningococcal disease outbreak\na MenACWY vaccine for children who are between 2 months and 10 years old if they:\n-Have a rare type of immune disorder called complement component deficiency\n-Are taking a type of medicine called a complement inhibitor (for example, Soliris® or Ultomiris®)\n-Have a damaged spleen or their spleen has been removed\n-Have HIV\n-Are traveling to or residing in countries in which the disease is common\n-Are part of a population identified to be at increased risk because of a serogroup A, C, W, or Y meningococcal disease outbreak"
+        }
+      ]
+    }
+  ]
 };

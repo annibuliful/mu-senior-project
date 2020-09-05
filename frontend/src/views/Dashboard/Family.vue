@@ -153,7 +153,16 @@ export default {
         userId: this.$store.state.userInfo.userId
       };
       await service().family.create(data);
+      this.resetForm();
       this.$store.commit("addNewFamilyMember", data);
+    },
+    resetForm() {
+      this.fullname = "";
+      this.birthDate = new Date();
+      this.inputDisease = "";
+      this.inputVaccine = "";
+      this.selectedDiseases = [];
+      this.selectedVaccines = [];
     }
   }
 };

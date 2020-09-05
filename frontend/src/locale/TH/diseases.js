@@ -1,106 +1,106 @@
 module.exports = [
   {
     diseaseId: "disease001",
-    diseaseName: "วัณโรค",
+    diseaseName: "วัณโรค"
   },
   {
     diseaseId: "disease002",
-    diseaseName: "โรคไวรัสตับอักเสบบี",
+    diseaseName: "โรคไวรัสตับอักเสบบี"
   },
   {
     diseaseId: "disease003",
-    diseaseName: "โรคจากเชื้อฮีโมฟิลุสอินฟลูเอ็นเซ่ชนิดบี หรือ ฮิบ",
+    diseaseName: "โรคจากเชื้อฮีโมฟิลุสอินฟลูเอ็นเซ่ชนิดบี หรือ ฮิบ"
   },
   {
     diseaseId: "disease004",
-    diseaseName: "โรคคอตีบ-บาดทะยัก-ไอกรน",
+    diseaseName: "โรคคอตีบ-บาดทะยัก-ไอกรน"
   },
   {
     diseaseId: "disease005",
-    diseaseName: "โรคคอตีบและบาดทะยัก",
+    diseaseName: "โรคคอตีบและบาดทะยัก"
   },
   {
     diseaseId: "disease006",
-    diseaseName: "คอตีบ-บาดทะยัก-ไอกรน ชนิดทั้งเซลล์-ตับอักเสบบีและฮิบ",
+    diseaseName: "คอตีบ-บาดทะยัก-ไอกรน ชนิดทั้งเซลล์-ตับอักเสบบีและฮิบ"
   },
   {
     diseaseId: "disease007",
-    diseaseName: "โรคโปลิโอ",
+    diseaseName: "โรคโปลิโอ"
   },
   {
     diseaseId: "disease008",
-    diseaseName: "โรคหัด-คางทูม-หัดเยอรมัน",
+    diseaseName: "โรคหัด-คางทูม-หัดเยอรมัน"
   },
   {
     diseaseId: "disease009",
-    diseaseName: "โรคไข้สมองอักเสบชนิดเจอี",
+    diseaseName: "โรคไข้สมองอักเสบชนิดเจอี"
   },
   {
     diseaseId: "disease010",
-    diseaseName: "ไข้หวัดใหญ่",
+    diseaseName: "ไข้หวัดใหญ่"
   },
   {
     diseaseId: "disease011",
-    diseaseName: "ตับอักเสบเอ",
+    diseaseName: "ตับอักเสบเอ"
   },
   {
     diseaseId: "disease012",
-    diseaseName: "อีสุกอีใส",
+    diseaseName: "อีสุกอีใส"
   },
   {
     diseaseId: "disease013",
-    diseaseName: "พิษสุนัขบ้า",
+    diseaseName: "พิษสุนัขบ้า"
   },
   {
     diseaseId: "disease014",
-    diseaseName: "นิวโมคอคคัส ชนิด 23",
+    diseaseName: "นิวโมคอคคัส ชนิด 23"
   },
   {
     diseaseId: "disease015",
-    diseaseName: "นิวโมคอคคัส ชนิด 10",
+    diseaseName: "นิวโมคอคคัส ชนิด 10"
   },
   {
     diseaseId: "disease016",
-    diseaseName: "โรต้า",
+    diseaseName: "โรต้า"
   },
   {
     diseaseId: "disease017",
-    diseaseName: "เอชพีวี",
+    diseaseName: "เอชพีวี"
   },
   {
     diseaseId: "disease018",
-    diseaseName: "โปลิโอ ชนิด InactivatedPoliomyelitis",
+    diseaseName: "โปลิโอ ชนิด InactivatedPoliomyelitis"
   },
   {
     diseaseId: "disease019",
-    diseaseName: "คอตีบ-บาดทะยัก-ไอกรน ชนิดไร้เซลล์",
+    diseaseName: "คอตีบ-บาดทะยัก-ไอกรน ชนิดไร้เซลล์"
   },
   {
     diseaseId: "disease020",
-    diseaseName: "ไข้เลือดออก",
+    diseaseName: "ไข้เลือดออก"
   },
   {
     diseaseId: "disease021",
-    diseaseName: "ไข้กาฬหลังแอ่น ชนิด polysaccharide",
+    diseaseName: "ไข้กาฬหลังแอ่น ชนิด polysaccharide"
   },
   {
     diseaseId: "disease022",
-    diseaseName: "ไข้กาฬหลังแอ่น ชนิด คอนจูเกต",
+    diseaseName: "ไข้กาฬหลังแอ่น ชนิด คอนจูเกต"
   },
   {
     diseaseId: "disease023",
-    diseaseName: "ไข้เหลือง",
+    diseaseName: "ไข้เหลือง"
   },
   {
     diseaseId: "disease024",
-    diseaseName: "วัคซีนป้องกันโรคจากเชื้อ Streptococcus pneumoniae",
+    diseaseName: "วัคซีนป้องกันโรคจากเชื้อ Streptococcus pneumoniae"
   },
   {
     diseaseId: "disease025",
-    diseaseName: "อหิวาตกโรค",
+    diseaseName: "อหิวาตกโรค"
   },
   {
     diseaseId: "disease026",
-    diseaseName: "โรคทัยฟอยด์",
-  },
+    diseaseName: "โรคทัยฟอยด์"
+  }
 ];
