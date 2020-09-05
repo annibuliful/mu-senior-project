@@ -8,6 +8,7 @@ import DashboardFamily from "../views/Dashboard/Family.vue";
 import DashboardVaccineList from "../views/Dashboard/VaccineList.vue";
 import VaccineDetails from "../views/Vaccine/VaccineDetails.vue";
 // import VaccineIndex from "../views/Vaccine/Index.vue"
+import Appointment from "../views/Appointment/Index.vue";
 
 Vue.use(VueRouter);
 
@@ -58,6 +59,11 @@ const routes = [
         path: "family",
         name: "dashboard-family",
         component: DashboardFamily
+      },
+      {
+        path: "/appointment/:id",
+        name: "appointment-index",
+        component: Appointment
       }
     ]
   }

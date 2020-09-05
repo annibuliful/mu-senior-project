@@ -107,10 +107,10 @@ export default {
   },
   computed: {
     listVaccines() {
-      return this.$store.state.listVaccines;
+      return this.$store.state.locale.vaccines.map(el => el.vaccineNameNormal);
     },
     listDiseases() {
-      return this.$store.state.listDiseases;
+      return this.$store.state.locale.diseases.map(el => el.diseaseName);
     },
     listFamilies() {
       return this.$store.state.listFamilies;
