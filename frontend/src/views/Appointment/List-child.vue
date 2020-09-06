@@ -35,7 +35,7 @@ export default {
   created: function() {
     const childId = this.$route.params.id;
     this.childInfo = this.$store.state.listFamilies.find(
-      el => el.userId === childId
+      el => el.familyId === childId
     );
 
     service()

@@ -85,7 +85,7 @@ const routes = [
     ]
   },
   {
-    path: "recordvaccine",
+    path: "/recordvaccine",
     name: "record-vaccine",
     component: RecordVaccineForm
   }

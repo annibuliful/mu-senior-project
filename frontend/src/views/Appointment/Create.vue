@@ -109,7 +109,7 @@ export default {
   },
   methods: {
     submit: async function() {
-      const { userId, fullname } = this.$store.state.listFamilies[
+      const { familyId, fullname } = this.$store.state.listFamilies[
         this.chilIndex
       ];
       const data = {
@@ -120,7 +120,7 @@ export default {
           selectedVaccines: this.selectedVaccines,
           note: this.note,
           childname: fullname,
-          childId: userId,
+          childId: familyId,
           time: this.time
         }
       };
