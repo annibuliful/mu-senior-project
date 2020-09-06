@@ -19,7 +19,7 @@
     </p>
     <AppointmentCard
       v-for="({ customData }, index) in filterEventOnDate"
-      :name="customData.childname"
+      :childname="customData.childname"
       :note="customData.note"
       :time="customData.time"
       :vaccines="customData.selectedVaccines"
