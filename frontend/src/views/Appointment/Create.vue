@@ -15,10 +15,10 @@
         <div class="inline-block relative w-full">
           <select
             class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-            v-model="childname"
+            v-model="chilIndex"
           >
             <option
-              :value="fullname"
+              :value="index"
               v-for="({ fullname }, index) in listFamilies"
               :key="`${index}`"
               >{{ fullname }}</option
@@ -91,12 +91,12 @@
 </template>
 <script>
 import TagInput from "@/components/input/TagInput.vue";
-import service from "@/services/";
+import service from "@/services";
 export default {
   components: { TagInput },
   data: function() {
     return {
-      childname: "",
+      chilIndex: "",
       date: "",
       selectedVaccines: [],
       note: "",
@@ -109,6 +109,9 @@ export default {
   },
   methods: {
     submit: async function() {
+      const { userId, fullname } = this.$store.state.listFamilies[
+        this.chilIndex
+      ];
       const data = {
         dates: this.selectedDate,
         dot: "red",
@@ -116,7 +119,8 @@ export default {
         customData: {
           selectedVaccines: this.selectedVaccines,
           note: this.note,
-          childname: this.childname,
+          childname: fullname,
+          childId: userId,
           time: this.time
         }
       };
