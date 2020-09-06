@@ -3,7 +3,7 @@
     <p class="text-2xl mb-10 border-b-2 border-blue-700">
       {{ welcomeWord }}
     </p>
-    <Calendar />
+    <Calendar :listEvents="listEvents" v-on:on-click="onSelectDate" />
     <br />
     <p class="text-xl mb-10 border-b-2 border-blue-700" v-if="selectedDate">
       {{ selectedDate }}
@@ -11,19 +11,78 @@
     <p class="text-xl mb-10 border-b-2 border-blue-700" v-else>
       {{ recentActivity }}
     </p>
+    <p
+      class="text-xl text-center my-4 text-gray-600"
+      v-if="filterEventOnDate.length === 0"
+    >
+      There is no any event
+    </p>
+    <AppointmentCard
+      v-for="({ customData }, index) in filterEventOnDate"
+      :name="customData.childname"
+      :note="customData.note"
+      :time="customData.time"
+      :vaccines="customData.selectedVaccines"
+      :key="`${index}-${customData.childname}`"
+    />
+    <button
+      class="rounded-full p-2 mt-8 mx-auto block border-2 border-black focus:outline-none"
+      @click="onLinkToAddAppointmentPage"
+    >
+      <img :src="`${require('@/assets/icons/plus.svg')}`" class="w-6 h-6" />
+    </button>
   </div>
 </template>
 <script>
+import { format } from "date-fns";
+import { th } from "date-fns/locale";
 import Calendar from "@/components/Calendar.vue";
-
+import service from "@/services";
+import AppointmentCard from "@/components/AppointmentCard.vue";
 export default {
   data() {
     return {
-      selectedDate: null
+      selectedDate: null,
+      listEvents: [],
+      filterEventOnDate: []
     };
   },
-  components: { Calendar },
+  components: { Calendar, AppointmentCard },
+  created: function() {
+    service()
+      .appointment.list()
+      .then(data => {
+        this.listEvents = data;
+        this.filterEventOnDate = this.listEvents.filter(
+          event =>
+            format(event.dates, "MM/dd/yyyy") ===
+            format(new Date(), "MM/dd/yyyy")
+        );
+      });
+    const result = localStorage.getItem("userInfo");
+    this.$store.commit("setUserInfo", JSON.parse(result));
+    this.$store.commit("changeSelectedCalendarDate", new Date());
+  },
+  methods: {
+    onSelectDate: function(date) {
+      this.filterEventOnDate = this.listEvents.filter(
+        event =>
+          format(event.dates, "MM/dd/yyyy") ===
+          format(new Date(date), "MM/dd/yyyy")
+      );
+      this.selectedDate = format(new Date(date), "EEEE d MMMM, yyyy", {
+        locale: this.locale === "th-TH" ? th : null
+      });
+      this.$store.commit("changeSelectedCalendarDate", date);
+    },
+    onLinkToAddAppointmentPage: function() {
+      this.$router.push({ name: "appointment-create" });
+    }
+  },
   computed: {
+    locale() {
+      return this.$store.state.calendarLocale;
+    },
     recentActivity() {
       return this.$store.state.locale.recentActivity;
     },
