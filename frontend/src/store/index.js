@@ -15,7 +15,7 @@ export default new Vuex.Store({
     listVaccines: ["ไวรัสตับอักเสบ A", "ไวรัสตับอักเสบ B", "ไวรัสตับอักเสบ C"],
     selectedVaccineDetails: {},
     selectedPackagerDetails: {},
-    selectedCalendarDate: null
+    selectedCalendarDate: null || new Date()
   },
   mutations: {
     changeSelectedCalendarDate(state, date) {

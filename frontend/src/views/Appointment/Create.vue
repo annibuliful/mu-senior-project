@@ -1,8 +1,13 @@
 <template>
   <div>
-    <div
-      class="w-full max-w-xl bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-4 ml-auto mr-auto sm:mb-16"
-    >
+    <div class="border-b-2 border-blue-700 mb-4">
+      <img
+        :src="`${require('@/assets/icons/arrow-left.svg')}`"
+        class="w-8 h-8 cursor-pointer mb-2 ml-4 block "
+        @click="$router.go(-1)"
+      />
+    </div>
+    <div class="w-full max-w-xl bg-white px-8 ml-auto mr-auto sm:mb-16">
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2 ">
           {{ label.child }}
@@ -42,6 +47,16 @@
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2 ">
+          {{ label.time }}
+        </label>
+        <input
+          type="time"
+          v-model="time"
+          class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2 ">
           {{ label.vaccineList }}
         </label>
         <TagInput
@@ -50,6 +65,19 @@
           :selectedTags="selectedVaccines"
           v-on:on-enter="onAddNewVaccine"
           v-on:on-remove="onDeleteVaccine"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2 ">
+          {{ label.note }}
+        </label>
+        <textarea
+          class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+          id="name"
+          autocomplete="off"
+          type="text"
+          v-model="note"
+          :placeholder="label.note"
         />
       </div>
       <button
@@ -72,21 +100,28 @@ export default {
       date: "",
       selectedVaccines: [],
       note: "",
-      listChildren: []
+      listChildren: [],
+      time: ""
     };
   },
   created: function() {
-    console.log(service().appointment);
+    this.$store.commit("listFamilies");
   },
   methods: {
-    submit: function() {
+    submit: async function() {
       const data = {
-        childname: this.childname,
-        date: this.selectedDate,
-        selectedVaccines: this.selectedVaccines,
-        note: this.note
+        dates: this.selectedDate,
+        dot: "red",
+        key: this.selectedDate.toString(),
+        customData: {
+          selectedVaccines: this.selectedVaccines,
+          note: this.note,
+          childname: this.childname,
+          time: this.time
+        }
       };
-      console.log(data);
+      await service().appointment.create(data);
+      this.$router.push({ name: "dashboard-index" });
     },
     onAddNewVaccine: function(vaccine) {
       this.selectedVaccines.push(vaccine);
@@ -113,7 +148,7 @@ export default {
     },
     selectedDate: {
       get: function() {
-        return this.$store.state.selectedCalendarDate;
+        return new Date(this.$store.state.selectedCalendarDate);
       },
       set: function(date) {
         this.$store.commit("changeSelectedCalendarDate", date);

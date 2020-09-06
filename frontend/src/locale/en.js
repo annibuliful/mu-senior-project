@@ -51,7 +51,8 @@ export default {
     vaccineList: "list vaccines",
     date: "date",
     time: "time",
-    addAppointment: "add appointment"
+    addAppointment: "add appointment",
+    note: "ข้อมูลเพิ่มเติม"
   },
   button: {
     add: "add",
