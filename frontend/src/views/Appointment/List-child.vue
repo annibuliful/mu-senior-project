@@ -44,7 +44,6 @@ export default {
         this.listEvents = data
           .filter(el => el.customData.childId === Number(childId))
           .map(el => ({ ...el, date: format(el.dates, "dd/MM/yyyy") }));
-        console.log(this.listEvents);
       });
   }
 };

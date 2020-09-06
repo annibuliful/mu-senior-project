@@ -12,7 +12,7 @@
         <div class="text-base ml-5 mb-2">{{ vaccineNameNormal }}</div>
       </div>
       <div class="ml-auto">
-          <img src="../assets/icons/notvaccine.svg" alt="">
+        <img src="../assets/icons/notvaccine.svg" alt="" />
       </div>
     </div>
   </div>
@@ -22,16 +22,16 @@ export default {
   props: {
     vaccineId: {
       type: String,
-      required: true,
+      required: true
     },
     vaccineMedicalName: {
       type: String,
-      required: true,
+      required: true
     },
     vaccineNameNormal: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     // onCardClicked() {
@@ -39,7 +39,7 @@ export default {
     //     path: `/dashboard/vaccine/details/${this.vaccineId}`
     //   });
     // }
-  },
+  }
 };
 </script>
 

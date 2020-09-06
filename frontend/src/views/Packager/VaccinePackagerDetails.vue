@@ -5,7 +5,8 @@
     </div>
 
     <div v-for="item in listOfVaccineInPackage" :key="item.vaccineId">
-      <VaccineStatusCard class="mb-4"
+      <VaccineStatusCard
+        class="mb-4"
         :vaccineId="item.vaccineId"
         :vaccineMedicalName="item.vaccineMedicalName"
         :vaccineNameNormal="item.vaccineNameNormal"
@@ -18,12 +19,12 @@
 import VaccineStatusCard from "../../components/VaccineStatusCard";
 export default {
   components: {
-    VaccineStatusCard,
+    VaccineStatusCard
   },
   data() {
     return {
       packagerDetails: {},
-      listOfVaccineInPackage: [],
+      listOfVaccineInPackage: []
     };
   },
 
@@ -32,7 +33,7 @@ export default {
     this.packagerDetails = this.$store.state.selectedPackagerDetails;
     this.listOfVaccineInPackage = this.packagerDetails.vaccineInPackage;
     // console.log("in pack",this.packagerDetails.vaccineInPackage)
-  },
+  }
 };
 </script>
 

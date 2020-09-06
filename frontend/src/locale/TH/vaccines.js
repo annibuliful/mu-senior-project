@@ -11,7 +11,7 @@ module.exports = [
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac002",
@@ -19,55 +19,55 @@ module.exports = [
     vaccineMedicalName: "HBV",
     vaccineNameNormal: "วัคซีนป้องกันโรคไวรัสตับอักเสบบี",
     protectDisease: ["disease002"],
-    injectionPeriodTime: [0,30,150],
+    injectionPeriodTime: [0, 30, 150],
     doseNumber: 3,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac003",
     category: "children",
     vaccineMedicalName: "DTwP",
     vaccineNameNormal: "วัคซีนรวม คอตีบ-บาดทะยัก-ไอกรน ชนิดทั้งเซลล์",
-    protectDisease: ["disease004","disease005","disease006"],
-    injectionPeriodTime: [60,60,60,270,1095],
+    protectDisease: ["disease004", "disease005", "disease006"],
+    injectionPeriodTime: [60, 60, 60, 270, 1095],
     doseNumber: 5,
     replaceableWith: ["vac004"],
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac004",
     category: "children",
     vaccineMedicalName: "DTaP",
     vaccineNameNormal: "วัคซีนรวมคอตีบ-บาดทะยัก-ไอกรน ชนิดไร้เซลล์",
-    protectDisease: ["disease004","disease005","disease006"],
-    injectionPeriodTime: [60,60,60,270,1095],
+    protectDisease: ["disease004", "disease005", "disease006"],
+    injectionPeriodTime: [60, 60, 60, 270, 1095],
     doseNumber: 5,
     replaceableWith: ["vac003"],
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac005",
     category: "children",
     vaccineMedicalName: "Td",
     vaccineNameNormal: "วัคซีนรวมคอตีบ-บาดทะยัก สำหรับผู้ใหญ่",
-    protectDisease: ["disease004","disease005"],
+    protectDisease: ["disease004", "disease005"],
     injectionPeriodTime: [4380],
     doseNumber: 1,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac006",
@@ -75,14 +75,14 @@ module.exports = [
     vaccineMedicalName: "Tdap",
     vaccineNameNormal:
       "วัคซีนรวมคอตีบ-บาดทะยัก-ไอกรน ชนิดไร้เซลล์สำหรับผู้ใหญ่",
-    protectDisease: ["disease004","disease005","disease006"],
+    protectDisease: ["disease004", "disease005", "disease006"],
     injectionPeriodTime: [1460],
     doseNumber: 1,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac007",
@@ -90,13 +90,13 @@ module.exports = [
     vaccineMedicalName: "Hib",
     vaccineNameNormal: "วัคซีนโรคจากเชื้อฮีโมฟิลุสอินฟลูเอนเซ่ทัยป์บี หรือฮิบ",
     protectDisease: ["disease003"],
-    injectionPeriodTime: [60,60,60,360],
+    injectionPeriodTime: [60, 60, 60, 360],
     doseNumber: 4,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac008",
@@ -104,13 +104,13 @@ module.exports = [
     vaccineMedicalName: "OPV",
     vaccineNameNormal: "วัคซีนป้องกันโรคโปลิโอ (รับประทาน)",
     protectDisease: ["disease007"],
-    injectionPeriodTime: [60,60,60,360,1095],
+    injectionPeriodTime: [60, 60, 60, 360, 1095],
     doseNumber: 5,
     replaceableWith: ["vac009"],
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac009",
@@ -118,42 +118,41 @@ module.exports = [
     vaccineMedicalName: "IPV",
     vaccineNameNormal: "วัคซีนโปลิโอ ชนิดที่ทำจากเชื้อที่ตายแล้ว (ฉีด)",
     protectDisease: ["disease007"],
-    injectionPeriodTime: [60,60,60,360,1095],
+    injectionPeriodTime: [60, 60, 60, 360, 1095],
     doseNumber: 5,
     replaceableWith: ["vac008"],
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac010",
     category: "children",
     vaccineMedicalName: "MMR",
     vaccineNameNormal: "วัคซีนรวมหัด-คางทูม-หัดเยอรมัน",
-    protectDisease: ["disease008","disease009","disease010"],
-    injectionPeriodTime: [270,1190],
+    protectDisease: ["disease008", "disease009", "disease010"],
+    injectionPeriodTime: [270, 1190],
     doseNumber: 2,
     replaceableWith: ["vac011"],
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac011",
     category: "children",
     vaccineMedicalName: "MMRV",
     vaccineNameNormal: "วัคซีนรวมหัด-คางทูม-หัดเยอรมัน-อีสุกอีใส",
-    protectDisease:
-      ["disease008","disease009","disease010","disease014"],
-    injectionPeriodTime: [365,365],
+    protectDisease: ["disease008", "disease009", "disease010", "disease014"],
+    injectionPeriodTime: [365, 365],
     doseNumber: 1,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac012",
@@ -161,13 +160,13 @@ module.exports = [
     vaccineMedicalName: "JEVAC",
     vaccineNameNormal: "วัคซีนไข้สมองอักเสบเจอี",
     protectDisease: ["disease011"],
-    injectionPeriodTime: [180,30,365],
+    injectionPeriodTime: [180, 30, 365],
     doseNumber: 3,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac013",
@@ -175,13 +174,13 @@ module.exports = [
     vaccineMedicalName: "CD-JEVAC",
     vaccineNameNormal: "วัคซีนไข้สมองอักเสบเจอี ",
     protectDisease: ["disease011"],
-    injectionPeriodTime: [270,90],
+    injectionPeriodTime: [270, 90],
     doseNumber: 2,
     replaceableWith: ["vac014"],
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac014",
@@ -189,13 +188,13 @@ module.exports = [
     vaccineMedicalName: "IMOJEV",
     vaccineNameNormal: "วัคซีนไข้สมองอักเสบเจอี",
     protectDisease: ["disease011"],
-    injectionPeriodTime: [270,365],
+    injectionPeriodTime: [270, 365],
     doseNumber: 2,
     replaceableWith: ["vac013"],
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac015",
@@ -203,13 +202,13 @@ module.exports = [
     vaccineMedicalName: "Influenza",
     vaccineNameNormal: "วัคซีนป้องกันไข้หวัดใหญ่",
     protectDisease: ["disease012"],
-    injectionPeriodTime: [180,"annually"],
+    injectionPeriodTime: [180, "annually"],
     doseNumber: 1,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac016",
@@ -217,13 +216,13 @@ module.exports = [
     vaccineMedicalName: "HPV",
     vaccineNameNormal: "วัคซีนป้องกันเอชพีวี",
     protectDisease: ["disease017"],
-    injectionPeriodTime: [4015,4045,4165],
+    injectionPeriodTime: [4015, 4045, 4165],
     doseNumber: 3,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac017",
@@ -231,13 +230,13 @@ module.exports = [
     vaccineMedicalName: "PCV13",
     vaccineNameNormal: "วัคซีนโรคจากเชื้อนิวโมคอคคัส ชนิดคอนจูเกต 13 สายพันธุ์",
     protectDisease: ["disease023"],
-    injectionPeriodTime: [60,60,60,180],
+    injectionPeriodTime: [60, 60, 60, 180],
     doseNumber: 4,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac018",
@@ -246,13 +245,13 @@ module.exports = [
     vaccineNameNormal:
       "วัคซีนโรคจากเชื้อนิวโมคอคคัส ชนิดโพลีแซคคาไรด์ 23 สายพันธุ์",
     protectDisease: ["disease023"],
-    injectionPeriodTime: [730,1825],
+    injectionPeriodTime: [730, 1825],
     doseNumber: 2,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac019",
@@ -260,13 +259,13 @@ module.exports = [
     vaccineMedicalName: "Rota",
     vaccineNameNormal: "วัคซีนโรคอุจจาระร่วงจากเชื้อไวรัสโรต้า",
     protectDisease: ["disease016"],
-    injectionPeriodTime: [60,60,60],
+    injectionPeriodTime: [60, 60, 60],
     doseNumber: 3,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac020",
@@ -274,13 +273,13 @@ module.exports = [
     vaccineMedicalName: "HAV",
     vaccineNameNormal: "วัคซีนไวรัสตับอักเสบ เอ",
     protectDisease: ["disease013"],
-    injectionPeriodTime: [365,180],
+    injectionPeriodTime: [365, 180],
     doseNumber: 2,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
   },
   {
     vaccineId: "vac021",
@@ -288,12 +287,12 @@ module.exports = [
     vaccineMedicalName: "VAR",
     vaccineNameNormal: "วัคซีนป้องกันโรคอีสุกอีใส",
     protectDisease: ["disease014"],
-    injectionPeriodTime: [365,1095],
+    injectionPeriodTime: [365, 1095],
     doseNumber: 2,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
     displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>",
-  },
+      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+  }
 ];

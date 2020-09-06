@@ -1,114 +1,114 @@
 module.exports = [
   {
     diseaseId: "disease001",
-    diseaseName: "Tuberculosis",
+    diseaseName: "Tuberculosis"
   },
   {
     diseaseId: "disease002",
-    diseaseName: "Hepatitis B",
+    diseaseName: "Hepatitis B"
   },
   {
     diseaseId: "disease003",
-    diseaseName: "Haemophilus influenzae type b: Hib",
+    diseaseName: "Haemophilus influenzae type b: Hib"
   },
   {
     diseaseId: "disease004",
-    diseaseName: "Diphtheria",
+    diseaseName: "Diphtheria"
   },
   {
     diseaseId: "disease005",
-    diseaseName: "Tetanus",
+    diseaseName: "Tetanus"
   },
   {
     diseaseId: "disease006",
-    diseaseName: "Pertussis",
+    diseaseName: "Pertussis"
   },
   {
     diseaseId: "disease007",
-    diseaseName: "Poliomyelitis",
+    diseaseName: "Poliomyelitis"
   },
   {
     diseaseId: "disease008",
-    diseaseName: "Measles ",
+    diseaseName: "Measles "
   },
   {
     diseaseId: "disease009",
-    diseaseName: "Mumps ",
+    diseaseName: "Mumps "
   },
   {
     diseaseId: "disease010",
-    diseaseName: "Rubella",
+    diseaseName: "Rubella"
   },
   {
     diseaseId: "disease011",
-    diseaseName: "Japanese Encephalitis",
+    diseaseName: "Japanese Encephalitis"
   },
   {
     diseaseId: "disease012",
-    diseaseName: "Influenza",
+    diseaseName: "Influenza"
   },
   {
     diseaseId: "disease013",
-    diseaseName: "Hepatitis A",
+    diseaseName: "Hepatitis A"
   },
   {
     diseaseId: "disease014",
-    diseaseName: "Varicella-zoster",
+    diseaseName: "Varicella-zoster"
   },
   {
     diseaseId: "disease015",
-    diseaseName: "Rabies",
+    diseaseName: "Rabies"
   },
   {
     diseaseId: "disease016",
-    diseaseName: "Rotavirus",
+    diseaseName: "Rotavirus"
   },
   {
     diseaseId: "disease017",
-    diseaseName: "Human Papillomavirus",
+    diseaseName: "Human Papillomavirus"
   },
   {
     diseaseId: "disease018",
-    diseaseName: "Inactivated Poliomyelitis",
+    diseaseName: "Inactivated Poliomyelitis"
   },
   {
     diseaseId: "disease019",
-    diseaseName: "Dengue",
+    diseaseName: "Dengue"
   },
   {
     diseaseId: "disease020",
-    diseaseName: "Neisseria meningitidis",
+    diseaseName: "Neisseria meningitidis"
   },
   {
     diseaseId: "disease021",
-    diseaseName: "Meningococcal Conjugate",
+    diseaseName: "Meningococcal Conjugate"
   },
   {
     diseaseId: "disease022",
-    diseaseName: "Yellow fever",
+    diseaseName: "Yellow fever"
   },
   {
     diseaseId: "disease023",
-    diseaseName: "Pneumococcal",
+    diseaseName: "Pneumococcal"
   },
   {
     diseaseId: "disease024",
-    diseaseName: "Cholera",
+    diseaseName: "Cholera"
   },
   {
     diseaseId: "disease025",
-    diseaseName: "Typhoid",
+    diseaseName: "Typhoid"
   },
   {
     diseaseId: "disease026",
-    diseaseName: "Immunodeficiency",
+    diseaseName: "Immunodeficiency"
   },
   {
     diseaseId: "disease027",
-    diseaseName: "HIV",
+    diseaseName: "HIV"
   },
   {
     diseaseId: "disease028",
-    diseaseName: "Yeast allergy",
-  },
+    diseaseName: "Yeast allergy"
+  }
 ];

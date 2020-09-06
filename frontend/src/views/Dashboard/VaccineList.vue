@@ -49,7 +49,14 @@ export default {
   methods: {
     vaccineFilter(inputSearchQuery) {
       const filteredVaccineList = this.vaccineList.filter(vcObj => {
-        return vcObj.vaccineMedicalName.toLowerCase().includes(inputSearchQuery.toLowerCase()) || vcObj.vaccineNameNormal.toLowerCase().includes(inputSearchQuery.toLowerCase()) ;
+        return (
+          vcObj.vaccineMedicalName
+            .toLowerCase()
+            .includes(inputSearchQuery.toLowerCase()) ||
+          vcObj.vaccineNameNormal
+            .toLowerCase()
+            .includes(inputSearchQuery.toLowerCase())
+        );
       });
       this.displayVaccineList = filteredVaccineList;
     },
