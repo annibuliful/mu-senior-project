@@ -8,7 +8,7 @@
       class="card-container bg-red-500 xl:border-2 mx-auto xl:w-2/3 p-1 flex"
     >
       <div class="flex-col w-9/12">
-        <div class="text-xl ml-5">{{ vaccineNameMedical }}</div>
+        <div class="text-xl ml-5">{{ vaccineMedicalName }}</div>
         <div class="text-base ml-5 mb-2">{{ vaccineNameNormal }}</div>
       </div>
       <div class="ml-auto">
@@ -24,7 +24,7 @@ export default {
       type: String,
       required: true,
     },
-    vaccineNameMedical: {
+    vaccineMedicalName: {
       type: String,
       required: true,
     },

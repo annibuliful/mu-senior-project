@@ -5,7 +5,7 @@
     </div>
 
     <div class="vaccine-title-area text-center mb-4 text-lg lg:text-xl">
-      <div>{{ vaccineDetails.vaccineNameMedical }}</div>
+      <div>{{ vaccineDetails.vaccineMedicalName }}</div>
       <div>{{ vaccineDetails.vaccineNameNormal }}</div>
     </div>
 

@@ -18,7 +18,7 @@
     <div v-for="item in displayVaccineList" :key="item.vaccineId">
       <VaccineCard
         :vaccineId="item.vaccineId"
-        :vaccineNameMedical="item.vaccineNameMedical"
+        :vaccineMedicalName="item.vaccineMedicalName"
         :vaccineNameNormal="item.vaccineNameNormal"
         :shortDes="item.shortDes"
       ></VaccineCard>
@@ -49,7 +49,7 @@ export default {
   methods: {
     vaccineFilter(inputSearchQuery) {
       const filteredVaccineList = this.vaccineList.filter(vcObj => {
-        return vcObj.vaccineNameMedical.toLowerCase().includes(inputSearchQuery.toLowerCase()) || vcObj.vaccineNameNormal.toLowerCase().includes(inputSearchQuery.toLowerCase()) ;
+        return vcObj.vaccineMedicalName.toLowerCase().includes(inputSearchQuery.toLowerCase()) || vcObj.vaccineNameNormal.toLowerCase().includes(inputSearchQuery.toLowerCase()) ;
       });
       this.displayVaccineList = filteredVaccineList;
     },
