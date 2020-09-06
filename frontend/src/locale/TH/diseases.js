@@ -5,7 +5,7 @@ module.exports = [
   },
   {
     diseaseId: "disease002",
-    diseaseName: "โรคไวรัสตับอักเสบบี"
+    diseaseName: "ไวรัสตับอักเสบบี"
   },
   {
     diseaseId: "disease003",
@@ -13,15 +13,15 @@ module.exports = [
   },
   {
     diseaseId: "disease004",
-    diseaseName: "โรคคอตีบ-บาดทะยัก-ไอกรน"
+    diseaseName: "คอตีบ"
   },
   {
     diseaseId: "disease005",
-    diseaseName: "โรคคอตีบและบาดทะยัก"
+    diseaseName: "บาดทะยัก"
   },
   {
     diseaseId: "disease006",
-    diseaseName: "คอตีบ-บาดทะยัก-ไอกรน ชนิดทั้งเซลล์-ตับอักเสบบีและฮิบ"
+    diseaseName: "ไอกรน"
   },
   {
     diseaseId: "disease007",
@@ -29,35 +29,35 @@ module.exports = [
   },
   {
     diseaseId: "disease008",
-    diseaseName: "โรคหัด-คางทูม-หัดเยอรมัน"
+    diseaseName: "หัด"
   },
   {
     diseaseId: "disease009",
-    diseaseName: "โรคไข้สมองอักเสบชนิดเจอี"
+    diseaseName: "คางทูม"
   },
   {
     diseaseId: "disease010",
-    diseaseName: "ไข้หวัดใหญ่"
+    diseaseName: "หัดเยอรมัน"
   },
   {
     diseaseId: "disease011",
-    diseaseName: "ตับอักเสบเอ"
+    diseaseName: "ไข้สมองอักเสบชนิดเจอี"
   },
   {
     diseaseId: "disease012",
-    diseaseName: "อีสุกอีใส"
+    diseaseName: "ไข้หวัดใหญ่"
   },
   {
     diseaseId: "disease013",
-    diseaseName: "พิษสุนัขบ้า"
+    diseaseName: "ตับอักเสบเอ"
   },
   {
     diseaseId: "disease014",
-    diseaseName: "นิวโมคอคคัส ชนิด 23"
+    diseaseName: "อีสุกอีใส"
   },
   {
     diseaseId: "disease015",
-    diseaseName: "นิวโมคอคคัส ชนิด 10"
+    diseaseName: "พิษสุนัขบ้า"
   },
   {
     diseaseId: "disease016",
@@ -73,34 +73,42 @@ module.exports = [
   },
   {
     diseaseId: "disease019",
-    diseaseName: "คอตีบ-บาดทะยัก-ไอกรน ชนิดไร้เซลล์"
-  },
-  {
-    diseaseId: "disease020",
     diseaseName: "ไข้เลือดออก"
   },
   {
-    diseaseId: "disease021",
+    diseaseId: "disease020",
     diseaseName: "ไข้กาฬหลังแอ่น ชนิด polysaccharide"
   },
   {
-    diseaseId: "disease022",
+    diseaseId: "disease021",
     diseaseName: "ไข้กาฬหลังแอ่น ชนิด คอนจูเกต"
   },
   {
-    diseaseId: "disease023",
+    diseaseId: "disease022",
     diseaseName: "ไข้เหลือง"
   },
   {
-    diseaseId: "disease024",
-    diseaseName: "วัคซีนป้องกันโรคจากเชื้อ Streptococcus pneumoniae"
+    diseaseId: "disease023",
+    diseaseName: "โรคจากเชื้อ Streptococcus pneumoniae"
   },
   {
-    diseaseId: "disease025",
+    diseaseId: "disease024",
     diseaseName: "อหิวาตกโรค"
   },
   {
-    diseaseId: "disease026",
+    diseaseId: "disease025",
     diseaseName: "โรคทัยฟอยด์"
+  },
+  {
+    diseaseId: "disease026",
+    diseaseName: "ภูมิคุ้มกันบกพร่อง"
+  },
+  {
+    diseaseId: "disease027",
+    diseaseName: "ติดเชื้อเอชไอวี"
+  },
+  {
+    diseaseId: "disease028",
+    diseaseName: "แพ้ยีสต์"
   }
 ];

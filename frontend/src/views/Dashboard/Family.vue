@@ -70,14 +70,20 @@
     </div>
     <div class="mt-4 w-full sm:mb-20 lg:mb-4">
       <div class="flex flex-wrap">
-        <FamilyCard
-          class="card"
-          :name="family.fullname"
-          :birthDate="family.birthDate"
-          :diseases="family.diseases"
+        <router-link
+          :to="{
+            name: 'appointment-child-list',
+            params: { id: family.familyId }
+          }"
           v-for="(family, index) in listFamilies"
           :key="`${family.fullname}-${index}`"
-        />
+          ><FamilyCard
+            class="card"
+            :name="family.fullname"
+            :birthDate="family.birthDate"
+            :diseases="family.diseases"
+          />
+        </router-link>
       </div>
     </div>
   </div>
@@ -155,6 +161,7 @@ export default {
       await service().family.create(data);
       this.resetForm();
       this.$store.commit("addNewFamilyMember", data);
+      this.onOpenAddFamilyForm();
     },
     resetForm() {
       this.fullname = "";

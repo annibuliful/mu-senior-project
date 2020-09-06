@@ -16,14 +16,14 @@ export default {
       type: String,
       required: true
     },
-     packageTitle: {
+    packageTitle: {
       type: String,
       required: true
     },
     packageSubTitle: {
       type: String,
       required: false
-    },
+    }
   },
   methods: {
     onCardClicked() {

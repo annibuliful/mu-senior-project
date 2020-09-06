@@ -2,10 +2,12 @@ import Vue from "vue";
 import Vuex from "vuex";
 import locale from "../locale";
 import services from "@/services";
+import constrainDisease from "./constrainDisease";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    constrainDisease: constrainDisease,
     networkMode: "online",
     calendarLocale: "en-US",
     locale: locale["en-US"],

@@ -1,20 +1,31 @@
 <template>
-  <div class="lg:rounded overflow-hidden border-b">
-    <div class="px-4 flex justify-between mb-2 items-center">
-      <div>
-        <p class="text-md">{{ childname }}</p>
-        <!-- <p class="text-xs">{{ childname }}</p> -->
-        <p class="text-sm text-gray-600">{{ note }}</p>
-        <ul>
-          <li v-for="value in vaccines" :key="value" class="text-xs">
-            - {{ value }}
-          </li>
-        </ul>
-      </div>
-      <div>
-        <span class="text-xs text-gray-600 font-normal ">
+  <div class="border-b">
+    <div class="overflow-hidden block mx-auto w-full lg:w-4/5">
+      <div class="px-4 flex mb-2 items-center">
+        <div
+          class="w-2 h-2 p-2 bg-blue-600 rounded-full mr-16"
+          v-if="color === 'default'"
+        ></div>
+        <div
+          class="w-2 h-2 p-2 bg-blue-600 rounded-full mr-16"
+          v-if="color === 'warning'"
+        ></div>
+        <div
+          class="w-2 h-2 p-2 bg-blue-600 rounded-full mr-16"
+          v-if="color === 'complete'"
+        ></div>
+        <div style="width: 80%">
+          <p class="text-md">{{ childname }}</p>
+          <p class="text-sm text-gray-600">{{ note }}</p>
+          <ul>
+            <li v-for="value in vaccines" :key="value" class="text-xs">
+              - {{ value }}
+            </li>
+          </ul>
+        </div>
+        <div class="text-xs text-gray-600 font-normal text-right w-auto">
           {{ time }}
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -26,6 +37,13 @@ export default {
       type: Array,
       default: function() {
         return [];
+      }
+    },
+    color: {
+      type: String,
+      default: "default",
+      validator: function(val) {
+        return ["default", "warning", "complete"].includes(val);
       }
     },
     note: {

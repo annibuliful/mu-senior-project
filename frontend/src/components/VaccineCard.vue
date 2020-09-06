@@ -4,7 +4,7 @@
       class="card-container border-b-2 border-gray-600 xl:border-2 hover:border-gray-200 cursor-pointer"
       @click="onCardClicked"
     >
-      <div class="text-2xl ml-5">{{ vaccineNameMedical }}</div>
+      <div class="text-2xl ml-5">{{ vaccineMedicalName }}</div>
       <div class="text-base ml-5 mb-2">{{ vaccineNameNormal }}</div>
     </div>
   </div>
@@ -16,7 +16,7 @@ export default {
       type: String,
       required: true
     },
-    vaccineNameMedical: {
+    vaccineMedicalName: {
       type: String,
       required: true
     },

@@ -14,8 +14,8 @@
       :class="{ 'autocomplete-list-active': isShowSuggestionList }"
     >
       <div
-        v-for="tag in suggestTag"
-        :key="tag"
+        v-for="(tag, index) in suggestTag"
+        :key="`${index}-${tag}`"
         class="hover:bg-blue-400 hover:text-white border-l border-r border-b"
         @click="onClickSelectTag(tag)"
       >

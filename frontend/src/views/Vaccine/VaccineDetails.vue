@@ -5,7 +5,7 @@
     </div>
 
     <div class="vaccine-title-area text-center mb-4 text-lg lg:text-xl">
-      <div>{{ vaccineDetails.vaccineNameMedical }}</div>
+      <div>{{ vaccineDetails.vaccineMedicalName }}</div>
       <div>{{ vaccineDetails.vaccineNameNormal }}</div>
     </div>
 
@@ -23,7 +23,8 @@
     >
       {{ localeText.appointmentBtn }}
     </button>
-    <button @click="onCardClicked"
+    <button
+      @click="onCardClicked"
       class="bg-blue-500 hover:bg-blue-800 w-8/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-4/12"
     >
       {{ localeText.recordBtn }}
@@ -34,10 +35,10 @@
 export default {
   data() {
     return {
-      vaccineDetails: {},
+      vaccineDetails: {}
     };
   },
-    methods: {
+  methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
@@ -48,11 +49,11 @@ export default {
   computed: {
     localeText: function() {
       return this.$store.state.locale.vaccineDetailsPage;
-    },
+    }
   },
   created() {
     this.$store.commit("getVaccineDetail", this.$route.params.id);
     this.vaccineDetails = this.$store.state.selectedVaccineDetails;
-  },
+  }
 };
 </script>

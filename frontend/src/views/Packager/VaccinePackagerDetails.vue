@@ -5,9 +5,10 @@
     </div>
 
     <div v-for="item in listOfVaccineInPackage" :key="item.vaccineId">
-      <VaccineStatusCard class="mb-4"
+      <VaccineStatusCard
+        class="mb-4"
         :vaccineId="item.vaccineId"
-        :vaccineNameMedical="item.vaccineNameMedical"
+        :vaccineMedicalName="item.vaccineMedicalName"
         :vaccineNameNormal="item.vaccineNameNormal"
       ></VaccineStatusCard>
     </div>
@@ -18,12 +19,12 @@
 import VaccineStatusCard from "../../components/VaccineStatusCard";
 export default {
   components: {
-    VaccineStatusCard,
+    VaccineStatusCard
   },
   data() {
     return {
       packagerDetails: {},
-      listOfVaccineInPackage: [],
+      listOfVaccineInPackage: []
     };
   },
 
@@ -32,13 +33,13 @@ export default {
     this.packagerDetails = this.$store.state.selectedPackagerDetails;
     this.listOfVaccineInPackage = this.packagerDetails.vaccineInPackage;
     // console.log("in pack",this.packagerDetails.vaccineInPackage)
-  },
+  }
 };
 </script>
 
 vaccinePackages: [ { packageId: "pk0001", packageTitle:
 "วัคซีนแนะนำสำหรับผู้เดินทางไปประเทศออสเตรเลีย", packageSubTitle: "",
-vaccineInPackage: [ { vaccineId: "vc0028", vaccineNameMedical: "Cholera",
+vaccineInPackage: [ { vaccineId: "vc0028", vaccineMedicalName: "Cholera",
 vaccineNameNormal: "[ENG]อหิวาตกโรค", shortDes:
 "โดยทั่วไปวัคซีนป้องกันอหิวาตกโรค ไม่มีที่ใช้ในกรณีทั่วไป
 การเดินทางไปในพื้นที่ที่มีโรคนี้เป็น โรคประจําถิ่น
@@ -52,7 +53,7 @@ vaccineNameNormal: "[ENG]อหิวาตกโรค", shortDes:
 ให้พิจารณาใช้วัคซีนอหิวาตกโรคชนิดรับประทานเพื่อการป้องกันและควบคุมอหิวาตกโรค
 ในพื้นที่ที่เกิด
 การระบาดหรือเป็นโรคประจําถิ่นควบคู่ไปกับมาตรการป้องกันควบคุมโรคอื่นๆ", }, {
-vaccineId: "vc0029", vaccineNameMedical: "Typhoid", vaccineNameNormal:
+vaccineId: "vc0029", vaccineMedicalName: "Typhoid", vaccineNameNormal:
 "[ENG]โรคทัยฟอยด์", shortDes: "เนื่องจากโรคนี้พบน้อยลงมากในประเทศไทย
 รวมทั้งประสิทธิภาพของวัคซีนมีจํากัดและป้องกัน
 ได้ระยะสั้นจึงไม่แนะนําให้ในเด็กปกติทั่วๆ ไป แต่แนะนําให้เฉพาะผู้ที่มีความเสี่ยง

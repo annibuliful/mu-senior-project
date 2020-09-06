@@ -13,16 +13,15 @@ module.exports = [
   },
   {
     diseaseId: "disease004",
-    diseaseName: "Diphtheria-Tetanus-Pertussis"
+    diseaseName: "Diphtheria"
   },
   {
     diseaseId: "disease005",
-    diseaseName: "Diphtheria and Tetanus toxoids combined"
+    diseaseName: "Tetanus"
   },
   {
     diseaseId: "disease006",
-    diseaseName:
-      "Diphtheria,Tetanus toxoids, Pertussis,Hepatitis B and Haemophilus influenza type b \ncombined: DTwP-HBV-Hib"
+    diseaseName: "Pertussis"
   },
   {
     diseaseId: "disease007",
@@ -30,35 +29,35 @@ module.exports = [
   },
   {
     diseaseId: "disease008",
-    diseaseName: "Measles Mumps and Rubella"
+    diseaseName: "Measles "
   },
   {
     diseaseId: "disease009",
-    diseaseName: "Japanese Encephalitis"
+    diseaseName: "Mumps "
   },
   {
     diseaseId: "disease010",
-    diseaseName: "Influenza vaccine"
+    diseaseName: "Rubella"
   },
   {
     diseaseId: "disease011",
-    diseaseName: "Hepatitis A"
+    diseaseName: "Japanese Encephalitis"
   },
   {
     diseaseId: "disease012",
-    diseaseName: "Varicella-zoster"
+    diseaseName: "Influenza"
   },
   {
     diseaseId: "disease013",
-    diseaseName: "Rabies"
+    diseaseName: "Hepatitis A"
   },
   {
     diseaseId: "disease014",
-    diseaseName: "Streptococcus pneumoniae 23 - valent polysaccharide"
+    diseaseName: "Varicella-zoster"
   },
   {
     diseaseId: "disease015",
-    diseaseName: "Streptococcus pneumoniae 10 - valent conjugate"
+    diseaseName: "Rabies"
   },
   {
     diseaseId: "disease016",
@@ -74,34 +73,42 @@ module.exports = [
   },
   {
     diseaseId: "disease019",
-    diseaseName: "Diphtheria -Tetanus - acellular Pertussis combined"
-  },
-  {
-    diseaseId: "disease020",
     diseaseName: "Dengue"
   },
   {
-    diseaseId: "disease021",
+    diseaseId: "disease020",
     diseaseName: "Neisseria meningitidis"
   },
   {
-    diseaseId: "disease022",
+    diseaseId: "disease021",
     diseaseName: "Meningococcal Conjugate"
   },
   {
-    diseaseId: "disease023",
+    diseaseId: "disease022",
     diseaseName: "Yellow fever"
   },
   {
-    diseaseId: "disease024",
+    diseaseId: "disease023",
     diseaseName: "Pneumococcal"
   },
   {
-    diseaseId: "disease025",
+    diseaseId: "disease024",
     diseaseName: "Cholera"
   },
   {
-    diseaseId: "disease026",
+    diseaseId: "disease025",
     diseaseName: "Typhoid"
+  },
+  {
+    diseaseId: "disease026",
+    diseaseName: "Immunodeficiency"
+  },
+  {
+    diseaseId: "disease027",
+    diseaseName: "HIV"
+  },
+  {
+    diseaseId: "disease028",
+    diseaseName: "Yeast allergy"
   }
 ];
