@@ -1,107 +1,114 @@
 module.exports = [
   {
     diseaseId: "disease001",
-    diseaseName: "Tuberculosis"
+    diseaseName: "Tuberculosis",
   },
   {
     diseaseId: "disease002",
-    diseaseName: "Hepatitis B"
+    diseaseName: "Hepatitis B",
   },
   {
     diseaseId: "disease003",
-    diseaseName: "Haemophilus influenzae type b: Hib"
+    diseaseName: "Haemophilus influenzae type b: Hib",
   },
   {
     diseaseId: "disease004",
-    diseaseName: "Diphtheria-Tetanus-Pertussis"
+    diseaseName: "Diphtheria",
   },
   {
     diseaseId: "disease005",
-    diseaseName: "Diphtheria and Tetanus toxoids combined"
+    diseaseName: "Tetanus",
   },
   {
     diseaseId: "disease006",
-    diseaseName:
-      "Diphtheria,Tetanus toxoids, Pertussis,Hepatitis B and Haemophilus influenza type b \ncombined: DTwP-HBV-Hib"
+    diseaseName: "Pertussis",
   },
   {
     diseaseId: "disease007",
-    diseaseName: "Poliomyelitis"
+    diseaseName: "Poliomyelitis",
   },
   {
     diseaseId: "disease008",
-    diseaseName: "Measles Mumps and Rubella"
+    diseaseName: "Measles ",
   },
   {
     diseaseId: "disease009",
-    diseaseName: "Japanese Encephalitis"
+    diseaseName: "Mumps ",
   },
   {
     diseaseId: "disease010",
-    diseaseName: "Influenza vaccine"
+    diseaseName: "Rubella",
   },
   {
     diseaseId: "disease011",
-    diseaseName: "Hepatitis A"
+    diseaseName: "Japanese Encephalitis",
   },
   {
     diseaseId: "disease012",
-    diseaseName: "Varicella-zoster"
+    diseaseName: "Influenza",
   },
   {
     diseaseId: "disease013",
-    diseaseName: "Rabies"
+    diseaseName: "Hepatitis A",
   },
   {
     diseaseId: "disease014",
-    diseaseName: "Streptococcus pneumoniae 23 - valent polysaccharide"
+    diseaseName: "Varicella-zoster",
   },
   {
     diseaseId: "disease015",
-    diseaseName: "Streptococcus pneumoniae 10 - valent conjugate"
+    diseaseName: "Rabies",
   },
   {
     diseaseId: "disease016",
-    diseaseName: "Rotavirus"
+    diseaseName: "Rotavirus",
   },
   {
     diseaseId: "disease017",
-    diseaseName: "Human Papillomavirus"
+    diseaseName: "Human Papillomavirus",
   },
   {
     diseaseId: "disease018",
-    diseaseName: "Inactivated Poliomyelitis"
+    diseaseName: "Inactivated Poliomyelitis",
   },
   {
     diseaseId: "disease019",
-    diseaseName: "Diphtheria -Tetanus - acellular Pertussis combined"
+    diseaseName: "Dengue",
   },
   {
     diseaseId: "disease020",
-    diseaseName: "Dengue"
+    diseaseName: "Neisseria meningitidis",
   },
   {
     diseaseId: "disease021",
-    diseaseName: "Neisseria meningitidis"
+    diseaseName: "Meningococcal Conjugate",
   },
   {
     diseaseId: "disease022",
-    diseaseName: "Meningococcal Conjugate"
+    diseaseName: "Yellow fever",
   },
   {
     diseaseId: "disease023",
-    diseaseName: "Yellow fever"
+    diseaseName: "Pneumococcal",
   },
   {
     diseaseId: "disease024",
-    diseaseName: "Pneumococcal"
+    diseaseName: "Cholera",
   },
   {
     diseaseId: "disease025",
-    diseaseName: "Cholera"
+    diseaseName: "Typhoid",
   },
   {
     diseaseId: "disease026",
-    diseaseName: "Typhoid"
-  }
+    diseaseName: "Immunodeficiency",
+  },
+  {
+    diseaseId: "disease027",
+    diseaseName: "HIV",
+  },
+  {
+    diseaseId: "disease028",
+    diseaseName: "Yeast allergy",
+  },
 ];
