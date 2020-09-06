@@ -46,6 +46,14 @@ export default {
     disease: "Congenital disease",
     vaccine: "Received vaccine"
   },
+  labelAddAppointment: {
+    child: "child name",
+    vaccineList: "list vaccines",
+    date: "date",
+    time: "time",
+    addAppointment: "add appointment",
+    note: "ข้อมูลเพิ่มเติม"
+  },
   button: {
     add: "add",
     save: "save"
