@@ -11,7 +11,7 @@
         {{ lebels.disease }}
       </p>
       <ul class="list-disc px-6">
-        <li v-for="disease in diseases" :key="disease">{{ disease.tag }}</li>
+        <li v-for="disease in diseases" :key="disease.id">{{ disease.tag }}</li>
       </ul>
     </div>
   </div>

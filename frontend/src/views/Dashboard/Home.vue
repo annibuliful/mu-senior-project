@@ -49,7 +49,12 @@ export default {
   },
   components: { Calendar, AppointmentCard },
   created: function() {
-    console.log(service().suggestion.generate(1));
+    service()
+      .suggestion.generate(6)
+      .then(data => {
+        console.log(data);
+      });
+
     // service().suggestion.generate(1);
     service()
       .appointment.list()

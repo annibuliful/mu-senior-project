@@ -1,6 +1,6 @@
 module.exports = [
   {
-    id: "vac001",
+    vaccineId: "vac001",
     category: "children",
     vaccineMedicalName: "BCG",
     vaccineNameNormal: "Bacillus Calmette Guerin vaccine",
@@ -13,7 +13,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac002",
+    vaccineId: "vac002",
     category: "children",
     vaccineMedicalName: "HBV",
     vaccineNameNormal: "Hepatitis B Vaccine",
@@ -26,7 +26,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac003",
+    vaccineId: "vac003",
     category: "children",
     vaccineMedicalName: "DTwP",
     vaccineNameNormal: "Diphtheria - Tetanus - whole cell Pertussis",
@@ -39,7 +39,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac004",
+    vaccineId: "vac004",
     category: "children",
     vaccineMedicalName: "DTaP",
     vaccineNameNormal:
@@ -53,10 +53,10 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac005",
+    vaccineId: "vac005",
     category: "children",
     vaccineMedicalName: "Td",
-    vaccineNameNormal: "Tetanus - Diphtheria toxoid Vaccine combined",
+    vaccineNameNormal: "Tetanus - Diphtheria toxovaccineId Vaccine combined",
     protectDisease: ["disease004", "disease005"],
     injectionPeriodTime: [4380],
     doseNumber: 1,
@@ -66,11 +66,11 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac006",
+    vaccineId: "vac006",
     category: "children",
     vaccineMedicalName: "Tdap",
     vaccineNameNormal:
-      "Tetanus - reduced diphtheria toxoid and acellular pertussis",
+      "Tetanus - reduced diphtheria toxovaccineId and acellular pertussis",
     protectDisease: ["disease004", "disease005", "disease006"],
     injectionPeriodTime: [1460],
     doseNumber: 1,
@@ -80,7 +80,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac007",
+    vaccineId: "vac007",
     category: "children",
     vaccineMedicalName: "Hib",
     vaccineNameNormal: "Haemophilus influenzae type b (Hib) vaccine",
@@ -93,7 +93,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac008",
+    vaccineId: "vac008",
     category: "children",
     vaccineMedicalName: "OPV",
     vaccineNameNormal: "Poliomyelitis vaccine",
@@ -106,7 +106,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac009",
+    vaccineId: "vac009",
     category: "children",
     vaccineMedicalName: "IPV",
     vaccineNameNormal: "Inactivated Polio Vaccine",
@@ -119,7 +119,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac010",
+    vaccineId: "vac010",
     category: "children",
     vaccineMedicalName: "MMR",
     vaccineNameNormal: "Measles- Mumps - Rubella Vaccine combined",
@@ -132,7 +132,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac011",
+    vaccineId: "vac011",
     category: "children",
     vaccineMedicalName: "MMRV",
     vaccineNameNormal: "Measles- Mumps- Rubella - Varicella Vaccine combined",
@@ -145,7 +145,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac012",
+    vaccineId: "vac012",
     category: "children",
     vaccineMedicalName: "JEVAC",
     vaccineNameNormal: "Japanese Encephalitis Vaccine",
@@ -158,7 +158,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac013",
+    vaccineId: "vac013",
     category: "children",
     vaccineMedicalName: "CD-JEVAC",
     vaccineNameNormal: "Japanese Encephalitis Vaccine",
@@ -171,7 +171,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac014",
+    vaccineId: "vac014",
     category: "children",
     vaccineMedicalName: "IMOJEV",
     vaccineNameNormal: "Japanese Encephalitis Vaccine",
@@ -184,7 +184,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac015",
+    vaccineId: "vac015",
     category: "children",
     vaccineMedicalName: "Influenza",
     vaccineNameNormal: "Influenza vaccine",
@@ -197,7 +197,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac016",
+    vaccineId: "vac016",
     category: "children",
     vaccineMedicalName: "HPV",
     vaccineNameNormal: "Human Papillomavirus Vaccine",
@@ -210,7 +210,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac017",
+    vaccineId: "vac017",
     category: "children",
     vaccineMedicalName: "PCV13",
     vaccineNameNormal: "13 valent conjugate Pneumococcal Conjugate Vaccine",
@@ -223,10 +223,10 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac018",
+    vaccineId: "vac018",
     category: "children",
     vaccineMedicalName: "PPSV23",
-    vaccineNameNormal: "23-valent polysaccharide Pneumococcalvaccine",
+    vaccineNameNormal: "23-valent polysaccharvaccineIde Pneumococcalvaccine",
     protectDisease: ["disease023"],
     injectionPeriodTime: [730, 1825],
     doseNumber: 2,
@@ -236,7 +236,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac019",
+    vaccineId: "vac019",
     category: "children",
     vaccineMedicalName: "Rota",
     vaccineNameNormal: "Rotavirus vaccine",
@@ -249,7 +249,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac020",
+    vaccineId: "vac020",
     category: "children",
     vaccineMedicalName: "HAV",
     vaccineNameNormal: "Hepatitis A Vaccine",
@@ -262,7 +262,7 @@ module.exports = [
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
   },
   {
-    id: "vac021",
+    vaccineId: "vac021",
     category: "children",
     vaccineMedicalName: "VAR",
     vaccineNameNormal: "Varicella Vaccine",

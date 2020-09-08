@@ -78,7 +78,7 @@
           v-for="(family, index) in listFamilies"
           :key="`${family.fullname}-${index}`"
           ><FamilyCard
-            class="card"
+            class="card flex-initial"
             :name="family.fullname"
             :birthDate="family.birthDate"
             :diseases="family.diseases"
