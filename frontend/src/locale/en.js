@@ -13,6 +13,7 @@ export default {
   recentActivity: "Recent Activity",
   language: "Language",
   accountSetting: "Account Setting",
+  appointmentSuggestion: "Appointment Suggestion",
   networkMode: {
     offline: "You are Offline now",
     online: "You are Online now"

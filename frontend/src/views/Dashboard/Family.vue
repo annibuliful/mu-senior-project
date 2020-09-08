@@ -78,7 +78,7 @@
           v-for="(family, index) in listFamilies"
           :key="`${family.fullname}-${index}`"
           ><FamilyCard
-            class="card"
+            class="card flex-initial"
             :name="family.fullname"
             :birthDate="family.birthDate"
             :diseases="family.diseases"
@@ -145,7 +145,6 @@ export default {
       this.isOpenAddForm = !this.isOpenAddForm;
     },
     onAddNewDisease(disease) {
-      console.log(disease);
       this.selectedDiseases.push(disease);
     },
     onDeleteDisease(index) {
@@ -165,10 +164,16 @@ export default {
         receivedVaccines: this.selectedVaccines,
         userId: this.$store.state.userInfo.userId
       };
-      await service().family.create(data);
+      const familyId = await service().family.create(data);
       this.resetForm();
-      this.$store.commit("addNewFamilyMember", data);
+      this.$store.commit("addNewFamilyMember", { familyId, ...data });
       this.onOpenAddFamilyForm();
+      this.$router.push({
+        name: "appointment-child-suggestion",
+        params: {
+          id: familyId
+        }
+      });
     },
     resetForm() {
       this.fullname = "";

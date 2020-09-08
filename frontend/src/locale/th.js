@@ -13,6 +13,7 @@ export default {
   welcome: "ยินดีต้อนรับคุณ ",
   language: "ภาษา",
   accountSetting: "ตั้งค่าบัญชี",
+  appointmentSuggestion: "แนะนำการนัดหมาย",
   networkMode: {
     offline: "คุณออฟไลน์อยู่",
     online: "คุณออนไลน์อยู่"
