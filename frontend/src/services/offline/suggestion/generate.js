@@ -2,7 +2,7 @@ import service from "../../";
 // import listDiseases from "../../../locale/EN/diseases";
 import listVaccines from "../../../locale/EN/vaccines";
 import constraintVaccines from "../../../locale/constraint-vaccine";
-// import { formatDistanceToNow } from "date-fns";
+import { add } from "date-fns";
 
 const rangeYearOfCategories = [
   {
@@ -44,6 +44,7 @@ const getFactorFromChild = async childId => {
 
 export default async childId => {
   const {
+    childInfo,
     listChildDiseaseIds,
     listChildVaccineIds,
     vaccineCategory
@@ -53,15 +54,20 @@ export default async childId => {
     el => el.category === vaccineCategory
   );
 
-  const filterdVaccineChildNotReceived = filteredVaccineForChild.filter(el =>
-    listChildVaccineIds.some(vac => vac !== el.vaccineId)
+  const filterdVaccineChildNotReceived = filteredVaccineForChild.filter(
+    el => !listChildVaccineIds.includes(el.vaccineId)
   );
 
   const listVaccineConstraint = constraintVaccines
     .filter(el => listChildDiseaseIds.some(disease => el.diseaseId === disease))
     .map(el => el.vaccineId);
 
-  return filterdVaccineChildNotReceived.filter(
-    el => !listVaccineConstraint.includes(el.vaccineId)
-  );
+  return filterdVaccineChildNotReceived
+    .filter(el => !listVaccineConstraint.includes(el.vaccineId))
+    .map(el => ({
+      ...el,
+      appointmentDate: add(childInfo.birthDate, {
+        days: el.injectionPeriodTime[0]
+      })
+    }));
 };

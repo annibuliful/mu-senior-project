@@ -50,13 +50,6 @@ export default {
   components: { Calendar, AppointmentCard },
   created: function() {
     service()
-      .suggestion.generate(6)
-      .then(data => {
-        console.log(data);
-      });
-
-    // service().suggestion.generate(1);
-    service()
       .appointment.list()
       .then(data => {
         this.listEvents = data;

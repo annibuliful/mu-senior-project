@@ -16,6 +16,7 @@ import CreateAppointment from "../views/Appointment/Create.vue";
 import VaccinePackager from "../views/Dashboard/VaccinePackager.vue";
 import VaccinePackagerDetails from "../views/Packager/VaccinePackagerDetails.vue";
 import RecordVaccineForm from "../views/RecordVaccine.vue";
+import SuggestionAppointment from "../views/Appointment/Suggestion.vue";
 
 Vue.use(VueRouter);
 
@@ -81,6 +82,11 @@ const routes = [
         path: "/appointment/child/:id",
         name: "appointment-child-list",
         component: ChildAppointment
+      },
+      {
+        path: "/appointment/child/:id/suggestion",
+        name: "appointment-child-suggestion",
+        component: SuggestionAppointment
       }
     ]
   },
