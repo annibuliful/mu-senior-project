@@ -113,10 +113,16 @@ export default {
   },
   computed: {
     listVaccines() {
-      return this.$store.state.locale.vaccines.map(el => el.vaccineNameNormal);
+      return this.$store.state.locale.vaccines.map(el => ({
+        id: el.vaccineId,
+        tag: el.vaccineNameNormal
+      }));
     },
     listDiseases() {
-      return this.$store.state.locale.diseases.map(el => el.diseaseName);
+      return this.$store.state.locale.diseases.map(el => ({
+        id: el.diseaseId,
+        tag: el.diseaseName
+      }));
     },
     listFamilies() {
       return this.$store.state.listFamilies;
@@ -139,6 +145,7 @@ export default {
       this.isOpenAddForm = !this.isOpenAddForm;
     },
     onAddNewDisease(disease) {
+      console.log(disease);
       this.selectedDiseases.push(disease);
     },
     onDeleteDisease(index) {
