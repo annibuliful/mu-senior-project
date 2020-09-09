@@ -14,18 +14,18 @@
       :class="{ 'autocomplete-list-active': isShowSuggestionList }"
     >
       <div
-        v-for="(tag, index) in suggestTag"
-        :key="`${index}-${tag}`"
+        v-for="(val, index) in suggestTag"
+        :key="`${index}-${val.tag}`"
         class="hover:bg-blue-400 hover:text-white border-l border-r border-b"
-        @click="onClickSelectTag(tag)"
+        @click="onClickSelectTag(val)"
       >
-        {{ tag }}
+        {{ val.tag }}
       </div>
     </div>
     <div
       class="py-1 px-1 m-1"
-      v-for="(tag, index) in selectedTags"
-      :key="`index-${tag}`"
+      v-for="(val, index) in selectedTags"
+      :key="`index-${val.id}`"
     >
       <img
         class="w-3 cursor-pointer inline"
@@ -33,7 +33,7 @@
         @click="onClickRemove(index)"
       />
       <p class="ml-2 inline" style="padding-top: 10px; margin-block-end: 0px;">
-        {{ tag }}
+        {{ val.tag }}
       </p>
     </div>
   </div>
@@ -91,7 +91,7 @@ export default {
     },
     onSuggestTag(val) {
       this.suggestTag = this.listTags.filter(
-        tag => tag.search(val) !== -1 && !this.selectedTags.includes(tag)
+        el => el.tag.search(val) !== -1 && !this.selectedTags.includes(el.tag)
       );
     }
   }
