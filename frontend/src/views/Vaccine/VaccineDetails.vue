@@ -11,10 +11,18 @@
 
     <div class="border w-10/12 mx-auto p-5 shadow-lg mb-6">
       <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
-        {{ localeText.who }}
+        {{ localeText.description }}
       </div>
-      <!-- <div>{{ vaccineDetails.shortDes }}</div> -->
       <div v-html="vaccineDetails.shortDes"></div>
+      <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
+        {{ localeText.suggestedAge }}
+      </div>
+      <div v-html="vaccineDetails.displayedSuggestAge"></div>
+      <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
+        {{ localeText.warning }}
+      </div>
+      <div v-html="vaccineDetails.warning"></div>
+
       <div class="mt-8 text-blue-800">{{ localeText.vaccineReference }}</div>
     </div>
 
@@ -35,25 +43,26 @@
 export default {
   data() {
     return {
-      vaccineDetails: {}
+      vaccineDetails: {},
     };
   },
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
-        path: `/dashboard/recordVaccine`
+        path: `/recordvaccine`,
       });
-    }
+    },
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale.vaccineDetailsPage;
-    }
+    },
   },
   created() {
     this.$store.commit("getVaccineDetail", this.$route.params.id);
     this.vaccineDetails = this.$store.state.selectedVaccineDetails;
-  }
+    // console.log("vaccineDetails", this.vaccineDetails);
+  },
 };
 </script>
