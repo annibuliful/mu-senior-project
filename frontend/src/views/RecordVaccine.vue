@@ -13,7 +13,7 @@
           </label>
           <input
             class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
+            id="vaccineName"
             autocomplete="off"
             type="text"
             v-model="vaccineName"
@@ -32,7 +32,7 @@
           </label>
           <input
             class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
+            id="batchNO"
             autocomplete="off"
             type="text"
             v-model="batchNO"
@@ -45,7 +45,7 @@
           </label>
           <input
             class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
+            id="hostpitalName"
             autocomplete="off"
             type="text"
             v-model="hostpitalName"
@@ -58,7 +58,7 @@
           </label>
           <input
             class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
+            id="doctorInfo"
             autocomplete="off"
             type="text"
             v-model="doctorInfo"
@@ -71,7 +71,7 @@
           </label>
           <input
             class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
+            id="freetext"
             autocomplete="off"
             type="text"
             v-model="freetext"
@@ -84,13 +84,14 @@
           </label>
           <select
             class="appearance-none bg-white border border-gray-400 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
+            id="recordTo"
             autocomplete="off"
             type="text"
             v-model="recordTo"
             :placeholder="localeText.recordTo"
           >
-            <option class="bg-white"
+            <option
+              class="bg-white"
               v-for="(family, index) in listFamilies"
               :key="`${family.fullname}-${index}`"
               >{{ family.fullname }}</option
@@ -99,7 +100,7 @@
         </div>
 
         <div class="mb-4">
-           <label class="block text-gray-700 text-sm font-bold mb-2 ">
+          <label class="block text-gray-700 text-sm font-bold mb-2 ">
             {{ localeText.uploadImage }}
           </label>
           <input type="file" @change="onFileChange" />
@@ -144,10 +145,10 @@ export default {
     },
   },
   methods: {
-      onFileChange(e) {
+    onFileChange(e) {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
-    }
+    },
   },
 };
 </script>
@@ -165,5 +166,4 @@ export default {
 .vue-tags-input {
   background: #324652;
 }
-
 </style>
