@@ -24,7 +24,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/dashboard",
@@ -33,74 +33,74 @@ const routes = [
       {
         path: "/",
         name: "dashboard-index",
-        redirect: { name: "dashboard-home" }
+        redirect: { name: "dashboard-home" },
       },
       {
         path: "home",
         name: "dashboard-home",
-        component: DashboardHome
+        component: DashboardHome,
       },
       {
         path: "vaccine",
         name: "dashboard-vaccine",
-        component: DashboardVaccineList
+        component: DashboardVaccineList,
       },
       {
         path: "vaccine/details/:id",
-        component: VaccineDetails
+        component: VaccineDetails,
       },
       {
         path: "vaccinepackager",
         name: "dashboard-packager",
-        component: VaccinePackager
+        component: VaccinePackager,
       },
       {
         path: "vaccinepackager/details/:id",
-        component: VaccinePackagerDetails
+        component: VaccinePackagerDetails,
       },
       {
         path: "setting",
         name: "dashboard-setting",
-        component: DashboardSetting
+        component: DashboardSetting,
       },
       {
         path: "family",
         name: "dashboard-family",
-        component: DashboardFamily
+        component: DashboardFamily,
       },
       {
         path: "/appointment",
         name: "appointment-index",
-        component: Appointment
+        component: Appointment,
       },
       {
         path: "/appointment/create-appointment",
         name: "appointment-create",
-        component: CreateAppointment
+        component: CreateAppointment,
       },
       {
         path: "/appointment/child/:id",
         name: "appointment-child-list",
-        component: ChildAppointment
+        component: ChildAppointment,
       },
       {
         path: "/appointment/child/:id/suggestion",
         name: "appointment-child-suggestion",
-        component: SuggestionAppointment
-      }
-    ]
+        component: SuggestionAppointment,
+      },
+    ],
   },
   {
     path: "/recordvaccine",
     name: "record-vaccine",
-    component: RecordVaccineForm
-  }
+    component: RecordVaccineForm,
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
