@@ -8,9 +8,10 @@ module.exports = [
     injectionPeriodTime: [0],
     doseNumber: 1,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes:
+      "The immunity will fully grow inside the body after 2 months of receiving the vaccine. BCG Vaccine has a good effect on defensing an early state of tuberculosis especially on TB meningitis and miliary TB with 52-100 percentage of success rate.",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac002",
@@ -21,9 +22,11 @@ module.exports = [
     injectionPeriodTime: [0, 30, 150],
     doseNumber: 3,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes:
+      "The immunity of Hepatitis B will be suppressed after receiving the second dose of this vaccine. For the third dose, it only increases the effect of immunity. It has 90-95 percentage of success rate.",
+    displayedSuggestAge:
+      "<ul><li>- 1st Dose : Shortly after birth</li><li>- 2nd Dose : At 1 month of age</li><li>- 3rd Dose : At 6 months of age (At least 24 weeks of age)</li></ul>",
+    warning: "<ul><li>- Has had an allergic reaction to yeast</li></ul>",
   },
   {
     vaccineId: "vac003",
@@ -34,9 +37,9 @@ module.exports = [
     injectionPeriodTime: [60, 60, 60, 270, 1095],
     doseNumber: 5,
     replaceableWith: ["vac004"],
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac004",
@@ -48,9 +51,9 @@ module.exports = [
     injectionPeriodTime: [60, 60, 60, 270, 1095],
     doseNumber: 5,
     replaceableWith: ["vac003"],
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac005",
@@ -61,9 +64,9 @@ module.exports = [
     injectionPeriodTime: [4380],
     doseNumber: 1,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac006",
@@ -75,9 +78,9 @@ module.exports = [
     injectionPeriodTime: [1460],
     doseNumber: 1,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac007",
@@ -88,9 +91,9 @@ module.exports = [
     injectionPeriodTime: [60, 60, 60, 360],
     doseNumber: 4,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac008",
@@ -101,9 +104,9 @@ module.exports = [
     injectionPeriodTime: [60, 60, 60, 360, 1095],
     doseNumber: 5,
     replaceableWith: ["vac009"],
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac009",
@@ -114,9 +117,9 @@ module.exports = [
     injectionPeriodTime: [60, 60, 60, 360, 1095],
     doseNumber: 5,
     replaceableWith: ["vac008"],
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac010",
@@ -127,9 +130,9 @@ module.exports = [
     injectionPeriodTime: [270, 1190],
     doseNumber: 2,
     replaceableWith: ["vac011"],
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac011",
@@ -140,9 +143,9 @@ module.exports = [
     injectionPeriodTime: [365, 365],
     doseNumber: 1,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac012",
@@ -153,9 +156,9 @@ module.exports = [
     injectionPeriodTime: [180, 30, 365],
     doseNumber: 3,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac013",
@@ -166,9 +169,9 @@ module.exports = [
     injectionPeriodTime: [270, 90],
     doseNumber: 2,
     replaceableWith: ["vac014"],
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac014",
@@ -179,9 +182,9 @@ module.exports = [
     injectionPeriodTime: [270, 365],
     doseNumber: 2,
     replaceableWith: ["vac013"],
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac015",
@@ -192,9 +195,9 @@ module.exports = [
     injectionPeriodTime: [180, "annually"],
     doseNumber: 1,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac016",
@@ -205,9 +208,9 @@ module.exports = [
     injectionPeriodTime: [4015, 4045, 4165],
     doseNumber: 3,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac017",
@@ -218,9 +221,9 @@ module.exports = [
     injectionPeriodTime: [60, 60, 60, 180],
     doseNumber: 4,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac018",
@@ -231,9 +234,9 @@ module.exports = [
     injectionPeriodTime: [730, 1825],
     doseNumber: 2,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac019",
@@ -244,9 +247,9 @@ module.exports = [
     injectionPeriodTime: [60, 60, 60],
     doseNumber: 3,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac020",
@@ -257,9 +260,9 @@ module.exports = [
     injectionPeriodTime: [365, 180],
     doseNumber: 2,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
   },
   {
     vaccineId: "vac021",
@@ -270,8 +273,8 @@ module.exports = [
     injectionPeriodTime: [365, 1095],
     doseNumber: 2,
     replaceableWith: null,
-    description: "description",
-    displayedSuggestAge: "<ul><li>1st Dose: Shortly after birth</li></ui>",
-    warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ui>"
-  }
+    shortDes: "description",
+    displayedSuggestAge: "<ul><li>- 1st Dose: Shortly after birth</li></ul>",
+    warning: "<ul><li>- Immunosuppression</li><li>- Pregnancy</li></ul>",
+  },
 ];

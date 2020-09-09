@@ -8,10 +8,11 @@ module.exports = [
     injectionPeriodTime: [0],
     doseNumber: 1,
     replaceableWith: null,
-    shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    shortDes:
+      "ความต้านทานต่อเชื้อวัณโรคจะเกิดเต็มที่ประมาณ 2 เดือน หลังจากได้รับวัคซีน โดยวัคซีนบีซีจี มีประสิทธิภาพดีต่อการป้องกันวัณโรคระยะแรกในเด็ก โดยเฉพาะวัณโรคเยื่อหุ้มสมอง (TB meningitis) และวัณโรคชนิดแพร่กระจาย (miliary TB) สามารถป้องกันได้สูงถึงร้อยละ 52-100",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac002",
@@ -22,10 +23,10 @@ module.exports = [
     injectionPeriodTime: [0, 30, 150],
     doseNumber: 3,
     replaceableWith: null,
-    shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
-    warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+    shortDes:
+      "การให้วัคซีนป้องกันโรคไวรัสตับอักเสบบี จะทำให้เกิดภูมิคุ้มกันโรคได้หลังจากได้รับวัคซีนเข็มที่สอง วัคซีนเข็มที่สามถือเป็นการกระตุ้นให้ภูมิคุ้มกันโรคสูงขึ้น และมีภูมิคุ้มกันที่ป้องกันโรคได้ร้อยละ 90-95",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
+    warning: "<ul><li>- ผู้ที่แพ้ยีสต์อย่างรุนแรง</li></ul>",
   },
   {
     vaccineId: "vac003",
@@ -37,9 +38,9 @@ module.exports = [
     doseNumber: 5,
     replaceableWith: ["vac004"],
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac004",
@@ -51,9 +52,9 @@ module.exports = [
     doseNumber: 5,
     replaceableWith: ["vac003"],
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac005",
@@ -65,9 +66,9 @@ module.exports = [
     doseNumber: 1,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac006",
@@ -80,9 +81,9 @@ module.exports = [
     doseNumber: 1,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac007",
@@ -94,9 +95,9 @@ module.exports = [
     doseNumber: 4,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac008",
@@ -108,9 +109,9 @@ module.exports = [
     doseNumber: 5,
     replaceableWith: ["vac009"],
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac009",
@@ -122,9 +123,9 @@ module.exports = [
     doseNumber: 5,
     replaceableWith: ["vac008"],
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac010",
@@ -136,9 +137,9 @@ module.exports = [
     doseNumber: 2,
     replaceableWith: ["vac011"],
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac011",
@@ -150,9 +151,9 @@ module.exports = [
     doseNumber: 1,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac012",
@@ -164,9 +165,9 @@ module.exports = [
     doseNumber: 3,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac013",
@@ -178,9 +179,9 @@ module.exports = [
     doseNumber: 2,
     replaceableWith: ["vac014"],
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac014",
@@ -192,9 +193,9 @@ module.exports = [
     doseNumber: 2,
     replaceableWith: ["vac013"],
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac015",
@@ -206,9 +207,9 @@ module.exports = [
     doseNumber: 1,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac016",
@@ -220,9 +221,9 @@ module.exports = [
     doseNumber: 3,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac017",
@@ -234,9 +235,9 @@ module.exports = [
     doseNumber: 4,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac018",
@@ -249,9 +250,9 @@ module.exports = [
     doseNumber: 2,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac019",
@@ -263,9 +264,9 @@ module.exports = [
     doseNumber: 3,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac020",
@@ -277,9 +278,9 @@ module.exports = [
     doseNumber: 2,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
   },
   {
     vaccineId: "vac021",
@@ -291,8 +292,8 @@ module.exports = [
     doseNumber: 2,
     replaceableWith: null,
     shortDes: "คำอธิบาย",
-    displayedSuggestAge: "<ul><li>เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ui>",
+    displayedSuggestAge: "<ul><li>- เข็มที่ 1: ฉีดทันทีหลังคลอด</li></ul>",
     warning:
-      "<ul><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
-  }
+      "<ul><li>- ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>- ตั้งครรภ์</li></ul>",
+  },
 ];
