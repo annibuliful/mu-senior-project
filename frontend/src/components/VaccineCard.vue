@@ -1,11 +1,22 @@
 <template>
   <div>
     <div
-      class="card-container border-b-2 border-gray-600 xl:border-2 hover:border-gray-200 cursor-pointer"
+      class="card-container mt-2 shadow-md p-2 hover:border-gray-200 cursor-pointer"
       @click="onCardClicked"
     >
-      <div class="text-2xl ml-5">{{ vaccineMedicalName }}</div>
-      <div class="text-base ml-5 mb-2">{{ vaccineNameNormal }}</div>
+      <div class="flex flex-row">
+        <img
+          class="p-2 w-3/12 lg:w-48"
+          :src="require(`../assets/vaccine-img/${vaccineId}.png`)"
+          alt=""
+        />
+        <div class="flex flex-col">
+          <div class="text-2xl ml-5 mt-4 text-blue-800 font-bold">
+            {{ vaccineMedicalName }}
+          </div>
+          <div class="text-base ml-5 mb-2">{{ vaccineNameNormal }}</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -14,29 +25,29 @@ export default {
   props: {
     vaccineId: {
       type: String,
-      required: true
+      required: true,
     },
     vaccineMedicalName: {
       type: String,
-      required: true
+      required: true,
     },
     vaccineNameNormal: {
       type: String,
-      required: true
+      required: true,
     },
     shortDes: {
       type: String,
-      required: false
-    }
+      required: false,
+    },
   },
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
-        path: `/dashboard/vaccine/details/${this.vaccineId}`
+        path: `/dashboard/vaccine/details/${this.vaccineId}`,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

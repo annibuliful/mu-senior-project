@@ -5,6 +5,7 @@ export default {
   diseases,
   home: "หน้าหลัก",
   vaccine: "วัคซีน",
+  vaccineList: "รายการวัคซีน",
   family: "ครอบครัว",
   packager: "แพ็กเกจวัคซีนเสริม",
   setting: "ตั้งค่า",

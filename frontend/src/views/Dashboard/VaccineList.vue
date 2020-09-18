@@ -1,6 +1,8 @@
 <template>
   <div>
-    <!-- <div>{{$store.state.calendarLocale}}</div> -->
+    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
+      {{ localeText.vaccineList }}
+    </p>
     <div class="search-area mb-3 flex justify-center">
       <input
         class="border border-black mr-2"
@@ -29,7 +31,7 @@
 import VaccineCard from "../../components/VaccineCard";
 export default {
   components: {
-    VaccineCard
+    VaccineCard,
   },
   created() {
     this.displayVaccineList = this.vaccineList;
@@ -38,17 +40,20 @@ export default {
   data() {
     return {
       searchQuery: "",
-      displayVaccineList: []
+      displayVaccineList: [],
     };
   },
   computed: {
     vaccineList: function() {
       return this.$store.state.locale.vaccines;
-    }
+    },
+    localeText: function() {
+      return this.$store.state.locale;
+    },
   },
   methods: {
     vaccineFilter(inputSearchQuery) {
-      const filteredVaccineList = this.vaccineList.filter(vcObj => {
+      const filteredVaccineList = this.vaccineList.filter((vcObj) => {
         return (
           vcObj.vaccineMedicalName
             .toLowerCase()
@@ -63,8 +68,8 @@ export default {
     resetSearch() {
       this.displayVaccineList = this.vaccineList;
       this.searchQuery = "";
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped></style>
