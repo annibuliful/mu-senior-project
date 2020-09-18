@@ -15,6 +15,11 @@ export default {
   language: "ภาษา",
   accountSetting: "ตั้งค่าบัญชี",
   appointmentSuggestion: "แนะนำการนัดหมาย",
+  category: "ประเภทวัคซีน",
+  children: "สำหรับเด็ก",
+  adult: "สำหรับผู้ใหญ่",
+  sorting: "จัดเรียงวัคซีน",
+  others: "อื่นๆ",
   networkMode: {
     offline: "คุณออฟไลน์อยู่",
     online: "คุณออนไลน์อยู่",
