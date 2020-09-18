@@ -26,7 +26,7 @@
           />
         </div>
       </div>
-      <div v-if="!isFilterShow" class="search-area justify-around mb-3 flex">
+      <div v-if="isFilterShow" class="search-area justify-around mb-3 flex">
         <!-- Filtered by Category -->
         <div class="flex-col w-4/12 p-2 lg:w-3/12">
           <div>{{ localeText.category }}</div>
