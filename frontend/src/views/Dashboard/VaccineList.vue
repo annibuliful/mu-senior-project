@@ -3,6 +3,7 @@
     <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
       {{ localeText.vaccineList }}
     </p>
+    <!-- Search Area -->
     <div class="search-area mb-3 flex justify-center">
       <input
         class="border border-black mr-2"
