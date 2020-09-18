@@ -15,6 +15,11 @@ export default {
   language: "Language",
   accountSetting: "Account Setting",
   appointmentSuggestion: "Appointment Suggestion",
+  category: "Categories",
+  children: "Children",
+  adult: "Adult",
+  sorting: "Sorting",
+  others: "Others",
   networkMode: {
     offline: "You are Offline now",
     online: "You are Online now",
