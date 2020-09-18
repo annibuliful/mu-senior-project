@@ -6,7 +6,7 @@
     >
       <div class="flex flex-row">
         <img
-          class="p-2 w-3/12 lg:w-48"
+          class="p-2 w-4/12 lg:w-48"
           :src="require(`../assets/vaccine-img/${vaccineId}.png`)"
           alt=""
         />
