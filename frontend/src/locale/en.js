@@ -5,6 +5,7 @@ export default {
   diseases,
   home: "Home",
   vaccine: "Vaccine",
+  vaccineList: "Vaccine List",
   family: "Family",
   packager: "Packager",
   setting: "Settings",

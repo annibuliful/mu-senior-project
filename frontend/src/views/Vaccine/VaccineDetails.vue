@@ -1,11 +1,19 @@
 <template>
   <div class="mb-20">
-    <div class="text-center font-bold text-xl lg:text-2xl text-blue-800">
+    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
       {{ localeText.title }}
-    </div>
+    </p>
+    <img
+      class="p-2 w-4/12 lg:w-48 mx-auto"
+      :src="require(`../../assets/vaccine-img/${vaccineDetails.vaccineId}.png`)"
+      alt=""
+    />
+    <!-- <img src="../../" alt=""> -->
 
     <div class="vaccine-title-area text-center mb-4 text-lg lg:text-xl">
-      <div>{{ vaccineDetails.vaccineMedicalName }}</div>
+      <div class="font-bold">
+        {{ vaccineDetails.vaccineMedicalName }}
+      </div>
       <div>{{ vaccineDetails.vaccineNameNormal }}</div>
     </div>
 
@@ -13,17 +21,28 @@
       <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
         {{ localeText.description }}
       </div>
-      <div v-html="vaccineDetails.shortDes"></div>
+      <div
+        class="lg:text-center lg:w-10/12 mx-auto"
+        v-html="vaccineDetails.shortDes"
+      ></div>
       <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
         {{ localeText.suggestedAge }}
       </div>
-      <div v-html="vaccineDetails.displayedSuggestAge"></div>
+      <div
+        class="lg:text-center lg:w-10/12 mx-auto"
+        v-html="vaccineDetails.displayedSuggestAge"
+      ></div>
       <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
         {{ localeText.warning }}
       </div>
-      <div v-html="vaccineDetails.warning"></div>
+      <div
+        class="lg:text-center lg:w-10/12 mx-auto"
+        v-html="vaccineDetails.warning"
+      ></div>
 
-      <div class="mt-8 text-blue-800">{{ localeText.vaccineReference }}</div>
+      <div class="lg:text-center lg:w-10/12 mx-auto mt-8 text-blue-800">
+        {{ localeText.vaccineReference }}
+      </div>
     </div>
 
     <button
