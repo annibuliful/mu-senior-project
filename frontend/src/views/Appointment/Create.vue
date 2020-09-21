@@ -117,7 +117,7 @@ export default {
         dot: "red",
         key: this.selectedDate.toString(),
         customData: {
-          selectedVaccines: this.selectedVaccines,
+          selectedVaccines: this.selectedVaccines.map(el => el.tag),
           note: this.note,
           childname: fullname,
           childId: familyId,
@@ -139,7 +139,9 @@ export default {
       return this.$store.state.listFamilies;
     },
     listVaccines() {
-      return this.$store.state.locale.vaccines.map(el => el.vaccineNameNormal);
+      return this.$store.state.locale.vaccines.map(el => ({
+        tag: el.vaccineNameNormal
+      }));
     },
     buttonLabel() {
       return this.$store.state.locale.button;

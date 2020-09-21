@@ -25,7 +25,7 @@
     <div
       class="py-1 px-1 m-1"
       v-for="(val, index) in selectedTags"
-      :key="`index-${val.id}`"
+      :key="`index-${val.tag}`"
     >
       <img
         class="w-3 cursor-pointer inline"
