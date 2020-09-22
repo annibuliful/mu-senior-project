@@ -105,6 +105,9 @@ export default {
     };
   },
   created: function() {
+    this.selectedVaccines = this.$store.state.baseRecordVaccine.selectedVaccines.map(
+      el => ({ tag: el })
+    );
     this.$store.commit("listFamilies");
   },
   methods: {

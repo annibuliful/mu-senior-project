@@ -46,6 +46,7 @@
     </div>
 
     <button
+      @click="onLinkAppointment"
       class="bg-blue-500 hover:bg-blue-800 w-8/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-4/12"
     >
       {{ localeText.appointmentBtn }}
@@ -67,10 +68,24 @@ export default {
   },
   methods: {
     onCardClicked() {
-      // alert("test clicking card id : " +this.vaccineId)
+      this.commitBaseRecord();
       this.$router.push({
         path: `/recordvaccine`
       });
+    },
+    onLinkAppointment() {
+      this.commitBaseRecord();
+      this.$router.push({
+        name: "appointment-create"
+      });
+    },
+    commitBaseRecord() {
+      const data = {
+        vaccineName: this.vaccineDetails.vaccineNameNormal,
+        vaccineId: this.vaccineDetails.vaccineId,
+        selectedVaccines: [this.vaccineDetails.vaccineNameNormal]
+      };
+      this.$store.commit("setBaseRecordVaccine", data);
     }
   },
   computed: {
