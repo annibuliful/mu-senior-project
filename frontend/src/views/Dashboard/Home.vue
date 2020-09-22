@@ -1,7 +1,7 @@
 <template>
   <div class="sm:mb-20">
     <p class="text-2xl mb-10 border-b-2 border-blue-700">
-      {{ welcomeWord }}
+      {{ welcomeWord }} {{ profileName.fullname }}
     </p>
     <Calendar :listEvents="listEvents" v-on:on-click="onSelectDate" />
     <br />
