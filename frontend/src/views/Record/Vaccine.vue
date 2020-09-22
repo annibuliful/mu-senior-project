@@ -192,7 +192,8 @@ export default {
         batchNO: this.batchNO,
         hostpitalName: this.hostpitalName,
         doctorInfo: this.doctorInfo,
-        freetext: this.freetext
+        freetext: this.freetext,
+        recordImage: this.base64Url
       };
       await service().record.create(data);
       const childInfo = (await service().family.getByChildId(childId))[0];
