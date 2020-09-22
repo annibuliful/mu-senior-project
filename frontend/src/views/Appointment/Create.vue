@@ -1,11 +1,9 @@
 <template>
   <div>
     <div class="border-b-2 border-blue-700 mb-4">
-      <img
-        :src="`${require('@/assets/icons/arrow-left.svg')}`"
-        class="w-8 h-8 cursor-pointer mb-2 ml-4 block "
-        @click="$router.go(-1)"
-      />
+      <p class="text-2xl" style="width: auto;">
+        {{ localeText.title }}
+      </p>
     </div>
     <div class="w-full max-w-xl bg-white px-8 ml-auto mr-auto sm:mb-16">
       <div class="mb-4">
@@ -80,12 +78,20 @@
           :placeholder="label.note"
         />
       </div>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto"
-        @click="submit"
-      >
-        {{ buttonLabel.save }}
-      </button>
+      <div class="flex">
+        <button
+          class="font-bold py-2 px-4 rounded block border hover:border-red-600"
+          @click="cancel"
+        >
+          {{ localeText.cancelBtn }}
+        </button>
+        <button
+          @click="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto"
+        >
+          {{ buttonLabel.save }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -135,6 +141,9 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
+    },
+    cancel() {
+      this.$router.go(-1);
     }
   },
   computed: {
@@ -145,6 +154,9 @@ export default {
       return this.$store.state.locale.vaccines.map(el => ({
         tag: el.vaccineNameNormal
       }));
+    },
+    localeText: function() {
+      return this.$store.state.locale.recordVaccinePage;
     },
     buttonLabel() {
       return this.$store.state.locale.button;
