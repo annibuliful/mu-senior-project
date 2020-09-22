@@ -76,7 +76,7 @@
 import VaccineCard from "../../components/VaccineCard";
 export default {
   components: {
-    VaccineCard,
+    VaccineCard
   },
   created() {
     this.displayVaccineList = this.vaccineList;
@@ -89,7 +89,7 @@ export default {
       isFilterShow: false,
       selectedCategory: "",
       selectedSorting: "",
-      selectedType: "",
+      selectedType: ""
     };
   },
   computed: {
@@ -98,11 +98,11 @@ export default {
     },
     localeText: function() {
       return this.$store.state.locale;
-    },
+    }
   },
   methods: {
     searchVaccine(inputSearchQuery) {
-      const filteredVaccineList = this.vaccineList.filter((vcObj) => {
+      const filteredVaccineList = this.vaccineList.filter(vcObj => {
         return (
           vcObj.vaccineMedicalName
             .toLowerCase()
@@ -115,7 +115,7 @@ export default {
       this.displayVaccineList = filteredVaccineList;
     },
     onSelectedCategory() {
-      const filteredVaccineList = this.vaccineList.filter((vcObj) => {
+      const filteredVaccineList = this.vaccineList.filter(vcObj => {
         return vcObj.category === this.selectedCategory;
       });
       this.displayVaccineList = filteredVaccineList;
@@ -161,8 +161,8 @@ export default {
     },
     onClickFilter() {
       this.isFilterShow = !this.isFilterShow;
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped></style>

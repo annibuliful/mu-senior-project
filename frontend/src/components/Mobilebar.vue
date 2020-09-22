@@ -34,7 +34,9 @@
           <img
             class="inline w-8 pb-2"
             src="@/assets/icons/packager.svg"
-            :class="[currentPath === '/dashboard/vaccinepackager' ? 'link-active' : '']"
+            :class="[
+              currentPath === '/dashboard/vaccinepackager' ? 'link-active' : ''
+            ]"
           />
         </router-link>
       </div>

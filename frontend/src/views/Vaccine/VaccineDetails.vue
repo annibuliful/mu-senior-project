@@ -62,26 +62,26 @@
 export default {
   data() {
     return {
-      vaccineDetails: {},
+      vaccineDetails: {}
     };
   },
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
-        path: `/recordvaccine`,
+        path: `/recordvaccine`
       });
-    },
+    }
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale.vaccineDetailsPage;
-    },
+    }
   },
   created() {
     this.$store.commit("getVaccineDetail", this.$route.params.id);
     this.vaccineDetails = this.$store.state.selectedVaccineDetails;
     // console.log("vaccineDetails", this.vaccineDetails);
-  },
+  }
 };
 </script>

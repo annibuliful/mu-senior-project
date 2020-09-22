@@ -25,29 +25,29 @@ export default {
   props: {
     vaccineId: {
       type: String,
-      required: true,
+      required: true
     },
     vaccineMedicalName: {
       type: String,
-      required: true,
+      required: true
     },
     vaccineNameNormal: {
       type: String,
-      required: true,
+      required: true
     },
     shortDes: {
       type: String,
-      required: false,
-    },
+      required: false
+    }
   },
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
-        path: `/dashboard/vaccine/details/${this.vaccineId}`,
+        path: `/dashboard/vaccine/details/${this.vaccineId}`
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

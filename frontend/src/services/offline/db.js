@@ -6,6 +6,7 @@ db.version(1).stores({
   families: "++familyId, userId, fullname",
   vaccines: "++vaccineId, name",
   appointments: "++appointmentId, childname",
-  diseases: "++diseaseId"
+  diseases: "++diseaseId",
+  records: "++recordId"
 });
 export default db;
