@@ -17,9 +17,13 @@ export default new Vuex.Store({
     listVaccines: ["ไวรัสตับอักเสบ A", "ไวรัสตับอักเสบ B", "ไวรัสตับอักเสบ C"],
     selectedVaccineDetails: {},
     selectedPackagerDetails: {},
-    selectedCalendarDate: null || new Date()
+    selectedCalendarDate: null || new Date(),
+    baseRecordVaccine: {}
   },
   mutations: {
+    setBaseRecordVaccine(state, data) {
+      state.baseRecordVaccine = data;
+    },
     changeSelectedCalendarDate(state, date) {
       state.selectedCalendarDate = date;
     },
@@ -51,7 +55,6 @@ export default new Vuex.Store({
       state.selectedPackagerDetails = state.locale.vaccinePackages.find(
         x => x.packageId === id
       );
-      console.log("TEST", state.selectedPackagerDetails);
     }
   },
   actions: {},

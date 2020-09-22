@@ -205,7 +205,7 @@ export default {
       this.$router.push("/");
     },
     cancel() {
-      this.$storeu.go(-1);
+      this.$router.go(-1);
     },
     onFileChange(e) {
       const file = e.target.files[0];
