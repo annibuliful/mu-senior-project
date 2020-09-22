@@ -4,5 +4,6 @@ export default async id => {
   return await db
     .table("appointments")
     .where("appointmentId")
-    .equals(id);
+    .equals(Number(id))
+    .toArray();
 };

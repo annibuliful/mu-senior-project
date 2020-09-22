@@ -22,14 +22,14 @@
 import VaccinePackageCard from "../../components/VaccinePackageCard";
 export default {
   components: {
-    VaccinePackageCard,
+    VaccinePackageCard
   },
   created() {
     this.displayedPackagerList = this.vaccineList;
   },
   data() {
     return {
-      displayedPackagerList: [],
+      displayedPackagerList: []
     };
   },
   computed: {
@@ -38,9 +38,9 @@ export default {
     },
     vaccineList: function() {
       return this.$store.state.locale.vaccinePackages;
-    },
+    }
   },
-  methods: {},
+  methods: {}
 };
 </script>
 <style scoped></style>

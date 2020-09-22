@@ -17,14 +17,20 @@
     >
       There is no any event
     </p>
-    <AppointmentCard
-      v-for="({ customData }, index) in filterEventOnDate"
-      :childname="customData.childname"
-      :note="customData.note"
-      :time="customData.time"
-      :vaccines="customData.selectedVaccines"
+
+    <router-link
+      v-for="({ customData, appointmentId }, index) in filterEventOnDate"
       :key="`${index}-${customData.childname}`"
-    />
+      :to="`/record-vaccine/${appointmentId}`"
+    >
+      <AppointmentCard
+        :childname="customData.childname"
+        :note="customData.note"
+        :time="customData.time"
+        :vaccines="customData.selectedVaccines"
+      />
+    </router-link>
+
     <button
       class="rounded-full p-2 mt-8 mx-auto block border-2 border-black focus:outline-none"
       @click="onLinkToAddAppointmentPage"
