@@ -51,7 +51,6 @@ export default new Vuex.Store({
       state.selectedPackagerDetails = state.locale.vaccinePackages.find(
         x => x.packageId === id
       );
-      console.log("TEST", state.selectedPackagerDetails);
     }
   },
   actions: {},
