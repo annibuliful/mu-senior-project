@@ -69,7 +69,20 @@
       </div>
     </div>
     <div class="mt-4 w-full sm:mb-20 lg:mb-4">
-      <div class="flex flex-wrap">
+      <div
+        class="flex flex-wrap"
+        v-for="(family, index) in listFamilies"
+        :key="`${family.fullname}-${index}`"
+      >
+        <FamilyCard
+          class="card flex-initial"
+          :id="family.familyId"
+          :name="family.fullname"
+          :birthDate="family.birthDate"
+          :diseases="family.diseases"
+        />
+      </div>
+      <!-- <div class="flex flex-wrap">
         <router-link
           :to="{
             name: 'appointment-child-list',
@@ -84,7 +97,7 @@
             :diseases="family.diseases"
           />
         </router-link>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -95,7 +108,7 @@ import service from "@/services";
 export default {
   components: {
     FamilyCard,
-    TagInput
+    TagInput,
   },
   created() {
     this.$store.commit("listFamilies");
@@ -108,20 +121,20 @@ export default {
       inputDisease: "",
       inputVaccine: "",
       selectedDiseases: [],
-      selectedVaccines: []
+      selectedVaccines: [],
     };
   },
   computed: {
     listVaccines() {
-      return this.$store.state.locale.vaccines.map(el => ({
+      return this.$store.state.locale.vaccines.map((el) => ({
         id: el.vaccineId,
-        tag: el.vaccineNameNormal
+        tag: el.vaccineNameNormal,
       }));
     },
     listDiseases() {
-      return this.$store.state.locale.diseases.map(el => ({
+      return this.$store.state.locale.diseases.map((el) => ({
         id: el.diseaseId,
-        tag: el.diseaseName
+        tag: el.diseaseName,
       }));
     },
     listFamilies() {
@@ -138,7 +151,7 @@ export default {
     },
     calendarLocale() {
       return this.$store.state.calendarLocale;
-    }
+    },
   },
   methods: {
     onOpenAddFamilyForm() {
@@ -162,7 +175,7 @@ export default {
         birthDate: this.birthDate,
         diseases: this.selectedDiseases,
         receivedVaccines: this.selectedVaccines,
-        userId: this.$store.state.userInfo.userId
+        userId: this.$store.state.userInfo.userId,
       };
       const familyId = await service().family.create(data);
       this.resetForm();
@@ -171,8 +184,8 @@ export default {
       this.$router.push({
         name: "appointment-child-suggestion",
         params: {
-          id: familyId
-        }
+          id: familyId,
+        },
       });
     },
     resetForm() {
@@ -182,8 +195,8 @@ export default {
       this.inputVaccine = "";
       this.selectedDiseases = [];
       this.selectedVaccines = [];
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
