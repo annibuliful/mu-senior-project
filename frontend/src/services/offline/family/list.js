@@ -1,6 +1,6 @@
 import db from "../db";
 
-export default async userId => {
+export default async (userId) => {
   return await db
     .table("families")
     .where("userId")

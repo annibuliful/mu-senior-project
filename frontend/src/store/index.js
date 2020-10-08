@@ -18,7 +18,8 @@ export default new Vuex.Store({
     selectedVaccineDetails: {},
     selectedPackagerDetails: {},
     selectedCalendarDate: null || new Date(),
-    baseRecordVaccine: {}
+    baseRecordVaccine: {},
+    listRecords: ["aaa"],
   },
   mutations: {
     setBaseRecordVaccine(state, data) {
@@ -43,20 +44,25 @@ export default new Vuex.Store({
     addNewFamilyMember(state, data) {
       state.listFamilies.push(data);
     },
+    async listRecords(state) {
+      const data = await services().record.list();
+      console.log("list record data", data);
+      state.listRecords = data;
+    },
     setUserInfo(state, data) {
       state.userInfo = data;
     },
     getVaccineDetail(state, id) {
       state.selectedVaccineDetails = state.locale.vaccines.find(
-        x => x.vaccineId === id
+        (x) => x.vaccineId === id
       );
     },
     getPackagerDetail(state, id) {
       state.selectedPackagerDetails = state.locale.vaccinePackages.find(
-        x => x.packageId === id
+        (x) => x.packageId === id
       );
-    }
+    },
   },
   actions: {},
-  modules: {}
+  modules: {},
 });
