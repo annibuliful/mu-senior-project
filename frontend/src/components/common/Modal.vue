@@ -64,6 +64,17 @@ export default {
             {{ localeText.description }}
           </div>
           <div class="ml-2">{{ vaccineDetails.shortDes }}</div>
+          <div class=" text-blue-800 p-2 font-bold">
+            {{ localeText.suggestedAge }}
+          </div>
+          <div
+            class="lg:text-center"
+            v-html="vaccineDetails.displayedSuggestAge"
+          ></div>
+          <div class=" text-blue-800 p-2 font-bold">
+            {{ localeText.warning }}
+          </div>
+          <div v-html="vaccineDetails.warning"></div>
         </section>
       </div>
     </div>
