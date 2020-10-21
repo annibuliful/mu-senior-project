@@ -19,7 +19,6 @@ export default new Vuex.Store({
     selectedPackagerDetails: {},
     selectedCalendarDate: null || new Date(),
     baseRecordVaccine: {},
-    listRecords: ["aaa"],
   },
   mutations: {
     setBaseRecordVaccine(state, data) {
@@ -43,11 +42,6 @@ export default new Vuex.Store({
     },
     addNewFamilyMember(state, data) {
       state.listFamilies.push(data);
-    },
-    async listRecords(state) {
-      const data = await services().record.list();
-      console.log("list record data", data);
-      state.listRecords = data;
     },
     setUserInfo(state, data) {
       state.userInfo = data;
