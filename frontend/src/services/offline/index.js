@@ -4,6 +4,7 @@ import user from "./user";
 import appointment from "./appointment";
 import suggestion from "./suggestion";
 import record from "./record";
+import util from "./util";
 
 export default {
   record,
@@ -11,5 +12,6 @@ export default {
   family,
   user,
   appointment,
-  suggestion
+  suggestion,
+  util
 };

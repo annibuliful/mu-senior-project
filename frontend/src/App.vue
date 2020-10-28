@@ -13,9 +13,17 @@ import InternetToast from "@/components/Internet-toast.vue";
 
 export default {
   created: function() {
+    // service()
+    //   .record.countRecordTime(1, "Hepatitis B Vaccine")
+    //   .then(data => {
+    //     console.log(data);
+    //   });
+
     service()
-      .record.getByChildId(1)
-      .toArray()
+      .util.checkRemainTime(1, [
+        "Hepatitis B Vaccine",
+        "Bacillus Calmette Guerin vaccine"
+      ])
       .then(data => {
         console.log(data);
       });
