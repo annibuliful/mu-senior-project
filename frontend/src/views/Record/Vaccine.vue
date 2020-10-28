@@ -103,10 +103,10 @@
             {{ localeText.uploadImage }}
           </label>
           <input type="file" @change="onFileChange" />
-
           <div id="preview">
-            <img v-if="url" :src="url" />
+            <img v-if="base64Url" :src="base64Url" />
           </div>
+          <Camera v-on:on-capture="onCapture" />
         </div>
         <div class="flex">
           <button
@@ -128,10 +128,12 @@
 </template>
 <script>
 import TagInput from "@/components/input/TagInput.vue";
+import Camera from "@/components/Camera.vue";
 import service from "@/services";
 export default {
   components: {
-    TagInput
+    TagInput,
+    Camera
   },
   data() {
     return {
@@ -206,6 +208,10 @@ export default {
     },
     cancel() {
       this.$router.go(-1);
+    },
+    onCapture(data) {
+      console.log(data);
+      this.base64Url = data;
     },
     onFileChange(e) {
       const file = e.target.files[0];
