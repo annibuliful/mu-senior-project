@@ -9,5 +9,5 @@ export default {
   getById,
   update,
   list,
-  listByChildId
+  listByChildId,
 };
