@@ -15,6 +15,7 @@ export default {
   created: function() {
     service()
       .record.getByChildId(1)
+      .toArray()
       .then(data => {
         console.log(data);
       });
