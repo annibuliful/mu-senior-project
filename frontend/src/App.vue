@@ -8,10 +8,17 @@
   </div>
 </template>
 <script>
-import { setMode } from "@/services";
+import service, { setMode } from "@/services";
 import InternetToast from "@/components/Internet-toast.vue";
 
 export default {
+  created: function() {
+    service()
+      .record.getByChildId(1)
+      .then(data => {
+        console.log(data);
+      });
+  },
   data: function() {
     return {
       isShowInternetToast: false
