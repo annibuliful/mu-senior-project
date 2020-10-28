@@ -7,6 +7,7 @@ module.exports = [
     protectDisease: ["disease001"],
     injectionPeriodTime: [0],
     doseNumber: 1,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "The immunity will fully grow inside the body after 2 months of receiving the vaccine. BCG Vaccine has a good effect on defensing an early state of tuberculosis especially on TB meningitis and miliary TB with 52-100 percentage of success rate.",
@@ -21,6 +22,7 @@ module.exports = [
     protectDisease: ["disease002"],
     injectionPeriodTime: [0, 30, 150],
     doseNumber: 3,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "The immunity of Hepatitis B will be suppressed after receiving the second dose of this vaccine. For the third dose, it only increases the effect of immunity. It has 90-95 percentage of success rate.",
@@ -36,6 +38,7 @@ module.exports = [
     protectDisease: ["disease004", "disease005", "disease006"],
     injectionPeriodTime: [60, 60, 60, 270, 1095],
     doseNumber: 5,
+    repeat: null,
     replaceableWith: ["vac004"],
     shortDes:
       "The immunity will best occur when injecting into muscle. It will first occur in 2 weeks after receiving the vaccine. In many studies found that the effectiveness between DTwp and DTap are not different with 75-90%. ",
@@ -53,6 +56,7 @@ module.exports = [
     protectDisease: ["disease004", "disease005", "disease006"],
     injectionPeriodTime: [60, 60, 60, 270, 1095],
     doseNumber: 5,
+    repeat: null,
     replaceableWith: ["vac003"],
     shortDes:
       "The immunity will best occur when injecting into muscle. It will first occur in 2 weeks after receiving the vaccine. In many studies found that the effectiveness between DTwp and DTap are not different with 75-90%. ",
@@ -69,6 +73,7 @@ module.exports = [
     protectDisease: ["disease004", "disease005"],
     injectionPeriodTime: [4380],
     doseNumber: 1,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "The immunity will best occur when injecting into muscle. It will first occur in 2 weeks after receiving the vaccine. In many studies found that the effectiveness between DTwp and DTap are not different with 75-90%. ",
@@ -84,6 +89,7 @@ module.exports = [
     protectDisease: ["disease004", "disease005", "disease006"],
     injectionPeriodTime: [1460],
     doseNumber: 1,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "The immunity will best occur when injecting into muscle. It will first occur in 2 weeks after receiving the vaccine. In many studies found that the effectiveness between DTwp and DTap are not different with 75-90%. ",
@@ -98,6 +104,7 @@ module.exports = [
     protectDisease: ["disease003"],
     injectionPeriodTime: [60, 60, 60, 360],
     doseNumber: 4,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "This vaccine has an effective preventation of Haemophilus influenzae type b (Hib). In the country that every children has been received this vaccine found that it can minimize the incidence of this disease to 95-99 percentage.",
@@ -113,6 +120,7 @@ module.exports = [
     protectDisease: ["disease007"],
     injectionPeriodTime: [60, 60, 60, 360, 1095],
     doseNumber: 5,
+    repeat: null,
     replaceableWith: ["vac009"],
     shortDes:
       "Studies in American found that 90% of a person who receives this vaccine more than 2 doses will have immunity for 3 serotypes of Poliomyelitis. After receiving more than 3 doses, a person will grow immunity to 97-100%",
@@ -129,6 +137,7 @@ module.exports = [
     protectDisease: ["disease007"],
     injectionPeriodTime: [60, 60, 60, 360, 1095],
     doseNumber: 5,
+    repeat: null,
     replaceableWith: ["vac008"],
     shortDes:
       "After receiving more than 2 doses, 90% of a who receives this vaccine person will grow immunity for 3 serotypes of Poliomyelitis, and it will increase to 99% after receiving 3 doses. The immunity will stay for many years after receiving the 4th does.",
@@ -145,6 +154,7 @@ module.exports = [
     protectDisease: ["disease008", "disease009", "disease010"],
     injectionPeriodTime: [270, 1190],
     doseNumber: 2,
+    repeat: null,
     replaceableWith: ["vac011"],
     shortDes:
       "Studies in American found that the immunity for Measles-Mumps-Rubella will grow for 95% of the 12 months children who receive this vaccine, and 98% for 15 months children.",
@@ -161,6 +171,7 @@ module.exports = [
     protectDisease: ["disease008", "disease009", "disease010", "disease014"],
     injectionPeriodTime: [365, 365],
     doseNumber: 1,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "Studies in American found that the immunity for Measles-Mumps-Rubella will grow for 95% of the 12 months children who receive this vaccine, and 98% for 15 months children.",
@@ -177,6 +188,7 @@ module.exports = [
     protectDisease: ["disease011"],
     injectionPeriodTime: [180, 30, 365],
     doseNumber: 3,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "After receiving 2nd dose for 1 month, JEVACTM will grow an immunity for this disease to 89-90%.",
@@ -192,6 +204,7 @@ module.exports = [
     protectDisease: ["disease011"],
     injectionPeriodTime: [270, 90],
     doseNumber: 2,
+    repeat: null,
     replaceableWith: ["vac014"],
     shortDes:
       "After receiving 1st dose of CD.JEVAXTM, The immunity will occur with percentage of 89.3, and the 2nd dose will increase the immunity to 100%.",
@@ -207,6 +220,7 @@ module.exports = [
     protectDisease: ["disease011"],
     injectionPeriodTime: [270, 365],
     doseNumber: 2,
+    repeat: null,
     replaceableWith: ["vac013"],
     shortDes:
       "After receiving 1st dose of IMOJEVTM, both adults and children will grow an immunity to 99% and 96% respectively. ",
@@ -220,8 +234,9 @@ module.exports = [
     vaccineMedicalName: "Influenza",
     vaccineNameNormal: "Influenza vaccine",
     protectDisease: ["disease012"],
-    injectionPeriodTime: [180, "annually"],
+    injectionPeriodTime: [180],
     doseNumber: 1,
+    repeat: 365,
     replaceableWith: null,
     shortDes:
       "Inactivated influenza vaccine will grow an immunity in 7-14 days, and live influenza vaccine has 70-95% of effectiveness depends on how much it match the disease.",
@@ -237,6 +252,7 @@ module.exports = [
     protectDisease: ["disease017"],
     injectionPeriodTime: [4015, 4045, 4165],
     doseNumber: 3,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "If there is no HPV infection was found in a person before receving this vaccine, it will grow an immunity to 93% of effectiveness.",
@@ -253,6 +269,7 @@ module.exports = [
     protectDisease: ["disease023"],
     injectionPeriodTime: [60, 60, 60, 180],
     doseNumber: 4,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "For PCV13, it can prevent the serotype 7F and 19A from IPD with 76% and 70% respectively. ",
@@ -268,6 +285,7 @@ module.exports = [
     protectDisease: ["disease023"],
     injectionPeriodTime: [730, 1825],
     doseNumber: 2,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "Studies in America found that it can prevent the serotype that will cause IPD in adults and children to 85-95%, and 86.9-87.3% for Thailand. And it has ability to prevent the IPD itself to 56-81%",
@@ -283,6 +301,7 @@ module.exports = [
     protectDisease: ["disease016"],
     injectionPeriodTime: [60, 60, 60],
     doseNumber: 3,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "After receiving 3 doses, it can prevent rotavirus to 98%, and 74% for every harmful level of rotavirus.",
@@ -299,6 +318,7 @@ module.exports = [
     protectDisease: ["disease013"],
     injectionPeriodTime: [365, 180],
     doseNumber: 2,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "After receiving 1 dose, Hepatitis A vaccine can prevent this disease for 1 year. And after receiving boosted dose in 6th-12th month after the first dose will allow this vaccine to prevent the disease to 94-100%",
@@ -314,6 +334,7 @@ module.exports = [
     protectDisease: ["disease014"],
     injectionPeriodTime: [365, 1095],
     doseNumber: 2,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "In 1 year or more children age, found that after receiving the 1st dose will grow the immunity to 76-85%, and it will increase to 100% when receiving the 2nd does of the vaccine.",
@@ -330,6 +351,7 @@ module.exports = [
     protectDisease: ["disease012"],
     injectionPeriodTime: [6750],
     doseNumber: 1,
+    repeat: null,
     replaceableWith: null,
     shortDes:
       "Inactivated influenza vaccine will grow an immunity in 7-14 days, and live influenza vaccine has 70-95% of effectiveness depends on how much it match the disease.",
