@@ -1,3 +1,5 @@
 import create from "./create";
 import getByChildId from "./getByChildId";
-export default { create, getByChildId };
+import countRecordTime from "./countRecordTime";
+
+export default { create, getByChildId, countRecordTime };
