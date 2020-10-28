@@ -9,20 +9,40 @@
 
       <div class="text-center text-xl">Immunity Status</div>
 
-      <div class="flex flex-row flex-wrap justify-center w-10/12 mx-auto">
-        <div class="bg-gray-300 animate-bounce">LOGO 1</div>
-        <div class="bg-gray-300">LOGO 2</div>
-        <div class="bg-gray-300">LOGO 3</div>
-        <div class="bg-gray-300">LOGO 4</div>
-        <div class="bg-gray-300">LOGO 5</div>
+      <div class="flex flex-row flex-wrap justify-center w-full">
+        <!-- <AchivementStatusCard :achivementType="'baby'"></AchivementStatusCard> -->
       </div>
+      <div
+        v-for="appointment in appointmentList"
+        :key="`${appointment.appointmentId}`"
+      >
+        <AchivementStatusCard
+          :vaccineId="appointment.customData.vaccineId"
+          :childId="childId"
+        ></AchivementStatusCard>
+        <!-- {{ appointment.customData.selectedVaccines[0] }} -->
+      </div>
+      <!-- <div
+        v-for="(receivedVaccine, index) in childInfo.receivedVaccines"
+        :key="`${receivedVaccine}-${index}`"
+      >
+        {{ receivedVaccine }}
+      </div> -->
+
+      <!-- <div>
+        childInfo
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 // import service from "@/services";
+import AchivementStatusCard from "../../components/AchivementStatusCard.vue";
 export default {
+  components: {
+    AchivementStatusCard,
+  },
   created() {
     // this.$store.commit("listRecords");
     // this.$store.commit("listFamilies");
@@ -32,6 +52,11 @@ export default {
     );
     console.log("ChildInfo", this.childInfo);
     console.log("vacc", this.vaccineList.length);
+
+    this.$store.commit("listAppointmentByChildId", this.childId);
+    // console.log("listAppointments", this.appointmentList);
+
+    //
   },
   data() {
     return {
@@ -40,6 +65,8 @@ export default {
       displayedListRecord: [],
       isModalVisible: false,
       selectedVaccineId: "",
+      listOfType: ["birth", "baby", "kid", "teen"],
+      // listOfAppointMent,
     };
   },
   computed: {
@@ -48,6 +75,9 @@ export default {
     },
     vaccineList() {
       return this.$store.state.locale.vaccines;
+    },
+    appointmentList() {
+      return this.$store.state.appointmentList;
     },
   },
   methods: {},
