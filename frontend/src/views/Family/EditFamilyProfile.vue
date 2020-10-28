@@ -64,7 +64,7 @@ import service from "@/services";
 
 export default {
   components: {
-    TagInput,
+    TagInput
   },
   async created() {
     this.$store.commit("listFamilies");
@@ -85,20 +85,20 @@ export default {
       inputVaccine: "",
       selectedDiseases: [],
       selectedVaccines: [],
-      childInfo: "",
+      childInfo: ""
     };
   },
   computed: {
     listVaccines() {
-      return this.$store.state.locale.vaccines.map((el) => ({
+      return this.$store.state.locale.vaccines.map(el => ({
         id: el.vaccineId,
-        tag: el.vaccineNameNormal,
+        tag: el.vaccineNameNormal
       }));
     },
     listDiseases() {
-      return this.$store.state.locale.diseases.map((el) => ({
+      return this.$store.state.locale.diseases.map(el => ({
         id: el.diseaseId,
-        tag: el.diseaseName,
+        tag: el.diseaseName
       }));
     },
     listFamilies() {
@@ -112,7 +112,7 @@ export default {
     },
     calendarLocale() {
       return this.$store.state.calendarLocale;
-    },
+    }
   },
   methods: {
     onAddNewDisease(disease) {
@@ -135,7 +135,7 @@ export default {
       await service().family.update(this.$route.params.id, this.childInfo);
 
       this.$router.push({
-        name: "dashboard-family",
+        name: "dashboard-family"
       });
     },
     resetForm() {
@@ -145,7 +145,7 @@ export default {
       this.inputVaccine = "";
       this.selectedDiseases = [];
       this.selectedVaccines = [];
-    },
-  },
+    }
+  }
 };
 </script>

@@ -48,8 +48,8 @@ export default {
           this.$refs.camera,
           0,
           0,
-          this.$refs.canvas.width,
-          this.$refs.canvas.height
+          this.$refs.camera.width,
+          this.$refs.camera.height
         );
         this.isCapture = true;
         const dataUrl = this.$refs.canvas.toDataURL();

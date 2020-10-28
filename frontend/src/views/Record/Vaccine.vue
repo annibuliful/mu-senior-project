@@ -104,7 +104,7 @@
           </label>
           <input type="file" @change="onFileChange" />
           <div id="preview">
-            <img v-if="base64Url" :src="base64Url" />
+            <img v-if="base64Url" :src="base64Url" class="preview-image" />
           </div>
           <Camera v-on:on-capture="onCapture" />
         </div>
@@ -210,7 +210,6 @@ export default {
       this.$router.go(-1);
     },
     onCapture(data) {
-      console.log(data);
       this.base64Url = data;
     },
     onFileChange(e) {
@@ -237,9 +236,12 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
+.preview-image {
+  width: 450px;
+  height: 300px;
+}
 #preview img {
-  max-width: 50%;
+  /* max-width: 50%; */
   /* max-height: 500px; */
 }
 .vue-tags-input {
