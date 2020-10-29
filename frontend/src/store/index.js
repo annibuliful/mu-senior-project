@@ -20,7 +20,7 @@ export default new Vuex.Store({
     selectedPackagerDetails: {},
     selectedCalendarDate: null || new Date(),
     baseRecordVaccine: {},
-    isVaccinateComplete: false,
+    isVaccinateComplete: false
   },
   mutations: {
     changeIsVaccinateComplete(state) {
@@ -57,15 +57,15 @@ export default new Vuex.Store({
     },
     getVaccineDetail(state, id) {
       state.selectedVaccineDetails = state.locale.vaccines.find(
-        (x) => x.vaccineId === id
+        x => x.vaccineId === id
       );
     },
     getPackagerDetail(state, id) {
       state.selectedPackagerDetails = state.locale.packagers.find(
-        (x) => x.packageId === id
+        x => x.packageId === id
       );
-    },
+    }
   },
   actions: {},
-  modules: {},
+  modules: {}
 });

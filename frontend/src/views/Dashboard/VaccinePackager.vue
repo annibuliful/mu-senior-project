@@ -27,7 +27,7 @@ import VaccinePackageCard from "../../components/VaccinePackageCard";
 
 export default {
   components: {
-    VaccinePackageCard,
+    VaccinePackageCard
     // AchivementStatusCard,
   },
   created() {
@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       displayedPackagerList: [],
-      childId: 1,
+      childId: 1
     };
   },
   computed: {
@@ -45,9 +45,9 @@ export default {
     },
     packageList: function() {
       return this.$store.state.locale.packagers;
-    },
+    }
   },
-  methods: {},
+  methods: {}
 };
 </script>
 <style scoped></style>

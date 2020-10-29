@@ -44,7 +44,7 @@ export default {
       isReceived: true,
       vaccineDetails: "",
       numberDoseReceived: "",
-      cardClass: "",
+      cardClass: ""
     };
   },
   async created() {
@@ -68,12 +68,12 @@ export default {
   props: {
     vaccineId: {
       type: String,
-      required: true,
+      required: true
     },
     childId: {
       type: Number,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 };
 </script>
