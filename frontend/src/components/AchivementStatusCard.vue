@@ -48,6 +48,7 @@ export default {
     };
   },
   async created() {
+    console.log("test");
     this.$store.commit("getVaccineDetail", this.vaccineId);
     this.vaccineDetails = this.$store.state.selectedVaccineDetails;
     const data = await service().record.countRecordTime(
