@@ -44,19 +44,12 @@ export default {
     AchivementStatusCard,
   },
   created() {
-    // this.$store.commit("listRecords");
-    // this.$store.commit("listFamilies");
     this.childId = Number(this.$route.params.id);
     this.childInfo = this.$store.state.listFamilies.find(
       (el) => el.familyId === this.childId
     );
-    console.log("ChildInfo", this.childInfo);
-    console.log("vacc", this.vaccineList.length);
 
     this.$store.commit("listAppointmentByChildId", this.childId);
-    // console.log("listAppointments", this.appointmentList);
-
-    //
   },
   data() {
     return {

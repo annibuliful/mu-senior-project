@@ -9,20 +9,26 @@
       </div>
 
       <div v-for="item in displayedPackagerList" :key="item.packageId">
-        <VaccinePackageCard
-          :packageId="item.packageId"
-          :packageTitle="item.packageTitle"
-          :packageSubTitle="item.packageSubTitle"
-        ></VaccinePackageCard>
+        <!-- {{ item.packageId }} -->
+        <VaccinePackageCard :packageId="item.packageId"></VaccinePackageCard>
+        <!-- <AchivementStatusCard
+          v-for="vc in item.packageVaccine"
+          :key="vc"
+          :vaccineId="vc"
+          :childId="childId"
+        ></AchivementStatusCard> -->
       </div>
     </div>
   </div>
 </template>
 <script>
 import VaccinePackageCard from "../../components/VaccinePackageCard";
+// import AchivementStatusCard from "../../components/AchivementStatusCard.vue";
+
 export default {
   components: {
     VaccinePackageCard,
+    // AchivementStatusCard,
   },
   created() {
     this.displayedPackagerList = this.packageList;
@@ -30,6 +36,7 @@ export default {
   data() {
     return {
       displayedPackagerList: [],
+      childId: 1,
     };
   },
   computed: {
@@ -37,7 +44,7 @@ export default {
       return this.$store.state.locale.vaccinePackagerPage;
     },
     packageList: function() {
-      return this.$store.state.locale.packager;
+      return this.$store.state.locale.packagers;
     },
   },
   methods: {},
