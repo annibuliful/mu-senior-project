@@ -20,7 +20,7 @@ export default {
   category: "Categories",
   children: "Children",
   adult: "Adult",
-  sorting: "Sorting",
+  ordering: "Order by",
   others: "Others",
   networkMode: {
     offline: "You are Offline now",

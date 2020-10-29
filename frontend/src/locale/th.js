@@ -20,7 +20,7 @@ export default {
   category: "ประเภทวัคซีน",
   children: "สำหรับเด็ก",
   adult: "สำหรับผู้ใหญ่",
-  sorting: "จัดเรียงวัคซีน",
+  ordering: "จัดเรียงวัคซีนโดย",
   others: "อื่นๆ",
   networkMode: {
     offline: "คุณออฟไลน์อยู่",
