@@ -72,11 +72,9 @@ export default {
   },
   methods: {
     getChildInfo() {
-      console.log("computeChildId");
       this.childInfo = this.listFamilies.find(
         (x) => x.fullname === this.recordTo
       );
-      console.log("computeChildId2", this.childInfo);
     },
   },
 
@@ -85,7 +83,6 @@ export default {
     this.$store.commit("getPackagerDetail", this.$route.params.id);
     this.packagerDetails = this.$store.state.selectedPackagerDetails;
     this.listOfVaccineInPackage = this.packagerDetails.vaccineInPackage;
-    console.log("this.listFamilies", this.listFamilies);
     if (this.listFamilies != null) {
       this.recordTo = this.listFamilies[0].fullname;
     }
