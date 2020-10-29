@@ -48,7 +48,6 @@ export default {
     };
   },
   async created() {
-    console.log("test");
     this.$store.commit("getVaccineDetail", this.vaccineId);
     this.vaccineDetails = this.$store.state.selectedVaccineDetails;
     const data = await service().record.countRecordTime(
@@ -57,9 +56,11 @@ export default {
     );
     this.numberDoseReceived = data;
 
-    if (
-      this.numberDoseReceived === this.vaccineDetails.injectionPeriodTime.length
-    ) {
+    const isComplete =
+      this.numberDoseReceived ===
+      this.vaccineDetails.injectionPeriodTime.length;
+
+    if (isComplete) {
       this.cardClass = "bg-green-500";
     }
   },
