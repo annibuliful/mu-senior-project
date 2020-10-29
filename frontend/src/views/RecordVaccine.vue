@@ -198,6 +198,8 @@ export default {
 
       this.$router.push("/");
     },
+
+    async createNextAppointment() {},
     cancel() {
       this.$router.go(-1);
     },

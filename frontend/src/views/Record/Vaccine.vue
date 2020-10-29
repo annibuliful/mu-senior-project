@@ -1,5 +1,35 @@
 <template>
   <div class="overflow-scroll">
+    <Modal
+      :isActive="activeModal"
+      v-on:close="onCloseModal"
+      title="Next Appointment"
+    >
+      <div class="my-4">
+        <div class="grid grid-flow-col" style="grid-template-columns: 60% 30%">
+          <p class="text-2xl text-center">vaccine name</p>
+          <p class="text-2xl text-center">next appointment</p>
+        </div>
+        <div
+          v-for="({ name, nextDay, isComplete }, index) in listNextAppointments"
+          :key="`${index}`"
+          class="grid"
+          style="grid-template-columns: 60% 30%"
+        >
+          <p class="text-xl text-center">{{ name }}</p>
+          <p class="text-xl text-center" v-if="isComplete">Complete</p>
+          <p class="text-xl text-center" v-if="!isComplete">
+            {{ nextDay }} Days
+          </p>
+        </div>
+      </div>
+      <button
+        @click="createNextAppointment"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto"
+      >
+        {{ localeText.submitBtn }}
+      </button>
+    </Modal>
     <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
       {{ localeText.title }}
     </p>
@@ -116,7 +146,7 @@
             {{ localeText.cancelBtn }}
           </button>
           <button
-            @click="submit"
+            @click="onOpenModal"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto"
           >
             {{ localeText.submitBtn }}
@@ -127,16 +157,20 @@
   </div>
 </template>
 <script>
+import { format, add } from "date-fns";
+import Modal from "@/components/common/Modal.vue";
 import TagInput from "@/components/input/TagInput.vue";
 import Camera from "@/components/Camera.vue";
 import service from "@/services";
 export default {
   components: {
     TagInput,
-    Camera
+    Camera,
+    Modal
   },
   data() {
     return {
+      activeModal: false,
       vaccineName: "",
       batchNO: "",
       receivingDate: new Date(),
@@ -147,7 +181,8 @@ export default {
       selectedVaccines: [],
       url: null,
       base64Url: null,
-      baseInfo: null
+      baseInfo: null,
+      listNextAppointments: []
     };
   },
   created() {
@@ -163,6 +198,11 @@ export default {
         this.receivingDate = this.baseInfo.dates;
       });
     this.$store.commit("listFamilies");
+  },
+  filters: {
+    dateFormat: function(val) {
+      return format(new Date(val), "MM/dd/yyyy");
+    }
   },
   computed: {
     localeText: function() {
@@ -184,6 +224,63 @@ export default {
     }
   },
   methods: {
+    async createNextAppointment() {
+      // const data = {
+      //   dates: this.selectedDate,
+      //   dot: "red",
+      //   key: this.selectedDate.toString(),
+      //   customData: {
+      //     selectedVaccines: this.selectedVaccines.map(el => el.tag),
+      //     note: this.note,
+      //     childname: fullname,
+      //     childId: familyId,
+      //     time: this.time
+      //   }
+      // };
+
+      const childname = this.baseInfo.customData.childname;
+      const childId = this.baseInfo.customData.childId;
+
+      const listVaccinesForNextTime = this.listNextAppointments.filter(
+        ({ isComplete }) => !isComplete
+      );
+
+      const nextDate = duration => add(new Date(), { days: duration });
+      const mapData = listVaccinesForNextTime.map(el => ({
+        dates: nextDate(el.nextDay),
+        dot: "red",
+        key: nextDate(el.nextDay).toString(),
+        customData: {
+          selectedVaccines: [el.name],
+          note: "",
+          childname,
+          childId,
+          time: "09:30"
+        }
+      }));
+
+      const listCallCreate = mapData.map(el =>
+        service().appointment.create(el)
+      );
+      await Promise.all(listCallCreate);
+      this.$router.push({ name: "dashboard-index" });
+    },
+    async generateNextAppointment() {
+      const childId = this.baseInfo.customData.childId;
+      const listVaccines = this.selectedVaccines.map(el => el.tag);
+      const listNextAppointments = await service().util.checkRemainTime(
+        childId,
+        listVaccines
+      );
+      this.listNextAppointments = listNextAppointments;
+    },
+    onOpenModal() {
+      this.activeModal = true;
+      this.generateNextAppointment();
+    },
+    onCloseModal() {
+      this.activeModal = false;
+    },
     async submit() {
       const { childId, childname } = this.baseInfo.customData;
       const data = {

@@ -351,5 +351,22 @@ module.exports = [
       "<ul><li>เข็มที่ 1: 12-18 เดือน</li><li>เข็มที่ 2: >4-6 ปี</li></ul>",
     warning:
       "<ul><li>ผู้ที่แพ ้เจลาติน neomycin, erythromycin, kanamycin อย่างรุนแรง</li><li>ผู้ที่มีภาวะภูมิคุ้มกันบกพร่อง</li><li>ตั้งครรภ์</li></ul>"
+  },
+  {
+    vaccineId: "vac022",
+    category: "adult",
+    vaccineMedicalName: "Influenza",
+    vaccineNameNormal: "วัคซีนป้องกันไข้หวัดใหญ่",
+    protectDisease: ["disease012"],
+    injectionPeriodTime: [365],
+    doseNumber: 1,
+    repeat: 365,
+    replaceableWith: null,
+    shortDes:
+      "วัคซันชนิดเชื้อไม่มีชีวิต ภูมูคุ้มกันจะเกิดขึ้นหลังฉีดวัคซีนในเวลา 7–14 วันวัคซีนชนิดเชื้อมีชีวิต มีประสิทธิภาพประมาณ ร้อยละ 70 - 95 ขึ้นกับว่าเชื้อตรงกับสายพันธุ์ ในวัคซีนมากน้อยเพียงใด",
+    displayedSuggestAge:
+      "<ul><li>เข็มที่ 1: 6-15 เดือน</li><li>เข็มถัดไป: ฉีดปีละ 1 ครั้ง</li></ul>",
+    warning:
+      "<ul><li>ผู้ที่แพ้ไข่อย่างรุนแรง ต้องเฝ้าสังเกตอาการจากการดูแลของแพทย์</li><li>ตั้งครรภ์</li></ul>"
   }
 ];

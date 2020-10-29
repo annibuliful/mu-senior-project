@@ -99,6 +99,7 @@ export default {
         }
       };
       await service().appointment.create(data);
+      console.log("Suggestion Create");
       this.$router.push({ name: "dashboard-index" });
     }
   }

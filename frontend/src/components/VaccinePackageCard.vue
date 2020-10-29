@@ -1,11 +1,23 @@
 <template>
   <div>
     <div
-      class="card-container border-b-2 border-gray-600 xl:border-2 hover:border-gray-200 cursor-pointer"
+      class="card-container mt-2 shadow-md p-2 hover:border-gray-200 cursor-pointer"
       @click="onCardClicked"
     >
-      <div class="text-2xl ml-5">{{ packageTitle }}</div>
-      <div class="text-base ml-5 mb-2">{{ packageSubTitle }}</div>
+      <div class="flex flex-row">
+        <img
+          class="p-2 w-3/12 lg:w-48"
+          :src="require(`../assets/packager/${packageId}.png`)"
+          alt=""
+        />
+        <div class="flex flex-col">
+          <div class="text-xl ml-3 my-auto text-blue-800 font-bold">
+            {{ packageDetails.packageTitle }}
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="text-base ml-5 mb-2">{{ packageSubTitle }}</div> -->
     </div>
   </div>
 </template>
@@ -15,16 +27,23 @@ export default {
     packageId: {
       type: String,
       required: true
-    },
-    packageTitle: {
-      type: String,
-      required: true
-    },
-    packageSubTitle: {
-      type: String,
-      required: false
     }
   },
+
+  created() {
+    console.log("COMPOTNET", this.packageId);
+    this.$store.commit("getPackagerDetail", this.packageId);
+    console.log(
+      "this.$store.state.selectedPackagerDetails",
+      this.packageDetails
+    );
+  },
+  computed: {
+    packageDetails: function() {
+      return this.$store.state.selectedPackagerDetails;
+    }
+  },
+
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)

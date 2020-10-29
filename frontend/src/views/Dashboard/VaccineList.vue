@@ -28,7 +28,7 @@
       </div>
       <div v-if="isFilterShow" class="search-area justify-around mb-3 flex">
         <!-- Filtered by Category -->
-        <div class="flex-col w-4/12 p-2 lg:w-3/12">
+        <div class="flex-col w-5/12 p-2 lg:w-3/12">
           <div>{{ localeText.category }}</div>
           <select
             v-model="selectedCategory"
@@ -40,8 +40,8 @@
           </select>
         </div>
         <!-- Filtered by Sorting -->
-        <div class="flex-col w-4/12 p-2 lg:w-3/12">
-          <div>{{ localeText.sorting }}</div>
+        <div class="flex-col w-5/12 p-2 lg:w-3/12">
+          <div>{{ localeText.ordering }}</div>
           <select
             v-model="selectedSorting"
             @change="onSelectedSorting"
@@ -52,13 +52,13 @@
           </select>
         </div>
         <!-- Filtered by other -->
-        <div class="flex-col w-4/12 p-2 lg:w-3/12">
+        <!-- <div class="flex-col w-4/12 p-2 lg:w-3/12">
           <div>{{ localeText.others }}</div>
           <select class="w-full border-solid border-2 border-gray-600">
             <option value="1">1</option>
             <option value="2">2</option>
           </select>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -80,7 +80,6 @@ export default {
   },
   created() {
     this.displayVaccineList = this.vaccineList;
-    // console.log("displayVaccineList", this.displayVaccineList);
   },
   data() {
     return {

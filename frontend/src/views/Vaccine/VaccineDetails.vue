@@ -96,7 +96,6 @@ export default {
   created() {
     this.$store.commit("getVaccineDetail", this.$route.params.id);
     this.vaccineDetails = this.$store.state.selectedVaccineDetails;
-    // console.log("vaccineDetails", this.vaccineDetails);
   }
 };
 </script>

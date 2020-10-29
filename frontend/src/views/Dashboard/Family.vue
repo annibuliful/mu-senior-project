@@ -112,6 +112,7 @@ export default {
   },
   created() {
     this.$store.commit("listFamilies");
+    console.log("family", this.listFamilies);
   },
   data() {
     return {
