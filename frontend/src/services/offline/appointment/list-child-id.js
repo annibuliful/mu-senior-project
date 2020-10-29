@@ -1,7 +1,8 @@
 import db from "../db";
 
-export default childId => {
+export default (childId) => {
   return db
     .table("appointments")
-    .filter(el => el.customData.childId === childId);
+    .filter((el) => el.customData.childId === childId)
+    .toArray();
 };

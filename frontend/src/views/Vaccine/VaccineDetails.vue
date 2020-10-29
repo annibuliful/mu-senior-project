@@ -63,40 +63,39 @@
 export default {
   data() {
     return {
-      vaccineDetails: {}
+      vaccineDetails: {},
     };
   },
   methods: {
     onCardClicked() {
       this.commitBaseRecord();
       this.$router.push({
-        path: `/recordvaccine`
+        path: `/recordvaccine`,
       });
     },
     onLinkAppointment() {
       this.commitBaseRecord();
       this.$router.push({
-        name: "appointment-create"
+        name: "appointment-create",
       });
     },
     commitBaseRecord() {
       const data = {
         vaccineName: this.vaccineDetails.vaccineNameNormal,
         vaccineId: this.vaccineDetails.vaccineId,
-        selectedVaccines: [this.vaccineDetails.vaccineNameNormal]
+        selectedVaccines: [this.vaccineDetails.vaccineNameNormal],
       };
       this.$store.commit("setBaseRecordVaccine", data);
-    }
+    },
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale.vaccineDetailsPage;
-    }
+    },
   },
   created() {
     this.$store.commit("getVaccineDetail", this.$route.params.id);
     this.vaccineDetails = this.$store.state.selectedVaccineDetails;
-    // console.log("vaccineDetails", this.vaccineDetails);
-  }
+  },
 };
 </script>

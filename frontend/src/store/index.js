@@ -15,12 +15,17 @@ export default new Vuex.Store({
     listFamilies: [],
     listDiseases: ["ภูมิคุ้มกันบกพร่อง", "หอบหืด", "HIV"],
     listVaccines: ["ไวรัสตับอักเสบ A", "ไวรัสตับอักเสบ B", "ไวรัสตับอักเสบ C"],
+    appointmentList: [],
     selectedVaccineDetails: {},
     selectedPackagerDetails: {},
     selectedCalendarDate: null || new Date(),
-    baseRecordVaccine: {}
+    baseRecordVaccine: {},
+    isVaccinateComplete: false,
   },
   mutations: {
+    changeIsVaccinateComplete(state) {
+      state.isVaccinateComplete = !state.isVaccinateComplete;
+    },
     setBaseRecordVaccine(state, data) {
       state.baseRecordVaccine = data;
     },
@@ -40,6 +45,10 @@ export default new Vuex.Store({
       const data = await services().family.list(userId);
       state.listFamilies = data;
     },
+    async listAppointmentByChildId(state, cid) {
+      const data = await services().appointment.listByChildId(cid);
+      state.appointmentList = data;
+    },
     addNewFamilyMember(state, data) {
       state.listFamilies.push(data);
     },
@@ -48,15 +57,15 @@ export default new Vuex.Store({
     },
     getVaccineDetail(state, id) {
       state.selectedVaccineDetails = state.locale.vaccines.find(
-        x => x.vaccineId === id
+        (x) => x.vaccineId === id
       );
     },
     getPackagerDetail(state, id) {
-      state.selectedPackagerDetails = state.locale.vaccinePackages.find(
-        x => x.packageId === id
+      state.selectedPackagerDetails = state.locale.packagers.find(
+        (x) => x.packageId === id
       );
-    }
+    },
   },
   actions: {},
-  modules: {}
+  modules: {},
 });
