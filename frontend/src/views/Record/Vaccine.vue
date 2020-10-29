@@ -225,19 +225,6 @@ export default {
   },
   methods: {
     async createNextAppointment() {
-      // const data = {
-      //   dates: this.selectedDate,
-      //   dot: "red",
-      //   key: this.selectedDate.toString(),
-      //   customData: {
-      //     selectedVaccines: this.selectedVaccines.map(el => el.tag),
-      //     note: this.note,
-      //     childname: fullname,
-      //     childId: familyId,
-      //     time: this.time
-      //   }
-      // };
-
       const childname = this.baseInfo.customData.childname;
       const childId = this.baseInfo.customData.childId;
 
@@ -263,6 +250,7 @@ export default {
         service().appointment.create(el)
       );
       await Promise.all(listCallCreate);
+      await this.submit();
       this.$router.push({ name: "dashboard-index" });
     },
     async generateNextAppointment() {
