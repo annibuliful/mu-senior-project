@@ -22,25 +22,25 @@
 import VaccinePackageCard from "../../components/VaccinePackageCard";
 export default {
   components: {
-    VaccinePackageCard
+    VaccinePackageCard,
   },
   created() {
-    this.displayedPackagerList = this.vaccineList;
+    this.displayedPackagerList = this.packageList;
   },
   data() {
     return {
-      displayedPackagerList: []
+      displayedPackagerList: [],
     };
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale.vaccinePackagerPage;
     },
-    vaccineList: function() {
-      return this.$store.state.locale.vaccinePackages;
-    }
+    packageList: function() {
+      return this.$store.state.locale.packager;
+    },
   },
-  methods: {}
+  methods: {},
 };
 </script>
 <style scoped></style>

@@ -14,25 +14,17 @@ export default {
   props: {
     packageId: {
       type: String,
-      required: true
+      required: true,
     },
-    packageTitle: {
-      type: String,
-      required: true
-    },
-    packageSubTitle: {
-      type: String,
-      required: false
-    }
   },
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
-        path: `/dashboard/vaccinepackager/details/${this.packageId}`
+        path: `/dashboard/vaccinepackager/details/${this.packageId}`,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
