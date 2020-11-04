@@ -35,7 +35,7 @@ import format from "date-fns/format";
 export default {
   filters: {
     receivingDateFormat: function(value) {
-      return format(new Date(value), "dd-MM-yyyy");
+      return format(new Date(value), "dd/MM/yyyy");
     },
   },
   computed: {
