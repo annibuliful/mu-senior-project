@@ -24,7 +24,7 @@ export default {
   others: "Others",
   networkMode: {
     offline: "You are Offline now",
-    online: "You are Online now"
+    online: "You are Online now",
   },
   vaccineDetailsPage: {
     title: "Vaccine Description",
@@ -35,10 +35,10 @@ export default {
     who: "Who Should Be Vaccinated ",
     warning: "Warning/Who should not use",
     vaccineReference:
-      "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)"
+      "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)",
   },
   vaccinePackagerPage: {
-    title: "Vaccine Packager"
+    title: "Vaccine Packager",
   },
   recordVaccinePage: {
     title: "Record Vaccine",
@@ -52,7 +52,7 @@ export default {
     uploadImage: "Upload an evidence (Incluing The Batch Number)",
     submitBtn: "Submit",
     cancelBtn: "cancel",
-    packageMember: "Suggested Vaccine for"
+    packageMember: "Suggested Vaccine for",
   },
   label: {
     name: "Fullname",
@@ -60,7 +60,8 @@ export default {
     disease: "Congenital disease",
     vaccine: "Received vaccine",
     noneCongenitalDisease: "No Congenital Disease",
-    updateChildInfoTitle: "Update Family's Member Infomation"
+    updateChildInfoTitle: "Update Family's Member Infomation",
+    age: "Age",
   },
   labelAddAppointment: {
     child: "child name",
@@ -68,12 +69,18 @@ export default {
     date: "date",
     time: "time",
     addAppointment: "add appointment",
-    note: "ข้อมูลเพิ่มเติม"
+    note: "ข้อมูลเพิ่มเติม",
+  },
+  historyPage: {
+    title: "History",
+    received: "Received",
+    hospital: "Hospital/Clinic",
+    date: "Date",
   },
   button: {
     cancel: "Cancel",
     update: "Update",
     add: "Add",
-    save: "Save"
-  }
+    save: "Save",
+  },
 };
