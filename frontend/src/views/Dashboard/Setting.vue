@@ -16,7 +16,7 @@
         </label>
       </div>
 
-      <div class="inline-block relative w-64">
+      <div class="inline-block relative w-auto">
         <select
           class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           :value="calendarLocale"
@@ -48,7 +48,7 @@
           </label>
         </div>
 
-        <div class="inline-block relative w-64">
+        <div class="inline-block relative w-auto">
           <input
             type="text"
             v-model="fullname"
@@ -70,7 +70,7 @@
           </label>
         </div>
 
-        <div class="inline-block relative w-64">
+        <div class="inline-block relative w-auto">
           <v-date-picker v-model="birthDate" :locale="calendarLocale" />
         </div>
       </div>
@@ -85,7 +85,7 @@
           </label>
         </div>
 
-        <div class="inline-block relative w-64">
+        <div class="inline-block relative w-auto">
           <TagInput
             :placeholder="label.disease"
             :listTags="listDiseases"
@@ -106,7 +106,7 @@
           </label>
         </div>
 
-        <div class="inline-block relative w-64">
+        <div class="inline-block relative w-auto">
           <TagInput
             :placeholder="label.vaccine"
             :listTags="listVaccines"
@@ -142,7 +142,7 @@ import service from "@/services";
 export default {
   components: {
     CaretIcon,
-    TagInput
+    TagInput,
   },
   computed: {
     listVaccines() {
@@ -165,7 +165,7 @@ export default {
     },
     userInfo() {
       return this.$store.state.userInfo;
-    }
+    },
   },
   data() {
     return {
@@ -173,7 +173,7 @@ export default {
       birthDate: new Date(),
       selectedVaccines: [],
       selectedDiseases: [],
-      errorMessage: ""
+      errorMessage: "",
     };
   },
   created() {
@@ -189,7 +189,7 @@ export default {
           fullname: this.fullname,
           birthDate: this.birthDate,
           receivedVaccines: this.selectedVaccines,
-          diseases: this.selectedDiseases
+          diseases: this.selectedDiseases,
         };
         this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
         localStorage.setItem("userInfo", JSON.stringify(data));
@@ -213,7 +213,7 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    }
-  }
+    },
+  },
 };
 </script>
