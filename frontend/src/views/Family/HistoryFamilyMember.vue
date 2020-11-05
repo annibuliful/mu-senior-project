@@ -16,11 +16,9 @@
 
 <script>
 import HistoryCard from "../../components/HistoryCard.vue";
-import FamilyMemberHeader from "../../components/FamilyMemberHeaderInfo.vue";
 export default {
   components: {
     HistoryCard,
-    FamilyMemberHeader,
   },
   created() {
     this.childId = Number(this.$route.params.id);

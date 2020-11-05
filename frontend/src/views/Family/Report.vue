@@ -1,14 +1,10 @@
 <template>
   <div>
-    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
+    <p class="text-2xl mb-5 border-b-2 border-blue-700" style="width: auto;">
       Report
     </p>
 
     <div class="flex flex-col">
-      <div class="text-center text-xl">{{ childInfo.fullname }}</div>
-
-      <div class="text-center text-xl">Immunity Status</div>
-
       <div class="flex flex-row flex-wrap justify-center w-full">
         <!-- <AchivementStatusCard :achivementType="'baby'"></AchivementStatusCard> -->
       </div>
@@ -41,12 +37,12 @@
 import AchivementStatusCard from "../../components/AchivementStatusCard.vue";
 export default {
   components: {
-    AchivementStatusCard
+    AchivementStatusCard,
   },
   created() {
     this.childId = Number(this.$route.params.id);
     this.childInfo = this.$store.state.listFamilies.find(
-      el => el.familyId === this.childId
+      (el) => el.familyId === this.childId
     );
 
     this.$store.commit("listAppointmentByChildId", this.childId);
@@ -58,7 +54,7 @@ export default {
       displayedListRecord: [],
       isModalVisible: false,
       selectedVaccineId: "",
-      listOfType: ["birth", "baby", "kid", "teen"]
+      listOfType: ["birth", "baby", "kid", "teen"],
       // listOfAppointMent,
     };
   },
@@ -71,8 +67,8 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    }
+    },
   },
-  methods: {}
+  methods: {},
 };
 </script>
