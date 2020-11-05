@@ -21,6 +21,7 @@ import RecordVaccineByAppointment from "../views/Record/Vaccine.vue";
 import ReportFamilyProfile from "../views/Family/Report.vue";
 import EditFamilyProfile from "../views/Family/EditFamilyProfile.vue";
 import HistoryFamilyMember from "../views/Family/HistoryFamilyMember.vue";
+import SummaryFamilyMember from "../views/Family/SummaryFamilyMember.vue";
 
 Vue.use(VueRouter);
 
@@ -76,6 +77,11 @@ const routes = [
         path: "family/history/:id",
         name: "history-family-member",
         component: HistoryFamilyMember,
+      },
+      {
+        path: "family/summary/:id",
+        name: "summary-family-member",
+        component: SummaryFamilyMember,
       },
       {
         path: "family/edit/:id",
