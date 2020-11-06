@@ -13,13 +13,13 @@ export default {
   props: {
     title: {
       type: String,
-      default: "",
+      default: ""
     },
     isActive: {
       type: Boolean,
-      default: false,
-    },
-  },
+      default: false
+    }
+  }
 };
 </script>
 <style scoped>

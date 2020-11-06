@@ -36,18 +36,18 @@ export default {
   filters: {
     receivingDateFormat: function(value) {
       return format(new Date(value), "dd/MM/yyyy");
-    },
+    }
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale.historyPage;
-    },
+    }
   },
   props: {
     recordObject: {
       type: Object,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 };
 </script>

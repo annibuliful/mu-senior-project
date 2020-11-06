@@ -40,12 +40,12 @@
 import AchivementStatusCard from "../../components/AchivementStatusCard.vue";
 export default {
   components: {
-    AchivementStatusCard,
+    AchivementStatusCard
   },
   created() {
     this.childId = Number(this.$route.params.id);
     this.childInfo = this.$store.state.listFamilies.find(
-      (el) => el.familyId === this.childId
+      el => el.familyId === this.childId
     );
 
     this.$store.commit("listAppointmentByChildId", this.childId);
@@ -57,7 +57,7 @@ export default {
       displayedListRecord: [],
       isModalVisible: false,
       selectedVaccineId: "",
-      listOfType: ["birth", "baby", "kid", "teen"],
+      listOfType: ["birth", "baby", "kid", "teen"]
       // listOfAppointMent,
     };
   },
@@ -73,8 +73,8 @@ export default {
     },
     labelText() {
       return this.$store.state.locale.label;
-    },
+    }
   },
-  methods: {},
+  methods: {}
 };
 </script>

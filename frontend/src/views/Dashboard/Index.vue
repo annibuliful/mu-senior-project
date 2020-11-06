@@ -13,6 +13,6 @@
 import SideBar from "@/components/Sidebar.vue";
 import MobileBar from "@/components/Mobilebar.vue";
 export default {
-  components: { SideBar, MobileBar },
+  components: { SideBar, MobileBar }
 };
 </script>
