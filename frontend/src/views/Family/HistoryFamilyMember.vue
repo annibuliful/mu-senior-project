@@ -1,14 +1,22 @@
 <template>
   <div>
-    <div class="text-2xl mb-5 border-b-2 border-blue-700">
+    <div
+      class="text-xl mb-5 border-b-2 border-blue-700 ml-2"
+      style="width: fit-content;"
+    >
       {{ localText.title }}
     </div>
 
     <div class="flex flex-col">
-      <FamilyMemberHeader :childObject="childInfo" />
-
-      <div v-for="record in listRecords" :key="`${record.recordId}`">
-        <HistoryCard :recordObject="record" />
+      <div v-if="listRecords.length != 0">
+        <div v-for="record in listRecords" :key="`${record.recordId}`">
+          <HistoryCard :recordObject="record" />
+        </div>
+      </div>
+      <div v-else>
+        <div class=" text-center mx-4">
+          {{ childInfo.fullname }} {{ localText.nohistory }}
+        </div>
       </div>
     </div>
   </div>
@@ -16,6 +24,7 @@
 
 <script>
 import HistoryCard from "../../components/HistoryCard.vue";
+
 export default {
   components: {
     HistoryCard,

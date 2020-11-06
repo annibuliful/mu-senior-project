@@ -62,6 +62,8 @@ export default {
     noneCongenitalDisease: "ไม่มีโรคประจำตัว",
     updateChildInfoTitle: "อัปเดตข้อมูลสมาชิกในครอบครัว",
     age: "อายุ",
+    reporttitle: "สถานะภูมิคุ้มกัน",
+    roadmap: "แผนการฉีดวัคซีน",
   },
   labelAddAppointment: {
     child: "ชื่อเด็ก",
@@ -76,6 +78,7 @@ export default {
     received: "ได้รับวัคซีน",
     hospital: "โรงพยาบาล/คลินิค",
     date: "วันที่",
+    nohistory: "ไม่มีประวัติการได้รับวัคซีน",
   },
   button: {
     cancel: "ยกเลิก",

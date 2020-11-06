@@ -62,6 +62,8 @@ export default {
     noneCongenitalDisease: "No Congenital Disease",
     updateChildInfoTitle: "Update Family's Member Infomation",
     age: "Age",
+    reporttitle: "Immunity Status",
+    roadmap: "Vaccine Roadmap",
   },
   labelAddAppointment: {
     child: "child name",
@@ -76,6 +78,7 @@ export default {
     received: "Received",
     hospital: "Hospital/Clinic",
     date: "Date",
+    nohistory: "doesn't take any vaccine before",
   },
   button: {
     cancel: "Cancel",

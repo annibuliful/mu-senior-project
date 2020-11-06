@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="px-6 py-4 flex flex-row shadow-xs bg-gray-200">
+    <div class="px-6 py-4 flex flex-row shadow-xs bg-gray-200 mt-0">
       <!-- Check if there is profile image or not -->
       <div class="flex flex-col">
         <img

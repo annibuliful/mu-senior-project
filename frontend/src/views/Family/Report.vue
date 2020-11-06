@@ -1,8 +1,11 @@
 <template>
   <div>
-    <p class="text-2xl mb-5 border-b-2 border-blue-700" style="width: auto;">
-      Report
-    </p>
+    <div
+      class="text-xl mb-5 border-b-2 border-blue-700 ml-2"
+      style="width: fit-content;"
+    >
+      {{ labelText.reporttitle }}
+    </div>
 
     <div class="flex flex-col">
       <div class="flex flex-row flex-wrap justify-center w-full">
@@ -67,6 +70,9 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
+    },
+    labelText() {
+      return this.$store.state.locale.label;
     },
   },
   methods: {},
