@@ -20,7 +20,8 @@ export default new Vuex.Store({
     selectedPackagerDetails: {},
     selectedCalendarDate: null || new Date(),
     baseRecordVaccine: {},
-    isVaccinateComplete: false
+    isVaccinateComplete: false,
+    listRecords: [],
   },
   mutations: {
     changeIsVaccinateComplete(state) {
@@ -49,6 +50,12 @@ export default new Vuex.Store({
       const data = await services().appointment.listByChildId(cid);
       state.appointmentList = data;
     },
+
+    async listRecordsByChildId(state, cid) {
+      const data = await services().record.getByChildId(cid);
+      state.listRecords = data;
+      console.log("state.listRecords", state.listRecords);
+    },
     addNewFamilyMember(state, data) {
       state.listFamilies.push(data);
     },
@@ -57,15 +64,15 @@ export default new Vuex.Store({
     },
     getVaccineDetail(state, id) {
       state.selectedVaccineDetails = state.locale.vaccines.find(
-        x => x.vaccineId === id
+        (x) => x.vaccineId === id
       );
     },
     getPackagerDetail(state, id) {
       state.selectedPackagerDetails = state.locale.packagers.find(
-        x => x.packageId === id
+        (x) => x.packageId === id
       );
-    }
+    },
   },
   actions: {},
-  modules: {}
+  modules: {},
 });

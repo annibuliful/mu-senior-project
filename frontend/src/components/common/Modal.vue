@@ -2,7 +2,7 @@
   <div class="modal" :class="{ 'modal-active': isActive }">
     <div class="modal-content">
       <span class="close" @click="$emit('close')">&times;</span>
-      <p class="text-3xl text-center">{{ title }}</p>
+      <p class="md:text-3xl text-xl font-bold text-center">{{ title }}</p>
       <slot></slot>
     </div>
   </div>
@@ -13,13 +13,13 @@ export default {
   props: {
     title: {
       type: String,
-      default: ""
+      default: "",
     },
     isActive: {
       type: Boolean,
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 };
 </script>
 <style scoped>
