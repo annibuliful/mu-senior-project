@@ -35,7 +35,7 @@
             class="inline w-8 pb-2"
             src="@/assets/icons/packager.svg"
             :class="[
-              currentPath === '/dashboard/vaccinepackager' ? 'link-active' : '',
+              currentPath === '/dashboard/vaccinepackager' ? 'link-active' : ''
             ]"
           />
         </router-link>
@@ -60,8 +60,8 @@ export default {
     },
     currentPath() {
       return this.$route.path;
-    },
-  },
+    }
+  }
 };
 </script>
 

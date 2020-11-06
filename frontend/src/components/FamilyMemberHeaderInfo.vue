@@ -41,13 +41,13 @@ export default {
     currentAge() {
       return formatDistanceToNow(new Date(this.childObject.birthDate));
       //   return this.$store.state.calendarLocale;
-    },
+    }
   },
   props: {
     childObject: {
       type: Object,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 };
 </script>

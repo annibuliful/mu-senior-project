@@ -38,13 +38,13 @@ export default {
     History,
     ImmunityStatus,
     CustomSelect,
-    AppointmentRoadmap,
+    AppointmentRoadmap
   },
   created() {
     this.displayMode = "Roadmap";
     this.childId = Number(this.$route.params.id);
     this.childInfo = this.$store.state.listFamilies.find(
-      (el) => el.familyId === this.childId
+      el => el.familyId === this.childId
     );
 
     this.$store.commit("listAppointmentByChildId", this.childId);
@@ -53,7 +53,7 @@ export default {
     return {
       childId: "",
       childInfo: {},
-      displayMode: "",
+      displayMode: ""
     };
   },
   computed: {
@@ -65,12 +65,12 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    },
+    }
   },
   methods: {
     test() {
       console.log("SSSSSSS", this.displayMode);
-    },
-  },
+    }
+  }
 };
 </script>

@@ -24,18 +24,18 @@ export default {
   props: {
     options: {
       type: Array,
-      required: true,
+      required: true
     },
     default: {
       type: String,
       required: false,
-      default: null,
+      default: null
     },
     tabindex: {
       type: Number,
       required: false,
-      default: 0,
-    },
+      default: 0
+    }
   },
   data() {
     return {
@@ -44,12 +44,12 @@ export default {
         : this.options.length > 0
         ? this.options[0]
         : null,
-      open: false,
+      open: false
     };
   },
   mounted() {
     this.$emit("input", this.selected);
-  },
+  }
 };
 </script>
 

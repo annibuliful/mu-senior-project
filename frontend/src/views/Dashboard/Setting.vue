@@ -31,6 +31,14 @@
           <CaretIcon />
         </div>
       </div>
+      <div class="ml-auto">
+        <button
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
+          @click="onLogout"
+        >
+          Logout
+        </button>
+      </div>
     </div>
 
     <div class="mb-10 mt-10">
@@ -142,7 +150,7 @@ import service from "@/services";
 export default {
   components: {
     CaretIcon,
-    TagInput,
+    TagInput
   },
   computed: {
     listVaccines() {
@@ -165,7 +173,7 @@ export default {
     },
     userInfo() {
       return this.$store.state.userInfo;
-    },
+    }
   },
   data() {
     return {
@@ -173,7 +181,7 @@ export default {
       birthDate: new Date(),
       selectedVaccines: [],
       selectedDiseases: [],
-      errorMessage: "",
+      errorMessage: ""
     };
   },
   created() {
@@ -183,13 +191,17 @@ export default {
     this.selectedDiseases = this.userInfo.receivedVaccines;
   },
   methods: {
+    onLogout() {
+      localStorage.removeItem("userInfo");
+      this.$router.push("/");
+    },
     async submit() {
       try {
         const data = {
           fullname: this.fullname,
           birthDate: this.birthDate,
           receivedVaccines: this.selectedVaccines,
-          diseases: this.selectedDiseases,
+          diseases: this.selectedDiseases
         };
         this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
         localStorage.setItem("userInfo", JSON.stringify(data));
@@ -213,7 +225,7 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    },
-  },
+    }
+  }
 };
 </script>

@@ -23,32 +23,32 @@ import AppointmentCard from "@/components/AppointmentCard.vue";
 
 export default {
   components: {
-    AppointmentCard,
+    AppointmentCard
   },
   data: function() {
     return {
       listEvents: [],
-      childInfo: "",
+      childInfo: ""
     };
   },
   created: function() {
     const childId = this.$route.params.id;
     this.childInfo = this.$store.state.listFamilies.find(
-      (el) => el.familyId === childId
+      el => el.familyId === childId
     );
 
     service()
       .appointment.list()
-      .then((data) => {
+      .then(data => {
         this.listEvents = data
-          .filter((el) => el.customData.childId === Number(childId))
-          .map((el) => ({ ...el, date: format(el.dates, "dd/MM/yyyy") }));
+          .filter(el => el.customData.childId === Number(childId))
+          .map(el => ({ ...el, date: format(el.dates, "dd/MM/yyyy") }));
       });
   },
   computed: {
     labelText() {
       return this.$store.state.locale.label;
-    },
-  },
+    }
+  }
 };
 </script>

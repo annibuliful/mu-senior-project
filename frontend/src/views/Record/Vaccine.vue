@@ -172,7 +172,7 @@ export default {
   components: {
     TagInput,
     Camera,
-    Modal,
+    Modal
   },
   data() {
     return {
@@ -188,18 +188,18 @@ export default {
       url: null,
       base64Url: null,
       baseInfo: null,
-      listNextAppointments: [],
+      listNextAppointments: []
     };
   },
   created() {
     const eventId = this.$route.params.id;
     service()
       .appointment.getById(eventId)
-      .then((data) => {
+      .then(data => {
         this.baseInfo = data[0];
         this.recordTo = this.baseInfo.customData.childname;
         this.selectedVaccines = this.baseInfo.customData.selectedVaccines.map(
-          (el) => ({ tag: el })
+          el => ({ tag: el })
         );
         this.receivingDate = this.baseInfo.dates;
       });
@@ -208,15 +208,15 @@ export default {
   filters: {
     dateFormat: function(val) {
       return format(new Date(val), "MM/dd/yyyy");
-    },
+    }
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale.recordVaccinePage;
     },
     listVaccines() {
-      return this.$store.state.locale.vaccines.map((el) => ({
-        tag: el.vaccineNameNormal,
+      return this.$store.state.locale.vaccines.map(el => ({
+        tag: el.vaccineNameNormal
       }));
     },
     calendarLocale() {
@@ -227,7 +227,7 @@ export default {
     },
     label() {
       return this.$store.state.locale.labelAddAppointment;
-    },
+    }
   },
   methods: {
     async createNextAppointment() {
@@ -238,8 +238,8 @@ export default {
         ({ isComplete }) => !isComplete
       );
 
-      const nextDate = (duration) => add(new Date(), { days: duration });
-      const mapData = listVaccinesForNextTime.map((el) => ({
+      const nextDate = duration => add(new Date(), { days: duration });
+      const mapData = listVaccinesForNextTime.map(el => ({
         dates: nextDate(el.nextDay),
         dot: "red",
         key: nextDate(el.nextDay).toString(),
@@ -248,11 +248,11 @@ export default {
           note: "",
           childname,
           childId,
-          time: "09:30",
-        },
+          time: "09:30"
+        }
       }));
 
-      const listCallCreate = mapData.map((el) =>
+      const listCallCreate = mapData.map(el =>
         service().appointment.create(el)
       );
       await Promise.all(listCallCreate);
@@ -261,7 +261,7 @@ export default {
     },
     async generateNextAppointment() {
       const childId = this.baseInfo.customData.childId;
-      const listVaccines = this.selectedVaccines.map((el) => el.tag);
+      const listVaccines = this.selectedVaccines.map(el => el.tag);
       const listNextAppointments = await service().util.checkRemainTime(
         childId,
         listVaccines
@@ -286,13 +286,13 @@ export default {
         hostpitalName: this.hostpitalName,
         doctorInfo: this.doctorInfo,
         freetext: this.freetext,
-        recordImage: this.base64Url,
+        recordImage: this.base64Url
       };
       await service().record.create(data);
       const childInfo = (await service().family.getByChildId(childId))[0];
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,
-        ...this.selectedVaccines.map((el) => el.tag),
+        ...this.selectedVaccines.map(el => el.tag)
       ];
       await service().family.update(childId, childInfo);
       this.$router.push("/");
@@ -317,8 +317,8 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
