@@ -71,7 +71,11 @@ export default {
     date: "date",
     time: "time",
     addAppointment: "add appointment",
-    note: "ข้อมูลเพิ่มเติม",
+    note: "additional note",
+    nextAppointMent: "Next Appointment",
+    vcName: "Vaccine name",
+    complete: "Complete",
+    day: "Days",
   },
   historyPage: {
     title: "History",

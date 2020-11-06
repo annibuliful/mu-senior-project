@@ -72,6 +72,10 @@ export default {
     time: "เวลา",
     addAppointment: "เพิ่มการนัดหมาย",
     note: "ข้อมูลเพิ่มเติม",
+    nextAppointMent: "การนัดหมายถัดไป",
+    vcName: "ชื่อวัคซีน",
+    complete: "ได้รับวัคซีนชนิดนี้ครบตามแผนแล้ว",
+    day: "วัน",
   },
   historyPage: {
     title: "ประวัติการฉีดวัคซีน",
