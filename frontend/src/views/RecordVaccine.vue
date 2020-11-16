@@ -161,7 +161,8 @@ export default {
     },
     listVaccines() {
       return this.$store.state.locale.vaccines.map(el => ({
-        tag: el.vaccineNameNormal
+        tag: el.vaccineNameNormal,
+        vaccineId: el.vaccineId
       }));
     },
     calendarLocale() {
@@ -180,7 +181,7 @@ export default {
 
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,
-        ...this.selectedVaccines.map(el => el.tag)
+        ...this.selectedVaccines.map(el => el.vaccineId)
       ];
       await service().family.update(childInfo.familyId, childInfo);
       const data = {
@@ -212,7 +213,7 @@ export default {
         this.base64Url = reader.result;
       };
     },
-    onAddNewVaccine: function(vaccine) {
+    onAddNewVaccine(vaccine) {
       this.selectedVaccines.push(vaccine);
     },
     onDeleteVaccine(index) {

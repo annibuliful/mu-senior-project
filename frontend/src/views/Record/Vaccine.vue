@@ -216,7 +216,8 @@ export default {
     },
     listVaccines() {
       return this.$store.state.locale.vaccines.map(el => ({
-        tag: el.vaccineNameNormal
+        tag: el.vaccineNameNormal,
+        vaccineId: el.vaccineId
       }));
     },
     calendarLocale() {
@@ -292,7 +293,7 @@ export default {
       const childInfo = (await service().family.getByChildId(childId))[0];
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,
-        ...this.selectedVaccines.map(el => el.tag)
+        ...this.selectedVaccines.map(el => el.vaccineId)
       ];
       await service().family.update(childId, childInfo);
       this.$router.push("/");
