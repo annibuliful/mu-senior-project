@@ -176,6 +176,7 @@ export default {
   },
   data() {
     return {
+      eventId: "",
       activeModal: false,
       vaccineName: "",
       batchNO: "",
@@ -192,9 +193,9 @@ export default {
     };
   },
   created() {
-    const eventId = this.$route.params.id;
+    this.eventId = this.$route.params.id;
     service()
-      .appointment.getById(eventId)
+      .appointment.getById(this.eventId)
       .then(data => {
         this.baseInfo = data[0];
         this.recordTo = this.baseInfo.customData.childname;
@@ -290,6 +291,11 @@ export default {
         recordImage: this.base64Url
       };
       await service().record.create(data);
+      // const appointmentInfo = await service().appointment.getById(this.eventId);
+      await service().appointment.update(Number(this.eventId), {
+        dot: "green"
+      });
+
       const childInfo = (await service().family.getByChildId(childId))[0];
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,

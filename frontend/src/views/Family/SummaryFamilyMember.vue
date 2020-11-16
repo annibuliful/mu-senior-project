@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-4">
     <!-- <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
       Summary
     </p> -->
@@ -61,6 +61,12 @@
         </select>
       </div>
     </div>
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto"
+      @click="search()"
+    >
+      Search
+    </button>
 
     <History v-if="displayMode === 'History'" />
     <ImmunityStatus v-if="displayMode === 'Status'" />
