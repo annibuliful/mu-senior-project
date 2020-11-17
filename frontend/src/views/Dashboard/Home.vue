@@ -58,8 +58,9 @@ export default {
   components: { Calendar, AppointmentCard },
   created: function() {
     service()
-      .appointment.list()
-      .then(data => {
+      .appointment.cronCheckStatus()
+      .then(async () => {
+        const data = await service().appointment.list();
         this.listEvents = data;
         this.filterEventOnDate = this.listEvents.filter(
           event =>
@@ -67,6 +68,7 @@ export default {
             format(new Date(), "MM/dd/yyyy")
         );
       });
+
     const result = localStorage.getItem("userInfo");
     this.$store.commit("setUserInfo", JSON.parse(result));
     this.$store.commit("changeSelectedCalendarDate", new Date());

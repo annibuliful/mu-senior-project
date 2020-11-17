@@ -1,10 +1,3 @@
-// import db from "../db";
-
-// unspecified
-// overdue
-// vaccinated
-// vaccinating
-// all
 import listVaccines from "../../../locale/EN/vaccines";
 import listByChildId from "./list-child-id";
 import recordByChildId from "../record/getByChildId";

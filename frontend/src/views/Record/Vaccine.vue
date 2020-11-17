@@ -243,7 +243,7 @@ export default {
       const nextDate = duration => add(new Date(), { days: duration });
       const mapData = listVaccinesForNextTime.map(el => ({
         dates: nextDate(el.nextDay),
-        dot: "red",
+        dot: "gray",
         key: nextDate(el.nextDay).toString(),
         customData: {
           selectedVaccines: [el.name],
