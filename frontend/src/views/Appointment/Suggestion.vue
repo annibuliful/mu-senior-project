@@ -90,6 +90,7 @@ export default {
         dates: appointmentDate,
         dot: "gray",
         key: appointmentDate.toString(),
+        status: "in-progress",
         customData: {
           selectedVaccines: [vaccineName],
           vaccineId,

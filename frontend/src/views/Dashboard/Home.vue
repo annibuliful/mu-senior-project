@@ -19,7 +19,8 @@
     </p>
 
     <router-link
-      v-for="({ customData, appointmentId }, index) in filterEventOnDate"
+      v-for="({ customData, appointmentId, status },
+      index) in filterEventOnDate"
       :key="`${index}-${customData.childname}`"
       :to="`/record-vaccine/${appointmentId}`"
     >
@@ -28,6 +29,7 @@
         :note="customData.note"
         :time="customData.time"
         :vaccines="customData.selectedVaccines"
+        :status="status"
       />
     </router-link>
 

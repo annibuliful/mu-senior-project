@@ -18,20 +18,13 @@ export default async ({ search, filter, sort, childId }) => {
   }
 
   if (search) {
-    console.log("search keyword", search);
     listDefault = listDefault.filter(
       el =>
         el.customData.selectedVaccines[0].toLowerCase().search(search) !== -1
     );
-
-    console.log("result from search", listDefault);
   }
 
   if (filter === "unspecified") {
-    // listDefault = listDefault.filter(
-    //   el => !listVaccines.find(old => old.vaccineId === el.customData.vaccineId)
-    // );
-
     listDefault = listVaccines
       .filter(
         el =>

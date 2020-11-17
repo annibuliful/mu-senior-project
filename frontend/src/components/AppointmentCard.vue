@@ -3,16 +3,20 @@
     <div class="overflow-hidden block mx-auto w-full lg:w-4/5">
       <div class="px-4 flex mb-2 items-center">
         <div
-          class="w-2 h-2 p-2 bg-blue-600 rounded-full mr-16"
-          v-if="color === 'default'"
+          class="w-2 h-2 p-2 bg-gray-600 rounded-full mr-16"
+          v-if="status === 'in-progress'"
         ></div>
         <div
-          class="w-2 h-2 p-2 bg-blue-600 rounded-full mr-16"
-          v-if="color === 'warning'"
+          class="w-2 h-2 p-2 bg-yellow-600 rounded-full mr-16"
+          v-if="status === 'vaccinating'"
         ></div>
         <div
-          class="w-2 h-2 p-2 bg-blue-600 rounded-full mr-16"
-          v-if="color === 'complete'"
+          class="w-2 h-2 p-2 bg-green-600 rounded-full mr-16"
+          v-if="status === 'vaccinated'"
+        ></div>
+        <div
+          class="w-2 h-2 p-2 bg-red-600 rounded-full mr-16"
+          v-if="status === 'overdue'"
         ></div>
         <div style="width: 80%">
           <p class="text-md">{{ childname }}</p>
@@ -39,11 +43,13 @@ export default {
         return [];
       }
     },
-    color: {
+    status: {
       type: String,
       default: "default",
       validator: function(val) {
-        return ["default", "warning", "complete"].includes(val);
+        return ["in-progress", "vaccinated", "vaccinating", "overdue"].includes(
+          val
+        );
       }
     },
     note: {

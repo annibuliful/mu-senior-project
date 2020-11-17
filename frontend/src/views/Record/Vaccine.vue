@@ -293,7 +293,8 @@ export default {
       await service().record.create(data);
       // const appointmentInfo = await service().appointment.getById(this.eventId);
       await service().appointment.update(Number(this.eventId), {
-        dot: "green"
+        dot: "green",
+        status: "vaccinated"
       });
 
       const childInfo = (await service().family.getByChildId(childId))[0];

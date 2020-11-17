@@ -125,6 +125,7 @@ export default {
         dates: this.selectedDate,
         dot: "gray",
         key: this.selectedDate.toString(),
+        status: "in-progress",
         customData: {
           selectedVaccines: this.selectedVaccines.map(el => el.tag),
           note: this.note,
