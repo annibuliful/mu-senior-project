@@ -85,6 +85,7 @@
       :note="appointment.customData.note"
       :time="appointment.customData.time"
       :vaccines="appointment.customData.selectedVaccines"
+      :status="appointment.status"
       :key="`${index}-${appointment.customData.childname}`"
     />
   </div>
