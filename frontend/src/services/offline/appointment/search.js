@@ -1,13 +1,7 @@
-// import db from "../db";
-
-// unspecified
-// overdue
-// vaccinated
-// vaccinating
-// all
 import listVaccines from "../../../locale/EN/vaccines";
 import listByChildId from "./list-child-id";
 import recordByChildId from "../record/getByChildId";
+import differenceInDays from "date-fns/differenceInDays";
 export default async ({ search, filter, sort, childId }) => {
   const isEmpty = search === "" && filter === "" && sort === "";
   let listDefault = await listByChildId(childId);
@@ -17,20 +11,13 @@ export default async ({ search, filter, sort, childId }) => {
   }
 
   if (search) {
-    console.log("search keyword", search);
     listDefault = listDefault.filter(
       el =>
         el.customData.selectedVaccines[0].toLowerCase().search(search) !== -1
     );
-
-    console.log("result from search", listDefault);
   }
 
   if (filter === "unspecified") {
-    // listDefault = listDefault.filter(
-    //   el => !listVaccines.find(old => old.vaccineId === el.customData.vaccineId)
-    // );
-
     listDefault = listVaccines
       .filter(
         el =>
@@ -46,7 +33,6 @@ export default async ({ search, filter, sort, childId }) => {
         }
       }));
   } else if (filter === "all") {
-    // listDefault = await listByChildId(childId);
     return listDefault;
   } else if (filter === "vaccinated") {
     const listRecords = await recordByChildId(childId);
@@ -68,10 +54,15 @@ export default async ({ search, filter, sort, childId }) => {
       );
     }
   } else if (filter === "overdue") {
-    // const listRecords = await recordByChildId(childId);
-    listDefault = listDefault.filter(el => el.dates > new Date());
+    listDefault = listDefault.filter(el => {
+      const result = differenceInDays(new Date(el.dates), new Date());
+      return result + 7 <= 0;
+    });
   } else if (filter === "vaccinating") {
-    // listDefault = listDefault
+    listDefault = listDefault.filter(el => {
+      const result = differenceInDays(new Date(el.dates), new Date());
+      return result < 7 && result >= 0;
+    });
   }
 
   if (sort === "name") {

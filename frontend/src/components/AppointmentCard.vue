@@ -3,17 +3,29 @@
     <div class="overflow-hidden block mx-auto w-full lg:w-4/5">
       <div class="px-4 flex mb-2 items-center">
         <div
-          class="w-2 h-2 p-2 bg-blue-600 rounded-full mr-16"
-          v-if="color === 'default'"
-        ></div>
+          class=" p-2 bg-gray-400 rounded-full mr-2"
+          v-if="status === 'in-progress'"
+        >
+          {{ dateFormat }}
+        </div>
         <div
-          class="w-2 h-2 p-2 bg-blue-600 rounded-full mr-16"
-          v-if="color === 'warning'"
-        ></div>
+          class="p-2 bg-yellow-400 rounded-full mr-2"
+          v-if="status === 'vaccinating'"
+        >
+          {{ dateFormat }}
+        </div>
         <div
-          class="w-2 h-2 p-2 bg-blue-600 rounded-full mr-16"
-          v-if="color === 'complete'"
-        ></div>
+          class="p-2 bg-green-400 rounded-full mr-2"
+          v-if="status === 'vaccinated'"
+        >
+          {{ dateFormat }}
+        </div>
+        <div
+          class="p-2 bg-red-400 rounded-full mr-2"
+          v-if="status === 'overdue'"
+        >
+          {{ dateFormat }}
+        </div>
         <div style="width: 80%">
           <p class="text-md">{{ childname }}</p>
           <p class="text-sm text-gray-600">{{ note }}</p>
@@ -31,7 +43,13 @@
   </div>
 </template>
 <script>
+import { format } from "date-fns";
 export default {
+  computed: {
+    dateFormat: function() {
+      return format(new Date(this.date), "dd/MM/yyyy");
+    }
+  },
   props: {
     vaccines: {
       type: Array,
@@ -39,11 +57,16 @@ export default {
         return [];
       }
     },
-    color: {
+    date: {
+      type: String
+    },
+    status: {
       type: String,
       default: "default",
       validator: function(val) {
-        return ["default", "warning", "complete"].includes(val);
+        return ["in-progress", "vaccinated", "vaccinating", "overdue"].includes(
+          val
+        );
       }
     },
     note: {

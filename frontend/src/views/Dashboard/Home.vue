@@ -19,7 +19,8 @@
     </p>
 
     <router-link
-      v-for="({ customData, appointmentId }, index) in filterEventOnDate"
+      v-for="({ customData, appointmentId, status, dates },
+      index) in filterEventOnDate"
       :key="`${index}-${customData.childname}`"
       :to="`/record-vaccine/${appointmentId}`"
     >
@@ -28,6 +29,8 @@
         :note="customData.note"
         :time="customData.time"
         :vaccines="customData.selectedVaccines"
+        :status="status"
+        :date="dates"
       />
     </router-link>
 
@@ -56,8 +59,9 @@ export default {
   components: { Calendar, AppointmentCard },
   created: function() {
     service()
-      .appointment.list()
-      .then(data => {
+      .appointment.cronCheckStatus()
+      .then(async () => {
+        const data = await service().appointment.list();
         this.listEvents = data;
         this.filterEventOnDate = this.listEvents.filter(
           event =>
@@ -65,6 +69,7 @@ export default {
             format(new Date(), "MM/dd/yyyy")
         );
       });
+
     const result = localStorage.getItem("userInfo");
     this.$store.commit("setUserInfo", JSON.parse(result));
     this.$store.commit("changeSelectedCalendarDate", new Date());

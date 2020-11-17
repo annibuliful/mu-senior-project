@@ -243,8 +243,9 @@ export default {
       const nextDate = duration => add(new Date(), { days: duration });
       const mapData = listVaccinesForNextTime.map(el => ({
         dates: nextDate(el.nextDay),
-        dot: "red",
+        dot: "gray",
         key: nextDate(el.nextDay).toString(),
+        status: "in-progress",
         customData: {
           selectedVaccines: [el.name],
           note: "",
@@ -268,6 +269,8 @@ export default {
         childId,
         listVaccines
       );
+      console.log("list next vaccines", listNextAppointments);
+
       this.listNextAppointments = listNextAppointments;
     },
     onOpenModal() {
@@ -291,18 +294,18 @@ export default {
         recordImage: this.base64Url
       };
       await service().record.create(data);
-      // const appointmentInfo = await service().appointment.getById(this.eventId);
       await service().appointment.update(Number(this.eventId), {
-        dot: "green"
+        dot: "green",
+        status: "vaccinated"
       });
 
       const childInfo = (await service().family.getByChildId(childId))[0];
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,
-        ...this.selectedVaccines.map(el => el.vaccineId)
+        ...this.selectedVaccines.map(el => el.tag)
       ];
       await service().family.update(childId, childInfo);
-      this.$router.push("/");
+      // this.$router.push("/");
     },
     cancel() {
       this.$router.go(-1);

@@ -181,7 +181,7 @@ export default {
 
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,
-        ...this.selectedVaccines.map(el => el.vaccineId)
+        ...this.selectedVaccines.map(el => el.tag)
       ];
       await service().family.update(childInfo.familyId, childInfo);
       const data = {
