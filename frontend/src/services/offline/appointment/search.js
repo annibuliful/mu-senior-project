@@ -47,7 +47,6 @@ export default async ({ search, filter, sort, childId }) => {
         }
       }));
   } else if (filter === "all") {
-    // listDefault = await listByChildId(childId);
     return listDefault;
   } else if (filter === "vaccinated") {
     const listRecords = await recordByChildId(childId);
