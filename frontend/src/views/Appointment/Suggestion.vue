@@ -88,7 +88,7 @@ export default {
       );
       const data = {
         dates: appointmentDate,
-        dot: "red",
+        dot: "gray",
         key: appointmentDate.toString(),
         customData: {
           selectedVaccines: [vaccineName],

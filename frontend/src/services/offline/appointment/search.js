@@ -20,7 +20,7 @@ export default async ({ search, filter, sort, childId }) => {
   if (search) {
     console.log("search keyword", search);
     listDefault = listDefault.filter(
-      (el) =>
+      el =>
         el.customData.selectedVaccines[0].toLowerCase().search(search) !== -1
     );
 
@@ -34,64 +34,50 @@ export default async ({ search, filter, sort, childId }) => {
 
     listDefault = listVaccines
       .filter(
-        (el) =>
-          !listDefault.find((old) => el.vaccineId === old.customData.vaccineId)
+        el =>
+          !listDefault.find(old => el.vaccineId === old.customData.vaccineId)
       )
-      .map((el) => ({
+      .map(el => ({
         date: new Date(),
         customData: {
           note: "",
           time: "",
           selectedVaccines: [el.vaccineNameNormal],
-          childname: el.vaccineMedicalName,
-        },
+          childname: el.vaccineMedicalName
+        }
       }));
   } else if (filter === "all") {
     // listDefault = await listByChildId(childId);
     return listDefault;
   } else if (filter === "vaccinated") {
     const listRecords = await recordByChildId(childId);
-    listDefault = listRecords.map((el) => ({
+    listDefault = listRecords.map(el => ({
       date: new Date(),
       customData: {
         note: "",
         time: "",
-        selectedVaccines: el.selectedVaccines.map((el) => el.tag),
-        childname: el.childname,
-      },
+        selectedVaccines: el.selectedVaccines.map(el => el.tag),
+        childname: el.childname
+      }
     }));
     if (search !== "") {
       listDefault = listDefault.filter(
-        (el) =>
+        el =>
           el.customData.selectedVaccines[0]
             .toLowerCase()
             .search(search.toLowerCase()) !== -1
       );
     }
   } else if (filter === "overdue") {
-    // const listRecords = await recordByChildId(childId);
-    listDefault = listDefault.filter((el) => {
-      // console.log("el.dates", el.dates);
-      // console.log("test current", Date());
-      // console.log("is Overdue?", el.dates > new Date());
-      // console.log("Diff in day", result);
-      // console.log("Actaul Day (including delay)", result + 7);
+    listDefault = listDefault.filter(el => {
       const result = differenceInDays(new Date(el.dates), new Date());
       return result + 7 <= 0;
     });
   } else if (filter === "vaccinating") {
-    listDefault = listDefault.filter((el) => {
-      // console.log("el.dates", el.dates);
-      // console.log("test current", Date());
-      // console.log("is Overdue?", el.dates > new Date());
-      // console.log("Diff in day", result);
-      // console.log("Actaul Day (including delay)", result + 7);
+    listDefault = listDefault.filter(el => {
       const result = differenceInDays(new Date(el.dates), new Date());
       return result < 7 && result >= 0;
-
-      // return new Date() > el.dates;
     });
-    // listDefault = listDefault
   }
 
   if (sort === "name") {
