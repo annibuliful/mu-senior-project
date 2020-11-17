@@ -1,23 +1,8 @@
 <template>
   <div class="p-4">
-    <!-- <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
-      Summary
-    </p> -->
-    <!-- <div>d</div> -->
     <FamilyMemberHeader :childObject="childInfo" />
 
     <div class="flex flex-row">
-      <!-- <div class="ml-auto my-2 mr-2">
-        View mode:
-      </div>
-      <CustomSelect
-        class="my-2 mr-2"
-        :options="['Status', 'History', 'Roadmap']"
-        :default="'Roadmap'"
-        @input="test"
-        v-model="displayMode"
-      /> -->
-
       <div class="my-4">
         <input
           class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -28,17 +13,12 @@
           @change="search()"
         />
       </div>
-      <!-- <img :src="`${require('@/assets/icons/filter.svg')}`" class="w-4" /> -->
       <div class="inline-block relative my-4">
         <select
           class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           v-model="filter"
           @change="search()"
         >
-          <!-- <option selected disabled>
-            <img :src="`${require('@/assets/icons/filter.svg')}`" />
-            Filter
-          </option> -->
           <option value="unspecified">Unspecified</option>
           <option value="overdue">Overdue</option>
           <option value="vaccinated">Vaccinated</option>
@@ -87,6 +67,7 @@
       :vaccines="appointment.customData.selectedVaccines"
       :status="appointment.status"
       :key="`${index}-${appointment.customData.childname}`"
+      :date="appointment.dates"
     />
   </div>
 </template>

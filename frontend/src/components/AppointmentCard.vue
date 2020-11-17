@@ -3,21 +3,29 @@
     <div class="overflow-hidden block mx-auto w-full lg:w-4/5">
       <div class="px-4 flex mb-2 items-center">
         <div
-          class="w-2 h-2 p-2 bg-gray-600 rounded-full mr-16"
+          class=" p-2 bg-gray-400 rounded-full mr-2"
           v-if="status === 'in-progress'"
-        ></div>
+        >
+          {{ dateFormat }}
+        </div>
         <div
-          class="w-2 h-2 p-2 bg-yellow-600 rounded-full mr-16"
+          class="p-2 bg-yellow-400 rounded-full mr-2"
           v-if="status === 'vaccinating'"
-        ></div>
+        >
+          {{ dateFormat }}
+        </div>
         <div
-          class="w-2 h-2 p-2 bg-green-600 rounded-full mr-16"
+          class="p-2 bg-green-400 rounded-full mr-2"
           v-if="status === 'vaccinated'"
-        ></div>
+        >
+          {{ dateFormat }}
+        </div>
         <div
-          class="w-2 h-2 p-2 bg-red-600 rounded-full mr-16"
+          class="p-2 bg-red-400 rounded-full mr-2"
           v-if="status === 'overdue'"
-        ></div>
+        >
+          {{ dateFormat }}
+        </div>
         <div style="width: 80%">
           <p class="text-md">{{ childname }}</p>
           <p class="text-sm text-gray-600">{{ note }}</p>
@@ -35,13 +43,22 @@
   </div>
 </template>
 <script>
+import { format } from "date-fns";
 export default {
+  computed: {
+    dateFormat: function() {
+      return format(new Date(this.date), "dd/MM/yyyy");
+    }
+  },
   props: {
     vaccines: {
       type: Array,
       default: function() {
         return [];
       }
+    },
+    date: {
+      type: String
     },
     status: {
       type: String,
