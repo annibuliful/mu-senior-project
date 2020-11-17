@@ -245,6 +245,7 @@ export default {
         dates: nextDate(el.nextDay),
         dot: "gray",
         key: nextDate(el.nextDay).toString(),
+        status: "in-progress",
         customData: {
           selectedVaccines: [el.name],
           note: "",
