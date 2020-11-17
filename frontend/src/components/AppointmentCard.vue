@@ -58,7 +58,7 @@ export default {
       }
     },
     date: {
-      type: String
+      type: Date
     },
     status: {
       type: String,

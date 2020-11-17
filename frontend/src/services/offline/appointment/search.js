@@ -32,8 +32,6 @@ export default async ({ search, filter, sort, childId }) => {
           childname: el.vaccineMedicalName
         }
       }));
-  } else if (filter === "all") {
-    return listDefault;
   } else if (filter === "vaccinated") {
     const listRecords = await recordByChildId(childId);
     listDefault = listRecords.map(el => ({
@@ -76,7 +74,7 @@ export default async ({ search, filter, sort, childId }) => {
       return 0;
     });
   } else if (sort === "disease") {
-    listDefault = listDefault.sort((a, b) => {
+    listDefault.sort((a, b) => {
       if (a.customData.selectedVaccines[0] < b.customData.selectedVaccines[0]) {
         return -1;
       }
@@ -86,9 +84,7 @@ export default async ({ search, filter, sort, childId }) => {
       return 0;
     });
   } else if (sort === "date") {
-    listDefault = listDefault.sort(
-      (a, b) => new Date(b.dates) - new Date(a.dates)
-    );
+    listDefault.sort((a, b) => new Date(a.dates) - new Date(b.dates));
   }
 
   return listDefault;
