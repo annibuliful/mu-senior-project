@@ -68,11 +68,10 @@ export default {
             format(event.dates, "MM/dd/yyyy") ===
             format(new Date(), "MM/dd/yyyy")
         );
+        const result = localStorage.getItem("userInfo");
+        this.$store.commit("setUserInfo", JSON.parse(result));
+        this.$store.commit("changeSelectedCalendarDate", new Date());
       });
-
-    const result = localStorage.getItem("userInfo");
-    this.$store.commit("setUserInfo", JSON.parse(result));
-    this.$store.commit("changeSelectedCalendarDate", new Date());
   },
   methods: {
     onSelectDate: function(date) {
