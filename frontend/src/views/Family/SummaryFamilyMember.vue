@@ -91,13 +91,17 @@ export default {
     AppointmentCard
   },
   created() {
-    this.displayMode = "Roadmap";
-    this.childId = Number(this.$route.params.id);
-    this.childInfo = this.$store.state.listFamilies.find(
-      el => el.familyId === this.childId
-    );
+    services()
+      .appointment.cronCheckStatus()
+      .then(() => {
+        this.displayMode = "Roadmap";
+        this.childId = Number(this.$route.params.id);
+        this.childInfo = this.$store.state.listFamilies.find(
+          el => el.familyId === this.childId
+        );
 
-    this.$store.commit("listAppointmentByChildId", this.childId);
+        this.$store.commit("listAppointmentByChildId", this.childId);
+      });
   },
   data() {
     return {
