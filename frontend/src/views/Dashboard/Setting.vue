@@ -33,7 +33,7 @@
       </div>
       <div class="ml-auto">
         <button
-          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
+          class="hidden sm:block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
           @click="onLogout"
         >
           Logout
@@ -141,6 +141,12 @@
         </button>
       </div>
     </div>
+    <button
+      class="block sm:hidden bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block mx-auto w-9/12"
+      @click="onLogout"
+    >
+      Logout
+    </button>
   </div>
 </template>
 <script>
