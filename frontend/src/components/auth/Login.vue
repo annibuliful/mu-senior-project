@@ -17,13 +17,13 @@
       />
       <p
         class="text-xs text-red-600"
-        v-if="!$v.username.required && $v.username.$error"
+        v-if="!$v.username.required && $v.username.$error && isSubmitted"
       >
         Username is required
       </p>
       <p
         class="text-xs text-red-600"
-        v-if="!$v.username.minLength && $v.password.$error"
+        v-if="!$v.username.minLength && $v.password.$error && isSubmitted"
       >
         Username must have at least {{ $v.username.$params.minLength.min }}
       </p>
@@ -45,13 +45,13 @@
       />
       <p
         class="text-xs text-red-600"
-        v-if="!$v.password.required && $v.password.$error"
+        v-if="!$v.password.required && $v.password.$error && isSubmitted"
       >
         Password is required
       </p>
       <p
         class="text-xs text-red-600"
-        v-if="!$v.password.minLength && $v.password.$error"
+        v-if="!$v.password.minLength && $v.password.$error && isSubmitted"
       >
         Password must have at least {{ $v.password.$params.minLength.min }}
       </p>
@@ -72,7 +72,8 @@ export default {
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
+      isSubmitted: false
     };
   },
   validations: {
@@ -87,6 +88,7 @@ export default {
   },
   methods: {
     onLogin() {
+      this.isSubmitted = true;
       this.$v.$reset();
       this.$v.$touch();
       if (!this.$v.$invalid) {
