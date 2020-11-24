@@ -123,8 +123,9 @@ export default {
       ];
       const data = {
         dates: this.selectedDate,
-        dot: "red",
+        dot: "gray",
         key: this.selectedDate.toString(),
+        status: "in-progress",
         customData: {
           selectedVaccines: this.selectedVaccines.map(el => el.tag),
           note: this.note,

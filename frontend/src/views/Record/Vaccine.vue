@@ -176,6 +176,7 @@ export default {
   },
   data() {
     return {
+      eventId: "",
       activeModal: false,
       vaccineName: "",
       batchNO: "",
@@ -192,9 +193,9 @@ export default {
     };
   },
   created() {
-    const eventId = this.$route.params.id;
+    this.eventId = this.$route.params.id;
     service()
-      .appointment.getById(eventId)
+      .appointment.getById(this.eventId)
       .then(data => {
         this.baseInfo = data[0];
         this.recordTo = this.baseInfo.customData.childname;
@@ -216,7 +217,8 @@ export default {
     },
     listVaccines() {
       return this.$store.state.locale.vaccines.map(el => ({
-        tag: el.vaccineNameNormal
+        tag: el.vaccineNameNormal,
+        vaccineId: el.vaccineId
       }));
     },
     calendarLocale() {
@@ -241,8 +243,9 @@ export default {
       const nextDate = duration => add(new Date(), { days: duration });
       const mapData = listVaccinesForNextTime.map(el => ({
         dates: nextDate(el.nextDay),
-        dot: "red",
+        dot: "gray",
         key: nextDate(el.nextDay).toString(),
+        status: "in-progress",
         customData: {
           selectedVaccines: [el.name],
           note: "",
@@ -266,6 +269,8 @@ export default {
         childId,
         listVaccines
       );
+      console.log("list next vaccines", listNextAppointments);
+
       this.listNextAppointments = listNextAppointments;
     },
     onOpenModal() {
@@ -289,13 +294,18 @@ export default {
         recordImage: this.base64Url
       };
       await service().record.create(data);
+      await service().appointment.update(Number(this.eventId), {
+        dot: "green",
+        status: "vaccinated"
+      });
+
       const childInfo = (await service().family.getByChildId(childId))[0];
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,
         ...this.selectedVaccines.map(el => el.tag)
       ];
       await service().family.update(childId, childInfo);
-      this.$router.push("/");
+      // this.$router.push("/");
     },
     cancel() {
       this.$router.go(-1);

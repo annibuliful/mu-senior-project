@@ -9,6 +9,9 @@ export default async (childId, vaccineName) => {
     .map(record => record.selectedVaccines)
     .flat()
     .map(record => record.tag);
+
+  if (!listAllSelectedVaccines) return 0;
+
   const countInjectTime = listAllSelectedVaccines.filter(
     name => name === vaccineName
   ).length;

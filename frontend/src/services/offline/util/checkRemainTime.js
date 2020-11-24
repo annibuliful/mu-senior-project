@@ -14,10 +14,10 @@ export default async (childId, listReceivedVaccines) => {
     const periodTime = listVaccines.find(
       vaccine => receivedInfo.name === vaccine.vaccineNameNormal
     )?.injectionPeriodTime;
-    const isComplete = !periodTime[receivedInfo.time];
+    const isComplete = !periodTime[receivedInfo.time + 1];
     return {
       name: receivedInfo.name,
-      nextDay: periodTime[receivedInfo.time],
+      nextDay: periodTime[receivedInfo.time + 1],
       isComplete
     };
   });

@@ -40,6 +40,9 @@ export default new Vuex.Store({
     changeNetworkMode(state, mode) {
       state.networkMode = mode;
     },
+    setNewAppointmentList(state, data) {
+      state.appointmentList = data;
+    },
     async listFamilies(state) {
       const user = localStorage.getItem("userInfo");
       const { userId } = JSON.parse(user);
@@ -54,7 +57,6 @@ export default new Vuex.Store({
     async listRecordsByChildId(state, cid) {
       const data = await services().record.getByChildId(cid);
       state.listRecords = data;
-      console.log("state.listRecords", state.listRecords);
     },
     addNewFamilyMember(state, data) {
       state.listFamilies.push(data);

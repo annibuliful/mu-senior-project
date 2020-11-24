@@ -11,10 +11,10 @@
           alt=""
         />
         <div class="flex flex-col">
-          <div class="text-2xl ml-5 mt-4 text-blue-800 font-bold">
-            {{ vaccineMedicalName }}
+          <div class="text-xl ml-5 mt-4 text-blue-800 font-bold">
+            {{ vaccineNameNormal }}
           </div>
-          <div class="text-base ml-5 mb-2">{{ vaccineNameNormal }}</div>
+          <div class="text-lg ml-5 mb-2">( {{ vaccineMedicalName }} )</div>
         </div>
       </div>
     </div>
@@ -25,29 +25,29 @@ export default {
   props: {
     vaccineId: {
       type: String,
-      required: true
+      required: true,
     },
     vaccineMedicalName: {
       type: String,
-      required: true
+      required: true,
     },
     vaccineNameNormal: {
       type: String,
-      required: true
+      required: true,
     },
     shortDes: {
       type: String,
-      required: false
-    }
+      required: false,
+    },
   },
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
-        path: `/dashboard/vaccine/details/${this.vaccineId}`
+        path: `/dashboard/vaccine/details/${this.vaccineId}`,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

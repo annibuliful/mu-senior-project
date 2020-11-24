@@ -88,8 +88,9 @@ export default {
       );
       const data = {
         dates: appointmentDate,
-        dot: "red",
+        dot: "gray",
         key: appointmentDate.toString(),
+        status: "in-progress",
         customData: {
           selectedVaccines: [vaccineName],
           vaccineId,
