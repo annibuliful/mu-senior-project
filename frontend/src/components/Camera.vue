@@ -31,9 +31,13 @@ export default {
   },
   mounted() {
     const constraints = {
-      video: true,
-      facingMode: { exact: "environment" }
+      video: {
+        facingMode: {
+          exact: "environment"
+        }
+      }
     };
+
     this.$nextTick(() => {
       navigator.mediaDevices.getUserMedia(constraints).then(stream => {
         this.$refs.camera.srcObject = stream;
