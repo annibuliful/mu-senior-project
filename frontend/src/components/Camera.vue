@@ -40,6 +40,11 @@ export default {
       });
     });
   },
+  beforeDestroy() {
+    this.$refs.camera.srcObject.getVideoTracks().forEach(track => track.stop());
+    this.$refs.camera.pause();
+    this.$refs.camera.src = "";
+  },
   methods: {
     onCapture() {
       this.$nextTick(() => {
