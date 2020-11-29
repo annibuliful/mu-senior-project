@@ -13,13 +13,21 @@
       width="300px"
       height="300px"
       class="mx-auto my-4 hidden"
-    ></canvas>
-    <button
-      @click="onCapture"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto"
-    >
-      Capture
-    </button>
+    />
+    <div class="flex justify-evenly w-3/6 mx-auto mt-4">
+      <button
+        @click="onCapture"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto"
+      >
+        Capture
+      </button>
+      <button
+        @click="onEnableCamera"
+        class="bg-white hover:border-blue-700 text-blue-700 font-bold py-2 px-4 rounded block mx-auto"
+      >
+        Reset
+      </button>
+    </div>
   </div>
 </template>
 <script>
@@ -30,15 +38,7 @@ export default {
     };
   },
   mounted() {
-    const constraints = {
-      video: true,
-      facingMode: { exact: "environment" }
-    };
-    this.$nextTick(() => {
-      navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-        this.$refs.camera.srcObject = stream;
-      });
-    });
+    this.onEnableCamera();
   },
   beforeDestroy() {
     this.$refs.camera.srcObject.getVideoTracks().forEach(track => track.stop());
@@ -46,6 +46,19 @@ export default {
     this.$refs.camera.src = "";
   },
   methods: {
+    onEnableCamera() {
+      const constraints = {
+        video: true,
+        facingMode: { exact: "environment" }
+      };
+      this.$nextTick(() => {
+        navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+          this.$refs.camera.srcObject = stream;
+        });
+      });
+      this.isCapture = false;
+      this.$emit("on-capture", null);
+    },
     onCapture() {
       this.$nextTick(() => {
         const ctx = this.$refs.canvas.getContext("2d");
@@ -54,7 +67,7 @@ export default {
           0,
           0,
           this.$refs.camera.width,
-          this.$refs.camera.height
+          this.$refs.camera.height - 100
         );
         this.isCapture = true;
         const dataUrl = this.$refs.canvas.toDataURL();

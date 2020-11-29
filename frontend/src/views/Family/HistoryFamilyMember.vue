@@ -7,7 +7,7 @@
       {{ localText.title }}
     </div>
 
-    <div class="flex flex-col">
+    <div class="flex flex-col items-center">
       <div v-if="listRecords.length != 0">
         <div v-for="record in listRecords" :key="`${record.recordId}`">
           <HistoryCard :recordObject="record" />

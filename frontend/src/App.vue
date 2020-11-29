@@ -9,7 +9,6 @@
 </template>
 <script>
 import { setMode } from "@/services";
-import { getVaccineInfoById } from "@/utils/getVaccineInfo";
 import InternetToast from "@/components/Internet-toast.vue";
 
 export default {
@@ -20,9 +19,6 @@ export default {
   },
   components: {
     InternetToast
-  },
-  created() {
-    console.log(getVaccineInfoById("vac001", "en-US"));
   },
   mounted() {
     window.navigator.onLine ? setMode("online") : setMode("offline");
