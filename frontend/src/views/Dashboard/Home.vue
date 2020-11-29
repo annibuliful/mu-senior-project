@@ -48,7 +48,6 @@ import { th } from "date-fns/locale";
 import Calendar from "@/components/Calendar.vue";
 import service from "@/services";
 import AppointmentCard from "@/components/AppointmentCard.vue";
-// import { getVaccineInfoById } from "@/utils/getVaccineInfo";
 
 export default {
   data() {

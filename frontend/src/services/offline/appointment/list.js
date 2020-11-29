@@ -1,7 +1,6 @@
 import db from "../db";
 import { getVaccineInfoById } from "../util/getVaccineInfo";
-
-const listLanguages = ["en-US", "th-TH"];
+import { listLanguages } from "../../../constants/language";
 
 const getListVaccines = (el, language) => getVaccineInfoById(el, language);
 export default async language => {

@@ -11,7 +11,7 @@
       >
         <div class="grid grid-cols-2 w-11/12 lg:w-2/4">
           <p>Vaccine Name:</p>
-          <p>{{ val.vaccineMedicalName }}</p>
+          <p>{{ val.vaccineNameNormal }}</p>
           <p>Appointment Date:</p>
           <p>{{ val.appointmentDate | dateFormat }}</p>
         </div>
@@ -61,9 +61,10 @@ export default {
   mounted: function() {
     this.$store.commit("listFamilies");
     this.childId = Number(this.$route.params.id);
+    const language = this.$store.state.calendarLocale;
 
     service()
-      .suggestion.generate(this.childId)
+      .suggestion.generate(this.childId, language)
       .then(data => {
         this.listSuggestions = data;
       });
@@ -92,7 +93,7 @@ export default {
         key: appointmentDate.toString(),
         status: "in-progress",
         customData: {
-          selectedVaccines: [vaccineName],
+          selectedVaccines: [vaccineId],
           vaccineId,
           childname: fullname,
           childId: familyId,

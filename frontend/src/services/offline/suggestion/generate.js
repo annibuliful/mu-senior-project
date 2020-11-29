@@ -1,6 +1,7 @@
 import service from "../../";
 // import listDiseases from "../../../locale/EN/diseases";
-import listVaccines from "../../../locale/EN/vaccines";
+import listThVaccines from "../../../locale/TH/vaccines";
+import listEnVaccines from "../../../locale/EN/vaccines";
 import constraintVaccines from "../../../locale/constraint-vaccine";
 import { add } from "date-fns";
 
@@ -42,13 +43,20 @@ const getFactorFromChild = async childId => {
   };
 };
 
-export default async childId => {
+export default async (childId, language) => {
   const {
     childInfo,
     listChildDiseaseIds,
     listChildVaccineIds,
     vaccineCategory
   } = await getFactorFromChild(childId);
+
+  let listVaccines = [];
+  if (language === "en-US") {
+    listVaccines = listEnVaccines;
+  } else {
+    listVaccines = listThVaccines;
+  }
 
   const filteredVaccineForChild = listVaccines.filter(
     el => el.category === vaccineCategory
