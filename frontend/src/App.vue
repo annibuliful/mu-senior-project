@@ -22,7 +22,7 @@ export default {
     InternetToast
   },
   created() {
-    getVaccineInfoById(1, "th");
+    console.log(getVaccineInfoById("vac001", "en-US"));
   },
   mounted() {
     window.navigator.onLine ? setMode("online") : setMode("offline");
