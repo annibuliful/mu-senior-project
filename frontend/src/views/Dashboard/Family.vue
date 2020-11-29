@@ -17,6 +17,24 @@
         v-if="isOpenAddForm"
       >
         <div class="mb-4">
+          <div>
+            <label for="file-input">
+              <img
+                v-if="!base64Url"
+                src="../../assets/mock-member-profile.svg"
+              />
+              <img v-else :src="base64Url" />
+            </label>
+
+            <input
+              id="file-input"
+              @change="onFileChange"
+              type="file"
+              class="hidden"
+            />
+          </div>
+        </div>
+        <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2 ">
             {{ labelAddFamily.name }}
           </label>
@@ -108,7 +126,7 @@ import service from "@/services";
 export default {
   components: {
     FamilyCard,
-    TagInput
+    TagInput,
   },
   created() {
     this.$store.commit("listFamilies");
@@ -121,21 +139,23 @@ export default {
       birthDate: new Date(),
       inputDisease: "",
       inputVaccine: "",
+      profileImg: "",
       selectedDiseases: [],
-      selectedVaccines: []
+      selectedVaccines: [],
+      base64Url: null,
     };
   },
   computed: {
     listVaccines() {
-      return this.$store.state.locale.vaccines.map(el => ({
+      return this.$store.state.locale.vaccines.map((el) => ({
         id: el.vaccineId,
-        tag: el.vaccineNameNormal
+        tag: el.vaccineNameNormal,
       }));
     },
     listDiseases() {
-      return this.$store.state.locale.diseases.map(el => ({
+      return this.$store.state.locale.diseases.map((el) => ({
         id: el.diseaseId,
-        tag: el.diseaseName
+        tag: el.diseaseName,
       }));
     },
     listFamilies() {
@@ -152,9 +172,17 @@ export default {
     },
     calendarLocale() {
       return this.$store.state.calendarLocale;
-    }
+    },
   },
   methods: {
+    onFileChange(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.base64Url = reader.result;
+      };
+    },
     onOpenAddFamilyForm() {
       this.isOpenAddForm = !this.isOpenAddForm;
     },
@@ -174,9 +202,10 @@ export default {
       const data = {
         fullname: this.fullname,
         birthDate: this.birthDate,
+        profileImg: this.base64Url,
         diseases: this.selectedDiseases,
         receivedVaccines: this.selectedVaccines,
-        userId: this.$store.state.userInfo.userId
+        userId: this.$store.state.userInfo.userId,
       };
       const familyId = await service().family.create(data);
       this.resetForm();
@@ -185,8 +214,8 @@ export default {
       this.$router.push({
         name: "appointment-child-suggestion",
         params: {
-          id: familyId
-        }
+          id: familyId,
+        },
       });
     },
     resetForm() {
@@ -196,8 +225,8 @@ export default {
       this.inputVaccine = "";
       this.selectedDiseases = [];
       this.selectedVaccines = [];
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
