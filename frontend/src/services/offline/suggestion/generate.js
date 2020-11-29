@@ -32,8 +32,8 @@ const getVaccineCategoryByDate = childBirthDate => {
 
 const getFactorFromChild = async childId => {
   const childInfo = (await service().family.getByChildId(childId))[0];
-  const listChildDiseaseIds = childInfo.diseases.map(el => el.id);
-  const listChildVaccineIds = childInfo.receivedVaccines.map(el => el.id);
+  const listChildDiseaseIds = childInfo.diseases;
+  const listChildVaccineIds = childInfo.receivedVaccines;
   const vaccineCategory = getVaccineCategoryByDate(childInfo.birthDate);
   return {
     childInfo,
