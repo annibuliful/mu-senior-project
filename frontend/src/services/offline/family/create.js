@@ -7,7 +7,7 @@ export default ({
   diseases,
   receivedVaccines,
   congenitalDisease,
-  userId,
+  userId
 }) => {
   return db.table("families").add({
     fullname,
@@ -17,6 +17,6 @@ export default ({
     diseases,
     congenitalDisease,
     receivedVaccines,
-    isSync: false,
+    isSync: false
   });
 };

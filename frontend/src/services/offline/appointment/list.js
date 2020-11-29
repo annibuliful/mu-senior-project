@@ -11,7 +11,7 @@ export default async language => {
       const vaccineInfo = appointment.customData?.selectedVaccines
         .map(vaccine => getListVaccines(vaccine, language))
         .map(vaccine => vaccine.vaccineNameNormal);
-
+      console.log("list", vaccineInfo);
       return {
         ...appointment,
         customData: {

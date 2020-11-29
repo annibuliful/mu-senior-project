@@ -53,7 +53,7 @@ export default {
     return {
       selectedDate: null,
       listEvents: [],
-      filterEventOnDate: [],
+      filterEventOnDate: []
     };
   },
   components: { Calendar, AppointmentCard },
@@ -61,10 +61,11 @@ export default {
     service()
       .appointment.cronCheckStatus()
       .then(async () => {
-        const data = await service().appointment.list();
+        const language = this.$store.state.calendarLocale;
+        const data = await service().appointment.list(language);
         this.listEvents = data;
         this.filterEventOnDate = this.listEvents.filter(
-          (event) => event.status === "vaccinating"
+          event => event.status === "vaccinating"
         );
         const result = localStorage.getItem("userInfo");
         this.$store.commit("setUserInfo", JSON.parse(result));
@@ -74,18 +75,18 @@ export default {
   methods: {
     onSelectDate: function(date) {
       this.filterEventOnDate = this.listEvents.filter(
-        (event) =>
+        event =>
           format(event.dates, "MM/dd/yyyy") ===
           format(new Date(date), "MM/dd/yyyy")
       );
       this.selectedDate = format(new Date(date), "EEEE d MMMM, yyyy", {
-        locale: this.locale === "th-TH" ? th : null,
+        locale: this.locale === "th-TH" ? th : null
       });
       this.$store.commit("changeSelectedCalendarDate", date);
     },
     onLinkToAddAppointmentPage: function() {
       this.$router.push({ name: "appointment-create" });
-    },
+    }
   },
   computed: {
     locale() {
@@ -99,7 +100,7 @@ export default {
     },
     welcomeWord() {
       return this.$store.state.locale.welcome;
-    },
-  },
+    }
+  }
 };
 </script>

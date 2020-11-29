@@ -38,7 +38,7 @@
         <router-link
           :to="{
             name: 'edit-family-profile',
-            params: { id: id },
+            params: { id: id }
           }"
         >
           <img class="h-full" src="../assets/icons/edit-icon.svg" alt="" />
@@ -53,12 +53,12 @@ import { formatDistanceToNow } from "date-fns";
 export default {
   data() {
     return {
-      childInfo: null,
+      childInfo: null
     };
   },
   created() {
     this.childInfo = this.$store.state.listFamilies.find(
-      (el) => el.familyId === this.id
+      el => el.familyId === this.id
     );
   },
   computed: {
@@ -67,32 +67,32 @@ export default {
     },
     age() {
       return formatDistanceToNow(new Date(this.birthDate));
-    },
+    }
   },
   methods: {
     navigateToDetails() {
       this.$router.push({
         name: "summary-family-member",
-        params: { id: this.id },
+        params: { id: this.id }
       });
-    },
+    }
   },
   props: {
     id: {
       type: Number,
-      required: true,
+      required: true
     },
     name: {
       type: String,
-      required: true,
+      required: true
     },
     birthDate: {
       type: Date,
-      required: true,
+      required: true
     },
     diseases: {
-      type: Array,
-    },
-  },
+      type: Array
+    }
+  }
 };
 </script>
