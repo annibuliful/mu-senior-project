@@ -2,8 +2,6 @@ import listAppointmentService from "./list";
 import updateAppointmentService from "./update";
 import differenceInDays from "date-fns/differenceInDays";
 
-// await updateAppointmentService(18,{dates: new Date(2019,1,1)})
-
 const getAppointmentId = el => el.appointmentId;
 export default async () => {
   const listAppointments = await listAppointmentService();
@@ -11,7 +9,8 @@ export default async () => {
 
   const listVaccinatingAppointments = listAppointments.filter(el => {
     const result = differenceInDays(new Date(el.dates), new Date());
-    return result < 7 && result >= 0 && el.status !== "vaccinated";
+
+    return result >= -7 && result <= 7 && el.status !== "vaccinated";
   });
 
   const listCallVaccinatingUpdate = listVaccinatingAppointments

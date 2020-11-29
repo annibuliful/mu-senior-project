@@ -36,9 +36,9 @@ export default {
     this.childInfo = this.$store.state.listFamilies.find(
       el => el.familyId === childId
     );
-
+    const language = this.$store.state.calendarLocale;
     service()
-      .appointment.list()
+      .appointment.list(language)
       .then(data => {
         this.listEvents = data
           .filter(el => el.customData.childId === Number(childId))

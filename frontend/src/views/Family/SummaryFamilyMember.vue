@@ -58,9 +58,6 @@
         Search
       </button>
 
-      <!-- <ImmunityStatus v-if="displayMode === 'Status'" /> -->
-      <!-- <AppointmentRoadmap v-if="displayMode === 'Roadmapa'" /> -->
-
       <div
         class="text-xl mb-5 border-b-2 border-blue-700 ml-2"
         style="width: fit-content;"
@@ -73,7 +70,7 @@
         :childname="appointment.customData.childname"
         :note="appointment.customData.note"
         :time="appointment.customData.time"
-        :vaccines="appointment.customData.selectedVaccines"
+        :vaccines="appointment.customData.selectedVaccines.map((el) => el.tag)"
         :status="appointment.status"
         :key="`${index}-${appointment.customData.childname}`"
         :date="appointment.dates"
@@ -95,10 +92,7 @@ export default {
   components: {
     FamilyMemberHeader,
     History,
-    // ImmunityStatus,
-    // CustomSelect,
-    // AppointmentRoadmap,
-    AppointmentCard
+    AppointmentCard,
   },
   created() {
     this.displayMode = "Roadmap";
@@ -108,7 +102,7 @@ export default {
         this.displayMode = "Roadmap";
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
-          el => el.familyId === this.childId
+          (el) => el.familyId === this.childId
         );
 
         this.$store.commit("listAppointmentByChildId", this.childId);
@@ -121,7 +115,7 @@ export default {
       displayMode: "",
       filter: "all",
       sort: "date",
-      searchKeyword: ""
+      searchKeyword: "",
     };
   },
   computed: {
@@ -136,7 +130,7 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    }
+    },
   },
   methods: {
     changeToHistory() {
@@ -150,13 +144,13 @@ export default {
         search: this.searchKeyword,
         filter: this.filter,
         sort: this.sort,
-        childId: this.childId
+        childId: this.childId,
       });
 
       this.$store.commit("setNewAppointmentList", data ?? []);
 
       console.log(data);
-    }
-  }
+    },
+  },
 };
 </script>

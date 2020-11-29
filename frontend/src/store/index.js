@@ -46,11 +46,14 @@ export default new Vuex.Store({
     async listFamilies(state) {
       const user = localStorage.getItem("userInfo");
       const { userId } = JSON.parse(user);
-      const data = await services().family.list(userId);
+      const data = await services().family.list(userId, state.calendarLocale);
       state.listFamilies = data;
     },
     async listAppointmentByChildId(state, cid) {
-      const data = await services().appointment.listByChildId(cid);
+      const data = await services().appointment.listByChildId(
+        cid,
+        state.calendarLocale
+      );
       state.appointmentList = data;
     },
 

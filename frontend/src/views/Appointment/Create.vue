@@ -127,7 +127,7 @@ export default {
         key: this.selectedDate.toString(),
         status: "in-progress",
         customData: {
-          selectedVaccines: this.selectedVaccines.map(el => el.tag),
+          selectedVaccines: this.selectedVaccines.map(el => el.id),
           note: this.note,
           childname: fullname,
           childId: familyId,
@@ -153,7 +153,8 @@ export default {
     },
     listVaccines() {
       return this.$store.state.locale.vaccines.map(el => ({
-        tag: el.vaccineNameNormal
+        tag: el.vaccineNameNormal,
+        id: el.vaccineId
       }));
     },
     localeText: function() {

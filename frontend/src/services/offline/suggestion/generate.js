@@ -1,6 +1,7 @@
 import service from "../../";
 // import listDiseases from "../../../locale/EN/diseases";
-import listVaccines from "../../../locale/EN/vaccines";
+import listThVaccines from "../../../locale/TH/vaccines";
+import listEnVaccines from "../../../locale/EN/vaccines";
 import constraintVaccines from "../../../locale/constraint-vaccine";
 import { add } from "date-fns";
 
@@ -31,8 +32,8 @@ const getVaccineCategoryByDate = childBirthDate => {
 
 const getFactorFromChild = async childId => {
   const childInfo = (await service().family.getByChildId(childId))[0];
-  const listChildDiseaseIds = childInfo.diseases.map(el => el.id);
-  const listChildVaccineIds = childInfo.receivedVaccines.map(el => el.id);
+  const listChildDiseaseIds = childInfo.diseases;
+  const listChildVaccineIds = childInfo.receivedVaccines;
   const vaccineCategory = getVaccineCategoryByDate(childInfo.birthDate);
   return {
     childInfo,
@@ -42,13 +43,20 @@ const getFactorFromChild = async childId => {
   };
 };
 
-export default async childId => {
+export default async (childId, language) => {
   const {
     childInfo,
     listChildDiseaseIds,
     listChildVaccineIds,
     vaccineCategory
   } = await getFactorFromChild(childId);
+
+  let listVaccines = [];
+  if (language === "en-US") {
+    listVaccines = listEnVaccines;
+  } else {
+    listVaccines = listThVaccines;
+  }
 
   const filteredVaccineForChild = listVaccines.filter(
     el => el.category === vaccineCategory

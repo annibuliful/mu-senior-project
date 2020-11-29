@@ -3,6 +3,7 @@ import db from "../db";
 export default ({
   fullname,
   birthDate,
+  profileImg,
   diseases,
   receivedVaccines,
   congenitalDisease,
@@ -12,6 +13,7 @@ export default ({
     fullname,
     userId,
     birthDate,
+    profileImg,
     diseases,
     congenitalDisease,
     receivedVaccines,

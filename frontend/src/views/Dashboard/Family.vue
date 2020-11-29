@@ -17,6 +17,24 @@
         v-if="isOpenAddForm"
       >
         <div class="mb-4">
+          <div>
+            <label for="file-input">
+              <img
+                v-if="!base64Url"
+                src="../../assets/mock-member-profile.svg"
+              />
+              <img v-else :src="base64Url" />
+            </label>
+
+            <input
+              id="file-input"
+              @change="onFileChange"
+              type="file"
+              class="hidden"
+            />
+          </div>
+        </div>
+        <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2 ">
             {{ labelAddFamily.name }}
           </label>
@@ -82,22 +100,6 @@
           :diseases="family.diseases"
         />
       </div>
-      <!-- <div class="flex flex-wrap">
-        <router-link
-          :to="{
-            name: 'appointment-child-list',
-            params: { id: family.familyId }
-          }"
-          v-for="(family, index) in listFamilies"
-          :key="`${family.fullname}-${index}`"
-          ><FamilyCard
-            class="card flex-initial"
-            :name="family.fullname"
-            :birthDate="family.birthDate"
-            :diseases="family.diseases"
-          />
-        </router-link>
-      </div> -->
     </div>
   </div>
 </template>
@@ -112,7 +114,14 @@ export default {
   },
   created() {
     this.$store.commit("listFamilies");
-    console.log("family", this.listFamilies);
+    const user = localStorage.getItem("userInfo");
+    const { userId } = JSON.parse(user);
+    const language = this.$store.state.calendarLocale;
+    service()
+      .family.list(userId, language)
+      .then(data => {
+        this.listFamilies = data;
+      });
   },
   data() {
     return {
@@ -121,8 +130,11 @@ export default {
       birthDate: new Date(),
       inputDisease: "",
       inputVaccine: "",
+      profileImg: "",
       selectedDiseases: [],
-      selectedVaccines: []
+      selectedVaccines: [],
+      base64Url: null,
+      listFamilies: []
     };
   },
   computed: {
@@ -138,9 +150,6 @@ export default {
         tag: el.diseaseName
       }));
     },
-    listFamilies() {
-      return this.$store.state.listFamilies;
-    },
     familyword() {
       return this.$store.state.locale.family;
     },
@@ -155,6 +164,14 @@ export default {
     }
   },
   methods: {
+    onFileChange(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.base64Url = reader.result;
+      };
+    },
     onOpenAddFamilyForm() {
       this.isOpenAddForm = !this.isOpenAddForm;
     },
@@ -174,8 +191,9 @@ export default {
       const data = {
         fullname: this.fullname,
         birthDate: this.birthDate,
-        diseases: this.selectedDiseases,
-        receivedVaccines: this.selectedVaccines,
+        diseases: this.selectedDiseases.map(el => el.id),
+        receivedVaccines: this.selectedVaccines.map(el => el.id),
+        profileImg: this.base64Url,
         userId: this.$store.state.userInfo.userId
       };
       const familyId = await service().family.create(data);

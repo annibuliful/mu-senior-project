@@ -13,38 +13,71 @@
       width="300px"
       height="300px"
       class="mx-auto my-4 hidden"
-    ></canvas>
-    <button
-      @click="onCapture"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto"
-    >
-      Capture
-    </button>
+    />
+
+    <img
+      class="w-8 block mx-auto my-4"
+      :src="require('../assets/icons/switch-camera.svg')"
+      @click="onSwitchCameraMode"
+    />
+
+    <div class="flex justify-evenly w-3/6 mx-auto mt-4">
+      <button
+        @click="onCapture"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto"
+      >
+        Capture
+      </button>
+      <button
+        @click="onEnableCamera"
+        class="bg-white hover:border-blue-700 text-blue-700 font-bold py-2 px-4 rounded block mx-auto"
+      >
+        Reset
+      </button>
+    </div>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      isCapture: false
+      isCapture: false,
+      isFrontCamera: false,
     };
   },
   mounted() {
-    const constraints = {
-      video: {
-        facingMode: {
-          exact: "environment"
-        }
-      }
-    };
-
-    this.$nextTick(() => {
-      navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-        this.$refs.camera.srcObject = stream;
-      });
-    });
+    this.onEnableCamera(this.isFrontCamera);
+  },
+  beforeDestroy() {
+    this.onDisableCamera();
   },
   methods: {
+    onDisableCamera() {
+      this.$refs.camera.srcObject
+        .getVideoTracks()
+        .forEach((track) => track.stop());
+      this.$refs.camera.pause();
+      this.$refs.camera.src = "";
+    },
+
+    onSwitchCameraMode() {
+      this.onDisableCamera();
+      this.onEnableCamera(!this.isFrontCamera);
+    },
+    onEnableCamera(isFront) {
+      this.isFrontCamera = isFront;
+      const constraints = {
+        video: true,
+        facingMode: { exact: isFront ? "user" : "environment" },
+      };
+      this.$nextTick(() => {
+        navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+          this.$refs.camera.srcObject = stream;
+        });
+      });
+      this.isCapture = false;
+      this.$emit("on-capture", null);
+    },
     onCapture() {
       this.$nextTick(() => {
         const ctx = this.$refs.canvas.getContext("2d");
@@ -53,7 +86,7 @@ export default {
           0,
           0,
           this.$refs.camera.width,
-          this.$refs.camera.height
+          this.$refs.camera.height - 100
         );
         this.isCapture = true;
         const dataUrl = this.$refs.canvas.toDataURL();
@@ -61,9 +94,9 @@ export default {
 
         this.$refs.camera.srcObject
           .getVideoTracks()
-          .forEach(track => track.stop());
+          .forEach((track) => track.stop());
       });
-    }
-  }
+    },
+  },
 };
 </script>

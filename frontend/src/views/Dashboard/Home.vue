@@ -1,7 +1,7 @@
 <template>
   <div class="sm:mb-20">
     <p class="text-2xl mb-10 border-b-2 border-blue-700">
-      {{ welcomeWord }} {{ profileName.fullname }}
+      {{ welcomeWord }} {{ profileName.fullname ? profileName.fullname : "" }}
     </p>
     <Calendar :listEvents="listEvents" v-on:on-click="onSelectDate" />
     <br />
@@ -61,12 +61,11 @@ export default {
     service()
       .appointment.cronCheckStatus()
       .then(async () => {
-        const data = await service().appointment.list();
+        const language = this.$store.state.calendarLocale;
+        const data = await service().appointment.list(language);
         this.listEvents = data;
         this.filterEventOnDate = this.listEvents.filter(
-          event =>
-            format(event.dates, "MM/dd/yyyy") ===
-            format(new Date(), "MM/dd/yyyy")
+          event => event.status === "vaccinating"
         );
         const result = localStorage.getItem("userInfo");
         this.$store.commit("setUserInfo", JSON.parse(result));

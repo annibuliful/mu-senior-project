@@ -5,9 +5,25 @@
     </p>
     <div class="mx-12">
       <div class="mb-4">
+        <div>
+          <label for="file-input">
+            <img v-if="!base64Url" src="../../assets/mock-member-profile.svg" />
+            <img v-else :src="base64Url" />
+          </label>
+
+          <input
+            id="file-input"
+            @change="onFileChange"
+            type="file"
+            class="hidden"
+          />
+        </div>
+      </div>
+      <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2 ">
           {{ labelAddFamily.name }}
         </label>
+
         <input
           class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
           id="name"
@@ -68,14 +84,18 @@ export default {
   },
   async created() {
     this.$store.commit("listFamilies");
+    const language = this.$store.state.calendarLocale;
+
     const initChildInfo = (
-      await service().family.getByChildId(this.$route.params.id)
+      await service().family.getByChildId(this.$route.params.id, language)
     )[0];
+
     this.childInfo = initChildInfo;
     this.fullname = this.childInfo.fullname;
     this.birthDate = this.childInfo.birthDate;
-    // this.selectedDiseases = this.childInfo.selectedDiseases;
-    // this.selectedVaccines = this.childInfo.selectedVaccines;
+    this.base64Url = this.childInfo.profileImg;
+    this.selectedDiseases = this.childInfo.diseases;
+    this.selectedVaccines = this.childInfo.receivedVaccines;
   },
   data() {
     return {
@@ -85,7 +105,9 @@ export default {
       inputVaccine: "",
       selectedDiseases: [],
       selectedVaccines: [],
-      childInfo: ""
+      childInfo: "",
+      profileImgSrc: "",
+      base64Url: null
     };
   },
   computed: {
@@ -115,6 +137,14 @@ export default {
     }
   },
   methods: {
+    onFileChange(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.base64Url = reader.result;
+      };
+    },
     onAddNewDisease(disease) {
       this.selectedDiseases.push(disease);
     },
@@ -131,8 +161,14 @@ export default {
     async submit() {
       this.childInfo.fullname = this.fullname;
       this.childInfo.birthDate = this.birthDate;
-      //   this.childInfo.diseases = this.diseases;
-      await service().family.update(this.$route.params.id, this.childInfo);
+      this.childInfo.profileImg = this.base64Url;
+      this.childInfo.diseases = this.selectedDiseases.map(el => el.id);
+      this.childInfo.receivedVaccines = this.selectedVaccines.map(el => el.id);
+
+      await service().family.update(
+        Number(this.$route.params.id),
+        this.childInfo
+      );
 
       this.$router.push({
         name: "dashboard-family"

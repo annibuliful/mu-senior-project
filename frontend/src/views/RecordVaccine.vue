@@ -104,10 +104,10 @@
             {{ localeText.uploadImage }}
           </label>
           <input type="file" @change="onFileChange" />
-
           <div id="preview">
-            <img v-if="url" :src="url" />
+            <img v-if="base64Url" :src="base64Url" class="preview-image" />
           </div>
+          <Camera v-on:on-capture="onCapture" />
         </div>
         <div class="flex">
           <button
@@ -129,10 +129,12 @@
 </template>
 <script>
 import TagInput from "@/components/input/TagInput.vue";
+import Camera from "@/components/Camera.vue";
 import service from "@/services";
 export default {
   components: {
-    TagInput
+    TagInput,
+    Camera
   },
   data() {
     return {
@@ -150,9 +152,13 @@ export default {
     };
   },
   created() {
-    this.selectedVaccines = this.$store.state.baseRecordVaccine.selectedVaccines.map(
-      el => ({ tag: el })
-    );
+    const vaccineInfo = this.$store.state.baseRecordVaccine;
+    this.selectedVaccines = [
+      {
+        id: vaccineInfo.vaccineId,
+        tag: vaccineInfo.vaccineName
+      }
+    ];
     this.$store.commit("listFamilies");
   },
   computed: {
@@ -162,7 +168,7 @@ export default {
     listVaccines() {
       return this.$store.state.locale.vaccines.map(el => ({
         tag: el.vaccineNameNormal,
-        vaccineId: el.vaccineId
+        id: el.vaccineId
       }));
     },
     calendarLocale() {
@@ -176,12 +182,15 @@ export default {
     }
   },
   methods: {
+    onCapture(data) {
+      this.base64Url = data;
+    },
     async submit() {
       const childInfo = (await service().family.getByChildId(this.recordTo))[0];
 
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,
-        ...this.selectedVaccines.map(el => el.tag)
+        ...this.selectedVaccines.map(el => el.id)
       ];
       await service().family.update(childInfo.familyId, childInfo);
       const data = {
@@ -228,9 +237,13 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.preview-image {
+  width: 450px;
+  height: 300px;
+}
 
 #preview img {
-  max-width: 50%;
+  /* max-width: 50%; */
   /* max-height: 500px; */
 }
 .vue-tags-input {
