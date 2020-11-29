@@ -58,9 +58,6 @@
         Search
       </button>
 
-      <!-- <ImmunityStatus v-if="displayMode === 'Status'" /> -->
-      <!-- <AppointmentRoadmap v-if="displayMode === 'Roadmapa'" /> -->
-
       <div
         class="text-xl mb-5 border-b-2 border-blue-700 ml-2"
         style="width: fit-content;"
