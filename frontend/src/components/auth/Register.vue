@@ -103,7 +103,8 @@ export default {
     return {
       username: "",
       password: "",
-      repeatPassword: ""
+      repeatPassword: "",
+      isSubmitted: false
     };
   },
   validations: {
