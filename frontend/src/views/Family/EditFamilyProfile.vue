@@ -80,21 +80,22 @@ import service from "@/services";
 
 export default {
   components: {
-    TagInput,
+    TagInput
   },
   async created() {
-    //
-
     this.$store.commit("listFamilies");
+    const language = this.$store.state.calendarLocale;
+
     const initChildInfo = (
-      await service().family.getByChildId(this.$route.params.id)
+      await service().family.getByChildId(this.$route.params.id, language)
     )[0];
+
     this.childInfo = initChildInfo;
     this.fullname = this.childInfo.fullname;
     this.birthDate = this.childInfo.birthDate;
     this.base64Url = this.childInfo.profileImg;
-    // this.selectedDiseases = this.childInfo.selectedDiseases;
-    // this.selectedVaccines = this.childInfo.selectedVaccines;
+    this.selectedDiseases = this.childInfo.diseases;
+    this.selectedVaccines = this.childInfo.receivedVaccines;
   },
   data() {
     return {
@@ -106,20 +107,20 @@ export default {
       selectedVaccines: [],
       childInfo: "",
       profileImgSrc: "",
-      base64Url: null,
+      base64Url: null
     };
   },
   computed: {
     listVaccines() {
-      return this.$store.state.locale.vaccines.map((el) => ({
+      return this.$store.state.locale.vaccines.map(el => ({
         id: el.vaccineId,
-        tag: el.vaccineNameNormal,
+        tag: el.vaccineNameNormal
       }));
     },
     listDiseases() {
-      return this.$store.state.locale.diseases.map((el) => ({
+      return this.$store.state.locale.diseases.map(el => ({
         id: el.diseaseId,
-        tag: el.diseaseName,
+        tag: el.diseaseName
       }));
     },
     listFamilies() {
@@ -133,7 +134,7 @@ export default {
     },
     calendarLocale() {
       return this.$store.state.calendarLocale;
-    },
+    }
   },
   methods: {
     onFileChange(e) {
@@ -161,11 +162,16 @@ export default {
       this.childInfo.fullname = this.fullname;
       this.childInfo.birthDate = this.birthDate;
       this.childInfo.profileImg = this.base64Url;
-      //   this.childInfo.diseases = this.diseases;
-      await service().family.update(this.$route.params.id, this.childInfo);
+      this.childInfo.diseases = this.selectedDiseases.map(el => el.id);
+      this.childInfo.receivedVaccines = this.selectedVaccines.map(el => el.id);
+
+      await service().family.update(
+        Number(this.$route.params.id),
+        this.childInfo
+      );
 
       this.$router.push({
-        name: "dashboard-family",
+        name: "dashboard-family"
       });
     },
     resetForm() {
@@ -175,7 +181,7 @@ export default {
       this.inputVaccine = "";
       this.selectedDiseases = [];
       this.selectedVaccines = [];
-    },
-  },
+    }
+  }
 };
 </script>
