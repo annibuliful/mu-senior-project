@@ -194,14 +194,15 @@ export default {
   },
   created() {
     this.eventId = this.$route.params.id;
+    const language = this.$store.state.calendarLocale;
+
     service()
-      .appointment.getById(this.eventId)
+      .appointment.getById(this.eventId, language)
       .then(data => {
         this.baseInfo = data[0];
         this.recordTo = this.baseInfo.customData.childname;
-        this.selectedVaccines = this.baseInfo.customData.selectedVaccines.map(
-          el => ({ tag: el })
-        );
+        this.selectedVaccines = this.baseInfo.customData.selectedVaccines;
+
         this.receivingDate = this.baseInfo.dates;
       });
     this.$store.commit("listFamilies");
@@ -218,7 +219,7 @@ export default {
     listVaccines() {
       return this.$store.state.locale.vaccines.map(el => ({
         tag: el.vaccineNameNormal,
-        vaccineId: el.vaccineId
+        id: el.vaccineId
       }));
     },
     calendarLocale() {
@@ -264,7 +265,7 @@ export default {
     },
     async generateNextAppointment() {
       const childId = this.baseInfo.customData.childId;
-      const listVaccines = this.selectedVaccines.map(el => el.tag);
+      const listVaccines = this.selectedVaccines.map(el => el.id);
       const listNextAppointments = await service().util.checkRemainTime(
         childId,
         listVaccines
@@ -293,19 +294,22 @@ export default {
         freetext: this.freetext,
         recordImage: this.base64Url
       };
-      await service().record.create(data);
-      await service().appointment.update(Number(this.eventId), {
-        dot: "green",
-        status: "vaccinated"
-      });
+
+      new Promise.all([
+        service().record.create(data),
+        service().appointment.update(Number(this.eventId), {
+          dot: "green",
+          status: "vaccinated"
+        })
+      ]);
 
       const childInfo = (await service().family.getByChildId(childId))[0];
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,
-        ...this.selectedVaccines.map(el => el.tag)
+        ...this.selectedVaccines.map(el => el.id)
       ];
       await service().family.update(childId, childInfo);
-      // this.$router.push("/");
+      this.$router.push("/");
     },
     cancel() {
       this.$router.go(-1);

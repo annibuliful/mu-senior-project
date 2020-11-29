@@ -4,8 +4,9 @@ import { listLanguages } from "../../../constants/language";
 
 const getListVaccines = (el, language) => getVaccineInfoById(el, language);
 export default async language => {
+  const listAppointments = await db.table("appointments").toArray();
+
   if (listLanguages.includes(language)) {
-    const listAppointments = await db.table("appointments").toArray();
     return listAppointments.map(appointment => {
       const vaccineInfo = appointment.customData?.selectedVaccines
         .map(vaccine => getListVaccines(vaccine, language))
@@ -20,5 +21,6 @@ export default async language => {
       };
     });
   }
-  return await db.table("appointments").toArray();
+
+  return listAppointments;
 };

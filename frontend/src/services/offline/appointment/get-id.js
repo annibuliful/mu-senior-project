@@ -1,9 +1,33 @@
 import db from "../db";
+import { listLanguages } from "../../../constants/language";
+import { getVaccineInfoById } from "../util/getVaccineInfo";
 
-export default async id => {
-  return await db
+const getListVaccines = (el, language) => getVaccineInfoById(el, language);
+
+export default async (id, language) => {
+  const listAppointments = await db
     .table("appointments")
     .where("appointmentId")
     .equals(Number(id))
     .toArray();
+
+  if (listLanguages.includes(language)) {
+    return listAppointments.map(appointment => {
+      const vaccineInfo = appointment.customData?.selectedVaccines
+        .map(vaccine => getListVaccines(vaccine, language))
+        .map(vaccine => ({
+          id: vaccine.vaccineId,
+          tag: vaccine.vaccineNameNormal
+        }));
+
+      return {
+        ...appointment,
+        customData: {
+          ...appointment.customData,
+          selectedVaccines: vaccineInfo
+        }
+      };
+    });
+  }
+  return listAppointments;
 };

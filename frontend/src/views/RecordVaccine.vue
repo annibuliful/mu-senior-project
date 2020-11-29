@@ -151,7 +151,6 @@ export default {
   },
   created() {
     const vaccineInfo = this.$store.state.baseRecordVaccine;
-    console.log("vaccine", vaccineInfo);
     this.selectedVaccines = [
       {
         id: vaccineInfo.vaccineId,
