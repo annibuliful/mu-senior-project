@@ -202,9 +202,9 @@ export default {
       const data = {
         fullname: this.fullname,
         birthDate: this.birthDate,
+        diseases: this.selectedDiseases.map(el => el.id),
+        receivedVaccines: this.selectedVaccines.map(el => el.id),
         profileImg: this.base64Url,
-        diseases: this.selectedDiseases,
-        receivedVaccines: this.selectedVaccines,
         userId: this.$store.state.userInfo.userId,
       };
       const familyId = await service().family.create(data);

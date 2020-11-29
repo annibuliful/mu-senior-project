@@ -8,7 +8,6 @@
       :src="require(`../../assets/vaccine-img/${vaccineDetails.vaccineId}.png`)"
       alt=""
     />
-    <!-- <img src="../../" alt=""> -->
 
     <div class="vaccine-title-area text-center mb-4 text-lg lg:text-xl">
       <div class="font-bold">
