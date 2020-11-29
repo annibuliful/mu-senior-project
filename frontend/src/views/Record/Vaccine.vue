@@ -264,11 +264,14 @@ export default {
       this.$router.push({ name: "dashboard-index" });
     },
     async generateNextAppointment() {
+      const language = this.$store.state.calendarLocale;
+
       const childId = this.baseInfo.customData.childId;
       const listVaccines = this.selectedVaccines.map(el => el.id);
       const listNextAppointments = await service().util.checkRemainTime(
         childId,
-        listVaccines
+        listVaccines,
+        language
       );
       console.log("list next vaccines", listNextAppointments);
 
@@ -295,7 +298,7 @@ export default {
         recordImage: this.base64Url
       };
 
-      new Promise.all([
+      await Promise.all([
         service().record.create(data),
         service().appointment.update(Number(this.eventId), {
           dot: "green",

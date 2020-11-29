@@ -1,6 +1,6 @@
 import db from "../db";
 
-export default async (childId, vaccineName) => {
+export default async (childId, vaccineId) => {
   const listTimesRecord = await db
     .table("records")
     .filter(record => record.childId === childId)
@@ -8,13 +8,12 @@ export default async (childId, vaccineName) => {
   const listAllSelectedVaccines = listTimesRecord
     .map(record => record.selectedVaccines)
     .flat()
-    .map(record => record.tag);
+    .map(record => record.id);
 
   if (!listAllSelectedVaccines) return 0;
 
-  const countInjectTime = listAllSelectedVaccines.filter(
-    name => name === vaccineName
-  ).length;
+  const countInjectTime = listAllSelectedVaccines.filter(id => id === vaccineId)
+    .length;
 
   return countInjectTime;
 };
