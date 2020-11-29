@@ -27,9 +27,9 @@ export default async (childId, listReceivedVaccines, language) => {
 
     const periodTime = vaccineInfo?.injectionPeriodTime;
 
-    console.log("next", vaccineInfo);
     const isComplete = !periodTime[receivedInfo.time + 1];
     return {
+      vaccineId: vaccineInfo.vaccineId,
       name: vaccineInfo.vaccineNameNormal,
       nextDay: periodTime[receivedInfo.time + 1],
       isComplete

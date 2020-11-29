@@ -248,7 +248,7 @@ export default {
         key: nextDate(el.nextDay).toString(),
         status: "in-progress",
         customData: {
-          selectedVaccines: [el.name],
+          selectedVaccines: [el.vaccineId],
           note: "",
           childname,
           childId,

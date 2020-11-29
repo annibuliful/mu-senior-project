@@ -82,6 +82,7 @@ export default {
         } = this.listSuggestions[i];
         await this.submit(vaccineId, vaccineNameNormal, appointmentDate);
       }
+      this.$router.push({ name: "dashboard-index" });
     },
     submit: async function(vaccineId, vaccineName, appointmentDate) {
       const { familyId, fullname } = this.$store.state.listFamilies.find(
@@ -102,7 +103,6 @@ export default {
       };
       await service().appointment.create(data);
       console.log("Suggestion Create");
-      this.$router.push({ name: "dashboard-index" });
     }
   }
 };
