@@ -15,11 +15,11 @@
       class="mx-auto my-4 hidden"
     />
 
-    <img
+    <!-- <img
       class="w-8 block mx-auto my-4"
       :src="require('../assets/icons/switch-camera.svg')"
       @click="onSwitchCameraMode"
-    />
+    /> -->
 
     <div class="flex justify-evenly w-3/6 mx-auto mt-4">
       <button
@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       isCapture: false,
-      isFrontCamera: false,
+      isFrontCamera: false
     };
   },
   mounted() {
@@ -55,7 +55,7 @@ export default {
     onDisableCamera() {
       this.$refs.camera.srcObject
         .getVideoTracks()
-        .forEach((track) => track.stop());
+        .forEach(track => track.stop());
       this.$refs.camera.pause();
       this.$refs.camera.src = "";
     },
@@ -64,14 +64,14 @@ export default {
       this.onDisableCamera();
       this.onEnableCamera(!this.isFrontCamera);
     },
-    onEnableCamera(isFront) {
-      this.isFrontCamera = isFront;
+    onEnableCamera() {
+      // this.isFrontCamera = isFront;
       const constraints = {
         video: true,
-        facingMode: { exact: isFront ? "user" : "environment" },
+        facingMode: { exact: "environment" }
       };
       this.$nextTick(() => {
-        navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+        navigator.mediaDevices.getUserMedia(constraints).then(stream => {
           this.$refs.camera.srcObject = stream;
         });
       });
@@ -94,9 +94,9 @@ export default {
 
         this.$refs.camera.srcObject
           .getVideoTracks()
-          .forEach((track) => track.stop());
+          .forEach(track => track.stop());
       });
-    },
-  },
+    }
+  }
 };
 </script>
