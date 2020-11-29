@@ -150,9 +150,14 @@ export default {
     };
   },
   created() {
-    this.selectedVaccines = this.$store.state.baseRecordVaccine.selectedVaccines.map(
-      el => ({ tag: el })
-    );
+    const vaccineInfo = this.$store.state.baseRecordVaccine;
+    console.log("vaccine", vaccineInfo);
+    this.selectedVaccines = [
+      {
+        id: vaccineInfo.vaccineId,
+        tag: vaccineInfo.vaccineName
+      }
+    ];
     this.$store.commit("listFamilies");
   },
   computed: {
