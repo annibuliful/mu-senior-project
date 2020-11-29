@@ -14,6 +14,13 @@
       height="300px"
       class="mx-auto my-4 hidden"
     />
+
+    <img
+      class="w-8 block mx-auto my-4"
+      :src="require('../assets/icons/switch-camera.svg')"
+      @click="onSwitchCameraMode"
+    />
+
     <div class="flex justify-evenly w-3/6 mx-auto mt-4">
       <button
         @click="onCapture"
@@ -34,22 +41,34 @@
 export default {
   data() {
     return {
-      isCapture: false
+      isCapture: false,
+      isFrontCamera: false
     };
   },
   mounted() {
-    this.onEnableCamera();
+    this.onEnableCamera(this.isFrontCamera);
   },
   beforeDestroy() {
-    this.$refs.camera.srcObject.getVideoTracks().forEach(track => track.stop());
-    this.$refs.camera.pause();
-    this.$refs.camera.src = "";
+    this.onDisableCamera();
   },
   methods: {
-    onEnableCamera() {
+    onDisableCamera() {
+      this.$refs.camera.srcObject
+        .getVideoTracks()
+        .forEach(track => track.stop());
+      this.$refs.camera.pause();
+      this.$refs.camera.src = "";
+    },
+
+    onSwitchCameraMode() {
+      this.onDisableCamera();
+      this.onEnableCamera(!this.isFrontCamera);
+    },
+    onEnableCamera(isFront) {
+      this.isFrontCamera = isFront;
       const constraints = {
         video: true,
-        facingMode: { exact: "environment" }
+        facingMode: { exact: isFront ? "user" : "environment" }
       };
       this.$nextTick(() => {
         navigator.mediaDevices.getUserMedia(constraints).then(stream => {
