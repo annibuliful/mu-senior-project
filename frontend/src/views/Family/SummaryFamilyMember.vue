@@ -73,7 +73,7 @@
         :childname="appointment.customData.childname"
         :note="appointment.customData.note"
         :time="appointment.customData.time"
-        :vaccines="appointment.customData.selectedVaccines"
+        :vaccines="appointment.customData.selectedVaccines.map(el => el.tag)"
         :status="appointment.status"
         :key="`${index}-${appointment.customData.childname}`"
         :date="appointment.dates"
@@ -95,9 +95,6 @@ export default {
   components: {
     FamilyMemberHeader,
     History,
-    // ImmunityStatus,
-    // CustomSelect,
-    // AppointmentRoadmap,
     AppointmentCard
   },
   created() {

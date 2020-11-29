@@ -4,8 +4,8 @@ import { getVaccineInfoById } from "../util/getVaccineInfo";
 
 const getListVaccines = (el, language) => getVaccineInfoById(el, language);
 
-export default (childId, language) => {
-  const listAppointments = db
+export default async (childId, language) => {
+  const listAppointments = await db
     .table("appointments")
     .filter(el => el.customData.childId === childId)
     .toArray();

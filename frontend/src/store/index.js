@@ -50,7 +50,12 @@ export default new Vuex.Store({
       state.listFamilies = data;
     },
     async listAppointmentByChildId(state, cid) {
-      const data = await services().appointment.listByChildId(cid);
+      // const language = this.$store.state.calendarLocale;
+
+      const data = await services().appointment.listByChildId(
+        cid,
+        state.calendarLocale
+      );
       state.appointmentList = data;
     },
 
