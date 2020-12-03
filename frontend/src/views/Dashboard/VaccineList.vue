@@ -4,36 +4,41 @@
       {{ localeText.vaccineList }}
     </p>
     <!-- Search Area -->
-    <div class="mb-3 w-screen">
-      <div class="flex justify-between items-center">
+    <div class="mb-3 w-full md:w-10/12 md:mx-auto">
+      <div
+        class="flex justify-between items-center  md:w-full md:justify-center"
+      >
         <input
-          class="border-gray-600 rounded-lg h-10 ml-4 border mr-2 pl-2 w-8/12"
+          class="border-gray-600 rounded-lg h-10 ml-4 border mr-2 pl-2 w-8/12 md:w-6/12"
           type="text"
           v-model="searchQuery"
         />
         <div
-          class="text-center border  p-2 rounded-lg mr-2"
+          class="text-center border border-gray-600 p-2 rounded-lg mr-2 md:w-1/12 cursor-pointer"
           @click="searchVaccine(searchQuery)"
         >
           Search
         </div>
         <div>
           <img
-            class="w-6 mr-4"
+            class="w-6 mr-4 cursor-pointer"
             src="../../assets/icons/filter.svg"
             alt=""
             @click="onClickFilter"
           />
         </div>
       </div>
-      <div v-if="isFilterShow" class="search-area justify-around mb-3 flex">
+      <div
+        v-if="isFilterShow"
+        class="search-area justify-around mb-3 flex md:w-10/12 md:justify-center md:mx-auto"
+      >
         <!-- Filtered by Category -->
         <div class="flex-col w-5/12 p-2 lg:w-3/12">
           <div>{{ localeText.category }}</div>
           <select
             v-model="selectedCategory"
             @change="onSelectedCategory"
-            class="w-full border-solid border-2 border-gray-600"
+            class="w-full border-solid border border-gray-600 h-10  rounded-lg cursor-pointer"
           >
             <option value="children">{{ localeText.children }}</option>
             <option value="adult">{{ localeText.adult }}</option>
@@ -45,20 +50,12 @@
           <select
             v-model="selectedSorting"
             @change="onSelectedSorting"
-            class="w-full border-solid border-2 border-gray-600"
+            class="w-full border-solid border border-gray-600 h-10  rounded-lg cursor-pointer"
           >
             <option value="accen">A-Z</option>
             <option value="deccen">Z-A</option>
           </select>
         </div>
-        <!-- Filtered by other -->
-        <!-- <div class="flex-col w-4/12 p-2 lg:w-3/12">
-          <div>{{ localeText.others }}</div>
-          <select class="w-full border-solid border-2 border-gray-600">
-            <option value="1">1</option>
-            <option value="2">2</option>
-          </select>
-        </div> -->
       </div>
     </div>
 
@@ -76,7 +73,7 @@
 import VaccineCard from "../../components/VaccineCard";
 export default {
   components: {
-    VaccineCard
+    VaccineCard,
   },
   created() {
     this.displayVaccineList = this.vaccineList;
@@ -88,7 +85,7 @@ export default {
       isFilterShow: false,
       selectedCategory: "",
       selectedSorting: "",
-      selectedType: ""
+      selectedType: "",
     };
   },
   computed: {
@@ -97,11 +94,11 @@ export default {
     },
     localeText: function() {
       return this.$store.state.locale;
-    }
+    },
   },
   methods: {
     searchVaccine(inputSearchQuery) {
-      const filteredVaccineList = this.vaccineList.filter(vcObj => {
+      const filteredVaccineList = this.vaccineList.filter((vcObj) => {
         return (
           vcObj.vaccineMedicalName
             .toLowerCase()
@@ -114,7 +111,7 @@ export default {
       this.displayVaccineList = filteredVaccineList;
     },
     onSelectedCategory() {
-      const filteredVaccineList = this.vaccineList.filter(vcObj => {
+      const filteredVaccineList = this.vaccineList.filter((vcObj) => {
         return vcObj.category === this.selectedCategory;
       });
       this.displayVaccineList = filteredVaccineList;
@@ -160,8 +157,8 @@ export default {
     },
     onClickFilter() {
       this.isFilterShow = !this.isFilterShow;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped></style>
