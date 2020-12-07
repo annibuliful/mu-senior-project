@@ -62,7 +62,7 @@
             v-model="fullname"
             class=" w-full text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
-            placeholder="Full name"
+            :placeholder="label.name"
             autocomplete="off"
           />
         </div>
@@ -156,7 +156,7 @@ import service from "@/services";
 export default {
   components: {
     CaretIcon,
-    TagInput
+    TagInput,
   },
   computed: {
     listVaccines() {
@@ -179,7 +179,7 @@ export default {
     },
     userInfo() {
       return this.$store.state.userInfo;
-    }
+    },
   },
   data() {
     return {
@@ -187,7 +187,7 @@ export default {
       birthDate: new Date(),
       selectedVaccines: [],
       selectedDiseases: [],
-      errorMessage: ""
+      errorMessage: "",
     };
   },
   created() {
@@ -207,7 +207,7 @@ export default {
           fullname: this.fullname,
           birthDate: this.birthDate,
           receivedVaccines: this.selectedVaccines,
-          diseases: this.selectedDiseases
+          diseases: this.selectedDiseases,
         };
         this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
         localStorage.setItem("userInfo", JSON.stringify(data));
@@ -231,7 +231,7 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    }
-  }
+    },
+  },
 };
 </script>
