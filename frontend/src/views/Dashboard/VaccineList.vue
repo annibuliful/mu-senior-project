@@ -14,14 +14,13 @@
           v-model="searchQuery"
         />
         <div
-          class="text-center border border-gray-600 p-2 rounded-lg mr-2 md:w-1/12 cursor-pointer"
-          @click="searchVaccine(searchQuery)"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block "
         >
           Search
         </div>
         <div>
           <img
-            class="w-6 mr-4 cursor-pointer"
+            class="w-6 ml-2 cursor-pointer"
             src="../../assets/icons/filter.svg"
             alt=""
             @click="onClickFilter"
