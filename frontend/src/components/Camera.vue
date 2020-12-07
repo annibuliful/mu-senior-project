@@ -26,13 +26,13 @@
         @click="onCapture"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto"
       >
-        Capture
+        {{ label.takePhoto }}
       </button>
       <button
         @click="onEnableCamera"
         class="bg-white hover:border-blue-700 text-blue-700 font-bold py-2 px-4 rounded block mx-auto"
       >
-        Reset
+        {{ label.reset }}
       </button>
     </div>
   </div>
@@ -96,6 +96,11 @@ export default {
           .getVideoTracks()
           .forEach(track => track.stop());
       });
+    }
+  },
+  computed: {
+    label: function() {
+      return this.$store.state.locale.camera;
     }
   }
 };

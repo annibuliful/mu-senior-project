@@ -24,7 +24,7 @@ export default {
   others: "อื่นๆ",
   networkMode: {
     offline: "คุณออฟไลน์อยู่",
-    online: "คุณออนไลน์อยู่",
+    online: "คุณออนไลน์อยู่"
   },
   vaccineDetailsPage: {
     title: "รายละเอียดวัคซีน",
@@ -35,10 +35,10 @@ export default {
     description: "รายละเอียดโดยย่อ",
     warning: "คำเตือน/บุคคลที่ไม่ควรฉีด",
     vaccineReference:
-      "ที่มาข้อมูล: ตำราวัคซีนและการสร้างเสริมภูมิคุ้มกันโรค ปี 2562 กรมควบคุมโรค กระทรวงสาธารณะสุข",
+      "ที่มาข้อมูล: ตำราวัคซีนและการสร้างเสริมภูมิคุ้มกันโรค ปี 2562 กรมควบคุมโรค กระทรวงสาธารณะสุข"
   },
   vaccinePackagerPage: {
-    title: "แพ็กเกจวัคซีนเสริม",
+    title: "แพ็กเกจวัคซีนเสริม"
   },
   recordVaccinePage: {
     title: "จดบันทึกวัคซีน",
@@ -52,7 +52,7 @@ export default {
     uploadImage: "อัพโหลดรูปภาพหลักฐานการฉีดวัคซีน (เลขล๊อตวัคซีน)",
     submitBtn: "บันทึกข้อมูล",
     cancelBtn: "ยกเลิก",
-    packageMember: "แนะนำวัคซีนสำหรับ",
+    packageMember: "แนะนำวัคซีนสำหรับ"
   },
   label: {
     name: "ชื่อ - นามสกุล",
@@ -75,7 +75,7 @@ export default {
     vaccineName: "ชื่อวัคซีน",
     diseaseName: "ชื่อโรค",
     date: "วันที่",
-    placeHolderSearch: "กรอกคำที่ต้องการค้นหา",
+    placeHolderSearch: "กรอกคำที่ต้องการค้นหา"
   },
   labelAddAppointment: {
     child: "ชื่อเด็ก",
@@ -87,19 +87,23 @@ export default {
     nextAppointMent: "การนัดหมายถัดไป",
     vcName: "ชื่อวัคซีน",
     complete: "ได้รับวัคซีนชนิดนี้ครบตามแผนแล้ว",
-    day: "วัน",
+    day: "วัน"
   },
   historyPage: {
     title: "ประวัติการฉีดวัคซีน",
     received: "ได้รับวัคซีน",
     hospital: "โรงพยาบาล/คลินิค",
     date: "วันที่",
-    nohistory: "ไม่มีประวัติการได้รับวัคซีน",
+    nohistory: "ไม่มีประวัติการได้รับวัคซีน"
   },
   button: {
     cancel: "ยกเลิก",
     update: "อัปเดต",
     add: "เพิ่ม",
-    save: "บันทึก",
+    save: "บันทึก"
   },
+  camera: {
+    takePhoto: "ถ่ายรูป",
+    reset: "ถ่ายใหม่"
+  }
 };

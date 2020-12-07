@@ -163,6 +163,7 @@
   </div>
 </template>
 <script>
+import exifr from "exifr";
 import { format, add } from "date-fns";
 import Modal from "@/components/common/Modal.vue";
 import TagInput from "@/components/input/TagInput.vue";
@@ -189,7 +190,8 @@ export default {
       url: null,
       base64Url: null,
       baseInfo: null,
-      listNextAppointments: []
+      listNextAppointments: [],
+      photoDate: null
     };
   },
   created() {
@@ -295,7 +297,8 @@ export default {
         hostpitalName: this.hostpitalName,
         doctorInfo: this.doctorInfo,
         freetext: this.freetext,
-        recordImage: this.base64Url
+        recordImage: this.base64Url,
+        photoDate: this.photoDate ?? new Date()
       };
 
       await Promise.all([
@@ -325,8 +328,10 @@ export default {
       this.url = URL.createObjectURL(file);
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => {
+      reader.onload = async () => {
         this.base64Url = reader.result;
+        const data = await exifr.parse(reader.result, true);
+        this.photoDate = data["DateTimeOriginal"] ?? data["CreateDate"];
       };
     },
     onAddNewVaccine: function(vaccine) {
