@@ -1,62 +1,80 @@
 <template>
   <div class="p-4">
     <FamilyMemberHeader :childObject="childInfo" />
-    <div class="flex flex-row justify-center mt-2">
+    <!-- <div class="flex flex-row justify-center mt-2">
       <button @click="changeToRoadMap" class="border-2 p-1 mr-2">
         Roadmap
       </button>
       <button @click="changeToHistory" class="border-2 p-1 ">
         History
       </button>
-    </div>
+    </div> -->
 
     <History v-if="displayMode === 'History'" />
     <div v-if="displayMode === 'Roadmap'">
-      <div class="flex flex-row">
-        <div class="my-4">
+      <div class="flex flex-row mt-4">
+        <!-- input area start-->
+        <div
+          class="flex justify-center items-center md:w-full md:justify-center  mx-auto"
+        >
           <input
-            class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class="border-gray-600 rounded-lg h-10 ml-4 border mr-2 pl-2 w-8/12 md:w-6/12"
             id="username"
             type="text"
-            placeholder="Keyword"
+            :placeholder="labelText.placeHolderSearch"
             v-model="searchKeyword"
             @change="search()"
           />
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block "
+            @click="search()"
+          >
+            Search
+          </button>
+          <div>
+            <img
+              class="w-6 ml-2 cursor-pointer"
+              src="../../assets/icons/filter.svg"
+              alt=""
+              @click="onClickFilter"
+            />
+          </div>
         </div>
-        <div class="inline-block relative my-4">
+
+        <div class="my-4"></div>
+      </div>
+      <!-- input area end -->
+
+      <div
+        class=" justify-around mb-3 flex md:w-10/12 md:justify-center md:mx-auto"
+        v-if="isFilterShow"
+      >
+        <div class="flex-col w-5/12 p-2 lg:w-3/12">
+          <div>{{ labelText.filterBy }}</div>
           <select
-            class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            class="w-full border-solid border border-gray-600 h-10  rounded-lg cursor-pointer"
             v-model="filter"
             @change="search()"
           >
-            <option value="unspecified">Unspecified</option>
-            <option value="overdue">Overdue</option>
-            <option value="vaccinated">Vaccinated</option>
-            <option value="vaccinating">Vaccinating</option>
-            <option value="all">All</option>
+            <option value="unspecified">{{ labelText.unspecified }}</option>
+            <option value="overdue">{{ labelText.overdue }}</option>
+            <option value="vaccinated">{{ labelText.vaccinated }}</option>
+            <option value="vaccinating">{{ labelText.vaccinating }}</option>
+            <option value="all">{{ labelText.all }}</option>
           </select>
         </div>
-        <div class="inline-block relative my-4">
+        <div class="flex-col w-5/12 p-2 lg:w-3/12">
+          <div>{{ labelText.sortBy }}</div>
           <select
-            class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            class="w-full border-solid border border-gray-600 h-10  rounded-lg cursor-pointer"
             @change="search()"
           >
-            <!-- <option selected disabled>
-            <img :src="`${require('@/assets/icons/filter.svg')}`" />
-            Sort
-          </option> -->
-            <option value="name">Vaccine Name</option>
-            <option value="disease">Disease</option>
-            <option value="date">Date</option>
+            <option value="name">{{ labelText.vaccineName }}</option>
+            <option value="disease">{{ labelText.diseaseName }}</option>
+            <option value="date">{{ labelText.all }}</option>
           </select>
         </div>
       </div>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto"
-        @click="search()"
-      >
-        Search
-      </button>
 
       <div
         class="text-xl mb-5 border-b-2 border-blue-700 ml-2"
@@ -70,7 +88,7 @@
         :childname="appointment.customData.childname"
         :note="appointment.customData.note"
         :time="appointment.customData.time"
-        :vaccines="appointment.customData.selectedVaccines.map(el => el.tag)"
+        :vaccines="appointment.customData.selectedVaccines.map((el) => el.tag)"
         :status="appointment.status"
         :key="`${index}-${appointment.customData.childname}`"
         :date="appointment.dates"
@@ -92,7 +110,7 @@ export default {
   components: {
     FamilyMemberHeader,
     History,
-    AppointmentCard
+    AppointmentCard,
   },
   created() {
     this.displayMode = "Roadmap";
@@ -102,7 +120,7 @@ export default {
         this.displayMode = "Roadmap";
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
-          el => el.familyId === this.childId
+          (el) => el.familyId === this.childId
         );
 
         this.$store.commit("listAppointmentByChildId", this.childId);
@@ -115,10 +133,14 @@ export default {
       displayMode: "",
       filter: "all",
       sort: "date",
-      searchKeyword: ""
+      searchKeyword: "",
+      isFilterShow: false,
     };
   },
   computed: {
+    localeText: function() {
+      return this.$store.state.locale;
+    },
     labelText() {
       return this.$store.state.locale.label;
     },
@@ -130,9 +152,12 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    }
+    },
   },
   methods: {
+    onClickFilter() {
+      this.isFilterShow = !this.isFilterShow;
+    },
     changeToHistory() {
       this.displayMode = "History";
     },
@@ -144,13 +169,13 @@ export default {
         search: this.searchKeyword,
         filter: this.filter,
         sort: this.sort,
-        childId: this.childId
+        childId: this.childId,
       });
 
       this.$store.commit("setNewAppointmentList", data ?? []);
 
       console.log(data);
-    }
-  }
+    },
+  },
 };
 </script>
