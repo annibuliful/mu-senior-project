@@ -21,6 +21,7 @@ export default {
     InternetToast
   },
   mounted() {
+    this.openNotification();
     window.navigator.onLine ? setMode("online") : setMode("offline");
     window.addEventListener("online", () => {
       setMode("online");
@@ -32,6 +33,20 @@ export default {
       setMode("offline");
       this.isShowInternetToast = true;
     });
+  },
+  methods: {
+    openNotification: function() {
+      console.log("aaa", Notification.permission);
+      if (Notification.permission === "granted") {
+        new Notification("Welcome to Vaccinet App");
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(function(permission) {
+          if (permission === "granted") {
+            new Notification("Welcome to Vaccinet App");
+          }
+        });
+      }
+    }
   }
 };
 </script>
