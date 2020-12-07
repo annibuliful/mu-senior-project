@@ -44,12 +44,12 @@
       </div>
     </div>
 
-    <button
+    <!-- <button
       @click="onLinkAppointment"
       class="bg-blue-500 hover:bg-blue-800 w-8/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-4/12"
     >
       {{ localeText.appointmentBtn }}
-    </button>
+    </button> -->
     <button
       @click="onCardClicked"
       class="bg-blue-500 hover:bg-blue-800 w-8/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-4/12"
@@ -62,39 +62,39 @@
 export default {
   data() {
     return {
-      vaccineDetails: {}
+      vaccineDetails: {},
     };
   },
   methods: {
     onCardClicked() {
       this.commitBaseRecord();
       this.$router.push({
-        path: `/recordvaccine`
+        path: `/recordvaccine`,
       });
     },
     onLinkAppointment() {
       this.commitBaseRecord();
       this.$router.push({
-        name: "appointment-create"
+        name: "appointment-create",
       });
     },
     commitBaseRecord() {
       const data = {
         vaccineName: this.vaccineDetails.vaccineNameNormal,
         vaccineId: this.vaccineDetails.vaccineId,
-        selectedVaccines: [this.vaccineDetails.vaccineNameNormal]
+        selectedVaccines: [this.vaccineDetails.vaccineNameNormal],
       };
       this.$store.commit("setBaseRecordVaccine", data);
-    }
+    },
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale.vaccineDetailsPage;
-    }
+    },
   },
   created() {
     this.$store.commit("getVaccineDetail", this.$route.params.id);
     this.vaccineDetails = this.$store.state.selectedVaccineDetails;
-  }
+  },
 };
 </script>
