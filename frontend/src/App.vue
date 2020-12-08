@@ -14,11 +14,11 @@ import InternetToast from "@/components/Internet-toast.vue";
 export default {
   data: function() {
     return {
-      isShowInternetToast: false,
+      isShowInternetToast: false
     };
   },
   components: {
-    InternetToast,
+    InternetToast
   },
   mounted() {
     this.openNotification();
@@ -44,8 +44,8 @@ export default {
           new Notification("Welcome to Vaccinet App");
         }
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
