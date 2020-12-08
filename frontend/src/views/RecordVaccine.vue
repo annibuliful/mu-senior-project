@@ -131,10 +131,11 @@
 import TagInput from "@/components/input/TagInput.vue";
 import Camera from "@/components/Camera.vue";
 import service from "@/services";
+import exifr from "exifr";
 export default {
   components: {
     TagInput,
-    Camera
+    Camera,
   },
   data() {
     return {
@@ -148,7 +149,8 @@ export default {
       selectedVaccines: [],
       url: null,
       base64Url: null,
-      baseInfo: null
+      baseInfo: null,
+      photoDate: null,
     };
   },
   created() {
@@ -156,8 +158,8 @@ export default {
     this.selectedVaccines = [
       {
         id: vaccineInfo.vaccineId,
-        tag: vaccineInfo.vaccineName
-      }
+        tag: vaccineInfo.vaccineName,
+      },
     ];
     this.$store.commit("listFamilies");
   },
@@ -166,9 +168,9 @@ export default {
       return this.$store.state.locale.recordVaccinePage;
     },
     listVaccines() {
-      return this.$store.state.locale.vaccines.map(el => ({
+      return this.$store.state.locale.vaccines.map((el) => ({
         tag: el.vaccineNameNormal,
-        id: el.vaccineId
+        id: el.vaccineId,
       }));
     },
     calendarLocale() {
@@ -179,7 +181,7 @@ export default {
     },
     label() {
       return this.$store.state.locale.labelAddAppointment;
-    }
+    },
   },
   methods: {
     onCapture(data) {
@@ -190,7 +192,7 @@ export default {
 
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,
-        ...this.selectedVaccines.map(el => el.id)
+        ...this.selectedVaccines.map((el) => el.id),
       ];
       await service().family.update(childInfo.familyId, childInfo);
       const data = {
@@ -202,7 +204,8 @@ export default {
         hostpitalName: this.hostpitalName,
         doctorInfo: this.doctorInfo,
         freetext: this.freetext,
-        recordImage: this.base64Url
+        recordImage: this.base64Url,
+        photoDate: this.photoDate,
       };
       await service().record.create(data);
 
@@ -218,8 +221,10 @@ export default {
       this.url = URL.createObjectURL(file);
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => {
+      reader.onload = async () => {
         this.base64Url = reader.result;
+        const data = await exifr.parse(reader.result, true);
+        this.photoDate = data["DateTimeOriginal"] ?? data["CreateDate"];
       };
     },
     onAddNewVaccine(vaccine) {
@@ -227,8 +232,8 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

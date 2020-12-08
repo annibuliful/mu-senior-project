@@ -14,11 +14,11 @@ import InternetToast from "@/components/Internet-toast.vue";
 export default {
   data: function() {
     return {
-      isShowInternetToast: false
+      isShowInternetToast: false,
     };
   },
   components: {
-    InternetToast
+    InternetToast,
   },
   mounted() {
     this.openNotification();
@@ -35,19 +35,17 @@ export default {
     });
   },
   methods: {
-    openNotification: function() {
-      console.log("aaa", Notification.permission);
+    openNotification: async function() {
       if (Notification.permission === "granted") {
         new Notification("Welcome to Vaccinet App");
       } else if (Notification.permission !== "denied") {
-        Notification.requestPermission().then(function(permission) {
-          if (permission === "granted") {
-            new Notification("Welcome to Vaccinet App");
-          }
-        });
+        const permission = await Notification.requestPermission();
+        if (permission === "granted") {
+          new Notification("Welcome to Vaccinet App");
+        }
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
