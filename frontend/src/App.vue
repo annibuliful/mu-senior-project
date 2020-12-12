@@ -36,10 +36,7 @@ export default {
   },
   methods: {
     openNotification: function() {
-      console.log("aaa", Notification.permission);
-      if (Notification.permission === "granted") {
-        new Notification("Welcome to Vaccinet App");
-      } else if (Notification.permission !== "denied") {
+      if (Notification.permission !== "denied") {
         Notification.requestPermission().then(function(permission) {
           if (permission === "granted") {
             new Notification("Welcome to Vaccinet App");
