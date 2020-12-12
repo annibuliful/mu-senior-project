@@ -65,7 +65,6 @@ export default {
       this.onEnableCamera(!this.isFrontCamera);
     },
     onEnableCamera() {
-      // this.isFrontCamera = isFront;
       const constraints = {
         video: true,
         facingMode: { exact: "environment" }
