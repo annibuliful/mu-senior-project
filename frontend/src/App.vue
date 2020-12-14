@@ -35,14 +35,13 @@ export default {
     });
   },
   methods: {
-    openNotification: async function() {
-      if (Notification.permission === "granted") {
-        new Notification("Welcome to Vaccinet App");
-      } else if (Notification.permission !== "denied") {
-        const permission = await Notification.requestPermission();
-        if (permission === "granted") {
-          new Notification("Welcome to Vaccinet App");
-        }
+    openNotification: function() {
+      if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(function(permission) {
+          if (permission === "granted") {
+            new Notification("Welcome to Vaccinet App");
+          }
+        });
       }
     }
   }

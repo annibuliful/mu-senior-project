@@ -12,9 +12,11 @@
           class="border-gray-600 rounded-lg h-10 ml-4 border mr-2 pl-2 w-8/12 md:w-6/12"
           type="text"
           v-model="searchQuery"
+          @change="searchVaccine"
         />
         <div
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block "
+          @click="searchVaccine"
         >
           Search
         </div>
@@ -96,15 +98,15 @@ export default {
     }
   },
   methods: {
-    searchVaccine(inputSearchQuery) {
+    searchVaccine() {
       const filteredVaccineList = this.vaccineList.filter(vcObj => {
         return (
           vcObj.vaccineMedicalName
             .toLowerCase()
-            .includes(inputSearchQuery.toLowerCase()) ||
+            .includes(this.searchQuery.toLowerCase()) ||
           vcObj.vaccineNameNormal
             .toLowerCase()
-            .includes(inputSearchQuery.toLowerCase())
+            .includes(this.searchQuery.toLowerCase())
         );
       });
       this.displayVaccineList = filteredVaccineList;

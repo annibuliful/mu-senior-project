@@ -71,7 +71,7 @@
           >
             <option value="name">{{ labelText.vaccineName }}</option>
             <option value="disease">{{ labelText.diseaseName }}</option>
-            <option value="date">{{ labelText.all }}</option>
+            <option value="date">{{ labelText.date }}</option>
           </select>
         </div>
       </div>
