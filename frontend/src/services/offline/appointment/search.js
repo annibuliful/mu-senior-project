@@ -1,10 +1,9 @@
 import listVaccines from "../../../locale/EN/vaccines";
 import listByChildId from "./list-child-id";
 // import differenceInDays from "date-fns/differenceInDays";
-export default async ({ search, filter, sort, childId }) => {
+export default async ({ search, filter, sort, childId }, language) => {
   const isEmpty = search === "" && filter === "" && sort === "";
-  let listDefault = await listByChildId(childId);
-
+  let listDefault = await listByChildId(childId, language);
   if (isEmpty) {
     return listDefault;
   }

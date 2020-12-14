@@ -117,7 +117,6 @@ export default {
     services()
       .appointment.cronCheckStatus()
       .then(() => {
-        this.displayMode = "Roadmap";
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
           el => el.familyId === this.childId
@@ -165,12 +164,17 @@ export default {
       this.displayMode = "Roadmap";
     },
     async search() {
-      const data = await services().appointment.search({
-        search: this.searchKeyword,
-        filter: this.filter,
-        sort: this.sort,
-        childId: this.childId
-      });
+      const language = this.$store.state.calendarLocale;
+
+      const data = await services().appointment.search(
+        {
+          search: this.searchKeyword,
+          filter: this.filter,
+          sort: this.sort,
+          childId: this.childId
+        },
+        language
+      );
 
       this.$store.commit("setNewAppointmentList", data ?? []);
 
