@@ -12,9 +12,11 @@
           class="border-gray-600 rounded-lg h-10 ml-4 border mr-2 pl-2 w-8/12 md:w-6/12"
           type="text"
           v-model="searchQuery"
+          @change="searchVaccine"
         />
         <div
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block "
+          @click="searchVaccine"
         >
           Search
         </div>
@@ -72,7 +74,7 @@
 import VaccineCard from "../../components/VaccineCard";
 export default {
   components: {
-    VaccineCard
+    VaccineCard,
   },
   created() {
     this.displayVaccineList = this.vaccineList;
@@ -84,7 +86,7 @@ export default {
       isFilterShow: false,
       selectedCategory: "",
       selectedSorting: "",
-      selectedType: ""
+      selectedType: "",
     };
   },
   computed: {
@@ -93,24 +95,24 @@ export default {
     },
     localeText: function() {
       return this.$store.state.locale;
-    }
+    },
   },
   methods: {
-    searchVaccine(inputSearchQuery) {
-      const filteredVaccineList = this.vaccineList.filter(vcObj => {
+    searchVaccine() {
+      const filteredVaccineList = this.vaccineList.filter((vcObj) => {
         return (
           vcObj.vaccineMedicalName
             .toLowerCase()
-            .includes(inputSearchQuery.toLowerCase()) ||
+            .includes(this.searchQuery.toLowerCase()) ||
           vcObj.vaccineNameNormal
             .toLowerCase()
-            .includes(inputSearchQuery.toLowerCase())
+            .includes(this.searchQuery.toLowerCase())
         );
       });
       this.displayVaccineList = filteredVaccineList;
     },
     onSelectedCategory() {
-      const filteredVaccineList = this.vaccineList.filter(vcObj => {
+      const filteredVaccineList = this.vaccineList.filter((vcObj) => {
         return vcObj.category === this.selectedCategory;
       });
       this.displayVaccineList = filteredVaccineList;
@@ -156,8 +158,8 @@ export default {
     },
     onClickFilter() {
       this.isFilterShow = !this.isFilterShow;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped></style>
