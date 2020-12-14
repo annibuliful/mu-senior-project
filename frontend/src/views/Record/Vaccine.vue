@@ -353,10 +353,11 @@ export default {
   width: 450px;
   height: 300px;
 }
-#preview img {
+/* #preview img {
   /* max-width: 50%; */
-  /* max-height: 500px; */
-}
+/* max-height: 500px;
+} */
+
 .vue-tags-input {
   background: #324652;
 }
