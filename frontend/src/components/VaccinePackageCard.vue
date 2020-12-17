@@ -6,7 +6,7 @@
     >
       <div class="flex flex-row">
         <img
-          class="p-2 w-3/12 lg:w-48"
+          class="p-2 w-24 h-24 lg:w-48 lg:h-48"
           :src="require(`../assets/packager/${packageId}.png`)"
           alt=""
         />
@@ -26,8 +26,8 @@ export default {
   props: {
     packageId: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
 
   created() {
@@ -41,17 +41,17 @@ export default {
   computed: {
     packageDetails: function() {
       return this.$store.state.selectedPackagerDetails;
-    }
+    },
   },
 
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
-        path: `/dashboard/vaccinepackager/details/${this.packageId}`
+        path: `/dashboard/vaccinepackager/details/${this.packageId}`,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

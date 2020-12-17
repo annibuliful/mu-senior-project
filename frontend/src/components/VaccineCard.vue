@@ -6,7 +6,7 @@
     >
       <div class="flex flex-row">
         <img
-          class="p-2 w-4/12 lg:w-48"
+          class="p-2 w-24 h-24 lg:w-48 lg:h-48"
           :src="require(`../assets/vaccine-img/${vaccineId}.png`)"
           alt=""
         />
@@ -25,29 +25,29 @@ export default {
   props: {
     vaccineId: {
       type: String,
-      required: true
+      required: true,
     },
     vaccineMedicalName: {
       type: String,
-      required: true
+      required: true,
     },
     vaccineNameNormal: {
       type: String,
-      required: true
+      required: true,
     },
     shortDes: {
       type: String,
-      required: false
-    }
+      required: false,
+    },
   },
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
-        path: `/dashboard/vaccine/details/${this.vaccineId}`
+        path: `/dashboard/vaccine/details/${this.vaccineId}`,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
