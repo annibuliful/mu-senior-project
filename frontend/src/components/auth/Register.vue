@@ -21,12 +21,6 @@
       >
         Username is required
       </p>
-      <p
-        class="text-xs text-red-600"
-        v-if="!$v.username.minLength && $v.password.$error && isSubmitted"
-      >
-        Username must have at least {{ $v.username.$params.minLength.min }}
-      </p>
     </div>
     <div class="mb-4">
       <label
@@ -104,23 +98,22 @@ export default {
       username: "",
       password: "",
       repeatPassword: "",
-      isSubmitted: false
+      isSubmitted: false,
     };
   },
   validations: {
     username: {
       required,
-      minLength: minLength(8)
     },
     password: {
       required,
-      minLength: minLength(8)
+      minLength: minLength(8),
     },
     repeatPassword: {
       required,
       minLength: minLength(8),
-      sameAsPassword: sameAs("password")
-    }
+      sameAsPassword: sameAs("password"),
+    },
   },
   methods: {
     onRegister() {
@@ -129,11 +122,11 @@ export default {
       if (!this.$v.$invalid) {
         const data = {
           username: this.username,
-          password: this.password
+          password: this.password,
         };
         this.$emit("on-submit", data);
       }
-    }
-  }
+    },
+  },
 };
 </script>
