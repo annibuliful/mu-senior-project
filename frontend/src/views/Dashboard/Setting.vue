@@ -156,7 +156,7 @@ import service from "@/services";
 export default {
   components: {
     CaretIcon,
-    TagInput
+    TagInput,
   },
   computed: {
     listVaccines() {
@@ -179,7 +179,7 @@ export default {
     },
     userInfo() {
       return this.$store.state.userInfo;
-    }
+    },
   },
   data() {
     return {
@@ -187,7 +187,7 @@ export default {
       birthDate: new Date(),
       selectedVaccines: [],
       selectedDiseases: [],
-      errorMessage: ""
+      errorMessage: "",
     };
   },
   created() {
@@ -198,8 +198,9 @@ export default {
   },
   methods: {
     onLogout() {
-      localStorage.removeItem("userInfo");
-      this.$router.push("/");
+      this.$alert("Hello Vue Simple Alert.");
+      // localStorage.removeItem("userInfo");
+      // this.$router.push("/");
     },
     async submit() {
       try {
@@ -207,7 +208,7 @@ export default {
           fullname: this.fullname,
           birthDate: this.birthDate,
           receivedVaccines: this.selectedVaccines,
-          diseases: this.selectedDiseases
+          diseases: this.selectedDiseases,
         };
         this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
         localStorage.setItem("userInfo", JSON.stringify(data));
@@ -231,7 +232,7 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    }
-  }
+    },
+  },
 };
 </script>
