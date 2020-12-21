@@ -42,11 +42,11 @@ export default {
   data() {
     return {
       isCapture: false,
-      isFrontCamera: false
+      isFrontCamera: false,
     };
   },
   mounted() {
-    this.onEnableCamera(this.isFrontCamera);
+    this.onEnableCamera(!this.isFrontCamera);
   },
   beforeDestroy() {
     this.onDisableCamera();
@@ -55,7 +55,7 @@ export default {
     onDisableCamera() {
       this.$refs.camera.srcObject
         .getVideoTracks()
-        .forEach(track => track.stop());
+        .forEach((track) => track.stop());
       this.$refs.camera.pause();
       this.$refs.camera.src = "";
     },
@@ -67,10 +67,10 @@ export default {
     onEnableCamera() {
       const constraints = {
         video: true,
-        facingMode: { exact: "environment" }
+        facingMode: { exact: "environment" },
       };
       this.$nextTick(() => {
-        navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+        navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
           this.$refs.camera.srcObject = stream;
         });
       });
@@ -93,14 +93,14 @@ export default {
 
         this.$refs.camera.srcObject
           .getVideoTracks()
-          .forEach(track => track.stop());
+          .forEach((track) => track.stop());
       });
-    }
+    },
   },
   computed: {
     label: function() {
       return this.$store.state.locale.camera;
-    }
-  }
+    },
+  },
 };
 </script>
