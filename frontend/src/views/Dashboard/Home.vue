@@ -9,13 +9,13 @@
       {{ selectedDate }}
     </p>
     <p class="text-xl mb-10 border-b-2 border-blue-700" v-else>
-      {{ recentActivity }}
+      {{ localeText.recentActivity }}
     </p>
     <p
       class="text-xl text-center my-4 text-gray-600"
       v-if="filterEventOnDate.length === 0"
     >
-      There is no any event
+      {{ localeText.noEvent }}
     </p>
 
     <router-link
@@ -92,8 +92,8 @@ export default {
     locale() {
       return this.$store.state.calendarLocale;
     },
-    recentActivity() {
-      return this.$store.state.locale.recentActivity;
+    localeText() {
+      return this.$store.state.locale;
     },
     profileName() {
       return this.$store.state.userInfo;

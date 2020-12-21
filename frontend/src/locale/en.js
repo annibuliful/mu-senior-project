@@ -22,6 +22,7 @@ export default {
   adult: "Adult",
   ordering: "Order by",
   others: "Others",
+  noEvent: "There is no any event",
   networkMode: {
     offline: "You are Offline now",
     online: "You are Online now",

@@ -22,6 +22,7 @@ export default {
   adult: "สำหรับผู้ใหญ่",
   ordering: "จัดเรียงวัคซีนโดย",
   others: "อื่นๆ",
+  noEvent: "ไม่มีการนัดหมายในเร็วๆนี้",
   networkMode: {
     offline: "คุณออฟไลน์อยู่",
     online: "คุณออนไลน์อยู่",
