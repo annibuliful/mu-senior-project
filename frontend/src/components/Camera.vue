@@ -46,7 +46,7 @@ export default {
     };
   },
   mounted() {
-    this.onEnableCamera(!this.isFrontCamera);
+    this.onEnableCamera(this.isFrontCamera);
   },
   beforeDestroy() {
     this.onDisableCamera();
