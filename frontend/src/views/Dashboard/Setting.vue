@@ -36,7 +36,7 @@
           class="hidden sm:block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
           @click="onLogout"
         >
-          Logout
+          {{ buttonLabel.logout }}
         </button>
       </div>
     </div>
