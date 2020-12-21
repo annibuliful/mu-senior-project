@@ -110,7 +110,7 @@ import service from "@/services";
 export default {
   components: {
     FamilyCard,
-    TagInput
+    TagInput,
   },
   created() {
     this.$store.commit("listFamilies");
@@ -119,7 +119,7 @@ export default {
     const language = this.$store.state.calendarLocale;
     service()
       .family.list(userId, language)
-      .then(data => {
+      .then((data) => {
         this.listFamilies = data;
       });
   },
@@ -134,20 +134,20 @@ export default {
       selectedDiseases: [],
       selectedVaccines: [],
       base64Url: null,
-      listFamilies: []
+      listFamilies: [],
     };
   },
   computed: {
     listVaccines() {
-      return this.$store.state.locale.vaccines.map(el => ({
+      return this.$store.state.locale.vaccines.map((el) => ({
         id: el.vaccineId,
-        tag: el.vaccineNameNormal
+        tag: el.vaccineNameNormal,
       }));
     },
     listDiseases() {
-      return this.$store.state.locale.diseases.map(el => ({
+      return this.$store.state.locale.diseases.map((el) => ({
         id: el.diseaseId,
-        tag: el.diseaseName
+        tag: el.diseaseName,
       }));
     },
     familyword() {
@@ -161,7 +161,7 @@ export default {
     },
     calendarLocale() {
       return this.$store.state.calendarLocale;
-    }
+    },
   },
   methods: {
     onFileChange(e) {
@@ -191,10 +191,10 @@ export default {
       const data = {
         fullname: this.fullname,
         birthDate: this.birthDate,
-        diseases: this.selectedDiseases.map(el => el.id),
-        receivedVaccines: this.selectedVaccines.map(el => el.id),
+        diseases: this.selectedDiseases.map((el) => el.id),
+        receivedVaccines: this.selectedVaccines.map((el) => el.id),
         profileImg: this.base64Url,
-        userId: this.$store.state.userInfo.userId
+        userId: this.$store.state.userInfo.userId,
       };
       const familyId = await service().family.create(data);
       this.resetForm();
@@ -203,8 +203,8 @@ export default {
       this.$router.push({
         name: "appointment-child-suggestion",
         params: {
-          id: familyId
-        }
+          id: familyId,
+        },
       });
     },
     resetForm() {
@@ -214,8 +214,8 @@ export default {
       this.inputVaccine = "";
       this.selectedDiseases = [];
       this.selectedVaccines = [];
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
