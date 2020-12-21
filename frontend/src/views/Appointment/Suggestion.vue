@@ -44,19 +44,19 @@ export default {
     },
     listFamilies() {
       return this.$store.state.listFamilies;
-    }
+    },
   },
   data: function() {
     return {
       listSuggestions: [],
       childId: "",
-      childInfo: {}
+      childInfo: {},
     };
   },
   filters: {
     dateFormat: function(val) {
-      return format(new Date(val), "MM/dd/yyyy");
-    }
+      return format(new Date(val), "dd/MM/yyyy");
+    },
   },
   mounted: function() {
     this.$store.commit("listFamilies");
@@ -65,7 +65,7 @@ export default {
 
     service()
       .suggestion.generate(this.childId, language)
-      .then(data => {
+      .then((data) => {
         this.listSuggestions = data;
       });
   },
@@ -78,7 +78,7 @@ export default {
         const {
           vaccineId,
           vaccineNameNormal,
-          appointmentDate
+          appointmentDate,
         } = this.listSuggestions[i];
         await this.submit(vaccineId, vaccineNameNormal, appointmentDate);
       }
@@ -86,7 +86,7 @@ export default {
     },
     submit: async function(vaccineId, vaccineName, appointmentDate) {
       const { familyId, fullname } = this.$store.state.listFamilies.find(
-        el => el.familyId === this.childId
+        (el) => el.familyId === this.childId
       );
       const data = {
         dates: appointmentDate,
@@ -98,11 +98,11 @@ export default {
           vaccineId,
           childname: fullname,
           childId: familyId,
-          time: "09:30"
-        }
+          time: "09:30",
+        },
       };
       await service().appointment.create(data);
-    }
-  }
+    },
+  },
 };
 </script>
