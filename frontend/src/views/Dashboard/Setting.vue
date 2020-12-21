@@ -145,7 +145,7 @@
       class="block sm:hidden bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block mx-auto w-9/12"
       @click="onLogout"
     >
-      Logout
+      {{ buttonLabel.logout }}
     </button>
   </div>
 </template>
@@ -198,9 +198,24 @@ export default {
   },
   methods: {
     onLogout() {
-      this.$alert("Hello Vue Simple Alert.");
-      // localStorage.removeItem("userInfo");
-      // this.$router.push("/");
+      this.$fire({
+        title: this.locale.label.confirmLogout,
+        showCancelButton: true,
+        confirmButtonText: this.locale.label.yes,
+        cancelButtonText: this.locale.label.no,
+      }).then((r) => {
+        if (r.value) {
+          localStorage.removeItem("userInfo");
+          this.$router.push("/");
+          this.$fire({
+            title: this.locale.label.logoutSuccess,
+            type: "success",
+            timer: 3000,
+          });
+        } else {
+          console.log("Not success");
+        }
+      });
     },
     async submit() {
       try {
@@ -210,8 +225,24 @@ export default {
           receivedVaccines: this.selectedVaccines,
           diseases: this.selectedDiseases,
         };
-        this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
-        localStorage.setItem("userInfo", JSON.stringify(data));
+
+        this.$fire({
+          title: this.locale.label.confirmEdit,
+          showCancelButton: true,
+          confirmButtonText: this.locale.label.yes,
+          cancelButtonText: this.locale.label.no,
+        }).then((r) => {
+          if (r.value) {
+            // console.log(r.value);
+            this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
+            localStorage.setItem("userInfo", JSON.stringify(data));
+            this.$fire({
+              title: this.locale.label.saveInfo,
+              type: "success",
+              timer: 3000,
+            });
+          }
+        });
 
         await service().user.update(this.userInfo.userId, data);
       } catch (e) {
