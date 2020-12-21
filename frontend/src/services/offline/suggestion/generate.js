@@ -9,28 +9,28 @@ const rangeYearOfCategories = [
   {
     range: {
       min: 0,
-      max: 18
+      max: 18,
     },
-    category: "children"
+    category: "children",
   },
   {
     range: {
       min: 19,
-      max: 120
+      max: 120,
     },
-    category: "adult"
-  }
+    category: "adult",
+  },
 ];
 
-const getVaccineCategoryByDate = childBirthDate => {
+const getVaccineCategoryByDate = (childBirthDate) => {
   const now = new Date();
   const childYearOld = childBirthDate.getFullYear() / now.getFullYear() - 1;
   return rangeYearOfCategories.filter(
-    el => el.range.min <= childYearOld && childYearOld <= el.range.max
+    (el) => el.range.min <= childYearOld && childYearOld <= el.range.max
   )[0].category;
 };
 
-const getFactorFromChild = async childId => {
+const getFactorFromChild = async (childId) => {
   const childInfo = (await service().family.getByChildId(childId))[0];
   const listChildDiseaseIds = childInfo.diseases;
   const listChildVaccineIds = childInfo.receivedVaccines;
@@ -39,7 +39,7 @@ const getFactorFromChild = async childId => {
     childInfo,
     listChildDiseaseIds,
     listChildVaccineIds,
-    vaccineCategory
+    vaccineCategory,
   };
 };
 
@@ -48,7 +48,7 @@ export default async (childId, language) => {
     childInfo,
     listChildDiseaseIds,
     listChildVaccineIds,
-    vaccineCategory
+    vaccineCategory,
   } = await getFactorFromChild(childId);
 
   let listVaccines = [];
@@ -59,23 +59,32 @@ export default async (childId, language) => {
   }
 
   const filteredVaccineForChild = listVaccines.filter(
-    el => el.category === vaccineCategory
+    (el) => el.category === vaccineCategory
   );
 
   const filterdVaccineChildNotReceived = filteredVaccineForChild.filter(
-    el => !listChildVaccineIds.includes(el.vaccineId)
+    (el) => !listChildVaccineIds.includes(el.vaccineId)
   );
 
   const listVaccineConstraint = constraintVaccines
-    .filter(el => listChildDiseaseIds.some(disease => el.diseaseId === disease))
-    .map(el => el.vaccineId);
+    .filter((el) =>
+      listChildDiseaseIds.some((disease) => el.diseaseId === disease)
+    )
+    .map((el) => el.vaccineId);
 
-  return filterdVaccineChildNotReceived
-    .filter(el => !listVaccineConstraint.includes(el.vaccineId))
-    .map(el => ({
+  const temp = filterdVaccineChildNotReceived
+    .filter((el) => !listVaccineConstraint.includes(el.vaccineId))
+    .map((el) => ({
       ...el,
       appointmentDate: add(childInfo.birthDate, {
-        days: el.injectionPeriodTime[0]
-      })
+        days: el.injectionPeriodTime[0],
+      }),
     }));
+
+  // console.log("temppppp", temp);
+  const sortedTemp = temp.sort(
+    (a, b) => new Date(a.appointmentDate) - new Date(b.appointmentDate)
+  );
+  // console.log("sortedTemp", sortedTemp);
+  return sortedTemp;
 };
