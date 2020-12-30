@@ -5,38 +5,38 @@
     <img src="@/assets/people.png" class="ml-auto mr-auto ml-auto mt-8" />
     <div class="flex flex-col h-full ">
       <div class="mt-auto mb-auto cursor-pointer pb-2 pt-2">
-        <router-link
-          :to="{ name: 'dashboard-home' }"
+        <div
+          @click="onClickLink({ name: 'dashboard-home' })"
           class="ml-10 pb-4 "
           :class="[currentPath === '/dashboard/home' ? 'link-active' : '']"
         >
           <img class="inline w-8" src="@/assets/icons/home.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
-        </router-link>
+        </div>
       </div>
       <div class=" mb-auto cursor-pointer">
-        <router-link
-          :to="{ name: 'dashboard-vaccine' }"
+        <div
+          @click="onClickLink({ name: 'dashboard-vaccine' })"
           class="ml-10 pb-4 "
           :class="[currentPath === '/dashboard/vaccine' ? 'link-active' : '']"
         >
           <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.vaccine }}</p>
-        </router-link>
+        </div>
       </div>
       <div class="mb-auto cursor-pointer">
-        <router-link
-          :to="{ name: 'dashboard-family' }"
+        <div
+          @click="onClickLink({ name: 'dashboard-family' })"
           class="ml-10 pb-4 "
           :class="[currentPath === '/dashboard/family' ? 'link-active' : '']"
         >
           <img class="inline w-8" src="@/assets/icons/family.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
-        </router-link>
+        </div>
       </div>
       <div class=" mb-auto cursor-pointer">
-        <router-link
-          :to="{ name: 'dashboard-packager' }"
+        <div
+          @click="onClickLink({ name: 'dashboard-packager' })"
           class="ml-10 pb-4 "
           :class="[
             currentPath === '/dashboard/vaccinepackager' ? 'link-active' : ''
@@ -44,23 +44,32 @@
         >
           <img class="inline w-8" src="@/assets/icons/packager.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.packager }}</p>
-        </router-link>
+        </div>
       </div>
       <div class=" mb-auto cursor-pointer">
-        <router-link
-          :to="{ name: 'dashboard-setting' }"
+        <div
+          @click="onClickLink({ name: 'dashboard-setting' })"
           class="ml-10"
           :class="[currentPath === '/dashboard/setting' ? 'link-active' : '']"
         >
           <img class="inline w-8" src="@/assets/icons/setting.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.setting }}</p>
-        </router-link>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
+  props: ["isCancelLink"],
+  methods: {
+    onClickLink: function(link) {
+      if (this.isCancelLink) {
+        return;
+      }
+      this.$router.push(link);
+    }
+  },
   computed: {
     listItem() {
       return this.$store.state.locale;

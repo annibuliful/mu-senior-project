@@ -218,6 +218,7 @@ export default {
     const isFirstTime = this.userInfo.fullname === "";
     if (isFirstTime) {
       this.isFirstTime = true;
+      this.$store.commit("setFirstTime", true);
     }
 
     this.fullname = this.userInfo.fullname;
@@ -311,6 +312,7 @@ export default {
         }
 
         await service().user.update(this.userInfo.userId, data);
+        this.$store.commit("setFirstTime", false);
       } catch (e) {
         this.errorMessage = e.message;
       }
