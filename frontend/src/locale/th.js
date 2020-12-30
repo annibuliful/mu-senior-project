@@ -10,6 +10,14 @@ export default {
   news: "ข่าวสาร",
   vaccineList: "รายการวัคซีน",
   login: "เข้าสู่ระบบ",
+  register: "สมัครสมาชิก",
+  username: "ชื่อผู้ใช้",
+  password: "รหัสผ่าน",
+  repeatPassword: "ยินยันรหัสผ่าน",
+  usernameRequire: "กรุณากรอกชื่อผู้ใช้",
+  passwordRequire: "กรุณากรอกรหัสผ่าน",
+  passwordMismatch: "รหัสผ่านไม่ตรงกัน",
+  passwordAtLeast: "รหัสผ่านต้องมีตัวอักษรมากกว่า",
   family: "ครอบครัว",
   packager: "แพ็กเกจวัคซีนเสริม",
   setting: "ตั้งค่า",
@@ -25,9 +33,12 @@ export default {
   ordering: "จัดเรียงวัคซีนโดย",
   others: "อื่นๆ",
   noEvent: "ไม่มีการนัดหมายในเร็วๆนี้",
+  welcomeLanguage: "ยินดีต้อนรับสู่ Vaccinet",
+  welcomeContinue: "ไปต่อ",
+  loadmore: "เพิ่มเติม",
   networkMode: {
     offline: "คุณออฟไลน์อยู่",
-    online: "คุณออนไลน์อยู่"
+    online: "คุณออนไลน์อยู่",
   },
   vaccineDetailsPage: {
     title: "รายละเอียดวัคซีน",
@@ -38,13 +49,13 @@ export default {
     description: "รายละเอียดโดยย่อ",
     warning: "คำเตือน/บุคคลที่ไม่ควรฉีด",
     vaccineReference:
-      "ที่มาข้อมูล: ตำราวัคซีนและการสร้างเสริมภูมิคุ้มกันโรค ปี 2562 กรมควบคุมโรค กระทรวงสาธารณะสุข"
+      "ที่มาข้อมูล: ตำราวัคซีนและการสร้างเสริมภูมิคุ้มกันโรค ปี 2562 กรมควบคุมโรค กระทรวงสาธารณะสุข",
   },
   vaccinePackagerPage: {
-    title: "แพ็กเกจวัคซีนเสริม"
+    title: "แพ็กเกจวัคซีนเสริม",
   },
   labelError: {
-    required: "โปรดกรอก{}"
+    required: "โปรดกรอก{}",
   },
   recordVaccinePage: {
     title: "จดบันทึกวัคซีน",
@@ -58,7 +69,7 @@ export default {
     uploadImage: "อัพโหลดรูปภาพหลักฐานการฉีดวัคซีน (เลขล๊อตวัคซีน)",
     submitBtn: "บันทึกข้อมูล",
     cancelBtn: "ยกเลิก",
-    packageMember: "แนะนำวัคซีนสำหรับ"
+    packageMember: "แนะนำวัคซีนสำหรับ",
   },
   label: {
     name: "ชื่อ - นามสกุล",
@@ -89,7 +100,8 @@ export default {
     confirmEdit: "คุณต้องการบันทึกการเปลี่ยนแปลงใช่ไหม",
     continue: "ไปต่อ",
     yes: "ใช่",
-    no: "ไม่ใช่"
+    no: "ไม่ใช่",
+    notifyToEdit: "กรุณาแก้ไขข้อมูลส่วนตัวก่อนใช้งานแอพพลิเคชั่น",
   },
   labelAddAppointment: {
     child: "ชื่อเด็ก",
@@ -101,14 +113,14 @@ export default {
     nextAppointMent: "การนัดหมายถัดไป",
     vcName: "ชื่อวัคซีน",
     complete: "ได้รับวัคซีนชนิดนี้ครบตามแผนแล้ว",
-    day: "วัน"
+    day: "วัน",
   },
   historyPage: {
     title: "ประวัติการฉีดวัคซีน",
     received: "ได้รับวัคซีน",
     hospital: "โรงพยาบาล/คลินิค",
     date: "วันที่",
-    nohistory: "ไม่มีประวัติการได้รับวัคซีน"
+    nohistory: "ไม่มีประวัติการได้รับวัคซีน",
   },
   button: {
     cancel: "ยกเลิก",
@@ -116,10 +128,10 @@ export default {
     add: "เพิ่ม",
     save: "บันทึก",
     logout: "ออกจากระบบ",
-    search: "ค้นหา"
+    search: "ค้นหา",
   },
   camera: {
     takePhoto: "ถ่ายรูป",
-    reset: "ถ่ายใหม่"
-  }
+    reset: "ถ่ายใหม่",
+  },
 };

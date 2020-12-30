@@ -46,14 +46,14 @@
       <button
         class="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded mx-auto block"
       >
-        Load More
+        {{ locale.loadmore }}
       </button>
     </div>
     <button
       class="btn-primary hover:bg-blue-700 w-full lg:w-1/2 mx-auto my-8"
       @click="onLinkToLogin"
     >
-      Login
+      {{ locale.login }}
     </button>
   </div>
 </template>
@@ -66,7 +66,7 @@ import NewsCard from "@/components/NewsCard";
 export default {
   components: {
     VaccineCard,
-    NewsCard
+    NewsCard,
   },
   data() {
     return {
@@ -79,9 +79,9 @@ export default {
           title: "Covid",
           newsId: "news1",
           description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        }
-      ]
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+        },
+      ],
     };
   },
   created: function() {
@@ -100,13 +100,13 @@ export default {
     },
     onLinkToLogin: function() {
       this.$router.push("/");
-    }
+    },
   },
   computed: {
     locale: function() {
       return this.$store.state.locale;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
