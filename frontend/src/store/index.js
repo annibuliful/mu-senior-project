@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    tempFamily: {},
     isFirstTime: false,
     constrainDisease: constrainDisease,
     networkMode: "online",
@@ -46,6 +47,9 @@ export default new Vuex.Store({
     },
     setFirstTime(state, data) {
       state.isFirstTime = data;
+    },
+    setTempFamilyInfo(state, data) {
+      state.tempFamily = data;
     },
     async listFamilies(state) {
       const user = localStorage.getItem("userInfo");

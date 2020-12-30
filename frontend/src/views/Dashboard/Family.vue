@@ -197,15 +197,13 @@ export default {
         userId: this.$store.state.userInfo.userId,
         isParent: false
       };
-      const familyId = await service().family.create(data);
-      this.resetForm();
-      this.$store.commit("addNewFamilyMember", { familyId, ...data });
-      this.onOpenAddFamilyForm();
+      this.$store.commit("setTempFamilyInfo", data);
+      // const familyId = await service().family.create(data);
+      // this.resetForm();
+      // this.$store.commit("addNewFamilyMember", { familyId, ...data });
+      // this.onOpenAddFamilyForm();
       this.$router.push({
-        name: "appointment-child-suggestion",
-        params: {
-          id: familyId
-        }
+        name: "appointment-child-suggestion"
       });
     },
     resetForm() {

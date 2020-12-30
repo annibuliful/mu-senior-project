@@ -15,12 +15,6 @@
           <p>Appointment Date:</p>
           <p>{{ val.appointmentDate | dateFormat }}</p>
         </div>
-        <div>
-          <img
-            :src="`${require('@/assets/icons/close-red.svg')}`"
-            @click="deleteAppointmentByIndex(index)"
-          />
-        </div>
       </div>
     </div>
     <button
@@ -44,28 +38,29 @@ export default {
     },
     listFamilies() {
       return this.$store.state.listFamilies;
-    },
+    }
   },
   data: function() {
     return {
       listSuggestions: [],
       childId: "",
-      childInfo: {},
+      childInfo: {}
     };
   },
   filters: {
     dateFormat: function(val) {
       return format(new Date(val), "dd/MM/yyyy");
-    },
+    }
   },
   mounted: function() {
     this.$store.commit("listFamilies");
     this.childId = Number(this.$route.params.id);
     const language = this.$store.state.calendarLocale;
+    const tempChildInfo = this.$store.state.tempFamily;
 
     service()
-      .suggestion.generate(this.childId, language)
-      .then((data) => {
+      .suggestion.generate(tempChildInfo, language)
+      .then(data => {
         this.listSuggestions = data;
       });
   },
@@ -74,20 +69,34 @@ export default {
       this.listSuggestions.splice(index, 1);
     },
     save: async function() {
+      const fullname = this.$store.state.tempFamily.fullname;
+      const familyId = await service().family.create(
+        this.$store.state.tempFamily
+      );
+
       for (let i = 0; i < this.listSuggestions.length; i++) {
         const {
           vaccineId,
           vaccineNameNormal,
-          appointmentDate,
+          appointmentDate
         } = this.listSuggestions[i];
-        await this.submit(vaccineId, vaccineNameNormal, appointmentDate);
+        await this.submit(
+          vaccineId,
+          vaccineNameNormal,
+          appointmentDate,
+          familyId,
+          fullname
+        );
       }
       this.$router.push({ name: "dashboard-index" });
     },
-    submit: async function(vaccineId, vaccineName, appointmentDate) {
-      const { familyId, fullname } = this.$store.state.listFamilies.find(
-        (el) => el.familyId === this.childId
-      );
+    submit: async function(
+      vaccineId,
+      vaccineName,
+      appointmentDate,
+      familyId,
+      fullname
+    ) {
       const data = {
         dates: appointmentDate,
         dot: "gray",
@@ -98,11 +107,11 @@ export default {
           vaccineId,
           childname: fullname,
           childId: familyId,
-          time: "09:30",
-        },
+          time: "09:30"
+        }
       };
       await service().appointment.create(data);
-    },
-  },
+    }
+  }
 };
 </script>
