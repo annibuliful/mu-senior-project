@@ -7,8 +7,10 @@ export default {
   packagers,
   home: "Home",
   vaccine: "Vaccine",
+  news: "News",
   vaccineList: "Vaccine List",
   family: "Family",
+  login: "login",
   packager: "Packager",
   setting: "Settings",
   event: "events",
@@ -25,7 +27,7 @@ export default {
   noEvent: "There is no any event",
   networkMode: {
     offline: "You are Offline now",
-    online: "You are Online now",
+    online: "You are Online now"
   },
   vaccineDetailsPage: {
     title: "Vaccine Description",
@@ -36,10 +38,10 @@ export default {
     who: "Who Should Be Vaccinated ",
     warning: "Warning/Who should not use",
     vaccineReference:
-      "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)",
+      "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)"
   },
   vaccinePackagerPage: {
-    title: "Vaccine Packager",
+    title: "Vaccine Packager"
   },
   recordVaccinePage: {
     title: "Record Vaccine",
@@ -53,7 +55,7 @@ export default {
     uploadImage: "Upload an evidence (Incluing The Batch Number)",
     submitBtn: "Submit",
     cancelBtn: "cancel",
-    packageMember: "Suggested Vaccine for",
+    packageMember: "Suggested Vaccine for"
   },
   label: {
     name: "Fullname",
@@ -84,7 +86,7 @@ export default {
     confirmEdit: "Are you sure you want to update your information?",
     continue: "Continue",
     yes: "Yes",
-    no: "No",
+    no: "No"
   },
   labelAddAppointment: {
     child: "child name",
@@ -96,14 +98,17 @@ export default {
     nextAppointMent: "Next Appointment",
     vcName: "Vaccine name",
     complete: "Complete",
-    day: "Days",
+    day: "Days"
+  },
+  labelError: {
+    required: "{} is required"
   },
   historyPage: {
     title: "History",
     received: "Received",
     hospital: "Hospital/Clinic",
     date: "Date",
-    nohistory: "doesn't take any vaccine before",
+    nohistory: "doesn't take any vaccine before"
   },
   button: {
     cancel: "Cancel",
@@ -111,10 +116,10 @@ export default {
     add: "Add",
     save: "Save",
     logout: "Logout",
-    search: "Search",
+    search: "Search"
   },
   camera: {
     takePhoto: "Take a Photo",
-    reset: "reset",
-  },
+    reset: "reset"
+  }
 };

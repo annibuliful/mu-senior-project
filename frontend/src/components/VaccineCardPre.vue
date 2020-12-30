@@ -42,9 +42,7 @@ export default {
   },
   methods: {
     onCardClicked() {
-      this.$router.push({
-        path: `/dashboard/vaccine/details/${this.vaccineId}`
-      });
+      this.$emit("on-click", this.vaccineId);
     }
   }
 };

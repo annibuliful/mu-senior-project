@@ -22,6 +22,7 @@ export default {
   },
   mounted() {
     this.openNotification();
+    this.checkFirstTime();
     window.navigator.onLine ? setMode("online") : setMode("offline");
     window.addEventListener("online", () => {
       setMode("online");
@@ -43,6 +44,14 @@ export default {
           }
         });
       }
+    },
+    checkFirstTime: function() {
+      const language = localStorage.getItem("language");
+      if (language === null) {
+        this.$router.push({ name: "setting-language" });
+      } else {
+        this.$store.commit("changeLanguage", language);
+      }
     }
   }
 };
@@ -56,4 +65,8 @@ export default {
   /* text-align: center;
   color: #2c3e50;
 } */
+
+.btn-primary {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded block mx-auto;
+}
 </style>

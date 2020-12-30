@@ -66,7 +66,7 @@ export default {
         this.$store.commit("setUserInfo", result);
         localStorage.setItem("userInfo", JSON.stringify(result));
 
-        this.$router.push({ name: "dashboard-home" });
+        this.$router.push({ name: "dashboard-setting" });
       } catch (e) {
         this.error = e.message;
       }

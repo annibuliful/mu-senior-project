@@ -65,6 +65,12 @@
             :placeholder="label.name"
             autocomplete="off"
           />
+          <p
+            class="text-xs text-red-600"
+            v-if="!$v.fullname.required && $v.fullname.$error && isSubmitted"
+          >
+            {{ locale.labelError.required.replace("{}", label.name) }}
+          </p>
         </div>
       </div>
 
@@ -80,6 +86,12 @@
 
         <div class="inline-block relative w-auto">
           <v-date-picker v-model="birthDate" :locale="calendarLocale" />
+          <p
+            class="text-xs text-red-600"
+            v-if="!$v.birthDate.required && $v.birthDate.$error && isSubmitted"
+          >
+            {{ locale.labelError.required.replace("{}", label.birthDate) }}
+          </p>
         </div>
       </div>
 
@@ -150,13 +162,22 @@
   </div>
 </template>
 <script>
+import { required } from "vuelidate/lib/validators";
 import CaretIcon from "@/components/icons/Caret.vue";
 import TagInput from "@/components/input/TagInput.vue";
 import service from "@/services";
 export default {
   components: {
     CaretIcon,
-    TagInput,
+    TagInput
+  },
+  validations: {
+    fullname: {
+      required
+    },
+    birthDate: {
+      required
+    }
   },
   computed: {
     listVaccines() {
@@ -179,18 +200,27 @@ export default {
     },
     userInfo() {
       return this.$store.state.userInfo;
-    },
+    }
   },
   data() {
     return {
+      isSubmmitted: false,
       fullname: "",
       birthDate: new Date(),
       selectedVaccines: [],
       selectedDiseases: [],
       errorMessage: "",
+      isFirstTime: false,
+      userFamilyId: ""
     };
   },
   created() {
+    const isFirstTime = this.userInfo.fullname === "";
+    if (isFirstTime) {
+      this.isFirstTime = true;
+      this.$store.commit("setFirstTime", true);
+    }
+
     this.fullname = this.userInfo.fullname;
     this.birthDate = new Date(this.userInfo.birthDate);
     this.selectedVaccines = this.userInfo.diseases;
@@ -202,15 +232,15 @@ export default {
         title: this.locale.label.confirmLogout,
         showCancelButton: true,
         confirmButtonText: this.locale.label.yes,
-        cancelButtonText: this.locale.label.no,
-      }).then((r) => {
+        cancelButtonText: this.locale.label.no
+      }).then(r => {
         if (r.value) {
           localStorage.removeItem("userInfo");
           this.$router.push("/");
           this.$fire({
             title: this.locale.label.logoutSuccess,
             type: "success",
-            timer: 3000,
+            timer: 3000
           });
         } else {
           console.log("Not success");
@@ -218,20 +248,27 @@ export default {
       });
     },
     async submit() {
+      this.isSubmitted = true;
+      this.$v.$reset();
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
+
       try {
         const data = {
           fullname: this.fullname,
           birthDate: this.birthDate,
           receivedVaccines: this.selectedVaccines,
-          diseases: this.selectedDiseases,
+          diseases: this.selectedDiseases
         };
 
         this.$fire({
           title: this.locale.label.confirmEdit,
           showCancelButton: true,
           confirmButtonText: this.locale.label.yes,
-          cancelButtonText: this.locale.label.no,
-        }).then((r) => {
+          cancelButtonText: this.locale.label.no
+        }).then(r => {
           if (r.value) {
             // console.log(r.value);
             this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
@@ -239,12 +276,43 @@ export default {
             this.$fire({
               title: this.locale.label.saveInfo,
               type: "success",
-              timer: 3000,
+              timer: 3000
             });
           }
         });
 
+        if (this.isFirstTime) {
+          const data = {
+            fullname: this.fullname,
+            birthDate: this.birthDate,
+            diseases: this.selectedDiseases.map(el => el.id),
+            receivedVaccines: this.selectedVaccines.map(el => el.id),
+            profileImg: "",
+            userId: this.$store.state.userInfo.userId,
+            isParent: true
+          };
+          await service().family.create(data);
+        } else {
+          const listFamilies = await service().family.list();
+          const userFamilyId = listFamilies.find(
+            el =>
+              el.fullname === this.userInfo.fullname &&
+              el.userId === this.userInfo.userId
+          )?.familyId;
+          const data = {
+            fullname: this.fullname,
+            birthDate: this.birthDate,
+            diseases: this.selectedDiseases.map(el => el.id),
+            receivedVaccines: this.selectedVaccines.map(el => el.id),
+            profileImg: "",
+            userId: this.$store.state.userInfo.userId,
+            isParent: true
+          };
+          await service().family.update(userFamilyId, data);
+        }
+
         await service().user.update(this.userInfo.userId, data);
+        this.$store.commit("setFirstTime", false);
       } catch (e) {
         this.errorMessage = e.message;
       }
@@ -263,7 +331,7 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    },
-  },
+    }
+  }
 };
 </script>

@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    isFirstTime: false,
     constrainDisease: constrainDisease,
     networkMode: "online",
     calendarLocale: "en-US",
@@ -42,6 +43,9 @@ export default new Vuex.Store({
     },
     setNewAppointmentList(state, data) {
       state.appointmentList = data;
+    },
+    setFirstTime(state, data) {
+      state.isFirstTime = data;
     },
     async listFamilies(state) {
       const user = localStorage.getItem("userInfo");
