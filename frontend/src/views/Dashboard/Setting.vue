@@ -209,10 +209,16 @@ export default {
       birthDate: new Date(),
       selectedVaccines: [],
       selectedDiseases: [],
-      errorMessage: ""
+      errorMessage: "",
+      isFirstTime: false
     };
   },
   created() {
+    const isFirstTime = this.userInfo.fullname === "";
+    if (isFirstTime) {
+      this.isFirstTime = true;
+    }
+
     this.fullname = this.userInfo.fullname;
     this.birthDate = new Date(this.userInfo.birthDate);
     this.selectedVaccines = this.userInfo.diseases;
@@ -245,6 +251,18 @@ export default {
       this.$v.$touch();
       if (this.$v.$invalid) {
         return;
+      }
+      if (this.isFirstTime) {
+        const data = {
+          fullname: this.fullname,
+          birthDate: this.birthDate,
+          diseases: this.selectedDiseases.map(el => el.id),
+          receivedVaccines: this.selectedVaccines.map(el => el.id),
+          profileImg: "",
+          userId: this.$store.state.userInfo.userId,
+          isParent: true
+        };
+        await service().family.create(data);
       }
 
       try {
