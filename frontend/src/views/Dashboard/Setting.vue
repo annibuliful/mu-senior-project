@@ -270,7 +270,6 @@ export default {
           cancelButtonText: this.locale.label.no
         }).then(r => {
           if (r.value) {
-            // console.log(r.value);
             this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
             localStorage.setItem("userInfo", JSON.stringify(data));
             this.$fire({

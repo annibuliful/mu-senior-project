@@ -82,7 +82,7 @@ export default {
     diseaseName: "ชื่อโรค",
     date: "วันที่",
     placeHolderSearch: "กรอกคำที่ต้องการค้นหา",
-    confirmLogout: "คุุณต้องการออกจากระบบใช่ไหม",
+    confirmLogout: "คุณต้องการออกจากระบบใช่ไหม",
     logoutSuccess: "ออกจากระบบสำเร็จ",
     saveInfo: "บันทึกข้อมูลของคุณสำเร็จ",
     success: "สำเร็จ",

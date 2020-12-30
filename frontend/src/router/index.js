@@ -126,7 +126,7 @@ const routes = [
         component: ChildAppointment
       },
       {
-        path: "/appointment/child/:id/suggestion",
+        path: "/appointment/child/suggestion",
         name: "appointment-child-suggestion",
         component: SuggestionAppointment
       }
