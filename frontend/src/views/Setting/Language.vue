@@ -25,14 +25,13 @@
       </div>
     </div>
     <button
-      @click="onSubmitLanguage()"
+      @click="onSubmitLanguage"
       class=" text-white font-bold py-4 px-8 rounded mx-auto block"
       :class="[
         language === ''
           ? 'bg-gray-500 cursor-not-allowed'
           : 'bg-blue-500 hover:bg-blue-700 '
       ]"
-      :disabled="true"
     >
       Save
     </button>
@@ -50,13 +49,14 @@ export default {
       this.language = language;
     },
     onSubmitLanguage() {
+      console.log("aaa");
       if (this.language === "") {
         return;
       }
 
       this.$store.commit("changeLanguage", this.language);
       localStorage.setItem("language", this.language);
-      this.$router.push("/");
+      this.$router.push({ name: "pre-login" });
     }
   },
   computed: {

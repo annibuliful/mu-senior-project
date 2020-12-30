@@ -23,6 +23,8 @@ import EditFamilyProfile from "../views/Family/EditFamilyProfile.vue";
 import HistoryFamilyMember from "../views/Family/HistoryFamilyMember.vue";
 import SummaryFamilyMember from "../views/Family/SummaryFamilyMember.vue";
 import LanguageSetting from "../views/Setting/Language.vue";
+import PreLogin from "../views/PreLogin.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -30,6 +32,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/pre-login",
+    name: "pre-login",
+    component: PreLogin
   },
   {
     path: "/language",

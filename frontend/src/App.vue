@@ -46,9 +46,11 @@ export default {
       }
     },
     checkFirstTime: function() {
-      const result = localStorage.getItem("language");
-      if (result === null) {
+      const language = localStorage.getItem("language");
+      if (language === null) {
         this.$router.push({ name: "setting-language" });
+      } else {
+        this.$store.commit("changeLanguage", language);
       }
     }
   }
