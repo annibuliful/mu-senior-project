@@ -59,6 +59,7 @@ export default {
   methods: {
     onChangeFormMode(mode) {
       this.mode = mode;
+      this.error = "";
     },
     async onLogin({ username, password }) {
       try {

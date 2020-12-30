@@ -65,36 +65,6 @@ export default new Vuex.Store({
         state.calendarLocale
       );
 
-      // For test the date locale
-      // console.log("data", data);
-      // console.log("calendarLocale", state.calendarLocale);
-
-      // const testTH = data.map((appointment) => {
-      //   return {
-      //     ...appointment,
-      //     dates: format(new Date(appointment.dates), "MMMM yyyy", {
-      //       locale: th,
-      //     }),
-      //   };
-      // });
-
-      // const testEN = data.map((appointment) => {
-      //   return {
-      //     ...appointment,
-      //     dates: format(new Date(appointment.dates), "MMMM yyyy", {
-      //       locale: en,
-      //     }),
-      //   };
-      // });
-
-      // if (state.calendarLocale == "en-US") {
-      //   // return testEN;
-      //   console.log("testEN", testEN);
-      // } else {
-      //   console.log("testTH", testTH);
-      //   // return testTH;
-      // }
-
       state.appointmentList = data;
     },
 
