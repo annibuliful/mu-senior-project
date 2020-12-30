@@ -9,6 +9,7 @@ export default {
   vaccine: "วัคซีน",
   news: "ข่าวสาร",
   vaccineList: "รายการวัคซีน",
+  login: "เข้าสู่ระบบ",
   family: "ครอบครัว",
   packager: "แพ็กเกจวัคซีนเสริม",
   setting: "ตั้งค่า",

@@ -10,6 +10,7 @@ export default {
   news: "News",
   vaccineList: "Vaccine List",
   family: "Family",
+  login: "login",
   packager: "Packager",
   setting: "Settings",
   event: "events",

@@ -24,7 +24,7 @@ import HistoryFamilyMember from "../views/Family/HistoryFamilyMember.vue";
 import SummaryFamilyMember from "../views/Family/SummaryFamilyMember.vue";
 import LanguageSetting from "../views/Setting/Language.vue";
 import PreLogin from "../views/PreLogin.vue";
-
+import VaccineInfo from "../views/Vaccine/VaccineInfo.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -37,6 +37,11 @@ const routes = [
     path: "/pre-login",
     name: "pre-login",
     component: PreLogin
+  },
+  {
+    path: "/vaccine/:id",
+    name: "vaccine-info",
+    component: VaccineInfo
   },
   {
     path: "/language",

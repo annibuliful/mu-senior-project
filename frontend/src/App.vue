@@ -65,4 +65,8 @@ export default {
   /* text-align: center;
   color: #2c3e50;
 } */
+
+.btn-primary {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded block mx-auto;
+}
 </style>
