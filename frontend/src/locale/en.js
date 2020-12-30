@@ -10,7 +10,15 @@ export default {
   news: "News",
   vaccineList: "Vaccine List",
   family: "Family",
-  login: "login",
+  login: "Login",
+  register: "Register",
+  username: "Username",
+  password: "Password",
+  repeatPassword: "Repeat Password",
+  usernameRequire: "Username is required",
+  passwordRequire: "Password is required",
+  passwordMismatch: "Repeat password is mismatch",
+  passwordAtLeast: "Password must have at least",
   packager: "Packager",
   setting: "Settings",
   event: "events",
@@ -25,9 +33,12 @@ export default {
   ordering: "Order by",
   others: "Others",
   noEvent: "There is no any event",
+  welcomeLanguage: "Welcome to Vaccinet",
+  welcomeContinue: "Continue",
+  loadmore: "Loadmore",
   networkMode: {
     offline: "You are Offline now",
-    online: "You are Online now"
+    online: "You are Online now",
   },
   vaccineDetailsPage: {
     title: "Vaccine Description",
@@ -38,10 +49,10 @@ export default {
     who: "Who Should Be Vaccinated ",
     warning: "Warning/Who should not use",
     vaccineReference:
-      "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)"
+      "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)",
   },
   vaccinePackagerPage: {
-    title: "Vaccine Packager"
+    title: "Vaccine Packager",
   },
   recordVaccinePage: {
     title: "Record Vaccine",
@@ -55,7 +66,7 @@ export default {
     uploadImage: "Upload an evidence (Incluing The Batch Number)",
     submitBtn: "Submit",
     cancelBtn: "cancel",
-    packageMember: "Suggested Vaccine for"
+    packageMember: "Suggested Vaccine for",
   },
   label: {
     name: "Fullname",
@@ -86,7 +97,8 @@ export default {
     confirmEdit: "Are you sure you want to update your information?",
     continue: "Continue",
     yes: "Yes",
-    no: "No"
+    no: "No",
+    notifyToEdit: "Edit your information before using the application",
   },
   labelAddAppointment: {
     child: "child name",
@@ -98,17 +110,17 @@ export default {
     nextAppointMent: "Next Appointment",
     vcName: "Vaccine name",
     complete: "Complete",
-    day: "Days"
+    day: "Days",
   },
   labelError: {
-    required: "{} is required"
+    required: "{} is required",
   },
   historyPage: {
     title: "History",
     received: "Received",
     hospital: "Hospital/Clinic",
     date: "Date",
-    nohistory: "doesn't take any vaccine before"
+    nohistory: "doesn't take any vaccine before",
   },
   button: {
     cancel: "Cancel",
@@ -116,10 +128,10 @@ export default {
     add: "Add",
     save: "Save",
     logout: "Logout",
-    search: "Search"
+    search: "Search",
   },
   camera: {
     takePhoto: "Take a Photo",
-    reset: "reset"
-  }
+    reset: "reset",
+  },
 };
