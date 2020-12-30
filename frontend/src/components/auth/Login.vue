@@ -5,21 +5,21 @@
         class="block text-gray-700 text-xs font-bold mb-2 text-sm"
         for="username"
       >
-        Username
+        {{ localeText.username }}
       </label>
       <input
         v-model="username"
         class="text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="username"
         type="text"
-        placeholder="Username"
+        :placeholder="localeText.username"
         autocomplete="off"
       />
       <p
         class="text-xs text-red-600"
         v-if="!$v.username.required && $v.username.$error && isSubmitted"
       >
-        Username is required
+        {{ localeText.usernameRequire }}
       </p>
     </div>
     <div class="mb-4">
@@ -27,27 +27,27 @@
         class="block text-gray-700 text-xs font-bold mb-2 text-sm"
         for="password"
       >
-        Password
+        {{ localeText.password }}
       </label>
       <input
         type="password"
         v-model="password"
         class=" text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="password"
-        placeholder="Password"
+        :placeholder="localeText.password"
         autocomplete="off"
       />
       <p
         class="text-xs text-red-600"
         v-if="!$v.password.required && $v.password.$error && isSubmitted"
       >
-        Password is required
+        {{ localeText.passwordRequire }}
       </p>
       <p
         class="text-xs text-red-600"
         v-if="!$v.password.minLength && $v.password.$error && isSubmitted"
       >
-        Password must have at least {{ $v.password.$params.minLength.min }}
+        {{ localeText.passwordAtLeast }} {{ $v.password.$params.minLength.min }}
       </p>
     </div>
     <button
@@ -55,7 +55,7 @@
       style="display: block; margin-left: auto; margin-right: auto;"
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs"
     >
-      Login
+      {{ localeText.login }}
     </button>
   </div>
 </template>
@@ -77,6 +77,11 @@ export default {
     password: {
       required,
       minLength: minLength(8),
+    },
+  },
+  computed: {
+    localeText() {
+      return this.$store.state.locale;
     },
   },
   methods: {

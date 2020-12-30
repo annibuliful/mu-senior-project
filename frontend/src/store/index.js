@@ -3,10 +3,14 @@ import Vuex from "vuex";
 import locale from "../locale";
 import services from "@/services";
 import constrainDisease from "./constrainDisease";
+// import { format } from "date-fns";
+// import { en, th } from "date-fns/locale";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    tempFamily: {},
+    isFirstTime: false,
     constrainDisease: constrainDisease,
     networkMode: "online",
     calendarLocale: "en-US",
@@ -43,6 +47,12 @@ export default new Vuex.Store({
     setNewAppointmentList(state, data) {
       state.appointmentList = data;
     },
+    setFirstTime(state, data) {
+      state.isFirstTime = data;
+    },
+    setTempFamilyInfo(state, data) {
+      state.tempFamily = data;
+    },
     async listFamilies(state) {
       const user = localStorage.getItem("userInfo");
       const { userId } = JSON.parse(user);
@@ -54,6 +64,7 @@ export default new Vuex.Store({
         cid,
         state.calendarLocale
       );
+
       state.appointmentList = data;
     },
 

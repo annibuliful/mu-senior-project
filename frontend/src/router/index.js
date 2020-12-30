@@ -22,14 +22,31 @@ import ReportFamilyProfile from "../views/Family/Report.vue";
 import EditFamilyProfile from "../views/Family/EditFamilyProfile.vue";
 import HistoryFamilyMember from "../views/Family/HistoryFamilyMember.vue";
 import SummaryFamilyMember from "../views/Family/SummaryFamilyMember.vue";
-
+import LanguageSetting from "../views/Setting/Language.vue";
+import PreLogin from "../views/PreLogin.vue";
+import VaccineInfo from "../views/Vaccine/VaccineInfo.vue";
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: Home
+  },
+  {
+    path: "/pre-login",
+    name: "pre-login",
+    component: PreLogin
+  },
+  {
+    path: "/vaccine/:id",
+    name: "vaccine-info",
+    component: VaccineInfo
+  },
+  {
+    path: "/language",
+    name: "setting-language",
+    component: LanguageSetting
   },
   {
     path: "/dashboard",
@@ -38,93 +55,93 @@ const routes = [
       {
         path: "/",
         name: "dashboard-index",
-        redirect: { name: "dashboard-home" },
+        redirect: { name: "dashboard-home" }
       },
       {
         path: "home",
         name: "dashboard-home",
-        component: DashboardHome,
+        component: DashboardHome
       },
       {
         path: "vaccine",
         name: "dashboard-vaccine",
-        component: DashboardVaccineList,
+        component: DashboardVaccineList
       },
       {
         path: "vaccine/details/:id",
-        component: VaccineDetails,
+        component: VaccineDetails
       },
       {
         path: "vaccinepackager",
         name: "dashboard-packager",
-        component: VaccinePackager,
+        component: VaccinePackager
       },
       {
         path: "vaccinepackager/details/:id",
-        component: VaccinePackagerDetails,
+        component: VaccinePackagerDetails
       },
       {
         path: "setting",
         name: "dashboard-setting",
-        component: DashboardSetting,
+        component: DashboardSetting
       },
       {
         path: "family",
         name: "dashboard-family",
-        component: DashboardFamily,
+        component: DashboardFamily
       },
       {
         path: "family/history/:id",
         name: "history-family-member",
-        component: HistoryFamilyMember,
+        component: HistoryFamilyMember
       },
       {
         path: "family/summary/:id",
         name: "summary-family-member",
-        component: SummaryFamilyMember,
+        component: SummaryFamilyMember
       },
       {
         path: "family/edit/:id",
         name: "edit-family-profile",
-        component: EditFamilyProfile,
+        component: EditFamilyProfile
       },
       {
         path: "family/report/:id",
         name: "report-family-profile",
-        component: ReportFamilyProfile,
+        component: ReportFamilyProfile
       },
       {
         path: "/appointment",
         name: "appointment-index",
-        component: Appointment,
+        component: Appointment
       },
       {
         path: "/appointment/create-appointment",
         name: "appointment-create",
-        component: CreateAppointment,
+        component: CreateAppointment
       },
       {
         path: "/appointment/child/:id",
         name: "appointment-child-list",
-        component: ChildAppointment,
+        component: ChildAppointment
       },
       {
-        path: "/appointment/child/:id/suggestion",
+        path: "/appointment/child/suggestion",
         name: "appointment-child-suggestion",
-        component: SuggestionAppointment,
-      },
-    ],
+        component: SuggestionAppointment
+      }
+    ]
   },
   {
     path: "/recordvaccine",
     name: "record-vaccine",
-    component: RecordVaccineForm,
+    component: RecordVaccineForm
   },
   {
     path: "/record-vaccine/:id",
     name: "record-vaccine-id",
-    component: RecordVaccineByAppointment,
-  },
+    component: RecordVaccineByAppointment
+  }
 ];
 
 const router = new VueRouter({
@@ -136,7 +153,7 @@ const router = new VueRouter({
       return savedPosition;
     }
     return { x: 0, y: 0 };
-  },
+  }
 });
 
 export default router;

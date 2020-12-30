@@ -104,7 +104,8 @@ import History from "./HistoryFamilyMember.vue";
 import FamilyMemberHeader from "../../components/FamilyMemberHeaderInfo.vue";
 // import AppointmentRoadmap from "../Appointment/List-child.vue";
 import AppointmentCard from "@/components/AppointmentCard.vue";
-
+// Require Esperanto locale
+// import { en, th } from "date-fns/esm/locale";
 // import CustomSelect from "../../components/input/CustomSelect.vue";
 export default {
   components: {
@@ -114,6 +115,7 @@ export default {
   },
   created() {
     this.displayMode = "Roadmap";
+
     services()
       .appointment.cronCheckStatus()
       .then(() => {
@@ -125,6 +127,7 @@ export default {
         this.$store.commit("listAppointmentByChildId", this.childId);
       });
   },
+
   data() {
     return {
       childId: "",

@@ -26,8 +26,8 @@ export default {
   props: {
     packageId: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
 
   created() {
@@ -41,17 +41,17 @@ export default {
   computed: {
     packageDetails: function() {
       return this.$store.state.selectedPackagerDetails;
-    },
+    }
   },
 
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
-        path: `/dashboard/vaccinepackager/details/${this.packageId}`,
+        path: `/dashboard/vaccinepackager/details/${this.packageId}`
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

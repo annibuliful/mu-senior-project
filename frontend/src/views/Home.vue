@@ -59,6 +59,7 @@ export default {
   methods: {
     onChangeFormMode(mode) {
       this.mode = mode;
+      this.error = "";
     },
     async onLogin({ username, password }) {
       try {
@@ -66,6 +67,11 @@ export default {
         this.$store.commit("setUserInfo", result);
         localStorage.setItem("userInfo", JSON.stringify(result));
 
+        const isFirstTime = result.fullname === "";
+        if (isFirstTime) {
+          this.$router.push({ name: "dashboard-setting" });
+          return;
+        }
         this.$router.push({ name: "dashboard-home" });
       } catch (e) {
         this.error = e.message;

@@ -42,9 +42,9 @@ export default {
     localeHistory: function() {
       return this.$store.state.locale.historyPage;
     },
+
     currentAge() {
       return formatDistanceToNow(new Date(this.childObject.birthDate));
-      //   return this.$store.state.calendarLocale;
     }
   },
   props: {

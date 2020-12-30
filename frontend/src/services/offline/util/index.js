@@ -1,3 +1,3 @@
 import checkRemainTime from "./checkRemainTime";
-
-export default { checkRemainTime };
+import { getVaccineInfoByQuery } from "./getVaccineInfoByQuery";
+export default { checkRemainTime, getVaccineInfoByQuery };
