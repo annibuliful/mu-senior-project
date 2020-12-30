@@ -65,6 +65,12 @@
             :placeholder="label.name"
             autocomplete="off"
           />
+          <p
+            class="text-xs text-red-600"
+            v-if="!$v.fullname.required && $v.fullname.$error && isSubmitted"
+          >
+            {{ locale.labelError.required.replace("{}", label.name) }}
+          </p>
         </div>
       </div>
 
@@ -80,6 +86,12 @@
 
         <div class="inline-block relative w-auto">
           <v-date-picker v-model="birthDate" :locale="calendarLocale" />
+          <p
+            class="text-xs text-red-600"
+            v-if="!$v.birthDate.required && $v.birthDate.$error && isSubmitted"
+          >
+            {{ locale.labelError.required.replace("{}", label.birthDate) }}
+          </p>
         </div>
       </div>
 
@@ -150,13 +162,22 @@
   </div>
 </template>
 <script>
+import { required } from "vuelidate/lib/validators";
 import CaretIcon from "@/components/icons/Caret.vue";
 import TagInput from "@/components/input/TagInput.vue";
 import service from "@/services";
 export default {
   components: {
     CaretIcon,
-    TagInput,
+    TagInput
+  },
+  validations: {
+    fullname: {
+      required
+    },
+    birthDate: {
+      required
+    }
   },
   computed: {
     listVaccines() {
@@ -179,15 +200,16 @@ export default {
     },
     userInfo() {
       return this.$store.state.userInfo;
-    },
+    }
   },
   data() {
     return {
+      isSubmmitted: false,
       fullname: "",
       birthDate: new Date(),
       selectedVaccines: [],
       selectedDiseases: [],
-      errorMessage: "",
+      errorMessage: ""
     };
   },
   created() {
@@ -202,15 +224,15 @@ export default {
         title: this.locale.label.confirmLogout,
         showCancelButton: true,
         confirmButtonText: this.locale.label.yes,
-        cancelButtonText: this.locale.label.no,
-      }).then((r) => {
+        cancelButtonText: this.locale.label.no
+      }).then(r => {
         if (r.value) {
           localStorage.removeItem("userInfo");
           this.$router.push("/");
           this.$fire({
             title: this.locale.label.logoutSuccess,
             type: "success",
-            timer: 3000,
+            timer: 3000
           });
         } else {
           console.log("Not success");
@@ -218,20 +240,27 @@ export default {
       });
     },
     async submit() {
+      this.isSubmitted = true;
+      this.$v.$reset();
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
+
       try {
         const data = {
           fullname: this.fullname,
           birthDate: this.birthDate,
           receivedVaccines: this.selectedVaccines,
-          diseases: this.selectedDiseases,
+          diseases: this.selectedDiseases
         };
 
         this.$fire({
           title: this.locale.label.confirmEdit,
           showCancelButton: true,
           confirmButtonText: this.locale.label.yes,
-          cancelButtonText: this.locale.label.no,
-        }).then((r) => {
+          cancelButtonText: this.locale.label.no
+        }).then(r => {
           if (r.value) {
             // console.log(r.value);
             this.$store.commit("setUserInfo", { ...this.userInfo, ...data });
@@ -239,7 +268,7 @@ export default {
             this.$fire({
               title: this.locale.label.saveInfo,
               type: "success",
-              timer: 3000,
+              timer: 3000
             });
           }
         });
@@ -263,7 +292,7 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    },
-  },
+    }
+  }
 };
 </script>

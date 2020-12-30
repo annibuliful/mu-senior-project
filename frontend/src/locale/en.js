@@ -100,6 +100,9 @@ export default {
     complete: "Complete",
     day: "Days"
   },
+  labelError: {
+    required: "{} is required"
+  },
   historyPage: {
     title: "History",
     received: "Received",

@@ -43,6 +43,9 @@ export default {
   vaccinePackagerPage: {
     title: "แพ็กเกจวัคซีนเสริม"
   },
+  labelError: {
+    required: "โปรดกรอก{}"
+  },
   recordVaccinePage: {
     title: "จดบันทึกวัคซีน",
     vaccineName: "ชื่อวัคซีน",
