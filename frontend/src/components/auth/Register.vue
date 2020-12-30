@@ -45,9 +45,9 @@
       </p>
       <p
         class="text-xs text-red-600"
-        v-if="!$v.username.minLength && $v.password.$error && isSubmitted"
+        v-if="!$v.password.minLength && $v.password.$error && isSubmitted"
       >
-        Password must have at least {{ $v.username.$params.minLength.min }}
+        Password must have at least {{ $v.password.$params.minLength.min }}
       </p>
     </div>
     <div class="mb-4">
@@ -118,6 +118,7 @@ export default {
   methods: {
     onRegister() {
       this.isSubmitted = true;
+      this.$v.$reset();
       this.$v.$touch();
       if (!this.$v.$invalid) {
         const data = {
