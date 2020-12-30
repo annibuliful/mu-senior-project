@@ -210,7 +210,8 @@ export default {
       selectedVaccines: [],
       selectedDiseases: [],
       errorMessage: "",
-      isFirstTime: false
+      isFirstTime: false,
+      userFamilyId: ""
     };
   },
   created() {
@@ -252,18 +253,6 @@ export default {
       if (this.$v.$invalid) {
         return;
       }
-      if (this.isFirstTime) {
-        const data = {
-          fullname: this.fullname,
-          birthDate: this.birthDate,
-          diseases: this.selectedDiseases.map(el => el.id),
-          receivedVaccines: this.selectedVaccines.map(el => el.id),
-          profileImg: "",
-          userId: this.$store.state.userInfo.userId,
-          isParent: true
-        };
-        await service().family.create(data);
-      }
 
       try {
         const data = {
@@ -290,6 +279,36 @@ export default {
             });
           }
         });
+
+        if (this.isFirstTime) {
+          const data = {
+            fullname: this.fullname,
+            birthDate: this.birthDate,
+            diseases: this.selectedDiseases.map(el => el.id),
+            receivedVaccines: this.selectedVaccines.map(el => el.id),
+            profileImg: "",
+            userId: this.$store.state.userInfo.userId,
+            isParent: true
+          };
+          await service().family.create(data);
+        } else {
+          const listFamilies = await service().family.list();
+          const userFamilyId = listFamilies.find(
+            el =>
+              el.fullname === this.userInfo.fullname &&
+              el.userId === this.userInfo.userId
+          )?.familyId;
+          const data = {
+            fullname: this.fullname,
+            birthDate: this.birthDate,
+            diseases: this.selectedDiseases.map(el => el.id),
+            receivedVaccines: this.selectedVaccines.map(el => el.id),
+            profileImg: "",
+            userId: this.$store.state.userInfo.userId,
+            isParent: true
+          };
+          await service().family.update(userFamilyId, data);
+        }
 
         await service().user.update(this.userInfo.userId, data);
       } catch (e) {
