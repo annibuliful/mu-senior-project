@@ -73,7 +73,6 @@ export default {
       const familyId = await service().family.create(
         this.$store.state.tempFamily
       );
-
       for (let i = 0; i < this.listSuggestions.length; i++) {
         const {
           vaccineId,

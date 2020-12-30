@@ -62,10 +62,8 @@ export default async (childInfo, language) => {
       })
     }));
 
-  // console.log("temppppp", temp);
   const sortedTemp = temp.sort(
     (a, b) => new Date(a.appointmentDate) - new Date(b.appointmentDate)
   );
-  // console.log("sortedTemp", sortedTemp);
   return sortedTemp;
 };

@@ -198,10 +198,6 @@ export default {
         isParent: false
       };
       this.$store.commit("setTempFamilyInfo", data);
-      // const familyId = await service().family.create(data);
-      // this.resetForm();
-      // this.$store.commit("addNewFamilyMember", { familyId, ...data });
-      // this.onOpenAddFamilyForm();
       this.$router.push({
         name: "appointment-child-suggestion"
       });
