@@ -3,6 +3,8 @@ import Vuex from "vuex";
 import locale from "../locale";
 import services from "@/services";
 import constrainDisease from "./constrainDisease";
+// import { format } from "date-fns";
+// import { en, th } from "date-fns/locale";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -21,7 +23,7 @@ export default new Vuex.Store({
     selectedCalendarDate: null || new Date(),
     baseRecordVaccine: {},
     isVaccinateComplete: false,
-    listRecords: []
+    listRecords: [],
   },
   mutations: {
     changeIsVaccinateComplete(state) {
@@ -54,6 +56,37 @@ export default new Vuex.Store({
         cid,
         state.calendarLocale
       );
+
+      // For test the date locale
+      // console.log("data", data);
+      // console.log("calendarLocale", state.calendarLocale);
+
+      // const testTH = data.map((appointment) => {
+      //   return {
+      //     ...appointment,
+      //     dates: format(new Date(appointment.dates), "MMMM yyyy", {
+      //       locale: th,
+      //     }),
+      //   };
+      // });
+
+      // const testEN = data.map((appointment) => {
+      //   return {
+      //     ...appointment,
+      //     dates: format(new Date(appointment.dates), "MMMM yyyy", {
+      //       locale: en,
+      //     }),
+      //   };
+      // });
+
+      // if (state.calendarLocale == "en-US") {
+      //   // return testEN;
+      //   console.log("testEN", testEN);
+      // } else {
+      //   console.log("testTH", testTH);
+      //   // return testTH;
+      // }
+
       state.appointmentList = data;
     },
 
@@ -69,15 +102,15 @@ export default new Vuex.Store({
     },
     getVaccineDetail(state, id) {
       state.selectedVaccineDetails = state.locale.vaccines.find(
-        x => x.vaccineId === id
+        (x) => x.vaccineId === id
       );
     },
     getPackagerDetail(state, id) {
       state.selectedPackagerDetails = state.locale.packagers.find(
-        x => x.packageId === id
+        (x) => x.packageId === id
       );
-    }
+    },
   },
   actions: {},
-  modules: {}
+  modules: {},
 });
