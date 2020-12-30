@@ -88,7 +88,7 @@
         :childname="appointment.customData.childname"
         :note="appointment.customData.note"
         :time="appointment.customData.time"
-        :vaccines="appointment.customData.selectedVaccines.map(el => el.tag)"
+        :vaccines="appointment.customData.selectedVaccines.map((el) => el.tag)"
         :status="appointment.status"
         :key="`${index}-${appointment.customData.childname}`"
         :date="appointment.dates"
@@ -104,27 +104,30 @@ import History from "./HistoryFamilyMember.vue";
 import FamilyMemberHeader from "../../components/FamilyMemberHeaderInfo.vue";
 // import AppointmentRoadmap from "../Appointment/List-child.vue";
 import AppointmentCard from "@/components/AppointmentCard.vue";
-
+// Require Esperanto locale
+// import { en, th } from "date-fns/esm/locale";
 // import CustomSelect from "../../components/input/CustomSelect.vue";
 export default {
   components: {
     FamilyMemberHeader,
     History,
-    AppointmentCard
+    AppointmentCard,
   },
   created() {
     this.displayMode = "Roadmap";
+
     services()
       .appointment.cronCheckStatus()
       .then(() => {
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
-          el => el.familyId === this.childId
+          (el) => el.familyId === this.childId
         );
 
         this.$store.commit("listAppointmentByChildId", this.childId);
       });
   },
+
   data() {
     return {
       childId: "",
@@ -133,7 +136,7 @@ export default {
       filter: "all",
       sort: "date",
       searchKeyword: "",
-      isFilterShow: false
+      isFilterShow: false,
     };
   },
   computed: {
@@ -151,7 +154,7 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    }
+    },
   },
   methods: {
     onClickFilter() {
@@ -171,7 +174,7 @@ export default {
           search: this.searchKeyword,
           filter: this.filter,
           sort: this.sort,
-          childId: this.childId
+          childId: this.childId,
         },
         language
       );
@@ -179,7 +182,7 @@ export default {
       this.$store.commit("setNewAppointmentList", data ?? []);
 
       console.log(data);
-    }
-  }
+    },
+  },
 };
 </script>
