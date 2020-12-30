@@ -67,17 +67,17 @@ export default {
     return {
       username: "",
       password: "",
-      isSubmitted: false,
+      isSubmitted: false
     };
   },
   validations: {
     username: {
-      required,
+      required
     },
     password: {
       required,
-      minLength: minLength(8),
-    },
+      minLength: minLength(8)
+    }
   },
   methods: {
     onLogin() {
@@ -87,11 +87,11 @@ export default {
       if (!this.$v.$invalid) {
         const data = {
           username: this.username,
-          password: this.password,
+          password: this.password
         };
         this.$emit("on-submit", data);
       }
-    },
-  },
+    }
+  }
 };
 </script>

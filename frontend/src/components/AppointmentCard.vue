@@ -52,26 +52,26 @@ export default {
       console.log("calendarLocale", this.$store.state.calendarLocale);
       if (this.$store.state.calendarLocale == "en-US") {
         date = format(new Date(this.date), "dd MMM yyyy", {
-          locale: en,
+          locale: en
         });
       } else {
         date = format(new Date(this.date), "dd MMM yyyy", {
-          locale: th,
+          locale: th
         });
       }
       console.log("Dateeeeeeeeeeeee:", date);
       return date;
-    },
+    }
   },
   props: {
     vaccines: {
       type: Array,
       default: function() {
         return [];
-      },
+      }
     },
     date: {
-      type: Date,
+      type: Date
     },
     status: {
       type: String,
@@ -80,20 +80,20 @@ export default {
         return ["in-progress", "vaccinated", "vaccinating", "overdue"].includes(
           val
         );
-      },
+      }
     },
     note: {
       type: String,
-      default: "Note Information",
+      default: "Note Information"
     },
     childname: {
       type: String,
-      default: "child A",
+      default: "child A"
     },
     time: {
       type: String,
-      default: "13:30",
-    },
-  },
+      default: "13:30"
+    }
+  }
 };
 </script>

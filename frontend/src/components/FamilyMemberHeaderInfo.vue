@@ -45,13 +45,13 @@ export default {
 
     currentAge() {
       return formatDistanceToNow(new Date(this.childObject.birthDate));
-    },
+    }
   },
   props: {
     childObject: {
       type: Object,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 };
 </script>
