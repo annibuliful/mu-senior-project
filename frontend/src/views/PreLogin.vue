@@ -45,6 +45,7 @@
       </div>
       <button
         class="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded mx-auto block"
+        @click="loadMore"
       >
         {{ locale.loadmore }}
       </button>
@@ -70,7 +71,7 @@ export default {
   },
   data() {
     return {
-      limit: 2,
+      limit: 3,
       offset: 0,
       selectedAction: "news", // vaccines | news
       listVaccines: [],
@@ -92,6 +93,16 @@ export default {
     );
   },
   methods: {
+    loadMore() {
+      this.offset += 3;
+      const language = this.$store.state.calendarLocale;
+      this.listVaccines = this.listVaccines.concat(
+        services().util.getVaccineInfoByQuery(
+          { limit: this.limit, offset: this.offset },
+          language
+        )
+      );
+    },
     onChangeAction: function(action) {
       this.selectedAction = action;
     },
