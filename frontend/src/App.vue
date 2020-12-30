@@ -22,6 +22,7 @@ export default {
   },
   mounted() {
     this.openNotification();
+    this.checkFirstTime();
     window.navigator.onLine ? setMode("online") : setMode("offline");
     window.addEventListener("online", () => {
       setMode("online");
@@ -42,6 +43,12 @@ export default {
             new Notification("Welcome to Vaccinet App");
           }
         });
+      }
+    },
+    checkFirstTime: function() {
+      const result = localStorage.getItem("language");
+      if (result === null) {
+        this.$router.push({ name: "setting-language" });
       }
     }
   }
