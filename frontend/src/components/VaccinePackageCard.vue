@@ -31,12 +31,7 @@ export default {
   },
 
   created() {
-    console.log("COMPOTNET", this.packageId);
     this.$store.commit("getPackagerDetail", this.packageId);
-    console.log(
-      "this.$store.state.selectedPackagerDetails",
-      this.packageDetails
-    );
   },
   computed: {
     packageDetails: function() {

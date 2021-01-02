@@ -275,7 +275,6 @@ export default {
         listVaccines,
         language
       );
-      console.log("list next vaccines", listNextAppointments);
 
       this.listNextAppointments = listNextAppointments;
     },
