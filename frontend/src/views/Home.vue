@@ -72,7 +72,6 @@ export default {
     async onLogin({ username, password }) {
       try {
         const result = await services().auth.login({ username, password });
-        console.log("result", result);
         this.$store.commit("setUserInfo", result);
         localStorage.setItem("userInfo", JSON.stringify(result));
 
