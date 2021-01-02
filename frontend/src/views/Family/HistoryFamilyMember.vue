@@ -37,8 +37,6 @@ export default {
 
     this.$store.commit("listRecordsByChildId", this.childId);
     this.testUrl = this.$store.state.listRecords[1].recordImage;
-    console.log("this.testUrl", this.testUrl);
-    console.log("childInfo", this.childInfo);
   },
   data() {
     return {
