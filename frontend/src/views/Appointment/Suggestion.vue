@@ -74,7 +74,12 @@ export default {
       if (isUpdated) {
         familyId = this.$store.state.tempFamily.familyId;
       } else {
-        familyId = await service().family.create(this.$store.state.tempFamily);
+        const user = localStorage.getItem("userInfo");
+        const { userId } = JSON.parse(user);
+        familyId = await service().family.create({
+          ...this.$store.state.tempFamily,
+          userId
+        });
       }
 
       const fullname = this.$store.state.tempFamily.fullname;
