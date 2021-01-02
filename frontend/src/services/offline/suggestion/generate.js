@@ -1,4 +1,3 @@
-// import listDiseases from "../../../locale/EN/diseases";
 import listThVaccines from "../../../locale/TH/vaccines";
 import listEnVaccines from "../../../locale/EN/vaccines";
 import constraintVaccines from "../../../locale/constraint-vaccine";

@@ -1,6 +1,10 @@
 <template>
   <div class="p-4">
-    <FamilyMemberHeader :childObject="childInfo" />
+    <FamilyMemberHeader
+      :childObject="childInfo"
+      :isSuggestion="isNeedSuggestion"
+      v-on:create-suggestion="onClickToSuggestion"
+    />
     <!-- <div class="flex flex-row justify-center mt-2">
       <button @click="changeToRoadMap" class="border-2 p-1 mr-2">
         Roadmap
@@ -83,6 +87,14 @@
         {{ labelText.roadmap }}
       </div>
 
+      <button
+        v-if="isNeedSuggestion"
+        @click="onClickToSuggestion"
+        class="block mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        create suggestion plan
+      </button>
+
       <AppointmentCard
         v-for="(appointment, index) in appointmentList"
         :childname="appointment.customData.childname"
@@ -115,14 +127,22 @@ export default {
   },
   created() {
     this.displayMode = "Roadmap";
-
     services()
       .appointment.cronCheckStatus()
-      .then(() => {
+      .then(async () => {
+        const language = this.$store.state.calendarLanguage;
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
           el => el.familyId === this.childId
         );
+
+        const listAppointments = await services().appointment.listByChildId(
+          this.childId,
+          language
+        );
+        if (listAppointments.length === 0) {
+          this.isNeedSuggestion = true;
+        }
 
         this.$store.commit("listAppointmentByChildId", this.childId);
       });
@@ -136,7 +156,8 @@ export default {
       filter: "all",
       sort: "date",
       searchKeyword: "",
-      isFilterShow: false
+      isFilterShow: false,
+      isNeedSuggestion: false
     };
   },
   computed: {
@@ -157,6 +178,15 @@ export default {
     }
   },
   methods: {
+    onClickToSuggestion() {
+      this.$store.commit("setTempFamilyInfo", {
+        ...this.childInfo,
+        isUpated: true
+      });
+      this.$router.push({
+        name: "appointment-child-suggestion"
+      });
+    },
     onClickFilter() {
       this.isFilterShow = !this.isFilterShow;
     },
@@ -180,8 +210,6 @@ export default {
       );
 
       this.$store.commit("setNewAppointmentList", data ?? []);
-
-      console.log(data);
     }
   }
 };

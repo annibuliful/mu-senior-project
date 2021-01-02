@@ -69,10 +69,15 @@ export default {
       this.listSuggestions.splice(index, 1);
     },
     save: async function() {
+      let familyId;
+      const isUpdated = this.$store.state.tempFamily.isUpated;
+      if (isUpdated) {
+        familyId = this.$store.state.tempFamily.familyId;
+      } else {
+        familyId = await service().family.create(this.$store.state.tempFamily);
+      }
+
       const fullname = this.$store.state.tempFamily.fullname;
-      const familyId = await service().family.create(
-        this.$store.state.tempFamily
-      );
       for (let i = 0; i < this.listSuggestions.length; i++) {
         const {
           vaccineId,
