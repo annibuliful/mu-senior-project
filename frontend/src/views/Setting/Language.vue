@@ -2,10 +2,10 @@
   <div class="container">
     <p class="text-center text-2xl">{{ localeText.welcomeLanguage }}</p>
     <img src="/images/welcome.svg" class="block mx-auto" />
-    <div class="flex mx-auto w-2/4 justify-evenly my-8">
+    <div class="w-full flex mx-auto md:w-2/4 lg:w-2/4 justify-evenly my-8">
       <div
         :class="[
-          language === 'th-TH' ? 'border-blue-600' : 'border-transparent',
+          language === 'th-TH' ? 'border-blue-600' : 'border-transparent'
         ]"
         class="p-6 border-2 pointer language-box"
         @click="onChangeLanguage('th-TH')"
@@ -16,7 +16,7 @@
       <div
         @click="onChangeLanguage('en-US')"
         :class="[
-          language === 'en-US' ? 'border-blue-600' : 'border-transparent',
+          language === 'en-US' ? 'border-blue-600' : 'border-transparent'
         ]"
         class="p-6 border-2 pointer language-box"
       >
@@ -30,7 +30,7 @@
       :class="[
         language === ''
           ? 'bg-gray-500 cursor-not-allowed'
-          : 'bg-blue-500 hover:bg-blue-700 ',
+          : 'bg-blue-500 hover:bg-blue-700 '
       ]"
     >
       {{ localeText.welcomeContinue }}
@@ -41,7 +41,7 @@
 export default {
   data() {
     return {
-      language: "",
+      language: ""
     };
   },
   methods: {
@@ -58,7 +58,7 @@ export default {
       this.$store.commit("changeLanguage", this.language);
       localStorage.setItem("language", this.language);
       this.$router.push({ name: "pre-login" });
-    },
+    }
   },
   computed: {
     locale() {
@@ -66,8 +66,8 @@ export default {
     },
     localeText() {
       return this.$store.state.locale;
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
