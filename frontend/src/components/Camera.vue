@@ -67,7 +67,7 @@ export default {
     onEnableCamera() {
       const constraints = {
         video: true,
-        facingMode: { exact: "environment" }
+        facingMode: "environment"
       };
       this.$nextTick(() => {
         navigator.mediaDevices.getUserMedia(constraints).then(stream => {
