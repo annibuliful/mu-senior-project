@@ -56,6 +56,14 @@ export default {
       this.$router.push({ name: "dashboard-home" });
     }
   },
+  computed: {
+    errorText: function() {
+      return this.$store.state.locale.labelError;
+    },
+    labelText: function() {
+      return this.$store.state.locale.label;
+    }
+  },
   methods: {
     onChangeFormMode(mode) {
       this.mode = mode;
@@ -74,12 +82,30 @@ export default {
         }
         this.$router.push({ name: "dashboard-home" });
       } catch (e) {
-        this.error = e.message;
+        const message = e.message;
+        if (message === "notFound") {
+          this.error = this.errorText.notFound.replace(
+            "{}",
+            this.labelText.username
+          );
+        } else if (message === "incorrect") {
+          this.error = this.errorText.incorrect.replace(
+            "{}",
+            this.labelText.password
+          );
+        }
       }
     },
     async onRegister({ username, password }) {
-      await services().auth.register({ username, password });
-      this.mode = "login";
+      try {
+        await services().auth.register({ username, password });
+        this.mode = "login";
+      } catch (e) {
+        this.error = this.errorText.duplicate.replace(
+          "{}",
+          this.labelText.username
+        );
+      }
     }
   }
 };
