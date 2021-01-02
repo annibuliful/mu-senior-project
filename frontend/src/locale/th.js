@@ -58,6 +58,9 @@ export default {
     required: "โปรดกรอก{}",
     mistmatch: "{}ไม่ตรงกัน",
     atLeast: "{}ต้องมีตัวอักษรมากกว่า",
+    duplicate: "{}ซ้ำ",
+    notFound: "ไม่พบ{}นี้",
+    incorrect: "{}ไม่ถูกต้อง"
   },
   recordVaccinePage: {
     title: "จดบันทึกวัคซีน",
@@ -74,6 +77,8 @@ export default {
     packageMember: "แนะนำวัคซีนสำหรับ",
   },
   label: {
+    username: "ชื่อผู้ใช้งาน",
+    password: "รหัสผ่าน",
     name: "ชื่อ - นามสกุล",
     birthDate: "วันเกิด",
     disease: "โรคประจำตัว",
