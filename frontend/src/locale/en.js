@@ -69,6 +69,8 @@ export default {
     packageMember: "Suggested Vaccine for"
   },
   label: {
+    username: "username",
+    password: "password",
     name: "Fullname",
     birthDate: "BirthDate",
     disease: "Congenital disease",
@@ -115,7 +117,10 @@ export default {
   labelError: {
     required: "{} is required",
     mistmatch: "{} is mismatch",
-    atLeast: "{} must have at least "
+    atLeast: "{} must have at least ",
+    duplicate: " duplicate {}",
+    notFound: "{} not found",
+    incorrect: "{} incorrect"
   },
   historyPage: {
     title: "History",
