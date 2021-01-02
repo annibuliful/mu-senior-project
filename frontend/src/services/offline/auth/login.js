@@ -7,9 +7,9 @@ export default async ({ username, password }) => {
     .equals(username)
     .toArray();
   const isNotExist = listUsers.length === 0;
-  if (isNotExist) throw new Error("username not found");
+  if (isNotExist) throw new Error("notFound");
 
   const passwordIsNotCorrect = listUsers[0].password !== password;
-  if (passwordIsNotCorrect) throw new Error("password incorrect");
+  if (passwordIsNotCorrect) throw new Error("incorrect");
   return listUsers[0];
 };

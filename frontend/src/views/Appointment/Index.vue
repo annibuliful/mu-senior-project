@@ -8,8 +8,6 @@ export default {
       return this.$store.state.locale.vaccines;
     }
   },
-  created() {
-    console.log(this.$route.params.id);
-  }
+  created() {}
 };
 </script>

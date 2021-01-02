@@ -56,6 +56,11 @@ export default {
   },
   labelError: {
     required: "โปรดกรอก{}",
+    mistmatch: "{}ไม่ตรงกัน",
+    atLeast: "{}ต้องมีตัวอักษรมากกว่า",
+    duplicate: "{}ซ้ำ",
+    notFound: "ไม่พบ{}นี้",
+    incorrect: "{}ไม่ถูกต้อง"
   },
   recordVaccinePage: {
     title: "จดบันทึกวัคซีน",
@@ -72,6 +77,8 @@ export default {
     packageMember: "แนะนำวัคซีนสำหรับ",
   },
   label: {
+    username: "ชื่อผู้ใช้งาน",
+    password: "รหัสผ่าน",
     name: "ชื่อ - นามสกุล",
     birthDate: "วันเกิด",
     disease: "โรคประจำตัว",
@@ -102,6 +109,7 @@ export default {
     yes: "ใช่",
     no: "ไม่ใช่",
     notifyToEdit: "กรุณาแก้ไขข้อมูลส่วนตัวก่อนใช้งานแอพพลิเคชั่น",
+    suggestedPlan: "สร้างแผนการฉีดวัคซีน",
   },
   labelAddAppointment: {
     child: "ชื่อเด็ก",

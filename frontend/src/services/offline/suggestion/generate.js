@@ -1,4 +1,3 @@
-// import listDiseases from "../../../locale/EN/diseases";
 import listThVaccines from "../../../locale/TH/vaccines";
 import listEnVaccines from "../../../locale/EN/vaccines";
 import constraintVaccines from "../../../locale/constraint-vaccine";
@@ -24,9 +23,11 @@ const rangeYearOfCategories = [
 const getVaccineCategoryByDate = childBirthDate => {
   const now = new Date();
   const childYearOld = childBirthDate.getFullYear() / now.getFullYear() - 1;
-  return rangeYearOfCategories.filter(
-    el => el.range.min <= childYearOld && childYearOld <= el.range.max
-  )[0].category;
+  return (
+    rangeYearOfCategories.filter(
+      el => el.range.min <= childYearOld && childYearOld <= el.range.max
+    )[0]?.category ?? "children"
+  );
 };
 
 export default async (childInfo, language) => {

@@ -49,7 +49,6 @@ export default {
   computed: {
     dateFormat: function() {
       let date = "";
-      console.log("calendarLocale", this.$store.state.calendarLocale);
       if (this.$store.state.calendarLocale == "en-US") {
         date = format(new Date(this.date), "dd MMM yyyy", {
           locale: en
@@ -59,7 +58,6 @@ export default {
           locale: th
         });
       }
-      console.log("Dateeeeeeeeeeeee:", date);
       return date;
     }
   },

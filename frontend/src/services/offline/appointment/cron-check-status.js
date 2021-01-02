@@ -5,7 +5,6 @@ import differenceInDays from "date-fns/differenceInDays";
 const getAppointmentId = el => el.appointmentId;
 export default async () => {
   const listAppointments = await listAppointmentService();
-  console.log("list appointment", listAppointments);
 
   const listVaccinatingAppointments = listAppointments.filter(el => {
     const result = differenceInDays(new Date(el.dates), new Date());
@@ -31,5 +30,4 @@ export default async () => {
     .map(id => updateAppointmentService(id, { status: "overdue", dot: "red" }));
 
   await Promise.allSettled(listCallOverdueUpdate);
-  console.log("list overdue", listCallOverdueUpdate);
 };
