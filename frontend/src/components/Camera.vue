@@ -62,7 +62,7 @@ export default {
 
     onSwitchCameraMode() {
       this.onDisableCamera();
-      this.onEnableCamera(!this.isFrontCamera);
+      this.onEnableCamera();
     },
     onEnableCamera() {
       const constraints = {
