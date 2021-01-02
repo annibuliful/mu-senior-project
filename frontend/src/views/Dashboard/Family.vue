@@ -22,8 +22,9 @@
               <img
                 v-if="!base64Url"
                 src="../../assets/mock-member-profile.svg"
+                class="block mx-auto"
               />
-              <img v-else :src="base64Url" />
+              <img v-else :src="base64Url" class="block mx-auto" />
             </label>
 
             <input
@@ -46,6 +47,17 @@
             v-model="fullname"
             :placeholder="labelAddFamily.name"
           />
+          <p
+            class="text-xs text-red-600"
+            v-if="!$v.fullname.required && $v.fullname.$error && isSubmitted"
+          >
+            {{
+              localeText.labelError.required.replace(
+                "{}",
+                localeText.label.name
+              )
+            }}
+          </p>
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2 ">
@@ -104,6 +116,7 @@
   </div>
 </template>
 <script>
+import { required } from "vuelidate/lib/validators";
 import FamilyCard from "@/components/FamilyCard.vue";
 import TagInput from "@/components/input/TagInput.vue";
 import service from "@/services";
@@ -125,6 +138,7 @@ export default {
   },
   data() {
     return {
+      isSubmitted: false,
       isOpenAddForm: false,
       fullname: "",
       birthDate: new Date(),
@@ -137,7 +151,15 @@ export default {
       listFamilies: []
     };
   },
+  validations: {
+    fullname: {
+      required
+    }
+  },
   computed: {
+    localeText() {
+      return this.$store.state.locale;
+    },
     listVaccines() {
       return this.$store.state.locale.vaccines.map(el => ({
         id: el.vaccineId,
@@ -188,19 +210,25 @@ export default {
       this.selectedVaccines.splice(index, 1);
     },
     async submit() {
-      const data = {
-        fullname: this.fullname,
-        birthDate: this.birthDate,
-        diseases: this.selectedDiseases.map(el => el.id),
-        receivedVaccines: this.selectedVaccines.map(el => el.id),
-        profileImg: this.base64Url,
-        userId: this.$store.state.userInfo.userId,
-        isParent: false
-      };
-      this.$store.commit("setTempFamilyInfo", data);
-      this.$router.push({
-        name: "appointment-child-suggestion"
-      });
+      this.isSubmitted = true;
+      this.$v.$reset();
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        const data = {
+          fullname: this.fullname,
+          birthDate: this.birthDate,
+          diseases: this.selectedDiseases.map(el => el.id),
+          receivedVaccines: this.selectedVaccines.map(el => el.id),
+          profileImg: this.base64Url,
+          userId: this.$store.state.userInfo.userId,
+          isParent: false
+        };
+        this.$store.commit("setTempFamilyInfo", data);
+        this.$router.push({
+          name: "appointment-child-suggestion"
+        });
+      }
     },
     resetForm() {
       this.fullname = "";
