@@ -23,9 +23,12 @@ export default {
   mounted() {
     this.openNotification();
     this.checkFirstTime();
+    this.$store.commit("getCovidInfo");
     window.navigator.onLine ? setMode("online") : setMode("offline");
     window.addEventListener("online", () => {
       setMode("online");
+      this.$store.commit("getCovidInfo");
+
       this.$store.commit("changeNetworkMode", "online");
       this.isShowInternetToast = true;
     });
@@ -68,5 +71,9 @@ export default {
 
 .btn-primary {
   @apply bg-blue-500 text-white font-bold py-2 px-4 rounded block mx-auto;
+}
+
+.input-primary {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }
 </style>

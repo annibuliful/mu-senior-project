@@ -3,31 +3,62 @@ import Vuex from "vuex";
 import locale from "../locale";
 import services from "@/services";
 import constrainDisease from "./constrainDisease";
+// import axios from "axios";
+import { COVID_API } from "@/constants/api";
 // import { format } from "date-fns";
 // import { en, th } from "date-fns/locale";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    covidStat: {
+      confirmed: 0,
+      recovered: 0,
+      hospitalized: 0,
+      death: 0,
+      newConfirmed: 0,
+      newRecovered: 0,
+      newHospitalized: 0,
+      newDeath: 0
+    },
     tempFamily: {},
     isFirstTime: false,
     constrainDisease: constrainDisease,
     networkMode: "online",
     calendarLocale: "en-US",
     locale: locale["en-US"],
-    profileName: "Jarupong",
     listFamilies: [],
-    listDiseases: ["ภูมิคุ้มกันบกพร่อง", "หอบหืด", "HIV"],
-    listVaccines: ["ไวรัสตับอักเสบ A", "ไวรัสตับอักเสบ B", "ไวรัสตับอักเสบ C"],
     appointmentList: [],
     selectedVaccineDetails: {},
     selectedPackagerDetails: {},
     selectedCalendarDate: null || new Date(),
     baseRecordVaccine: {},
     isVaccinateComplete: false,
-    listRecords: []
+    listRecords: [],
+    selectedNewsDetails: {}
   },
   mutations: {
+    async getCovidInfo(state) {
+      try {
+        const response = await fetch(COVID_API, {
+          method: "GET",
+          mode: "cors"
+        });
+        const data = await response.json();
+        state.covidStat = {
+          confirmed: data.Confirmed,
+          recovered: data.Recovered,
+          hospitalized: data.Hospitalized,
+          death: data.Deaths,
+          newConfirmed: data.NewConfirmed,
+          newRecovered: data.NewRecovered,
+          newHospitalized: data.NewHospitalized,
+          newDeath: data.NewDeaths
+        };
+      } catch (e) {
+        console.error("covid-error", e);
+      }
+    },
     changeIsVaccinateComplete(state) {
       state.isVaccinateComplete = !state.isVaccinateComplete;
     },
@@ -81,6 +112,11 @@ export default new Vuex.Store({
     getVaccineDetail(state, id) {
       state.selectedVaccineDetails = state.locale.vaccines.find(
         x => x.vaccineId === id
+      );
+    },
+    getNewsDetail(state, id) {
+      state.selectedNewsDetails = state.locale.newsData.find(
+        x => x.newsId === id
       );
     },
     getPackagerDetail(state, id) {
