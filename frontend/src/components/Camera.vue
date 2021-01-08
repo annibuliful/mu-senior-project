@@ -62,12 +62,11 @@ export default {
 
     onSwitchCameraMode() {
       this.onDisableCamera();
-      this.onEnableCamera(!this.isFrontCamera);
+      this.onEnableCamera();
     },
     onEnableCamera() {
       const constraints = {
-        video: true,
-        facingMode: { exact: "environment" }
+        video: { facingMode: { exact: "environment" } }
       };
       this.$nextTick(() => {
         navigator.mediaDevices.getUserMedia(constraints).then(stream => {

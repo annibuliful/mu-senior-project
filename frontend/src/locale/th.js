@@ -40,7 +40,10 @@ export default {
   loadmore: "เพิ่มเติม",
   networkMode: {
     offline: "คุณออฟไลน์อยู่",
-    online: "คุณออนไลน์อยู่",
+    online: "คุณออนไลน์อยู่"
+  },
+  pin: {
+    label: "โปรดกรอก PIN"
   },
   vaccineDetailsPage: {
     title: "รายละเอียดวัคซีน",
@@ -51,10 +54,10 @@ export default {
     description: "รายละเอียดโดยย่อ",
     warning: "คำเตือน/บุคคลที่ไม่ควรฉีด",
     vaccineReference:
-      "ที่มาข้อมูล: ตำราวัคซีนและการสร้างเสริมภูมิคุ้มกันโรค ปี 2562 กรมควบคุมโรค กระทรวงสาธารณะสุข",
+      "ที่มาข้อมูล: ตำราวัคซีนและการสร้างเสริมภูมิคุ้มกันโรค ปี 2562 กรมควบคุมโรค กระทรวงสาธารณะสุข"
   },
   vaccinePackagerPage: {
-    title: "แพ็กเกจวัคซีนเสริม",
+    title: "แพ็กเกจวัคซีนเสริม"
   },
   labelError: {
     required: "โปรดกรอก{}",
@@ -76,10 +79,11 @@ export default {
     uploadImage: "อัพโหลดรูปภาพหลักฐานการฉีดวัคซีน (เลขล๊อตวัคซีน)",
     submitBtn: "บันทึกข้อมูล",
     cancelBtn: "ยกเลิก",
-    packageMember: "แนะนำวัคซีนสำหรับ",
+    packageMember: "แนะนำวัคซีนสำหรับ"
   },
   label: {
     ref: "ที่มา",
+    pin: "PIN",
     username: "ชื่อผู้ใช้งาน",
     password: "รหัสผ่าน",
     name: "ชื่อ - นามสกุล",
@@ -112,7 +116,7 @@ export default {
     yes: "ใช่",
     no: "ไม่ใช่",
     notifyToEdit: "กรุณาแก้ไขข้อมูลส่วนตัวก่อนใช้งานแอพพลิเคชั่น",
-    suggestedPlan: "สร้างแผนการฉีดวัคซีน",
+    suggestedPlan: "สร้างแผนการฉีดวัคซีน"
   },
   labelAddAppointment: {
     child: "ชื่อเด็ก",
@@ -124,14 +128,14 @@ export default {
     nextAppointMent: "การนัดหมายถัดไป",
     vcName: "ชื่อวัคซีน",
     complete: "ได้รับวัคซีนชนิดนี้ครบตามแผนแล้ว",
-    day: "วัน",
+    day: "วัน"
   },
   historyPage: {
     title: "ประวัติการฉีดวัคซีน",
     received: "ได้รับวัคซีน",
     hospital: "โรงพยาบาล/คลินิค",
     date: "วันที่",
-    nohistory: "ไม่มีประวัติการได้รับวัคซีน",
+    nohistory: "ไม่มีประวัติการได้รับวัคซีน"
   },
   button: {
     cancel: "ยกเลิก",
@@ -139,10 +143,10 @@ export default {
     add: "เพิ่ม",
     save: "บันทึก",
     logout: "ออกจากระบบ",
-    search: "ค้นหา",
+    search: "ค้นหา"
   },
   camera: {
     takePhoto: "ถ่ายรูป",
-    reset: "ถ่ายใหม่",
-  },
+    reset: "ถ่ายใหม่"
+  }
 };

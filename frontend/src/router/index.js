@@ -26,9 +26,15 @@ import LanguageSetting from "../views/Setting/Language.vue";
 import PreLogin from "../views/PreLogin.vue";
 import VaccineInfo from "../views/Vaccine/VaccineInfo.vue";
 import NewsInfo from "../views/News/PreLoginNewsInfo.vue";
+import PinPassword from "../views/Pin/Login.vue";
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/pin",
+    name: "Pin",
+    component: PinPassword
+  },
   {
     path: "/",
     name: "Home",
