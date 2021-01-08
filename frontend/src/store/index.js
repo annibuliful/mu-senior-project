@@ -3,8 +3,6 @@ import Vuex from "vuex";
 import locale from "../locale";
 import services from "@/services";
 import constrainDisease from "./constrainDisease";
-// import { format } from "date-fns";
-// import { en, th } from "date-fns/locale";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -15,17 +13,15 @@ export default new Vuex.Store({
     networkMode: "online",
     calendarLocale: "en-US",
     locale: locale["en-US"],
-    profileName: "Jarupong",
     listFamilies: [],
-    listDiseases: ["ภูมิคุ้มกันบกพร่อง", "หอบหืด", "HIV"],
-    listVaccines: ["ไวรัสตับอักเสบ A", "ไวรัสตับอักเสบ B", "ไวรัสตับอักเสบ C"],
     appointmentList: [],
     selectedVaccineDetails: {},
     selectedPackagerDetails: {},
     selectedCalendarDate: null || new Date(),
     baseRecordVaccine: {},
     isVaccinateComplete: false,
-    listRecords: []
+    listRecords: [],
+    selectedNewsDetails: {},
   },
   mutations: {
     changeIsVaccinateComplete(state) {
@@ -80,15 +76,20 @@ export default new Vuex.Store({
     },
     getVaccineDetail(state, id) {
       state.selectedVaccineDetails = state.locale.vaccines.find(
-        x => x.vaccineId === id
+        (x) => x.vaccineId === id
+      );
+    },
+    getNewsDetail(state, id) {
+      state.selectedNewsDetails = state.locale.newsData.find(
+        (x) => x.newsId === id
       );
     },
     getPackagerDetail(state, id) {
       state.selectedPackagerDetails = state.locale.packagers.find(
-        x => x.packageId === id
+        (x) => x.packageId === id
       );
-    }
+    },
   },
   actions: {},
-  modules: {}
+  modules: {},
 });

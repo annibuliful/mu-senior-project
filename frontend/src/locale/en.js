@@ -1,7 +1,10 @@
 const vaccines = require("./EN/vaccines");
 const diseases = require("./EN/diseases");
 const packagers = require("./EN/packager");
+const newsData = require("./EN/news");
+
 export default {
+  newsData,
   vaccines,
   diseases,
   packagers,
@@ -69,6 +72,7 @@ export default {
     packageMember: "Suggested Vaccine for",
   },
   label: {
+    ref: "reference",
     username: "username",
     password: "password",
     name: "Fullname",
@@ -121,7 +125,7 @@ export default {
     atLeast: "{} must have at least ",
     duplicate: " duplicate {}",
     notFound: "{} not found",
-    incorrect: "{} incorrect"
+    incorrect: "{} incorrect",
   },
   historyPage: {
     title: "History",

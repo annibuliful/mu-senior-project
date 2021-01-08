@@ -1,19 +1,25 @@
 <template>
   <div>
     <div
-      class="w-full mx-auto lg:w-11/12 mt-2 shadow-md p-2 hover:border-gray-200 cursor-pointer"
+      class="w-full mx-auto lg:w-11/12 mt-2 shadow-md  hover:border-gray-200 cursor-pointer"
       @click="onCardClicked"
     >
       <div class="flex flex-row items-center">
         <img
-          class="p-2 w-24 h-24 lg:w-48 lg:h-48"
-          src="https://via.placeholder.com/150"
+          class="p-2 w-24 h-24 lg:w-48 lg:h-48 mb-auto mt-2"
+          :src="require(`../assets/news/${newsId}.png`)"
+          alt=""
         />
-        <div class="flex flex-col content-container p-8 description">
-          <div class="text-xl ml-5 mt-4 text-blue-800 font-bold my-4">
-            {{ title }}
+        <div
+          class="flex flex-col content-container ml-2 description text-sm w-full lg:justify-center"
+        >
+          <div class="text-blue-800 font-bold mt-2 lg:text-xl">
+            {{ newsTitle }}
           </div>
-          <p>{{ description }}</p>
+          <div class="font-thin mt-2">{{ exampleContent }} .....</div>
+          <!-- <div class="font-light text-xs">
+            {{ locale.label.ref }}:{{ newsReference }}...
+          </div> -->
         </div>
       </div>
     </div>
@@ -21,20 +27,31 @@
 </template>
 <script>
 export default {
-  props: ["id", "title", "description"],
+  props: [
+    "newsId",
+    "newsTitle",
+    "exampleContent",
+    "newsContent",
+    "newsReference",
+  ],
   methods: {
     onCardClicked() {
-      this.$emit("on-click", this.id);
-    }
-  }
+      this.$emit("on-click", this.newsId);
+    },
+  },
+  computed: {
+    locale: function() {
+      return this.$store.state.locale;
+    },
+  },
 };
 </script>
 <style scoped>
-.content-container {
+/* .content-container {
   @apply w-11/12 mx-auto;
-}
+} */
 .description {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   height: 192px;
 }
 </style>
