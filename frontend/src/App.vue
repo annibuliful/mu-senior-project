@@ -23,9 +23,12 @@ export default {
   mounted() {
     this.openNotification();
     this.checkFirstTime();
+    this.$store.commit("getCovidInfo");
     window.navigator.onLine ? setMode("online") : setMode("offline");
     window.addEventListener("online", () => {
       setMode("online");
+      this.$store.commit("getCovidInfo");
+
       this.$store.commit("changeNetworkMode", "online");
       this.isShowInternetToast = true;
     });

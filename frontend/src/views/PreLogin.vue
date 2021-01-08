@@ -1,5 +1,16 @@
 <template>
   <div class="lg:w-1/2 w-11/12 mx-auto">
+    <CovidStat
+      :confirmed="covidStat.confirmed"
+      :recovered="covidStat.recovered"
+      :hospitalized="covidStat.hospitalized"
+      :death="covidStat.death"
+      :newConfirmed="covidStat.newConfirmed"
+      :newRecovered="covidStat.newRecovered"
+      :newHospitalized="covidStat.newHospitalized"
+      :newDeath="covidStat.newDeath"
+      v-if="networkMode === 'online'"
+    />
     <div class="flex justify-evenly">
       <div @click="onChangeAction('news')">
         <p
@@ -65,11 +76,13 @@
 import services from "@/services";
 import VaccineCard from "@/components/VaccineCardPre";
 import NewsCard from "@/components/NewsCard";
+import CovidStat from "@/components/Covid/Stat";
 
 export default {
   components: {
     VaccineCard,
     NewsCard,
+    CovidStat
   },
   data() {
     return {
@@ -79,7 +92,7 @@ export default {
       offsetNews: 0,
       selectedAction: "news", // vaccines | news
       listVaccines: [],
-      loadedListNews: [],
+      loadedListNews: []
     };
   },
   created: function() {
@@ -132,7 +145,7 @@ export default {
     },
     onLinkToLogin: function() {
       this.$router.push("/");
-    },
+    }
   },
   computed: {
     listNews: function() {
@@ -141,7 +154,13 @@ export default {
     locale: function() {
       return this.$store.state.locale;
     },
-  },
+    covidStat: function() {
+      return this.$store.state.covidStat;
+    },
+    networkMode: function() {
+      return this.$store.state.networkMode;
+    }
+  }
 };
 </script>
 <style scoped>

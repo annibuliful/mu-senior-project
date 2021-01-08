@@ -129,7 +129,7 @@ export default {
     atLeast: "{} must have at least ",
     duplicate: " duplicate {}",
     notFound: "{} not found",
-    incorrect: "{} incorrect",
+    incorrect: "{} incorrect"
   },
   historyPage: {
     title: "History",

@@ -45,8 +45,8 @@ export default {
     },
     newsDetails: function() {
       return this.$store.state.selectedNewsDetails;
-    },
-  },
+    }
+  }
 };
 </script>
 

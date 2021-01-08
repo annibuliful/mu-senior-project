@@ -27,7 +27,7 @@ import { format } from "date-fns";
 import AppointmentCard from "@/components/AppointmentCard.vue";
 export default {
   components: {
-    AppointmentCard,
+    AppointmentCard
   },
   computed: {
     suggestionWord: function() {
@@ -38,20 +38,20 @@ export default {
     },
     listFamilies() {
       return this.$store.state.listFamilies;
-    },
+    }
   },
   data: function() {
     return {
       listSuggestions: [],
       childId: "",
       childInfo: {},
-      childname: "",
+      childname: ""
     };
   },
   filters: {
     dateFormat: function(val) {
       return format(new Date(val), "dd/MM/yyyy");
-    },
+    }
   },
   created: function() {
     this.$store.commit("listFamilies");
@@ -63,7 +63,7 @@ export default {
 
     service()
       .suggestion.generate(tempChildInfo, language)
-      .then((data) => {
+      .then(data => {
         this.listSuggestions = data;
       });
   },
@@ -81,7 +81,7 @@ export default {
         const { userId } = JSON.parse(user);
         familyId = await service().family.create({
           ...this.$store.state.tempFamily,
-          userId,
+          userId
         });
       }
 
@@ -90,7 +90,7 @@ export default {
         const {
           vaccineId,
           vaccineNameNormal,
-          appointmentDate,
+          appointmentDate
         } = this.listSuggestions[i];
         await this.submit(
           vaccineId,
@@ -119,11 +119,11 @@ export default {
           vaccineId,
           childname: fullname,
           childId: familyId,
-          time: "09:30",
-        },
+          time: "09:30"
+        }
       };
       await service().appointment.create(data);
-    },
-  },
+    }
+  }
 };
 </script>

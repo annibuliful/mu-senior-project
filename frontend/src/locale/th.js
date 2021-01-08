@@ -65,7 +65,7 @@ export default {
     atLeast: "{}ต้องมีตัวอักษรมากกว่า",
     duplicate: "{}ซ้ำ",
     notFound: "ไม่พบ{}นี้",
-    incorrect: "{}ไม่ถูกต้อง",
+    incorrect: "{}ไม่ถูกต้อง"
   },
   recordVaccinePage: {
     title: "จดบันทึกวัคซีน",
