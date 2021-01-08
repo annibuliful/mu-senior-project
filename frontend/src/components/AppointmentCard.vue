@@ -15,13 +15,13 @@
           {{ dateFormat }}
         </div>
         <div
-          class="p-2 bg-green-400 rounded-full mr-2 w-1/2 text-center"
+          class="p-2 bg-green-400 rounded-full mr-2 w-1/3 text-center"
           v-if="status === 'vaccinated'"
         >
           {{ dateFormat }}
         </div>
         <div
-          class="p-2 bg-red-400 rounded-full mr-2 w-1/2 text-center"
+          class="p-2 bg-red-400 rounded-full mr-2 w-1/3 text-center"
           v-if="status === 'overdue'"
         >
           {{ dateFormat }}
@@ -29,10 +29,13 @@
         <div style="width: 80%">
           <p class="text-md">{{ childname }}</p>
           <!-- <p class="text-sm text-gray-600">{{ note }}</p> -->
-          <ul>
+          <ul v-if="vaccines">
             <li v-for="value in vaccines" :key="value" class="text-xs">
               - {{ value }}
             </li>
+          </ul>
+          <ul v-if="vaccine">
+            <li class="text-xs">- {{ vaccine }}</li>
           </ul>
         </div>
         <div class="text-xs text-gray-600 font-normal text-right w-auto">
@@ -44,16 +47,12 @@
 </template>
 <script>
 import { format } from "date-fns";
-import { en, th } from "date-fns/locale";
+import { th } from "date-fns/locale";
 export default {
   computed: {
     dateFormat: function() {
       let date = "";
-      if (this.$store.state.calendarLocale == "en-US") {
-        date = format(new Date(this.date), "dd MMM yyyy", {
-          locale: en
-        });
-      } else {
+      if (this.$store.state.calendarLocale == "th-TH") {
         date = format(new Date(this.date), "dd MMM yyyy", {
           locale: th
         });
@@ -67,6 +66,9 @@ export default {
       default: function() {
         return [];
       }
+    },
+    vaccine: {
+      type: String
     },
     date: {
       type: Date

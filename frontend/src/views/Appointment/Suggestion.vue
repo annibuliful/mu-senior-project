@@ -4,17 +4,13 @@
       {{ suggestionWord }}
     </p>
     <div class="flex flex-col justify-items-center">
-      <div
-        class="border-b-2 border-black-400 px-4 py-2 flex"
-        v-for="(val, index) in listSuggestions"
-        :key="`${index}`"
-      >
-        <div class="grid grid-cols-2 w-11/12 lg:w-2/4">
-          <p>Vaccine Name:</p>
-          <p>{{ val.vaccineNameNormal }}</p>
-          <p>Appointment Date:</p>
-          <p>{{ val.appointmentDate | dateFormat }}</p>
-        </div>
+      <div v-for="(val, index) in listSuggestions" :key="`${index}`">
+        <AppointmentCard
+          :childname="childname.fullname"
+          :vaccine="val.vaccineNameNormal"
+          status="in-progress"
+          :date="val.appointmentDate"
+        />
       </div>
     </div>
     <button
@@ -28,7 +24,11 @@
 <script>
 import service from "@/services";
 import { format } from "date-fns";
+import AppointmentCard from "@/components/AppointmentCard.vue";
 export default {
+  components: {
+    AppointmentCard
+  },
   computed: {
     suggestionWord: function() {
       return this.$store.state.locale.appointmentSuggestion;
@@ -44,7 +44,8 @@ export default {
     return {
       listSuggestions: [],
       childId: "",
-      childInfo: {}
+      childInfo: {},
+      childname: ""
     };
   },
   filters: {
@@ -52,11 +53,13 @@ export default {
       return format(new Date(val), "dd/MM/yyyy");
     }
   },
-  mounted: function() {
+  created: function() {
     this.$store.commit("listFamilies");
     this.childId = Number(this.$route.params.id);
     const language = this.$store.state.calendarLocale;
     const tempChildInfo = this.$store.state.tempFamily;
+    this.childname = tempChildInfo;
+    console.log("tempChildInfo", tempChildInfo);
 
     service()
       .suggestion.generate(tempChildInfo, language)
