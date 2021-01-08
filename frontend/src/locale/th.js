@@ -1,7 +1,9 @@
 const vaccines = require("./TH/vaccines");
 const diseases = require("./TH/diseases");
 const packagers = require("./TH/packager");
+const newsData = require("./TH/news");
 export default {
+  newsData,
   vaccines,
   diseases,
   packagers,
@@ -63,7 +65,7 @@ export default {
     atLeast: "{}ต้องมีตัวอักษรมากกว่า",
     duplicate: "{}ซ้ำ",
     notFound: "ไม่พบ{}นี้",
-    incorrect: "{}ไม่ถูกต้อง"
+    incorrect: "{}ไม่ถูกต้อง",
   },
   recordVaccinePage: {
     title: "จดบันทึกวัคซีน",
@@ -80,6 +82,7 @@ export default {
     packageMember: "แนะนำวัคซีนสำหรับ"
   },
   label: {
+    ref: "ที่มา",
     pin: "PIN",
     username: "ชื่อผู้ใช้งาน",
     password: "รหัสผ่าน",

@@ -34,12 +34,14 @@
       </div>
 
       <div class="block my-16" v-if="selectedAction === 'news'">
-        <div v-for="item in listNews" :key="item.newsId" class="my-4">
+        <div v-for="item in loadedListNews" :key="item.newsId" class="my-4">
           <NewsCard
-            :id="item.newsId"
-            :title="item.title"
-            :description="item.description"
-            v-on:on-click="onSelectVaccine"
+            :newsId="item.newsId"
+            :newsTitle="item.newsTitle"
+            :exampleContent="item.exampleContent"
+            :newsContent="item.newsContent"
+            :newsReference="item.newsReference"
+            v-on:on-click="onSelectNews"
           />
         </div>
       </div>
@@ -71,37 +73,53 @@ export default {
   },
   data() {
     return {
-      limit: 3,
-      offset: 0,
+      limitVaccine: 3,
+      limitNews: 3,
+      offsetVaccine: 0,
+      offsetNews: 0,
       selectedAction: "news", // vaccines | news
       listVaccines: [],
-      listNews: [
-        {
-          title: "Covid",
-          newsId: "news1",
-          description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        },
-      ],
+      loadedListNews: [],
     };
   },
   created: function() {
     const language = this.$store.state.calendarLocale;
     this.listVaccines = services().util.getVaccineInfoByQuery(
-      { limit: this.limit, offset: this.offset },
+      { limit: this.limitVaccine, offset: this.offsetVaccine },
+      language
+    );
+    this.loadedListNews = services().util.getNewsInfoByQuery(
+      { limit: this.limitNews, offset: this.offsetNews },
       language
     );
   },
   methods: {
     loadMore() {
-      this.offset += 3;
-      const language = this.$store.state.calendarLocale;
-      this.listVaccines = this.listVaccines.concat(
-        services().util.getVaccineInfoByQuery(
-          { limit: this.limit, offset: this.offset },
-          language
-        )
-      );
+      if (this.selectedAction === "vaccines") {
+        this.offsetVaccine += 3;
+        if (this.offsetVaccine > this.listVaccines.lenght) {
+          this.offsetVaccine = this.listVaccines.lenght;
+        }
+        const language = this.$store.state.calendarLocale;
+        this.listVaccines = this.listVaccines.concat(
+          services().util.getVaccineInfoByQuery(
+            { limit: this.limitVaccine, offset: this.offsetVaccine },
+            language
+          )
+        );
+      } else if (this.selectedAction === "news") {
+        this.offsetNews += 3;
+        if (this.offsetNews > this.loadedListNews.lenght) {
+          this.offsetNews = this.loadedListNews.lenght;
+        }
+        const language = this.$store.state.calendarLocale;
+        this.loadedListNews = this.loadedListNews.concat(
+          services().util.getNewsInfoByQuery(
+            { limit: this.limitNews, offset: this.offsetNews },
+            language
+          )
+        );
+      }
     },
     onChangeAction: function(action) {
       this.selectedAction = action;
@@ -109,11 +127,17 @@ export default {
     onSelectVaccine: function(id) {
       this.$router.push({ name: "vaccine-info", params: { id } });
     },
+    onSelectNews(newsId) {
+      this.$router.push({ name: "news-info", params: { newsId } });
+    },
     onLinkToLogin: function() {
       this.$router.push("/");
     },
   },
   computed: {
+    listNews: function() {
+      return this.$store.state.locale.newsData;
+    },
     locale: function() {
       return this.$store.state.locale;
     },
