@@ -53,7 +53,7 @@ export default {
     const isUserInfoExist = userInfo !== null;
     if (isUserInfoExist) {
       this.$store.commit("setUserInfo", JSON.parse(userInfo));
-      this.$router.push({ name: "dashboard-home" });
+      this.$router.push({ name: "Pin" });
     }
   },
   computed: {
@@ -80,6 +80,7 @@ export default {
           this.$router.push({ name: "dashboard-setting" });
           return;
         }
+        this.$store.commit("setFirstTime", false);
         this.$router.push({ name: "dashboard-home" });
       } catch (e) {
         const message = e.message;
@@ -96,9 +97,9 @@ export default {
         }
       }
     },
-    async onRegister({ username, password }) {
+    async onRegister({ username, password, pin }) {
       try {
-        await services().auth.register({ username, password });
+        await services().auth.register({ username, password, pin });
         this.mode = "login";
       } catch (e) {
         this.error = this.errorText.duplicate.replace(
