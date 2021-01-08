@@ -261,7 +261,6 @@ export default {
       });
       this.$store.commit("setFirstTime", true);
     }
-
     this.fullname = this.userInfo.fullname;
     this.birthDate = new Date(this.userInfo.birthDate);
     this.selectedVaccines = this.userInfo.diseases;
@@ -339,6 +338,7 @@ export default {
                 this.$store.state.userInfo.userId,
                 data
               );
+              this.$store.commit("setFirstTime", false);
             } else {
               const listFamilies = await service().family.list();
               const userFamilyId = listFamilies.find(
