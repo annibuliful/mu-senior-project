@@ -77,7 +77,7 @@ export default {
     save: async function() {
       const listOverdue = [];
       let familyId;
-      const isUpdated = this.$store.state.tempFamily.isUpated;
+      const isUpdated = this.$store.state.tempFamily.isUpdated;
       if (isUpdated) {
         familyId = this.$store.state.tempFamily.familyId;
       } else {

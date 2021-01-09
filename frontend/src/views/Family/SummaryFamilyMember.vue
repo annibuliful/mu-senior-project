@@ -101,7 +101,7 @@
         :childname="appointment.customData.childname"
         :note="appointment.customData.note"
         :time="appointment.customData.time"
-        :vaccines="appointment.customData.selectedVaccines.map((el) => el.tag)"
+        :vaccines="appointment.customData.selectedVaccines.map(el => el.tag)"
         :status="appointment.status"
         :key="`${index}-${appointment.customData.childname}`"
         :date="appointment.dates"
@@ -125,7 +125,7 @@ export default {
   components: {
     FamilyMemberHeader,
     History,
-    AppointmentCard,
+    AppointmentCard
   },
   created() {
     this.displayMode = "Roadmap";
@@ -135,7 +135,7 @@ export default {
         const language = this.$store.state.calendarLanguage;
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
-          (el) => el.familyId === this.childId
+          el => el.familyId === this.childId
         );
 
         const listAppointments = await services().appointment.listByChildId(
@@ -159,7 +159,7 @@ export default {
       sort: "date",
       searchKeyword: "",
       isFilterShow: false,
-      isNeedSuggestion: false,
+      isNeedSuggestion: false
     };
   },
   computed: {
@@ -177,16 +177,16 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    },
+    }
   },
   methods: {
     onClickToSuggestion() {
       this.$store.commit("setTempFamilyInfo", {
         ...this.childInfo,
-        isUpated: true,
+        isUpdated: true
       });
       this.$router.push({
-        name: "appointment-child-suggestion",
+        name: "appointment-child-suggestion"
       });
     },
     onClickFilter() {
@@ -206,13 +206,13 @@ export default {
           search: this.searchKeyword,
           filter: this.filter,
           sort: this.sort,
-          childId: this.childId,
+          childId: this.childId
         },
         language
       );
 
       this.$store.commit("setNewAppointmentList", data ?? []);
-    },
-  },
+    }
+  }
 };
 </script>
