@@ -71,10 +71,11 @@
           <div>{{ labelText.sortBy }}</div>
           <select
             class="w-full border-solid border border-gray-600 h-10  rounded-lg cursor-pointer"
+            v-model="sort"
             @change="search()"
           >
             <option value="name">{{ labelText.vaccineName }}</option>
-            <option value="disease">{{ labelText.diseaseName }}</option>
+            <!-- <option value="disease">{{ labelText.diseaseName }}</option> -->
             <option value="date">{{ labelText.date }}</option>
           </select>
         </div>
@@ -100,10 +101,11 @@
         :childname="appointment.customData.childname"
         :note="appointment.customData.note"
         :time="appointment.customData.time"
-        :vaccines="appointment.customData.selectedVaccines.map(el => el.tag)"
+        :vaccines="appointment.customData.selectedVaccines.map((el) => el.tag)"
         :status="appointment.status"
         :key="`${index}-${appointment.customData.childname}`"
         :date="appointment.dates"
+        :sortBy="sort"
       />
     </div>
   </div>
@@ -115,7 +117,7 @@ import History from "./HistoryFamilyMember.vue";
 // import ImmunityStatus from "./Report.vue";
 import FamilyMemberHeader from "../../components/FamilyMemberHeaderInfo.vue";
 // import AppointmentRoadmap from "../Appointment/List-child.vue";
-import AppointmentCard from "@/components/AppointmentCard.vue";
+import AppointmentCard from "@/components/AppointMentCardTimeLine.vue";
 // Require Esperanto locale
 // import { en, th } from "date-fns/esm/locale";
 // import CustomSelect from "../../components/input/CustomSelect.vue";
@@ -123,7 +125,7 @@ export default {
   components: {
     FamilyMemberHeader,
     History,
-    AppointmentCard
+    AppointmentCard,
   },
   created() {
     this.displayMode = "Roadmap";
@@ -133,7 +135,7 @@ export default {
         const language = this.$store.state.calendarLanguage;
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
-          el => el.familyId === this.childId
+          (el) => el.familyId === this.childId
         );
 
         const listAppointments = await services().appointment.listByChildId(
@@ -157,7 +159,7 @@ export default {
       sort: "date",
       searchKeyword: "",
       isFilterShow: false,
-      isNeedSuggestion: false
+      isNeedSuggestion: false,
     };
   },
   computed: {
@@ -175,16 +177,16 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    }
+    },
   },
   methods: {
     onClickToSuggestion() {
       this.$store.commit("setTempFamilyInfo", {
         ...this.childInfo,
-        isUpated: true
+        isUpated: true,
       });
       this.$router.push({
-        name: "appointment-child-suggestion"
+        name: "appointment-child-suggestion",
       });
     },
     onClickFilter() {
@@ -204,13 +206,13 @@ export default {
           search: this.searchKeyword,
           filter: this.filter,
           sort: this.sort,
-          childId: this.childId
+          childId: this.childId,
         },
         language
       );
 
       this.$store.commit("setNewAppointmentList", data ?? []);
-    }
-  }
+    },
+  },
 };
 </script>
