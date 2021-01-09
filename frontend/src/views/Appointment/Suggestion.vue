@@ -27,7 +27,7 @@ import { format, isBefore, subMonths } from "date-fns";
 import AppointmentCard from "@/components/AppointmentCard.vue";
 export default {
   components: {
-    AppointmentCard
+    AppointmentCard,
   },
   computed: {
     suggestionWord: function() {
@@ -38,7 +38,7 @@ export default {
     },
     listFamilies() {
       return this.$store.state.listFamilies;
-    }
+    },
   },
   data: function() {
     return {
@@ -46,13 +46,13 @@ export default {
       childId: "",
       childInfo: {},
       childname: "",
-      listOverdueVaccines: []
+      listOverdueVaccines: [],
     };
   },
   filters: {
     dateFormat: function(val) {
       return format(new Date(val), "dd/MM/yyyy");
-    }
+    },
   },
   created: function() {
     this.$store.commit("listFamilies");
@@ -62,10 +62,10 @@ export default {
     this.childname = tempChildInfo;
     service()
       .suggestion.generate(tempChildInfo, language)
-      .then(data => {
+      .then((data) => {
         this.listSuggestions = data;
-        const listOverdueVaccines = data.filter(el =>
-          isBefore(el.appointmentDate, subMonths(new Date(), 2))
+        const listOverdueVaccines = data.filter((el) =>
+          isBefore(el.appointmentDate, new Date())
         );
         this.listOverdueVaccines = listOverdueVaccines;
       });
@@ -85,7 +85,7 @@ export default {
         const { userId } = JSON.parse(user);
         familyId = await service().family.create({
           ...this.$store.state.tempFamily,
-          userId
+          userId,
         });
       }
 
@@ -94,7 +94,7 @@ export default {
         const {
           vaccineId,
           vaccineNameNormal,
-          appointmentDate
+          appointmentDate,
         } = this.listSuggestions[i];
         const eventId = await this.submit(
           vaccineId,
@@ -110,7 +110,7 @@ export default {
             appointmentDate,
             familyId,
             fullname,
-            eventId
+            eventId,
           });
         }
       }
@@ -120,7 +120,7 @@ export default {
       } else {
         const childInfo = {
           fullname,
-          familyId
+          familyId,
         };
         this.$store.commit("setfamilyInfoForOverdueVaccines", childInfo);
         this.$store.commit("setlistOverdueVaccines", listOverdue);
@@ -144,11 +144,11 @@ export default {
           vaccineId,
           childname: fullname,
           childId: familyId,
-          time: "09:30"
-        }
+          time: "09:30",
+        },
       };
       return await service().appointment.create(data);
-    }
-  }
+    },
+  },
 };
 </script>
