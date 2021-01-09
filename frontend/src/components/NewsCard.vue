@@ -32,18 +32,18 @@ export default {
     "newsTitle",
     "exampleContent",
     "newsContent",
-    "newsReference"
+    "newsReference",
   ],
   methods: {
     onCardClicked() {
       this.$emit("on-click", this.newsId);
-    }
+    },
   },
   computed: {
     locale: function() {
       return this.$store.state.locale;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
