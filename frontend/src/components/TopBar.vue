@@ -18,12 +18,12 @@ export default {
   computed: {
     locale: function() {
       return this.$store.state.locale;
-    },
+    }
   },
   methods: {
     gotoNews() {
       this.$router.push({ name: "dashboard-news" });
-    },
-  },
+    }
+  }
 };
 </script>
