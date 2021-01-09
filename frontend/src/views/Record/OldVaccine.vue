@@ -13,7 +13,7 @@
     <div class="w-full flex mx-auto md:w-2/4 lg:w-2/4 justify-evenly my-8">
       <div
         :class="[
-          receiveStatus === 'received' ? 'border-blue-600' : 'border-gray-400',
+          receiveStatus === 'received' ? 'border-blue-600' : 'border-gray-400'
         ]"
         class="p-6 m-2 border-2 pointer language-box"
         @click="onChangeReceiveStatus('received')"
@@ -23,7 +23,7 @@
       <div
         @click="onChangeReceiveStatus('never')"
         :class="[
-          receiveStatus === 'never' ? 'border-blue-600' : 'border-gray-400',
+          receiveStatus === 'never' ? 'border-blue-600' : 'border-gray-400'
         ]"
         class="p-6 m-2 border-2 pointer language-box"
       >
@@ -66,7 +66,7 @@ export default {
       receiveStatus: "",
       receiveDate: "",
       vaccineId: "",
-      vaccineName: "",
+      vaccineName: ""
     };
   },
   computed: {
@@ -75,12 +75,12 @@ export default {
     },
     locale() {
       return this.$store.state.locale;
-    },
+    }
   },
   created: function() {
-    this.listVaccines = this.$store.state.listOverdueVaccines.map((el) => ({
+    this.listVaccines = this.$store.state.listOverdueVaccines.map(el => ({
       ...el,
-      recordDate: "",
+      recordDate: ""
     }));
     this.vaccineId = this.listVaccines[0].vaccineId;
     this.vaccineName = this.listVaccines[0].vaccineNameNormal;
@@ -98,7 +98,7 @@ export default {
         const tempVaccine = this.listVaccines[this.currentIndex];
         this.listVaccines[this.currentIndex] = {
           ...tempVaccine,
-          recordDate: this.receiveDate,
+          recordDate: this.receiveDate
         };
         this.currentIndex++;
         const tempForNextVaccine = this.listVaccines[this.currentIndex];
@@ -123,7 +123,7 @@ export default {
         const tempVaccine = this.listVaccines[this.currentIndex];
         this.listVaccines[this.currentIndex] = {
           ...tempVaccine,
-          recordDate: this.receiveDate,
+          recordDate: this.receiveDate
         };
         this.currentIndex--;
         const tempForNextVaccine = this.listVaccines[this.currentIndex];
@@ -169,21 +169,21 @@ export default {
         doctorInfo: null,
         freetext: "",
         recordImage: null,
-        photoDate: null,
+        photoDate: null
       };
 
       await Promise.all([
         service().record.create(recordData),
         service().appointment.update(Number(eventId), {
           dot: "green",
-          status: "vaccinated",
-        }),
+          status: "vaccinated"
+        })
       ]);
       const childInfo = (await service().family.getByChildId(familyId))[0];
       childInfo.receivedVaccines = [...childInfo.receivedVaccines, vaccine.id];
       await service().family.update(familyId, childInfo);
-    },
-  },
+    }
+  }
 };
 </script>
 

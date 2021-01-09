@@ -199,18 +199,18 @@ import service from "@/services";
 export default {
   components: {
     CaretIcon,
-    TagInput,
+    TagInput
   },
   validations: {
     fullname: {
-      required,
+      required
     },
     birthDate: {
-      required,
+      required
     },
     pinPassword: {
-      required,
-    },
+      required
+    }
   },
   computed: {
     listVaccines() {
@@ -230,7 +230,7 @@ export default {
     },
     buttonLabel() {
       return this.$store.state.locale.button;
-    },
+    }
   },
   data() {
     return {
@@ -243,7 +243,7 @@ export default {
       errorMessage: "",
       isFirstTime: false,
       userFamilyId: "",
-      userInfo: {},
+      userInfo: {}
     };
   },
   created() {
@@ -257,7 +257,7 @@ export default {
       this.$fire({
         title: this.locale.label.notifyToEdit,
         type: "warning",
-        timer: 3000,
+        timer: 3000
       });
       this.$store.commit("setFirstTime", true);
     }
@@ -273,15 +273,15 @@ export default {
         title: this.locale.label.confirmLogout,
         showCancelButton: true,
         confirmButtonText: this.locale.label.yes,
-        cancelButtonText: this.locale.label.no,
-      }).then((r) => {
+        cancelButtonText: this.locale.label.no
+      }).then(r => {
         if (r.value) {
           localStorage.removeItem("userInfo");
           this.$router.push("/");
           this.$fire({
             title: this.locale.label.logoutSuccess,
             type: "success",
-            timer: 3000,
+            timer: 3000
           });
         }
       });
@@ -300,15 +300,15 @@ export default {
           birthDate: this.birthDate,
           receivedVaccines: [],
           diseases: this.selectedDiseases,
-          pin: this.pinPassword,
+          pin: this.pinPassword
         };
 
         this.$fire({
           title: this.locale.label.confirmEdit,
           showCancelButton: true,
           confirmButtonText: this.locale.label.yes,
-          cancelButtonText: this.locale.label.no,
-        }).then(async (r) => {
+          cancelButtonText: this.locale.label.no
+        }).then(async r => {
           if (r.value) {
             const userInfo = JSON.parse(localStorage.getItem("userInfo"));
             const newUserInfo = Object.assign(userInfo, data);
@@ -319,20 +319,19 @@ export default {
             this.$fire({
               title: this.locale.label.saveInfo,
               type: "success",
-              timer: 3000,
+              timer: 3000
             });
 
             if (this.isFirstTime) {
               const data = {
                 fullname: this.fullname,
                 birthDate: this.birthDate,
-                diseases: this.selectedDiseases?.map((el) => el.id) ?? [],
-                receivedVaccines:
-                  this.selectedVaccines?.map((el) => el.id) ?? [],
+                diseases: this.selectedDiseases?.map(el => el.id) ?? [],
+                receivedVaccines: this.selectedVaccines?.map(el => el.id) ?? [],
                 profileImg: "",
                 userId: this.$store.state.userInfo.userId,
                 isParent: true,
-                pin: this.pinPassword,
+                pin: this.pinPassword
               };
               await service().family.create(data);
               await service().user.update(
@@ -343,19 +342,19 @@ export default {
             } else {
               const listFamilies = await service().family.list();
               const userFamilyId = listFamilies.find(
-                (el) =>
+                el =>
                   el.fullname === this.userInfo.fullname &&
                   el.userId === this.userInfo.userId
               )?.familyId;
               const data = {
                 fullname: this.fullname,
                 birthDate: this.birthDate,
-                diseases: this.selectedDiseases.map((el) => el.id),
-                receivedVaccines: this.selectedVaccines.map((el) => el.id),
+                diseases: this.selectedDiseases.map(el => el.id),
+                receivedVaccines: this.selectedVaccines.map(el => el.id),
                 profileImg: "",
                 userId: this.$store.state.userInfo.userId,
                 pin: this.pinPassword,
-                isParent: true,
+                isParent: true
               };
               await service().family.update(userFamilyId, data);
               await service().user.update(this.userInfo.userId, data);
@@ -381,7 +380,7 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    },
-  },
+    }
+  }
 };
 </script>
