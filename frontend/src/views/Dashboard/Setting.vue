@@ -311,11 +311,11 @@ export default {
         }).then(async r => {
           if (r.value) {
             const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-            this.$store.commit("setUserInfo", { ...data, ...userInfo });
-            localStorage.setItem(
-              "userInfo",
-              JSON.stringify({ ...data, ...userInfo })
-            );
+            const newUserInfo = Object.assign(userInfo, data);
+
+            this.$store.commit("setUserInfo", newUserInfo);
+
+            localStorage.setItem("userInfo", JSON.stringify(newUserInfo));
             this.$fire({
               title: this.locale.label.saveInfo,
               type: "success",
