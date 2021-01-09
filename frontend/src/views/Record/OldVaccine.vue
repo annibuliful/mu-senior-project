@@ -3,6 +3,7 @@
     <p class="text-center text-4xl my-4">{{ childInfo.fullname }}</p>
     <p class="text-center">{{ currentIndex + 1 }}/{{ listVaccines.length }}</p>
 
+    <p class="text-center text-2xl">{{ vaccineName }}</p>
     <div>
       <img
         :src="require(`../../assets/vaccine-img/${vaccineId}.png`)"
