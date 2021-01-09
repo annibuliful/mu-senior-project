@@ -23,14 +23,14 @@ import NewsCard from "../../components/NewsCard.vue";
 export default {
   components: {
     NewsCard,
-    TopBar,
+    TopBar
   },
 
   methods: {
     onSelectNews(newsId) {
       //   alert(newsId);
       this.$router.push({ name: "logged-news-info", params: { newsId } });
-    },
+    }
   },
   computed: {
     listNews: function() {
@@ -38,7 +38,7 @@ export default {
     },
     locale: function() {
       return this.$store.state.locale;
-    },
-  },
+    }
+  }
 };
 </script>

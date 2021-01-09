@@ -23,7 +23,7 @@
 </template>
 <script>
 import service from "@/services";
-import { format, isBefore, subMonths } from "date-fns";
+import { format, isBefore } from "date-fns";
 import AppointmentCard from "@/components/AppointmentCard.vue";
 export default {
   components: {
@@ -65,7 +65,7 @@ export default {
       .then(data => {
         this.listSuggestions = data;
         const listOverdueVaccines = data.filter(el =>
-          isBefore(el.appointmentDate, subMonths(new Date(), 2))
+          isBefore(el.appointmentDate, new Date())
         );
         this.listOverdueVaccines = listOverdueVaccines;
       });
@@ -77,7 +77,7 @@ export default {
     save: async function() {
       const listOverdue = [];
       let familyId;
-      const isUpdated = this.$store.state.tempFamily.isUpated;
+      const isUpdated = this.$store.state.tempFamily.isUpdated;
       if (isUpdated) {
         familyId = this.$store.state.tempFamily.familyId;
       } else {
@@ -103,7 +103,7 @@ export default {
           familyId,
           fullname
         );
-        if (isBefore(appointmentDate, subMonths(new Date(), 2))) {
+        if (isBefore(appointmentDate, new Date(), 2)) {
           listOverdue.push({
             vaccineId,
             vaccineNameNormal,
@@ -114,7 +114,7 @@ export default {
           });
         }
       }
-      const isListOverdueEmpty = this.listOverdueVaccines.length === 0;
+      const isListOverdueEmpty = listOverdue.length === 0;
       if (isListOverdueEmpty) {
         this.$router.push({ name: "dashboard-index" });
       } else {
