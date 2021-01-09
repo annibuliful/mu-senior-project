@@ -147,16 +147,16 @@
       </div>
 
       <div class="flex items-center mb-6 ml-2">
-        <div class="w-32">
+        <!-- <div class="w-32">
           <label
             class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
             for="inline-full-name"
           >
             {{ label.vaccine }}
           </label>
-        </div>
+        </div> -->
 
-        <div class="inline-block relative w-auto">
+        <!-- <div class="inline-block relative w-auto">
           <TagInput
             :placeholder="label.vaccine"
             :listTags="listVaccines"
@@ -164,7 +164,7 @@
             v-on:on-enter="onAddNewVaccine"
             v-on:on-remove="onDeleteVaccine"
           />
-        </div>
+        </div> -->
       </div>
       <div class="lg:w-2/3 md:w-2/3 sm:w-full">
         <p
@@ -298,7 +298,7 @@ export default {
         const data = {
           fullname: this.fullname,
           birthDate: this.birthDate,
-          receivedVaccines: this.selectedVaccines,
+          receivedVaccines: [],
           diseases: this.selectedDiseases,
           pin: this.pinPassword
         };

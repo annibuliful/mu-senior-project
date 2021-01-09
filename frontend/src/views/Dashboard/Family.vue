@@ -78,7 +78,7 @@
           />
         </div>
 
-        <div class="mb-4">
+        <!-- <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2 ">
             {{ labelAddFamily.vaccine }}
           </label>
@@ -89,7 +89,7 @@
             v-on:on-enter="onAddNewVaccine"
             v-on:on-remove="onDeleteVaccine"
           />
-        </div>
+        </div> -->
         <button
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto"
           @click="submit"
@@ -219,7 +219,7 @@ export default {
           fullname: this.fullname,
           birthDate: this.birthDate,
           diseases: this.selectedDiseases.map(el => el.id),
-          receivedVaccines: this.selectedVaccines.map(el => el.id),
+          receivedVaccines: [],
           profileImg: this.base64Url,
           userId: this.$store.state.userInfo.userId,
           isParent: false

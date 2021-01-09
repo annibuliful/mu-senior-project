@@ -38,6 +38,8 @@ export default {
   welcomeLanguage: "ยินดีต้อนรับสู่ Vaccinet",
   welcomeContinue: "ไปต่อ",
   loadmore: "เพิ่มเติม",
+  receievedQA: "เคยฉีด",
+  notReceievedQA: "ไม่เคยฉีด",
   networkMode: {
     offline: "คุณออฟไลน์อยู่",
     online: "คุณออนไลน์อยู่"

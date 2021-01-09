@@ -18,7 +18,7 @@
         class="p-6 m-2 border-2 pointer language-box"
         @click="onChangeReceiveStatus('received')"
       >
-        <p class="text-gray-700 text-center my-6">เคยฉีด</p>
+        <p class="text-gray-700 text-center my-6">{{ locale.receievedQA }}</p>
       </div>
       <div
         @click="onChangeReceiveStatus('never')"
@@ -27,13 +27,15 @@
         ]"
         class="p-6 m-2 border-2 pointer language-box"
       >
-        <p class="text-gray-700 text-center my-6">ไม่เคยฉีด</p>
+        <p class="text-gray-700 text-center my-6">
+          {{ locale.notReceievedQA }}
+        </p>
       </div>
     </div>
     <div style="height: 67px;">
       <div class="my-4" v-if="receiveStatus === 'received'">
         <label class="block text-gray-700 text-sm font-bold mb-2 ">
-          วันที่ฉีด
+          {{ locale.recordVaccinePage.receivingDate }}
         </label>
         <v-date-picker v-model="receiveDate" :locale="calendarLocale" />
       </div>
@@ -47,7 +49,7 @@
       v-if="currentIndex === listVaccines.length - 1"
       @click="submitAll"
     >
-      Submit
+      {{ locale.recordVaccinePage.submitBtn }}
     </button>
   </div>
 </template>
@@ -70,6 +72,9 @@ export default {
   computed: {
     calendarLocale() {
       return this.$store.state.calendarLocale;
+    },
+    locale() {
+      return this.$store.state.locale;
     }
   },
   created: function() {
