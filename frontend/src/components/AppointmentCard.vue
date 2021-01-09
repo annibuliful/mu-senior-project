@@ -9,7 +9,6 @@
           {{ dateFormat }}
           <div
             class="absolute w-1/5  bg-gray-400 mx-auto top-0 right-0 left-0"
-            style="height: 100px;z-index:-1;"
           ></div>
         </div>
         <div
@@ -19,7 +18,6 @@
           {{ dateFormat }}
           <div
             class="absolute w-1/5  bg-yellow-400 mx-auto top-0 right-0 left-0"
-            style="height: 100px;z-index:-1;"
           ></div>
         </div>
         <div
@@ -29,7 +27,6 @@
           {{ dateFormat }}
           <div
             class="absolute w-1/5  bg-green-400 mx-auto top-0 right-0 left-0"
-            style="height: 100px;z-index:-1;"
           ></div>
         </div>
         <div
@@ -39,7 +36,6 @@
           {{ dateFormat }}
           <div
             class="absolute w-1/5  bg-red-400 mx-auto top-0 right-0 left-0"
-            style="height: 100px;z-index:-1;"
           ></div>
         </div>
         <div style="width: 80%">
@@ -62,16 +58,18 @@
   </div>
 </template>
 <script>
-import { format } from "date-fns";
+import { format, addYears } from "date-fns";
 import { th } from "date-fns/locale";
 export default {
   computed: {
     dateFormat: function() {
       let date = "";
-      if (this.$store.state.calendarLocale == "th-TH") {
-        date = format(new Date(this.date), "dd MMM yyyy", {
+      if (this.$store.state.calendarLocale === "th-TH") {
+        date = format(addYears(new Date(this.date), 543), "dd MMM yyyy", {
           locale: th,
         });
+      } else {
+        date = format(new Date(this.date), "dd MMM yyyy");
       }
       return date;
     },
