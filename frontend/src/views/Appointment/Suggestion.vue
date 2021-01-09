@@ -23,7 +23,7 @@
 </template>
 <script>
 import service from "@/services";
-import { format } from "date-fns";
+import { format, isBefore, subMonths } from "date-fns";
 import AppointmentCard from "@/components/AppointmentCard.vue";
 export default {
   components: {
@@ -45,7 +45,8 @@ export default {
       listSuggestions: [],
       childId: "",
       childInfo: {},
-      childname: ""
+      childname: "",
+      listOverdueVaccines: []
     };
   },
   filters: {
@@ -59,12 +60,14 @@ export default {
     const language = this.$store.state.calendarLocale;
     const tempChildInfo = this.$store.state.tempFamily;
     this.childname = tempChildInfo;
-    console.log("tempChildInfo", tempChildInfo);
-
     service()
       .suggestion.generate(tempChildInfo, language)
       .then(data => {
         this.listSuggestions = data;
+        const listOverdueVaccines = data.filter(el =>
+          isBefore(el.appointmentDate, subMonths(new Date(), 2))
+        );
+        this.listOverdueVaccines = listOverdueVaccines;
       });
   },
   methods: {
@@ -72,6 +75,7 @@ export default {
       this.listSuggestions.splice(index, 1);
     },
     save: async function() {
+      const listOverdue = [];
       let familyId;
       const isUpdated = this.$store.state.tempFamily.isUpated;
       if (isUpdated) {
@@ -92,15 +96,36 @@ export default {
           vaccineNameNormal,
           appointmentDate
         } = this.listSuggestions[i];
-        await this.submit(
+        const eventId = await this.submit(
           vaccineId,
           vaccineNameNormal,
           appointmentDate,
           familyId,
           fullname
         );
+        if (isBefore(appointmentDate, subMonths(new Date(), 2))) {
+          listOverdue.push({
+            vaccineId,
+            vaccineNameNormal,
+            appointmentDate,
+            familyId,
+            fullname,
+            eventId
+          });
+        }
       }
-      this.$router.push({ name: "dashboard-index" });
+      const isListOverdueEmpty = this.listOverdueVaccines.length === 0;
+      if (isListOverdueEmpty) {
+        this.$router.push({ name: "dashboard-index" });
+      } else {
+        const childInfo = {
+          fullname,
+          familyId
+        };
+        this.$store.commit("setfamilyInfoForOverdueVaccines", childInfo);
+        this.$store.commit("setlistOverdueVaccines", listOverdue);
+        this.$router.push({ name: "Old-Vaccine" });
+      }
     },
     submit: async function(
       vaccineId,
@@ -122,7 +147,7 @@ export default {
           time: "09:30"
         }
       };
-      await service().appointment.create(data);
+      return await service().appointment.create(data);
     }
   }
 };

@@ -11,6 +11,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    listOverdueVaccines: [],
+    familyInfoForOverdueVaccines: {},
     covidStat: {
       confirmed: 0,
       recovered: 0,
@@ -58,6 +60,12 @@ export default new Vuex.Store({
       } catch (e) {
         console.error("covid-error", e);
       }
+    },
+    setfamilyInfoForOverdueVaccines(state, info) {
+      state.familyInfoForOverdueVaccines = info;
+    },
+    setlistOverdueVaccines(state, list) {
+      state.listOverdueVaccines = list;
     },
     changeIsVaccinateComplete(state) {
       state.isVaccinateComplete = !state.isVaccinateComplete;
