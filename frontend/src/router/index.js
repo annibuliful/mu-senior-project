@@ -27,6 +27,7 @@ import PreLogin from "../views/PreLogin.vue";
 import VaccineInfo from "../views/Vaccine/VaccineInfo.vue";
 import NewsInfo from "../views/News/PreLoginNewsInfo.vue";
 import PinPassword from "../views/Pin/Login.vue";
+import OldVaccine from "../views/Record/OldVaccine.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -39,6 +40,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/old-vaccine",
+    name: "Old-Vaccine",
+    component: OldVaccine
   },
   {
     path: "/pre-login",

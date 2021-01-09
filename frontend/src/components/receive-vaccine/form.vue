@@ -1,47 +1,43 @@
 <template>
   <div class="container">
-    <p>{{ tempFamily }}</p>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Username
-      </label>
-      <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        id="username"
-        type="text"
-        placeholder="Username"
-      />
-    </div>
-    <div class="mb-4">
-      <label
-        class="block text-gray-700 text-sm font-bold mb-2"
-        for="received"
-        value=""
+    <p>{{ childName }}</p>
+    <div class="w-full flex mx-auto md:w-2/4 lg:w-2/4 justify-evenly my-8">
+      <div
+        :class="[
+          receiveStatus === 'received' ? 'border-blue-600' : 'border-gray-400'
+        ]"
+        class="p-6 m-2 border-2 pointer language-box"
+        @click="onChangeReceiveStatus('received')"
       >
-        เคยฉีด
-      </label>
-      <input
-        id="received"
-        type="radio"
-        class="appearance-none checked:bg-blue-900 checked:border-transparent"
-      />
+        <p class="text-gray-700 text-center my-6">เคยฉีด</p>
+      </div>
+      <div
+        @click="onChangeReceiveStatus('never')"
+        :class="[
+          receiveStatus === 'never' ? 'border-blue-600' : 'border-gray-400'
+        ]"
+        class="p-6 m-2 border-2 pointer language-box"
+      >
+        <p class="text-gray-700 text-center my-6">ไม่เคยฉีด</p>
+      </div>
     </div>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="never">
-        ไม่เคยฉีด
+    <div class="my-4" v-if="receiveStatus === 'received'">
+      <label class="block text-gray-700 text-sm font-bold mb-2 ">
+        วันที่ฉีด
       </label>
-      <input
-        id="never"
-        type="radio"
-        class="appearance-none checked:bg-blue-900 checked:border-transparent"
-      />
+      <v-date-picker v-model="receiveDate" :locale="calendarLocale" />
     </div>
   </div>
 </template>
 <script>
 export default {
+  computed: {
+    calendarLocale() {
+      return this.$store.state.calendarLocale;
+    }
+  },
   props: {
-    family: {
+    childName: {
       type: String,
       required: true
     },
@@ -57,20 +53,21 @@ export default {
   },
   data() {
     return {
-      isReceivedVaccine: false,
+      receiveStatus: "",
       receiveDate: ""
     };
   },
-  computed: {
-    tempFamily: function() {
-      return this.$store.state.tempFamily;
+  methods: {
+    onChangeReceiveStatus: function(status) {
+      this.receiveStatus = status;
     }
   }
 };
 </script>
 <style scoped>
-.container {
-  width: 80vh;
-  margin: 0 auto;
+.language-box {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 10px;
 }
 </style>
