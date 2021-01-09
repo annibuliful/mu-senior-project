@@ -1,11 +1,10 @@
 <template>
   <div>
     <div class="flex flex-row justify-end ">
-      <div
-        class="border-l-2 border-r-2 border-blue-700 p-1 mr-2 my-auto"
-        @click="gotoNews()"
-      >
-        News
+      <div @click="gotoNews()">
+        <div class="mr-2  ">
+          <img src="../assets/icons/news.svg" alt="" />
+        </div>
       </div>
       <div class="mr-2  ">
         <img src="../assets/icons/notification.svg" alt="" />

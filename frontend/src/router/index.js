@@ -28,6 +28,8 @@ import VaccineInfo from "../views/Vaccine/VaccineInfo.vue";
 import NewsInfo from "../views/News/PreLoginNewsInfo.vue";
 import PinPassword from "../views/Pin/Login.vue";
 import LoggedinNews from "../views/News/LoggedinNews.vue";
+import NewsInfoLoggedin from "../views/News/NewsInfoLoggedin.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -88,6 +90,11 @@ const routes = [
         path: "news",
         name: "dashboard-news",
         component: LoggedinNews,
+      },
+      {
+        path: "news/details/:newsId",
+        name: "logged-news-info",
+        component: NewsInfoLoggedin,
       },
       {
         path: "vaccinepackager",

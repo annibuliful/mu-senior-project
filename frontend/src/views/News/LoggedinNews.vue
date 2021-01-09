@@ -11,6 +11,7 @@
         :exampleContent="item.exampleContent"
         :newsContent="item.newsContent"
         :newsReference="item.newsReference"
+        v-on:on-click="onSelectNews"
       />
     </div>
   </div>
@@ -25,6 +26,12 @@ export default {
     TopBar,
   },
 
+  methods: {
+    onSelectNews(newsId) {
+      //   alert(newsId);
+      this.$router.push({ name: "logged-news-info", params: { newsId } });
+    },
+  },
   computed: {
     listNews: function() {
       return this.$store.state.locale.newsData;
