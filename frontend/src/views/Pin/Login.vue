@@ -28,6 +28,7 @@ export default {
       this.isError = false;
       const isCorrect = await services().auth.pin({ pin });
       if (isCorrect) {
+        this.$store.commit("setFirstTime", false);
         const userInfo = localStorage.getItem("userInfo");
         this.$store.commit("setUserInfo", JSON.parse(userInfo));
         this.$router.push({ name: "dashboard-home" });

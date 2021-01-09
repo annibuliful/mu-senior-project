@@ -66,7 +66,7 @@ export default {
       let date = "";
       if (this.$store.state.calendarLocale === "th-TH") {
         date = format(addYears(new Date(this.date), 543), "dd MMM yyyy", {
-          locale: th,
+          locale: th
         });
       } else {
         date = format(new Date(this.date), "dd MMM yyyy");

@@ -111,10 +111,10 @@ export default {
     };
   },
   created: function() {
+    this.$store.commit("listFamilies");
     this.selectedVaccines = this.$store.state.baseRecordVaccine.selectedVaccines.map(
       el => ({ tag: el })
     );
-    this.$store.commit("listFamilies");
   },
   methods: {
     submit: async function() {
