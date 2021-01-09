@@ -140,7 +140,7 @@ export default {
         await this.submit(vaccine, receiveDate, temp.eventId);
       }
 
-      this.$router.push("/");
+      this.$router.push({ name: "dashboard-home" });
     },
     submit: async function(vaccine, receiveDate, eventId) {
       const { familyId, fullname } = this.childInfo;
@@ -176,7 +176,6 @@ export default {
       const childInfo = (await service().family.getByChildId(familyId))[0];
       childInfo.receivedVaccines = [...childInfo.receivedVaccines, vaccine.id];
       await service().family.update(familyId, childInfo);
-      this.$router.push({ name: "dashboard-home" });
     }
   }
 };
