@@ -46,16 +46,18 @@
   </div>
 </template>
 <script>
-import { format } from "date-fns";
+import { format, addYears } from "date-fns";
 import { th } from "date-fns/locale";
 export default {
   computed: {
     dateFormat: function() {
       let date = "";
-      if (this.$store.state.calendarLocale == "th-TH") {
-        date = format(new Date(this.date), "dd MMM yyyy", {
+      if (this.$store.state.calendarLocale === "th-TH") {
+        date = format(addYears(new Date(this.date), 543), "dd MMM yyyy", {
           locale: th
         });
+      } else {
+        date = format(new Date(this.date), "dd MMM yyyy");
       }
       return date;
     }
