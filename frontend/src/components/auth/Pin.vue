@@ -26,7 +26,9 @@
         }}
       </p>
     </div>
-    <button class="btn-primary" @click="onSubmitPassword">Login</button>
+    <button class="btn-primary" @click="onSubmitPassword">
+      {{ requireLabel.login }}
+    </button>
   </div>
 </template>
 <script>
@@ -34,13 +36,13 @@ import { required } from "vuelidate/lib/validators";
 export default {
   validations: {
     pinPassword: {
-      required
-    }
+      required,
+    },
   },
   data() {
     return {
       isSubmitted: false,
-      pinPassword: ""
+      pinPassword: "",
     };
   },
   computed: {
@@ -49,7 +51,7 @@ export default {
     },
     requireLabel: function() {
       return this.$store.state.locale;
-    }
+    },
   },
   methods: {
     onSubmitPassword: function() {
@@ -60,8 +62,8 @@ export default {
       if (!this.$v.$invalid) {
         this.$emit("submit-password", this.pinPassword);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped></style>
