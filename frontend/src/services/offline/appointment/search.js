@@ -26,36 +26,28 @@ export default async ({ search, filter, sort, childId }, language) => {
   } else if (filter === "vaccinated") {
     listDefault = listDefault.filter(el => el.status === "vaccinated");
   } else if (filter === "overdue") {
-    // listDefault = listDefault.filter(el => {
-    //   const result = differenceInDays(new Date(el.dates), new Date());
-    //   return result + 7 <= 0;
-    // });
     listDefault = listDefault.filter(el => el.status === "overdue");
   } else if (filter === "vaccinating") {
-    // listDefault = listDefault.filter(el => {
-    //   const result = differenceInDays(new Date(el.dates), new Date());
-    //   return result < 7 && result >= 0;
-    // });
-
     listDefault = listDefault.filter(el => el.status === "vaccinating");
   }
 
   if (sort === "name") {
     listDefault = listDefault.sort((a, b) => {
-      if (a.customData.selectedVaccines[0] < b.customData.selectedVaccines[0]) {
+      
+      if (a.customData.selectedVaccines[0].tag < b.customData.selectedVaccines[0].tag) {
         return -1;
       }
-      if (a.customData.selectedVaccines[0] > b.customData.selectedVaccines[0]) {
+      if (a.customData.selectedVaccines[0].tag > b.customData.selectedVaccines[0].tag) {
         return 1;
       }
       return 0;
     });
   } else if (sort === "disease") {
     listDefault.sort((a, b) => {
-      if (a.customData.selectedVaccines[0] < b.customData.selectedVaccines[0]) {
+      if (a.customData.selectedVaccines[0].tag < b.customData.selectedVaccines[0].tag) {
         return -1;
       }
-      if (a.customData.selectedVaccines[0] > b.customData.selectedVaccines[0]) {
+      if (a.customData.selectedVaccines[0].tag > b.customData.selectedVaccines[0].tag) {
         return 1;
       }
       return 0;
@@ -67,7 +59,7 @@ export default async ({ search, filter, sort, childId }, language) => {
   if (search) {
     listDefault = listDefault.filter(
       el =>
-        el.customData.selectedVaccines[0].toLowerCase().search(search) !== -1
+        el.customData.selectedVaccines[0].tag.toLowerCase().search(search) !== -1
     );
   }
 
