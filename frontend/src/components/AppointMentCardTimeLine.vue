@@ -34,7 +34,6 @@
 
       <div class="flex flex-col w-3/4 lg:ml-4">
         <div class="ml-2 mt-2 text-sm lg:text-lg">{{ vaccines[0] }}</div>
-        <div class="ml-2 text-xs lg:text-base">{{ childname }}</div>
       </div>
     </div>
   </div>
