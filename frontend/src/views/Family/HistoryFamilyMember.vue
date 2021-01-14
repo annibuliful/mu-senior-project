@@ -29,13 +29,11 @@ export default {
     );
 
     this.$store.commit("listRecordsByChildId", this.childId);
-    this.testUrl = this.$store.state.listRecords[1].recordImage;
   },
   data() {
     return {
       childId: "",
       childInfo: {},
-      testUrl: "",
     };
   },
   computed: {

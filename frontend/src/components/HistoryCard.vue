@@ -1,9 +1,10 @@
 <template>
   <div>
     <div class="px-4 py-2 shadow-md lg:text-2xl">
+
       <div class="flex flex-row w-full ">
         <img
-          v-if="recordObject.recordImage"
+          v-if="isImgExist"
           :src="recordObject.recordImage"
           class="w-3/12 h-24 my-auto "
         />
@@ -37,6 +38,9 @@ export default {
   computed: {
     localeText: function() {
       return this.$store.state.locale.historyPage;
+    },
+    isImgExist() {
+      return this.recordObject.recordImage != undefined;
     },
     receivingDateFormat: function() {
       let date = "";
