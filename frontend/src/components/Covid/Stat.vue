@@ -1,23 +1,24 @@
 <template>
   <div>
+    <h1 class="text-lg lg:text-2xl text-blue-800 font-bold">{{locale.covidStat.title}}</h1>
     <section class="summary my-4 rounded text-center">
-      <p class="text-center text-white my-2">Cases</p>
+      <p class="text-center text-white my-2">{{locale.covidStat.cases}}</p>
       <p class="text-white">{{ confirmed }}</p>
       <p class="text-white">[ + {{ newConfirmed }} ]</p>
     </section>
     <div class="grid-cols-3 grid gap-4 rounded">
       <div class="recovery text-center">
-        <p class="text-center text-white my-2">Recovered</p>
+        <p class="text-center text-white my-2">{{locale.covidStat.recovered}}</p>
         <p class="text-white">{{ recovered }}</p>
         <p class="text-white">[ + {{ newRecovered }} ]</p>
       </div>
       <div class="hospitalize rounded text-center">
-        <p class="text-center text-white my-2">Hospitalized</p>
+        <p class="text-center text-white my-2">{{locale.covidStat.hospitalized}}</p>
         <p class="text-white">{{ hospitalized }}</p>
         <p class="text-white">[ {{ newHospitalized }} ]</p>
       </div>
       <div class="death rounded text-center">
-        <p class="text-center text-white my-2">Death</p>
+        <p class="text-center text-white my-2">{{locale.covidStat.death}}</p>
         <p class="text-white">{{ death }}</p>
         <p class="text-white">[ + {{ newDeath }} ]</p>
       </div>
@@ -51,6 +52,12 @@ export default {
     newDeath: {
       type: Number
     }
+  },
+    computed: {
+    locale: function() {
+      return this.$store.state.locale;
+    },
+
   }
 };
 </script>

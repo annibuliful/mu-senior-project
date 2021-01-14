@@ -8,7 +8,7 @@
           alt=""
         />
         <div
-          style="width:20px;height: 150%;z-index: -1;"
+          style="width:10px;height: 100%;z-index: -1;"
           :class="classVerticleByStatus"
         ></div>
       </div>
@@ -17,7 +17,6 @@
           {{ vaccines[0] }}
         </div>
         <div class=" ml-2">{{ dateFormat }}</div>
-        <div class="ml-2 text-sm lg:text-base">{{ childname }}</div>
       </div>
     </div>
 
@@ -27,14 +26,13 @@
           {{ dateFormat }}
         </div>
         <div
-          style="width:20px;height: 150%;z-index: -1;"
+          style="width:10px;height: 100%;z-index: -1;"
           :class="classVerticleByStatus"
         ></div>
       </div>
 
       <div class="flex flex-col w-3/4 lg:ml-4">
         <div class="ml-2 mt-2 text-sm lg:text-lg">{{ vaccines[0] }}</div>
-        <div class="ml-2 text-xs lg:text-base">{{ childname }}</div>
       </div>
     </div>
   </div>
