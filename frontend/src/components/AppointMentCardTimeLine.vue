@@ -8,7 +8,7 @@
           alt=""
         />
         <div
-          style="width:20px;height: 150%;z-index: -1;"
+          style="width:10px;height: 100%;z-index: -1;"
           :class="classVerticleByStatus"
         ></div>
       </div>
@@ -27,7 +27,7 @@
           {{ dateFormat }}
         </div>
         <div
-          style="width:20px;height: 150%;z-index: -1;"
+          style="width:10px;height: 100%;z-index: -1;"
           :class="classVerticleByStatus"
         ></div>
       </div>
