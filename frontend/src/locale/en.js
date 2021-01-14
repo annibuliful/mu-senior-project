@@ -38,6 +38,8 @@ export default {
   noEvent: "There is no any event",
   welcomeLanguage: "Welcome to Vaccinet",
   welcomeContinue: "Continue",
+  receievedQA: "Received",
+  notReceievedQA: "Never Received",
   loadmore: "Loadmore",
   pin: {
     label: "Enter PIN"

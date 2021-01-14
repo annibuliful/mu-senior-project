@@ -26,7 +26,9 @@
         }}
       </p>
     </div>
-    <button class="btn-primary" @click="onSubmitPassword">Login</button>
+    <button class="btn-primary" @click="onSubmitPassword">
+      {{ requireLabel.login }}
+    </button>
   </div>
 </template>
 <script>
