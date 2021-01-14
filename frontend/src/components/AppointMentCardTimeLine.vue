@@ -17,7 +17,6 @@
           {{ vaccines[0] }}
         </div>
         <div class=" ml-2">{{ dateFormat }}</div>
-        <div class="ml-2 text-sm lg:text-base">{{ childname }}</div>
       </div>
     </div>
 
