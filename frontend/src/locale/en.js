@@ -97,6 +97,7 @@ export default {
     age: "Age",
     reporttitle: "Immunity Status",
     roadmap: "Vaccine Roadmap",
+    history: "History",
     search: "Search",
     sortBy: "Sorted by",
     filterBy: "Filtered by",

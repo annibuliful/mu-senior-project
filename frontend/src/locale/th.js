@@ -104,6 +104,7 @@ export default {
     age: "อายุ",
     reporttitle: "สถานะภูมิคุ้มกัน",
     roadmap: "แผนการฉีดวัคซีน",
+    history: "ประวัติการฉีด",
     search: "ค้นหา",
     sortBy: "เรียงข้อมูล",
     filterBy: "ตัวกรอง",
