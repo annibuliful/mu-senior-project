@@ -1,16 +1,17 @@
 <template>
   <div>
-    <div class="px-4 py-2 shadow-md">
-      <div class="flex flex-row w-full">
+    <div class="px-4 py-2 shadow-md lg:text-2xl">
+
+      <div class="flex flex-row w-full ">
         <img
-          v-if="recordObject.recordImage"
+          v-if="isImgExist"
           :src="recordObject.recordImage"
           class="w-3/12 h-24 my-auto "
         />
         <!-- <div class="w-3/12  px-2"></div> -->
-        <div class="w-9/12 px-2 text-sm my-auto">
-          <div>
-            <span class="font-bold text-blue-800"
+        <div class="w-9/12 px-2 my-auto">
+          <div class="">
+            <span class="font-bold text-blue-800 "
               >{{ localeText.received }}:</span
             >
             {{ recordObject.selectedVaccines[0].tag }}
@@ -22,7 +23,7 @@
 
           <div>
             <span class="font-bold">{{ localeText.date }}:</span>
-            {{ recordObject.receivingDate | receivingDateFormat }}
+            {{ receivingDateFormat }}
           </div>
         </div>
       </div>
@@ -31,23 +32,37 @@
   </div>
 </template>
 <script>
-import format from "date-fns/format";
+import { format, addYears } from "date-fns";
+import { th } from "date-fns/locale";
 export default {
-  filters: {
-    receivingDateFormat: function(value) {
-      return format(new Date(value), "dd/MM/yyyy");
-    }
-  },
   computed: {
     localeText: function() {
       return this.$store.state.locale.historyPage;
-    }
+    },
+    isImgExist() {
+      return this.recordObject.recordImage != undefined;
+    },
+    receivingDateFormat: function() {
+      let date = "";
+      if (this.$store.state.calendarLocale === "th-TH") {
+        date = format(
+          addYears(new Date(this.recordObject.receivingDate), 543),
+          "dd MMM yyyy",
+          {
+            locale: th,
+          }
+        );
+      } else {
+        date = format(new Date(this.recordObject.receivingDate), "dd MMM yyyy");
+      }
+      return date;
+    },
   },
   props: {
     recordObject: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>

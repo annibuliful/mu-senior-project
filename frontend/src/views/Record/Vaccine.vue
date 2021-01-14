@@ -314,7 +314,7 @@ export default {
         ...this.selectedVaccines.map(el => el.id)
       ];
       await service().family.update(childId, childInfo);
-      this.$router.push("/");
+      this.$router.push({ name: "dashboard-home" });
     },
     cancel() {
       this.$router.go(-1);

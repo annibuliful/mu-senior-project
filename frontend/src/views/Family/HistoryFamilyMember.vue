@@ -1,12 +1,5 @@
 <template>
   <div>
-    <div
-      class="text-xl mb-5 border-b-2 border-blue-700 ml-2"
-      style="width: fit-content;"
-    >
-      {{ localText.title }}
-    </div>
-
     <div class="flex flex-col items-center">
       <div v-if="listRecords.length != 0">
         <div v-for="record in listRecords" :key="`${record.recordId}`">
@@ -27,22 +20,20 @@ import HistoryCard from "../../components/HistoryCard.vue";
 
 export default {
   components: {
-    HistoryCard
+    HistoryCard,
   },
   created() {
     this.childId = Number(this.$route.params.id);
     this.childInfo = this.$store.state.listFamilies.find(
-      el => el.familyId === this.childId
+      (el) => el.familyId === this.childId
     );
 
     this.$store.commit("listRecordsByChildId", this.childId);
-    this.testUrl = this.$store.state.listRecords[1].recordImage;
   },
   data() {
     return {
       childId: "",
       childInfo: {},
-      testUrl: ""
     };
   },
   computed: {
@@ -51,7 +42,7 @@ export default {
     },
     localText() {
       return this.$store.state.locale.historyPage;
-    }
+    },
   },
   methods: {
     onFileChange(e) {
@@ -62,7 +53,7 @@ export default {
       reader.onload = () => {
         this.base64Url = reader.result;
       };
-    }
-  }
+    },
+  },
 };
 </script>

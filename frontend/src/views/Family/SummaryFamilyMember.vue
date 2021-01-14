@@ -5,18 +5,18 @@
       :isSuggestion="isNeedSuggestion"
       v-on:create-suggestion="onClickToSuggestion"
     />
-    <!-- <div class="flex flex-row justify-center mt-2">
-      <button @click="changeToRoadMap" class="border-2 p-1 mr-2">
-        Roadmap
-      </button>
-      <button @click="changeToHistory" class="border-2 p-1 ">
-        History
-      </button>
-    </div> -->
 
+    <div class="text-xl mb-5 ml-2 flex flex-row justify-center">
+      <div :class="classRoadmapLine" @click="changeToRoadMap" class="mr-4">
+        {{ labelText.roadmap }}
+      </div>
+      <div :class="classHistoryLine" @click="changeToHistory">
+        {{ labelText.history }}
+      </div>
+    </div>
     <History v-if="displayMode === 'History'" />
     <div v-if="displayMode === 'Roadmap'">
-      <div class="flex flex-row mt-4">
+      <div class="flex flex-row mt-4 mb-4">
         <!-- input area start-->
         <div
           class="flex justify-center items-center md:w-full md:justify-center  mx-auto"
@@ -81,17 +81,10 @@
         </div>
       </div>
 
-      <div
-        class="text-xl mb-5 border-b-2 border-blue-700 ml-2"
-        style="width: fit-content;"
-      >
-        {{ labelText.roadmap }}
-      </div>
-
       <button
         v-if="isNeedSuggestion"
         @click="onClickToSuggestion"
-        class="block mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        class="block mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
       >
         {{ labelText.suggestedPlan }}
       </button>
@@ -101,7 +94,7 @@
         :childname="appointment.customData.childname"
         :note="appointment.customData.note"
         :time="appointment.customData.time"
-        :vaccines="appointment.customData.selectedVaccines.map(el => el.tag)"
+        :vaccines="appointment.customData.selectedVaccines.map((el) => el.tag)"
         :status="appointment.status"
         :key="`${index}-${appointment.customData.childname}`"
         :date="appointment.dates"
@@ -125,17 +118,18 @@ export default {
   components: {
     FamilyMemberHeader,
     History,
-    AppointmentCard
+    AppointmentCard,
   },
   created() {
     this.displayMode = "Roadmap";
+    this.classRoadmapLine = "border-b-2 border-blue-700";
     services()
       .appointment.cronCheckStatus()
       .then(async () => {
         const language = this.$store.state.calendarLanguage;
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
-          el => el.familyId === this.childId
+          (el) => el.familyId === this.childId
         );
 
         const listAppointments = await services().appointment.listByChildId(
@@ -159,7 +153,9 @@ export default {
       sort: "date",
       searchKeyword: "",
       isFilterShow: false,
-      isNeedSuggestion: false
+      isNeedSuggestion: false,
+      classHistoryLine: "",
+      classRoadmapLine: "",
     };
   },
   computed: {
@@ -177,16 +173,16 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    }
+    },
   },
   methods: {
     onClickToSuggestion() {
       this.$store.commit("setTempFamilyInfo", {
         ...this.childInfo,
-        isUpdated: true
+        isUpdated: true,
       });
       this.$router.push({
-        name: "appointment-child-suggestion"
+        name: "appointment-child-suggestion",
       });
     },
     onClickFilter() {
@@ -194,9 +190,13 @@ export default {
     },
     changeToHistory() {
       this.displayMode = "History";
+      this.classRoadmapLine = "";
+      this.classHistoryLine = "border-b-2 border-blue-700";
     },
     changeToRoadMap() {
       this.displayMode = "Roadmap";
+      this.classRoadmapLine = "border-b-2 border-blue-700";
+      this.classHistoryLine = "";
     },
     async search() {
       const language = this.$store.state.calendarLocale;
@@ -206,13 +206,13 @@ export default {
           search: this.searchKeyword,
           filter: this.filter,
           sort: this.sort,
-          childId: this.childId
+          childId: this.childId,
         },
         language
       );
 
       this.$store.commit("setNewAppointmentList", data ?? []);
-    }
-  }
+    },
+  },
 };
 </script>

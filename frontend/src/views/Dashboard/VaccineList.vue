@@ -74,7 +74,7 @@
 import VaccineCard from "../../components/VaccineCard";
 export default {
   components: {
-    VaccineCard
+    VaccineCard,
   },
   created() {
     this.displayVaccineList = this.vaccineList;
@@ -86,7 +86,7 @@ export default {
       isFilterShow: false,
       selectedCategory: "",
       selectedSorting: "",
-      selectedType: ""
+      selectedType: "",
     };
   },
   computed: {
@@ -95,11 +95,11 @@ export default {
     },
     localeText: function() {
       return this.$store.state.locale;
-    }
+    },
   },
   methods: {
     searchVaccine() {
-      const filteredVaccineList = this.vaccineList.filter(vcObj => {
+      const filteredVaccineList = this.vaccineList.filter((vcObj) => {
         return (
           vcObj.vaccineMedicalName
             .toLowerCase()
@@ -112,44 +112,34 @@ export default {
       this.displayVaccineList = filteredVaccineList;
     },
     onSelectedCategory() {
-      const filteredVaccineList = this.vaccineList.filter(vcObj => {
+      const filteredVaccineList = this.vaccineList.filter((vcObj) => {
         return vcObj.category === this.selectedCategory;
       });
       this.displayVaccineList = filteredVaccineList;
     },
     onSelectedSorting() {
       if (this.selectedSorting === "accen") {
-        const sorting = (a, b) => {
-          const vaccineNameNormalA = a.vaccineNameNormal.toUpperCase();
-          const vaccineNameNormalB = b.vaccineNameNormal.toUpperCase();
-          let comparison = 0;
-          if (vaccineNameNormalA > vaccineNameNormalB) {
-            comparison = 1;
-          } else if (vaccineNameNormalA < vaccineNameNormalB) {
-            comparison = -1;
+        this.displayVaccineList = this.displayVaccineList.sort((a, b) => {
+          console.log("a", a);
+          if (a.vaccineNameNormal < b.vaccineNameNormal) {
+            return -1;
           }
-
-          return comparison;
-        };
-
-        this.displayVaccineList = this.vaccineList.sort(sorting);
+          if (a.vaccineNameNormal > b.vaccineNameNormal) {
+            return 1;
+          }
+          return 0;
+        });
       } else if (this.selectedSorting === "deccen") {
-        const sorting = (a, b) => {
-          const vaccineNameNormalA = a.vaccineNameNormal.toUpperCase();
-          const vaccineNameNormalB = b.vaccineNameNormal.toUpperCase();
-          let comparison = 0;
-          if (vaccineNameNormalA > vaccineNameNormalB) {
-            comparison = 1;
-          } else if (vaccineNameNormalA < vaccineNameNormalB) {
-            comparison = -1;
+        this.displayVaccineList = this.displayVaccineList.sort((a, b) => {
+          console.log("d", a);
+          if (a.vaccineNameNormal < b.vaccineNameNormal) {
+            return 1;
           }
-
-          return comparison * -1;
-        };
-
-        this.displayVaccineList = this.vaccineList.sort(sorting);
-      } else {
-        // add another sorting
+          if (a.vaccineNameNormal > b.vaccineNameNormal) {
+            return -1;
+          }
+          return 0;
+        });
       }
     },
     resetSearch() {
@@ -158,8 +148,8 @@ export default {
     },
     onClickFilter() {
       this.isFilterShow = !this.isFilterShow;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped></style>

@@ -50,9 +50,6 @@
           </ul>
           <p class="text-xs">{{ childname }}</p>
         </div>
-        <div class="text-xs text-gray-600 font-normal text-right w-auto">
-          {{ time }}
-        </div>
       </div>
     </div>
   </div>
