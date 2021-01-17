@@ -139,12 +139,32 @@ export default {
       }
     },
     submitAll: async function() {
+      const listReceiveVaccines = [];
       for (let i = 0; i < this.listVaccines.length; i++) {
         const temp = this.listVaccines[i];
         const vaccine = { id: temp.vaccineId, tag: temp.vaccineNameNormal };
         const receiveDate = temp.recordDate;
+        if (
+          receiveDate === "" ||
+          receiveDate === null ||
+          receiveDate === undefined
+        ) {
+          continue;
+        }
+        listReceiveVaccines.push(vaccine.id);
         await this.submit(vaccine, receiveDate, temp.eventId);
       }
+
+      const { familyId } = this.childInfo;
+
+      const childInfo = (await service().family.getByChildId(familyId))[0];
+
+      childInfo.receivedVaccines = [
+        ...childInfo.receivedVaccines,
+        ...listReceiveVaccines
+      ];
+
+      await service().family.update(familyId, childInfo);
 
       this.$router.push({ name: "dashboard-home" });
     },
@@ -179,9 +199,7 @@ export default {
           status: "vaccinated"
         })
       ]);
-      const childInfo = (await service().family.getByChildId(familyId))[0];
-      childInfo.receivedVaccines = [...childInfo.receivedVaccines, vaccine.id];
-      await service().family.update(familyId, childInfo);
+      return;
     }
   }
 };
