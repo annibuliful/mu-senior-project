@@ -107,13 +107,13 @@ export default {
       selectedVaccines: [],
       note: "",
       listChildren: [],
-      time: "",
+      time: ""
     };
   },
   created: function() {
     this.$store.commit("listFamilies");
     this.selectedVaccines = this.$store.state.baseRecordVaccine.selectedVaccines.map(
-      (el) => ({ tag: el })
+      el => ({ tag: el })
     );
   },
   methods: {
@@ -127,12 +127,12 @@ export default {
         key: this.selectedDate.toString(),
         status: "in-progress",
         customData: {
-          selectedVaccines: this.selectedVaccines.map((el) => el.id),
+          selectedVaccines: this.selectedVaccines.map(el => el.id),
           note: this.note,
           childname: fullname,
           childId: familyId,
-          time: this.time,
-        },
+          time: this.time
+        }
       };
       await service().appointment.create(data);
       this.$router.push({ name: "dashboard-index" });
@@ -145,16 +145,16 @@ export default {
     },
     cancel() {
       this.$router.go(-1);
-    },
+    }
   },
   computed: {
     listFamilies() {
       return this.$store.state.listFamilies;
     },
     listVaccines() {
-      return this.$store.state.locale.vaccines.map((el) => ({
+      return this.$store.state.locale.vaccines.map(el => ({
         tag: el.vaccineNameNormal,
-        id: el.vaccineId,
+        id: el.vaccineId
       }));
     },
     titleText() {
@@ -178,8 +178,8 @@ export default {
       },
       set: function(date) {
         this.$store.commit("changeSelectedCalendarDate", date);
-      },
-    },
-  },
+      }
+    }
+  }
 };
 </script>

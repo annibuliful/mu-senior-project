@@ -33,21 +33,32 @@ export default async ({ search, filter, sort, childId }, language) => {
 
   if (sort === "name") {
     listDefault = listDefault.sort((a, b) => {
-      
-      if (a.customData.selectedVaccines[0].tag < b.customData.selectedVaccines[0].tag) {
+      if (
+        a.customData.selectedVaccines[0].tag <
+        b.customData.selectedVaccines[0].tag
+      ) {
         return -1;
       }
-      if (a.customData.selectedVaccines[0].tag > b.customData.selectedVaccines[0].tag) {
+      if (
+        a.customData.selectedVaccines[0].tag >
+        b.customData.selectedVaccines[0].tag
+      ) {
         return 1;
       }
       return 0;
     });
   } else if (sort === "disease") {
     listDefault.sort((a, b) => {
-      if (a.customData.selectedVaccines[0].tag < b.customData.selectedVaccines[0].tag) {
+      if (
+        a.customData.selectedVaccines[0].tag <
+        b.customData.selectedVaccines[0].tag
+      ) {
         return -1;
       }
-      if (a.customData.selectedVaccines[0].tag > b.customData.selectedVaccines[0].tag) {
+      if (
+        a.customData.selectedVaccines[0].tag >
+        b.customData.selectedVaccines[0].tag
+      ) {
         return 1;
       }
       return 0;
@@ -59,7 +70,8 @@ export default async ({ search, filter, sort, childId }, language) => {
   if (search) {
     listDefault = listDefault.filter(
       el =>
-        el.customData.selectedVaccines[0].tag.toLowerCase().search(search) !== -1
+        el.customData.selectedVaccines[0].tag.toLowerCase().search(search) !==
+        -1
     );
   }
 
