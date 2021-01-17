@@ -31,13 +31,13 @@ module.exports = [
   },
   {
     newsId: "news004",
-    newsTitle: "Medical examiner reviewing doctor's death 2 weeks after getting COVID vaccine",
+    newsTitle:
+      "Medical examiner reviewing doctor's death 2 weeks after getting COVID vaccine",
     exampleContent:
       "ORLANDO, Fla. — The medical examiner’s office in Miami is looking into the death of a doctor who died about two weeks after getting Pfizer’s COVID-19 vaccine, officials said Friday.",
     newsContent:
       "<div><p>ORLANDO, Fla. — The medical examiner’s office in Miami is looking into the death of a doctor who died about two weeks after getting Pfizer’s COVID-19 vaccine, officials said Friday.</p><p>In a statement, Pfizer said it was aware of the death, but that it didn’t think there was any direct connection to the vaccine.</p><p>The death of Dr. Gregory Michael is being investigated along with the Florida Department of Health and the federal Centers for Disease Control and Prevention. Samples from an autopsy conducted Wednesday have been sent to the CDC, said Darren Caprara, director of operations for the Miami-Dade County Medical Examiner Department.</p><p>“The cause of death is pending the completion of studies” by the medical examiner and the CDC, Caprara said in an email Friday.</p><p>Pfizer said the doctor died 16 days after receiving a vaccine shot. The company said it was a “highly unusual” and severe case of a condition that can prevent blood from clotting and cause internal bleeding.</p><p>“To date, millions of people have been vaccinated and we are closely monitoring all adverse events in individuals receiving our vaccine,” the statement said.</p><p>Michael, 56, died Sunday. He was an obstetrician with a private practice at Mount Sinai Medical Center in Miami Beach. His wife didn’t respond to a request for an interview on Friday.</p></div>",
     newsReference:
       "https://www.washingtontimes.com/news/2021/jan/8/dr-gregory-michael-dies-2-weeks-after-getting-covi/ "
-  },
-
+  }
 ];

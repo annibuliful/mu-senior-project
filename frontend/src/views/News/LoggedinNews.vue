@@ -36,14 +36,14 @@ export default {
   components: {
     NewsCard,
     TopBar,
-    CovidStat,
+    CovidStat
   },
 
   methods: {
     onSelectNews(newsId) {
       //   alert(newsId);
       this.$router.push({ name: "logged-news-info", params: { newsId } });
-    },
+    }
   },
   computed: {
     listNews: function() {
@@ -57,7 +57,7 @@ export default {
     },
     networkMode: function() {
       return this.$store.state.networkMode;
-    },
-  },
+    }
+  }
 };
 </script>

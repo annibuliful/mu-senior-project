@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="px-4 py-2 shadow-md lg:text-2xl">
-
       <div class="flex flex-row w-full ">
         <img
           v-if="isImgExist"
@@ -49,20 +48,20 @@ export default {
           addYears(new Date(this.recordObject.receivingDate), 543),
           "dd MMM yyyy",
           {
-            locale: th,
+            locale: th
           }
         );
       } else {
         date = format(new Date(this.recordObject.receivingDate), "dd MMM yyyy");
       }
       return date;
-    },
+    }
   },
   props: {
     recordObject: {
       type: Object,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 };
 </script>

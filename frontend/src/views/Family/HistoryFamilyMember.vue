@@ -20,12 +20,12 @@ import HistoryCard from "../../components/HistoryCard.vue";
 
 export default {
   components: {
-    HistoryCard,
+    HistoryCard
   },
   created() {
     this.childId = Number(this.$route.params.id);
     this.childInfo = this.$store.state.listFamilies.find(
-      (el) => el.familyId === this.childId
+      el => el.familyId === this.childId
     );
 
     this.$store.commit("listRecordsByChildId", this.childId);
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       childId: "",
-      childInfo: {},
+      childInfo: {}
     };
   },
   computed: {
@@ -42,7 +42,7 @@ export default {
     },
     localText() {
       return this.$store.state.locale.historyPage;
-    },
+    }
   },
   methods: {
     onFileChange(e) {
@@ -53,7 +53,7 @@ export default {
       reader.onload = () => {
         this.base64Url = reader.result;
       };
-    },
-  },
+    }
+  }
 };
 </script>
