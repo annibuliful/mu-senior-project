@@ -10,6 +10,6 @@ export class CreateUserDto {
   gender: Gender;
   phone?: string[];
   role: Role;
-  diseases: string[];
-  receivedVaccines: string[];
+  diseases?: string[];
+  receivedVaccines?: string[];
 }
