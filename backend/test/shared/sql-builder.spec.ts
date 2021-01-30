@@ -23,19 +23,22 @@ describe('sql builder ', () => {
     const queryResult = new sqlBuilder(sqlBuilderData);
     const sqlQuery = queryResult.getById('test').toSQL().sql;
 
-    const expectedSql = `select ${sqlBuilderData.columns.join(',')} from users`;
+    const listColumns = sqlBuilderData.columns
+      .map(col => `\\"${columns}\\"`)
+      .join(',');
+    const expectedSql = `select ${listColumns} from users`;
     expect(expectedSql).toEqual(sqlQuery);
   });
   test('contruct with only model name', () => {
     const sqlBuilderData: ISqlBuilder = {
       modelName: 'users',
       primaryKeyName: 'userId',
-      columns,
+      columns: [],
     };
 
     const queryResult = new sqlBuilder(sqlBuilderData);
     const sqlQuery = queryResult.getById('test').toSQL().sql;
-    const expectedSql = `select * from "users"`;
+    const expectedSql = `select * from "users" where \"userId\" = ?`;
     expect(expectedSql).toEqual(sqlQuery);
   });
 });
