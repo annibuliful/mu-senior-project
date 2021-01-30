@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { IQuery } from 'src/shared/interface/sql';
-import { sqlBuilder } from 'src/shared/services/sql-builder';
+import { IQuery } from '../../shared/interface/sql';
+import { sqlBuilder } from '../../shared/services/sql-builder';
 import { IService } from '../../shared/interface/service';
 import { IFamily } from './family.interface';
 
@@ -70,7 +70,16 @@ export class FamilyService implements IService<IFamily> {
       };
     }
   }
-  deleteById(id: string): Promise<string | IFamily> {
-    throw new Error('Method not implemented.');
+
+  async deleteById(id: string): Promise<IFamily> {
+    try {
+      const result = await this.builder.deleteById(id);
+      return { ...result, count: result };
+    } catch (e) {
+      throw {
+        service: this.serviceName,
+        error: new Error(e),
+      };
+    }
   }
 }

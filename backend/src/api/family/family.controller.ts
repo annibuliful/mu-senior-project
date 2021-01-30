@@ -5,6 +5,8 @@ import {
   Param,
   Patch,
   Post,
+  Get,
+  Delete,
 } from '@nestjs/common';
 import { IQuery } from 'src/shared/interface/sql';
 import { IController } from '../../shared/interface/controller';
@@ -15,9 +17,17 @@ import { FamilyService } from './family.service';
 @Controller('families')
 export class FamilyController implements IController<IFamily> {
   constructor(private familyService: FamilyService) {}
-  getById(id: string): Promise<IFamily> {
-    throw new Error('Method not implemented.');
+
+  @Get(':id')
+  async getById(@Param('id') id: string): Promise<IFamily> {
+    try {
+      const result = await this.familyService.getById(id);
+      return result;
+    } catch (e) {
+      throw new HttpException(e, 500);
+    }
   }
+
   getByQuery(query: IQuery): Promise<IFamily[]> {
     throw new Error('Method not implemented.');
   }
@@ -44,7 +54,14 @@ export class FamilyController implements IController<IFamily> {
       throw new HttpException(e, 500);
     }
   }
-  deleteById(id: string): Promise<string | IFamily> {
-    throw new Error('Method not implemented.');
+
+  @Delete(':id')
+  async deleteById(@Param('id') id: string): Promise<string | IFamily> {
+    try {
+      const result = await this.familyService.deleteById(id);
+      return result;
+    } catch (e) {
+      throw new HttpException(e, 500);
+    }
   }
 }

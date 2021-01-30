@@ -77,6 +77,8 @@ export class sqlBuilder<T> implements IDatabaseBuilder<T> {
   }
 
   deleteById(id: string): Knex.QueryBuilder {
-    return db(this.primaryKeyName).where(this.primaryKeyName, '=', id);
+    return db(this.modeName)
+      .where(this.primaryKeyName, '=', id)
+      .del();
   }
 }
