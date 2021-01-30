@@ -50,7 +50,7 @@ export class FamilyService implements IService<IFamily> {
   async create(data: IFamily): Promise<IFamily> {
     try {
       const result = await this.builder.create(data);
-      return result;
+      return result[0];
     } catch (e) {
       throw {
         service: this.serviceName,

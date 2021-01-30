@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { IController } from 'src/shared/interface/controller';
 import { IQuery } from 'src/shared/interface/sql';
+import { AppointmentDto } from './appointment.dto';
 import { IAppointment } from './appointment.interface';
 import { AppointmentService } from './appointment.service';
 
@@ -37,7 +38,7 @@ export class AppointmentController implements IController<IAppointment> {
   }
 
   @Post()
-  async create(@Body() data: IAppointment): Promise<IAppointment> {
+  async create(@Body() data: AppointmentDto): Promise<IAppointment> {
     try {
       const result = await this.appointmentService.create(data);
       return result;
@@ -49,7 +50,7 @@ export class AppointmentController implements IController<IAppointment> {
   @Patch(':id')
   async updateById(
     @Param('id') id: string,
-    @Body() data: IAppointment,
+    @Body() data: AppointmentDto,
   ): Promise<IAppointment> {
     try {
       const result = await this.appointmentService.updateById(id, data);

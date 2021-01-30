@@ -58,7 +58,7 @@ export class AppointmentService implements IService<IAppointment> {
   async create(data: IAppointment): Promise<IAppointment> {
     try {
       const result = await this.builder.create(data);
-      return result;
+      return result[0];
     } catch (e) {
       throw {
         service: this.serviceName,
