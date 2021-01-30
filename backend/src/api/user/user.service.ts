@@ -5,6 +5,7 @@ import * as argon from 'argon2';
 // interface
 import { ICreateUser, IUser } from './user.interface';
 import { IQuery } from '../../shared/interface/sql';
+
 @Injectable()
 export class UserService {
   private readonly serviceName = 'users';

@@ -1,5 +1,6 @@
 import Knex = require('knex');
 import db from '../../knex';
+import { IDatabaseBuilder } from '../interface/database-builder';
 import { IQuery } from '../interface/sql';
 
 export interface ISqlBuilder {
@@ -7,7 +8,7 @@ export interface ISqlBuilder {
   primaryKeyName: string;
   columns: string[];
 }
-export class sqlBuilder<T> {
+export class sqlBuilder<T> implements IDatabaseBuilder<T> {
   private modeName: string;
   private columns: string[];
   private primaryKeyName: string;
