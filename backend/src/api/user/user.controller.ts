@@ -10,13 +10,17 @@ import {
 } from '@nestjs/common';
 import { IQuery } from 'src/shared/interface/sql';
 import { IController } from '../../shared/interface/controller';
+import { FamilyService } from '../family/family.service';
 import { CreateUserDto } from './user.dto';
 import { IUser } from './user.interface';
 import { UserService } from './user.service';
 
 @Controller('users')
 export class UserController implements IController<IUser> {
-  constructor(private service: UserService) {}
+  constructor(
+    private userService: UserService,
+    private familyService: FamilyService,
+  ) {}
 
   getByQuery(query: IQuery): Promise<IUser[]> {
     throw new Error('Method not implemented.');
@@ -25,8 +29,9 @@ export class UserController implements IController<IUser> {
   @Post()
   async create(@Body() data: CreateUserDto): Promise<IUser> {
     try {
-      const result = await this.service.create(data);
-
+      const result = await this.userService.create(data);
+      const { password, username, ...familyData } = data;
+      await this.familyService.create({ ...familyData, userId: result.userId });
       return result;
     } catch (e) {
       console.log('e', e);
@@ -34,13 +39,13 @@ export class UserController implements IController<IUser> {
     }
   }
 
-  @Patch('/:id')
+  @Patch(':id')
   async updateById(
     @Param('id') id: string,
     @Body() data: IUser,
   ): Promise<IUser> {
     try {
-      const result = await this.service.update(Number(id), data);
+      const result = await this.userService.update(Number(id), data);
       return result;
     } catch (e) {
       throw new HttpException('Internal server error', 500);
@@ -52,7 +57,7 @@ export class UserController implements IController<IUser> {
 
   @Get('/:id')
   async getById(@Param('id') id: string): Promise<IUser> {
-    const result: IUser = await this.service.getById(Number(id));
+    const result: IUser = await this.userService.getById(Number(id));
 
     return result;
   }
