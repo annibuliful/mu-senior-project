@@ -65,17 +65,20 @@ export class sqlBuilder<T> implements IDatabaseBuilder<T> {
   updateById(id: string, data: T): Knex.QueryBuilder {
     return db(this.modeName)
       .update(data)
-      .where(this.primaryKeyName, '=', id);
+      .where(this.primaryKeyName, '=', id)
+      .returning('*');
   }
 
   create(data: T): Knex.QueryBuilder {
     return db
       .insert(data)
-      .into(this.primaryKeyName)
+      .into(this.modeName)
       .returning('*');
   }
 
   deleteById(id: string): Knex.QueryBuilder {
-    return db(this.primaryKeyName).where(this.primaryKeyName, '=', id);
+    return db(this.modeName)
+      .where(this.primaryKeyName, '=', id)
+      .del();
   }
 }

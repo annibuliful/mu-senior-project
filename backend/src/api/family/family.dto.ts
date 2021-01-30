@@ -1,9 +1,10 @@
+import { CreateUserDto } from '../user/user.dto';
+
 type Gender = 'female' | 'male';
 type Role = 'admin' | 'user';
 
-export class CreateUserDto {
-  username: string;
-  password: string;
+export class FamilyDto extends CreateUserDto {
+  userId: string;
   fullname?: string;
   birthDate?: Date;
   profileImg?: string;
