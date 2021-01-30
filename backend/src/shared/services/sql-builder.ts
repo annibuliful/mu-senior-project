@@ -1,16 +1,24 @@
+import Knex = require('knex');
 import db from '../../knex';
 import { IQuery } from '../interface/sql';
 
-export class sqlBuilder {
+export class sqlBuilder<T> {
   private modeName: string;
   private columns: string[];
+  private primaryKeyName: string;
 
-  constructor(modelName: string, columns?: string[]) {
+  constructor(modelName: string, primaryKeyName: string, columns: string[]) {
     this.modeName = modelName;
     this.columns = columns ?? [];
+    this.primaryKeyName = primaryKeyName;
   }
 
-  async getByQuery({ orderBy, query, limit, offset }: IQuery) {
+  async getByQuery({
+    orderBy,
+    query,
+    limit,
+    offset,
+  }: IQuery): Promise<Knex.QueryBuilder> {
     let baseQuery = db.select(this.columns ?? '*').from(this.modeName);
 
     const isQueryExist = query !== undefined;
@@ -44,5 +52,29 @@ export class sqlBuilder {
     }
 
     return baseQuery;
+  }
+
+  async getById(id: string): Promise<Knex.QueryBuilder> {
+    return db
+      .select(this.columns ?? '*')
+      .from(this.modeName)
+      .where(this.primaryKeyName, '=', id);
+  }
+
+  async updateById(id: string, data: T): Promise<Knex.QueryBuilder> {
+    return db(this.modeName)
+      .update(data)
+      .where(this.primaryKeyName, '=', id);
+  }
+
+  async create(data: T): Promise<Knex.QueryBuilder> {
+    return db
+      .insert(data)
+      .into(this.primaryKeyName)
+      .returning('*');
+  }
+
+  async deleteById(id: string): Promise<Knex.QueryBuilder> {
+    return db(this.primaryKeyName).where(this.primaryKeyName, '=', id);
   }
 }
