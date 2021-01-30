@@ -1,9 +1,9 @@
 import { IQuery } from './sql';
 
 export interface IController<T> {
-  getById(id: string): T;
-  getByQuery(query: IQuery): T[];
-  create(data: T): T;
-  updateById(id: string, data: T): T;
-  deleteById(id: string): string;
+  getById(id: string): Promise<T>;
+  getByQuery(query: IQuery): Promise<T[]>;
+  create(data: T): Promise<T>;
+  updateById(id: string, data: T): Promise<T>;
+  deleteById(id: string): Promise<T | string>;
 }

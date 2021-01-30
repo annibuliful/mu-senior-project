@@ -14,7 +14,6 @@ export class AuthService {
   async refreshToken(token: string) {
     try {
       const result = jwt.verify(token);
-      console.log(result);
       if (!result.isValid) {
         throw 'token is invalid';
       }
