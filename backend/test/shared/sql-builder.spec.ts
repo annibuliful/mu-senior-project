@@ -1,4 +1,4 @@
-import { ISqlBuilder, sqlBuilder } from 'src/shared/services/sql-builder';
+import { ISqlBuilder, sqlBuilder } from '../../src/shared/services/sql-builder';
 
 const columns = [
   'userId',
