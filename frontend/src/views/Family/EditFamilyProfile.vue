@@ -52,24 +52,21 @@
         />
       </div>
 
-      <!-- <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2 ">
-          {{ labelAddFamily.vaccine }}
-        </label>
-        <TagInput
-          :placeholder="labelAddFamily.vaccine"
-          :listTags="listVaccines"
-          :selectedTags="selectedVaccines"
-          v-on:on-enter="onAddNewVaccine"
-          v-on:on-remove="onDeleteVaccine"
-        />
-      </div> -->
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-auto"
-        @click="submit"
-      >
-        {{ buttonLabel.update }}
-      </button>
+      <div class="flex flex-row md:mt-8">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-auto w-20 md:w-3/12"
+          @click="submit"
+        >
+          {{ buttonLabel.update }}
+        </button>
+
+        <button
+          @click="deleteFamily()"
+          class="bg-red-500 text-white font-bold py-2 px-4  rounded block ml-auto mr-auto w-20 md:w-3/12"
+        >
+          {{ labelAddFamily.deleteFamily }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -80,7 +77,7 @@ import service from "@/services";
 
 export default {
   components: {
-    TagInput
+    TagInput,
   },
   async created() {
     this.$store.commit("listFamilies");
@@ -107,20 +104,20 @@ export default {
       selectedVaccines: [],
       childInfo: "",
       profileImgSrc: "",
-      base64Url: null
+      base64Url: null,
     };
   },
   computed: {
     listVaccines() {
-      return this.$store.state.locale.vaccines.map(el => ({
+      return this.$store.state.locale.vaccines.map((el) => ({
         id: el.vaccineId,
-        tag: el.vaccineNameNormal
+        tag: el.vaccineNameNormal,
       }));
     },
     listDiseases() {
-      return this.$store.state.locale.diseases.map(el => ({
+      return this.$store.state.locale.diseases.map((el) => ({
         id: el.diseaseId,
-        tag: el.diseaseName
+        tag: el.diseaseName,
       }));
     },
     listFamilies() {
@@ -134,7 +131,7 @@ export default {
     },
     calendarLocale() {
       return this.$store.state.calendarLocale;
-    }
+    },
   },
   methods: {
     onFileChange(e) {
@@ -162,17 +159,37 @@ export default {
       this.childInfo.fullname = this.fullname;
       this.childInfo.birthDate = this.birthDate;
       this.childInfo.profileImg = this.base64Url;
-      this.childInfo.diseases = this.selectedDiseases.map(el => el.id);
-      this.childInfo.receivedVaccines = this.selectedVaccines.map(el => el.id);
-
-      await service().family.update(
-        Number(this.$route.params.id),
-        this.childInfo
+      this.childInfo.diseases = this.selectedDiseases.map((el) => el.id);
+      this.childInfo.receivedVaccines = this.selectedVaccines.map(
+        (el) => el.id
       );
 
-      this.$router.push({
-        name: "dashboard-family"
-      });
+      try {
+        this.$fire({
+          title: this.labelAddFamily.confirmEdit,
+          showCancelButton: true,
+          confirmButtonText: this.labelAddFamily.yes,
+          cancelButtonText: this.labelAddFamily.no,
+        }).then(async (r) => {
+          if (r.value) {
+            this.$fire({
+              title: this.labelAddFamily.saveInfo,
+              type: "success",
+              timer: 3000,
+            });
+            await service().family.update(
+              Number(this.$route.params.id),
+              this.childInfo
+            );
+
+            this.$router.push({
+              name: "dashboard-family",
+            });
+          }
+        });
+      } catch (e) {
+        this.errorMessage = e.message;
+      }
     },
     resetForm() {
       this.fullname = "";
@@ -181,7 +198,44 @@ export default {
       this.inputVaccine = "";
       this.selectedDiseases = [];
       this.selectedVaccines = [];
-    }
-  }
+    },
+    async deleteFamily() {
+      if (this.childInfo.familyId === 1) {
+        //Do not delete the first family member which is the main user profile
+        this.$fire({
+          title: this.labelAddFamily.cannotDelete,
+          type: "warning",
+          timer: 3000,
+        });
+      } else {
+        this.childInfo.isDelete = true;
+        try {
+          this.$fire({
+            title: this.labelAddFamily.confirmDelete,
+            showCancelButton: true,
+            confirmButtonText: this.labelAddFamily.yes,
+            cancelButtonText: this.labelAddFamily.no,
+          }).then(async (r) => {
+            if (r.value) {
+              this.$fire({
+                title: this.labelAddFamily.deleteSuccess,
+                type: "success",
+                timer: 3000,
+              });
+              await service().family.update(
+                Number(this.$route.params.id),
+                this.childInfo
+              );
+              this.$router.push({
+                name: "dashboard-family",
+              });
+            }
+          });
+        } catch (e) {
+          this.errorMessage = e.message;
+        }
+      }
+    },
+  },
 };
 </script>
