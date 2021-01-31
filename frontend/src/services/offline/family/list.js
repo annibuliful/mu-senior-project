@@ -20,7 +20,7 @@ export default async (userId, language) => {
         diseases: listDiseaseInfo
       };
     });
+    
   }
-
   return listFamilies;
 };

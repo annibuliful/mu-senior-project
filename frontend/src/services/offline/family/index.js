@@ -6,5 +6,5 @@ export default {
   create,
   list,
   getByChildId,
-  update
+  update,
 };
