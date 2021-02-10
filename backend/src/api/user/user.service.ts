@@ -3,7 +3,8 @@ import db from '../../knex';
 import * as argon from 'argon2';
 
 // interface
-import { ICreateUser, IUser, IQuery } from './user.interface';
+import { ICreateUser, IUser } from './user.interface';
+import { IQuery } from '../../shared/interface/sql';
 
 @Injectable()
 export class UserService {
@@ -64,7 +65,7 @@ export class UserService {
           'password',
           'fullname',
           'birthDate',
-          'profileImage',
+          'profileImg',
           'gender',
           'phone',
           'createAt',
@@ -103,7 +104,7 @@ export class UserService {
           'password',
           'fullname',
           'birthDate',
-          'profileImage',
+          'profileImg',
           'gender',
           'phone',
           'createAt',

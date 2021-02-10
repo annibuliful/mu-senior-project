@@ -34,7 +34,13 @@
 </template>
 <script>
 import { formatDistanceToNow } from "date-fns";
+import service from "@/services";
 export default {
+  data() {
+    return {
+      childInfo: {},
+    };
+  },
   computed: {
     localeText: function() {
       return this.$store.state.locale.label;
@@ -45,13 +51,50 @@ export default {
 
     currentAge() {
       return formatDistanceToNow(new Date(this.childObject.birthDate));
-    }
+    },
+  },
+
+  async created() {
+    this.$store.commit("listFamilies");
+    const language = this.$store.state.calendarLocale;
+
+    this.childInfo = (
+      await service().family.getByChildId(this.$route.params.id, language)
+    )[0];
   },
   props: {
     childObject: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
+  methods: {
+    async deleteFamily() {
+      this.childInfo.isDelete = true;
+
+      try {
+        this.$fire({
+          title: this.localeText.confirmDelete,
+          showCancelButton: true,
+          confirmButtonText: this.localeText.yes,
+          cancelButtonText: this.localeText.no,
+        }).then(async (r) => {
+          if (r.value) {
+            this.$fire({
+              title: this.localeText.deleteSuccess,
+              type: "success",
+              timer: 3000,
+            });
+            await service().user.update(this.$route.params.id, this.childInfo);
+            this.$router.push({
+              name: "dashboard-family",
+            });
+          }
+        });
+      } catch (e) {
+        this.errorMessage = e.message;
+      }
+    },
+  },
 };
 </script>

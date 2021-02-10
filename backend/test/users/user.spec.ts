@@ -68,12 +68,15 @@ describe('user service', () => {
         role: 'user',
       });
 
-      const updatedResult = await userService.update(createdResult.userId, {
-        username: newUsername,
-        password: newPassword,
-        gender: 'female',
-        role: 'user',
-      });
+      const updatedResult = await userService.update(
+        Number(createdResult.userId),
+        {
+          username: newUsername,
+          password: newPassword,
+          gender: 'female',
+          role: 'user',
+        },
+      );
 
       expect(updatedResult.message).toEqual('updated');
       expect(updatedResult.username).toEqual(newUsername);
@@ -96,7 +99,7 @@ describe('user service', () => {
       });
 
       try {
-        await userService.update(createdResult.userId + 1, {
+        await userService.update(Number(createdResult.userId + 1), {
           username: newUsername,
           password: newPassword,
           gender: 'female',
@@ -121,7 +124,7 @@ describe('user service', () => {
         ...baseMockData,
       });
 
-      const result = await userService.getById(createdResult.userId);
+      const result = await userService.getById(Number(createdResult.userId));
       expect(result.username).toEqual(createdResult.username);
       expect(result.gender).toEqual(createdResult.gender);
       expect(result.role).toEqual(createdResult.role);
@@ -144,7 +147,7 @@ describe('user service', () => {
         ...baseMockData,
       });
       try {
-        await userService.getById(createdResult.userId);
+        await userService.getById(Number(createdResult.userId));
       } catch (e) {
         expect(e.error.message).toEqual('user id not found');
       }

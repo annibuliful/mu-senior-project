@@ -64,7 +64,7 @@ export default {
       .appointment.cronCheckStatus()
       .then(async () => {
         const language = this.$store.state.calendarLocale;
-        const data = await service().appointment.list(language);
+        const data = await service().appointment.listNonDelete(language);
         this.listEvents = data;
         this.filterEventOnDate = this.listEvents.filter(
           event => event.status === "vaccinating"
@@ -85,6 +85,7 @@ export default {
         locale: this.locale === "th-TH" ? th : null
       });
       this.$store.commit("changeSelectedCalendarDate", date);
+      console.log("fdsfsfsf",this.filterEventOnDate )
     },
     onLinkToAddAppointmentPage: function() {
       this.$router.push({ name: "appointment-create" });

@@ -42,20 +42,21 @@ export default {
   notReceievedQA: "Never Received",
   loadmore: "Load More",
   pin: {
-    label: "Enter PIN"
+    label: "Enter PIN",
   },
   networkMode: {
     offline: "You are Offline now",
-    online: "You are Online now"
+    online: "You are Online now",
   },
   covidStat: {
     title: "Covid-19 Stats in Thailand.",
     cases: "Cases",
     recovered: "Recovered",
     hospitalized: "Hospitalized",
-    death: "Death"
+    death: "Death",
   },
   vaccineDetailsPage: {
+    back:"Go back",
     title: "Vaccine Description",
     appointmentBtn: "Create an appointment",
     recordBtn: "Record Vaccine",
@@ -64,10 +65,10 @@ export default {
     who: "Who Should Be Vaccinated ",
     warning: "Warning/Who should not use",
     vaccineReference:
-      "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)"
+      "Referrence: Vaccine and immunization textbook 2019, Department of Disease Control, Ministry of Public Health",
   },
   vaccinePackagerPage: {
-    title: "Vaccine Packager"
+    title: "Vaccine Packager",
   },
   recordVaccinePage: {
     title: "Record Vaccine",
@@ -81,7 +82,7 @@ export default {
     uploadImage: "Upload an evidence (Incluing The Batch Number)",
     submitBtn: "Submit",
     cancelBtn: "cancel",
-    packageMember: "Suggested Vaccine for"
+    packageMember: "Suggested Vaccine for",
   },
   label: {
     ref: "reference",
@@ -113,13 +114,17 @@ export default {
     confirmLogout: "Do you want to logout?",
     logoutSuccess: "Logout successful",
     saveInfo: "Saved Your Information",
-    success: "Successful",
+    success: "successful",
     confirmEdit: "Are you sure you want to update your information?",
     continue: "Continue",
     yes: "Yes",
     no: "No",
     notifyToEdit: "Edit your information before using the application",
-    suggestedPlan: "Add vaccine plan"
+    suggestedPlan: "Add vaccine plan",
+    deleteFamily: "Delete",
+    deleteSuccess: "Delete Successful",
+    confirmDelete: "Are you sure you want to delete this profile?",
+    cannotDelete: "Cannot delete the main profile"
   },
   labelAddAppointment: {
     child: "child name",
@@ -131,7 +136,7 @@ export default {
     nextAppointMent: "Next Appointment",
     vcName: "Vaccine name",
     complete: "Complete",
-    day: "Days"
+    day: "Days",
   },
   labelError: {
     required: "{} is required",
@@ -139,14 +144,14 @@ export default {
     atLeast: "{} must have at least ",
     duplicate: " duplicate {}",
     notFound: "{} not found",
-    incorrect: "{} incorrect"
+    incorrect: "{} incorrect",
   },
   historyPage: {
     title: "History",
     received: "Received",
     hospital: "Hospital/Clinic",
     date: "Date",
-    nohistory: "doesn't take any vaccine before"
+    nohistory: "doesn't take any vaccine before",
   },
   button: {
     cancel: "Cancel",
@@ -154,10 +159,10 @@ export default {
     add: "Add",
     save: "Save",
     logout: "Logout",
-    search: "Search"
+    search: "Search",
   },
   camera: {
     takePhoto: "Take a Photo",
-    reset: "reset"
-  }
+    reset: "reset",
+  },
 };

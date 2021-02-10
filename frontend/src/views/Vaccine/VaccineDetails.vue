@@ -54,7 +54,7 @@
       @click="onCardClicked"
       class="bg-blue-500 hover:bg-blue-800 w-8/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-4/12"
     >
-      {{ localeText.recordBtn }}
+      {{ localeText.back }}
     </button>
   </div>
 </template>
@@ -67,16 +67,26 @@ export default {
   },
   methods: {
     onCardClicked() {
-      this.commitBaseRecord();
+      // this.commitBaseRecord();
+      // this.$router.push({
+      //   path: `/recordvaccine`
+      // });
+
+      // Hide bug for interview
       this.$router.push({
-        path: `/recordvaccine`
+        name: "dashboard-vaccine"
       });
     },
     onLinkAppointment() {
-      this.commitBaseRecord();
+      // this.commitBaseRecord();
+      // this.$router.push({
+      //   name: "appointment-create"
+      // });
+
       this.$router.push({
-        name: "appointment-create"
+        name: "dashboard-vaccine"
       });
+
     },
     commitBaseRecord() {
       const data = {
