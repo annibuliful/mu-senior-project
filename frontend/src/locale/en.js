@@ -64,7 +64,7 @@ export default {
     who: "Who Should Be Vaccinated ",
     warning: "Warning/Who should not use",
     vaccineReference:
-      "Referrence: Centers for Disease Control and Prevention (www.cdc.gov)",
+      "Referrence: Vaccine and immunization textbook 2019, Department of Disease Control, Ministry of Public Health",
   },
   vaccinePackagerPage: {
     title: "Vaccine Packager",
