@@ -52,8 +52,9 @@ export default {
     this.vaccineDetails = this.$store.state.selectedVaccineDetails;
     const data = await service().record.countRecordTime(
       this.childId,
-      this.vaccineDetails.vaccineNameNormal
+      this.vaccineDetails.vaccineId
     );
+
     this.numberDoseReceived = data;
 
     const isComplete =
