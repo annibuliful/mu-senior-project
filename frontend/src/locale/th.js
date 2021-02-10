@@ -55,6 +55,7 @@ export default {
     label: "โปรดกรอก PIN",
   },
   vaccineDetailsPage: {
+    back:"ย้อนกลับ",
     title: "รายละเอียดวัคซีน",
     suggestedAge: "อายุที่ควรได้รับวัคซีน",
     who: "บุคคลที่ควรได้รับวัคซีน และอายุที่ควรรับวัคซีน",

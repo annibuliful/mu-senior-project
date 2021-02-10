@@ -139,6 +139,7 @@ export default {
       }
     },
     submitAll: async function() {
+      
       const listReceiveVaccines = [];
       for (let i = 0; i < this.listVaccines.length; i++) {
         const temp = this.listVaccines[i];
@@ -165,7 +166,11 @@ export default {
       ];
 
       await service().family.update(familyId, childInfo);
-
+      this.$fire({
+        title: this.locale.label.saveInfo + " "+ this.locale.label.success,
+        type: "success",
+        timer: 3000
+      });
       this.$router.push({ name: "dashboard-home" });
     },
     submit: async function(vaccine, receiveDate, eventId) {

@@ -60,14 +60,12 @@ export default {
   },
   components: { Calendar, AppointmentCard, TopBar },
   created: function() {
-    console.log("sdfsfsd")
     service()
       .appointment.cronCheckStatus()
       .then(async () => {
         const language = this.$store.state.calendarLocale;
         const data = await service().appointment.listNonDelete(language);
         this.listEvents = data;
-        console.log("called11")
         this.filterEventOnDate = this.listEvents.filter(
           event => event.status === "vaccinating"
         );
