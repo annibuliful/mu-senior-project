@@ -5,7 +5,7 @@
         <img
           v-if="isImgExist"
           :src="recordObject.recordImage"
-          class="w-3/12 h-24 my-auto "
+          class="w-3/12 h-22 my-auto md:h-48 "
         />
         <!-- <div class="w-3/12  px-2"></div> -->
         <div class="w-9/12 px-2 my-auto">

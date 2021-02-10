@@ -56,6 +56,7 @@ export default {
     death: "Death",
   },
   vaccineDetailsPage: {
+    back:"Go back",
     title: "Vaccine Description",
     appointmentBtn: "Create an appointment",
     recordBtn: "Record Vaccine",
@@ -113,7 +114,7 @@ export default {
     confirmLogout: "Do you want to logout?",
     logoutSuccess: "Logout successful",
     saveInfo: "Saved Your Information",
-    success: "Successful",
+    success: "successful",
     confirmEdit: "Are you sure you want to update your information?",
     continue: "Continue",
     yes: "Yes",

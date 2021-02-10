@@ -113,7 +113,7 @@ export default {
     },
     onSelectedCategory() {
       const filteredVaccineList = this.vaccineList.filter(vcObj => {
-        return vcObj.category === this.selectedCategory;
+        return vcObj.category === this.selectedCategory || vcObj.category === "all";
       });
       this.displayVaccineList = filteredVaccineList;
     },

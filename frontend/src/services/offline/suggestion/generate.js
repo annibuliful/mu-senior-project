@@ -43,7 +43,7 @@ export default async (childInfo, language) => {
   }
 
   const filteredVaccineForChild = listVaccines.filter(
-    el => el.category === vaccineCategory
+    el => el.category === vaccineCategory || el.category === 'all'
   );
 
   const filterdVaccineChildNotReceived = filteredVaccineForChild.filter(
