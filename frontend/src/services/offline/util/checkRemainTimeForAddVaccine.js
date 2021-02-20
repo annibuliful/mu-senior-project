@@ -27,12 +27,12 @@ export default async (childId, listReceivedVaccines, language) => {
 
     const periodTime = vaccineInfo?.injectionPeriodTime;
 
-    const isComplete = periodTime.length === receivedInfo.time;
+    const isComplete = periodTime.length === receivedInfo.time + 1;
 
     return {
       vaccineId: vaccineInfo.vaccineId,
       name: vaccineInfo.vaccineNameNormal,
-      nextDay: periodTime[receivedInfo.time],
+      nextDay: periodTime[receivedInfo.time + 1],
       isComplete
     };
   });

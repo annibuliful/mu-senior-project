@@ -270,7 +270,7 @@ export default {
 
       const childId = this.baseInfo.customData.childId;
       const listVaccines = this.selectedVaccines.map(el => el.id);
-      const listNextAppointments = await service().util.checkRemainTime(
+      const listNextAppointments = await service().util.checkRemainTimeForAddVaccine(
         childId,
         listVaccines,
         language

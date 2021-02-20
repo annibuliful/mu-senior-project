@@ -42,21 +42,21 @@ export default {
   notReceievedQA: "Never Received",
   loadmore: "Load More",
   pin: {
-    label: "Enter PIN",
+    label: "Enter PIN"
   },
   networkMode: {
     offline: "You are Offline now",
-    online: "You are Online now",
+    online: "You are Online now"
   },
   covidStat: {
     title: "Covid-19 Stats in Thailand.",
     cases: "Cases",
     recovered: "Recovered",
     hospitalized: "Hospitalized",
-    death: "Death",
+    death: "Death"
   },
   vaccineDetailsPage: {
-    back:"Go back",
+    back: "Go back",
     title: "Vaccine Description",
     appointmentBtn: "Create an appointment",
     recordBtn: "Record Vaccine",
@@ -65,10 +65,10 @@ export default {
     who: "Who Should Be Vaccinated ",
     warning: "Warning/Who should not use",
     vaccineReference:
-      "Referrence: Vaccine and immunization textbook 2019, Department of Disease Control, Ministry of Public Health",
+      "Referrence: Vaccine and immunization textbook 2019, Department of Disease Control, Ministry of Public Health"
   },
   vaccinePackagerPage: {
-    title: "Vaccine Packager",
+    title: "Vaccine Packager"
   },
   recordVaccinePage: {
     title: "Record Vaccine",
@@ -83,6 +83,7 @@ export default {
     submitBtn: "Submit",
     cancelBtn: "cancel",
     packageMember: "Suggested Vaccine for",
+    doseNumber: "Dose Number"
   },
   label: {
     useNewestVersion:"You already use the lastest version",
@@ -140,7 +141,7 @@ export default {
     nextAppointMent: "Next Appointment",
     vcName: "Vaccine name",
     complete: "Complete",
-    day: "Days",
+    day: "Days"
   },
   labelError: {
     required: "{} is required",
@@ -148,14 +149,14 @@ export default {
     atLeast: "{} must have at least ",
     duplicate: " duplicate {}",
     notFound: "{} not found",
-    incorrect: "{} incorrect",
+    incorrect: "{} incorrect"
   },
   historyPage: {
     title: "History",
     received: "Received",
     hospital: "Hospital/Clinic",
     date: "Date",
-    nohistory: "doesn't take any vaccine before",
+    nohistory: "doesn't take any vaccine before"
   },
   button: {
     cancel: "Cancel",
@@ -164,9 +165,10 @@ export default {
     save: "Save",
     logout: "Logout",
     search: "Search",
+    delete: "Delete"
   },
   camera: {
     takePhoto: "Take a Photo",
-    reset: "reset",
-  },
+    reset: "reset"
+  }
 };

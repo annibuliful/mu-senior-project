@@ -94,7 +94,7 @@
         :childname="appointment.customData.childname"
         :note="appointment.customData.note"
         :time="appointment.customData.time"
-        :vaccines="appointment.customData.selectedVaccines.map((el) => el.tag)"
+        :vaccines="appointment.customData.selectedVaccines.map(el => el.tag)"
         :status="appointment.status"
         :key="`${index}-${appointment.customData.childname}`"
         :date="appointment.dates"
@@ -107,18 +107,13 @@
 <script>
 import services from "@/services";
 import History from "./HistoryFamilyMember.vue";
-// import ImmunityStatus from "./Report.vue";
 import FamilyMemberHeader from "../../components/FamilyMemberHeaderInfo.vue";
-// import AppointmentRoadmap from "../Appointment/List-child.vue";
 import AppointmentCard from "@/components/AppointMentCardTimeLine.vue";
-// Require Esperanto locale
-// import { en, th } from "date-fns/esm/locale";
-// import CustomSelect from "../../components/input/CustomSelect.vue";
 export default {
   components: {
     FamilyMemberHeader,
     History,
-    AppointmentCard,
+    AppointmentCard
   },
   async created() {
     this.displayMode = "Roadmap";
@@ -129,7 +124,7 @@ export default {
         const language = this.$store.state.calendarLanguage;
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
-          (el) => el.familyId === this.childId
+          el => el.familyId === this.childId
         );
 
         const listAppointments = await services().appointment.listByChildId(
@@ -161,7 +156,7 @@ export default {
       isFilterShow: false,
       isNeedSuggestion: false,
       classHistoryLine: "",
-      classRoadmapLine: "",
+      classRoadmapLine: ""
     };
   },
   computed: {
@@ -179,16 +174,16 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    },
+    }
   },
   methods: {
     onClickToSuggestion() {
       this.$store.commit("setTempFamilyInfo", {
         ...this.childInfo,
-        isUpdated: true,
+        isUpdated: true
       });
       this.$router.push({
-        name: "appointment-child-suggestion",
+        name: "appointment-child-suggestion"
       });
     },
     onClickFilter() {
@@ -212,13 +207,13 @@ export default {
           search: this.searchKeyword,
           filter: this.filter,
           sort: this.sort,
-          childId: this.childId,
+          childId: this.childId
         },
         language
       );
 
       this.$store.commit("setNewAppointmentList", data ?? []);
-    },
-  },
+    }
+  }
 };
 </script>

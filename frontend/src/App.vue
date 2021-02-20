@@ -73,6 +73,14 @@ export default {
   @apply bg-blue-500 text-white font-bold py-2 px-4 rounded block mx-auto;
 }
 
+.btn-danger {
+  @apply bg-red-500 text-white font-bold py-2 px-4 rounded block mx-auto;
+}
+
+.btn-disabled {
+  @apply bg-white border-gray-500 text-gray-500 font-bold py-2 px-4 rounded block mx-auto;
+}
+
 .input-primary {
   @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }

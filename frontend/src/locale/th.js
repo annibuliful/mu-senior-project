@@ -42,20 +42,20 @@ export default {
   notReceievedQA: "ไม่เคยฉีด",
   networkMode: {
     offline: "คุณออฟไลน์อยู่",
-    online: "คุณออนไลน์อยู่",
+    online: "คุณออนไลน์อยู่"
   },
   covidStat: {
     title: "รายงานสถานการณ์ โควิด-19 ในประเทศไทย",
     cases: "ติดเชื้อสะสม",
     recovered: "หายแล้ว",
     hospitalized: "รักษาอยู่ใน รพ.",
-    death: "เสียชีวิต",
+    death: "เสียชีวิต"
   },
   pin: {
-    label: "โปรดกรอก PIN",
+    label: "โปรดกรอก PIN"
   },
   vaccineDetailsPage: {
-    back:"ย้อนกลับ",
+    back: "ย้อนกลับ",
     title: "รายละเอียดวัคซีน",
     suggestedAge: "อายุที่ควรได้รับวัคซีน",
     who: "บุคคลที่ควรได้รับวัคซีน และอายุที่ควรรับวัคซีน",
@@ -64,10 +64,10 @@ export default {
     description: "รายละเอียดโดยย่อ",
     warning: "คำเตือน/บุคคลที่ไม่ควรฉีด",
     vaccineReference:
-      "ที่มาข้อมูล: ตำราวัคซีนและการสร้างเสริมภูมิคุ้มกันโรค ปี 2562 กรมควบคุมโรค กระทรวงสาธารณะสุข",
+      "ที่มาข้อมูล: ตำราวัคซีนและการสร้างเสริมภูมิคุ้มกันโรค ปี 2562 กรมควบคุมโรค กระทรวงสาธารณะสุข"
   },
   vaccinePackagerPage: {
-    title: "แพ็กเกจวัคซีนเสริม",
+    title: "แพ็กเกจวัคซีนเสริม"
   },
   labelError: {
     required: "โปรดกรอก{}",
@@ -75,7 +75,7 @@ export default {
     atLeast: "{}ต้องมีตัวอักษรมากกว่า",
     duplicate: "{}ซ้ำ",
     notFound: "ไม่พบ{}นี้",
-    incorrect: "{}ไม่ถูกต้อง",
+    incorrect: "{}ไม่ถูกต้อง"
   },
   recordVaccinePage: {
     title: "จดบันทึกวัคซีน",
@@ -90,6 +90,7 @@ export default {
     submitBtn: "บันทึกข้อมูล",
     cancelBtn: "ยกเลิก",
     packageMember: "แนะนำวัคซีนสำหรับ",
+    doseNumber: "เข็มที่"
   },
   label: {
     useNewestVersion:"คุณกำลังใช้เวอร์ชันล่าสุด",
@@ -147,14 +148,14 @@ export default {
     nextAppointMent: "การนัดหมายถัดไป",
     vcName: "ชื่อวัคซีน",
     complete: "ได้รับวัคซีนชนิดนี้ครบตามแผนแล้ว",
-    day: "วัน",
+    day: "วัน"
   },
   historyPage: {
     title: "ประวัติการฉีดวัคซีน",
     received: "ได้รับวัคซีน",
     hospital: "โรงพยาบาล/คลินิค",
     date: "วันที่",
-    nohistory: "ไม่มีประวัติการได้รับวัคซีน",
+    nohistory: "ไม่มีประวัติการได้รับวัคซีน"
   },
   button: {
     cancel: "ยกเลิก",
@@ -163,9 +164,10 @@ export default {
     save: "บันทึก",
     logout: "ออกจากระบบ",
     search: "ค้นหา",
+    delete: "ลบ"
   },
   camera: {
     takePhoto: "ถ่ายรูป",
-    reset: "ถ่ายใหม่",
-  },
+    reset: "ถ่ายใหม่"
+  }
 };

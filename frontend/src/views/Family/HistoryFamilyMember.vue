@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center w-full ">
       <div v-if="listRecords.length != 0" class=" md:w-8/12">
         <div v-for="record in listRecords" :key="`${record.recordId}`">
-          <HistoryCard :recordObject="record"  />
+          <HistoryCard :recordObject="record" />
         </div>
       </div>
       <div v-else>

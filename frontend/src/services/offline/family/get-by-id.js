@@ -17,8 +17,8 @@ export default async (familyId, language) => {
       const listVaccines = family.receivedVaccines
         .map(el => getListVaccines(el, language))
         .map(vaccine => ({
-          id: vaccine.vaccineId,
-          tag: vaccine.vaccineNameNormal
+          id: vaccine?.vaccineId ?? "",
+          tag: vaccine?.vaccineNameNormal ?? ""
         }));
 
       const listDiseases = family.diseases
