@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="px-6 py-4 flex flex-row shadow-xs bg-gray-200 mt-0 md:justify-center"
+      class="pl-2 pr-2 py-4 flex flex-row shadow-xs bg-gray-200 mt-0 md:justify-center"
     >
       <!-- Check if there is profile image or not -->
       <div class="flex flex-col">
@@ -25,9 +25,19 @@
         <div class="font-bold text-blue-800 text-lg md:text-2xl md:ml-4">
           {{ childObject.fullname }}
         </div>
-        <div class="md:ml-4 md:text-xl">
+        <div class="md:ml-4 md:text-lg">
           {{ localeText.age }}: {{ currentAge }}
         </div>
+      </div>
+      <div class="col my-auto mx-auto">
+        <router-link
+          :to="{
+            name: 'edit-family-profile',
+            params: { id: id },
+          }"
+        >
+          <img class="h-6" src="../assets/icons/edit-icon.svg" alt="" />
+        </router-link>
       </div>
     </div>
   </div>
