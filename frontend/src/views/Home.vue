@@ -11,7 +11,7 @@
           :class="[mode === 'register' ? 'active' : 'text-gray-600']"
           @click="onChangeFormMode('register')"
         >
-          {{locale.register}}
+          {{ locale.register }}
         </h4>
         <p class="text-2xl">|</p>
         <p></p>
@@ -20,7 +20,7 @@
           :class="[mode === 'login' ? 'active' : 'text-gray-600']"
           @click="onChangeFormMode('login')"
         >
-          {{locale.login}}
+          {{ locale.login }}
         </h4>
       </div>
 
@@ -63,7 +63,7 @@ export default {
     labelText: function() {
       return this.$store.state.locale.label;
     },
-    locale(){
+    locale() {
       return this.$store.state.locale;
     }
   },

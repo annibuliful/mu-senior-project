@@ -38,7 +38,7 @@ import service from "@/services";
 export default {
   data() {
     return {
-      childInfo: {},
+      childInfo: {}
     };
   },
   computed: {
@@ -51,7 +51,7 @@ export default {
 
     currentAge() {
       return formatDistanceToNow(new Date(this.childObject.birthDate));
-    },
+    }
   },
 
   async created() {
@@ -65,8 +65,8 @@ export default {
   props: {
     childObject: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     async deleteFamily() {
@@ -77,24 +77,24 @@ export default {
           title: this.localeText.confirmDelete,
           showCancelButton: true,
           confirmButtonText: this.localeText.yes,
-          cancelButtonText: this.localeText.no,
-        }).then(async (r) => {
+          cancelButtonText: this.localeText.no
+        }).then(async r => {
           if (r.value) {
             this.$fire({
               title: this.localeText.deleteSuccess,
               type: "success",
-              timer: 3000,
+              timer: 3000
             });
             await service().user.update(this.$route.params.id, this.childInfo);
             this.$router.push({
-              name: "dashboard-family",
+              name: "dashboard-family"
             });
           }
         });
       } catch (e) {
         this.errorMessage = e.message;
       }
-    },
-  },
+    }
+  }
 };
 </script>

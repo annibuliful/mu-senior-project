@@ -32,20 +32,34 @@
         </p>
       </div>
     </div>
-    <div style="height: 67px;">
+    <div style="min-height: 67px;" class="my-4">
       <div v-if="receiveStatus === 'received'">
         <div
-          class="my-4"
+          class="my-4 date-form"
           v-for="(receiveDate, index) in listReceiveDates"
           :key="`${index}`"
         >
-          <label class="block text-gray-700 text-sm font-bold mb-2 ">
+          <label class="block text-gray-700 text-sm font-bold mb-2 mx-6">
             {{ locale.recordVaccinePage.receivingDate }} ({{
-              receiveDate.doseNumber
-            }})
+              locale.recordVaccinePage.doseNumber
+            }}
+            {{ receiveDate.doseNumber }})
           </label>
           <v-date-picker v-model="receiveDate.date" :locale="calendarLocale" />
+          <button
+            class="btn-danger"
+            v-if="
+              listReceiveDates.length === receiveDate.doseNumber &&
+                listReceiveDates.length !== 1
+            "
+            @click="removeReceiveDate(index)"
+          >
+            {{ locale.button.delete }}
+          </button>
         </div>
+        <button class="btn-primary" @click="onAddNewReceiveDate">
+          {{ locale.button.add }}
+        </button>
       </div>
     </div>
     <div class="flex justify-between my-4">
@@ -100,6 +114,16 @@ export default {
     this.childInfo = this.$store.state.familyInfoForOverdueVaccines;
   },
   methods: {
+    onAddNewReceiveDate: function() {
+      const doseNumber = this.listReceiveDates.length + 1;
+      this.listReceiveDates.push({
+        doseNumber,
+        date: ""
+      });
+    },
+    removeReceiveDate: function(index) {
+      this.listReceiveDates.splice(index);
+    },
     onChangeReceiveStatus: function(status) {
       this.receiveStatus = status;
       if (status === "never") {
@@ -230,5 +254,11 @@ export default {
   width: 8rem;
   height: 8rem;
   border-radius: 10px;
+}
+
+.date-form {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 30% 50% auto;
 }
 </style>

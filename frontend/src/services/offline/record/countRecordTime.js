@@ -3,15 +3,15 @@ import db from "../db";
 export default async (childId, vaccineId) => {
   const listTimesRecord = await db
     .table("records")
-    .filter((record) => record.childId === childId)
+    .filter(record => record.childId === childId)
     .toArray();
   const listAllSelectedVaccines = listTimesRecord
-    .map((record) => record.selectedVaccines)
+    .map(record => record.selectedVaccines)
     .flat()
-    .map((record) => record.id);
+    .map(record => record.id);
   if (!listAllSelectedVaccines) return 0;
 
-  const countInjectTime = listAllSelectedVaccines.filter((id) => {
+  const countInjectTime = listAllSelectedVaccines.filter(id => {
     return id === vaccineId;
   }).length;
   return countInjectTime;

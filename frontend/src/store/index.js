@@ -21,7 +21,7 @@ export default new Vuex.Store({
       newConfirmed: 0,
       newRecovered: 0,
       newHospitalized: 0,
-      newDeath: 0,
+      newDeath: 0
     },
     tempFamily: {},
     isFirstTime: false,
@@ -37,14 +37,14 @@ export default new Vuex.Store({
     baseRecordVaccine: {},
     isVaccinateComplete: false,
     listRecords: [],
-    selectedNewsDetails: {},
+    selectedNewsDetails: {}
   },
   mutations: {
     async getCovidInfo(state) {
       try {
         const response = await fetch(COVID_API, {
           method: "GET",
-          mode: "cors",
+          mode: "cors"
         });
         const data = await response.json();
         state.covidStat = {
@@ -55,7 +55,7 @@ export default new Vuex.Store({
           newConfirmed: data.NewConfirmed,
           newRecovered: data.NewRecovered,
           newHospitalized: data.NewHospitalized,
-          newDeath: data.NewDeaths,
+          newDeath: data.NewDeaths
         };
       } catch (e) {
         console.error("covid-error", e);
@@ -96,7 +96,9 @@ export default new Vuex.Store({
       const user = localStorage.getItem("userInfo");
       const { userId } = JSON.parse(user);
       const data = await services().family.list(userId, state.calendarLocale);
-      const filteredData = data.filter((eachFamily) => eachFamily.isDelete === false);
+      const filteredData = data.filter(
+        eachFamily => eachFamily.isDelete === false
+      );
       state.listFamilies = filteredData;
     },
     async listAppointmentByChildId(state, cid) {
@@ -120,20 +122,20 @@ export default new Vuex.Store({
     },
     getVaccineDetail(state, id) {
       state.selectedVaccineDetails = state.locale.vaccines.find(
-        (x) => x.vaccineId === id
+        x => x.vaccineId === id
       );
     },
     getNewsDetail(state, id) {
       state.selectedNewsDetails = state.locale.newsData.find(
-        (x) => x.newsId === id
+        x => x.newsId === id
       );
     },
     getPackagerDetail(state, id) {
       state.selectedPackagerDetails = state.locale.packagers.find(
-        (x) => x.packageId === id
+        x => x.packageId === id
       );
-    },
+    }
   },
   actions: {},
-  modules: {},
+  modules: {}
 });

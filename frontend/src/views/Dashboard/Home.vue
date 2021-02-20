@@ -85,7 +85,7 @@ export default {
         locale: this.locale === "th-TH" ? th : null
       });
       this.$store.commit("changeSelectedCalendarDate", date);
-      console.log("fdsfsfsf",this.filterEventOnDate )
+      console.log("fdsfsfsf", this.filterEventOnDate);
     },
     onLinkToAddAppointmentPage: function() {
       this.$router.push({ name: "appointment-create" });
