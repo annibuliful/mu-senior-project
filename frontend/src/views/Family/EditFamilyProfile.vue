@@ -7,8 +7,8 @@
       <div class="mb-4">
         <div>
           <label for="file-input">
-            <img v-if="!base64Url" src="../../assets/mock-member-profile.svg" />
-            <img v-else :src="base64Url" />
+            <img class="mx-auto" v-if="!base64Url" src="../../assets/mock-member-profile.svg" />
+            <img class="mx-auto" v-else :src="base64Url" />
           </label>
 
           <input

@@ -92,6 +92,10 @@ export default {
     packageMember: "แนะนำวัคซีนสำหรับ",
   },
   label: {
+    useNewestVersion:"คุณกำลังใช้เวอร์ชันล่าสุด",
+    updatedVersionExist:"ตรวจพบเวอร์ชันใหม่ ต้องการอัปเดตหรือไม่",
+    updateSuccess:"อัปเดตแอปพลิเคชันสำเร็จ",
+    version:"เวอร์ชัน",
     ref: "ที่มา",
     pin: "PIN",
     username: "ชื่อผู้ใช้งาน",

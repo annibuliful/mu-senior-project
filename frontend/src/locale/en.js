@@ -85,6 +85,10 @@ export default {
     packageMember: "Suggested Vaccine for",
   },
   label: {
+    useNewestVersion:"You already use the lastest version",
+    updatedVersionExist:"New version found, do you want to update now?",
+    updateSuccess:"Update application successful",
+    version:"Version",
     ref: "reference",
     pin: "PIN",
     username: "username",
