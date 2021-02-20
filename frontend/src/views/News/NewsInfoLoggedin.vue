@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-screen md:w-8/12 md:mx-auto">
     <img
       :src="require(`../../assets/icons/arrow-left.svg`)"
       alt="left-arrow"
@@ -26,7 +26,7 @@
         <div class="font-bold mr-2">{{ locale.label.ref }}</div>
         <a
           :href="newsDetails.newsReference"
-          class="cursor-pointer text-blue-700 "
+          class="cursor-pointer text-blue-700 break-words"
           >{{ newsDetails.newsReference }}</a
         >
       </div>

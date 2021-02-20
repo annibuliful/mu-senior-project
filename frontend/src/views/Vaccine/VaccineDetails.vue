@@ -86,7 +86,6 @@ export default {
       this.$router.push({
         name: "dashboard-vaccine"
       });
-
     },
     commitBaseRecord() {
       const data = {

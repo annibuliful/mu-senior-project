@@ -6,6 +6,24 @@
     >
       {{ locale.setting }}
     </p>
+    <div class="flex items-center mb-6 ml-2">
+      <div class="w-32">
+        <label
+          class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
+          for="inline-full-name"
+        >
+          {{ label.version }}
+        </label>
+      </div>
+      <div class="flex flex-row">
+        {{ versionNumber }}
+        <img
+          @click="checkUpdate"
+          src="../../assets/icons/refresh.svg"
+          class="h-6 ml-2"
+        />
+      </div>
+    </div>
     <div class="flex md:items-center mb-6 ml-2">
       <div class="w-32">
         <label
@@ -60,7 +78,7 @@
           <input
             type="text"
             v-model="fullname"
-            class=" w-full text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class=" w-full text-base shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="fullname"
             :placeholder="label.name"
             autocomplete="off"
@@ -88,7 +106,7 @@
           <input
             type="password"
             v-model="pinPassword"
-            class=" w-full text-base shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class=" w-full text-base shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="pin"
             :placeholder="label.pin"
             autocomplete="off"
@@ -146,7 +164,7 @@
         </div>
       </div>
 
-      <div class="flex items-center mb-6 ml-2">
+      <div class="flex items-center ml-2">
         <!-- <div class="w-32">
           <label
             class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -174,17 +192,18 @@
           {{ errorMessage }}
         </p>
       </div>
-      <div class="w-11/12">
+      <div class="w-full">
         <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto w-6/12"
           @click="submit"
         >
           {{ buttonLabel.save }}
         </button>
       </div>
     </div>
+
     <button
-      class="block sm:hidden bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block mx-auto w-9/12"
+      class="block sm:hidden bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-auto w-9/12"
       @click="onLogout"
     >
       {{ buttonLabel.logout }}
@@ -199,18 +218,18 @@ import service from "@/services";
 export default {
   components: {
     CaretIcon,
-    TagInput
+    TagInput,
   },
   validations: {
     fullname: {
-      required
+      required,
     },
     birthDate: {
-      required
+      required,
     },
     pinPassword: {
-      required
-    }
+      required,
+    },
   },
   computed: {
     listVaccines() {
@@ -230,10 +249,12 @@ export default {
     },
     buttonLabel() {
       return this.$store.state.locale.button;
-    }
+    },
   },
   data() {
     return {
+      versionNumber: "",
+      versionFromServer: "1.0.1.0",
       isSubmmitted: false,
       fullname: "",
       pinPassword: "",
@@ -243,10 +264,11 @@ export default {
       errorMessage: "",
       isFirstTime: false,
       userFamilyId: "",
-      userInfo: {}
+      userInfo: {},
     };
   },
   created() {
+    this.versionNumber = localStorage.getItem("version");
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     this.userInfo = userInfo;
     this.$store.commit("setUserInfo", userInfo);
@@ -257,7 +279,7 @@ export default {
       this.$fire({
         title: this.locale.label.notifyToEdit,
         type: "warning",
-        timer: 3000
+        timer: 3000,
       });
       this.$store.commit("setFirstTime", true);
     }
@@ -268,20 +290,50 @@ export default {
     this.pinPassword = this.userInfo.pin;
   },
   methods: {
+    refreshApp() {
+      window.location.reload();
+    },
+    checkUpdate() {
+      this.$fire({
+        title: this.label.updateVersion,
+        showCancelButton: true,
+        confirmButtonText: this.label.yes,
+        cancelButtonText: this.label.no,
+      }).then((r) => {
+        if (r.value) {
+          // Load function
+          if (this.versionFromServer !== this.versionNumber) {
+            localStorage.setItem("version", this.versionFromServer);
+            this.$fire({
+              title: this.locale.label.updateSuccess,
+              type: "success",
+              timer: 3000,
+            });
+            this.refreshApp();
+          } else {
+            this.$fire({
+              title: this.locale.label.useNewestVersion,
+              type: "info",
+              timer: 3000,
+            });
+          }
+        }
+      });
+    },
     onLogout() {
       this.$fire({
         title: this.locale.label.confirmLogout,
         showCancelButton: true,
         confirmButtonText: this.locale.label.yes,
-        cancelButtonText: this.locale.label.no
-      }).then(r => {
+        cancelButtonText: this.locale.label.no,
+      }).then((r) => {
         if (r.value) {
           localStorage.removeItem("userInfo");
           this.$router.push("/");
           this.$fire({
             title: this.locale.label.logoutSuccess,
             type: "success",
-            timer: 3000
+            timer: 3000,
           });
         }
       });
@@ -300,15 +352,15 @@ export default {
           birthDate: this.birthDate,
           receivedVaccines: [],
           diseases: this.selectedDiseases,
-          pin: this.pinPassword
+          pin: this.pinPassword,
         };
 
         this.$fire({
           title: this.locale.label.confirmEdit,
           showCancelButton: true,
           confirmButtonText: this.locale.label.yes,
-          cancelButtonText: this.locale.label.no
-        }).then(async r => {
+          cancelButtonText: this.locale.label.no,
+        }).then(async (r) => {
           if (r.value) {
             const userInfo = JSON.parse(localStorage.getItem("userInfo"));
             const newUserInfo = Object.assign(userInfo, data);
@@ -319,19 +371,20 @@ export default {
             this.$fire({
               title: this.locale.label.saveInfo,
               type: "success",
-              timer: 3000
+              timer: 3000,
             });
 
             if (this.isFirstTime) {
               const data = {
                 fullname: this.fullname,
                 birthDate: this.birthDate,
-                diseases: this.selectedDiseases?.map(el => el.id) ?? [],
-                receivedVaccines: this.selectedVaccines?.map(el => el.id) ?? [],
+                diseases: this.selectedDiseases?.map((el) => el.id) ?? [],
+                receivedVaccines:
+                  this.selectedVaccines?.map((el) => el.id) ?? [],
                 profileImg: "",
                 userId: this.$store.state.userInfo.userId,
                 isParent: true,
-                pin: this.pinPassword
+                pin: this.pinPassword,
               };
               await service().family.create(data);
               await service().user.update(
@@ -342,19 +395,19 @@ export default {
             } else {
               const listFamilies = await service().family.list();
               const userFamilyId = listFamilies.find(
-                el =>
+                (el) =>
                   el.fullname === this.userInfo.fullname &&
                   el.userId === this.userInfo.userId
               )?.familyId;
               const data = {
                 fullname: this.fullname,
                 birthDate: this.birthDate,
-                diseases: this.selectedDiseases.map(el => el.id),
-                receivedVaccines: this.selectedVaccines.map(el => el.id),
+                diseases: this.selectedDiseases.map((el) => el.id),
+                receivedVaccines: this.selectedVaccines.map((el) => el.id),
                 profileImg: "",
                 userId: this.$store.state.userInfo.userId,
                 pin: this.pinPassword,
-                isParent: true
+                isParent: true,
               };
               await service().family.update(userFamilyId, data);
               await service().user.update(this.userInfo.userId, data);
@@ -380,7 +433,7 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    }
-  }
+    },
+  },
 };
 </script>

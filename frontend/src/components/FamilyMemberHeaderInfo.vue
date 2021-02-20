@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="px-6 py-4 flex flex-row shadow-xs bg-gray-200 mt-0 md:justify-center"
+      class="pl-2 pr-2 py-4 flex flex-row shadow-xs bg-gray-200 mt-0 md:justify-center"
     >
       <!-- Check if there is profile image or not -->
       <div class="flex flex-col">
@@ -25,9 +25,19 @@
         <div class="font-bold text-blue-800 text-lg md:text-2xl md:ml-4">
           {{ childObject.fullname }}
         </div>
-        <div class="md:ml-4 md:text-xl">
+        <div class="md:ml-4 md:text-lg">
           {{ localeText.age }}: {{ currentAge }}
         </div>
+      </div>
+      <div class="col my-auto mx-auto">
+        <router-link
+          :to="{
+            name: 'edit-family-profile',
+            params: { id: id },
+          }"
+        >
+          <img class="h-6" src="../assets/icons/edit-icon.svg" alt="" />
+        </router-link>
       </div>
     </div>
   </div>
@@ -38,7 +48,7 @@ import service from "@/services";
 export default {
   data() {
     return {
-      childInfo: {},
+      childInfo: {}
     };
   },
   computed: {
@@ -51,7 +61,7 @@ export default {
 
     currentAge() {
       return formatDistanceToNow(new Date(this.childObject.birthDate));
-    },
+    }
   },
 
   async created() {
@@ -65,8 +75,8 @@ export default {
   props: {
     childObject: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     async deleteFamily() {
@@ -77,24 +87,24 @@ export default {
           title: this.localeText.confirmDelete,
           showCancelButton: true,
           confirmButtonText: this.localeText.yes,
-          cancelButtonText: this.localeText.no,
-        }).then(async (r) => {
+          cancelButtonText: this.localeText.no
+        }).then(async r => {
           if (r.value) {
             this.$fire({
               title: this.localeText.deleteSuccess,
               type: "success",
-              timer: 3000,
+              timer: 3000
             });
             await service().user.update(this.$route.params.id, this.childInfo);
             this.$router.push({
-              name: "dashboard-family",
+              name: "dashboard-family"
             });
           }
         });
       } catch (e) {
         this.errorMessage = e.message;
       }
-    },
-  },
+    }
+  }
 };
 </script>
