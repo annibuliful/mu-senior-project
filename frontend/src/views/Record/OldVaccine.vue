@@ -33,11 +33,19 @@
       </div>
     </div>
     <div style="height: 67px;">
-      <div class="my-4" v-if="receiveStatus === 'received'">
-        <label class="block text-gray-700 text-sm font-bold mb-2 ">
-          {{ locale.recordVaccinePage.receivingDate }}
-        </label>
-        <v-date-picker v-model="receiveDate" :locale="calendarLocale" />
+      <div v-if="receiveStatus === 'received'">
+        <div
+          class="my-4"
+          v-for="(receiveDate, index) in listReceiveDates"
+          :key="`${index}`"
+        >
+          <label class="block text-gray-700 text-sm font-bold mb-2 ">
+            {{ locale.recordVaccinePage.receivingDate }} ({{
+              receiveDate.doseNumber
+            }})
+          </label>
+          <v-date-picker v-model="receiveDate.date" :locale="calendarLocale" />
+        </div>
       </div>
     </div>
     <div class="flex justify-between my-4">
@@ -64,7 +72,12 @@ export default {
       listVaccines: [],
       childInfo: {},
       receiveStatus: "",
-      receiveDate: "",
+      listReceiveDates: [
+        {
+          doseNumber: 1,
+          date: ""
+        }
+      ],
       vaccineId: "",
       vaccineName: ""
     };
@@ -139,7 +152,6 @@ export default {
       }
     },
     submitAll: async function() {
-      
       const listReceiveVaccines = [];
       for (let i = 0; i < this.listVaccines.length; i++) {
         const temp = this.listVaccines[i];
@@ -167,7 +179,7 @@ export default {
 
       await service().family.update(familyId, childInfo);
       this.$fire({
-        title: this.locale.label.saveInfo + " "+ this.locale.label.success,
+        title: this.locale.label.saveInfo + " " + this.locale.label.success,
         type: "success",
         timer: 3000
       });

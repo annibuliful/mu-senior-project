@@ -144,7 +144,8 @@ export default {
           vaccineId,
           childname: fullname,
           childId: familyId,
-          time: "09:30"
+          time: "09:30",
+          doseNumber: 1
         }
       };
       return await service().appointment.create(data);
