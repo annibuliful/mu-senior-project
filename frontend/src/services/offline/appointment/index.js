@@ -17,5 +17,5 @@ export default {
   search,
   cronCheckStatus,
   listNonDelete,
-  filterByDose,
+  filterByDose
 };

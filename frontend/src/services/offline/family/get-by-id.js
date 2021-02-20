@@ -13,24 +13,24 @@ export default async (familyId, language) => {
     .toArray();
 
   if (listLanguages.includes(language)) {
-    return listFamilies.map((family) => {
+    return listFamilies.map(family => {
       const listVaccines = family.receivedVaccines
-        .map((el) => getListVaccines(el, language))
-        .map((vaccine) => ({
+        .map(el => getListVaccines(el, language))
+        .map(vaccine => ({
           id: vaccine?.vaccineId ?? "",
-          tag: vaccine?.vaccineNameNormal ?? "",
+          tag: vaccine?.vaccineNameNormal ?? ""
         }));
 
       const listDiseases = family.diseases
-        .map((el) => getListDiseases(el, language))
-        .map((disease) => ({
+        .map(el => getListDiseases(el, language))
+        .map(disease => ({
           id: disease.diseaseId,
-          tag: disease.diseaseName,
+          tag: disease.diseaseName
         }));
       return {
         ...family,
         diseases: listDiseases,
-        receivedVaccines: listVaccines,
+        receivedVaccines: listVaccines
       };
     });
   }
