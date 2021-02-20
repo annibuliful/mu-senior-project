@@ -7,5 +7,5 @@ export default {
   checkRemainTime,
   getVaccineInfoByQuery,
   getNewsInfoByQuery,
-  checkRemainTimeForAddVaccine,
+  checkRemainTimeForAddVaccine
 };
