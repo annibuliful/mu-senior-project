@@ -358,7 +358,6 @@ export default {
         )
       )[0];
 
-      console.log("childInfo", childInfo);
       const listNextAppointment =
         (await service().util.checkRemainTime(
           this.childInfo.familyId,
