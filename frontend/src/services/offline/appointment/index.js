@@ -6,6 +6,7 @@ import listNonDelete from "./list-non-delete";
 import listByChildId from "./list-child-id";
 import search from "./search";
 import cronCheckStatus from "./cron-check-status";
+import filterByDose from "./filterByDose";
 
 export default {
   create,
@@ -15,5 +16,6 @@ export default {
   listByChildId,
   search,
   cronCheckStatus,
-  listNonDelete
+  listNonDelete,
+  filterByDose,
 };

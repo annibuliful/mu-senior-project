@@ -98,7 +98,6 @@ export default {
         } = this.listSuggestions[i];
         const eventId = await this.submit(
           vaccineId,
-          vaccineNameNormal,
           appointmentDate,
           familyId,
           fullname
@@ -127,13 +126,7 @@ export default {
         this.$router.push({ name: "Old-Vaccine" });
       }
     },
-    submit: async function(
-      vaccineId,
-      vaccineName,
-      appointmentDate,
-      familyId,
-      fullname
-    ) {
+    submit: async function(vaccineId, appointmentDate, familyId, fullname) {
       const data = {
         dates: appointmentDate,
         dot: "gray",

@@ -20,19 +20,20 @@ export default async (childId, listReceivedVaccines, language) => {
     listCountRecordTimes.push({ vaccineId: vaccineId, time: countTime });
   }
 
-  return listCountRecordTimes.map(receivedInfo => {
+  return listCountRecordTimes.map((receivedInfo) => {
     const vaccineInfo = listVaccines.find(
-      vaccine => receivedInfo.vaccineId === vaccine.vaccineId
+      (vaccine) => receivedInfo.vaccineId === vaccine.vaccineId
     );
 
     const periodTime = vaccineInfo?.injectionPeriodTime;
 
-    const isComplete = !periodTime[receivedInfo.time + 1];
+    const isComplete = periodTime.length === receivedInfo.time;
+
     return {
       vaccineId: vaccineInfo.vaccineId,
       name: vaccineInfo.vaccineNameNormal,
-      nextDay: periodTime[receivedInfo.time + 1],
-      isComplete
+      nextDay: periodTime[receivedInfo.time],
+      isComplete,
     };
   });
 };
