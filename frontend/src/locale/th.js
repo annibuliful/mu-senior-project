@@ -93,7 +93,7 @@ export default {
   },
   label: {
     useNewestVersion:"คุณกำลังใช้เวอร์ชันล่าสุด",
-    updatedVersionExist:"ตรวจพบเวอร์ชันใหม่ ต้องการอัปเดตหรือไม่",
+    updateVersion:"ต้องการอัปเดตแอปพลิเคชันหรือไม่",
     updateSuccess:"อัปเดตแอปพลิเคชันสำเร็จ",
     version:"เวอร์ชัน",
     ref: "ที่มา",
