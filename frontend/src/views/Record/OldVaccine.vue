@@ -77,7 +77,6 @@
 </template>
 <script>
 import service from "@/services";
-
 export default {
   data() {
     return {
@@ -126,8 +125,13 @@ export default {
     },
     onChangeReceiveStatus: function(status) {
       this.receiveStatus = status;
-      if (status === "never") {
-        this.receiveDate = "";
+      if (this.receiveStatus === "never") {
+        this.listReceiveDates = [
+          {
+            doseNumber: 1,
+            date: ""
+          }
+        ];
       }
     },
     onIncrease: function() {
@@ -135,15 +139,23 @@ export default {
         const tempVaccine = this.listVaccines[this.currentIndex];
         this.listVaccines[this.currentIndex] = {
           ...tempVaccine,
-          recordDate: this.receiveDate
+          listReceiveDates: this.listReceiveDates
         };
+
         this.currentIndex++;
         const tempForNextVaccine = this.listVaccines[this.currentIndex];
-        this.receiveDate = tempForNextVaccine.recordDate;
+        this.listReceiveDates = tempForNextVaccine.listReceiveDates ?? [
+          {
+            doseNumber: 1,
+            date: ""
+          }
+        ];
         this.vaccineId = tempForNextVaccine.vaccineId;
         this.vaccineName = tempForNextVaccine.vaccineNameNormal;
 
-        if (this.receiveDate !== "") {
+        const isReceivedAtLeastOneDose = this.listReceiveDates[0].date !== "";
+
+        if (isReceivedAtLeastOneDose) {
           this.receiveStatus = "received";
         } else {
           this.receiveStatus = "never";
@@ -160,15 +172,23 @@ export default {
         const tempVaccine = this.listVaccines[this.currentIndex];
         this.listVaccines[this.currentIndex] = {
           ...tempVaccine,
-          recordDate: this.receiveDate
+          listReceiveDates: this.listReceiveDates
         };
         this.currentIndex--;
         const tempForNextVaccine = this.listVaccines[this.currentIndex];
 
-        this.receiveDate = tempForNextVaccine.recordDate;
+        this.listReceiveDates = tempForNextVaccine.listReceiveDates ?? [
+          {
+            doseNumber: 1,
+            date: ""
+          }
+        ];
         this.vaccineId = tempForNextVaccine.vaccineId;
         this.vaccineName = tempForNextVaccine.vaccineNameNormal;
-        if (this.receiveDate !== "") {
+
+        const isReceivedAtLeastOneDose = this.listReceiveDates[0].date !== "";
+
+        if (isReceivedAtLeastOneDose) {
           this.receiveStatus = "received";
         } else {
           this.receiveStatus = "never";
