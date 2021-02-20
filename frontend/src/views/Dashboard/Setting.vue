@@ -295,7 +295,7 @@ export default {
     },
     checkUpdate() {
       this.$fire({
-        title: this.label.updatedVersionExist,
+        title: this.label.updateVersion,
         showCancelButton: true,
         confirmButtonText: this.label.yes,
         cancelButtonText: this.label.no,

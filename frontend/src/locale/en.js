@@ -86,7 +86,7 @@ export default {
   },
   label: {
     useNewestVersion:"You already use the lastest version",
-    updatedVersionExist:"New version found, do you want to update now?",
+    updateVersion:"Do you want to update the application now?",
     updateSuccess:"Update application successful",
     version:"Version",
     ref: "reference",
