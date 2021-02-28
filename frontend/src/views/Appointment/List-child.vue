@@ -13,6 +13,7 @@
       :time="appointment.customData.time"
       :vaccines="appointment.customData.selectedVaccines"
       :key="`${index}-${appointment.customData.childname}`"
+      :doseNumber="appointment.customData.doseNumber"
     />
   </div>
 </template>
