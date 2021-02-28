@@ -99,6 +99,7 @@
         :key="`${index}-${appointment.customData.childname}`"
         :date="appointment.dates"
         :sortBy="sort"
+        :doseNumber="appointment.customData.doseNumber"
       />
     </div>
   </div>
