@@ -32,6 +32,7 @@
         :vaccines="customData.selectedVaccines"
         :status="status"
         :date="dates"
+        :doseNumber="customData.doseNumber"
       />
     </router-link>
 

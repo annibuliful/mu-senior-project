@@ -32,7 +32,9 @@
       </div>
 
       <div class="flex flex-col w-3/4 lg:ml-4">
-        <div class="ml-2 mt-2 text-sm lg:text-lg">{{ vaccines[0] }}</div>
+        <div class="ml-2 mt-2 text-base lg:text-lg ">
+          {{ vaccines[0] }} <span class="text-gray-600">({{localeText.label.doseTimes}}: {{doseNumber}})</span>
+        </div>
       </div>
     </div>
   </div>
@@ -61,7 +63,7 @@ export default {
       displayThings: "",
       classDate: "mx-auto text-center rounded-full my-2 py-2",
       classLineByStatus: "",
-      classVerticleByStatus: "absolute top-0 left-0 right-0 ml-auto mr-auto"
+      classVerticleByStatus: "absolute top-0 left-0 right-0 ml-auto mr-auto",
     };
   },
   computed: {
@@ -69,30 +71,36 @@ export default {
       let date = "";
       if (this.$store.state.calendarLocale === "th-TH") {
         date = format(addYears(new Date(this.date), 543), "dd MMM yyyy", {
-          locale: th
+          locale: th,
         });
       } else {
         date = format(new Date(this.date), "dd MMM yyyy");
       }
       return date;
     },
+    localeText: function() {
+      return this.$store.state.locale;
+    },
 
     vaccineId() {
       let vif = this.$store.state.locale.vaccines.find(
-        x => x.vaccineNameNormal === this.vaccines[0]
+        (x) => x.vaccineNameNormal === this.vaccines[0]
       );
       return vif.vaccineId;
-    }
+    },
   },
   props: {
+    doseNumber: {
+      type: Number,
+    },
     vaccines: {
       type: Array,
       default: function() {
         return [];
-      }
+      },
     },
     date: {
-      type: Date
+      type: Date,
     },
     status: {
       type: String,
@@ -101,24 +109,24 @@ export default {
         return ["in-progress", "vaccinated", "vaccinating", "overdue"].includes(
           val
         );
-      }
+      },
     },
     sortBy: {
-      type: String
+      type: String,
     },
     note: {
       type: String,
-      default: "Note Information"
+      default: "Note Information",
     },
     childname: {
       type: String,
-      default: "child A"
+      default: "child A",
     },
     time: {
       type: String,
-      default: "13:30"
-    }
-  }
+      default: "13:30",
+    },
+  },
 };
 </script>
 
