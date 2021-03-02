@@ -10,6 +10,7 @@
           :vaccine="val.vaccineNameNormal"
           status="in-progress"
           :date="val.appointmentDate"
+          :doseNumber="1"
         />
       </div>
     </div>
@@ -69,6 +70,8 @@ export default {
         );
         this.listOverdueVaccines = listOverdueVaccines;
       });
+
+      console.log("listSuggestions",this.listSuggestions)
   },
   methods: {
     deleteAppointmentByIndex: function(index) {

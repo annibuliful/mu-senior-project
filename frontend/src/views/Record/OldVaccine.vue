@@ -35,7 +35,7 @@
     <div class="my-4">
       <div v-if="receiveStatus === 'received'">
         <div
-          class="my-4 date-form"
+          class="my-4 flex flex-col"
           v-for="(receiveDate, index) in listReceiveDates"
           :key="`${index}`"
         >
@@ -47,7 +47,7 @@
           </label>
           <v-date-picker v-model="receiveDate.date" :locale="calendarLocale" />
           <button
-            class="btn-danger"
+            class="btn-danger mt-2"
             v-if="
               listReceiveDates.length === receiveDate.doseNumber &&
                 listReceiveDates.length !== 1
