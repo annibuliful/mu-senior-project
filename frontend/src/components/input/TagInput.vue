@@ -16,7 +16,7 @@
       <div
         v-for="(val, index) in suggestTag"
         :key="`${index}-${val.tag}`"
-        class="hover:bg-blue-400 hover:text-white border-l border-r border-b"
+        class="hover:bg-orange-400 hover:text-white border-l border-r border-b"
         @click="onClickSelectTag(val)"
       >
         {{ val.tag }}

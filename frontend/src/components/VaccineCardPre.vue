@@ -11,7 +11,7 @@
           alt=""
         />
         <div class="flex flex-col">
-          <div class="text-xl ml-5 mt-4 text-blue-800 font-bold">
+          <div class="text-xl ml-5 mt-4 text-orange-800 font-bold">
             {{ vaccineNameNormal }}
           </div>
           <div class="text-lg ml-5 mb-2">( {{ vaccineMedicalName }} )</div>

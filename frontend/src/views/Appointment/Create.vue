@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="border-b-2 border-blue-700 mb-4">
+    <div class="border-b-2 border-orange-700 mb-4">
       <p class="text-2xl" style="width: auto;">
         {{ titleText }}
       </p>
@@ -87,7 +87,7 @@
         </button>
         <button
           @click="submit"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto"
+          class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded block ml-auto"
         >
           {{ buttonLabel.save }}
         </button>

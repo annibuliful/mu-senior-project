@@ -1,13 +1,13 @@
 <template>
   <div>
-    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
+    <p class="text-2xl mb-10 border-b-2 border-orange-700" style="width: auto;">
       {{ labelAddFamily.updateChildInfoTitle }}
     </p>
     <div class="mx-12">
       <div class="mb-4">
         <div>
           <label for="file-input">
-            <img class="mx-auto" v-if="!base64Url" src="../../assets/mock-member-profile.svg" />
+            <img class="mx-auto" v-if="!base64Url" src="../../assets/boy.png" />
             <img class="mx-auto" v-else :src="base64Url" />
           </label>
 
@@ -54,7 +54,7 @@
 
       <div class="flex flex-row md:mt-8">
         <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-auto w-20 md:w-3/12"
+          class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-auto w-20 md:w-3/12"
           @click="submit"
         >
           {{ buttonLabel.update }}

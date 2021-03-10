@@ -70,7 +70,7 @@ export default {
 } */
 
 .btn-primary {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded block mx-auto;
+  @apply bg-orange-500 text-white font-bold py-2 px-4 rounded block mx-auto;
 }
 
 .btn-danger {

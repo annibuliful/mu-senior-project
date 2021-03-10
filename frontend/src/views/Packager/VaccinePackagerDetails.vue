@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-blue-800 p-2 font-bold text-center text-lg lg:text-xl">
+    <div class="text-orange-800 p-2 font-bold text-center text-lg lg:text-xl">
       {{ packagerDetails.packageTitle }}
     </div>
     <div class="p-2  text-center ">

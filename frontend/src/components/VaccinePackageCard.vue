@@ -11,7 +11,7 @@
           alt=""
         />
         <div class="flex flex-col">
-          <div class="text-xl ml-3 my-auto text-blue-800 font-bold">
+          <div class="text-xl ml-3 my-auto text-orange-800 font-bold">
             {{ packageDetails.packageTitle }}
           </div>
         </div>

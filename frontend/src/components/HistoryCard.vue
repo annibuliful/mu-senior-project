@@ -10,7 +10,7 @@
         <!-- <div class="w-3/12  px-2"></div> -->
         <div class="w-9/12 px-2 my-auto">
           <div class="">
-            <span class="font-bold text-blue-800 "
+            <span class="font-bold text-orange-800 "
               >{{ localeText.received }}:</span
             >
             {{ recordObject.selectedVaccines[0].tag }}

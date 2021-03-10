@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-lg lg:text-2xl text-blue-800 font-bold">
+    <h1 class="text-lg lg:text-2xl text-orange-800 font-bold">
       {{ locale.covidStat.title }}
     </h1>
     <section class="summary my-4 rounded text-center">

@@ -14,7 +14,7 @@
         <img
           class="w-24 md:w-48"
           v-else
-          src="../assets/mock-member-profile.svg"
+          src="../assets/boy.png"
           alt=""
         />
       </div>
@@ -22,7 +22,7 @@
       <!-- Show this family's member info in a column-->
 
       <div class="flex flex-col my-auto ml-2">
-        <div class="font-bold text-blue-800 text-lg md:text-2xl md:ml-4">
+        <div class="font-bold text-orange-800 text-lg md:text-2xl md:ml-4">
           {{ childObject.fullname }}
         </div>
         <div class="md:ml-4 md:text-lg">

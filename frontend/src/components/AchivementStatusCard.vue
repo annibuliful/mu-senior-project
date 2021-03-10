@@ -12,15 +12,15 @@
           />
           <div class="flex flex-col">
             <div class="flex flex-row">
-              <div class="text-2xl ml-5 mt-4 text-blue-800 font-bold">
+              <div class="text-2xl ml-5 mt-4 text-orange-800 font-bold">
                 {{ vaccineDetails.vaccineMedicalName }}
               </div>
               <div
-                class="border-2 border-blue-800 ml-5 rounded-full h-16 w-16 flex items-center justify-center"
+                class="border-2 border-orange-800 ml-5 rounded-full h-16 w-16 flex items-center justify-center"
               >
                 <span>{{ numberDoseReceived }}</span>
                 <span>/</span>
-                <span class="text-blue-800 font-bold text-lg">{{
+                <span class="text-orange-800 font-bold text-lg">{{
                   vaccineDetails.injectionPeriodTime.length
                 }}</span>
               </div>

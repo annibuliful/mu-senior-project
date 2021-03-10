@@ -24,13 +24,13 @@
     <div class="flex justify-evenly w-3/6 mx-auto mt-4">
       <button
         @click="onCapture"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto"
+        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded block mx-auto"
       >
         {{ label.takePhoto }}
       </button>
       <button
         @click="onEnableCamera"
-        class="bg-white hover:border-blue-700 text-blue-700 font-bold py-2 px-4 rounded block mx-auto"
+        class="bg-white hover:border-orange-700 text-orange-700 font-bold py-2 px-4 rounded block mx-auto"
       >
         {{ label.reset }}
       </button>

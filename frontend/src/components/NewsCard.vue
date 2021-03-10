@@ -13,7 +13,7 @@
         <div
           class="flex flex-col content-container ml-2 description text-sm w-full lg:justify-center"
         >
-          <div class="text-blue-800 font-bold mt-2 lg:text-xl">
+          <div class="text-orange-800 font-bold mt-2 lg:text-xl">
             {{ newsTitle }}
           </div>
           <div class="font-thin mt-2">{{ exampleContent }} .....</div>

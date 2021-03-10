@@ -1,7 +1,7 @@
 <template>
   <div>
     <p
-      class="text-2xl mb-10 border-b-2 border-blue-700 lg:px-0 px-4"
+      class="text-2xl mb-10 border-b-2 border-orange-700 lg:px-0 px-4"
       style="width: auto;"
     >
       {{ locale.setting }}
@@ -60,7 +60,7 @@
     </div>
 
     <div class="mb-10 mt-10">
-      <p class="text-md mb-10 border-b-2 border-blue-700 lg:px-0 px-4">
+      <p class="text-md mb-10 border-b-2 border-orange-700 lg:px-0 px-4">
         {{ locale.accountSetting }}
       </p>
 
@@ -194,7 +194,7 @@
       </div>
       <div class="w-full">
         <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto w-6/12"
+          class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded block mx-auto w-6/12"
           @click="submit"
         >
           {{ buttonLabel.save }}

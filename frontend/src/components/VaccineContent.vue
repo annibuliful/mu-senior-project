@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
+    <p class="text-2xl mb-10 border-b-2 border-orange-700" style="width: auto;">
       {{ localeText.title }}
     </p>
     <img
@@ -17,21 +17,21 @@
     </div>
 
     <div class="border w-10/12 mx-auto p-5 shadow-lg mb-6">
-      <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
+      <div class=" text-orange-800 p-2 font-bold text-center text-lg lg:text-xl ">
         {{ localeText.description }}
       </div>
       <div
         class="lg:text-center lg:w-10/12 mx-auto"
         v-html="vaccineDetails.shortDes"
       ></div>
-      <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
+      <div class=" text-orange-800 p-2 font-bold text-center text-lg lg:text-xl ">
         {{ localeText.suggestedAge }}
       </div>
       <div
         class="lg:text-center lg:w-10/12 mx-auto"
         v-html="vaccineDetails.displayedSuggestAge"
       ></div>
-      <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
+      <div class=" text-orange-800 p-2 font-bold text-center text-lg lg:text-xl ">
         {{ localeText.warning }}
       </div>
       <div
@@ -39,7 +39,7 @@
         v-html="vaccineDetails.warning"
       ></div>
 
-      <div class="lg:text-center lg:w-10/12 mx-auto mt-8 text-blue-800">
+      <div class="lg:text-center lg:w-10/12 mx-auto mt-8 text-orange-800">
         {{ localeText.vaccineReference }}
       </div>
     </div>

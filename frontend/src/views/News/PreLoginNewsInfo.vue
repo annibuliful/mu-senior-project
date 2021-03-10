@@ -14,7 +14,7 @@
       />
 
       <h1
-        class="font-bold text-blue-700 mt-2 lg:text-center lg:text-3xl lg:mt-4"
+        class="font-bold text-orange-700 mt-2 lg:text-center lg:text-3xl lg:mt-4"
       >
         {{ newsDetails.newsTitle }}
       </h1>
@@ -26,7 +26,7 @@
         <div class="font-bold mr-2">{{ locale.label.ref }}</div>
         <a
           :href="newsDetails.newsReference"
-          class="cursor-pointer text-blue-700 break-words"
+          class="cursor-pointer text-orange-700 break-words"
           >{{ newsDetails.newsReference }}</a
         >
       </div>

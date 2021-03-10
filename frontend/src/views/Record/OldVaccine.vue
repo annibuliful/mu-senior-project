@@ -13,7 +13,7 @@
     <div class="w-full flex mx-auto md:w-2/4 lg:w-2/4 justify-evenly my-8">
       <div
         :class="[
-          receiveStatus === 'received' ? 'border-blue-600' : 'border-gray-400',
+          receiveStatus === 'received' ? 'border-orange-600' : 'border-gray-400',
         ]"
         class="p-6 m-2 border-2 pointer language-box"
         @click="onChangeReceiveStatus('received')"
@@ -23,7 +23,7 @@
       <div
         @click="onChangeReceiveStatus('never')"
         :class="[
-          receiveStatus === 'never' ? 'border-blue-600' : 'border-gray-400',
+          receiveStatus === 'never' ? 'border-orange-600' : 'border-gray-400',
         ]"
         class="p-6 m-2 border-2 pointer language-box"
       >

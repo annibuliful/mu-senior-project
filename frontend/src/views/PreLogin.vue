@@ -64,7 +64,7 @@
       </button>
     </div>
     <button
-      class="btn-primary hover:bg-blue-700 w-full lg:w-1/2 mx-auto my-8"
+      class="btn-primary hover:bg-orange-700 w-full lg:w-1/2 mx-auto my-8"
       @click="onLinkToLogin"
     >
       {{ locale.login }}
@@ -174,6 +174,6 @@ export default {
   @apply border-b-2 text-2xl text-center cursor-pointer px-8 py-2;
 }
 .label-title-active {
-  @apply border-b-2 border-blue-700 text-2xl text-center cursor-pointer px-8 py-2;
+  @apply border-b-2 border-orange-700 text-2xl text-center cursor-pointer px-8 py-2;
 }
 </style>

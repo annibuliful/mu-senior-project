@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
+    <p class="text-2xl mb-10 border-b-2 border-orange-700" style="width: auto;">
       {{ localeText.vaccineList }}
     </p>
     <!-- Search Area -->
@@ -15,7 +15,7 @@
           @change="searchVaccine"
         />
         <div
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block "
+          class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded block "
           @click="searchVaccine"
         >
           {{ localeText.button.search }}

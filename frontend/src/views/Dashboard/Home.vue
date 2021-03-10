@@ -1,15 +1,15 @@
 <template>
   <div class="sm:mb-20">
     <TopBar></TopBar>
-    <p class="text-2xl mb-10 border-b-2 border-blue-700">
+    <p class="text-2xl mb-10 border-b-2 border-orange-700">
       {{ welcomeWord }} {{ profileName.fullname ? profileName.fullname : "" }}
     </p>
     <Calendar :listEvents="listEvents" v-on:on-click="onSelectDate" />
     <br />
-    <p class="text-xl mb-10 border-b-2 border-blue-700" v-if="selectedDate">
+    <p class="text-xl mb-10 border-b-2 border-orange-700" v-if="selectedDate">
       {{ selectedDate }}
     </p>
-    <p class="text-xl mb-10 border-b-2 border-blue-700" v-else>
+    <p class="text-xl mb-10 border-b-2 border-orange-700" v-else>
       {{ localeText.recentActivity }}
     </p>
     <p

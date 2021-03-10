@@ -13,7 +13,7 @@
         ></div>
       </div>
       <div class="flex flex-col w-3/4">
-        <div class="ml-2 mt-2 lg:text-lg text-blue-800 ">
+        <div class="ml-2 mt-2 lg:text-lg text-orange-800 ">
           {{ vaccines[0] }}
         </div>
         <div class=" ml-2">{{ dateFormat }}</div>

@@ -1,14 +1,14 @@
 <template>
   <div
-    class="flex shadow flex-col h-screen lg:visible md:visible sm-hidden fixed pr-8"
+    class="flex shadow flex-col h-screen lg:visible md:visible sm-hidden px-8 bg-orange-300 nav-menu"
   >
-    <img src="@/assets/people.png" class="ml-auto mr-auto ml-auto mt-8" />
+    <img src="@/assets/menu_web_vac.png" class="ml-auto mr-auto mt-8 img-menu" />
     <div class="flex flex-col h-full ">
       <div class="mt-auto mb-auto cursor-pointer pb-2 pt-2">
         <div
           @click="onClickLink({ name: 'dashboard-home' })"
-          class="ml-10 pb-4 "
-          :class="[currentPath === '/dashboard/home' ? 'link-active' : '']"
+          class=" pb-4 "
+          :class="[currentPath === '/dashboard/home' ? 'link-active':'link-item']"
         >
           <img class="inline w-8" src="@/assets/icons/home.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
@@ -17,8 +17,8 @@
       <div class=" mb-auto cursor-pointer">
         <div
           @click="onClickLink({ name: 'dashboard-vaccine' })"
-          class="ml-10 pb-4 "
-          :class="[currentPath === '/dashboard/vaccine' ? 'link-active' : '']"
+          class=" pb-4 "
+          :class="[currentPath === '/dashboard/vaccine' ? 'link-active':'link-item']"
         >
           <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.vaccine }}</p>
@@ -27,8 +27,8 @@
       <div class="mb-auto cursor-pointer">
         <div
           @click="onClickLink({ name: 'dashboard-family' })"
-          class="ml-10 pb-4 "
-          :class="[currentPath === '/dashboard/family' ? 'link-active' : '']"
+          class=" pb-4 "
+          :class="[currentPath === '/dashboard/family' ? 'link-active':'link-item']"
         >
           <img class="inline w-8" src="@/assets/icons/family.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
@@ -37,9 +37,9 @@
       <div class=" mb-auto cursor-pointer">
         <div
           @click="onClickLink({ name: 'dashboard-packager' })"
-          class="ml-10 pb-4 "
+          class=" pb-4 "
           :class="[
-            currentPath === '/dashboard/vaccinepackager' ? 'link-active' : ''
+            currentPath === '/dashboard/vaccinepackager' ? 'link-active':'link-item'
           ]"
         >
           <img class="inline w-8" src="@/assets/icons/packager.svg" />
@@ -49,8 +49,8 @@
       <div class=" mb-auto cursor-pointer">
         <div
           @click="onClickLink({ name: 'dashboard-setting' })"
-          class="ml-10"
-          :class="[currentPath === '/dashboard/setting' ? 'link-active' : '']"
+          class=""
+          :class="[currentPath === '/dashboard/setting' ? 'link-active':'link-item']"
         >
           <img class="inline w-8" src="@/assets/icons/setting.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.setting }}</p>
@@ -86,6 +86,33 @@ export default {
   border: 2px solid #2b6cb0;
   border-radius: 20px;
   padding: 20px 10px 20px 10px;
+}
+
+.link-active {
+  border: 2px dashed  #050300;
+  border-radius: 10px;
+  padding: 20px 15px 20px 15px;
+  /* text-decoration: underline; */
+  background-color: rgb(245, 221, 127);
+  font-weight: bolder;
+  
+}
+
+.img-menu{
+  width: 250px;
+}
+
+.nav-menu{
+  min-width: 300px;
+}
+
+.link-item {
+  border: 2px dashed  #503605;
+  border-radius: 10px;
+  padding: 20px 10px 20px 10px;
+  /* text-decoration: underline; */
+  background-color: cornsilk;
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 1000px) {

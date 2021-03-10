@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="text-xl mb-5 border-b-2 border-blue-700 ml-2"
+      class="text-xl mb-5 border-b-2 border-orange-700 ml-2"
       style="width: fit-content;"
     >
       {{ labelText.roadmap }}
