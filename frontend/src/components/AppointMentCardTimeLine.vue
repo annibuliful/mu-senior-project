@@ -23,7 +23,8 @@
     <div class="flex flex-row" v-if="sortBy == 'date'">
       <div class="w-1/4 relative lg:text-xl">
         <div :class="classDate">
-          {{ dateFormat }}
+          <!-- {{ dateFormat }} -->
+          <input type="checkbox" :value="vaccineId" class="p-4" @change="check($event)">
         </div>
         <div
           style="width:10px;height: 100%;z-index: -1;"
@@ -32,9 +33,10 @@
       </div>
 
       <div class="flex flex-col w-3/4 lg:ml-4">
-        <div class="ml-2 mt-2 text-base lg:text-lg ">
-          {{ vaccines[0] }} <span class="text-gray-600">({{localeText.label.doseTimes}}: {{doseNumber}})</span>
+        <div class="ml-2 mt-2 text-base lg:text-lg font-bold">
+          {{ vaccines[0] }} 
         </div>
+        <div class="ml-2">{{ dateFormat }} <span class="text-gray-600">({{localeText.label.doseTimes}}: {{doseNumber}})</span> </div>
       </div>
     </div>
   </div>
@@ -66,6 +68,11 @@ export default {
       classVerticleByStatus: "absolute top-0 left-0 right-0 ml-auto mr-auto",
     };
   },
+  methods:{
+   check(id){
+      console.log("id",id.target.value)
+    }
+  },
   computed: {
     dateFormat: function() {
       let date = "";
@@ -88,6 +95,7 @@ export default {
       );
       return vif.vaccineId;
     },
+ 
   },
   props: {
     doseNumber: {
@@ -131,6 +139,9 @@ export default {
 </script>
 
 <style scoped>
+input[type=checkbox] {
+    transform: scale(2.0);
+}
 .img-area {
   width: 250px;
 }

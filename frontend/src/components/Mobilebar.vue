@@ -2,7 +2,7 @@
   <div
     :class="classMenuIcon"
   >
-    <img src="@/assets/icons/menu.svg" class="ml-auto img-menu relative mr-2 p-2 overflow-x-scroll" @click="onClickMenu"/>
+    <img src="@/assets/icons/menu.svg" class="ml-auto img-menu relative mr-2 p-2 overflow-x-scroll " @click="onClickMenu"/>
     <div class="flex flex-col h-full bg-orange-300 pr-4" v-if="isClicked">
       <div class="mt-auto mb-auto cursor-pointer pb-2 pt-2">
         <div

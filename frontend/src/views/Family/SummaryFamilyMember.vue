@@ -30,7 +30,7 @@
             @change="search()"
           />
           <button
-            class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded block "
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block "
             @click="search()"
           >
             {{ localeText.button.search }}
@@ -84,7 +84,7 @@
       <button
         v-if="isNeedSuggestion"
         @click="onClickToSuggestion"
-        class="block mx-auto bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded "
+        class="block mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
       >
         {{ labelText.suggestedPlan }}
       </button>
@@ -118,7 +118,7 @@ export default {
   },
   async created() {
     this.displayMode = "Roadmap";
-    this.classRoadmapLine = "border-b-2 border-orange-700";
+    this.classRoadmapLine = "border-b-2 border-blue-700";
     services()
       .appointment.cronCheckStatus()
       .then(async () => {
@@ -193,11 +193,11 @@ export default {
     changeToHistory() {
       this.displayMode = "History";
       this.classRoadmapLine = "";
-      this.classHistoryLine = "border-b-2 border-orange-700";
+      this.classHistoryLine = "border-b-2 border-blue-700";
     },
     changeToRoadMap() {
       this.displayMode = "Roadmap";
-      this.classRoadmapLine = "border-b-2 border-orange-700";
+      this.classRoadmapLine = "border-b-2 border-blue-700";
       this.classHistoryLine = "";
     },
     async search() {

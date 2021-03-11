@@ -29,7 +29,7 @@
           {{ localeText.age }}: {{ currentAge }}
         </div>
       </div>
-      <div class="col my-auto mx-auto">
+      <div class="col my-auto ml-auto md:ml-2">
         <router-link
           :to="{
             name: 'edit-family-profile',

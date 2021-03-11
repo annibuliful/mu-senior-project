@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex shadow flex-col h-screen lg:visible md:visible sm-hidden px-8 bg-orange-300 nav-menu"
+    class="flex shadow flex-col h-screen lg:visible md:visible sm-hidden px-8 bg-orange-300 nav-menu "
   >
     <img src="@/assets/menu_web_vac.png" class="ml-auto mr-auto mt-8 img-menu" />
     <div class="flex flex-col h-full ">
@@ -44,6 +44,19 @@
         >
           <img class="inline w-8" src="@/assets/icons/packager.svg" />
           <p class="inline mt-2 pl-3">{{ listItem.packager }}</p>
+        </div>
+      </div>
+
+            <div class=" mb-auto cursor-pointer">
+        <div
+          @click="onClickLink({ name: 'dashboard-backup' })"
+          class=" pb-4 "
+          :class="[
+            currentPath === '/dashboard/backup' ? 'link-active':'link-item'
+          ]"
+        >
+          <img class="inline w-8" src="@/assets/icons/sync-cloud.svg" />
+          <p class="inline mt-2 pl-3">{{ listItem.backup }}</p>
         </div>
       </div>
       <div class=" mb-auto cursor-pointer">
