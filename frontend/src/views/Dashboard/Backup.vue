@@ -44,17 +44,19 @@ export default {
     return {
       uploadedFile: null,
       exportBlob: null,
-      file: null
+      file: null,
     };
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale;
-    }
+    },
   },
   methods: {
     async onClickBackup() {
       await services().revisionOnline.exportDb("1");
+
+      // await services().authOnline.register("aaaaa@gmail.com", "12345678");
       //   await db.delete();
       // console.log("click1");
       // try {
@@ -84,8 +86,11 @@ export default {
       // console.log("import clicked");
       // console.log(this.uploadedFile);
       // console.log(importDb);
-      const a = await services().revisionOnline.importDb("1");
-      console.log("a", a);
+      await services().revisionOnline.importDb("1");
+      // await services().authOnline.login(
+      //   "Talia.Altenwerth66@gmail.com",
+      //   "1234567"
+      // );
     },
     uploadFile(file) {
       this.file = file;
@@ -97,14 +102,14 @@ export default {
         .then(() => {
           console.log("Database successfully deleted");
         })
-        .catch(err => {
+        .catch((err) => {
           console.error("Could not delete database", err);
         })
         .finally(() => {
           // Do what should be done next...
         });
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped></style>
