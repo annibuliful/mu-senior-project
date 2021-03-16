@@ -18,5 +18,5 @@ export default {
   util,
   vaccine,
   revisionOnline,
-  authOnline,
+  authOnline
 };

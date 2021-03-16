@@ -5,8 +5,8 @@ export const register = (username, password) => {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify({ username, password, gender: "male" }),
+    body: JSON.stringify({ username, password, gender: "male" })
   });
 };

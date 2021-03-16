@@ -44,13 +44,13 @@ export default {
     return {
       uploadedFile: null,
       exportBlob: null,
-      file: null,
+      file: null
     };
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale;
-    },
+    }
   },
   methods: {
     async onClickBackup() {
@@ -102,14 +102,14 @@ export default {
         .then(() => {
           console.log("Database successfully deleted");
         })
-        .catch((err) => {
+        .catch(err => {
           console.error("Could not delete database", err);
         })
         .finally(() => {
           // Do what should be done next...
         });
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped></style>
