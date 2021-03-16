@@ -17,7 +17,10 @@
         />
       </div>
 
-      <div class="flex flex-col my-auto ml-4 w-9/12 py-5" @click="navigateToDetails">
+      <div
+        class="flex flex-col my-auto ml-4 w-9/12 py-5"
+        @click="navigateToDetails"
+      >
         <div class="font-bold text-lg">
           {{ name }}
         </div>
@@ -35,7 +38,7 @@
           <!-- <li v-if="!diseases.length">{{ lebels.noneCongenitalDisease }}</li> -->
         </ul>
         <ul v-else class="list-disc px-6">
-          <li class="text-sm text-gray-600 font-normal"> 
+          <li class="text-sm text-gray-600 font-normal">
             {{ lebels.noneCongenitalDisease }}
           </li>
         </ul>
@@ -45,7 +48,7 @@
           class="my-auto mx-auto "
           :to="{
             name: 'edit-family-profile',
-            params: { id: id },
+            params: { id: id }
           }"
         >
           <img class="h-8" src="../assets/icons/edit-icon.svg" alt="" />
@@ -60,12 +63,12 @@ import { formatDistanceToNow } from "date-fns";
 export default {
   data() {
     return {
-      childInfo: null,
+      childInfo: null
     };
   },
   created() {
     this.childInfo = this.$store.state.listFamilies.find(
-      (el) => el.familyId === this.id
+      el => el.familyId === this.id
     );
   },
   computed: {
@@ -74,32 +77,32 @@ export default {
     },
     age() {
       return formatDistanceToNow(new Date(this.birthDate));
-    },
+    }
   },
   methods: {
     navigateToDetails() {
       this.$router.push({
         name: "summary-family-member",
-        params: { id: this.id },
+        params: { id: this.id }
       });
-    },
+    }
   },
   props: {
     id: {
       type: Number,
-      required: true,
+      required: true
     },
     name: {
       type: String,
-      required: true,
+      required: true
     },
     birthDate: {
       type: Date,
-      required: true,
+      required: true
     },
     diseases: {
-      type: Array,
-    },
-  },
+      type: Array
+    }
+  }
 };
 </script>

@@ -86,11 +86,11 @@ export default {
     doseNumber: "Dose Number"
   },
   label: {
-    doseTimes:"Dose",
-    useNewestVersion:"You already use the lastest version",
-    updateVersion:"Do you want to update the application now?",
-    updateSuccess:"Update application successful",
-    version:"Version",
+    doseTimes: "Dose",
+    useNewestVersion: "You already use the lastest version",
+    updateVersion: "Do you want to update the application now?",
+    updateSuccess: "Update application successful",
+    version: "Version",
     ref: "reference",
     pin: "PIN",
     username: "username",
