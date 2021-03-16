@@ -94,11 +94,11 @@ export default {
     doseNumber: "เข็มที่"
   },
   label: {
-    doseTimes:"โด๊สที่",
-    useNewestVersion:"คุณกำลังใช้เวอร์ชันล่าสุด",
-    updateVersion:"ต้องการอัปเดตแอปพลิเคชันหรือไม่",
-    updateSuccess:"อัปเดตแอปพลิเคชันสำเร็จ",
-    version:"เวอร์ชัน",
+    doseTimes: "โด๊สที่",
+    useNewestVersion: "คุณกำลังใช้เวอร์ชันล่าสุด",
+    updateVersion: "ต้องการอัปเดตแอปพลิเคชันหรือไม่",
+    updateSuccess: "อัปเดตแอปพลิเคชันสำเร็จ",
+    version: "เวอร์ชัน",
     ref: "ที่มา",
     pin: "PIN",
     username: "ชื่อผู้ใช้งาน",

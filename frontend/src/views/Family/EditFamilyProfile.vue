@@ -7,7 +7,11 @@
       <div class="mb-4">
         <div>
           <label for="file-input">
-            <img class="mx-auto" v-if="!base64Url" src="../../assets/boy.png" />
+            <img
+              class="mx-auto"
+              v-if="!base64Url"
+              src="../../assets/mock-member-profile.svg"
+            />
             <img class="mx-auto" v-else :src="base64Url" />
           </label>
 
@@ -77,7 +81,7 @@ import service from "@/services";
 
 export default {
   components: {
-    TagInput
+    TagInput,
   },
   async created() {
     this.$store.commit("listFamilies");
@@ -104,20 +108,20 @@ export default {
       selectedVaccines: [],
       childInfo: "",
       profileImgSrc: "",
-      base64Url: null
+      base64Url: null,
     };
   },
   computed: {
     listVaccines() {
-      return this.$store.state.locale.vaccines.map(el => ({
+      return this.$store.state.locale.vaccines.map((el) => ({
         id: el.vaccineId,
-        tag: el.vaccineNameNormal
+        tag: el.vaccineNameNormal,
       }));
     },
     listDiseases() {
-      return this.$store.state.locale.diseases.map(el => ({
+      return this.$store.state.locale.diseases.map((el) => ({
         id: el.diseaseId,
-        tag: el.diseaseName
+        tag: el.diseaseName,
       }));
     },
     listFamilies() {
@@ -131,7 +135,7 @@ export default {
     },
     calendarLocale() {
       return this.$store.state.calendarLocale;
-    }
+    },
   },
   methods: {
     onFileChange(e) {
@@ -159,21 +163,23 @@ export default {
       this.childInfo.fullname = this.fullname;
       this.childInfo.birthDate = this.birthDate;
       this.childInfo.profileImg = this.base64Url;
-      this.childInfo.diseases = this.selectedDiseases.map(el => el.id);
-      this.childInfo.receivedVaccines = this.selectedVaccines.map(el => el.id);
+      this.childInfo.diseases = this.selectedDiseases.map((el) => el.id);
+      this.childInfo.receivedVaccines = this.selectedVaccines.map(
+        (el) => el.id
+      );
 
       try {
         this.$fire({
           title: this.labelAddFamily.confirmEdit,
           showCancelButton: true,
           confirmButtonText: this.labelAddFamily.yes,
-          cancelButtonText: this.labelAddFamily.no
-        }).then(async r => {
+          cancelButtonText: this.labelAddFamily.no,
+        }).then(async (r) => {
           if (r.value) {
             this.$fire({
               title: this.labelAddFamily.saveInfo,
               type: "success",
-              timer: 3000
+              timer: 3000,
             });
             await service().family.update(
               Number(this.$route.params.id),
@@ -181,7 +187,7 @@ export default {
             );
 
             this.$router.push({
-              name: "dashboard-family"
+              name: "dashboard-family",
             });
           }
         });
@@ -203,7 +209,7 @@ export default {
         this.$fire({
           title: this.labelAddFamily.cannotDelete,
           type: "warning",
-          timer: 3000
+          timer: 3000,
         });
       } else {
         this.childInfo.isDelete = true;
@@ -212,20 +218,20 @@ export default {
             title: this.labelAddFamily.confirmDelete,
             showCancelButton: true,
             confirmButtonText: this.labelAddFamily.yes,
-            cancelButtonText: this.labelAddFamily.no
-          }).then(async r => {
+            cancelButtonText: this.labelAddFamily.no,
+          }).then(async (r) => {
             if (r.value) {
               this.$fire({
                 title: this.labelAddFamily.deleteSuccess,
                 type: "success",
-                timer: 3000
+                timer: 3000,
               });
               await service().family.update(
                 Number(this.$route.params.id),
                 this.childInfo
               );
               this.$router.push({
-                name: "dashboard-family"
+                name: "dashboard-family",
               });
             }
           });
@@ -233,7 +239,7 @@ export default {
           this.errorMessage = e.message;
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>

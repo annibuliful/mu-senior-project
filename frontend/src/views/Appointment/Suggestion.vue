@@ -71,7 +71,7 @@ export default {
         this.listOverdueVaccines = listOverdueVaccines;
       });
 
-      console.log("listSuggestions",this.listSuggestions)
+    console.log("listSuggestions", this.listSuggestions);
   },
   methods: {
     deleteAppointmentByIndex: function(index) {

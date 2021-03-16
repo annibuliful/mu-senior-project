@@ -36,13 +36,15 @@
 <script>
 import "dexie-export-import";
 import db from "../../services/offline/db";
-import { exportDB, importDB } from "dexie-export-import";
+// import { exportDB } from "dexie-export-import";
+import services from "../../services";
+
 export default {
   data() {
     return {
       uploadedFile: null,
       exportBlob: null,
-      file: null
+      file: null,
     };
   },
   computed: {
@@ -52,38 +54,42 @@ export default {
   },
   methods: {
     async onClickBackup() {
+      await services().revisionOnline.exportDb("1");
       //   await db.delete();
-      console.log("click1");
-      try {
-        const blob = await exportDB(db, { prettyJson: true });
-        this.exportBlob = blob;
-        // this.download(blob, "dexie-export.json", "application/json");
-        console.log("click2", blob);
-        // this.$store.commit("setExportFileBlob", this.exportBlob);
-        console.log("test", this.$store.state.exportFileBlob);
-        let link = document.createElement("a");
-        link.href = window.URL.createObjectURL(blob);
-        link.download = "test.json";
+      // console.log("click1");
+      // try {
+      //   const blob = await exportDB(db, { prettyJson: true });
+      //   console.log("blob Info", blob);
+      //   this.exportBlob = blob;
+      //   // this.download(blob, "dexie-export.json", "application/json");
+      //   console.log("click2", blob);
+      //   // this.$store.commit("setExportFileBlob", this.exportBlob);
+      //   console.log("test", this.$store.state.exportFileBlob);
+      //   let link = document.createElement("a");
+      //   link.href = window.URL.createObjectURL(blob);
+      //   link.download = "test.json";
 
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } catch (error) {
-        console.log("click3");
-        console.error("" + error);
-      }
+      //   document.body.appendChild(link);
+      //   link.click();
+      //   document.body.removeChild(link);
+      // } catch (error) {
+      //   console.log("click3");
+      //   console.error("" + error);
+      // }
     },
     async onClickImport() {
-      // const importDb = await importDB(this.exportBlob);
-      console.log("import file", this.file)
-      const importDb = await importDB(this.file)
-      console.log("import clicked");
-      console.log(this.uploadedFile);
-      console.log(importDb);
+      // // const importDb = await importDB(this.exportBlob);
+      // console.log("import file", this.file);
+      // const importDb = await importDB(this.file);
+      // console.log("import clicked");
+      // console.log(this.uploadedFile);
+      // console.log(importDb);
+      const a = await services().revisionOnline.importDb("1");
+      console.log("a", a);
     },
     uploadFile(file) {
-      this.file = file
-      console.log("upload file",file)
+      this.file = file;
+      console.log("upload file", file);
       // console.log("file", file);
     },
     deleteIDB() {

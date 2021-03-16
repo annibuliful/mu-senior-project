@@ -71,7 +71,7 @@ export default {
       let date = "";
       if (this.$store.state.calendarLocale === "th-TH") {
         date = format(addYears(new Date(this.date), 543), "dd MMM yyyy", {
-          locale: th,
+          locale: th
         });
       } else {
         date = format(new Date(this.date), "dd MMM yyyy");
@@ -80,23 +80,23 @@ export default {
     },
     localeText() {
       return this.$store.state.locale;
-    },
+    }
   },
   props: {
     doseNumber: {
-      type: Number,
+      type: Number
     },
     vaccines: {
       type: Array,
       default: function() {
         return [];
-      },
+      }
     },
     vaccine: {
-      type: String,
+      type: String
     },
     date: {
-      type: Date,
+      type: Date
     },
     status: {
       type: String,
@@ -105,20 +105,20 @@ export default {
         return ["in-progress", "vaccinated", "vaccinating", "overdue"].includes(
           val
         );
-      },
+      }
     },
     note: {
       type: String,
-      default: "Note Information",
+      default: "Note Information"
     },
     childname: {
       type: String,
-      default: "child A",
+      default: "child A"
     },
     time: {
       type: String,
-      default: "13:30",
-    },
-  },
+      default: "13:30"
+    }
+  }
 };
 </script>
