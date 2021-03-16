@@ -51,6 +51,8 @@ export class UserController implements IController<IUser> {
       throw new HttpException('Internal server error', 500);
     }
   }
+
+  @Delete(':id')
   deleteById(id: string): Promise<string | IUser> {
     throw new Error('Method not implemented.');
   }
