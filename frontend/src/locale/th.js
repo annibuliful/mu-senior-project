@@ -7,7 +7,7 @@ export default {
   vaccines,
   diseases,
   packagers,
-  backup:"สำรองข้อมูล",
+  backup: "สำรองข้อมูล",
   home: "หน้าหลัก",
   vaccine: "วัคซีน",
   news: "ข่าวสาร",

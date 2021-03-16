@@ -2,7 +2,7 @@
   <div class="sm:mb-20">
     <TopBar></TopBar>
     <p class="text-2xl mb-10 border-b-2 border-orange-700">
-      {{ localeText.recentActivity  }}
+      {{ localeText.recentActivity }}
     </p>
     <!-- <Calendar :listEvents="listEvents" v-on:on-click="onSelectDate" /> -->
     <br />
@@ -56,10 +56,10 @@ export default {
     return {
       selectedDate: null,
       listEvents: [],
-      filterEventOnDate: [],
+      filterEventOnDate: []
     };
   },
-  components: {  AppointmentCard, TopBar },
+  components: { AppointmentCard, TopBar },
   created: function() {
     service()
       .appointment.cronCheckStatus()
@@ -68,7 +68,7 @@ export default {
         const data = await service().appointment.listNonDelete(language);
         this.listEvents = data;
         this.filterEventOnDate = this.listEvents.filter(
-          (event) => event.status === "vaccinating"
+          event => event.status === "vaccinating"
         );
         const result = localStorage.getItem("userInfo");
         this.$store.commit("setUserInfo", JSON.parse(result));
@@ -78,19 +78,19 @@ export default {
   methods: {
     onSelectDate: function(date) {
       this.filterEventOnDate = this.listEvents.filter(
-        (event) =>
+        event =>
           format(event.dates, "dd/MM/yyyy") ===
           format(new Date(date), "dd/MM/yyyy")
       );
       this.selectedDate = format(new Date(date), "EEEE d MMMM, yyyy", {
-        locale: this.locale === "th-TH" ? th : null,
+        locale: this.locale === "th-TH" ? th : null
       });
       this.$store.commit("changeSelectedCalendarDate", date);
       console.log("fdsfsfsf", this.filterEventOnDate);
     },
     onLinkToAddAppointmentPage: function() {
       this.$router.push({ name: "appointment-create" });
-    },
+    }
   },
   computed: {
     locale() {
@@ -104,7 +104,7 @@ export default {
     },
     welcomeWord() {
       return this.$store.state.locale.welcome;
-    },
-  },
+    }
+  }
 };
 </script>

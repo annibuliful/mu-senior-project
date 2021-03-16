@@ -8,7 +8,7 @@ export default {
   vaccines,
   diseases,
   packagers,
-  backup:"Backup",
+  backup: "Backup",
   home: "Home",
   vaccine: "Vaccine",
   news: "News",

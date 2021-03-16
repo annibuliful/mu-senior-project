@@ -16,5 +16,5 @@ export default {
   suggestion,
   util,
   vaccine,
-  revisionOnline,
+  revisionOnline
 };

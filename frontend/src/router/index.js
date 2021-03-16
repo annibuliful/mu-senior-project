@@ -13,7 +13,7 @@ import ChildAppointment from "../views/Appointment/List-child.vue";
 
 import CreateAppointment from "../views/Appointment/Create.vue";
 
-import DashboardBackup from "../views/Dashboard/Backup.vue"
+import DashboardBackup from "../views/Dashboard/Backup.vue";
 import VaccinePackager from "../views/Dashboard/VaccinePackager.vue";
 import VaccinePackagerDetails from "../views/Packager/VaccinePackagerDetails.vue";
 import RecordVaccineForm from "../views/RecordVaccine.vue";

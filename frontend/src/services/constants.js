@@ -4,5 +4,5 @@ export const STAIC_PATH_URL = `${API_URL}/static`;
 
 export const FETCH_API_OPTION = {
   method: "GET",
-  mode: "cors",
+  mode: "cors"
 };

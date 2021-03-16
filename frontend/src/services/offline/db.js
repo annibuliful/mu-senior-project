@@ -7,7 +7,7 @@ db.version(1).stores({
   vaccines: "++vaccineId, name",
   appointments: "++appointmentId, childname",
   diseases: "++diseaseId",
-  records: "++recordId",
+  records: "++recordId"
 });
 
 export const restore = () => {
@@ -18,7 +18,7 @@ export const restore = () => {
     vaccines: "++vaccineId, name",
     appointments: "++appointmentId, childname",
     diseases: "++diseaseId",
-    records: "++recordId",
+    records: "++recordId"
   });
 };
 export default db;
