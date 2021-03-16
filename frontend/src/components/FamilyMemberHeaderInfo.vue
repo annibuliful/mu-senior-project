@@ -33,7 +33,7 @@
         <router-link
           :to="{
             name: 'edit-family-profile',
-            params: { id: id },
+            params: { id: id }
           }"
         >
           <img class="h-6" src="../assets/icons/edit-icon.svg" alt="" />
