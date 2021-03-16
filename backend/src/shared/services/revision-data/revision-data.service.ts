@@ -4,7 +4,7 @@ import { IRevisionData, IRevisionResponse } from './interface';
 
 @Injectable()
 export class RevisionService {
-  private readonly serviceName = 'revisionData';
+  private readonly serviceName = 'revisions';
 
   private readonly columns = ['userId', 'filePath', 'createdAt'];
 
