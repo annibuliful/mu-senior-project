@@ -42,6 +42,7 @@ export default {
     return {
       uploadedFile: null,
       exportBlob: null,
+      file: null
     };
   },
   computed: {
@@ -58,7 +59,7 @@ export default {
         this.exportBlob = blob;
         // this.download(blob, "dexie-export.json", "application/json");
         console.log("click2", blob);
-        this.$store.commit("setExportFileBlob", this.exportBlob);
+        // this.$store.commit("setExportFileBlob", this.exportBlob);
         console.log("test", this.$store.state.exportFileBlob);
         let link = document.createElement("a");
         link.href = window.URL.createObjectURL(blob);
@@ -73,19 +74,17 @@ export default {
       }
     },
     async onClickImport() {
-      const importDb = await importDB(this.exportBlob);
+      // const importDb = await importDB(this.exportBlob);
+      console.log("import file", this.file)
+      const importDb = await importDB(this.file)
       console.log("import clicked");
       console.log(this.uploadedFile);
       console.log(importDb);
     },
     uploadFile(file) {
-      //   console.log("uploading...");
-      //   const blober = new Blob([JSON.stringify(file)], {
-      //     type: "application/json",
-      //   });
-      console.log("file", file);
-      //   console.log("blober", blober);
-      //   this.uploadedFile = blober;
+      this.file = file
+      console.log("upload file",file)
+      // console.log("file", file);
     },
     deleteIDB() {
       db.delete()
