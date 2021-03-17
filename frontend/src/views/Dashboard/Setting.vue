@@ -51,7 +51,7 @@
       </div>
       <div class="ml-auto">
         <button
-          class="hidden sm:block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
+          class=" sm:block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
           @click="onLogout"
         >
           {{ buttonLabel.logout }}
@@ -59,11 +59,56 @@
       </div>
     </div>
 
-    <div class="mb-10 mt-10">
+    <div>
+      <p class="text-2xl mb-10 border-b-2 border-orange-700 lg:px-0 px-4">
+        Privacy Policy
+      </p>
+      <div class="lg:h-64 sm:h-16 overflow-scroll">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and
+        typesetting industry. Lorem Ipsum has been the industry's standard dummy
+        text ever since the 1500s, when an unknown printer took a galley of type
+        and scrambled it to make a type specimen book. It has survived not only
+        five centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and
+        typesetting industry. Lorem Ipsum has been the industry's standard dummy
+        text ever since the 1500s, when an unknown printer took a galley of type
+        and scrambled it to make a type specimen book. It has survived not only
+        five centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and
+        typesetting industry. Lorem Ipsum has been the industry's standard dummy
+        text ever since the 1500s, when an unknown printer took a galley of type
+        and scrambled it to make a type specimen book. It has survived not only
+        five centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </div>
+      <button
+        class=" block mt-4 mx-auto bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Confirm
+      </button>
+    </div>
+    <!-- <div class="mb-10 mt-10">
       <p class="text-md mb-10 border-b-2 border-orange-700 lg:px-0 px-4">
         {{ locale.accountSetting }}
-      </p>
-
+      </p> -->
+    <!-- 
       <div class="flex items-center mb-6 ml-2">
         <div class="w-32">
           <label
@@ -90,9 +135,9 @@
             {{ locale.labelError.required.replace("{}", label.name) }}
           </p>
         </div>
-      </div>
+      </div> -->
 
-      <div class="flex items-center mb-6 ml-2">
+    <!-- <div class="flex items-center mb-6 ml-2">
         <div class="w-32">
           <label
             class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -120,9 +165,9 @@
             {{ locale.labelError.required.replace("{}", ` ${label.pin}`) }}
           </p>
         </div>
-      </div>
+      </div> -->
 
-      <div class="flex items-center mb-6 ml-2">
+    <!-- <div class="flex items-center mb-6 ml-2">
         <div class="w-32">
           <label
             class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -141,9 +186,9 @@
             {{ locale.labelError.required.replace("{}", label.birthDate) }}
           </p>
         </div>
-      </div>
+      </div> -->
 
-      <div class="flex items-center mb-6 ml-2">
+    <!-- <div class="flex items-center mb-6 ml-2">
         <div class="w-32">
           <label
             class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -162,19 +207,19 @@
             v-on:on-remove="onDeleteDisease"
           />
         </div>
-      </div>
+      </div> -->
 
-      <div class="flex items-center ml-2">
-        <!-- <div class="w-32">
+    <!-- <div class="flex items-center ml-2">
+        <div class="w-32">
           <label
             class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
             for="inline-full-name"
           >
             {{ label.vaccine }}
           </label>
-        </div> -->
+        </div>
 
-        <!-- <div class="inline-block relative w-auto">
+        <div class="inline-block relative w-auto">
           <TagInput
             :placeholder="label.vaccine"
             :listTags="listVaccines"
@@ -182,9 +227,9 @@
             v-on:on-enter="onAddNewVaccine"
             v-on:on-remove="onDeleteVaccine"
           />
-        </div> -->
-      </div>
-      <div class="lg:w-2/3 md:w-2/3 sm:w-full">
+        </div>
+      </div> -->
+    <!-- <div class="lg:w-2/3 md:w-2/3 sm:w-full">
         <p
           v-if="errorMessage !== ''"
           class="text-red-500 text-center text-xl m-2"
@@ -199,8 +244,8 @@
         >
           {{ buttonLabel.save }}
         </button>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
 
     <button
       class="block sm:hidden bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-auto w-9/12"
@@ -213,12 +258,12 @@
 <script>
 import { required } from "vuelidate/lib/validators";
 import CaretIcon from "@/components/icons/Caret.vue";
-import TagInput from "@/components/input/TagInput.vue";
+// import TagInput from "@/components/input/TagInput.vue";
 import service from "@/services";
 export default {
   components: {
-    CaretIcon,
-    TagInput
+    CaretIcon
+    // TagInput,
   },
   validations: {
     fullname: {
@@ -273,16 +318,16 @@ export default {
     this.userInfo = userInfo;
     this.$store.commit("setUserInfo", userInfo);
 
-    const isFirstTime = this.userInfo.fullname === "";
-    if (isFirstTime) {
-      this.isFirstTime = true;
-      this.$fire({
-        title: this.locale.label.notifyToEdit,
-        type: "warning",
-        timer: 3000
-      });
-      this.$store.commit("setFirstTime", true);
-    }
+    // const isFirstTime = this.userInfo.fullname === "";
+    // if (isFirstTime) {
+    //   this.isFirstTime = true;
+    //   this.$fire({
+    //     title: this.locale.label.notifyToEdit,
+    //     type: "warning",
+    //     timer: 3000,
+    //   });
+    //   this.$store.commit("setFirstTime", true);
+    // }
     this.fullname = this.userInfo.fullname;
     this.birthDate = new Date(this.userInfo.birthDate);
     this.selectedVaccines = this.userInfo.diseases;
@@ -436,3 +481,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+.concent-form {
+  overflow: scroll;
+  border: 1px gray;
+}
+</style>

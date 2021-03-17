@@ -3,7 +3,7 @@
     <div class="flex">
       <SideBar :isCancelLink="isCancelLink" />
       <MobileBar :isCancelLink="isCancelLink" />
-      <div class="flex-auto mt-10 mb-24 lg:mb-0 lg:mr-10">
+      <div class="flex-auto mt-10 mb-24 lg:mb-0 lg:mr-10 lg:ml-4">
         <router-view />
       </div>
     </div>
