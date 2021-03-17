@@ -9,8 +9,8 @@
     <p class="text-xl mb-10 border-b-2 border-orange-700" v-if="selectedDate">
       {{ selectedDate }}
     </p>
-  
-  <img class="w-8" src="@/assets/doctor-vaccinating.png" alt="">
+
+    <img class="w-8" src="@/assets/doctor-vaccinating.png" alt="" />
     <p
       class="text-xl text-center my-4 text-gray-600"
       v-if="filterEventOnDate.length === 0"
