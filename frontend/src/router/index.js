@@ -35,6 +35,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/",
+    name: "index",
+    redirect: { name: "dashboard-family" }
+  },
+  {
     path: "/pin",
     name: "Pin",
     component: PinPassword
