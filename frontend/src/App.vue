@@ -16,11 +16,11 @@ import { nanoid } from "nanoid";
 export default {
   data: function() {
     return {
-      isShowInternetToast: false,
+      isShowInternetToast: false
     };
   },
   components: {
-    InternetToast,
+    InternetToast
   },
   mounted() {
     this.createNewUserWhenIdNotExist();
@@ -72,8 +72,8 @@ export default {
       this.$store.commit("setUserInfo", result);
       localStorage.setItem("userInfo", JSON.stringify(result));
       this.$router.push({ name: "dashboard-family" });
-    },
-  },
+    }
+  }
 };
 </script>
 

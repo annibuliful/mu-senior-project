@@ -7,5 +7,5 @@ export default {
   pin,
   register,
   login,
-  isUserIdExist,
+  isUserIdExist
 };
