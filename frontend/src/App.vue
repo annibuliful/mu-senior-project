@@ -10,6 +10,8 @@
 <script>
 import { setMode } from "@/services";
 import InternetToast from "@/components/Internet-toast.vue";
+import services from "./services";
+import { nanoid } from "nanoid";
 
 export default {
   data: function() {
@@ -21,6 +23,7 @@ export default {
     InternetToast
   },
   mounted() {
+    this.createNewUserWhenIdNotExist();
     this.openNotification();
     this.checkFirstTime();
     this.$store.commit("getCovidInfo");
@@ -55,6 +58,20 @@ export default {
       } else {
         this.$store.commit("changeLanguage", language);
       }
+    },
+    createNewUserWhenIdNotExist: async function() {
+      const isUserIdExist = await services().auth.isUserIdExist();
+      if (!isUserIdExist) {
+        const loginData = { username: nanoid(), password: nanoid() };
+        localStorage.setItem("login-info", JSON.stringify(loginData));
+        await services().auth.register(loginData);
+      }
+
+      const loginInfo = JSON.parse(localStorage.getItem("login-info"));
+      const result = await services().auth.login(loginInfo);
+      this.$store.commit("setUserInfo", result);
+      localStorage.setItem("userInfo", JSON.stringify(result));
+      this.$router.push({ name: "dashboard-family" });
     }
   }
 };
