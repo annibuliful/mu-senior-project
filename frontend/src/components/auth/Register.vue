@@ -128,9 +128,9 @@ export default {
       if (!this.$v.$invalid) {
         const data = {
           username: this.username,
-          password: this.password,
-          pin: ""
+          password: this.password
         };
+        console.log("data regis", data);
         this.$emit("on-submit", data);
       }
     }
