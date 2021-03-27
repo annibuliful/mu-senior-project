@@ -6,6 +6,8 @@ import suggestion from "./suggestion";
 import record from "./record";
 import util from "./util";
 import vaccine from "./vaccine";
+import revisionOnline from "./revision";
+import authOnline from "./auth-online";
 export default {
   record,
   auth,
@@ -14,5 +16,7 @@ export default {
   appointment,
   suggestion,
   util,
-  vaccine
+  vaccine,
+  revisionOnline,
+  authOnline
 };
