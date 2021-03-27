@@ -5,9 +5,9 @@
     </p>
     <div class="flex flex-col justify-items-center">
       <div
-        v-for="(val, index) in mockListSuggestion"
+        v-for="(val, index) in listSuggestions"
         :key="`${index}`"
-        style="width: 50%; margin: 10px auto"
+        class="md:w-1/2 lg:w-4/5 w-11/12 mx-auto mt-4"
       >
         <AppointmentCard
           :vaccineName="val.vaccineName"
@@ -84,8 +84,17 @@ export default {
     };
     service()
       .suggestion.suggestion(suggestionData, language)
-      .then(data => {
-        console.log("data", data);
+      .then(listVaccine => {
+        console.log("data", listVaccine);
+        this.listSuggestions = listVaccine.map(vaccine => {
+          return {
+            vaccineId: vaccine.vaccineId,
+            vaccineName: vaccine.vaccineNameNormal,
+            listAppointmentDates: vaccine.listAllDosesWithTime.map(
+              ({ appointmentDate }) => appointmentDate
+            )
+          };
+        });
       });
     // service()
     //   .suggestion.generate(tempChildInfo, language)
