@@ -10,11 +10,16 @@ export const getAllDoseWithCurrentDate = (vaccineId, currentDate, language) => {
   const listAllDoses = vaccineInfo.injectionPeriodTime.filter(
     time => time !== "annually"
   );
-  const listAllDosesWithTime = listAllDoses.map(day => ({
-    appointmentDate: add(currentDate, {
-      days: Number(day)
-    })
-  }));
+
+  let sum = 0;
+  const listAllDosesWithTime = listAllDoses.map(day => {
+    sum += day;
+    return {
+      appointmentDate: add(currentDate, {
+        days: Number(sum)
+      })
+    };
+  });
 
   return {
     ...vaccineInfo,
@@ -26,11 +31,16 @@ export const getAllDoseById = (vaccineInfo, currentDate) => {
   const listAllDoses = vaccineInfo.injectionPeriodTime.filter(
     time => time !== "annually"
   );
-  const listAllDosesWithTime = listAllDoses.map(day => ({
-    appointmentDate: add(currentDate, {
-      days: Number(day)
-    })
-  }));
+
+  let sum = 0;
+  const listAllDosesWithTime = listAllDoses.map(day => {
+    sum += day;
+    return {
+      appointmentDate: add(currentDate, {
+        days: Number(sum)
+      })
+    };
+  });
 
   return {
     ...vaccineInfo,
