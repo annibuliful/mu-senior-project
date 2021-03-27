@@ -23,7 +23,7 @@
   </div>
 </template>
 <script>
-import service from "@/services";
+import service from "../../services";
 import { format, isBefore } from "date-fns";
 import AppointmentCard from "@/components/AppointmentCard.vue";
 export default {
@@ -61,15 +61,26 @@ export default {
     const language = this.$store.state.calendarLocale;
     const tempChildInfo = this.$store.state.tempFamily;
     this.childname = tempChildInfo;
+
+    const suggestionData = {
+      receivedVaccineIds: tempChildInfo.diseases,
+      birthDate: tempChildInfo.birthDate,
+      congenitalDiseaseIds: []
+    };
     service()
-      .suggestion.generate(tempChildInfo, language)
+      .suggestion.suggestion(suggestionData, language)
       .then(data => {
-        this.listSuggestions = data;
-        const listOverdueVaccines = data.filter(el =>
-          isBefore(el.appointmentDate, new Date())
-        );
-        this.listOverdueVaccines = listOverdueVaccines;
+        console.log("data", data);
       });
+    // service()
+    //   .suggestion.generate(tempChildInfo, language)
+    //   .then(data => {
+    //     this.listSuggestions = data;
+    //     const listOverdueVaccines = data.filter(el =>
+    //       isBefore(el.appointmentDate, new Date())
+    //     );
+    //     this.listOverdueVaccines = listOverdueVaccines;
+    //   });
 
     console.log("listSuggestions", this.listSuggestions);
   },

@@ -70,7 +70,7 @@ export default {
       const result = await services().auth.login(loginInfo);
       this.$store.commit("setUserInfo", result);
       localStorage.setItem("userInfo", JSON.stringify(result));
-      this.$router.push({ name: "dashboard-family" });
+      this.$router.push({ name: "dashboard-home" });
     }
   }
 };

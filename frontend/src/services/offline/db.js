@@ -7,7 +7,7 @@ const listTables = {
   vaccines: "++vaccineId, name",
   appointments: "++appointmentId, childname",
   diseases: "++diseaseId",
-  records: "++recordId",
+  records: "++recordId"
 };
 
 const db = new Dexie("senior");
