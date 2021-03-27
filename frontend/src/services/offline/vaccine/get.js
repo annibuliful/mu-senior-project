@@ -68,3 +68,23 @@ export const getListVaccineByDate = (birthDate, language) => {
     (el) => el.category === vaccineCategory || el.category === "all"
   );
 };
+
+export const getListDiseaseByLanguage = (language) => {
+  if (language === "en-US") {
+    return enVaccines;
+  }
+
+  return thVacccines;
+};
+
+export const getDiseaseById = (id, language) => {
+  if (!id) throw new Error("missing disaese id");
+
+  const diseaseInfo = getListDiseaseByLanguage(language).find(
+    (disease) => disease.diseaseId === id
+  );
+
+  if (!diseaseInfo) throw new Error("disease not found");
+
+  return diseaseInfo;
+};

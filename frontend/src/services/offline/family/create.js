@@ -8,7 +8,7 @@ export const createFamilyMember = async (memberData) => {
     throw new Error("family not found");
   }
 
-  return db.familyMembers.add({
+  return db.table("familyMembers").add({
     ...memberData,
     congenitalDiseaseIds: [],
     receivedVaccineIds: [],

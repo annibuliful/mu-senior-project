@@ -1,8 +1,8 @@
 import { add } from "date-fns";
-import constraintVaccines from "../../shared/localization/constraint-vaccine";
+import constraintVaccines from "../../../shared/localization/constraint-vaccine";
 import { getFamilyMemberById } from "../family/get";
 
-import { getListVaccineByDate, getVaccineById } from "../vaccines/get";
+import { getListVaccineByDate, getVaccineById } from "../vaccine/get";
 
 export const getAllDoseWithCurrentDate = (vaccineId, currentDate, language) => {
   const vaccineInfo = getVaccineById(vaccineId, language);
