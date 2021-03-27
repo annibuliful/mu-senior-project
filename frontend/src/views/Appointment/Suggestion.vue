@@ -26,7 +26,7 @@
 </template>
 <script>
 import service from "../../services";
-import { format, isBefore } from "date-fns";
+import { format } from "date-fns";
 import AppointmentCard from "../../components/NewAppointmentCard";
 
 export default {
@@ -131,25 +131,29 @@ export default {
       for (let i = 0; i < this.listSuggestions.length; i++) {
         const {
           vaccineId,
-          vaccineNameNormal,
-          appointmentDate
+          // vaccineName,
+          listAppointmentDates
         } = this.listSuggestions[i];
-        const eventId = await this.submit(
-          vaccineId,
-          appointmentDate,
-          familyId,
-          fullname
-        );
-        if (isBefore(appointmentDate, new Date(), 2)) {
-          listOverdue.push({
+
+        for (let j = 0; j < listAppointmentDates.length; j++) {
+          await this.submit(
             vaccineId,
-            vaccineNameNormal,
-            appointmentDate,
+            listAppointmentDates[j],
             familyId,
-            fullname,
-            eventId
-          });
+            fullname
+          );
         }
+
+        // if (isBefore(listAppointmentDates[0], new Date(), 2)) {
+        //   listOverdue.push({
+        //     vaccineId,
+        //     vaccineName,
+        //     listAppointmentDates,
+        //     familyId,
+        //     fullname,
+        //     eventId
+        //   });
+        // }
       }
       const isListOverdueEmpty = listOverdue.length === 0;
       if (isListOverdueEmpty) {
