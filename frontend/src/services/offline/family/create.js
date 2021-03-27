@@ -1,7 +1,7 @@
 import db from "../db";
 import { nanoid } from "nanoid";
 
-export const createFamilyMember = async (memberData) => {
+export const createFamilyMember = async memberData => {
   const familyInfo = await db.table("families").get(memberData.familyId);
 
   if (!familyInfo) {
@@ -12,7 +12,7 @@ export const createFamilyMember = async (memberData) => {
     ...memberData,
     congenitalDiseaseIds: [],
     receivedVaccineIds: [],
-    memberId: nanoid(),
+    memberId: nanoid()
   });
 };
 
@@ -23,7 +23,7 @@ export default ({
   diseases,
   receivedVaccines,
   congenitalDisease,
-  userId,
+  userId
 }) => {
   return db.table("families").add({
     familyId: nanoid(),
@@ -35,6 +35,6 @@ export default ({
     congenitalDisease,
     receivedVaccines,
     isSync: false,
-    isDelete: false,
+    isDelete: false
   });
 };
