@@ -4,13 +4,15 @@
       {{ suggestionWord }}
     </p>
     <div class="flex flex-col justify-items-center">
-      <div v-for="(val, index) in listSuggestions" :key="`${index}`">
+      <div
+        v-for="(val, index) in mockListSuggestion"
+        :key="`${index}`"
+        style="width: 50%; margin: 10px auto"
+      >
         <AppointmentCard
-          :childname="childname.fullname"
-          :vaccine="val.vaccineNameNormal"
-          status="in-progress"
-          :date="val.appointmentDate"
-          :doseNumber="1"
+          :vaccineName="val.vaccineName"
+          :listAppointmentDates="val.listAppointmentDates"
+          :vaccineId="val.vaccineId"
         />
       </div>
     </div>
@@ -25,7 +27,8 @@
 <script>
 import service from "../../services";
 import { format, isBefore } from "date-fns";
-import AppointmentCard from "@/components/AppointmentCard.vue";
+import AppointmentCard from "../../components/NewAppointmentCard";
+
 export default {
   components: {
     AppointmentCard
@@ -47,7 +50,19 @@ export default {
       childId: "",
       childInfo: {},
       childname: "",
-      listOverdueVaccines: []
+      listOverdueVaccines: [],
+      mockListSuggestion: [
+        {
+          vaccineId: "vac001",
+          vaccineName: "Test-Name",
+          listAppointmentDates: [new Date(), new Date(), new Date()]
+        },
+        {
+          vaccineId: "vac001",
+          vaccineName: "Test-Name",
+          listAppointmentDates: [new Date(), new Date(), new Date()]
+        }
+      ]
     };
   },
   filters: {
