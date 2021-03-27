@@ -42,8 +42,6 @@ export const suggestion = async (memberInfo, language) => {
   if (!memberInfo) throw new Error("missing member info");
   if (!language) throw new Error("missing language");
 
-  if (!memberInfo) throw new Error("member info not found");
-
   const filteredVaccineForChild = getListVaccineByDate(
     memberInfo.birthDate,
     language

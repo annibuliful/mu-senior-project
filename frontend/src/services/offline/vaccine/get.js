@@ -1,5 +1,5 @@
-import thVacccines from "../../shared/localization/th-locale/vaccines";
-import enVaccines from "../../shared/localization/th-locale/vaccines";
+import thVacccines from "../../../shared/localization/th-locale/vaccines";
+import enVaccines from "../../../shared/localization/en-locale/vaccines";
 
 export const filterVaccineByExludeVaccineIds = language => vaccineIds => {
   return getListVaccine(language).filter(

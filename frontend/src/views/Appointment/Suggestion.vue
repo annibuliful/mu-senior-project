@@ -4,13 +4,15 @@
       {{ suggestionWord }}
     </p>
     <div class="flex flex-col justify-items-center">
-      <div v-for="(val, index) in listSuggestions" :key="`${index}`">
+      <div
+        v-for="(val, index) in listSuggestions"
+        :key="`${index}`"
+        class="md:w-1/2 lg:w-4/5 w-11/12 mx-auto mt-4"
+      >
         <AppointmentCard
-          :childname="childname.fullname"
-          :vaccine="val.vaccineNameNormal"
-          status="in-progress"
-          :date="val.appointmentDate"
-          :doseNumber="1"
+          :vaccineName="val.vaccineName"
+          :listAppointmentDates="val.listAppointmentDates"
+          :vaccineId="val.vaccineId"
         />
       </div>
     </div>
@@ -23,9 +25,10 @@
   </div>
 </template>
 <script>
-import service from "@/services";
-import { format, isBefore } from "date-fns";
-import AppointmentCard from "@/components/AppointmentCard.vue";
+import service from "../../services";
+import { format } from "date-fns";
+import AppointmentCard from "../../components/NewAppointmentCard";
+
 export default {
   components: {
     AppointmentCard
@@ -47,7 +50,19 @@ export default {
       childId: "",
       childInfo: {},
       childname: "",
-      listOverdueVaccines: []
+      listOverdueVaccines: [],
+      mockListSuggestion: [
+        {
+          vaccineId: "vac001",
+          vaccineName: "Test-Name",
+          listAppointmentDates: [new Date(), new Date(), new Date()]
+        },
+        {
+          vaccineId: "vac001",
+          vaccineName: "Test-Name",
+          listAppointmentDates: [new Date(), new Date(), new Date()]
+        }
+      ]
     };
   },
   filters: {
@@ -61,15 +76,35 @@ export default {
     const language = this.$store.state.calendarLocale;
     const tempChildInfo = this.$store.state.tempFamily;
     this.childname = tempChildInfo;
+
+    const suggestionData = {
+      receivedVaccineIds: tempChildInfo.diseases,
+      birthDate: tempChildInfo.birthDate,
+      congenitalDiseaseIds: []
+    };
     service()
-      .suggestion.generate(tempChildInfo, language)
-      .then(data => {
-        this.listSuggestions = data;
-        const listOverdueVaccines = data.filter(el =>
-          isBefore(el.appointmentDate, new Date())
-        );
-        this.listOverdueVaccines = listOverdueVaccines;
+      .suggestion.suggestion(suggestionData, language)
+      .then(listVaccine => {
+        console.log("data", listVaccine);
+        this.listSuggestions = listVaccine.map(vaccine => {
+          return {
+            vaccineId: vaccine.vaccineId,
+            vaccineName: vaccine.vaccineNameNormal,
+            listAppointmentDates: vaccine.listAllDosesWithTime.map(
+              ({ appointmentDate }) => appointmentDate
+            )
+          };
+        });
       });
+    // service()
+    //   .suggestion.generate(tempChildInfo, language)
+    //   .then(data => {
+    //     this.listSuggestions = data;
+    //     const listOverdueVaccines = data.filter(el =>
+    //       isBefore(el.appointmentDate, new Date())
+    //     );
+    //     this.listOverdueVaccines = listOverdueVaccines;
+    //   });
 
     console.log("listSuggestions", this.listSuggestions);
   },
@@ -96,25 +131,29 @@ export default {
       for (let i = 0; i < this.listSuggestions.length; i++) {
         const {
           vaccineId,
-          vaccineNameNormal,
-          appointmentDate
+          // vaccineName,
+          listAppointmentDates
         } = this.listSuggestions[i];
-        const eventId = await this.submit(
-          vaccineId,
-          appointmentDate,
-          familyId,
-          fullname
-        );
-        if (isBefore(appointmentDate, new Date(), 2)) {
-          listOverdue.push({
+
+        for (let j = 0; j < listAppointmentDates.length; j++) {
+          await this.submit(
             vaccineId,
-            vaccineNameNormal,
-            appointmentDate,
+            listAppointmentDates[j],
             familyId,
-            fullname,
-            eventId
-          });
+            fullname
+          );
         }
+
+        // if (isBefore(listAppointmentDates[0], new Date(), 2)) {
+        //   listOverdue.push({
+        //     vaccineId,
+        //     vaccineName,
+        //     listAppointmentDates,
+        //     familyId,
+        //     fullname,
+        //     eventId
+        //   });
+        // }
       }
       const isListOverdueEmpty = listOverdue.length === 0;
       if (isListOverdueEmpty) {
