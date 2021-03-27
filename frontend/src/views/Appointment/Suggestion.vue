@@ -140,7 +140,8 @@ export default {
             vaccineId,
             listAppointmentDates[j],
             familyId,
-            fullname
+            fullname,
+            j + 1
           );
         }
 
@@ -168,7 +169,13 @@ export default {
         this.$router.push({ name: "Old-Vaccine" });
       }
     },
-    submit: async function(vaccineId, appointmentDate, familyId, fullname) {
+    submit: async function(
+      vaccineId,
+      appointmentDate,
+      familyId,
+      fullname,
+      doseNumber
+    ) {
       const data = {
         dates: appointmentDate,
         dot: "gray",
@@ -180,7 +187,7 @@ export default {
           childname: fullname,
           childId: familyId,
           time: "09:30",
-          doseNumber: 1
+          doseNumber
         }
       };
       return await service().appointment.create(data);
