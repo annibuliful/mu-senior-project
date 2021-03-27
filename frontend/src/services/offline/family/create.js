@@ -26,7 +26,6 @@ export default ({
   userId
 }) => {
   return db.table("families").add({
-    familyId: nanoid(),
     fullname,
     userId,
     birthDate,

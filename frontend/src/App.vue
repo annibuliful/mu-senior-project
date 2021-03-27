@@ -60,19 +60,18 @@ export default {
       }
     },
     createNewUserWhenIdNotExist: async function() {
-      const loginInfo = JSON.parse(localStorage.getItem("login-info"));
-      const isUserIdExist = await services().auth.isUserIdExist(loginInfo);
+      const isUserIdExist = await services().auth.isUserIdExist();
       if (!isUserIdExist) {
         const loginData = { username: nanoid(), password: nanoid() };
         localStorage.setItem("login-info", JSON.stringify(loginData));
         await services().auth.register(loginData);
       }
+      const loginInfo = JSON.parse(localStorage.getItem("login-info"));
       const result = await services().auth.login(loginInfo);
       this.$store.commit("setUserInfo", result);
       localStorage.setItem("userInfo", JSON.stringify(result));
       // this.$router.push({ name: "dashboard-home" });
       // this.$router.push({ name: "dashboard-family" });
-      console.log("createNewUserWhenIdNotExist")
     }
   }
 };

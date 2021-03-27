@@ -64,7 +64,7 @@ import RegisterForm from "@/components/auth/Register.vue";
 export default {
   components: {
     LoginForm,
-    RegisterForm,
+    RegisterForm
   },
   data() {
     return {
@@ -77,8 +77,8 @@ export default {
         email: "",
         confirmEmail: "",
         password: "",
-        confirmPassWord: "",
-      },
+        confirmPassWord: ""
+      }
     };
   },
   computed: {
@@ -93,7 +93,7 @@ export default {
     },
     labelText: function() {
       return this.$store.state.locale.label;
-    },
+    }
   },
 
   methods: {
@@ -117,7 +117,7 @@ export default {
         .then(() => {
           console.log("Database successfully deleted");
         })
-        .catch((err) => {
+        .catch(err => {
           console.error("Could not delete database", err);
         })
         .finally(() => {
@@ -137,7 +137,7 @@ export default {
         this.$fire({
           title: "เข้าสู่ระบบสำเร็จ",
           type: "success",
-          timer: 3000,
+          timer: 3000
         });
       } catch (e) {
         const message = e.message;
@@ -161,7 +161,7 @@ export default {
         this.$fire({
           title: "สมัครสมาชิกสำเร็จ",
           type: "success",
-          timer: 3000,
+          timer: 3000
         });
         this.mode = "login";
       } catch (e) {
@@ -172,11 +172,11 @@ export default {
         this.$fire({
           title: "สมัครสมาชิกไม่สำเร็จ",
           type: "error",
-          timer: 3000,
+          timer: 3000
         });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped></style>
