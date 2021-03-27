@@ -1,4 +1,20 @@
 import db from "../db";
+import { nanoid } from "nanoid";
+
+export const createFamilyMember = async (memberData) => {
+  const familyInfo = await db.table("families").get(memberData.familyId);
+
+  if (!familyInfo) {
+    throw new Error("family not found");
+  }
+
+  return db.familyMembers.add({
+    ...memberData,
+    congenitalDiseaseIds: [],
+    receivedVaccineIds: [],
+    memberId: nanoid(),
+  });
+};
 
 export default ({
   fullname,
@@ -7,9 +23,10 @@ export default ({
   diseases,
   receivedVaccines,
   congenitalDisease,
-  userId
+  userId,
 }) => {
   return db.table("families").add({
+    familyId: nanoid(),
     fullname,
     userId,
     birthDate,
@@ -18,6 +35,6 @@ export default ({
     congenitalDisease,
     receivedVaccines,
     isSync: false,
-    isDelete: false
+    isDelete: false,
   });
 };
