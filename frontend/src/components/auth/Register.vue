@@ -129,8 +129,8 @@ export default {
         const data = {
           username: this.username,
           password: this.password,
-          pin: ""
         };
+        console.log("data regis", data )
         this.$emit("on-submit", data);
       }
     }

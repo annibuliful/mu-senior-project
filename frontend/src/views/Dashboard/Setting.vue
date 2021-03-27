@@ -60,130 +60,55 @@
     </div>
 
     <div class="mb-10 mt-10">
-      <p class="text-md mb-10 border-b-2 border-blue-700 lg:px-0 px-4">
-        {{ locale.accountSetting }}
-      </p>
-
-      <div class="flex items-center mb-6 ml-2">
-        <div class="w-32">
-          <label
-            class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
-            for="fullname"
-          >
-            {{ label.name }}
-          </label>
+      <div>
+        <p class="text-2xl mb-10 border-b-2 border-orange-700 lg:px-0 px-4">
+          Privacy Policy
+        </p>
+        <div class="lg:h-64 sm:h-16 overflow-scroll px-4">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of
+          the printing and typesetting industry. Lorem Ipsum has been the
+          industry's standard dummy text ever since the 1500s, when an unknown
+          printer took a galley of type and scrambled it to make a type specimen
+          book. It has survived not only five centuries, but also the leap into
+          electronic typesetting, remaining essentially unchanged. It was
+          popularised in the 1960s with the release of Letraset sheets
+          containing Lorem Ipsum passages, and more recently with desktop
+          publishing software like Aldus PageMaker including versions of Lorem
+          Ipsum. Lorem Ipsum is simply dummy text of the printing and
+          typesetting industry. Lorem Ipsum has been the industry's standard
+          dummy text ever since the 1500s, when an unknown printer took a galley
+          of type and scrambled it to make a type specimen book. It has survived
+          not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in
+          the 1960s with the release of Letraset sheets containing Lorem Ipsum
+          passages, and more recently with desktop publishing software like
+          Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is
+          simply dummy text of the printing and typesetting industry. Lorem
+          Ipsum has been the industry's standard dummy text ever since the
+          1500s, when an unknown printer took a galley of type and scrambled it
+          to make a type specimen book. It has survived not only five centuries,
+          but also the leap into electronic typesetting, remaining essentially
+          unchanged. It was popularised in the 1960s with the release of
+          Letraset sheets containing Lorem Ipsum passages, and more recently
+          with desktop publishing software like Aldus PageMaker including
+          versions of Lorem Ipsum.
         </div>
-
-        <div class="inline-block relative w-auto">
-          <input
-            type="text"
-            v-model="fullname"
-            class=" w-full text-base shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="fullname"
-            :placeholder="label.name"
-            autocomplete="off"
-          />
-          <p
-            class="text-xs text-red-600"
-            v-if="!$v.fullname.required && $v.fullname.$error && isSubmitted"
-          >
-            {{ locale.labelError.required.replace("{}", label.name) }}
-          </p>
-        </div>
+        <button
+          class=" block mt-4 mb-4 mx-auto bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Confirm
+        </button>
       </div>
 
-      <div class="flex items-center mb-6 ml-2">
-        <div class="w-32">
-          <label
-            class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
-            for="pin"
-          >
-            {{ label.pin }}
-          </label>
-        </div>
-
-        <div class="inline-block relative w-auto">
-          <input
-            type="password"
-            v-model="pinPassword"
-            class=" w-full text-base shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="pin"
-            :placeholder="label.pin"
-            autocomplete="off"
-          />
-          <p
-            class="text-xs text-red-600"
-            v-if="
-              !$v.pinPassword.required && $v.pinPassword.$error && isSubmitted
-            "
-          >
-            {{ locale.labelError.required.replace("{}", ` ${label.pin}`) }}
-          </p>
-        </div>
-      </div>
-
-      <div class="flex items-center mb-6 ml-2">
-        <div class="w-32">
-          <label
-            class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
-            for="inline-full-name"
-          >
-            {{ label.birthDate }}
-          </label>
-        </div>
-
-        <div class="inline-block relative w-auto">
-          <v-date-picker v-model="birthDate" :locale="calendarLocale" />
-          <p
-            class="text-xs text-red-600"
-            v-if="!$v.birthDate.required && $v.birthDate.$error && isSubmitted"
-          >
-            {{ locale.labelError.required.replace("{}", label.birthDate) }}
-          </p>
-        </div>
-      </div>
-
-      <div class="flex items-center mb-6 ml-2">
-        <div class="w-32">
-          <label
-            class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
-            for="inline-full-name"
-          >
-            {{ label.disease }}
-          </label>
-        </div>
-
-        <div class="inline-block relative w-auto">
-          <TagInput
-            :placeholder="label.disease"
-            :listTags="listDiseases"
-            :selectedTags="selectedDiseases"
-            v-on:on-enter="onAddNewDisease"
-            v-on:on-remove="onDeleteDisease"
-          />
-        </div>
-      </div>
-
-      <div class="flex items-center ml-2">
-        <!-- <div class="w-32">
-          <label
-            class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
-            for="inline-full-name"
-          >
-            {{ label.vaccine }}
-          </label>
-        </div> -->
-
-        <!-- <div class="inline-block relative w-auto">
-          <TagInput
-            :placeholder="label.vaccine"
-            :listTags="listVaccines"
-            :selectedTags="selectedVaccines"
-            v-on:on-enter="onAddNewVaccine"
-            v-on:on-remove="onDeleteVaccine"
-          />
-        </div> -->
-      </div>
+      <div class="flex items-center ml-2"></div>
       <div class="lg:w-2/3 md:w-2/3 sm:w-full">
         <p
           v-if="errorMessage !== ''"
@@ -192,14 +117,14 @@
           {{ errorMessage }}
         </p>
       </div>
-      <div class="w-full">
+      <!-- <div class="w-full">
         <button
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto w-6/12"
           @click="submit"
         >
           {{ buttonLabel.save }}
         </button>
-      </div>
+      </div> -->
     </div>
 
     <button
@@ -211,26 +136,13 @@
   </div>
 </template>
 <script>
-import { required } from "vuelidate/lib/validators";
 import CaretIcon from "@/components/icons/Caret.vue";
-import TagInput from "@/components/input/TagInput.vue";
 import service from "@/services";
 export default {
   components: {
     CaretIcon,
-    TagInput
   },
-  validations: {
-    fullname: {
-      required
-    },
-    birthDate: {
-      required
-    },
-    pinPassword: {
-      required
-    }
-  },
+
   computed: {
     listVaccines() {
       return this.$store.state.listVaccines;
@@ -249,7 +161,7 @@ export default {
     },
     buttonLabel() {
       return this.$store.state.locale.button;
-    }
+    },
   },
   data() {
     return {
@@ -264,7 +176,7 @@ export default {
       errorMessage: "",
       isFirstTime: false,
       userFamilyId: "",
-      userInfo: {}
+      userInfo: {},
     };
   },
   created() {
@@ -273,21 +185,7 @@ export default {
     this.userInfo = userInfo;
     this.$store.commit("setUserInfo", userInfo);
 
-    const isFirstTime = this.userInfo.fullname === "";
-    if (isFirstTime) {
-      this.isFirstTime = true;
-      this.$fire({
-        title: this.locale.label.notifyToEdit,
-        type: "warning",
-        timer: 3000
-      });
-      this.$store.commit("setFirstTime", true);
-    }
-    this.fullname = this.userInfo.fullname;
-    this.birthDate = new Date(this.userInfo.birthDate);
-    this.selectedVaccines = this.userInfo.diseases;
-    this.selectedDiseases = this.userInfo.receivedVaccines;
-    this.pinPassword = this.userInfo.pin;
+ 
   },
   methods: {
     refreshApp() {
@@ -298,8 +196,8 @@ export default {
         title: this.label.updateVersion,
         showCancelButton: true,
         confirmButtonText: this.label.yes,
-        cancelButtonText: this.label.no
-      }).then(r => {
+        cancelButtonText: this.label.no,
+      }).then((r) => {
         if (r.value) {
           // Load function
           if (this.versionFromServer !== this.versionNumber) {
@@ -307,14 +205,14 @@ export default {
             this.$fire({
               title: this.locale.label.updateSuccess,
               type: "success",
-              timer: 3000
+              timer: 3000,
             });
             this.refreshApp();
           } else {
             this.$fire({
               title: this.locale.label.useNewestVersion,
               type: "info",
-              timer: 3000
+              timer: 3000,
             });
           }
         }
@@ -325,15 +223,15 @@ export default {
         title: this.locale.label.confirmLogout,
         showCancelButton: true,
         confirmButtonText: this.locale.label.yes,
-        cancelButtonText: this.locale.label.no
-      }).then(r => {
+        cancelButtonText: this.locale.label.no,
+      }).then((r) => {
         if (r.value) {
           localStorage.removeItem("userInfo");
           this.$router.push("/");
           this.$fire({
             title: this.locale.label.logoutSuccess,
             type: "success",
-            timer: 3000
+            timer: 3000,
           });
         }
       });
@@ -352,15 +250,15 @@ export default {
           birthDate: this.birthDate,
           receivedVaccines: [],
           diseases: this.selectedDiseases,
-          pin: this.pinPassword
+          pin: this.pinPassword,
         };
 
         this.$fire({
           title: this.locale.label.confirmEdit,
           showCancelButton: true,
           confirmButtonText: this.locale.label.yes,
-          cancelButtonText: this.locale.label.no
-        }).then(async r => {
+          cancelButtonText: this.locale.label.no,
+        }).then(async (r) => {
           if (r.value) {
             const userInfo = JSON.parse(localStorage.getItem("userInfo"));
             const newUserInfo = Object.assign(userInfo, data);
@@ -371,19 +269,20 @@ export default {
             this.$fire({
               title: this.locale.label.saveInfo,
               type: "success",
-              timer: 3000
+              timer: 3000,
             });
 
             if (this.isFirstTime) {
               const data = {
                 fullname: this.fullname,
                 birthDate: this.birthDate,
-                diseases: this.selectedDiseases?.map(el => el.id) ?? [],
-                receivedVaccines: this.selectedVaccines?.map(el => el.id) ?? [],
+                diseases: this.selectedDiseases?.map((el) => el.id) ?? [],
+                receivedVaccines:
+                  this.selectedVaccines?.map((el) => el.id) ?? [],
                 profileImg: "",
                 userId: this.$store.state.userInfo.userId,
                 isParent: true,
-                pin: this.pinPassword
+                pin: this.pinPassword,
               };
               await service().family.create(data);
               await service().user.update(
@@ -394,19 +293,19 @@ export default {
             } else {
               const listFamilies = await service().family.list();
               const userFamilyId = listFamilies.find(
-                el =>
+                (el) =>
                   el.fullname === this.userInfo.fullname &&
                   el.userId === this.userInfo.userId
               )?.familyId;
               const data = {
                 fullname: this.fullname,
                 birthDate: this.birthDate,
-                diseases: this.selectedDiseases.map(el => el.id),
-                receivedVaccines: this.selectedVaccines.map(el => el.id),
+                diseases: this.selectedDiseases.map((el) => el.id),
+                receivedVaccines: this.selectedVaccines.map((el) => el.id),
                 profileImg: "",
                 userId: this.$store.state.userInfo.userId,
                 pin: this.pinPassword,
-                isParent: true
+                isParent: true,
               };
               await service().family.update(userFamilyId, data);
               await service().user.update(this.userInfo.userId, data);
@@ -432,7 +331,7 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    }
-  }
+    },
+  },
 };
 </script>
