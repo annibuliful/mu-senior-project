@@ -1,6 +1,5 @@
 import { add } from "date-fns";
 import constraintVaccines from "../../../shared/localization/constraint-vaccine";
-import { getFamilyMemberById } from "../family/get";
 
 import { getListVaccineByDate, getVaccineById } from "../vaccine/get";
 
@@ -39,11 +38,9 @@ export const getAllDoseById = (vaccineInfo, currentDate) => {
   };
 };
 
-export const suggestion = async (memberId, language) => {
-  if (!memberId) throw new Error("missing member id");
+export const suggestion = async (memberInfo, language) => {
+  if (!memberInfo) throw new Error("missing member info");
   if (!language) throw new Error("missing language");
-
-  const memberInfo = await getFamilyMemberById(memberId, language);
 
   if (!memberInfo) throw new Error("member info not found");
 
