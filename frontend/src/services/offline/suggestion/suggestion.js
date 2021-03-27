@@ -8,33 +8,33 @@ export const getAllDoseWithCurrentDate = (vaccineId, currentDate, language) => {
   if (!vaccineInfo) throw new Error("vaccine not found");
 
   const listAllDoses = vaccineInfo.injectionPeriodTime.filter(
-    (time) => time !== "annually"
+    time => time !== "annually"
   );
-  const listAllDosesWithTime = listAllDoses.map((day) => ({
+  const listAllDosesWithTime = listAllDoses.map(day => ({
     appointmentDate: add(currentDate, {
-      days: Number(day),
-    }),
+      days: Number(day)
+    })
   }));
 
   return {
     ...vaccineInfo,
-    listAllDosesWithTime,
+    listAllDosesWithTime
   };
 };
 
 export const getAllDoseById = (vaccineInfo, currentDate) => {
   const listAllDoses = vaccineInfo.injectionPeriodTime.filter(
-    (time) => time !== "annually"
+    time => time !== "annually"
   );
-  const listAllDosesWithTime = listAllDoses.map((day) => ({
+  const listAllDosesWithTime = listAllDoses.map(day => ({
     appointmentDate: add(currentDate, {
-      days: Number(day),
-    }),
+      days: Number(day)
+    })
   }));
 
   return {
     ...vaccineInfo,
-    listAllDosesWithTime,
+    listAllDosesWithTime
   };
 };
 
@@ -50,20 +50,20 @@ export const suggestion = async (memberInfo, language) => {
   const receivedVaccineIds = memberInfo.receivedVaccineIds ?? [];
 
   const filterdVaccineChildNotReceived = filteredVaccineForChild.filter(
-    (el) => !receivedVaccineIds.includes(el.vaccineId)
+    el => !receivedVaccineIds.includes(el.vaccineId)
   );
 
   const diseaseIds = memberInfo.congenitalDiseaseIds ?? [];
 
   const listVaccineConstraint = constraintVaccines
-    .filter((el) => diseaseIds.some((disease) => el.diseaseId === disease))
-    .map((el) => el.vaccineId);
+    .filter(el => diseaseIds.some(disease => el.diseaseId === disease))
+    .map(el => el.vaccineId);
 
   const listForChild = filterdVaccineChildNotReceived.filter(
-    (el) => !listVaccineConstraint.includes(el.vaccineId)
+    el => !listVaccineConstraint.includes(el.vaccineId)
   );
 
-  return listForChild.map((vaccine) =>
+  return listForChild.map(vaccine =>
     getAllDoseById(vaccine, memberInfo.birthDate)
   );
 };
