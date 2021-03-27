@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+// import Home from "../views/Home.vue";
 import DashboardIndex from "../views/Dashboard/Index.vue";
 import DashboardHome from "../views/Dashboard/Home.vue";
 import DashboardSetting from "../views/Dashboard/Setting.vue";
@@ -23,13 +23,14 @@ import EditFamilyProfile from "../views/Family/EditFamilyProfile.vue";
 import HistoryFamilyMember from "../views/Family/HistoryFamilyMember.vue";
 import SummaryFamilyMember from "../views/Family/SummaryFamilyMember.vue";
 import LanguageSetting from "../views/Setting/Language.vue";
-import PreLogin from "../views/PreLogin.vue";
+// import PreLogin from "../views/PreLogin.vue";
 import VaccineInfo from "../views/Vaccine/VaccineInfo.vue";
 import NewsInfo from "../views/News/PreLoginNewsInfo.vue";
 import PinPassword from "../views/Pin/Login.vue";
 import OldVaccine from "../views/Record/OldVaccine.vue";
 import LoggedinNews from "../views/News/LoggedinNews.vue";
 import NewsInfoLoggedin from "../views/News/NewsInfoLoggedin.vue";
+import BackUp from "../views/Dashboard/Backup.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -41,18 +42,14 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    redirect: { name: "dashboard-home" }
   },
   {
     path: "/old-vaccine",
     name: "Old-Vaccine",
     component: OldVaccine
   },
-  {
-    path: "/pre-login",
-    name: "pre-login",
-    component: PreLogin
-  },
+
   {
     path: "/vaccine/:id",
     name: "vaccine-info",
@@ -95,6 +92,11 @@ const routes = [
         path: "news",
         name: "dashboard-news",
         component: LoggedinNews
+      },
+      {
+        path: "backup",
+        name: "dashboard-backup",
+        component: BackUp
       },
       {
         path: "news/details/:newsId",
