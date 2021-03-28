@@ -12,6 +12,7 @@ export default {
   news: "ข่าวสาร",
   vaccineList: "รายการวัคซีน",
   login: "เข้าสู่ระบบ",
+  backup: "สำรองข้อมูล",
   register: "สมัครสมาชิก",
   username: "ชื่อผู้ใช้",
   password: "รหัสผ่าน",
