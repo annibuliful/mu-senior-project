@@ -1,6 +1,6 @@
 import db from "../db";
 
-export const removeByAppointmentId = (appointmentId) => {
+export const removeByAppointmentId = appointmentId => {
   return db
     .table("records")
     .where("appointmentId")
@@ -8,7 +8,7 @@ export const removeByAppointmentId = (appointmentId) => {
     .delete();
 };
 
-export const removeById = (id) => {
+export const removeById = id => {
   return db
     .table("records")
     .where("recordId")

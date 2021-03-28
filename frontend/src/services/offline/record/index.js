@@ -7,5 +7,5 @@ export default {
   getByChildId,
   countRecordTime,
   removeByAppointmentId,
-  removeById,
+  removeById
 };

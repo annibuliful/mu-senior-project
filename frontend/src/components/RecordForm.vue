@@ -91,6 +91,22 @@ export default {
     doseNumber: {
       type: String
     },
+    vaccineId: {
+      type: String,
+      required: true
+    },
+    childId: {
+      type: String,
+      required: true
+    },
+    appointmentId: {
+      type: String,
+      required: true
+    },
+    recordId: {
+      type: String,
+      required: true
+    },
     vaccineName: {
       type: String,
       required: true
@@ -128,7 +144,10 @@ export default {
         hospitalName: this.newHospitalName,
         medicalStaff: this.newMedicalStaff,
         noteMessage: this.newNoteMessage,
-        doseNumber: this.doseNumber
+        doseNumber: this.doseNumber,
+        childId: this.childId,
+        appointmentId: this.appointmentId,
+        recordId: this.recordId
       };
       this.$emit("on-save", data);
     }
