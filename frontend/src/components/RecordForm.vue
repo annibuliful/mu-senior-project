@@ -1,0 +1,137 @@
+<template>
+  <div class="shadow rounded p-6">
+    <div class="flex flex-row items-center">
+      <div class="w-2/12">
+        <input
+          type="checkbox"
+          class="form-radio w-8 h-8"
+          name="accountType"
+          value="personal"
+        />
+      </div>
+      <div class="w-8/12 md:w-6/12 lg:w-6/12">
+        <p>
+          {{ vaccineName }}
+          <span class="text-gray-500">(Dose number {{ doseNumber }})</span>
+        </p>
+        <!-- <p v-if="receiveDate">receive date: {{ dateFormat(receiveDate) }}</p> -->
+      </div>
+      <div @click="toggleEditForm" class="cursor-pointer">Edit</div>
+    </div>
+    <div v-if="isEdited">
+      <div class="mb-4 mt-4">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="username"
+        >
+          Receive date
+        </label>
+        <v-date-picker v-model="receivingDate" :locale="calendarLocale" />
+      </div>
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="username"
+        >
+          Batch number
+        </label>
+        <input
+          class="input-primary"
+          id="username"
+          type="text"
+          v-model="newBatchNumber"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">
+          Side effects
+        </label>
+        <textarea
+          class="input-primary"
+          id="username"
+          type="text"
+          v-model="newSideEffect"
+        />
+      </div>
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="username"
+        >
+          Note message
+        </label>
+        <textarea
+          class="input-primary"
+          id="username"
+          type="text"
+          v-model="newNoteMessage"
+        />
+      </div>
+      <button class="btn-primary" @click="submit">Save</button>
+    </div>
+  </div>
+</template>
+<script>
+import { format, addYears } from "date-fns";
+import { th } from "date-fns/locale";
+export default {
+  data: function() {
+    return {
+      isEdited: false,
+      receivingDate: new Date(),
+      newSideEffect: "",
+      newBatchNumber: "",
+      newHospitalName: "",
+      newMedicalStaff: "",
+      newNoteMessage: ""
+    };
+  },
+  props: {
+    doseNumber: {
+      type: String
+    },
+    vaccineName: {
+      type: String,
+      required: true
+    },
+    receiveDate: {
+      type: Date,
+      required: false
+    }
+  },
+  computed: {
+    calendarLocale: function() {
+      return this.$store.state.calendarLocale;
+    }
+  },
+  methods: {
+    toggleEditForm: function() {
+      this.isEdited = !this.isEdited;
+    },
+    dateFormat: function(dateValue) {
+      let date = "";
+      if (this.$store.state.calendarLocale === "th-TH") {
+        date = format(addYears(new Date(dateValue), 543), "dd MMM yyyy", {
+          locale: th
+        });
+      } else {
+        date = format(new Date(dateValue), "dd MMM yyyy");
+      }
+      return date;
+    },
+    submit: function() {
+      const data = {
+        receivingDate: this.receivingDate,
+        sideEffect: this.newSideEffect,
+        batchNumber: this.newBatchNumber,
+        hospitalName: this.newHospitalName,
+        medicalStaff: this.newMedicalStaff,
+        noteMessage: this.newNoteMessage,
+        doseNumber: this.doseNumber
+      };
+      this.$emit("on-save", data);
+    }
+  }
+};
+</script>
