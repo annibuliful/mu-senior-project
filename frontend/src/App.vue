@@ -1,19 +1,18 @@
 <template>
   <div id="app">
-    <!-- <InternetToast
+    <InternetToast
       :showStatus="isShowInternetToast"
       v-on:on-close="isShowInternetToast = false"
     />
-    <router-view /> -->
-    <RecordForm vaccineName="test-name" doseNumber="1" />
+    <router-view />
   </div>
 </template>
 <script>
 import { setMode } from "@/services";
 import services from "./services";
 import { nanoid } from "nanoid";
-// import InternetToast from "@/components/Internet-toast.vue";
-import RecordForm from "@/components/RecordForm.vue";
+import InternetToast from "@/components/Internet-toast.vue";
+// import RecordForm from "@/components/RecordForm.vue";
 export default {
   data: function() {
     return {
@@ -21,8 +20,8 @@ export default {
     };
   },
   components: {
-    // InternetToast,
-    RecordForm
+    InternetToast
+    // RecordForm
   },
   mounted() {
     this.createNewUserWhenIdNotExist();
