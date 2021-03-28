@@ -14,6 +14,7 @@ export default {
   vaccineList: "Vaccine List",
   family: "Family",
   login: "Login",
+  backup:"Backup",
   register: "Register",
   username: "Username",
   password: "Password",

@@ -7,7 +7,7 @@
 
     <div
       class="max-w-xs max-w-lg rounded bg-white pt-6 shadow p-8"
-      style="margin-top: 2vh; margin-left: auto; margin-right: auto; width: 80vw;"
+      style="margin-top: 2vh; margin-left: auto; margin-right: auto; "
     >
       <div class="inline-flex justify-center w-full pb-8">
         <h4

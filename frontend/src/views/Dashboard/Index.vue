@@ -15,19 +15,19 @@
       <div class="flex flex-row max-w-7xl mx-auto min-h-screen">
         <transition name="slide">
           <div
-            class="flex flex-col w-64  shadow-xl sm:rounded-lg bg-orange-400"
+            class="flex flex-col w-full px-2 lg:w-2/12 lg:px-4  shadow-xl  bg-orange-400 overflow-x-hidden"
             v-if="isOpen"
           >
             <div class="min-h-screen">
               <div class="flex flex-col h-full ">
-                <div class="mt-auto mb-auto cursor-pointer pb-2 pt-2">
+                <div class="mt-auto mb-auto cursor-pointer">
                   <div
                     @click="onClickLink({ name: 'dashboard-home' })"
                     class=" pb-4 "
                     :class="[
                       currentPath === '/dashboard/home'
                         ? 'link-active'
-                        : 'link-item'
+                        : 'link-item',
                     ]"
                   >
                     <img class="inline w-8" src="@/assets/icons/home.svg" />
@@ -41,7 +41,7 @@
                     :class="[
                       currentPath === '/dashboard/vaccine'
                         ? 'link-active'
-                        : 'link-item'
+                        : 'link-item',
                     ]"
                   >
                     <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
@@ -55,7 +55,7 @@
                     :class="[
                       currentPath === '/dashboard/family'
                         ? 'link-active'
-                        : 'link-item'
+                        : 'link-item',
                     ]"
                   >
                     <img class="inline w-8" src="@/assets/icons/family.svg" />
@@ -69,7 +69,7 @@
                     :class="[
                       currentPath === '/dashboard/vaccinepackager'
                         ? 'link-active'
-                        : 'link-item'
+                        : 'link-item',
                     ]"
                   >
                     <img class="inline w-8" src="@/assets/icons/packager.svg" />
@@ -84,7 +84,7 @@
                     :class="[
                       currentPath === '/dashboard/backup'
                         ? 'link-active'
-                        : 'link-item'
+                        : 'link-item',
                     ]"
                   >
                     <img
@@ -101,7 +101,7 @@
                     :class="[
                       currentPath === '/dashboard/setting'
                         ? 'link-active'
-                        : 'link-item'
+                        : 'link-item',
                     ]"
                   >
                     <img class="inline w-8" src="@/assets/icons/setting.svg" />
@@ -113,7 +113,7 @@
           </div>
         </transition>
 
-        <div class="flex w-full  min-h-screen bg-red-400">
+        <div class="flex w-full  min-h-screen">
           <router-view />
         </div>
       </div>
@@ -121,14 +121,10 @@
   </div>
 </template>
 <script>
-// import SideBar from "@/components/Sidebar.vue";
-// import MobileBar from "@/components/Mobilebar.vue";
 export default {
-  // components: { SideBar, MobileBar },
-
   data() {
     return {
-      isOpen: true
+      isOpen: true,
     };
   },
   computed: {
@@ -137,7 +133,7 @@ export default {
     },
     currentPath() {
       return this.$route.path;
-    }
+    },
   },
   methods: {
     onClickLink: function(link) {
@@ -145,18 +141,19 @@ export default {
         return;
       }
       this.$router.push(link);
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
 .slide-enter-active,
 .slide-leave-active {
-  transition: width 1s;
+  transition: width 0.8s;
 }
 .slide-enter,
 .slide-leave-to {
   width: 0;
+  /* display: none; */
 }
 .link-active {
   border: 2px dashed #050300;
