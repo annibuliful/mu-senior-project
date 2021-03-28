@@ -27,7 +27,7 @@
                     :class="[
                       currentPath === '/dashboard/home'
                         ? 'link-active'
-                        : 'link-item',
+                        : 'link-item'
                     ]"
                   >
                     <img class="inline w-8" src="@/assets/icons/home.svg" />
@@ -41,7 +41,7 @@
                     :class="[
                       currentPath === '/dashboard/vaccine'
                         ? 'link-active'
-                        : 'link-item',
+                        : 'link-item'
                     ]"
                   >
                     <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
@@ -55,7 +55,7 @@
                     :class="[
                       currentPath === '/dashboard/family'
                         ? 'link-active'
-                        : 'link-item',
+                        : 'link-item'
                     ]"
                   >
                     <img class="inline w-8" src="@/assets/icons/family.svg" />
@@ -69,7 +69,7 @@
                     :class="[
                       currentPath === '/dashboard/vaccinepackager'
                         ? 'link-active'
-                        : 'link-item',
+                        : 'link-item'
                     ]"
                   >
                     <img class="inline w-8" src="@/assets/icons/packager.svg" />
@@ -84,7 +84,7 @@
                     :class="[
                       currentPath === '/dashboard/backup'
                         ? 'link-active'
-                        : 'link-item',
+                        : 'link-item'
                     ]"
                   >
                     <img
@@ -101,7 +101,7 @@
                     :class="[
                       currentPath === '/dashboard/setting'
                         ? 'link-active'
-                        : 'link-item',
+                        : 'link-item'
                     ]"
                   >
                     <img class="inline w-8" src="@/assets/icons/setting.svg" />
@@ -124,7 +124,7 @@
 export default {
   data() {
     return {
-      isOpen: true,
+      isOpen: true
     };
   },
   computed: {
@@ -133,7 +133,7 @@ export default {
     },
     currentPath() {
       return this.$route.path;
-    },
+    }
   },
   methods: {
     onClickLink: function(link) {
@@ -141,8 +141,8 @@ export default {
         return;
       }
       this.$router.push(link);
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
