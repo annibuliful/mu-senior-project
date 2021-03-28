@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <p class="text-2xl mb-10 border-b-2 border-blue-700 pl-4">
       {{ suggestionWord }}
     </p>

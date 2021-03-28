@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
       {{ labelAddFamily.updateChildInfoTitle }}
     </p>
@@ -202,14 +202,7 @@ export default {
       this.selectedVaccines = [];
     },
     async deleteFamily() {
-      if (this.childInfo.familyId === 1) {
-        //Do not delete the first family member which is the main user profile
-        this.$fire({
-          title: this.labelAddFamily.cannotDelete,
-          type: "warning",
-          timer: 3000
-        });
-      } else {
+
         this.childInfo.isDelete = true;
         try {
           this.$fire({
@@ -236,7 +229,7 @@ export default {
         } catch (e) {
           this.errorMessage = e.message;
         }
-      }
+      
     }
   }
 };

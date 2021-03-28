@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <div>
       <div
         class="text-2xl mb-10 border-b-2 border-blue-700"

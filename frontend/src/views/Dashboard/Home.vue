@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:mb-20">
+  <div class="sm:mb-20 w-full">
     <TopBar></TopBar>
     <p class="text-2xl mb-10 border-b-2 border-blue-700">
       <!-- {{ welcomeWord }} {{ profileName.fullname ? profileName.fullname : "" }} -->
