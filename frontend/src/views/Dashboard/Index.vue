@@ -8,14 +8,19 @@
     </div>
     <MobileBar :isCancelLink="isCancelLink" /> -->
     <div class=" min-h-screen">
-      <button @click="isOpen = !isOpen" class="bg-blue-200 p-5">
+      <div class="flex flex-col w-full bg-orange-400" @click="isOpen = !isOpen">
+        <div class="hamburger-menu"></div>
+        <div class="hamburger-menu"></div>
+        <div class="hamburger-menu"></div>
+      </div>
+      <!-- <button @click="isOpen = !isOpen" class="bg-blue-200 p-5">
         <span v-if="isOpen">Open</span>
         <span v-else>Close</span>
-      </button>
+      </button> -->
       <div class="flex flex-row max-w-7xl mx-auto min-h-screen">
         <transition name="slide">
           <div
-            class="flex flex-col w-full px-2 lg:w-2/12 lg:px-4  shadow-xl  bg-orange-400 overflow-x-hidden z-10"
+            class="flex flex-col w-full px-2 lg:w-2/12 lg:px-4 show-md  shadow-xl fixed bg-orange-400 overflow-x-hidden z-10 min-nav"
             v-if="isOpen"
           >
             <div class="min-h-screen">
@@ -138,6 +143,7 @@ export default {
   },
   methods: {
     onClickLink: function(link) {
+      this.isOpen = !this.isOpen;
       if (this.isCancelLink) {
         return;
       }
@@ -176,5 +182,12 @@ export default {
 
 .img-menu {
   width: 250px;
+}
+.hamburger-menu {
+  margin-top: 2px;
+  width: 40px;
+  height: 7px;
+  background-color: black;
+  cursor: pointer;
 }
 </style>
