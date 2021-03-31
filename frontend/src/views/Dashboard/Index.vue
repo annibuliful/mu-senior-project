@@ -20,7 +20,7 @@
           >
             <div class="min-h-screen">
               <div class="flex flex-col h-full ">
-                <img src="../../assets/menu_web_vac.png" class="mt-8" alt="">
+                <img src="../../assets/menu_web_vac.png" class="mt-8" alt="" />
                 <div class="mt-4 my-2 cursor-pointer">
                   <div
                     @click="onClickLink({ name: 'dashboard-home' })"

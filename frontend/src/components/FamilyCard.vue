@@ -20,7 +20,7 @@
           {{ name }}
         </div>
         <div class="text-xs text-gray-600 font-normal">
-          {{ lebels.age }}:  {{ ageInYear }} ปี {{ ageRemainingMonth }} เดือน
+          {{ lebels.age }}: {{ ageInYear }} ปี {{ ageRemainingMonth }} เดือน
         </div>
         <p class="text-gray-700 text-base">
           {{ lebels.disease }}
@@ -43,7 +43,7 @@
           class="my-auto mx-auto "
           :to="{
             name: 'edit-family-profile',
-            params: { id: id },
+            params: { id: id }
           }"
         >
           <img class="h-8" src="../assets/icons/edit-icon.svg" alt="" />
@@ -59,12 +59,12 @@ import { differenceInYears, differenceInMonths } from "date-fns";
 export default {
   data() {
     return {
-      childInfo: null,
+      childInfo: null
     };
   },
   created() {
     this.childInfo = this.$store.state.listFamilies.find(
-      (el) => el.familyId === this.id
+      el => el.familyId === this.id
     );
   },
   computed: {
@@ -75,40 +75,37 @@ export default {
       return formatDistanceToNow(new Date(this.birthDate));
     },
     ageRemainingMonth() {
-      const totalMonth = differenceInMonths(
-        new Date(),
-        this.birthDate
-      );
+      const totalMonth = differenceInMonths(new Date(), this.birthDate);
       return totalMonth % 12;
     },
     ageInYear() {
       return differenceInYears(new Date(), this.birthDate);
-    },
+    }
   },
   methods: {
     navigateToDetails() {
       this.$router.push({
         name: "summary-family-member",
-        params: { id: this.id },
+        params: { id: this.id }
       });
-    },
+    }
   },
   props: {
     id: {
       type: Number,
-      required: true,
+      required: true
     },
     name: {
       type: String,
-      required: true,
+      required: true
     },
     birthDate: {
       type: Date,
-      required: true,
+      required: true
     },
     diseases: {
-      type: Array,
-    },
-  },
+      type: Array
+    }
+  }
 };
 </script>

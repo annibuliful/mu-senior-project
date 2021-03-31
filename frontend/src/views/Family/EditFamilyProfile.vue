@@ -202,34 +202,32 @@ export default {
       this.selectedVaccines = [];
     },
     async deleteFamily() {
-
-        this.childInfo.isDelete = true;
-        try {
-          this.$fire({
-            title: this.labelAddFamily.confirmDelete,
-            showCancelButton: true,
-            confirmButtonText: this.labelAddFamily.yes,
-            cancelButtonText: this.labelAddFamily.no
-          }).then(async r => {
-            if (r.value) {
-              this.$fire({
-                title: this.labelAddFamily.deleteSuccess,
-                type: "success",
-                timer: 3000
-              });
-              await service().family.update(
-                Number(this.$route.params.id),
-                this.childInfo
-              );
-              this.$router.push({
-                name: "dashboard-family"
-              });
-            }
-          });
-        } catch (e) {
-          this.errorMessage = e.message;
-        }
-      
+      this.childInfo.isDelete = true;
+      try {
+        this.$fire({
+          title: this.labelAddFamily.confirmDelete,
+          showCancelButton: true,
+          confirmButtonText: this.labelAddFamily.yes,
+          cancelButtonText: this.labelAddFamily.no
+        }).then(async r => {
+          if (r.value) {
+            this.$fire({
+              title: this.labelAddFamily.deleteSuccess,
+              type: "success",
+              timer: 3000
+            });
+            await service().family.update(
+              Number(this.$route.params.id),
+              this.childInfo
+            );
+            this.$router.push({
+              name: "dashboard-family"
+            });
+          }
+        });
+      } catch (e) {
+        this.errorMessage = e.message;
+      }
     }
   }
 };
