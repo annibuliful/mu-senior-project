@@ -15,12 +15,13 @@
       <div class="flex flex-row max-w-7xl mx-auto min-h-screen">
         <transition name="slide">
           <div
-            class="flex flex-col w-full px-2 lg:w-2/12 lg:px-4  shadow-xl  bg-orange-400 overflow-x-hidden"
+            class="flex flex-col w-full px-2 lg:w-2/12 lg:px-4  shadow-xl  bg-orange-400 overflow-x-hidden z-10"
             v-if="isOpen"
           >
             <div class="min-h-screen">
               <div class="flex flex-col h-full ">
-                <div class="mt-auto mb-auto cursor-pointer">
+                <img src="../../assets/menu_web_vac.png" class="mt-8" alt="" />
+                <div class="mt-4 my-2 cursor-pointer">
                   <div
                     @click="onClickLink({ name: 'dashboard-home' })"
                     class=" pb-4 "
@@ -34,7 +35,7 @@
                     <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
                   </div>
                 </div>
-                <div class=" mb-auto cursor-pointer">
+                <div class=" my-2 cursor-pointer">
                   <div
                     @click="onClickLink({ name: 'dashboard-vaccine' })"
                     class=" pb-4 "
@@ -48,7 +49,7 @@
                     <p class="inline mt-2 pl-3">{{ listItem.vaccine }}</p>
                   </div>
                 </div>
-                <div class="mb-auto cursor-pointer">
+                <div class="my-2 cursor-pointer">
                   <div
                     @click="onClickLink({ name: 'dashboard-family' })"
                     class=" pb-4 "
@@ -62,7 +63,7 @@
                     <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
                   </div>
                 </div>
-                <div class=" mb-auto cursor-pointer">
+                <div class=" my-2 cursor-pointer">
                   <div
                     @click="onClickLink({ name: 'dashboard-packager' })"
                     class=" pb-4 "
@@ -77,7 +78,7 @@
                   </div>
                 </div>
 
-                <div class=" mb-auto cursor-pointer">
+                <div class=" my-2 cursor-pointer">
                   <div
                     @click="onClickLink({ name: 'dashboard-backup' })"
                     class=" pb-4 "
@@ -94,7 +95,7 @@
                     <p class="inline mt-2 pl-3">{{ listItem.backup }}</p>
                   </div>
                 </div>
-                <div class=" mb-auto cursor-pointer">
+                <div class=" my-2 cursor-pointer">
                   <div
                     @click="onClickLink({ name: 'dashboard-setting' })"
                     class=""

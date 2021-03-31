@@ -9,12 +9,7 @@
           :src="childInfo.profileImg"
           alt=""
         />
-        <img
-          class="w-full"
-          v-else
-          src="../assets/mock-member-profile.svg"
-          alt=""
-        />
+        <img class="w-full" v-else src="../assets/boy.png" alt="" />
       </div>
 
       <div
@@ -25,7 +20,7 @@
           {{ name }}
         </div>
         <div class="text-xs text-gray-600 font-normal">
-          {{ lebels.age }}: ({{ age }})
+          {{ lebels.age }}: {{ ageInYear }} ปี {{ ageRemainingMonth }} เดือน
         </div>
         <p class="text-gray-700 text-base">
           {{ lebels.disease }}
@@ -59,6 +54,7 @@
 </template>
 <script>
 import { formatDistanceToNow } from "date-fns";
+import { differenceInYears, differenceInMonths } from "date-fns";
 
 export default {
   data() {
@@ -77,6 +73,13 @@ export default {
     },
     age() {
       return formatDistanceToNow(new Date(this.birthDate));
+    },
+    ageRemainingMonth() {
+      const totalMonth = differenceInMonths(new Date(), this.birthDate);
+      return totalMonth % 12;
+    },
+    ageInYear() {
+      return differenceInYears(new Date(), this.birthDate);
     }
   },
   methods: {

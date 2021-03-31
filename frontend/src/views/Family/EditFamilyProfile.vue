@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
       {{ labelAddFamily.updateChildInfoTitle }}
     </p>
@@ -202,40 +202,31 @@ export default {
       this.selectedVaccines = [];
     },
     async deleteFamily() {
-      if (this.childInfo.familyId === 1) {
-        //Do not delete the first family member which is the main user profile
+      this.childInfo.isDelete = true;
+      try {
         this.$fire({
-          title: this.labelAddFamily.cannotDelete,
-          type: "warning",
-          timer: 3000
+          title: this.labelAddFamily.confirmDelete,
+          showCancelButton: true,
+          confirmButtonText: this.labelAddFamily.yes,
+          cancelButtonText: this.labelAddFamily.no
+        }).then(async r => {
+          if (r.value) {
+            this.$fire({
+              title: this.labelAddFamily.deleteSuccess,
+              type: "success",
+              timer: 3000
+            });
+            await service().family.update(
+              Number(this.$route.params.id),
+              this.childInfo
+            );
+            this.$router.push({
+              name: "dashboard-family"
+            });
+          }
         });
-      } else {
-        this.childInfo.isDelete = true;
-        try {
-          this.$fire({
-            title: this.labelAddFamily.confirmDelete,
-            showCancelButton: true,
-            confirmButtonText: this.labelAddFamily.yes,
-            cancelButtonText: this.labelAddFamily.no
-          }).then(async r => {
-            if (r.value) {
-              this.$fire({
-                title: this.labelAddFamily.deleteSuccess,
-                type: "success",
-                timer: 3000
-              });
-              await service().family.update(
-                Number(this.$route.params.id),
-                this.childInfo
-              );
-              this.$router.push({
-                name: "dashboard-family"
-              });
-            }
-          });
-        } catch (e) {
-          this.errorMessage = e.message;
-        }
+      } catch (e) {
+        this.errorMessage = e.message;
       }
     }
   }
