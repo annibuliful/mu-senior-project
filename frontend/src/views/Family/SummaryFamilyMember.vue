@@ -101,6 +101,18 @@
         :sortBy="sort"
         :doseNumber="appointment.customData.doseNumber"
       />
+
+      <!-- <RecordForm
+        :doseNumber="`1`"
+        :vaccineId="`1`"
+        :childId="`1`"
+        :appointmentId="`1`"
+        :recordId="`1`"
+        :vaccineName="`aaaaaa`"
+        :receiveDate="new Date()"
+        v-on:on-record="onToggleEditAppointment"
+        v-on:on-save="onSaveAppointment"
+      /> -->
     </div>
   </div>
 </template>
@@ -110,11 +122,14 @@ import services from "@/services";
 import History from "./HistoryFamilyMember.vue";
 import FamilyMemberHeader from "../../components/FamilyMemberHeaderInfo.vue";
 import AppointmentCard from "@/components/AppointMentCardTimeLine.vue";
+// import RecordForm from "@/components/RecordForm.vue";
+
 export default {
   components: {
     FamilyMemberHeader,
     History,
     AppointmentCard
+    // RecordForm,
   },
   async created() {
     this.displayMode = "Roadmap";
@@ -178,6 +193,12 @@ export default {
     }
   },
   methods: {
+    onToggleEditAppointment(value) {
+      console.log("toggle-appointment", value);
+    },
+    onSaveAppointment(value) {
+      console.log("save-apointment", value);
+    },
     onClickToSuggestion() {
       this.$store.commit("setTempFamilyInfo", {
         ...this.childInfo,

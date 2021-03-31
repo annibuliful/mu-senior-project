@@ -5,8 +5,9 @@
         <input
           type="checkbox"
           class="form-radio w-8 h-8"
-          name="accountType"
-          value="personal"
+          :value="hasRecord"
+          v-model="hasRecord"
+          @change="onChangeCheckbox"
         />
       </div>
       <div class="w-8/12 md:w-6/12 lg:w-6/12">
@@ -78,6 +79,7 @@ import { th } from "date-fns/locale";
 export default {
   data: function() {
     return {
+      hasRecord: false,
       isEdited: false,
       receivingDate: new Date(),
       newSideEffect: "",
@@ -135,6 +137,10 @@ export default {
         date = format(new Date(dateValue), "dd MMM yyyy");
       }
       return date;
+    },
+    onChangeCheckbox: function(event) {
+      const checkBoxValue = event.target.value;
+      this.$emit("on-record", checkBoxValue);
     },
     submit: function() {
       const data = {
