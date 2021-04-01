@@ -16,11 +16,11 @@ import InternetToast from "@/components/Internet-toast.vue";
 export default {
   data: function() {
     return {
-      isShowInternetToast: false
+      isShowInternetToast: false,
     };
   },
   components: {
-    InternetToast
+    InternetToast,
     // RecordForm
   },
   mounted() {
@@ -61,7 +61,11 @@ export default {
       }
     },
     createNewUserWhenIdNotExist: async function() {
-      const isUserIdExist = await services().auth.isUserIdExist();
+      const userInfo = localStorage.getItem("login-info");
+
+      const isUserIdExist = await services().auth.isUserIdExist(
+        JSON.parse(userInfo)
+      );
       if (!isUserIdExist) {
         const loginData = { username: nanoid(), password: nanoid() };
         localStorage.setItem("login-info", JSON.stringify(loginData));
@@ -71,10 +75,11 @@ export default {
       const result = await services().auth.login(loginInfo);
       this.$store.commit("setUserInfo", result);
       localStorage.setItem("userInfo", JSON.stringify(result));
+      localStorage.setItem("login-info", JSON.stringify(result));
       // this.$router.push({ name: "dashboard-home" });
       // this.$router.push({ name: "dashboard-family" });
-    }
-  }
+    },
+  },
 };
 </script>
 

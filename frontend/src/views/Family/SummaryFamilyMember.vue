@@ -89,7 +89,7 @@
         {{ labelText.suggestedPlan }}
       </button>
 
-      <AppointmentCard
+      <!-- <AppointmentCard
         v-for="(appointment, index) in appointmentList"
         :childname="appointment.customData.childname"
         :note="appointment.customData.note"
@@ -100,9 +100,9 @@
         :date="appointment.dates"
         :sortBy="sort"
         :doseNumber="appointment.customData.doseNumber"
-      />
+      /> -->
 
-      <!-- <RecordForm
+      <RecordForm
         :doseNumber="`1`"
         :vaccineId="`1`"
         :childId="`1`"
@@ -112,7 +112,7 @@
         :receiveDate="new Date()"
         v-on:on-record="onToggleEditAppointment"
         v-on:on-save="onSaveAppointment"
-      /> -->
+      />
     </div>
   </div>
 </template>
@@ -121,15 +121,15 @@
 import services from "@/services";
 import History from "./HistoryFamilyMember.vue";
 import FamilyMemberHeader from "../../components/FamilyMemberHeaderInfo.vue";
-import AppointmentCard from "@/components/AppointMentCardTimeLine.vue";
-// import RecordForm from "@/components/RecordForm.vue";
+// import AppointmentCard from "@/components/AppointMentCardTimeLine.vue";
+import RecordForm from "@/components/RecordForm.vue";
 
 export default {
   components: {
     FamilyMemberHeader,
     History,
-    AppointmentCard
-    // RecordForm,
+    // AppointmentCard,
+    RecordForm,
   },
   async created() {
     this.displayMode = "Roadmap";
@@ -140,7 +140,7 @@ export default {
         const language = this.$store.state.calendarLanguage;
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
-          el => el.familyId === this.childId
+          (el) => el.familyId === this.childId
         );
 
         const listAppointments = await services().appointment.listByChildId(
@@ -172,7 +172,7 @@ export default {
       isFilterShow: false,
       isNeedSuggestion: false,
       classHistoryLine: "",
-      classRoadmapLine: ""
+      classRoadmapLine: "",
     };
   },
   computed: {
@@ -190,7 +190,7 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    }
+    },
   },
   methods: {
     onToggleEditAppointment(value) {
@@ -202,10 +202,10 @@ export default {
     onClickToSuggestion() {
       this.$store.commit("setTempFamilyInfo", {
         ...this.childInfo,
-        isUpdated: true
+        isUpdated: true,
       });
       this.$router.push({
-        name: "appointment-child-suggestion"
+        name: "appointment-child-suggestion",
       });
     },
     onClickFilter() {
@@ -229,13 +229,13 @@ export default {
           search: this.searchKeyword,
           filter: this.filter,
           sort: this.sort,
-          childId: this.childId
+          childId: this.childId,
         },
         language
       );
 
       this.$store.commit("setNewAppointmentList", data ?? []);
-    }
-  }
+    },
+  },
 };
 </script>
