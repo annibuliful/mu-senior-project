@@ -2,7 +2,7 @@
   <div class="sm:mb-20">
     <TopBar></TopBar>
     <p class="text-2xl mb-10 border-b-2 border-blue-700">
-      <!-- {{ welcomeWord }} {{ profileName.fullname ? profileName.fullname : "" }} -->
+      {{ welcomeWord }} {{ profileName.fullname ? profileName.fullname : "" }}
     </p>
     <Calendar :listEvents="listEvents" v-on:on-click="onSelectDate" />
     <br />
@@ -86,7 +86,7 @@ export default {
         locale: this.locale === "th-TH" ? th : null
       });
       this.$store.commit("changeSelectedCalendarDate", date);
-      // console.log("fdsfsfsf", this.filterEventOnDate);
+      console.log("fdsfsfsf", this.filterEventOnDate);
     },
     onLinkToAddAppointmentPage: function() {
       this.$router.push({ name: "appointment-create" });
@@ -99,9 +99,9 @@ export default {
     localeText() {
       return this.$store.state.locale;
     },
-    // profileName() {
-    //   return this.$store.state.userInfo;
-    // },
+    profileName() {
+      return this.$store.state.userInfo;
+    },
     welcomeWord() {
       return this.$store.state.locale.welcome;
     }
