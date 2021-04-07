@@ -86,42 +86,42 @@ export default {
       newBatchNumber: "",
       newHospitalName: "",
       newMedicalStaff: "",
-      newNoteMessage: ""
+      newNoteMessage: "",
     };
   },
   props: {
     doseNumber: {
-      type: String
+      type: String,
     },
     vaccineId: {
       type: String,
-      required: true
+      required: true,
     },
     childId: {
       type: String,
-      required: true
+      required: true,
     },
     appointmentId: {
       type: String,
-      required: true
+      required: true,
     },
     recordId: {
       type: String,
-      required: true
+      required: true,
     },
     vaccineName: {
       type: String,
-      required: true
+      required: true,
     },
     receiveDate: {
       type: Date,
-      required: false
-    }
+      required: false,
+    },
   },
   computed: {
     calendarLocale: function() {
       return this.$store.state.calendarLocale;
-    }
+    },
   },
   methods: {
     toggleEditForm: function() {
@@ -133,7 +133,7 @@ export default {
       let date = "";
       if (this.$store.state.calendarLocale === "th-TH") {
         date = format(addYears(new Date(dateValue), 543), "dd MMM yyyy", {
-          locale: th
+          locale: th,
         });
       } else {
         date = format(new Date(dateValue), "dd MMM yyyy");
@@ -142,7 +142,19 @@ export default {
     },
     onChangeCheckbox: function(event) {
       const checkBoxValue = event.target.value;
-      this.$emit("on-record", checkBoxValue);
+      const data = {
+        receivingDate: this.receivingDate,
+        sideEffect: this.newSideEffect,
+        batchNumber: this.newBatchNumber,
+        hospitalName: this.newHospitalName,
+        medicalStaff: this.newMedicalStaff,
+        noteMessage: this.newNoteMessage,
+        doseNumber: this.doseNumber,
+        childId: this.childId,
+        appointmentId: this.appointmentId,
+        recordId: this.recordId,
+      };
+      this.$emit("on-record", checkBoxValue, data);
     },
     submit: function() {
       const data = {
@@ -155,10 +167,10 @@ export default {
         doseNumber: this.doseNumber,
         childId: this.childId,
         appointmentId: this.appointmentId,
-        recordId: this.recordId
+        recordId: this.recordId,
       };
       this.$emit("on-save", data);
-    }
-  }
+    },
+  },
 };
 </script>
