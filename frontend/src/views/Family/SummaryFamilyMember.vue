@@ -232,6 +232,11 @@ export default {
         dot: "green",
         status: "vaccinated"
       });
+      this.$store.commit("updateRecordIdToAppointment", {
+        appointmentId: data.appointmentId,
+        recordId: data.recordId,
+        recordCustomData: data.recordCustomData
+      });
     },
     onClickToSuggestion() {
       this.$store.commit("setTempFamilyInfo", {
