@@ -1,5 +1,4 @@
 import db from "../db";
-
-export default async data => {
-  return await db.table("records").add(data);
+export default data => {
+  return db.table("records").add(data);
 };
