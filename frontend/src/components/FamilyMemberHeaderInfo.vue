@@ -11,12 +11,7 @@
           :src="childObject.profileImg"
           alt=""
         />
-        <img
-          class="w-24 md:w-48"
-          v-else
-          src="../assets/boy.png"
-          alt=""
-        />
+        <img class="w-24 md:w-48" v-else src="../assets/boy.png" alt="" />
       </div>
 
       <!-- Show this family's member info in a column-->

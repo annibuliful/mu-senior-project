@@ -7,11 +7,7 @@
       <div class="mb-4">
         <div>
           <label for="file-input">
-            <img
-              class="mx-auto"
-              v-if="!base64Url"
-              src="../../assets/boy.png"
-            />
+            <img class="mx-auto" v-if="!base64Url" src="../../assets/boy.png" />
             <img class="mx-auto" v-else :src="base64Url" />
           </label>
 
