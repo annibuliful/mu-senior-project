@@ -53,7 +53,7 @@ export default {
     const isUserInfoExist = userInfo !== null;
     if (isUserInfoExist) {
       this.$store.commit("setUserInfo", JSON.parse(userInfo));
-      // this.$router.push({ name: "Pin" });
+      this.$router.push({ name: "Pin" });
     }
   },
   computed: {

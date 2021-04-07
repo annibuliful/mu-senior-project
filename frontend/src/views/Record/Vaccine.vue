@@ -169,7 +169,6 @@ import Modal from "@/components/common/Modal.vue";
 import TagInput from "@/components/input/TagInput.vue";
 import Camera from "@/components/Camera.vue";
 import service from "@/services";
-
 export default {
   components: {
     TagInput,
@@ -298,8 +297,7 @@ export default {
         doctorInfo: this.doctorInfo,
         freetext: this.freetext,
         recordImage: this.base64Url,
-        photoDate: this.photoDate ?? new Date(),
-        appointmentId: this.eventId
+        photoDate: this.photoDate ?? new Date()
       };
 
       await Promise.all([
