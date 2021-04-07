@@ -9,9 +9,5 @@ export const removeByAppointmentId = appointmentId => {
 };
 
 export const removeById = id => {
-  return db
-    .table("records")
-    .where("recordId")
-    .equals(id)
-    .delete();
+  return db.table("records").delete(id);
 };

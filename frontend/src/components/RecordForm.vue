@@ -79,49 +79,65 @@ import { th } from "date-fns/locale";
 export default {
   data: function() {
     return {
-      hasRecord: false,
+      hasRecord: this.isHasRecord,
       isEdited: false,
       receivingDate: new Date(),
       newSideEffect: "",
       newBatchNumber: "",
       newHospitalName: "",
       newMedicalStaff: "",
-      newNoteMessage: "",
+      newNoteMessage: ""
     };
   },
   props: {
+    recordCustomData: {
+      type: Object
+    },
+    isHasRecord: {
+      type: Boolean
+    },
     doseNumber: {
-      type: String,
+      type: Number
     },
     vaccineId: {
-      type: String,
-      required: true,
+      type: Number,
+      required: true
     },
     childId: {
-      type: String,
-      required: true,
+      type: Number,
+      required: true
     },
     appointmentId: {
-      type: String,
-      required: true,
+      type: Number,
+      required: true
     },
     recordId: {
-      type: String,
-      required: true,
+      type: Number,
+      required: true
     },
     vaccineName: {
       type: String,
-      required: true,
+      required: true
     },
     receiveDate: {
       type: Date,
-      required: false,
-    },
+      required: false
+    }
+  },
+  mounted() {
+    console.log("recordCustomData", this.recordCustomData);
+    if (this.recordCustomData) {
+      this.newSideEffect = this.recordCustomData.sideEffect;
+      this.newBatchNumber = this.recordCustomData.batchNumber;
+      this.newHospitalName = this.recordCustomData.hospitalName;
+      this.newMedicalStaff = this.recordCustomData.medicalStaff;
+      this.newNoteMessage = this.recordCustomData.noteMessage;
+    }
   },
   computed: {
     calendarLocale: function() {
       return this.$store.state.calendarLocale;
-    },
+    }
   },
   methods: {
     toggleEditForm: function() {
@@ -133,7 +149,7 @@ export default {
       let date = "";
       if (this.$store.state.calendarLocale === "th-TH") {
         date = format(addYears(new Date(dateValue), 543), "dd MMM yyyy", {
-          locale: th,
+          locale: th
         });
       } else {
         date = format(new Date(dateValue), "dd MMM yyyy");
@@ -144,33 +160,37 @@ export default {
       const checkBoxValue = event.target.value;
       const data = {
         receivingDate: this.receivingDate,
-        sideEffect: this.newSideEffect,
-        batchNumber: this.newBatchNumber,
-        hospitalName: this.newHospitalName,
-        medicalStaff: this.newMedicalStaff,
-        noteMessage: this.newNoteMessage,
-        doseNumber: this.doseNumber,
         childId: this.childId,
         appointmentId: this.appointmentId,
         recordId: this.recordId,
+        recordCustomData: {
+          sideEffect: this.newSideEffect,
+          batchNumber: this.newBatchNumber,
+          hospitalName: this.newHospitalName,
+          medicalStaff: this.newMedicalStaff,
+          noteMessage: this.newNoteMessage,
+          doseNumber: this.doseNumber
+        }
       };
       this.$emit("on-record", checkBoxValue, data);
     },
     submit: function() {
       const data = {
         receivingDate: this.receivingDate,
-        sideEffect: this.newSideEffect,
-        batchNumber: this.newBatchNumber,
-        hospitalName: this.newHospitalName,
-        medicalStaff: this.newMedicalStaff,
-        noteMessage: this.newNoteMessage,
-        doseNumber: this.doseNumber,
         childId: this.childId,
         appointmentId: this.appointmentId,
-        recordId: this.recordId,
+        recordCustomData: {
+          sideEffect: this.newSideEffect,
+          batchNumber: this.newBatchNumber,
+          hospitalName: this.newHospitalName,
+          medicalStaff: this.newMedicalStaff,
+          noteMessage: this.newNoteMessage,
+          doseNumber: this.doseNumber
+        },
+        recordId: this.recordId
       };
       this.$emit("on-save", data);
-    },
-  },
+    }
+  }
 };
 </script>

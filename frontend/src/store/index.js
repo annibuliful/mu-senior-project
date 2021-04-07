@@ -109,7 +109,22 @@ export default new Vuex.Store({
 
       state.appointmentList = data;
     },
-
+    async updateRecordIdToAppointment(
+      state,
+      { appointmentId, recordId, recordCustomData }
+    ) {
+      const newAppointmentList = state.appointmentList.map(appointment => {
+        if (appointment.appointmentId === appointmentId) {
+          return {
+            ...appointment,
+            recordCustomData,
+            recordId
+          };
+        }
+        return appointment;
+      });
+      state.appointmentList = newAppointmentList;
+    },
     async listRecordsByChildId(state, cid) {
       const data = await services().record.getByChildId(cid);
       state.listRecords = data;
