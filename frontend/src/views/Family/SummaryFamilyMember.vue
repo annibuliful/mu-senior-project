@@ -89,7 +89,7 @@
         {{ labelText.suggestedPlan }}
       </button>
 
-      <AppointmentCard
+      <!-- <AppointmentCard
         v-for="(appointment, index) in appointmentList"
         :childname="appointment.customData.childname"
         :note="appointment.customData.note"
@@ -100,21 +100,40 @@
         :date="appointment.dates"
         :sortBy="sort"
         :doseNumber="appointment.customData.doseNumber"
+      /> -->
+
+      <RecordForm
+        v-for="(appointment, index) in appointmentList"
+        :isHasRecord="appointment.recordId !== undefined"
+        :key="`${index}-${appointment.customData.childname}`"
+        :doseNumber="appointment.customData.doseNumber"
+        :vaccineId="Number(appointment.customData.selectedVaccines[0].id)"
+        :childId="appointment.customData.childId"
+        :appointmentId="appointment.appointmentId"
+        :recordId="appointment.recordId || -1"
+        :vaccineName="appointment.customData.selectedVaccines[0].tag"
+        :recordCustomData="appointment.recordCustomData"
+        :receiveDate="appointment.dates"
+        v-on:on-record="onToggleEditAppointment"
+        v-on:on-save="onSaveAppointment"
       />
     </div>
   </div>
 </template>
 
 <script>
-import services from "@/services";
+import services from "../../services";
 import History from "./HistoryFamilyMember.vue";
 import FamilyMemberHeader from "../../components/FamilyMemberHeaderInfo.vue";
-import AppointmentCard from "@/components/AppointMentCardTimeLine.vue";
+// import AppointmentCard from "@/components/AppointMentCardTimeLine.vue";
+import RecordForm from "@/components/RecordForm.vue";
+
 export default {
   components: {
     FamilyMemberHeader,
     History,
-    AppointmentCard
+    // AppointmentCard,
+    RecordForm
   },
   async created() {
     this.displayMode = "Roadmap";
@@ -178,6 +197,47 @@ export default {
     }
   },
   methods: {
+    async onToggleEditAppointment(value, data) {
+      console.log("toggle-appointment", value, data);
+      if (value === "false") {
+        const tempData = data;
+        delete tempData.recordId;
+        const recordId = await services().record.create(data);
+        await services().appointment.update(Number(data.appointmentId), {
+          recordId,
+          dot: "green",
+          status: "vaccinated"
+        });
+        this.$store.commit("updateRecordIdToAppointment", {
+          appointmentId: data.appointmentId,
+          recordId,
+          recordCustomData: data.recordCustomData
+        });
+      } else {
+        await services().record.removeByAppointmentId(data.appointmentId);
+        const tempData = data;
+        delete tempData.recordId;
+        await services().appointment.update(Number(data.appointmentId), {
+          recordId: null,
+          dot: "gray",
+          status: "in-progress"
+        });
+      }
+    },
+    async onSaveAppointment(data) {
+      console.log("save-apointment", data);
+      await services().record.updateById(data.recordId, data);
+      await services().appointment.update(Number(data.appointmentId), {
+        recordCustomData: data.recordCustomData,
+        dot: "green",
+        status: "vaccinated"
+      });
+      this.$store.commit("updateRecordIdToAppointment", {
+        appointmentId: data.appointmentId,
+        recordId: data.recordId,
+        recordCustomData: data.recordCustomData
+      });
+    },
     onClickToSuggestion() {
       this.$store.commit("setTempFamilyInfo", {
         ...this.childInfo,
