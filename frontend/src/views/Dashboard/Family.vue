@@ -21,7 +21,7 @@
             <label for="file-input">
               <img
                 v-if="!base64Url"
-                src="../../assets/mock-member-profile.svg"
+                src="../../assets/boy.png"
                 class="block mx-auto"
               />
               <img v-else :src="base64Url" class="block mx-auto" />

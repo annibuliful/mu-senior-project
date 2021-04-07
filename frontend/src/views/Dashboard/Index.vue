@@ -17,7 +17,7 @@
         <span v-if="isOpen">Open</span>
         <span v-else>Close</span>
       </button> -->
-      <div class="flex flex-row max-w-7xl mx-auto min-h-screen">
+      <div class="flex flex-row max-w-7xl mx-auto min-h-screen ">
         <transition name="slide">
           <div
             class="flex flex-col w-full px-2 lg:w-2/12 lg:px-4 show-md  shadow-xl fixed bg-orange-400 overflow-x-hidden z-10 min-nav"
@@ -130,7 +130,7 @@
 export default {
   data() {
     return {
-      isOpen: true
+      isOpen: false
     };
   },
   computed: {

@@ -10,7 +10,7 @@
             <img
               class="mx-auto"
               v-if="!base64Url"
-              src="../../assets/mock-member-profile.svg"
+              src="../../assets/boy.png"
             />
             <img class="mx-auto" v-else :src="base64Url" />
           </label>

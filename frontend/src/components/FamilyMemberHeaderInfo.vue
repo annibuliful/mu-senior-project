@@ -14,7 +14,7 @@
         <img
           class="w-24 md:w-48"
           v-else
-          src="../assets/mock-member-profile.svg"
+          src="../assets/boy.png"
           alt=""
         />
       </div>
