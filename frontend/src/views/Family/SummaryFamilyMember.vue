@@ -107,7 +107,7 @@
         :isHasRecord="appointment.recordId !== undefined"
         :key="`${index}-${appointment.customData.childname}`"
         :doseNumber="appointment.customData.doseNumber"
-        :vaccineId="Number(appointment.customData.selectedVaccines[0].id)"
+        :vaccineId="appointment.customData.selectedVaccines[0].id"
         :childId="appointment.customData.childId"
         :appointmentId="appointment.appointmentId"
         :recordId="appointment.recordId || -1"

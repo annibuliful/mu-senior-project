@@ -100,7 +100,7 @@ export default {
       type: Number
     },
     vaccineId: {
-      type: Number,
+      type: String,
       required: true
     },
     childId: {
