@@ -169,7 +169,8 @@ export default {
           hospitalName: this.newHospitalName,
           medicalStaff: this.newMedicalStaff,
           noteMessage: this.newNoteMessage,
-          doseNumber: this.doseNumber
+          doseNumber: this.doseNumber,
+          vaccineId: this.vaccineId
         }
       };
       this.$emit("on-record", checkBoxValue, data);
@@ -185,7 +186,8 @@ export default {
           hospitalName: this.newHospitalName,
           medicalStaff: this.newMedicalStaff,
           noteMessage: this.newNoteMessage,
-          doseNumber: this.doseNumber
+          doseNumber: this.doseNumber,
+          vaccineId: this.vaccineId
         },
         recordId: this.recordId
       };
