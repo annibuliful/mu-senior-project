@@ -22,3 +22,5 @@ export const storage = firebase.storage();
 export const pushMessage = (vapidKey = VAPID_KEY) =>
   firebase.messaging().getToken({ vapidKey });
 export default firebase;
+
+export const saveAppointment = () => {};
