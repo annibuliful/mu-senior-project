@@ -7,6 +7,8 @@ import store from "./store";
 import Vuelidate from "vuelidate";
 import VCalendar from "v-calendar";
 import VueSimpleAlert from "vue-simple-alert";
+import { messaging as firebaseMessaging } from "./firebase";
+Vue.prototype.$messaging = firebaseMessaging;
 Vue.use(VCalendar);
 Vue.use(Vuelidate);
 Vue.use(VueSimpleAlert);
