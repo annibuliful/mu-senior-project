@@ -11,7 +11,7 @@ var firebaseConfig = {
   storageBucket: "mu-senior.appspot.com",
   messagingSenderId: "430977039067",
   appId: "1:430977039067:web:08a7760c600730f688eafe",
-  measurementId: "G-FYFV5L0F2J"
+  measurementId: "G-FYFV5L0F2J",
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -22,3 +22,5 @@ export const storage = firebase.storage();
 export const pushMessage = (vapidKey = VAPID_KEY) =>
   firebase.messaging().getToken({ vapidKey });
 export default firebase;
+
+export const saveAppointment = () => {};

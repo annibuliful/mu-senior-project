@@ -30,7 +30,7 @@ export default {
       console.log("payload-info", payload);
     });
     this.createNewUserWhenIdNotExist();
-    // this.openNotification();
+    this.openNotification();
     this.testPushNotification();
     this.checkFirstTime();
     this.$store.commit("getCovidInfo");
