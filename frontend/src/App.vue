@@ -12,6 +12,8 @@ import { setMode } from "@/services";
 import services from "./services";
 import { nanoid } from "nanoid";
 import InternetToast from "@/components/Internet-toast.vue";
+// eslint-disable-next-line no-unused-vars
+import { pushMessage } from "./firebase";
 // import RecordForm from "@/components/RecordForm.vue";
 export default {
   data: function() {
@@ -25,7 +27,8 @@ export default {
   },
   mounted() {
     this.createNewUserWhenIdNotExist();
-    this.openNotification();
+    // this.openNotification();
+    this.testPushNotification();
     this.checkFirstTime();
     this.$store.commit("getCovidInfo");
     window.navigator.onLine ? setMode("online") : setMode("offline");
@@ -43,6 +46,10 @@ export default {
     });
   },
   methods: {
+    testPushNotification: async function() {
+      const result = await pushMessage();
+      console.log("result", result);
+    },
     openNotification: function() {
       if (Notification.permission !== "denied") {
         Notification.requestPermission().then(function(permission) {
