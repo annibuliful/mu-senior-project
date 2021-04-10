@@ -47,8 +47,7 @@ export default {
   },
   methods: {
     testPushNotification: async function() {
-      const result = await pushMessage();
-      console.log("result", result);
+      await pushMessage();
     },
     openNotification: function() {
       if (Notification.permission !== "denied") {
