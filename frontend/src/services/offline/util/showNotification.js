@@ -13,6 +13,7 @@ export default (listAppointment, language) => {
   listAppointment.forEach((appointment) => {
     const data = appointment.customData;
     new Notification("appointment", {
+      tag: "syncAppointments",
       body: `${data.childname},${data.selectedVaccines[0]} on ${
         language === "th-TH"
           ? thaiDate(appointment.dates)
