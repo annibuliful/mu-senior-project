@@ -1,16 +1,16 @@
 import { format, addYears } from "date-fns";
 import { th, enUS } from "date-fns/locale";
 
-const thaiDate = (date) =>
+const thaiDate = date =>
   format(addYears(new Date(date), 543), "dd MMM yyyy", {
-    locale: th,
+    locale: th
   });
-const englishDate = (date) =>
+const englishDate = date =>
   format(date, "dd MMM yyyy", {
-    locale: enUS,
+    locale: enUS
   });
 export default (listAppointment, language) => {
-  listAppointment.forEach((appointment) => {
+  listAppointment.forEach(appointment => {
     const data = appointment.customData;
     new Notification("appointment", {
       tag: "syncAppointments",
@@ -18,7 +18,7 @@ export default (listAppointment, language) => {
         language === "th-TH"
           ? thaiDate(appointment.dates)
           : englishDate(appointment.dates)
-      }`,
+      }`
     });
   });
 };

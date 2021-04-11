@@ -18,15 +18,15 @@ import { pushMessage, messaging } from "./firebase";
 export default {
   data: function() {
     return {
-      isShowInternetToast: false,
+      isShowInternetToast: false
     };
   },
   components: {
-    InternetToast,
+    InternetToast
     // RecordForm
   },
   mounted() {
-    messaging.onMessage((payload) => {
+    messaging.onMessage(payload => {
       console.log("payload-info", payload);
     });
     this.createNewUserWhenIdNotExist();
@@ -88,8 +88,8 @@ export default {
       localStorage.setItem("login-info", JSON.stringify(result));
       // this.$router.push({ name: "dashboard-home" });
       // this.$router.push({ name: "dashboard-family" });
-    },
-  },
+    }
+  }
 };
 </script>
 
