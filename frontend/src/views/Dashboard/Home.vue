@@ -48,7 +48,7 @@
 import { format } from "date-fns";
 import { th } from "date-fns/locale";
 import Calendar from "@/components/Calendar.vue";
-import service from "@/services";
+import service from "../../services";
 import AppointmentCard from "@/components/AppointmentCard.vue";
 import TopBar from "@/components/TopBar.vue";
 export default {
@@ -73,6 +73,14 @@ export default {
         const result = localStorage.getItem("userInfo");
         this.$store.commit("setUserInfo", JSON.parse(result));
         this.$store.commit("changeSelectedCalendarDate", new Date());
+      });
+    service()
+      .appointment.getVaccinatingStatus(this.locale)
+      .then(data => {
+        if (Notification.permission === "granted") {
+          // new Notification("Welcome to Vaccinet App");
+          service().util.showNotification(data);
+        }
       });
   },
   methods: {

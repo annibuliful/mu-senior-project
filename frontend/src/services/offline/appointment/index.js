@@ -7,7 +7,7 @@ import listByChildId from "./list-child-id";
 import search from "./search";
 import cronCheckStatus from "./cron-check-status";
 import filterByDose from "./filterByDose";
-
+import getVaccinatingStatus from "./get-vaccinating-status";
 export default {
   create,
   getById,
@@ -17,5 +17,6 @@ export default {
   search,
   cronCheckStatus,
   listNonDelete,
-  filterByDose
+  filterByDose,
+  getVaccinatingStatus
 };
