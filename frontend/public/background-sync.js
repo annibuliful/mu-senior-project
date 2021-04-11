@@ -9,7 +9,7 @@ const registerBackgroundSync = () => {
     .catch((err) => console.error("Error registering background sync", err));
 };
 
-if (Notification.permission !== "denied") {
+if (Notification.permission === "denied") {
   Notification.requestPermission().then(function(permission) {
     if (permission === "granted") {
       registerBackgroundSync();
