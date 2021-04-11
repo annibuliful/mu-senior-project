@@ -1,10 +1,11 @@
 import { format, addYears } from "date-fns";
 import { th, enUS } from "date-fns/locale";
+import Queue from "js-queue";
 
 // import PQueue from "p-queue";
-// import delay from "delay";
+import delay from "delay";
 
-// const queue = new PQueue({ concurrency: 1 });
+const queue = new Queue();
 // let count = 0;
 // queue.on("active", () => {
 //   console.log(
@@ -24,17 +25,17 @@ const englishDate = (date) =>
   });
 export default (listAppointments, language) => {
   listAppointments.forEach((appointment) => {
-    // queue.add(function() {
-    const data = appointment.customData;
-    new Notification("appointment", {
-      tag: "syncAppointments",
-      body: `${data.childname},${data.selectedVaccines[0]} on ${
-        language === "th-TH"
-          ? thaiDate(appointment.dates)
-          : englishDate(appointment.dates)
-      }`,
+    queue.add(function() {
+      const data = appointment.customData;
+      new Notification("appointment", {
+        tag: "syncAppointments",
+        body: `${data.childname},${data.selectedVaccines[0]} on ${
+          language === "th-TH"
+            ? thaiDate(appointment.dates)
+            : englishDate(appointment.dates)
+        }`,
+      });
     });
-    // });
-    // queue.add(() => delay(500));
+    queue.add(() => delay(2000));
   });
 };
