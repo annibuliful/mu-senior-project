@@ -9,5 +9,5 @@ export default {
   getVaccineInfoByQuery,
   getNewsInfoByQuery,
   checkRemainTimeForAddVaccine,
-  showNotification,
+  showNotification
 };
