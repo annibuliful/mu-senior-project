@@ -23,6 +23,7 @@ const englishDate = (date) =>
   format(date, "dd MMM yyyy", {
     locale: enUS,
   });
+
 export default (listAppointments, language) => {
   listAppointments.forEach((appointment) => {
     queue.add(function() {
