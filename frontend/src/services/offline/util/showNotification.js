@@ -15,17 +15,17 @@ import { th, enUS } from "date-fns/locale";
 //   );
 // });
 
-const thaiDate = (date) =>
+const thaiDate = date =>
   format(addYears(new Date(date), 543), "dd MMM yyyy", {
-    locale: th,
+    locale: th
   });
-const englishDate = (date) =>
+const englishDate = date =>
   format(date, "dd MMM yyyy", {
-    locale: enUS,
+    locale: enUS
   });
 
 export default (listAppointments, language) => {
-  listAppointments.forEach((appointment) => {
+  listAppointments.forEach(appointment => {
     // queue.add(function() {
     const title = "appointment";
     const data = appointment.customData;
@@ -35,7 +35,7 @@ export default (listAppointments, language) => {
         language === "th-TH"
           ? thaiDate(appointment.dates)
           : englishDate(appointment.dates)
-      }`,
+      }`
     };
 
     new Notification("appointment", notificationData);
