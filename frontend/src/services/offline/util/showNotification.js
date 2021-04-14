@@ -15,34 +15,34 @@ import { th, enUS } from "date-fns/locale";
 //   );
 // });
 
-const thaiDate = date =>
+const thaiDate = (date) =>
   format(addYears(new Date(date), 543), "dd MMM yyyy", {
-    locale: th
+    locale: th,
   });
-const englishDate = date =>
+const englishDate = (date) =>
   format(date, "dd MMM yyyy", {
-    locale: enUS
+    locale: enUS,
   });
 
 export default (listAppointments, language) => {
-  listAppointments.forEach(appointment => {
+  console.log("aaaa", listAppointments);
+  listAppointments.forEach((appointment) => {
     // queue.add(function() {
-    navigator.serviceWorker?.ready.then(function(registration) {
-      const title = "appointment";
-      const data = appointment.customData;
-      const notificationData = {
-        tag: "syncAppointments",
-        body: `${data.childname},${data.selectedVaccines[0]} on ${
-          language === "th-TH"
-            ? thaiDate(appointment.dates)
-            : englishDate(appointment.dates)
-        }`
-      };
+    const title = "appointment";
+    const data = appointment.customData;
+    const notificationData = {
+      tag: "syncAppointments",
+      body: `${data.childname},${data.selectedVaccines[0]} on ${
+        language === "th-TH"
+          ? thaiDate(appointment.dates)
+          : englishDate(appointment.dates)
+      }`,
+    };
 
-      new Notification(title, notificationData);
+    new Notification("appointment", notificationData);
+    navigator.serviceWorker?.ready.then(function(registration) {
       registration.showNotification(title, notificationData);
     });
-
     // });
     // queue.add(() => delay(2000));
   });

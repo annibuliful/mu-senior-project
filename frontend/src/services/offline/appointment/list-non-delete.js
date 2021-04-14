@@ -4,27 +4,27 @@ import { listLanguages } from "../../../constants/language";
 import service from "@/services";
 
 const getListVaccines = (el, language) => getVaccineInfoById(el, language);
-export default async language => {
+export default async (language, userId) => {
   console.log("test non delete");
   let listAppointments = await db.table("appointments").toArray();
 
   if (listLanguages.includes(language)) {
-    const mappedListAppointments = listAppointments.map(appointment => {
+    const mappedListAppointments = listAppointments.map((appointment) => {
       const vaccineInfo = appointment.customData?.selectedVaccines
-        .map(vaccine => getListVaccines(vaccine, language))
-        .map(vaccine => vaccine.vaccineNameNormal);
+        .map((vaccine) => getListVaccines(vaccine, language))
+        .map((vaccine) => vaccine.vaccineNameNormal);
       return {
         ...appointment,
         customData: {
           ...appointment.customData,
-          selectedVaccines: vaccineInfo
-        }
+          selectedVaccines: vaccineInfo,
+        },
       };
     });
-    const familyList = await service().family.list();
+    const familyList = await service().family.list(userId);
 
-    const existingFamilyAppointment = mappedListAppointments.filter(el => {
-      return familyList.some(f => {
+    const existingFamilyAppointment = mappedListAppointments.filter((el) => {
+      return familyList.some((f) => {
         return f.fullname === el.customData.childname && f.isDelete === false;
       });
     });
