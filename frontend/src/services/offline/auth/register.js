@@ -7,7 +7,7 @@ export default async ({ username, password }) => {
     .equals(username)
     .toArray();
   const isExist = listUsers.length !== 0;
-  if (isExist) throw new Error("duplicate username");
+  if (isExist) return;
   return db.table("users").add({
     username,
     password,
@@ -15,6 +15,6 @@ export default async ({ username, password }) => {
     birthDate: "",
     diseases: [],
     receivedVaccines: [],
-    isSync: false
+    isSync: false,
   });
 };

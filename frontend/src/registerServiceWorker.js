@@ -9,13 +9,13 @@ register("firebase-messaging-sw.js");
 register("background-sync.js");
 // navigator.serviceWorker.register("sw.js");
 
-const thaiDate = date =>
+const thaiDate = (date) =>
   format(addYears(new Date(date), 543), "dd MMM yyyy", {
-    locale: th
+    locale: th,
   });
-const englishDate = date =>
+const englishDate = (date) =>
   format(date, "dd MMM yyyy", {
-    locale: enUS
+    locale: enUS,
   });
 
 const language = navigator.language;
@@ -27,16 +27,15 @@ Notification.requestPermission(function(result) {
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
         const data = await service().appointment.listNonDelete(
           language,
-          userInfo.userId
+          userInfo?.userId ?? 1
         );
 
         const listAppointments = data.filter(
-          event => event.status === "vaccinating"
+          (event) => event.status === "vaccinating"
         );
         const registration = await navigator.serviceWorker.ready;
-        console.log("aaaa", listAppointments);
 
-        listAppointments.forEach(appointment => {
+        listAppointments.forEach((appointment) => {
           const title = "appointment";
           const data = appointment.customData;
           const notificationData = {
@@ -45,7 +44,7 @@ Notification.requestPermission(function(result) {
               language === "th-TH"
                 ? thaiDate(appointment.dates)
                 : englishDate(appointment.dates)
-            }`
+            }`,
           };
 
           new Notification("appointment", notificationData);
@@ -82,6 +81,6 @@ if (process.env.NODE_ENV === "production") {
     },
     error(error) {
       console.error("Error during service worker registration:", error);
-    }
+    },
   });
 }
