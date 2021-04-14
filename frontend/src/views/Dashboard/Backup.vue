@@ -8,6 +8,7 @@
     <div
       class="max-w-xs max-w-lg rounded bg-white pt-6 shadow p-8"
       style="margin-top: 2vh; margin-left: auto; margin-right: auto; "
+      v-if="!isAlreadyLogin"
     >
       <div class="inline-flex justify-center w-full pb-8">
         <h4
@@ -26,13 +27,12 @@
         >
           {{ locale.login }}
         </h4>
+        <LoginForm v-if="mode === 'login'" v-on:on-submit="onLogin" />
+        <RegisterForm v-if="mode === 'register'" v-on:on-submit="onRegister" />
+        <p v-if="error !== ''" class="text-red-500 text-center text-xs m-2">
+          {{ error }}
+        </p>
       </div>
-
-      <LoginForm v-if="mode === 'login'" v-on:on-submit="onLogin" />
-      <RegisterForm v-if="mode === 'register'" v-on:on-submit="onRegister" />
-      <p v-if="error !== ''" class="text-red-500 text-center text-xs m-2">
-        {{ error }}
-      </p>
     </div>
 
     <!-- Search Area -->
@@ -68,6 +68,7 @@ export default {
   },
   data() {
     return {
+      isAlreadyLogin: false,
       uploadedFile: null,
       exportBlob: null,
       file: null,
@@ -95,21 +96,26 @@ export default {
       return this.$store.state.locale.label;
     }
   },
-
+  created() {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (!userInfo) return;
+    if (userInfo.onlineUserId) this.isAlreadyLogin = true;
+    console.log("userInfo", userInfo);
+  },
   methods: {
     onChangeFormMode(mode) {
       this.mode = mode;
       this.error = "";
     },
     async onClickBackup() {
-      const userId = JSON.parse(localStorage.getItem("userInfo")).userId;
+      const userId = JSON.parse(localStorage.getItem("userInfo")).onlineUserId;
       await services().revisionOnline.exportDb(userId);
     },
     async onClickImport() {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
       this.deleteIDB();
-      await services().revisionOnline.importDb(userInfo.userId);
+      await services().revisionOnline.importDb(userInfo.onlineUserId);
     },
 
     deleteIDB() {
@@ -128,12 +134,18 @@ export default {
       try {
         const result = await services().authOnline.login(username, password);
         this.$store.commit("setUserInfo", result);
+
+        const oldUserInfo = JSON.parse(localStorage.getItem("userInfo"));
         const loginInfo = await result.json();
 
-        localStorage.setItem("userInfo", JSON.stringify(loginInfo.userInfo));
-        console.log("loginInfo.userInfo", loginInfo.userInfo);
+        const mergeInfo = {
+          ...oldUserInfo,
+          onlineUserId: loginInfo.userInfo.userId
+        };
+        localStorage.setItem("userInfo", JSON.stringify(mergeInfo));
+        console.log("loginInfo.userInfo", mergeInfo);
         // this.onClickImport();
-        this.$router.push({ name: "dashboard-family" });
+        // this.$router.push({ name: "dashboard-family" });
         this.$fire({
           title: "เข้าสู่ระบบสำเร็จ",
           type: "success",

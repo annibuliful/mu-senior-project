@@ -64,14 +64,19 @@ export default {
     service()
       .appointment.cronCheckStatus()
       .then(async () => {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        this.$store.commit("setUserInfo", userInfo);
         const language = this.$store.state.calendarLocale;
-        const data = await service().appointment.listNonDelete(language);
+        const data = await service().appointment.listNonDelete(
+          language,
+          userInfo.userId
+        );
         this.listEvents = data;
         this.filterEventOnDate = this.listEvents.filter(
           event => event.status === "vaccinating"
         );
-        const result = localStorage.getItem("userInfo");
-        this.$store.commit("setUserInfo", JSON.parse(result));
+        console.log("listEvents", this.listEvents);
+
         this.$store.commit("changeSelectedCalendarDate", new Date());
       });
     service()

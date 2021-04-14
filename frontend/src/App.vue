@@ -13,7 +13,7 @@ import services from "./services";
 import { nanoid } from "nanoid";
 import InternetToast from "@/components/Internet-toast.vue";
 // eslint-disable-next-line no-unused-vars
-import { pushMessage, messaging } from "./firebase";
+// import { pushMessage, messaging } from "./firebase";
 // import RecordForm from "@/components/RecordForm.vue";
 export default {
   data: function() {
@@ -26,9 +26,6 @@ export default {
     // RecordForm
   },
   mounted() {
-    messaging.onMessage(payload => {
-      console.log("payload-info", payload);
-    });
     this.createNewUserWhenIdNotExist();
     this.openNotification();
     this.testPushNotification();
@@ -50,8 +47,8 @@ export default {
   },
   methods: {
     testPushNotification: async function() {
-      const result = await pushMessage();
-      console.log("result", result);
+      // const result = await pushMessage();
+      // console.log("result", result);
     },
     openNotification: function() {
       if (Notification.permission === "denied") {
