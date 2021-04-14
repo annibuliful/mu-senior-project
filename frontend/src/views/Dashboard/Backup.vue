@@ -64,7 +64,7 @@ import RegisterForm from "@/components/auth/Register.vue";
 export default {
   components: {
     LoginForm,
-    RegisterForm
+    RegisterForm,
   },
   data() {
     return {
@@ -77,8 +77,8 @@ export default {
         email: "",
         confirmEmail: "",
         password: "",
-        confirmPassWord: ""
-      }
+        confirmPassWord: "",
+      },
     };
   },
   computed: {
@@ -93,7 +93,7 @@ export default {
     },
     labelText: function() {
       return this.$store.state.locale.label;
-    }
+    },
   },
 
   methods: {
@@ -102,14 +102,14 @@ export default {
       this.error = "";
     },
     async onClickBackup() {
-      const userId = JSON.parse(localStorage.getItem("userInfo")).userId;
+      const userId = JSON.parse(localStorage.getItem("userInfo")).onlineUserId;
       await services().revisionOnline.exportDb(userId);
     },
     async onClickImport() {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
       this.deleteIDB();
-      await services().revisionOnline.importDb(userInfo.userId);
+      await services().revisionOnline.importDb(userInfo.onlineUserId);
     },
 
     deleteIDB() {
@@ -117,7 +117,7 @@ export default {
         .then(() => {
           console.log("Database successfully deleted");
         })
-        .catch(err => {
+        .catch((err) => {
           console.error("Could not delete database", err);
         })
         .finally(() => {
@@ -128,16 +128,22 @@ export default {
       try {
         const result = await services().authOnline.login(username, password);
         this.$store.commit("setUserInfo", result);
+
+        const oldUserInfo = localStorage.getItem("userInfo");
         const loginInfo = await result.json();
 
-        localStorage.setItem("userInfo", JSON.stringify(loginInfo.userInfo));
-        console.log("loginInfo.userInfo", loginInfo.userInfo);
+        const mergeInfo = {
+          ...oldUserInfo,
+          onlineUserId: loginInfo.userInfo.userId,
+        };
+        localStorage.setItem("userInfo", JSON.stringify(mergeInfo));
+        console.log("loginInfo.userInfo", mergeInfo);
         // this.onClickImport();
         this.$router.push({ name: "dashboard-family" });
         this.$fire({
           title: "เข้าสู่ระบบสำเร็จ",
           type: "success",
-          timer: 3000
+          timer: 3000,
         });
       } catch (e) {
         const message = e.message;
@@ -161,7 +167,7 @@ export default {
         this.$fire({
           title: "สมัครสมาชิกสำเร็จ",
           type: "success",
-          timer: 3000
+          timer: 3000,
         });
         this.mode = "login";
       } catch (e) {
@@ -172,11 +178,11 @@ export default {
         this.$fire({
           title: "สมัครสมาชิกไม่สำเร็จ",
           type: "error",
-          timer: 3000
+          timer: 3000,
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped></style>
