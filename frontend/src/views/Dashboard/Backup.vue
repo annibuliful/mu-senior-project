@@ -8,6 +8,7 @@
     <div
       class="max-w-xs max-w-lg rounded bg-white pt-6 shadow p-8"
       style="margin-top: 2vh; margin-left: auto; margin-right: auto; "
+      v-if="!isAlreadyLogin"
     >
       <div class="inline-flex justify-center w-full pb-8">
         <h4
@@ -26,13 +27,12 @@
         >
           {{ locale.login }}
         </h4>
+        <LoginForm v-if="mode === 'login'" v-on:on-submit="onLogin" />
+        <RegisterForm v-if="mode === 'register'" v-on:on-submit="onRegister" />
+        <p v-if="error !== ''" class="text-red-500 text-center text-xs m-2">
+          {{ error }}
+        </p>
       </div>
-
-      <LoginForm v-if="mode === 'login'" v-on:on-submit="onLogin" />
-      <RegisterForm v-if="mode === 'register'" v-on:on-submit="onRegister" />
-      <p v-if="error !== ''" class="text-red-500 text-center text-xs m-2">
-        {{ error }}
-      </p>
     </div>
 
     <!-- Search Area -->
@@ -64,10 +64,11 @@ import RegisterForm from "@/components/auth/Register.vue";
 export default {
   components: {
     LoginForm,
-    RegisterForm
+    RegisterForm,
   },
   data() {
     return {
+      isAlreadyLogin: false,
       uploadedFile: null,
       exportBlob: null,
       file: null,
@@ -77,8 +78,8 @@ export default {
         email: "",
         confirmEmail: "",
         password: "",
-        confirmPassWord: ""
-      }
+        confirmPassWord: "",
+      },
     };
   },
   computed: {
@@ -93,9 +94,14 @@ export default {
     },
     labelText: function() {
       return this.$store.state.locale.label;
-    }
+    },
   },
-
+  created() {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (!userInfo) return;
+    if (userInfo.onlineUserId) this.isAlreadyLogin = true;
+    console.log("userInfo", userInfo);
+  },
   methods: {
     onChangeFormMode(mode) {
       this.mode = mode;
@@ -117,7 +123,7 @@ export default {
         .then(() => {
           console.log("Database successfully deleted");
         })
-        .catch(err => {
+        .catch((err) => {
           console.error("Could not delete database", err);
         })
         .finally(() => {
@@ -129,21 +135,21 @@ export default {
         const result = await services().authOnline.login(username, password);
         this.$store.commit("setUserInfo", result);
 
-        const oldUserInfo = localStorage.getItem("userInfo");
+        const oldUserInfo = JSON.parse(localStorage.getItem("userInfo"));
         const loginInfo = await result.json();
 
         const mergeInfo = {
           ...oldUserInfo,
-          onlineUserId: loginInfo.userInfo.userId
+          onlineUserId: loginInfo.userInfo.userId,
         };
         localStorage.setItem("userInfo", JSON.stringify(mergeInfo));
         console.log("loginInfo.userInfo", mergeInfo);
         // this.onClickImport();
-        this.$router.push({ name: "dashboard-family" });
+        // this.$router.push({ name: "dashboard-family" });
         this.$fire({
           title: "เข้าสู่ระบบสำเร็จ",
           type: "success",
-          timer: 3000
+          timer: 3000,
         });
       } catch (e) {
         const message = e.message;
@@ -167,7 +173,7 @@ export default {
         this.$fire({
           title: "สมัครสมาชิกสำเร็จ",
           type: "success",
-          timer: 3000
+          timer: 3000,
         });
         this.mode = "login";
       } catch (e) {
@@ -178,11 +184,11 @@ export default {
         this.$fire({
           title: "สมัครสมาชิกไม่สำเร็จ",
           type: "error",
-          timer: 3000
+          timer: 3000,
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped></style>
