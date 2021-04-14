@@ -15,6 +15,6 @@ export default async ({ username, password }) => {
     birthDate: "",
     diseases: [],
     receivedVaccines: [],
-    isSync: false,
+    isSync: false
   });
 };
