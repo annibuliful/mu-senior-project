@@ -1,127 +1,229 @@
 <template>
-  <div>
-    <!-- <div class="flex">
-      <SideBar :isCancelLink="isCancelLink" />
-      <div class="flex-auto mt-5 mb-24 lg:mb-0 lg:ml-64 lg:mr-10">
-        <router-view />
+  <div class="flex flex-col h-auto">
+    <div class="flex flex-col w-full bg-orange-400">
+      <div class="flex flex-row">
+        <div
+          class="menu-open bg-orange-700 sm:visible lg:invisible text-white"
+          @click="isOpen = !isOpen"
+          v-if="!isOpen"
+        >
+          {{ listItem.menu }}
+        </div>
+
+        <div
+          class="menu-open bg-orange-700 sm:visible lg:invisible text-white"
+          @click="isOpen = !isOpen"
+          v-if="isOpen"
+        >
+          X
+        </div>
       </div>
     </div>
-    <MobileBar :isCancelLink="isCancelLink" /> -->
-    <div class=" min-h-screen">
-      <div class="flex flex-col w-full bg-orange-400" @click="isOpen = !isOpen">
-        <div class="hamburger-menu"></div>
-        <div class="hamburger-menu"></div>
-        <div class="hamburger-menu"></div>
-      </div>
-      <!-- <button @click="isOpen = !isOpen" class="bg-blue-200 p-5">
-        <span v-if="isOpen">Open</span>
-        <span v-else>Close</span>
-      </button> -->
-      <div class="flex flex-row max-w-7xl mx-auto min-h-screen ">
-        <transition name="slide">
-          <div
-            class="flex flex-col w-full px-2 lg:w-2/12 lg:px-4 show-md  shadow-xl fixed bg-orange-400 overflow-x-hidden z-10 min-nav"
-            v-if="isOpen"
-          >
-            <div class="min-h-screen">
-              <div class="flex flex-col h-full ">
-                <img src="../../assets/menu_web_vac.png" class="mt-8" alt="" />
-                <div class="mt-4 my-2 cursor-pointer">
-                  <div
-                    @click="onClickLink({ name: 'dashboard-home' })"
-                    class=" pb-4 "
-                    :class="[
-                      currentPath === '/dashboard/home'
-                        ? 'link-active'
-                        : 'link-item'
-                    ]"
-                  >
-                    <img class="inline w-8" src="@/assets/icons/home.svg" />
-                    <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
-                  </div>
-                </div>
-                <div class=" my-2 cursor-pointer">
-                  <div
-                    @click="onClickLink({ name: 'dashboard-vaccine' })"
-                    class=" pb-4 "
-                    :class="[
-                      currentPath === '/dashboard/vaccine'
-                        ? 'link-active'
-                        : 'link-item'
-                    ]"
-                  >
-                    <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
-                    <p class="inline mt-2 pl-3">{{ listItem.vaccine }}</p>
-                  </div>
-                </div>
-                <div class="my-2 cursor-pointer">
-                  <div
-                    @click="onClickLink({ name: 'dashboard-family' })"
-                    class=" pb-4 "
-                    :class="[
-                      currentPath === '/dashboard/family'
-                        ? 'link-active'
-                        : 'link-item'
-                    ]"
-                  >
-                    <img class="inline w-8" src="@/assets/icons/family.svg" />
-                    <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
-                  </div>
-                </div>
-                <div class=" my-2 cursor-pointer">
-                  <div
-                    @click="onClickLink({ name: 'dashboard-packager' })"
-                    class=" pb-4 "
-                    :class="[
-                      currentPath === '/dashboard/vaccinepackager'
-                        ? 'link-active'
-                        : 'link-item'
-                    ]"
-                  >
-                    <img class="inline w-8" src="@/assets/icons/packager.svg" />
-                    <p class="inline mt-2 pl-3">{{ listItem.packager }}</p>
-                  </div>
-                </div>
 
-                <div class=" my-2 cursor-pointer">
-                  <div
-                    @click="onClickLink({ name: 'dashboard-backup' })"
-                    class=" pb-4 "
-                    :class="[
-                      currentPath === '/dashboard/backup'
-                        ? 'link-active'
-                        : 'link-item'
-                    ]"
-                  >
-                    <img
-                      class="inline w-8"
-                      src="@/assets/icons/sync-cloud.svg"
-                    />
-                    <p class="inline mt-2 pl-3">{{ listItem.backup }}</p>
-                  </div>
-                </div>
-                <div class=" my-2 cursor-pointer">
-                  <div
-                    @click="onClickLink({ name: 'dashboard-setting' })"
-                    class=""
-                    :class="[
-                      currentPath === '/dashboard/setting'
-                        ? 'link-active'
-                        : 'link-item'
-                    ]"
-                  >
-                    <img class="inline w-8" src="@/assets/icons/setting.svg" />
-                    <p class="inline mt-2 pl-3">{{ listItem.setting }}</p>
-                  </div>
-                </div>
+    <!-- Page View Area for SM Mobile -->
+    <div class="flex w-full min-h-screen lg:hidden " v-if="!isOpen">
+      <router-view />
+    </div>
+
+    <!-- Grid nav for SM Mobile -->
+    <div class="z-10 bg-orange-700 w-full lg:hidden"></div>
+    <div
+      class="lg:hidden flex flex-row w-full flex-wrap justify-start md:justify-center md:min-h-screen bg-orange-400"
+      v-if="isOpen"
+    >
+      <div class="w-full">
+        <img
+          src="../../assets/menu_web_vac.png"
+          class="my-4 w-48 mx-auto"
+          alt=""
+        />
+      </div>
+      <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
+        <div class="my-2 cursor-pointer">
+          <div
+            @click="onClickLink({ name: 'dashboard-home' })"
+            class=" pb-4 "
+            :class="[
+              currentPath === '/dashboard/home' ? 'link-active' : 'link-item'
+            ]"
+          >
+            <img class="inline w-8" src="@/assets/icons/home.svg" />
+            <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
+        <div class=" my-2 cursor-pointer">
+          <div
+            @click="onClickLink({ name: 'dashboard-vaccine' })"
+            class=" pb-4 "
+            :class="[
+              currentPath === '/dashboard/vaccine' ? 'link-active' : 'link-item'
+            ]"
+          >
+            <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
+            <p class="inline mt-2 pl-3">{{ listItem.vaccine }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
+        <div class="my-2 cursor-pointer">
+          <div
+            @click="onClickLink({ name: 'dashboard-family' })"
+            class=" pb-4 "
+            :class="[
+              currentPath === '/dashboard/family' ? 'link-active' : 'link-item'
+            ]"
+          >
+            <img class="inline w-8" src="@/assets/icons/family.svg" />
+            <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
+        <div class=" my-2 cursor-pointer">
+          <div
+            @click="onClickLink({ name: 'dashboard-packager' })"
+            class=" pb-4 "
+            :class="[
+              currentPath === '/dashboard/vaccinepackager'
+                ? 'link-active'
+                : 'link-item'
+            ]"
+          >
+            <img class="inline w-8" src="@/assets/icons/packager.svg" />
+            <p class="inline mt-2 pl-3">{{ listItem.packager }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
+        <div class=" my-2 cursor-pointer">
+          <div
+            @click="onClickLink({ name: 'dashboard-backup' })"
+            class=" pb-4 "
+            :class="[
+              currentPath === '/dashboard/backup' ? 'link-active' : 'link-item'
+            ]"
+          >
+            <img class="inline w-8" src="@/assets/icons/sync-cloud.svg" />
+            <p class="inline mt-2 pl-3">{{ listItem.backup }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
+        <div class=" my-2 cursor-pointer">
+          <div
+            @click="onClickLink({ name: 'dashboard-setting' })"
+            class=" pb-4 "
+            :class="[
+              currentPath === '/dashboard/setting' ? 'link-active' : 'link-item'
+            ]"
+          >
+            <img class="inline w-8" src="@/assets/icons/setting.svg" />
+            <p class="inline mt-2 pl-3">{{ listItem.setting }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar for > MD Desktop -->
+    <div class="lg:flex lg:flex-row lg:w-full hidden">
+      <div
+        class="flex flex-col w-full px-2 lg:w-2/12 lg:px-4  shadow-xl  bg-orange-400 overflow-x-hidden  "
+      >
+        <div class="min-h-screen">
+          <div class="flex flex-col h-full ">
+            <img src="../../assets/menu_web_vac.png" class="mt-8" alt="" />
+            <div class="mt-4 my-2 cursor-pointer">
+              <div
+                @click="onClickLink({ name: 'dashboard-home' })"
+                class=" pb-4 "
+                :class="[
+                  currentPath === '/dashboard/home'
+                    ? 'link-active'
+                    : 'link-item'
+                ]"
+              >
+                <img class="inline w-8" src="@/assets/icons/home.svg" />
+                <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
+              </div>
+            </div>
+            <div class=" my-2 cursor-pointer">
+              <div
+                @click="onClickLink({ name: 'dashboard-vaccine' })"
+                class=" pb-4 "
+                :class="[
+                  currentPath === '/dashboard/vaccine'
+                    ? 'link-active'
+                    : 'link-item'
+                ]"
+              >
+                <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
+                <p class="inline mt-2 pl-3">{{ listItem.vaccine }}</p>
+              </div>
+            </div>
+            <div class="my-2 cursor-pointer">
+              <div
+                @click="onClickLink({ name: 'dashboard-family' })"
+                class=" pb-4 "
+                :class="[
+                  currentPath === '/dashboard/family'
+                    ? 'link-active'
+                    : 'link-item'
+                ]"
+              >
+                <img class="inline w-8" src="@/assets/icons/family.svg" />
+                <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
+              </div>
+            </div>
+            <div class=" my-2 cursor-pointer">
+              <div
+                @click="onClickLink({ name: 'dashboard-packager' })"
+                class=" pb-4 "
+                :class="[
+                  currentPath === '/dashboard/vaccinepackager'
+                    ? 'link-active'
+                    : 'link-item'
+                ]"
+              >
+                <img class="inline w-8" src="@/assets/icons/packager.svg" />
+                <p class="inline mt-2 pl-3">{{ listItem.packager }}</p>
+              </div>
+            </div>
+
+            <div class=" my-2 cursor-pointer">
+              <div
+                @click="onClickLink({ name: 'dashboard-backup' })"
+                class=" pb-4 "
+                :class="[
+                  currentPath === '/dashboard/backup'
+                    ? 'link-active'
+                    : 'link-item'
+                ]"
+              >
+                <img class="inline w-8" src="@/assets/icons/sync-cloud.svg" />
+                <p class="inline mt-2 pl-3">{{ listItem.backup }}</p>
+              </div>
+            </div>
+            <div class=" my-2 cursor-pointer">
+              <div
+                @click="onClickLink({ name: 'dashboard-setting' })"
+                class=""
+                :class="[
+                  currentPath === '/dashboard/setting'
+                    ? 'link-active'
+                    : 'link-item'
+                ]"
+              >
+                <img class="inline w-8" src="@/assets/icons/setting.svg" />
+                <p class="inline mt-2 pl-3">{{ listItem.setting }}</p>
               </div>
             </div>
           </div>
-        </transition>
-
-        <div class="flex w-full  min-h-screen">
-          <router-view />
         </div>
+      </div>
+      <div class="flex w-full  min-h-screen">
+        <router-view />
       </div>
     </div>
   </div>
@@ -189,5 +291,11 @@ export default {
   height: 7px;
   background-color: black;
   cursor: pointer;
+}
+.menu-open {
+  text-align: center;
+  width: 70px;
+  height: 30px;
+  /* padding: 20px; */
 }
 </style>
