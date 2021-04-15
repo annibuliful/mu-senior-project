@@ -8,6 +8,7 @@ export default {
   vaccines,
   diseases,
   packagers,
+  menu: "Menu",
   home: "Home",
   vaccine: "Vaccine",
   news: "News",
