@@ -198,13 +198,19 @@ export default {
   },
   methods: {
     async onToggleEditAppointment(value, data) {
-      console.log("toggle-appointment", value, data);
+      const [appointmentInfo] = await services().appointment.getById(
+        data.appointmentId
+      );
+      console.log("toggle-appointment", value, data, appointmentInfo);
+
       if (value === "false") {
         const tempData = data;
         delete tempData.recordId;
         const recordId = await services().record.create(data);
         await services().appointment.update(Number(data.appointmentId), {
           recordId,
+          oldStatus: appointmentInfo.status,
+          oldDot: appointmentInfo.dot,
           dot: "green",
           status: "vaccinated"
         });
@@ -219,8 +225,8 @@ export default {
         delete tempData.recordId;
         await services().appointment.update(Number(data.appointmentId), {
           recordId: null,
-          dot: "gray",
-          status: "in-progress"
+          dot: appointmentInfo.oldDot ?? "gray",
+          status: appointmentInfo.oldStatus ?? "in-progress"
         });
       }
     },
