@@ -36,7 +36,7 @@
     </div>
 
     <!-- Search Area -->
-    <div class="flex flex-col">
+    <div class="flex flex-col" v-if="isAlreadyLogin">
       <button
         class="w-3/12 mx-auto border-2 border-gray-800 p-2 mt-2"
         @click="onClickBackup"
@@ -102,6 +102,8 @@ export default {
     if (userInfo.onlineUserId) {
       this.isAlreadyLogin = true;
     }
+
+    console.log("userInfo", userInfo);
   },
   methods: {
     onChangeFormMode(mode) {
@@ -110,7 +112,13 @@ export default {
     },
     async onClickBackup() {
       const userId = JSON.parse(localStorage.getItem("userInfo")).onlineUserId;
+
       await services().revisionOnline.exportDb(userId);
+      this.$fire({
+        title: "สำรองข้อมูลสำเร็จ",
+        type: "success",
+        timer: 3000
+      });
     },
     async onClickImport() {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -118,6 +126,12 @@ export default {
       this.deleteIDB();
       await services().revisionOnline.importDb(userInfo.onlineUserId);
       await db.open();
+      this.$fire({
+        title: "นำเข้าข้อมูลสำเร็จ",
+        type: "success",
+        timer: 3000
+      });
+      this.$router.push({ name: "dashboard-family" });
     },
 
     deleteIDB() {
