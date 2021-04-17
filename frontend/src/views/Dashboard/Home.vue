@@ -56,11 +56,13 @@ export default {
     return {
       selectedDate: null,
       listEvents: [],
-      filterEventOnDate: []
+      filterEventOnDate: [],
     };
   },
   components: { Calendar, AppointmentCard, TopBar },
   created: function() {
+    console.log("setAppBadge", navigator);
+
     service()
       .appointment.cronCheckStatus()
       .then(async () => {
@@ -73,14 +75,17 @@ export default {
         );
         this.listEvents = data;
         this.filterEventOnDate = this.listEvents.filter(
-          event => event.status === "vaccinating"
+          (event) => event.status === "vaccinating"
         );
 
         this.$store.commit("changeSelectedCalendarDate", new Date());
       });
     service()
       .appointment.getVaccinatingStatus(this.locale)
-      .then(data => {
+      .then((data) => {
+        if (navigator.setAppBadge) {
+          navigator.setAppBadge(data.length);
+        }
         if (Notification.permission === "granted") {
           // new Notification("Welcome to Vaccinet App");
           service().util.showNotification(data);
@@ -90,19 +95,19 @@ export default {
   methods: {
     onSelectDate: function(date) {
       this.filterEventOnDate = this.listEvents.filter(
-        event =>
+        (event) =>
           format(event.dates, "dd/MM/yyyy") ===
           format(new Date(date), "dd/MM/yyyy")
       );
       this.selectedDate = format(new Date(date), "EEEE d MMMM, yyyy", {
-        locale: this.locale === "th-TH" ? th : null
+        locale: this.locale === "th-TH" ? th : null,
       });
       this.$store.commit("changeSelectedCalendarDate", date);
       // console.log("fdsfsfsf", this.filterEventOnDate);
     },
     onLinkToAddAppointmentPage: function() {
       this.$router.push({ name: "appointment-create" });
-    }
+    },
   },
   computed: {
     locale() {
@@ -116,7 +121,7 @@ export default {
     // },
     welcomeWord() {
       return this.$store.state.locale.welcome;
-    }
-  }
+    },
+  },
 };
 </script>
