@@ -7,12 +7,12 @@
     />
 
     <div class="text-xl mb-5 ml-2 flex flex-row justify-center">
-      <div :class="classRoadmapLine" @click="changeToRoadMap" class="mr-4">
+      <div @click="changeToRoadMap" class="mt-4">
         {{ labelText.roadmap }}
       </div>
-      <div :class="classHistoryLine" @click="changeToHistory">
+      <!-- <div :class="classHistoryLine" @click="changeToHistory">
         {{ labelText.history }}
-      </div>
+      </div> -->
     </div>
     <History v-if="displayMode === 'History'" />
     <div v-if="displayMode === 'Roadmap'">
@@ -114,6 +114,7 @@
         :vaccineName="appointment.customData.selectedVaccines[0].tag"
         :recordCustomData="appointment.recordCustomData"
         :receiveDate="appointment.dates"
+        :status="appointment.status"
         v-on:on-record="onToggleEditAppointment"
         v-on:on-save="onSaveAppointment"
       />
@@ -160,9 +161,10 @@ export default {
   },
 
   mounted() {
+    this.search();
     //  Very Stupid Hard Code FIXXXXXXXXXXX By Lordbenz If you don't want this just fix it (Problem with color not change when record)
-    this.changeToHistory();
-    this.changeToRoadMap();
+    // this.changeToHistory();
+    // this.changeToRoadMap();
   },
 
   data() {

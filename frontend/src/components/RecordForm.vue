@@ -13,8 +13,13 @@
       <div class="w-8/12 md:w-6/12 lg:w-6/12">
         <p>
           {{ vaccineName }}
-          <span class="text-gray-500">(Dose number {{ doseNumber }})</span>
         </p>
+        <!-- ถ้าฉีดแล้ว บอกว่า ฉีดไปแล้ววันที่ ถ้ายัง แนะนำให้ฉีดวันที่ -->
+        <div class="text-gray-500 text-sm">
+          กำหนดฉีดวันที่ <span class="text-gray-800">{{ dateFormat }}</span>
+        </div>
+        <div class="text-gray-500 text-sm">(Dose number {{ doseNumber }})</div>
+
         <!-- <p v-if="receiveDate">receive date: {{ dateFormat(receiveDate) }}</p> -->
       </div>
       <div @click="toggleEditForm" class="cursor-pointer">Edit</div>
@@ -55,6 +60,36 @@
           v-model="newSideEffect"
         />
       </div>
+
+      <!-- <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">
+          Side effects Image
+        </label>
+        <div class="input-primary text-center">
+          <label for="upload-side-effect">Upload File EIEI</label>
+        </div>
+        <input
+          class="input-primary hidden"
+          id="upload-side-effect"
+          type="file"
+          accept="image/*"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">
+          Evidence of the vaccination
+        </label>
+        <div class="input-primary text-center">
+          <label for="upload-side-effect">Upload File EIEI</label>
+        </div>
+        <input
+          class="input-primary hidden"
+          id="upload-side-effect"
+          type="file"
+          accept="image/*"
+        />
+      </div> -->
       <div class="mb-4">
         <label
           class="block text-gray-700 text-sm font-bold mb-2"
@@ -135,6 +170,21 @@ export default {
     }
   },
   computed: {
+    dateFormat: function() {
+      let date = "";
+      if (this.$store.state.calendarLocale === "th-TH") {
+        date = format(
+          addYears(new Date(this.receiveDate), 543),
+          "dd MMM yyyy",
+          {
+            locale: th
+          }
+        );
+      } else {
+        date = format(new Date(this.receiveDate), "dd MMM yyyy");
+      }
+      return date;
+    },
     calendarLocale: function() {
       return this.$store.state.calendarLocale;
     }
@@ -145,17 +195,17 @@ export default {
 
       this.isEdited = !this.isEdited;
     },
-    dateFormat: function(dateValue) {
-      let date = "";
-      if (this.$store.state.calendarLocale === "th-TH") {
-        date = format(addYears(new Date(dateValue), 543), "dd MMM yyyy", {
-          locale: th
-        });
-      } else {
-        date = format(new Date(dateValue), "dd MMM yyyy");
-      }
-      return date;
-    },
+    // dateFormat: function(dateValue) {
+    //   let date = "";
+    //   if (this.$store.state.calendarLocale === "th-TH") {
+    //     date = format(addYears(new Date(dateValue), 543), "dd MMM yyyy", {
+    //       locale: th,
+    //     });
+    //   } else {
+    //     date = format(new Date(dateValue), "dd MMM yyyy");
+    //   }
+    //   return date;
+    // },
     onChangeCheckbox: function(event) {
       const checkBoxValue = event.target.value;
       const data = {

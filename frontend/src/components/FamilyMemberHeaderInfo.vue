@@ -21,14 +21,14 @@
           {{ childObject.fullname }}
         </div>
         <div class="md:ml-4 md:text-lg">
-          {{ localeText.age }}: {{ currentAge }}
+          {{ localeText.age }}: {{ ageInYear }} ปี {{ ageRemainingMonth }} เดือน
         </div>
       </div>
-      <div class="col my-auto mx-auto">
+      <div class="col my-auto ml-6">
         <router-link
           :to="{
             name: 'edit-family-profile',
-            params: { id: id }
+            params: { id: $route.params.id }
           }"
         >
           <img class="h-6" src="../assets/icons/edit-icon.svg" alt="" />
@@ -39,6 +39,8 @@
 </template>
 <script>
 import { formatDistanceToNow } from "date-fns";
+import { differenceInYears, differenceInMonths } from "date-fns";
+
 import service from "@/services";
 export default {
   data() {
@@ -56,12 +58,23 @@ export default {
 
     currentAge() {
       return formatDistanceToNow(new Date(this.childObject.birthDate));
+    },
+    ageRemainingMonth() {
+      const totalMonth = differenceInMonths(
+        new Date(),
+        this.childObject.birthDate
+      );
+      return totalMonth % 12;
+    },
+    ageInYear() {
+      return differenceInYears(new Date(), this.childObject.birthDate);
     }
   },
 
   async created() {
     this.$store.commit("listFamilies");
     const language = this.$store.state.calendarLocale;
+    console.log("childObject", this.$route.params.id);
 
     this.childInfo = (
       await service().family.getByChildId(this.$route.params.id, language)

@@ -1,7 +1,7 @@
 <template>
   <div>
     <p
-      class="text-2xl mb-10 border-b-2 border-blue-700 lg:px-0 px-4"
+      class="text-2xl mb-10 border-b-2 border-orange-700 lg:px-0 px-4"
       style="width: auto;"
     >
       {{ locale.setting }}
@@ -49,14 +49,14 @@
           <CaretIcon />
         </div>
       </div>
-      <div class="ml-auto">
+      <!-- <div class="ml-auto">
         <button
           class="hidden sm:block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
           @click="onLogout"
         >
           {{ buttonLabel.logout }}
         </button>
-      </div>
+      </div> -->
     </div>
 
     <div class="mb-10 mt-10">
@@ -64,48 +64,31 @@
         <p class="text-2xl mb-10 border-b-2 border-orange-700 lg:px-0 px-4">
           Privacy Policy
         </p>
-        <div class="lg:h-64 sm:h-16 overflow-scroll px-4">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of
-          the printing and typesetting industry. Lorem Ipsum has been the
-          industry's standard dummy text ever since the 1500s, when an unknown
-          printer took a galley of type and scrambled it to make a type specimen
-          book. It has survived not only five centuries, but also the leap into
-          electronic typesetting, remaining essentially unchanged. It was
-          popularised in the 1960s with the release of Letraset sheets
-          containing Lorem Ipsum passages, and more recently with desktop
-          publishing software like Aldus PageMaker including versions of Lorem
-          Ipsum. Lorem Ipsum is simply dummy text of the printing and
-          typesetting industry. Lorem Ipsum has been the industry's standard
-          dummy text ever since the 1500s, when an unknown printer took a galley
-          of type and scrambled it to make a type specimen book. It has survived
-          not only five centuries, but also the leap into electronic
-          typesetting, remaining essentially unchanged. It was popularised in
-          the 1960s with the release of Letraset sheets containing Lorem Ipsum
-          passages, and more recently with desktop publishing software like
-          Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is
-          simply dummy text of the printing and typesetting industry. Lorem
-          Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book. It has survived not only five centuries,
-          but also the leap into electronic typesetting, remaining essentially
-          unchanged. It was popularised in the 1960s with the release of
-          Letraset sheets containing Lorem Ipsum passages, and more recently
-          with desktop publishing software like Aldus PageMaker including
-          versions of Lorem Ipsum.
+        <div class="lg:h-64 sm:h-16 px-4">
+          แอปพลิเคชั่น Vaccinet
+          เป็นแอปพลิเคชั่นที่ถูกพัฒนามาเพื่อเป็นสมุดบันทึกวัคซีนอิเล็กทรอนิกส์
+          โดยข้อมูลที่ถูกบันทึกในแอปพลิเคชั่นนี้จะไม่มีการนำออกจากอุปกรณ์ใช้งานของผู้ใช้
+          ยกเว้นผู้ใช้ที่เลือกใช้งาน backup เพื่อสำรองข้อมูล และ
+          กู้คืนข้อมูลของผู้ใช้งานในแอปพลิเคชั่นนี้ การ backup สำรองข้อมูล
+          เมื่อผู้ใช้งานได้ทำการลงทะเบียน ผู้ใช้งานจะสามารถใช้งานฟังชั่น backup
+          ของแอปพลิเคชั่นได้ โดยผู้ที่มีสิทธิ์จะต้อง login ด้วยชื่อผู้ใช้งาน
+          username และ รหัสผ่าน password ที่ผู้ใช้งานได้ทำการสมัครไว้
+          โดยเมื่อกดปุ่ม backup จะเป็นการสำรองข้อมูลของผู้ใช้งาน
+          เป็นการเก็บข้อมูลที่เข้ารหัสแล้ว และกู้คืนข้อมูลของผู้ใช้งานโดยการกด
+          import
+          โดยทางผู้พัฒนาจะไม่มีการนำข้อมูลของผู้ใช้งานไปใช้โดยพละการโดยเด็ดขาด
+          ระยะเวลาในการสำรองข้อมูล ข้อมูลที่ถูกสำรองไว้
+          จะถูกเก็บไว้ตราบเท่าที่ผู้ใช้งานยังใช้งานแอปพลิเคชั่นอยู่ การยินยอม
+          ผู้ใช้งานที่ลงทะเบียนและเลือกใช้งานบริการ backup
+          เมื่อดำการการสำรองข้อมูลในแอปพลิเคชั่นจะถือเป็นการยินยอมของผู้ใช้งานที่จะส่งข้อมูลออกมาสำรองในฐานข้อมูลของแอปพลิเคชั่น
+          และเมื่อดำเนินการกู้คืนข้อมูล
+          จะถือเป็นการยินยอมที่จะให้แอปพลิเคชั่นส่งข้อมูลจากฐานข้อมูลไปยังอุปกรณ์ใช้งานของผู้ใช้งาน
         </div>
-        <button
+        <!-- <button
           class=" block mt-4 mb-4 mx-auto bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
         >
           Confirm
-        </button>
+        </button> -->
       </div>
 
       <div class="flex items-center ml-2"></div>
@@ -127,12 +110,12 @@
       </div> -->
     </div>
 
-    <button
+    <!-- <button
       class="block sm:hidden bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-auto w-9/12"
       @click="onLogout"
     >
       {{ buttonLabel.logout }}
-    </button>
+    </button> -->
   </div>
 </template>
 <script>
@@ -165,7 +148,7 @@ export default {
   },
   data() {
     return {
-      versionNumber: "",
+      versionNumber: "1.0.1.0",
       versionFromServer: "1.0.1.0",
       isSubmmitted: false,
       fullname: "",
@@ -180,7 +163,7 @@ export default {
     };
   },
   created() {
-    this.versionNumber = localStorage.getItem("version");
+    // this.versionNumber = localStorage.getItem("version");
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     this.userInfo = userInfo;
     this.$store.commit("setUserInfo", userInfo);
@@ -198,21 +181,22 @@ export default {
       }).then(r => {
         if (r.value) {
           // Load function
-          if (this.versionFromServer !== this.versionNumber) {
-            localStorage.setItem("version", this.versionFromServer);
-            this.$fire({
-              title: this.locale.label.updateSuccess,
-              type: "success",
-              timer: 3000
-            });
-            this.refreshApp();
-          } else {
-            this.$fire({
-              title: this.locale.label.useNewestVersion,
-              type: "info",
-              timer: 3000
-            });
-          }
+          // if (this.versionFromServer !== this.versionNumber) {
+          localStorage.setItem("version", this.versionFromServer);
+          this.$fire({
+            title: this.locale.label.updateSuccess,
+            type: "success",
+            timer: 3000
+          });
+          this.refreshApp();
+          // }
+          // else {
+          //   this.$fire({
+          //     title: this.locale.label.useNewestVersion,
+          //     type: "info",
+          //     timer: 3000,
+          //   });
+          // }
         }
       });
     },
