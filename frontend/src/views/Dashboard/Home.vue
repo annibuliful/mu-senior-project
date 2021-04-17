@@ -19,11 +19,27 @@
       {{ localeText.noEvent }}
     </p>
 
-    <router-link
+    <!-- <router-link
       v-for="({ customData, appointmentId, status, dates },
       index) in filterEventOnDate"
       :key="`${index}-${customData.childname}`"
       :to="`/record-vaccine/${appointmentId}`"
+    >
+      <AppointmentCard
+        :childname="customData.childname"
+        :note="customData.note"
+        :time="customData.time"
+        :vaccines="customData.selectedVaccines"
+        :status="status"
+        :date="dates"
+        :doseNumber="customData.doseNumber"
+      />
+    </router-link> -->
+
+    <router-link
+      v-for="({ customData, status, dates }, index) in filterEventOnDate"
+      :key="`${index}-${customData.childname}`"
+      :to="`/dashboard/family/summary/${customData.childId}`"
     >
       <AppointmentCard
         :childname="customData.childname"
