@@ -28,10 +28,6 @@ export class UserController implements IController<IUser> {
     private revisionService: RevisionService,
   ) {}
 
-  getByQuery(query: IQuery): Promise<IUser[]> {
-    throw new Error('Method not implemented.');
-  }
-
   @Post()
   async create(@Body() data: CreateUserDto): Promise<IUser> {
     try {
@@ -83,5 +79,8 @@ export class UserController implements IController<IUser> {
   async getRevision(@Param('id') id: string): Promise<IRevisionResponse> {
     const result = await this.revisionService.getByUserId(id);
     return result;
+  }
+  getByQuery(query: IQuery): Promise<IUser[]> {
+    throw new Error('Method not implemented.');
   }
 }
