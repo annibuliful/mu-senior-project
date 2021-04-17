@@ -88,6 +88,7 @@ export default {
     )[0];
 
     this.childInfo = initChildInfo;
+    console.log("this.childInfo", this.childInfo);
     this.fullname = this.childInfo.fullname;
     this.birthDate = this.childInfo.birthDate;
     this.base64Url = this.childInfo.profileImg;
