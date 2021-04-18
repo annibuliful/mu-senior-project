@@ -26,7 +26,6 @@ services:
       WAIT_HOSTS: db:5432
   nginx:
     container_name: "senior-nginx"
-    restart: always
     image: nginx
     ports:
       - "80:80"

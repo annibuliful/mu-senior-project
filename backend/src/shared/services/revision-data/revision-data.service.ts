@@ -25,7 +25,7 @@ export class RevisionService {
 
   async getByUserId(userId: string): Promise<IRevisionResponse> {
     try {
-      const result = await db
+      const result = await db(this.serviceName)
         .select(this.columns)
         .where('userId', '=', userId)
         .orderBy('createdAt', 'desc')
