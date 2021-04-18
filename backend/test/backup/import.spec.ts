@@ -1,5 +1,5 @@
-import { UserService } from 'src/api/user/user.service';
-import { RevisionService } from 'src/shared/services/revision-data/revision-data.service';
+import { UserService } from '../../src/api/user/user.service';
+import { RevisionService } from '../../src/shared/services/revision-data/revision-data.service';
 import generateCode from '../../src/utils/generator/code-pattern';
 
 // userId: string;
