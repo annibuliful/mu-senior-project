@@ -12,20 +12,23 @@ import { setMode } from "@/services";
 import services from "./services";
 import { nanoid } from "nanoid";
 import InternetToast from "@/components/Internet-toast.vue";
+import PWABadge from "pwa-badge";
+
 // eslint-disable-next-line no-unused-vars
 // import { pushMessage, messaging } from "./firebase";
 // import RecordForm from "@/components/RecordForm.vue";
 export default {
   data: function() {
     return {
-      isShowInternetToast: false
+      isShowInternetToast: false,
     };
   },
   components: {
-    InternetToast
+    InternetToast,
     // RecordForm
   },
   mounted() {
+    this.setAppBadge();
     this.createNewUserWhenIdNotExist();
     this.openNotification();
     this.testPushNotification();
@@ -46,6 +49,18 @@ export default {
     });
   },
   methods: {
+    setAppBadge: async function() {
+      // Create an Instance
+      const badge = new PWABadge();
+
+      if (badge.isSupported()) {
+        console.log("aaaaaa");
+        // Hoora!, Supports the Badge feature
+      } else {
+        console.log("bbbbb");
+        // Does not supports
+      }
+    },
     testPushNotification: async function() {
       // const result = await pushMessage();
       // console.log("result", result);
@@ -84,8 +99,8 @@ export default {
       localStorage.setItem("login-info", JSON.stringify(result));
       // this.$router.push({ name: "dashboard-home" });
       // this.$router.push({ name: "dashboard-family" });
-    }
-  }
+    },
+  },
 };
 </script>
 
