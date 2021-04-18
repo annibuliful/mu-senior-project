@@ -121,43 +121,43 @@ export default {
       newBatchNumber: "",
       newHospitalName: "",
       newMedicalStaff: "",
-      newNoteMessage: ""
+      newNoteMessage: "",
     };
   },
   props: {
     recordCustomData: {
-      type: Object
+      type: Object,
     },
     isHasRecord: {
-      type: Boolean
+      type: Boolean,
     },
     doseNumber: {
-      type: Number
+      type: Number,
     },
     vaccineId: {
       type: String,
-      required: true
+      required: true,
     },
     childId: {
       type: Number,
-      required: true
+      required: true,
     },
     appointmentId: {
       type: Number,
-      required: true
+      required: true,
     },
     recordId: {
       type: Number,
-      required: true
+      required: true,
     },
     vaccineName: {
       type: String,
-      required: true
+      required: true,
     },
     receiveDate: {
       type: Date,
-      required: false
-    }
+      required: false,
+    },
   },
   mounted() {
     console.log("recordCustomData", this.recordCustomData);
@@ -177,7 +177,7 @@ export default {
           addYears(new Date(this.receiveDate), 543),
           "dd MMM yyyy",
           {
-            locale: th
+            locale: th,
           }
         );
       } else {
@@ -187,7 +187,7 @@ export default {
     },
     calendarLocale: function() {
       return this.$store.state.calendarLocale;
-    }
+    },
   },
   methods: {
     toggleEditForm: function() {
@@ -220,8 +220,8 @@ export default {
           medicalStaff: this.newMedicalStaff,
           noteMessage: this.newNoteMessage,
           doseNumber: this.doseNumber,
-          vaccineId: this.vaccineId
-        }
+          vaccineId: this.vaccineId,
+        },
       };
       this.$emit("on-record", checkBoxValue, data);
     },
@@ -237,12 +237,13 @@ export default {
           medicalStaff: this.newMedicalStaff,
           noteMessage: this.newNoteMessage,
           doseNumber: this.doseNumber,
-          vaccineId: this.vaccineId
+          vaccineId: this.vaccineId,
         },
-        recordId: this.recordId
+        recordId: this.recordId,
       };
+      this.isEdited = false;
       this.$emit("on-save", data);
-    }
-  }
+    },
+  },
 };
 </script>
