@@ -15,14 +15,15 @@ describe('export backend indexed', () => {
       gender: 'female',
       role: 'user',
     });
+
     const userId = userInfo.userId;
+
     const revisionService = new RevisionService();
     const revisionInfo = await revisionService.create({
       userId,
       filePath: 'MOCK_PATH',
     });
 
-    expect(revisionInfo.userId).toEqual(userId);
-    expect(revisionInfo.filePath).toEqual('MOCK_PATH');
+    expect(revisionInfo[0].filePath).toEqual('MOCK_PATH');
   });
 });

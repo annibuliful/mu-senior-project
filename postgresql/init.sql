@@ -22,7 +22,7 @@ CREATE TABLE revisions(
   "revisionId" SERIAL PRIMARY KEY,
   "userId" INT NOT NULL,
   "filePath" VARCHAR(128) NOT NULL,
-  "createAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 ALTER TABLE public.revisions ADD FOREIGN KEY ("userId") REFERENCES public.users("userId");
