@@ -4,7 +4,7 @@ import generateCode from '../../src/utils/generator/code-pattern';
 
 // userId: string;
 // filePath: string;
-describe('import backend indexed', async () => {
+describe('import backend indexed', () => {
   it('import', async () => {
     const username = generateCode('xxxxxx');
     const password = generateCode('xxxxxx');
