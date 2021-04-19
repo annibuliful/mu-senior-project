@@ -128,7 +128,8 @@
 </template>
 <script>
 import TagInput from "@/components/input/TagInput.vue";
-import service from "@/services";
+import service from "../../services";
+import add from "date-fns/add";
 export default {
   components: { TagInput },
   data: function() {
@@ -138,13 +139,13 @@ export default {
       selectedVaccines: [],
       note: "",
       listChildren: [],
-      time: ""
+      time: "",
     };
   },
   created: function() {
     this.$store.commit("listFamilies");
     this.selectedVaccines = this.$store.state.baseRecordVaccine.selectedVaccines.map(
-      el => ({ tag: el })
+      (el) => ({ tag: el })
     );
   },
   methods: {
@@ -152,20 +153,38 @@ export default {
       const { familyId, fullname } = this.$store.state.listFamilies[
         this.chilIndex
       ];
-      const data = {
-        dates: this.selectedDate,
-        dot: "gray",
-        key: this.selectedDate.toString(),
-        status: "in-progress",
-        customData: {
-          selectedVaccines: this.selectedVaccines.map(el => el.id),
-          note: this.note,
-          childname: fullname,
-          childId: familyId,
-          time: this.time
+
+      const listAppointments = [];
+      for (let i = 0; i < this.selectedVaccines.length; i++) {
+        const vaccineId = this.selectedVaccines[i].id;
+        const vaccineInfo = service().vaccine.getVaccineById(vaccineId);
+        const injectionPeriodTime = vaccineInfo.injectionPeriodTime;
+        console.log("injectionPeriodTime", injectionPeriodTime);
+        let sumDay = 0;
+        for (let j = 0; j < injectionPeriodTime.length; j++) {
+          const nextDay = injectionPeriodTime[j];
+          sumDay += nextDay;
+          const data = {
+            dates: add(this.selectedDate, { days: sumDay }),
+            dot: "gray",
+            key: this.selectedDate.toString(),
+            status: "in-progress",
+            customData: {
+              selectedVaccines: [vaccineId],
+              note: this.note,
+              childname: fullname,
+              childId: familyId,
+              time: this.time,
+              doseNumber: j + 1,
+            },
+          };
+          console.log("data", data);
+          listAppointments.push(service().appointment.create(data));
         }
-      };
-      await service().appointment.create(data);
+      }
+
+      const reul = await Promise.all(listAppointments);
+      console.log("reul", reul);
       this.$router.push({ name: "dashboard-index" });
     },
     onAddNewVaccine: function(vaccine) {
@@ -179,7 +198,7 @@ export default {
     },
     onClickLink: function(link) {
       this.$router.push(link);
-    }
+    },
   },
   computed: {
     locale() {
@@ -189,9 +208,9 @@ export default {
       return this.$store.state.listFamilies;
     },
     listVaccines() {
-      return this.$store.state.locale.vaccines.map(el => ({
+      return this.$store.state.locale.vaccines?.map((el) => ({
         tag: el.vaccineNameNormal,
-        id: el.vaccineId
+        id: el.vaccineId,
       }));
     },
     titleText() {
@@ -215,9 +234,9 @@ export default {
       },
       set: function(date) {
         this.$store.commit("changeSelectedCalendarDate", date);
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>
 
