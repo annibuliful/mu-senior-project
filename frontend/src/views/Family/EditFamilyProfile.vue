@@ -37,7 +37,19 @@
         <label class="block text-gray-700 text-sm font-bold mb-2 ">
           {{ labelAddFamily.birthDate }}
         </label>
-        <v-date-picker v-model="birthDate" :locale="calendarLocale" />
+        <v-date-picker
+          v-model="birthDate"
+          :locale="calendarLocale"
+          class="block"
+        >
+          <template v-slot="{ inputValue, inputEvents }">
+            <input
+              class="bg-white border px-2 py-1 rounded w-full"
+              :value="inputValue"
+              v-on="inputEvents"
+            />
+          </template>
+        </v-date-picker>
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2 ">

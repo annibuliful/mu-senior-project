@@ -16,13 +16,28 @@
         </p>
         <!-- ถ้าฉีดแล้ว บอกว่า ฉีดไปแล้ววันที่ ถ้ายัง แนะนำให้ฉีดวันที่ -->
         <div class="text-gray-500 text-sm">
-          กำหนดฉีดวันที่ <span class="text-gray-800">{{ dateFormat }}</span>
+          {{ locale.suggestDate }}
+          <span class="text-gray-800">{{ dateFormat }}</span>
         </div>
-        <div class="text-gray-500 text-sm">(Dose number {{ doseNumber }})</div>
+        <div class="text-gray-500 text-sm">
+          ({{ locale.recordVaccinePage.doseNumber }} {{ doseNumber }})
+        </div>
 
         <!-- <p v-if="receiveDate">receive date: {{ dateFormat(receiveDate) }}</p> -->
       </div>
-      <div @click="toggleEditForm" class="cursor-pointer">Edit</div>
+      <div @click="toggleEditForm" class="cursor-pointer">
+        <img
+          class="opacity-50"
+          v-if="!isEdited && hasRecord"
+          src="../assets/icons/down.svg"
+          alt=""
+        /><img
+          v-if="isEdited && hasRecord"
+          class="opacity-50"
+          src="../assets/icons/up.svg"
+          alt=""
+        />
+      </div>
     </div>
     <div v-if="isEdited">
       <div class="mb-4 mt-4">
@@ -30,16 +45,29 @@
           class="block text-gray-700 text-sm font-bold mb-2"
           for="username"
         >
-          Receive date
+          {{ locale.recordVaccinePage.receivingDate }}
         </label>
-        <v-date-picker v-model="receivingDate" :locale="calendarLocale" />
+        <v-date-picker
+          v-model="receivingDate"
+          :locale="calendarLocale"
+          class="block"
+        >
+          <template v-slot="{ inputValue, inputEvents }">
+            <input
+              class="bg-white border px-2 py-1 rounded w-full"
+              :value="inputValue"
+              v-on="inputEvents"
+            />
+          </template>
+        </v-date-picker>
+        <!-- <v-date-picker v-model="receivingDate" :locale="calendarLocale" /> -->
       </div>
       <div class="mb-4">
         <label
           class="block text-gray-700 text-sm font-bold mb-2"
           for="username"
         >
-          Batch number
+          {{ locale.recordVaccinePage.batchNO }}
         </label>
         <input
           class="input-primary"
@@ -51,7 +79,7 @@
 
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2">
-          Side effects
+          {{ locale.recordVaccinePage.sideEffect }}
         </label>
         <textarea
           class="input-primary"
@@ -95,7 +123,7 @@
           class="block text-gray-700 text-sm font-bold mb-2"
           for="username"
         >
-          Note message
+          {{ locale.recordVaccinePage.freetext }}
         </label>
         <textarea
           class="input-primary"
@@ -104,7 +132,9 @@
           v-model="newNoteMessage"
         />
       </div>
-      <button class="btn-primary" @click="submit">Save</button>
+      <button class="btn-primary" @click="submit">
+        {{ locale.button.save }}
+      </button>
     </div>
   </div>
 </template>
@@ -187,6 +217,9 @@ export default {
     },
     calendarLocale: function() {
       return this.$store.state.calendarLocale;
+    },
+    locale() {
+      return this.$store.state.locale;
     }
   },
   methods: {
@@ -208,24 +241,59 @@ export default {
     // },
     onChangeCheckbox: function(event) {
       const checkBoxValue = event.target.value;
-      const data = {
-        receivingDate: this.receivingDate,
-        childId: this.childId,
-        appointmentId: this.appointmentId,
-        recordId: this.recordId,
-        recordCustomData: {
-          sideEffect: this.newSideEffect,
-          batchNumber: this.newBatchNumber,
-          hospitalName: this.newHospitalName,
-          medicalStaff: this.newMedicalStaff,
-          noteMessage: this.newNoteMessage,
-          doseNumber: this.doseNumber,
-          vaccineId: this.vaccineId
-        }
-      };
-      this.isEdited = !this.isEdited;
+      if (checkBoxValue === "true") {
+        this.$fire({
+          title: this.locale.deleteRecCon,
+          showCancelButton: true,
+          confirmButtonText: this.locale.label.yes,
+          cancelButtonText: this.locale.label.no
+        }).then(r => {
+          if (r.value) {
+            const data = {
+              receivingDate: this.receivingDate,
+              childId: this.childId,
+              appointmentId: this.appointmentId,
+              recordId: this.recordId,
+              recordCustomData: {
+                sideEffect: this.newSideEffect,
+                batchNumber: this.newBatchNumber,
+                hospitalName: this.newHospitalName,
+                medicalStaff: this.newMedicalStaff,
+                noteMessage: this.newNoteMessage,
+                doseNumber: this.doseNumber,
+                vaccineId: this.vaccineId
+              }
+            };
+            this.isEdited = !this.isEdited;
 
-      this.$emit("on-record", checkBoxValue, data);
+            this.$emit("on-record", checkBoxValue, data);
+            this.$fire({
+              title: this.locale.deleteRecSuc,
+              type: "success",
+              timer: 3000
+            });
+          }
+        });
+      } else {
+        const data = {
+          receivingDate: this.receivingDate,
+          childId: this.childId,
+          appointmentId: this.appointmentId,
+          recordId: this.recordId,
+          recordCustomData: {
+            sideEffect: this.newSideEffect,
+            batchNumber: this.newBatchNumber,
+            hospitalName: this.newHospitalName,
+            medicalStaff: this.newMedicalStaff,
+            noteMessage: this.newNoteMessage,
+            doseNumber: this.doseNumber,
+            vaccineId: this.vaccineId
+          }
+        };
+        this.isEdited = !this.isEdited;
+
+        this.$emit("on-record", checkBoxValue, data);
+      }
     },
     submit: function() {
       const data = {
@@ -245,6 +313,12 @@ export default {
       };
       this.isEdited = false;
       this.$emit("on-save", data);
+
+      this.$fire({
+        title: this.locale.label.updateRecord,
+        type: "success",
+        timer: 3000
+      });
     }
   }
 };

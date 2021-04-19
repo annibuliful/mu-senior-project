@@ -1,9 +1,15 @@
 <template>
   <div class="w-full">
+    <!-- <Modal
+      :isActive="activeModal"
+      v-on:close="onCloseModal"
+      :title="locale.modalSuggest"
+    >
+    </Modal> -->
     <p class="text-2xl mb-10 border-b-2 border-blue-700 pl-4">
       {{ suggestionWord }}
     </p>
-    <div class="flex flex-col justify-items-center">
+    <div class="flex flex-col justify-items-center mb-8">
       <div
         v-for="(val, index) in listSuggestions"
         :key="`${index}`"
@@ -17,7 +23,7 @@
       </div>
     </div>
     <button
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block mx-auto mt-8"
+      class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded block mt-8 fixed bottom-0 mb-2  mx-auto w-full"
       @click="save"
     >
       {{ buttonLabel.save }}
@@ -28,10 +34,12 @@
 import service from "../../services";
 import { format } from "date-fns";
 import AppointmentCard from "../../components/NewAppointmentCard";
+// import Modal from "@/components/common/Modal.vue";
 
 export default {
   components: {
     AppointmentCard
+    // Modal,
   },
   computed: {
     suggestionWord: function() {
@@ -40,12 +48,16 @@ export default {
     buttonLabel() {
       return this.$store.state.locale.button;
     },
+    locale() {
+      return this.$store.state.locale;
+    },
     listFamilies() {
       return this.$store.state.listFamilies;
     }
   },
   data: function() {
     return {
+      activeModal: true,
       listSuggestions: [],
       childId: "",
       childInfo: {},
@@ -109,6 +121,9 @@ export default {
     console.log("listSuggestions", this.listSuggestions);
   },
   methods: {
+    onCloseModal() {
+      this.activeModal = false;
+    },
     deleteAppointmentByIndex: function(index) {
       this.listSuggestions.splice(index, 1);
     },

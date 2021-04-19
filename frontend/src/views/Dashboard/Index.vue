@@ -38,20 +38,22 @@
           alt=""
         />
       </div>
+
       <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
         <div class="my-2 cursor-pointer">
           <div
-            @click="onClickLink({ name: 'dashboard-home' })"
+            @click="onClickLink({ name: 'dashboard-family' })"
             class=" pb-4 "
             :class="[
-              currentPath === '/dashboard/home' ? 'link-active' : 'link-item'
+              currentPath === '/dashboard/family' ? 'link-active' : 'link-item'
             ]"
           >
-            <img class="inline w-8" src="@/assets/icons/home.svg" />
-            <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
+            <img class="inline w-8" src="@/assets/icons/family.svg" />
+            <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
           </div>
         </div>
       </div>
+
       <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
         <div class=" my-2 cursor-pointer">
           <div
@@ -66,17 +68,18 @@
           </div>
         </div>
       </div>
+
       <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
         <div class="my-2 cursor-pointer">
           <div
-            @click="onClickLink({ name: 'dashboard-family' })"
+            @click="onClickLink({ name: 'dashboard-home' })"
             class=" pb-4 "
             :class="[
-              currentPath === '/dashboard/family' ? 'link-active' : 'link-item'
+              currentPath === '/dashboard/home' ? 'link-active' : 'link-item'
             ]"
           >
-            <img class="inline w-8" src="@/assets/icons/family.svg" />
-            <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
+            <img class="inline w-8" src="@/assets/icons/bi_calendar-date.svg" />
+            <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
           </div>
         </div>
       </div>
@@ -124,6 +127,23 @@
           </div>
         </div>
       </div>
+
+      <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
+        <div class=" my-2 cursor-pointer">
+          <div
+            @click="onClickLink({ name: 'dashboard-about-us' })"
+            class=" pb-4 "
+            :class="[
+              currentPath === '/dashboard/about-us'
+                ? 'link-active'
+                : 'link-item'
+            ]"
+          >
+            <img class="inline w-8" src="@/assets/icons/aboutus.svg" />
+            <p class="inline mt-2 pl-3">{{ listItem.aboutUs }}</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Sidebar for > MD Desktop -->
@@ -134,20 +154,21 @@
         <div class="min-h-screen">
           <div class="flex flex-col h-full ">
             <img src="../../assets/menu_web_vac.png" class="mt-8" alt="" />
-            <div class="mt-4 my-2 cursor-pointer">
+            <div class="my-2 cursor-pointer">
               <div
-                @click="onClickLink({ name: 'dashboard-home' })"
+                @click="onClickLink({ name: 'dashboard-family' })"
                 class=" pb-4 "
                 :class="[
-                  currentPath === '/dashboard/home'
+                  currentPath === '/dashboard/family'
                     ? 'link-active'
                     : 'link-item'
                 ]"
               >
-                <img class="inline w-8" src="@/assets/icons/home.svg" />
-                <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
+                <img class="inline w-8" src="@/assets/icons/family.svg" />
+                <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
               </div>
             </div>
+
             <div class=" my-2 cursor-pointer">
               <div
                 @click="onClickLink({ name: 'dashboard-vaccine' })"
@@ -162,18 +183,22 @@
                 <p class="inline mt-2 pl-3">{{ listItem.vaccine }}</p>
               </div>
             </div>
-            <div class="my-2 cursor-pointer">
+
+            <div class="mt-4 my-2 cursor-pointer">
               <div
-                @click="onClickLink({ name: 'dashboard-family' })"
+                @click="onClickLink({ name: 'dashboard-home' })"
                 class=" pb-4 "
                 :class="[
-                  currentPath === '/dashboard/family'
+                  currentPath === '/dashboard/home'
                     ? 'link-active'
                     : 'link-item'
                 ]"
               >
-                <img class="inline w-8" src="@/assets/icons/family.svg" />
-                <p class="inline mt-2 pl-3">{{ listItem.family }}</p>
+                <img
+                  class="inline w-8"
+                  src="@/assets/icons/bi_calendar-date.svg"
+                />
+                <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
               </div>
             </div>
             <div class=" my-2 cursor-pointer">
@@ -217,6 +242,21 @@
               >
                 <img class="inline w-8" src="@/assets/icons/setting.svg" />
                 <p class="inline mt-2 pl-3">{{ listItem.setting }}</p>
+              </div>
+            </div>
+
+            <div class=" my-2 cursor-pointer">
+              <div
+                @click="onClickLink({ name: 'dashboard-about-us' })"
+                class=""
+                :class="[
+                  currentPath === '/dashboard/about-us'
+                    ? 'link-active'
+                    : 'link-item'
+                ]"
+              >
+                <img class="inline w-8" src="@/assets/icons/aboutus.svg" />
+                <p class="inline mt-2 pl-3">{{ listItem.aboutUs }}</p>
               </div>
             </div>
           </div>

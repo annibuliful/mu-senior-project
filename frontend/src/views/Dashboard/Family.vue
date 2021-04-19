@@ -63,7 +63,20 @@
           <label class="block text-gray-700 text-sm font-bold mb-2 ">
             {{ labelAddFamily.birthDate }}
           </label>
-          <v-date-picker v-model="birthDate" :locale="calendarLocale" />
+          <!-- <v-date-picker v-model="birthDate" :locale="calendarLocale" /> -->
+          <v-date-picker
+            v-model="birthDate"
+            :locale="calendarLocale"
+            class="block"
+          >
+            <template v-slot="{ inputValue, inputEvents }">
+              <input
+                class="bg-white border px-2 py-1 rounded w-full"
+                :value="inputValue"
+                v-on="inputEvents"
+              />
+            </template>
+          </v-date-picker>
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2 ">
@@ -94,7 +107,7 @@
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block ml-auto"
           @click="submit"
         >
-          {{ buttonLabel.save }}
+          {{ buttonLabel.next }}
         </button>
       </div>
     </div>
@@ -210,24 +223,39 @@ export default {
       this.selectedVaccines.splice(index, 1);
     },
     async submit() {
-      this.isSubmitted = true;
-      this.$v.$reset();
-      this.$v.$touch();
-
-      if (!this.$v.$invalid) {
-        const data = {
-          fullname: this.fullname,
-          birthDate: this.birthDate,
-          diseases: this.selectedDiseases.map(el => el.id),
-          receivedVaccines: [],
-          profileImg: this.base64Url,
-          userId: this.$store.state.userInfo.userId,
-          isParent: false
-        };
-        this.$store.commit("setTempFamilyInfo", data);
-        this.$router.push({
-          name: "appointment-child-suggestion"
+      const todayDate = new Date();
+      if (!this.fullname) {
+        this.$fire({
+          title: this.localeText.nameRequired,
+          type: "error",
+          timer: 3000
         });
+      } else if (this.birthDate > todayDate) {
+        this.$fire({
+          title: this.localeText.bthRequired,
+          type: "error",
+          timer: 3000
+        });
+      } else {
+        this.isSubmitted = true;
+        this.$v.$reset();
+        this.$v.$touch();
+
+        if (!this.$v.$invalid) {
+          const data = {
+            fullname: this.fullname,
+            birthDate: this.birthDate,
+            diseases: this.selectedDiseases.map(el => el.id),
+            receivedVaccines: [],
+            profileImg: this.base64Url,
+            userId: this.$store.state.userInfo.userId,
+            isParent: false
+          };
+          this.$store.commit("setTempFamilyInfo", data);
+          this.$router.push({
+            name: "appointment-child-suggestion"
+          });
+        }
       }
     },
     resetForm() {
