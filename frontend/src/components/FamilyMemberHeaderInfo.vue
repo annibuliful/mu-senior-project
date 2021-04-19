@@ -20,8 +20,9 @@
         <div class="font-bold text-blue-800 text-lg md:text-2xl md:ml-4">
           {{ childObject.fullname }}
         </div>
-        <div class="md:ml-4 md:text-lg">
-          {{ localeText.age }}: {{ ageInYear }} ปี {{ ageRemainingMonth }} เดือน
+        <div class="text-sm md:ml-4 md:text-lg">
+          {{ localeText.age }}: {{ ageInYear }} {{ locale.year }}
+          {{ ageRemainingMonth }} {{ locale.month }}
         </div>
       </div>
       <div class="col my-auto ml-6">
@@ -49,6 +50,9 @@ export default {
     };
   },
   computed: {
+    locale() {
+      return this.$store.state.locale;
+    },
     localeText: function() {
       return this.$store.state.locale.label;
     },

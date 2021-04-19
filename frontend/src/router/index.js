@@ -31,6 +31,8 @@ import OldVaccine from "../views/Record/OldVaccine.vue";
 import LoggedinNews from "../views/News/LoggedinNews.vue";
 import NewsInfoLoggedin from "../views/News/NewsInfoLoggedin.vue";
 import BackUp from "../views/Dashboard/Backup.vue";
+import AboutUs from "../views/Dashboard/AboutUs.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -72,7 +74,7 @@ const routes = [
       {
         path: "/",
         name: "dashboard-index",
-        redirect: { name: "dashboard-home" }
+        redirect: { name: "dashboard-family" }
       },
       {
         path: "home",
@@ -97,6 +99,11 @@ const routes = [
         path: "backup",
         name: "dashboard-backup",
         component: BackUp
+      },
+      {
+        path: "about-us",
+        name: "dashboard-about-us",
+        component: AboutUs
       },
       {
         path: "news/details/:newsId",

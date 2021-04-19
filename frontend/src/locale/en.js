@@ -9,11 +9,15 @@ export default {
   diseases,
   packagers,
   menu: "Menu",
-  home: "Home",
+  year: "Year(s)",
+  month: "Month(s)",
+  home: "Appointment",
   vaccine: "Vaccine",
   news: "News",
+  modalSuggest: "Tips",
   vaccineList: "Vaccine List",
   family: "Family",
+  aboutUs: "About Us",
   login: "Login",
   backup: "Backup",
   register: "Register",
@@ -43,6 +47,12 @@ export default {
   receievedQA: "Received",
   notReceievedQA: "Never Received",
   loadmore: "Load More",
+  nameRequired: "Please enter the name",
+  deleteRecCon: "Do you want to delete this record?",
+  deleteRecSuc: "Delete Vaccination Record Successful",
+  bthRequired: "Please select birth date correctly",
+  suggestDate: "Suggested date",
+
   pin: {
     label: "Enter PIN"
   },
@@ -85,19 +95,21 @@ export default {
     submitBtn: "Submit",
     cancelBtn: "cancel",
     packageMember: "Suggested Vaccine for",
-    doseNumber: "Dose Number"
+    doseNumber: "Dose Number",
+    sideEffect: "Side Effect"
   },
   label: {
     doseTimes: "Dose",
     useNewestVersion: "You already use the lastest version",
     updateVersion: "Do you want to update the application now?",
     updateSuccess: "Update application successful",
-    version: "Version",
+    updateRecord: "Update record information successful",
+    version: "Update",
     ref: "reference",
     pin: "PIN",
     username: "username",
     password: "password",
-    name: "Fullname",
+    name: "Name",
     birthDate: "BirthDate",
     disease: "Congenital disease",
     vaccine: "Received vaccine",
@@ -135,12 +147,12 @@ export default {
     cannotDelete: "Cannot delete the main profile"
   },
   labelAddAppointment: {
-    child: "child name",
-    vaccineList: "list vaccines",
-    date: "date",
-    time: "time",
-    addAppointment: "add appointment",
-    note: "additional note",
+    child: "Child name",
+    vaccineList: "Vaccine name",
+    date: "Date",
+    time: "Time (For notification)",
+    addAppointment: "Add appointment",
+    note: "Additional note",
     nextAppointMent: "Next Appointment",
     vcName: "Vaccine name",
     complete: "Complete",
@@ -168,7 +180,8 @@ export default {
     save: "Save",
     logout: "Logout",
     search: "Search",
-    delete: "Delete"
+    delete: "Delete",
+    next: "Next"
   },
   camera: {
     takePhoto: "Take a Photo",

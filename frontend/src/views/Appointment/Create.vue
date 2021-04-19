@@ -1,11 +1,14 @@
 <template>
-  <div>
+  <div class="w-full">
     <div class="border-b-2 border-blue-700 mb-4">
       <p class="text-2xl" style="width: auto;">
         {{ titleText }}
       </p>
     </div>
-    <div class="w-full max-w-xl bg-white px-8 ml-auto mr-auto sm:mb-16">
+    <div
+      class="w-full max-w-xl bg-white px-8 ml-auto mr-auto sm:mb-16"
+      v-if="!!listFamilies.lenght"
+    >
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2 ">
           {{ label.child }}
@@ -41,7 +44,21 @@
         <label class="block text-gray-700 text-sm font-bold mb-2 ">
           {{ label.date }}
         </label>
-        <v-date-picker v-model="selectedDate" :locale="calendarLocale" />
+
+        <v-date-picker
+          v-model="selectedDate"
+          :locale="calendarLocale"
+          class="block"
+        >
+          <template v-slot="{ inputValue, inputEvents }">
+            <input
+              class="bg-white border px-2 py-1 rounded w-full"
+              :value="inputValue"
+              v-on="inputEvents"
+            />
+          </template>
+        </v-date-picker>
+        <!-- <v-date-picker v-model="selectedDate" :locale="calendarLocale" /> -->
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2 ">
@@ -91,6 +108,19 @@
         >
           {{ buttonLabel.save }}
         </button>
+      </div>
+    </div>
+
+    <div class="w-full">
+      <img src="../../assets/doctor-stand.png" class="w-48 mx-auto" alt="" />
+      <div class="my-2 cursor-pointer">
+        <div
+          @click="onClickLink({ name: 'dashboard-family' })"
+          class=" pb-4  mx-auto text-center mt-2 link-item w-8/12"
+        >
+          <img class="inline w-8" src="@/assets/icons/family.svg" />
+          <p class="inline mt-2 pl-3">{{ locale.family }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -145,9 +175,15 @@ export default {
     },
     cancel() {
       this.$router.go(-1);
+    },
+    onClickLink: function(link) {
+      this.$router.push(link);
     }
   },
   computed: {
+    locale() {
+      return this.$store.state.locale;
+    },
     listFamilies() {
       return this.$store.state.listFamilies;
     },
@@ -183,3 +219,14 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.link-item {
+  border: 2px dashed #503605;
+  border-radius: 10px;
+  padding: 20px 10px 20px 10px;
+  /* text-decoration: underline; */
+  background-color: cornsilk;
+  font-weight: bold;
+}
+</style>
