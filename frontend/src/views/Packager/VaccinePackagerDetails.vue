@@ -50,7 +50,7 @@ export default {
     return {
       packagerDetails: {},
       recordTo: "",
-      childInfo: "",
+      childInfo: ""
     };
   },
   computed: {
@@ -65,14 +65,14 @@ export default {
     },
     label() {
       return this.$store.state.locale.labelAddAppointment;
-    },
+    }
   },
   methods: {
     getChildInfo() {
       this.childInfo = this.listFamilies.find(
-        (x) => x.fullname === this.recordTo
+        x => x.fullname === this.recordTo
       );
-    },
+    }
   },
 
   created() {
@@ -83,6 +83,6 @@ export default {
     if (this.listFamilies != null) {
       this.recordTo = this.listFamilies[0].fullname;
     }
-  },
+  }
 };
 </script>
