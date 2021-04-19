@@ -279,7 +279,6 @@ export default {
             vaccineId: this.vaccineId,
           },
         };
-        this.isEdited = !this.isEdited;
 
         this.$emit("on-record", checkBoxValue, data);
       }

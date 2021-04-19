@@ -5,7 +5,7 @@ import {
   getListDiseaseByLanguage,
   getListVaccine,
   getListVaccineByDate,
-  getVaccineCategoryByDate,
+  getVaccineCategoryByDate
 } from "./get";
 
 export default {
@@ -15,5 +15,5 @@ export default {
   getListDiseaseByLanguage,
   getListVaccine,
   getListVaccineByDate,
-  getVaccineCategoryByDate,
+  getVaccineCategoryByDate
 };

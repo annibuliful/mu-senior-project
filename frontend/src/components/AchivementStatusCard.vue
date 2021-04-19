@@ -37,14 +37,14 @@
 </template>
 <script>
 // import { formatDistanceToNow } from "date-fns";
-import service from "@/services";
+import service from "../services";
 export default {
   data() {
     return {
       isReceived: true,
       vaccineDetails: "",
       numberDoseReceived: "",
-      cardClass: ""
+      cardClass: "",
     };
   },
   async created() {
@@ -70,12 +70,12 @@ export default {
   props: {
     vaccineId: {
       type: String,
-      required: true
+      required: true,
     },
     childId: {
       type: Number,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>

@@ -23,8 +23,9 @@
       </div>
     </div>
     <button
-      class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded block mt-8 fixed bottom-0 mb-2  mx-auto w-full"
+      class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded block mt-8 fixed bottom-0 mb-2  mx-auto w-full md:w-4/12"
       @click="save"
+      style="margin: 2% auto;left: 0; right: 0;"
     >
       {{ buttonLabel.save }}
     </button>
@@ -38,7 +39,7 @@ import AppointmentCard from "../../components/NewAppointmentCard";
 
 export default {
   components: {
-    AppointmentCard
+    AppointmentCard,
     // Modal,
   },
   computed: {
@@ -53,7 +54,7 @@ export default {
     },
     listFamilies() {
       return this.$store.state.listFamilies;
-    }
+    },
   },
   data: function() {
     return {
@@ -67,20 +68,20 @@ export default {
         {
           vaccineId: "vac001",
           vaccineName: "Test-Name",
-          listAppointmentDates: [new Date(), new Date(), new Date()]
+          listAppointmentDates: [new Date(), new Date(), new Date()],
         },
         {
           vaccineId: "vac001",
           vaccineName: "Test-Name",
-          listAppointmentDates: [new Date(), new Date(), new Date()]
-        }
-      ]
+          listAppointmentDates: [new Date(), new Date(), new Date()],
+        },
+      ],
     };
   },
   filters: {
     dateFormat: function(val) {
       return format(new Date(val), "dd/MM/yyyy");
-    }
+    },
   },
   created: function() {
     this.$store.commit("listFamilies");
@@ -92,19 +93,19 @@ export default {
     const suggestionData = {
       receivedVaccineIds: tempChildInfo.diseases,
       birthDate: tempChildInfo.birthDate,
-      congenitalDiseaseIds: []
+      congenitalDiseaseIds: [],
     };
     service()
       .suggestion.suggestion(suggestionData, language)
-      .then(listVaccine => {
+      .then((listVaccine) => {
         console.log("data", listVaccine);
-        this.listSuggestions = listVaccine.map(vaccine => {
+        this.listSuggestions = listVaccine.map((vaccine) => {
           return {
             vaccineId: vaccine.vaccineId,
             vaccineName: vaccine.vaccineNameNormal,
             listAppointmentDates: vaccine.listAllDosesWithTime.map(
               ({ appointmentDate }) => appointmentDate
-            )
+            ),
           };
         });
       });
@@ -138,7 +139,7 @@ export default {
         const { userId } = JSON.parse(user);
         familyId = await service().family.create({
           ...this.$store.state.tempFamily,
-          userId
+          userId,
         });
       }
 
@@ -147,7 +148,7 @@ export default {
         const {
           vaccineId,
           // vaccineName,
-          listAppointmentDates
+          listAppointmentDates,
         } = this.listSuggestions[i];
 
         for (let j = 0; j < listAppointmentDates.length; j++) {
@@ -177,7 +178,7 @@ export default {
       } else {
         const childInfo = {
           fullname,
-          familyId
+          familyId,
         };
         this.$store.commit("setfamilyInfoForOverdueVaccines", childInfo);
         this.$store.commit("setlistOverdueVaccines", listOverdue);
@@ -202,11 +203,11 @@ export default {
           childname: fullname,
           childId: familyId,
           time: "09:30",
-          doseNumber
-        }
+          doseNumber,
+        },
       };
       return await service().appointment.create(data);
-    }
-  }
+    },
+  },
 };
 </script>

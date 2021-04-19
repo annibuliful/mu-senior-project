@@ -139,13 +139,13 @@ export default {
       selectedVaccines: [],
       note: "",
       listChildren: [],
-      time: "",
+      time: ""
     };
   },
   created: function() {
     this.$store.commit("listFamilies");
     this.selectedVaccines = this.$store.state.baseRecordVaccine.selectedVaccines.map(
-      (el) => ({ tag: el })
+      el => ({ tag: el })
     );
   },
   methods: {
@@ -175,8 +175,8 @@ export default {
               childname: fullname,
               childId: familyId,
               time: this.time,
-              doseNumber: j + 1,
-            },
+              doseNumber: j + 1
+            }
           };
           console.log("data", data);
           listAppointments.push(service().appointment.create(data));
@@ -198,7 +198,7 @@ export default {
     },
     onClickLink: function(link) {
       this.$router.push(link);
-    },
+    }
   },
   computed: {
     locale() {
@@ -208,9 +208,9 @@ export default {
       return this.$store.state.listFamilies;
     },
     listVaccines() {
-      return this.$store.state.locale.vaccines?.map((el) => ({
+      return this.$store.state.locale.vaccines?.map(el => ({
         tag: el.vaccineNameNormal,
-        id: el.vaccineId,
+        id: el.vaccineId
       }));
     },
     titleText() {
@@ -234,9 +234,9 @@ export default {
       },
       set: function(date) {
         this.$store.commit("changeSelectedCalendarDate", date);
-      },
-    },
-  },
+      }
+    }
+  }
 };
 </script>
 
