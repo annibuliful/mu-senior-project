@@ -7,7 +7,7 @@
     </div>
     <div
       class="w-full max-w-xl bg-white px-8 ml-auto mr-auto sm:mb-16"
-      v-if="!!listFamilies.lenght"
+      v-if="!!listFamilies.length"
     >
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2 ">
@@ -111,15 +111,16 @@
       </div>
     </div>
 
-    <div class="w-full">
+    <div class="w-full" v-if="!listFamilies.length">
       <img src="../../assets/doctor-stand.png" class="w-48 mx-auto" alt="" />
       <div class="my-2 cursor-pointer">
         <div
           @click="onClickLink({ name: 'dashboard-family' })"
           class=" pb-4  mx-auto text-center mt-2 link-item w-8/12"
         >
+          <div>{{ locale.addMemberWarning }}</div>
+          <div>{{ locale.addMemberWarning2 }}</div>
           <img class="inline w-8" src="@/assets/icons/family.svg" />
-          <p class="inline mt-2 pl-3">{{ locale.family }}</p>
         </div>
       </div>
     </div>

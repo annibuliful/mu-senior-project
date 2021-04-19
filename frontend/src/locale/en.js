@@ -9,6 +9,8 @@ export default {
   diseases,
   packagers,
   menu: "Menu",
+  addMemberWarning: "Please add family member before making an appointment",
+  addMemberWarning2: "Click here to go to the family management page",
   year: "Year(s)",
   month: "Month(s)",
   home: "Appointment",
