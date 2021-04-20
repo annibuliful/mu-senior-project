@@ -2,7 +2,7 @@ import { exportDB, importDB } from "dexie-export-import";
 import db, { restore } from "../db";
 import { API_URL, STAIC_PATH_URL, FETCH_API_OPTION } from "../../constants";
 
-export const exportDb = async (userId) => {
+export const exportDb = async userId => {
   const blob = await exportDB(db, { prettyJson: true });
 
   const formData = new FormData();
@@ -11,22 +11,22 @@ export const exportDb = async (userId) => {
 
   const uploadResponse = await fetch(`${API_URL}/upload`, {
     method: "POST",
-    body: formData,
+    body: formData
   });
 
   const uploadFilePath = (await uploadResponse.json()).filename;
 
   const updateRevisionData = {
-    filePath: uploadFilePath,
+    filePath: uploadFilePath
   };
 
   const updateRevision = await fetch(`${API_URL}/users/${userId}/revision`, {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify(updateRevisionData),
+    body: JSON.stringify(updateRevisionData)
   });
   restore();
   console.log("updateRevision", updateRevision);
