@@ -20,11 +20,11 @@ import PWABadge from "pwa-badge";
 export default {
   data: function() {
     return {
-      isShowInternetToast: false,
+      isShowInternetToast: false
     };
   },
   components: {
-    InternetToast,
+    InternetToast
     // RecordForm
   },
   mounted() {
@@ -102,8 +102,8 @@ export default {
       localStorage.setItem("login-info", JSON.stringify(mergeInfo));
       // this.$router.push({ name: "dashboard-home" });
       // this.$router.push({ name: "dashboard-family" });
-    },
-  },
+    }
+  }
 };
 </script>
 
