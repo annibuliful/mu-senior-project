@@ -55,6 +55,18 @@ export default {
   bthRequired: "Please select birth date correctly",
   suggestDate: "Suggested date",
 
+  privacy: "Privacy Policy",
+  privacyDetail: `Data Back Up
+	Before using our back up service users have to login with their username and password. To back up the data, their need to press 
+Back Up Button (Encypted Data), and they have to press import button to restore the data. 
+
+Back Up Duration 
+	The backed up data will last forever until users stop using the application
+
+Acceptance
+	After users registered for using our back up service, it will be claimed that they accept to transfer their data to our application
+database. Once they restored the data, it will be claimed that they accept to transfer their data from our application database to
+their device.`,
   pin: {
     label: "Enter PIN"
   },
