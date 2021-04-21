@@ -1,7 +1,8 @@
 <template>
   <div class="sm:mb-20 w-full">
-    <TopBar></TopBar>
+    <!-- <TopBar></TopBar> -->
     <p class="text-2xl mb-10 border-b-2 border-blue-700">
+      {{ localeText.home }}
       <!-- {{ welcomeWord }} {{ profileName.fullname ? profileName.fullname : "" }} -->
     </p>
     <Calendar :listEvents="listEvents" v-on:on-click="onSelectDate" />
@@ -66,7 +67,7 @@ import { th } from "date-fns/locale";
 import Calendar from "@/components/Calendar.vue";
 import service from "../../services";
 import AppointmentCard from "@/components/AppointmentCard.vue";
-import TopBar from "@/components/TopBar.vue";
+// import TopBar from "@/components/TopBar.vue";
 export default {
   data() {
     return {
@@ -75,7 +76,7 @@ export default {
       filterEventOnDate: []
     };
   },
-  components: { Calendar, AppointmentCard, TopBar },
+  components: { Calendar, AppointmentCard },
   created: function() {
     console.log("setAppBadge", navigator);
 
