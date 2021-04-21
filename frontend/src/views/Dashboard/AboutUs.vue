@@ -14,9 +14,7 @@
           <img class="mx-auto" src="../../assets/profile1.png" />
         </div>
         <div class="w-6/12 flex flex-col">
-          <div>ชื่อ</div>
-          <div>ชื่อ</div>
-          <div>ชื่อ</div>
+          <div>{{ localeText.aboutInfo.tarName }}</div>
         </div>
       </div>
 
@@ -25,9 +23,7 @@
           <img class="mx-auto" src="../../assets/profile2.png" />
         </div>
         <div class="w-6/12 flex flex-col">
-          <div>ชื่อ2</div>
-          <div>ชื่อ2</div>
-          <div>ชื่อ2</div>
+          <div>{{ localeText.aboutInfo.benzName }}</div>
         </div>
       </div>
 
@@ -36,9 +32,7 @@
           <img class="mx-auto" src="../../assets/profile3.png" />
         </div>
         <div class="w-6/12 flex flex-col">
-          <div>ชื่อ3</div>
-          <div>ชื่อ3</div>
-          <div>ชื่อ3</div>
+          <div>{{ localeText.aboutInfo.lifName }}</div>
         </div>
       </div>
     </div>
