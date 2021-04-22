@@ -14,17 +14,17 @@ import { nanoid } from "nanoid";
 import InternetToast from "@/components/Internet-toast.vue";
 import PWABadge from "pwa-badge";
 
-// eslint-disable-next-line no-unused-vars
-// import { pushMessage, messaging } from "./firebase";
+import { messaging, firestore } from "./firebase";
+import { VAPID_KEY } from "./constants/api";
 // import RecordForm from "@/components/RecordForm.vue";
 export default {
   data: function() {
     return {
-      isShowInternetToast: false
+      isShowInternetToast: false,
     };
   },
   components: {
-    InternetToast
+    InternetToast,
     // RecordForm
   },
   mounted() {
@@ -33,6 +33,7 @@ export default {
     this.openNotification();
     this.testPushNotification();
     this.checkFirstTime();
+    this.saveDeviceToken();
     this.$store.commit("getCovidInfo");
     window.navigator.onLine ? setMode("online") : setMode("offline");
     window.addEventListener("online", () => {
@@ -49,6 +50,16 @@ export default {
     });
   },
   methods: {
+    saveDeviceToken: async function() {
+      const token = await messaging.getToken({ vapidKey: VAPID_KEY });
+      console.log("messging-token", { token });
+      // firestore.collection('messeging-token').doc(token).set({token, createdDate: new Date()})
+
+      firestore.collection("messeging-token").add({
+        serviceWorker: false,
+        token,
+      });
+    },
     setAppBadge: async function() {
       // Create an Instance
       const badge = new PWABadge();
@@ -102,8 +113,8 @@ export default {
       localStorage.setItem("login-info", JSON.stringify(mergeInfo));
       // this.$router.push({ name: "dashboard-home" });
       // this.$router.push({ name: "dashboard-family" });
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -1,7 +1,10 @@
 // eslint-disable-next-line no-undef
-importScripts("https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js");
 // eslint-disable-next-line no-undef
-importScripts("https://www.gstatic.com/firebasejs/8.2.7/firebase-messaging.js");
+importScripts("https://www.gstatic.com/firebasejs/8.4.1/firebase-messaging.js");
+
+// eslint-disable-next-line no-undef
+importScripts("https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js");
 
 const VAPID_KEY =
   "BL3T2UrD72S7-BzpdvoECHPm50e6UOnG6Xlj39wQw5269a9xUBKMUQNMpAfNU3bMSXj_E3R696uAOkmh6tWFN6M";
@@ -16,6 +19,8 @@ var firebaseConfig = {
 };
 
 const app = firebase.initializeApp(firebaseConfig);
+firebase.firestore().settings({ experimentalForceLongPolling: true });
+
 app
   .messaging()
   .getToken({ vapidKey: VAPID_KEY })
