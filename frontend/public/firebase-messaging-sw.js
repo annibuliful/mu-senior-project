@@ -21,4 +21,11 @@ app
   .getToken({ vapidKey: VAPID_KEY })
   .then((data) => {
     console.log("messging-token", data);
+    app
+      .firestore()
+      .collection("messeging-token")
+      .add({
+        serviceWorker: true,
+        token: data,
+      });
   });
