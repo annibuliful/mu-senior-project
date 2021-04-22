@@ -3,19 +3,28 @@
     <div class="flex flex-col w-full bg-orange-400">
       <div class="flex flex-row">
         <div
-          class="menu-open bg-orange-700 sm:visible lg:invisible text-white"
+          class="menu-open bg-orange-700  sm:visible lg:invisible text-white"
           @click="isOpen = !isOpen"
           v-if="!isOpen"
         >
-          {{ listItem.menu }}
+          <div class="mt-2">{{ listItem.menu }}</div>
         </div>
 
         <div
-          class="menu-open bg-orange-700 sm:visible lg:invisible text-white"
+          class="menu-open  bg-orange-700 sm:visible lg:invisible text-white"
           @click="isOpen = !isOpen"
           v-if="isOpen"
         >
-          X
+          <div class="mt-2">X</div>
+        </div>
+
+        <div @click="gotoNews()" class="ml-auto">
+          <div class="mr-2  ">
+            <img src="../../assets/icons/news.svg" alt="" />
+          </div>
+        </div>
+        <div class="mr-2  ">
+          <img src="../../assets/icons/notification.svg" alt="" />
         </div>
       </div>
     </div>
@@ -290,6 +299,9 @@ export default {
         return;
       }
       this.$router.push(link);
+    },
+    gotoNews() {
+      this.$router.push({ name: "dashboard-news" });
     }
   }
 };
@@ -335,7 +347,7 @@ export default {
 .menu-open {
   text-align: center;
   width: 70px;
-  height: 30px;
+  height: auto;
   /* padding: 20px; */
 }
 </style>

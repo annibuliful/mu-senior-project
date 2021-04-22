@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <TopBar></TopBar>
+    <!-- <TopBar></TopBar> -->
     <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
       {{ locale.news }}
     </p>
@@ -29,13 +29,13 @@
 </template>
 
 <script>
-import TopBar from "@/components/TopBar.vue";
+// import TopBar from "@/components/TopBar.vue";
 import NewsCard from "../../components/NewsCard.vue";
 import CovidStat from "@/components/Covid/Stat";
 export default {
   components: {
     NewsCard,
-    TopBar,
+    // TopBar,
     CovidStat
   },
 
