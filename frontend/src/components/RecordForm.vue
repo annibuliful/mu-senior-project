@@ -1,6 +1,6 @@
 <template>
   <div
-    class="shadow rounded p-6"
+    class="shadow rounded p-6 my-2"
     :class="hasRecord && !isEdited ? 'bg-green-200' : ''"
   >
     <div class="flex flex-row items-center">
@@ -20,12 +20,19 @@
         <!-- ถ้าฉีดแล้ว บอกว่า ฉีดไปแล้ววันที่ ถ้ายัง แนะนำให้ฉีดวันที่ -->
         <div class="text-gray-500 text-sm">
           <span v-if="!hasRecord">{{ locale.suggestDate }}</span>
-          <span class="text-green-700" v-else>{{ locale.receivedVac }}</span>
+          <span class="text-green-700 font-bold" v-else>{{
+            locale.receivedVac
+          }}</span>
 
           <span class="text-gray-800" v-if="!hasRecord"> {{ dateFormat }}</span>
-          <span class="text-green-700" v-else> {{ receivingDateFormat }}</span>
+          <span class="text-green-700 font-bold" v-else>
+            {{ receivingDateFormat }}</span
+          >
         </div>
-        <div class="text-gray-500 text-sm">
+        <div
+          class="text-gray-500 text-sm"
+          :class="hasRecord ? 'text-green-700 font-bold' : ''"
+        >
           ({{ locale.recordVaccinePage.doseNumber }} {{ doseNumber }})
         </div>
 
