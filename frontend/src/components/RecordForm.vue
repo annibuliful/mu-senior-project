@@ -253,7 +253,7 @@ export default {
                 vaccineId: this.vaccineId
               }
             };
-            this.isEdited = !this.isEdited;
+            this.isEdited = false;
 
             this.$emit("on-record", checkBoxValue, data);
             this.$fire({
@@ -261,9 +261,12 @@ export default {
               type: "success",
               timer: 3000
             });
+          } else {
+            this.hasRecord = true;
           }
         });
       } else {
+        this.isEdited = true;
         const data = {
           receivingDate: this.receivingDate,
           childId: this.childId,
