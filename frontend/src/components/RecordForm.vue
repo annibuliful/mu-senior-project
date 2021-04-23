@@ -1,5 +1,8 @@
 <template>
-  <div class="shadow rounded p-6">
+  <div
+    class="shadow rounded p-6 my-2"
+    :class="hasRecord && !isEdited ? 'bg-green-200' : ''"
+  >
     <div class="flex flex-row items-center">
       <div class="w-2/12">
         <input
@@ -16,10 +19,20 @@
         </p>
         <!-- ถ้าฉีดแล้ว บอกว่า ฉีดไปแล้ววันที่ ถ้ายัง แนะนำให้ฉีดวันที่ -->
         <div class="text-gray-500 text-sm">
-          {{ locale.suggestDate }}
-          <span class="text-gray-800">{{ dateFormat }}</span>
+          <span v-if="!hasRecord">{{ locale.suggestDate }}</span>
+          <span class="text-green-700 font-bold" v-else>{{
+            locale.receivedVac
+          }}</span>
+
+          <span class="text-gray-800" v-if="!hasRecord"> {{ dateFormat }}</span>
+          <span class="text-green-700 font-bold" v-else>
+            {{ receivingDateFormat }}</span
+          >
         </div>
-        <div class="text-gray-500 text-sm">
+        <div
+          class="text-gray-500 text-sm"
+          :class="hasRecord ? 'text-green-700 font-bold' : ''"
+        >
           ({{ locale.recordVaccinePage.doseNumber }} {{ doseNumber }})
         </div>
 
@@ -215,6 +228,21 @@ export default {
       }
       return date;
     },
+    receivingDateFormat() {
+      let date = "";
+      if (this.$store.state.calendarLocale === "th-TH") {
+        date = format(
+          addYears(new Date(this.receivingDate), 543),
+          "dd MMM yyyy",
+          {
+            locale: th
+          }
+        );
+      } else {
+        date = format(new Date(this.receivingDate), "dd MMM yyyy");
+      }
+      return date;
+    },
     calendarLocale: function() {
       return this.$store.state.calendarLocale;
     },
@@ -253,7 +281,7 @@ export default {
                 vaccineId: this.vaccineId
               }
             };
-            this.isEdited = !this.isEdited;
+            this.isEdited = false;
 
             this.$emit("on-record", checkBoxValue, data);
             this.$fire({
@@ -261,9 +289,12 @@ export default {
               type: "success",
               timer: 3000
             });
+          } else {
+            this.hasRecord = true;
           }
         });
       } else {
+        this.isEdited = true;
         const data = {
           receivingDate: this.receivingDate,
           childId: this.childId,

@@ -44,6 +44,7 @@ export default {
   ordering: "Order by",
   others: "Others",
   noEvent: "There is no any event",
+  receivedVac: "Received Date",
   welcomeLanguage: "Welcome to Vaccinet",
   welcomeContinue: "Continue",
   receievedQA: "Received",
