@@ -1,5 +1,8 @@
 <template>
-  <div class="shadow rounded p-6">
+  <div
+    class="shadow rounded p-6"
+    :class="hasRecord && !isEdited ? 'bg-green-200' : ''"
+  >
     <div class="flex flex-row items-center">
       <div class="w-2/12">
         <input
@@ -16,8 +19,11 @@
         </p>
         <!-- ถ้าฉีดแล้ว บอกว่า ฉีดไปแล้ววันที่ ถ้ายัง แนะนำให้ฉีดวันที่ -->
         <div class="text-gray-500 text-sm">
-          {{ locale.suggestDate }}
-          <span class="text-gray-800">{{ dateFormat }}</span>
+          <span v-if="!hasRecord">{{ locale.suggestDate }}</span>
+          <span class="text-green-700" v-else>{{ locale.receivedVac }}</span>
+
+          <span class="text-gray-800" v-if="!hasRecord"> {{ dateFormat }}</span>
+          <span class="text-green-700" v-else> {{ receivingDateFormat }}</span>
         </div>
         <div class="text-gray-500 text-sm">
           ({{ locale.recordVaccinePage.doseNumber }} {{ doseNumber }})
@@ -212,6 +218,21 @@ export default {
         );
       } else {
         date = format(new Date(this.receiveDate), "dd MMM yyyy");
+      }
+      return date;
+    },
+    receivingDateFormat() {
+      let date = "";
+      if (this.$store.state.calendarLocale === "th-TH") {
+        date = format(
+          addYears(new Date(this.receivingDate), 543),
+          "dd MMM yyyy",
+          {
+            locale: th
+          }
+        );
+      } else {
+        date = format(new Date(this.receivingDate), "dd MMM yyyy");
       }
       return date;
     },

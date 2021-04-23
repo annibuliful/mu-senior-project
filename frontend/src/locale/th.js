@@ -43,6 +43,7 @@ export default {
   ordering: "จัดเรียงวัคซีนโดย",
   others: "อื่นๆ",
   noEvent: "ไม่มีการนัดหมายในเร็วๆนี้",
+  receivedVac: "ได้รับวัคซีนเมื่อ",
   welcomeLanguage: "ยินดีต้อนรับสู่ Vaccinet",
   welcomeContinue: "ไปต่อ",
   loadmore: "เพิ่มเติม",
