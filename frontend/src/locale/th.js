@@ -125,7 +125,7 @@ export default {
     batchNO: "เลขล็อตการผลิต",
     receivingDate: "วันที่ได้รับวัคซีน",
     hostpitalName: "ชื่อโรงพยาบาลที่รับวัคซีน",
-    doctorInfo: "รหัสบุคลากรทางการแพทย์(สำหรับเจ้าหน้าที่)",
+    doctorInfo: "ชื่อคุณหมอ",
     freetext: "บันทึกข้อความ/รายละเอียดเพิ่มเติม",
     recordTo: "บันทึกการฉีดให้กับ",
     uploadImage: "อัพโหลดรูปภาพหลักฐานการฉีดวัคซีน (เลขล๊อตวัคซีน)",
@@ -133,7 +133,10 @@ export default {
     cancelBtn: "ยกเลิก",
     packageMember: "แนะนำวัคซีนสำหรับ",
     doseNumber: "เข็มที่",
-    sideEffect: "ผลข้างเคียง"
+    sideEffect: "ผลข้างเคียง",
+    sideEffectImg: "รูปภาพผลข้างเคียง",
+    evidenceImg: "รูปภาพหลักฐานการฉีดวัคซีน(เลขล๊อตของวัคซีน)",
+    uploadFile: "อัปโหลดภาพ"
   },
   label: {
     doseTimes: "โด๊สที่",
