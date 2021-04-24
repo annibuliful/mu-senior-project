@@ -1,7 +1,7 @@
 module.exports = {
   devServer: {
     progress: false,
-    disableHostCheck: true
+    disableHostCheck: true,
   },
   pwa: {
     name: "Vaccinet",
@@ -9,6 +9,10 @@ module.exports = {
     backgroundColor: "#2196f3",
     display: "standalone",
     appleMobileWebAppCapable: "yes",
-    appleMobileWebAppStatusBarStyle: "black"
-  }
+    appleMobileWebAppStatusBarStyle: "black",
+    workboxPluginMode: "InjectManifest",
+    workboxOptions: {
+      swSrc: "public/firebase-messaging-sw.js",
+    },
+  },
 };

@@ -18,19 +18,52 @@ var firebaseConfig = {
   measurementId: "G-FYFV5L0F2J",
 };
 
-const app = firebase.initializeApp(firebaseConfig);
-firebase.firestore().settings({ experimentalForceLongPolling: true });
+// const app = firebase.initializeApp(firebaseConfig);
+// firebase.firestore().settings({ experimentalForceLongPolling: true });
 
-app
-  .messaging()
-  .getToken({ vapidKey: VAPID_KEY })
-  .then((data) => {
-    console.log("messging-token-service-worker", data);
-    app
-      .firestore()
-      .collection("messeging-token")
-      .add({
-        serviceWorker: true,
-        token: data,
-      });
-  });
+// app
+//   .messaging()
+//   .getToken({ vapidKey: VAPID_KEY })
+//   .then((data) => {
+//     console.log("messging-token-service-worker", data);
+//     app
+//       .firestore()
+//       .collection("messeging-token")
+//       .add({
+//         serviceWorker: true,
+//         token: data,
+//       });
+//   });
+
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
+workbox.precaching.suppressWarnings();
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerRoute(
+  new RegExp(
+    "https://firebasestorage.googleapis.com/v0/b/cropchien.appspot.com/.*"
+  ),
+  workbox.strategies.staleWhileRevalidate()
+);
+
+firebase.initializeApp(firebaseConfig);
+
+const messaging = firebase.messaging();
+
+messaging.setBackgroundMessageHandler(function(payload) {
+  console.log(
+    "[firebase-messaging-sw.js] Received background message ",
+    payload
+  );
+  // Customize notification here
+  const notificationTitle = "Background Message Title";
+  const notificationOptions = {
+    body: "Background Message body.",
+    icon: "/firebase-logo.png",
+  };
+
+  return self.registration.showNotification(
+    notificationTitle,
+    notificationOptions
+  );
+});
