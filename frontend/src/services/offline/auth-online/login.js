@@ -13,7 +13,7 @@ export const login = async (username, password) => {
       .doc(username)
       .set(
         {
-          deviceToken,
+          deviceToken
         },
         { merge: true }
       );
@@ -22,18 +22,18 @@ export const login = async (username, password) => {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password })
     });
   } catch (e) {
     return fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password })
     });
   }
 };
