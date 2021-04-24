@@ -10,9 +10,5 @@ module.exports = {
     display: "standalone",
     appleMobileWebAppCapable: "yes",
     appleMobileWebAppStatusBarStyle: "black",
-    workboxPluginMode: "InjectManifest",
-    workboxOptions: {
-      swSrc: "public/firebase-messaging-sw.js",
-    },
   },
 };
