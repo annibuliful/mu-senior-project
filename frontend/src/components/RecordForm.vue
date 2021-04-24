@@ -102,35 +102,81 @@
         />
       </div>
 
-      <!-- <div class="mb-4">
+      <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2">
-          Side effects Image
+          {{ locale.recordVaccinePage.sideEffectImg }}
         </label>
         <div class="input-primary text-center">
-          <label for="upload-side-effect">Upload File EIEI</label>
+          <label for="upload-side-effect">{{
+            locale.recordVaccinePage.uploadFile
+          }}</label>
         </div>
         <input
           class="input-primary hidden"
           id="upload-side-effect"
           type="file"
           accept="image/*"
+          @change="onFileSideEffectChange"
+        />
+      </div>
+      <img
+        class="mx-auto"
+        v-if="base64UrlSideEffect"
+        :src="base64UrlSideEffect"
+      />
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">
+          {{ locale.recordVaccinePage.evidenceImg }}
+        </label>
+        <div class="input-primary text-center">
+          <label for="upload-evidence">{{
+            locale.recordVaccinePage.uploadFile
+          }}</label>
+        </div>
+        <input
+          class="input-primary hidden"
+          id="upload-evidence"
+          type="file"
+          accept="image/*"
+          @change="onFileEvidenceChange"
+        />
+
+        <img
+          class="mx-auto"
+          v-if="base64UrlEvidence"
+          :src="base64UrlEvidence"
+        />
+      </div>
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="username"
+        >
+          {{ locale.recordVaccinePage.hostpitalName }}
+        </label>
+        <input
+          class="input-primary"
+          id="hospitalName"
+          type="text"
+          v-model="newHospitalName"
         />
       </div>
 
       <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2">
-          Evidence of the vaccination
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="username"
+        >
+          {{ locale.recordVaccinePage.doctorInfo }}
         </label>
-        <div class="input-primary text-center">
-          <label for="upload-side-effect">Upload File EIEI</label>
-        </div>
         <input
-          class="input-primary hidden"
-          id="upload-side-effect"
-          type="file"
-          accept="image/*"
+          class="input-primary"
+          id="doctorName"
+          type="text"
+          v-model="newMedicalStaff"
         />
-      </div> -->
+      </div>
       <div class="mb-4">
         <label
           class="block text-gray-700 text-sm font-bold mb-2"
@@ -145,6 +191,7 @@
           v-model="newNoteMessage"
         />
       </div>
+
       <button class="btn-primary" @click="submit">
         {{ locale.button.save }}
       </button>
@@ -164,7 +211,10 @@ export default {
       newBatchNumber: "",
       newHospitalName: "",
       newMedicalStaff: "",
-      newNoteMessage: ""
+      newNoteMessage: "",
+      base64UrlEvidence: "",
+      base64UrlSideEffect: "",
+      hospitalName: ""
     };
   },
   props: {
@@ -210,6 +260,8 @@ export default {
       this.newHospitalName = this.recordCustomData.hospitalName;
       this.newMedicalStaff = this.recordCustomData.medicalStaff;
       this.newNoteMessage = this.recordCustomData.noteMessage;
+      this.base64UrlEvidence = this.recordCustomData.base64UrlEvidence;
+      this.base64UrlSideEffect = this.recordCustomData.base64UrlSideEffect;
     }
   },
   computed: {
@@ -251,6 +303,22 @@ export default {
     }
   },
   methods: {
+    onFileSideEffectChange(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.base64UrlSideEffect = reader.result;
+      };
+    },
+    onFileEvidenceChange(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.base64UrlEvidence = reader.result;
+      };
+    },
     toggleEditForm: function() {
       if (!this.hasRecord) return;
 
@@ -278,11 +346,12 @@ export default {
                 medicalStaff: this.newMedicalStaff,
                 noteMessage: this.newNoteMessage,
                 doseNumber: this.doseNumber,
-                vaccineId: this.vaccineId
+                vaccineId: this.vaccineId,
+                base64UrlSideEffect: this.base64UrlSideEffect,
+                base64UrlEvidence: this.base64UrlEvidence
               }
             };
             this.isEdited = false;
-
             this.$emit("on-record", checkBoxValue, data);
             this.$fire({
               title: this.locale.deleteRecSuc,
@@ -307,7 +376,9 @@ export default {
             medicalStaff: this.newMedicalStaff,
             noteMessage: this.newNoteMessage,
             doseNumber: this.doseNumber,
-            vaccineId: this.vaccineId
+            vaccineId: this.vaccineId,
+            base64UrlSideEffect: this.base64UrlSideEffect,
+            base64UrlEvidence: this.base64UrlEvidence
           }
         };
 
@@ -326,7 +397,9 @@ export default {
           medicalStaff: this.newMedicalStaff,
           noteMessage: this.newNoteMessage,
           doseNumber: this.doseNumber,
-          vaccineId: this.vaccineId
+          vaccineId: this.vaccineId,
+          base64UrlSideEffect: this.base64UrlSideEffect,
+          base64UrlEvidence: this.base64UrlEvidence
         },
         recordId: this.recordId
       };
