@@ -1,10 +1,7 @@
 <template>
   <div>
     <div class="mb-4">
-      <label
-        class="block text-gray-700 text-xs font-bold mb-2 text-sm"
-        for="username"
-      >
+      <label class="block text-gray-700 font-bold mb-2 text-sm" for="username">
         {{ localeText.username }}
       </label>
       <input
@@ -23,10 +20,7 @@
       </p>
     </div>
     <div class="mb-4">
-      <label
-        class="block text-gray-700 text-xs font-bold mb-2 text-sm"
-        for="password"
-      >
+      <label class="block text-gray-700 font-bold mb-2 text-sm" for="password">
         {{ localeText.password }}
       </label>
       <input
@@ -98,27 +92,27 @@ export default {
       username: "",
       password: "",
       repeatPassword: "",
-      isSubmitted: false
+      isSubmitted: false,
     };
   },
   validations: {
     username: {
-      required
+      required,
     },
     password: {
       required,
-      minLength: minLength(8)
+      minLength: minLength(8),
     },
     repeatPassword: {
       required,
       minLength: minLength(8),
-      sameAsPassword: sameAs("password")
-    }
+      sameAsPassword: sameAs("password"),
+    },
   },
   computed: {
     localeText() {
       return this.$store.state.locale;
-    }
+    },
   },
   methods: {
     onRegister() {
@@ -128,12 +122,12 @@ export default {
       if (!this.$v.$invalid) {
         const data = {
           username: this.username,
-          password: this.password
+          password: this.password,
         };
         console.log("data regis", data);
         this.$emit("on-submit", data);
       }
-    }
-  }
+    },
+  },
 };
 </script>
