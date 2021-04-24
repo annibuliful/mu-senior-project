@@ -9,18 +9,6 @@
 //   "https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js"
 // );
 
-// const VAPID_KEY =
-//   "BL3T2UrD72S7-BzpdvoECHPm50e6UOnG6Xlj39wQw5269a9xUBKMUQNMpAfNU3bMSXj_E3R696uAOkmh6tWFN6M";
-// var firebaseConfig = {
-//   apiKey: "AIzaSyAycYq1bXG5xNJtq75pzXgGd3ONoiJczEA",
-//   authDomain: "mu-senior.firebaseapp.com",
-//   projectId: "mu-senior",
-//   storageBucket: "mu-senior.appspot.com",
-//   messagingSenderId: "430977039067",
-//   appId: "1:430977039067:web:08a7760c600730f688eafe",
-//   measurementId: "G-FYFV5L0F2J",
-// };
-
 // // const app = firebase.initializeApp(firebaseConfig);
 // // firebase.firestore().settings({ experimentalForceLongPolling: true });
 
@@ -65,11 +53,54 @@
 // //   );
 
 // // });
+importScripts("https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/8.4.1/firebase-messaging.js");
 
-const options = {
-  body: "Vaccinet",
-  // icon: push_message.notification.icon,
-  // image: push_message.notification.image,
-  tag: "alert",
+const VAPID_KEY =
+  "BL3T2UrD72S7-BzpdvoECHPm50e6UOnG6Xlj39wQw5269a9xUBKMUQNMpAfNU3bMSXj_E3R696uAOkmh6tWFN6M";
+var firebaseConfig = {
+  apiKey: "AIzaSyAycYq1bXG5xNJtq75pzXgGd3ONoiJczEA",
+  authDomain: "mu-senior.firebaseapp.com",
+  projectId: "mu-senior",
+  storageBucket: "mu-senior.appspot.com",
+  messagingSenderId: "430977039067",
+  appId: "1:430977039067:web:08a7760c600730f688eafe",
+  measurementId: "G-FYFV5L0F2J",
 };
-self.registration.showNotification("Vaccinet", options);
+firebase.initializeApp(firebaseConfig);
+
+const messaging = firebase.messaging();
+// messaging.onBackgroundMessage((payload) => {
+//   console.log("onBackgroundMessage-payload", payload);
+// });
+
+// messaging.onMessage((payload) => {
+//   console.log("onMessage-payload", payload);
+//   // ...
+// });
+
+messaging.onBackgroundMessage(function(payload) {
+  console.log(
+    "[firebase-messaging-sw.js] Received background message ",
+    payload
+  );
+  // Customize notification here
+  // const notificationTitle = "Background Message Title";
+  const notificationOptions = {
+    body: "Background Message body.",
+    icon: "/firebase-logo.png",
+  };
+
+  self.registration.showNotification(
+    payload.notification.title,
+    notificationOptions
+  );
+});
+
+// const options = {
+//   body: "Vaccinet",
+//   // icon: push_message.notification.icon,
+//   // image: push_message.notification.image,
+//   tag: "alert",
+// };
+// self.registration.showNotification("Vaccinet", options);
