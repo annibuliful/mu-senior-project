@@ -20,11 +20,11 @@ import { VAPID_KEY } from "./constants/api";
 export default {
   data: function() {
     return {
-      isShowInternetToast: false
+      isShowInternetToast: false,
     };
   },
   components: {
-    InternetToast
+    InternetToast,
     // RecordForm
   },
   mounted() {
@@ -33,7 +33,7 @@ export default {
     this.openNotification();
     this.testPushNotification();
     this.checkFirstTime();
-    // this.saveDeviceToken();
+    this.saveDeviceToken();
     this.onCloudMessage();
     this.$store.commit("getCovidInfo");
     window.navigator.onLine ? setMode("online") : setMode("offline");
@@ -54,7 +54,7 @@ export default {
     onCloudMessage: async function() {
       const token = await messaging.getToken({ vapidKey: VAPID_KEY });
       console.log("cloud-token", token);
-      messaging.onMessage(payload => {
+      messaging.onMessage((payload) => {
         console.log("Message received. ", payload);
         new Notification(payload.notification.title);
       });
@@ -66,7 +66,7 @@ export default {
 
       firestore.collection("messeging-token").add({
         serviceWorker: false,
-        token
+        token,
       });
     },
     setAppBadge: async function() {
@@ -122,8 +122,8 @@ export default {
       localStorage.setItem("login-info", JSON.stringify(mergeInfo));
       // this.$router.push({ name: "dashboard-home" });
       // this.$router.push({ name: "dashboard-family" });
-    }
-  }
+    },
+  },
 };
 </script>
 
