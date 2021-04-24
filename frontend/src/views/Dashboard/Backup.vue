@@ -3,6 +3,26 @@
     <p class="text-2xl mb-10 border-b-2 border-orange-700" style="width: auto;">
       {{ localeText.backup }}
     </p>
+    <div
+      v-if="!isAlreadyLogin"
+      class="bg-red-400 text-white font-medium text-center flex flex-row p-2"
+    >
+      <img src="../../assets/icons/aboutus.svg" />
+      <div class="my-auto ml-2">{{ localeText.loginBeforeUse }}</div>
+    </div>
+
+    <div
+      v-if="isAlreadyLogin"
+      class="bg-green-500 text-white font-medium text-center flex flex-row p-2"
+    >
+      <div class="my-auto  text-center mx-auto">
+        {{ localeText.loginAs }}
+        <span class="font-semibold">{{ onlineInfo.username }}</span>
+      </div>
+    </div>
+
+    <!-- <div v-if="isAlreadyLogin">You are logged in as {{onlineInfo.username}}</div> -->
+
     <img src="@/assets/people.png" class="mx-auto mt-2" />
 
     <div
@@ -10,6 +30,7 @@
       style="margin-top: 2vh; margin-left: auto; margin-right: auto; "
       v-if="!isAlreadyLogin"
     >
+      <!-- <img src="../../assets/doctor-vaccinating.png" alt=""> -->
       <div class="inline-flex justify-center w-full pb-8">
         <h4
           class=" text-center text-xl ml-2 mr-2 mt-1 cursor-pointer"
@@ -38,17 +59,24 @@
     <!-- Search Area -->
     <div class="flex flex-col" v-if="isAlreadyLogin">
       <button
-        class="w-3/12 mx-auto border-2 border-gray-800 p-2 mt-2"
+        class="w-10/12 md:w-4/12 mx-auto border-2 border-gray-800 p-2 mt-2"
         @click="onClickBackup"
       >
-        Backup
+        {{ localeText.backup }}
       </button>
 
       <button
-        class="border-2 border-gray-800 p-2 w-3/12 mx-auto  mt-2"
+        class="border-2 border-gray-800 p-2 w-10/12 md:w-4/12 mx-auto  mt-2"
         @click="onClickImport"
       >
-        Import
+        {{ localeText.importDB }}
+      </button>
+
+      <button
+        @click="onBackClick"
+        class="bg-orange-600 hover:bg-orange-800 w-8/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-4/12"
+      >
+        {{ localeText.vaccineDetailsPage.back }}
       </button>
     </div>
   </div>
@@ -68,6 +96,7 @@ export default {
   },
   data() {
     return {
+      onlineInfo: "",
       isAlreadyLogin: false,
       uploadedFile: null,
       exportBlob: null,
@@ -101,11 +130,17 @@ export default {
     if (!userInfo) return;
     if (userInfo.onlineUserId) {
       this.isAlreadyLogin = true;
+      this.onlineInfo = userInfo.onlineInfo;
     }
 
     console.log("userInfo", userInfo);
   },
   methods: {
+    onBackClick() {
+      this.$router.push({
+        name: "dashboard-family"
+      });
+    },
     onChangeFormMode(mode) {
       this.mode = mode;
       this.error = "";
@@ -164,6 +199,7 @@ export default {
         localStorage.setItem("login-info", JSON.stringify(mergeInfo));
 
         console.log("loginInfo.userInfo", mergeInfo);
+        this.onlineInfo = mergeInfo.onlineInfo;
         this.isAlreadyLogin = true;
         // this.onClickImport();
         // this.$router.push({ name: "dashboard-family" });

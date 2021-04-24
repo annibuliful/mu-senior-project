@@ -44,7 +44,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    redirect: { name: "dashboard-home" }
+    redirect: { name: "dashboard-family" }
   },
   {
     path: "/old-vaccine",
