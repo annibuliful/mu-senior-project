@@ -8,18 +8,18 @@ import { register } from "register-service-worker";
 register(`${process.env.BASE_URL}firebase-messaging-sw.js`);
 register(`${process.env.BASE_URL}background-sync.js`);
 
-// if ("serviceWorker" in navigator) {
-//   navigator.serviceWorker
-//     .register("firebase-messaging-sw.js")
-//     .then(function(registration) {
-//       console.log("Registration successful, scope is:", registration.scope);
-//     })
-//     .catch(function(err) {
-//       console.log("Service worker registration failed, error:", err);
-//     });
-// }
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("firebase-messaging-sw.js")
+    .then(function(registration) {
+      console.log("Registration successful, scope is:", registration.scope);
+    })
+    .catch(function(err) {
+      console.log("Service worker registration failed, error:", err);
+    });
+}
 
-// navigator.serviceWorker.register("sw.js");
+navigator.serviceWorker.register("sw.js");
 
 // const thaiDate = (date) =>
 //   format(addYears(new Date(date), 543), "dd MMM yyyy", {
@@ -93,6 +93,6 @@ if (process.env.NODE_ENV === "production") {
     },
     error(error) {
       console.error("Error during service worker registration:", error);
-    }
+    },
   });
 }

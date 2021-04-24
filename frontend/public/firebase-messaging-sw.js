@@ -70,14 +70,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const messaging = firebase.messaging();
-// messaging.onBackgroundMessage((payload) => {
-//   console.log("onBackgroundMessage-payload", payload);
-// });
-
-// messaging.onMessage((payload) => {
-//   console.log("onMessage-payload", payload);
-//   // ...
-// });
 
 messaging.onBackgroundMessage(function(payload) {
   console.log(
