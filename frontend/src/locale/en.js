@@ -214,7 +214,8 @@ their device.`,
     logout: "Logout",
     search: "Search",
     delete: "Delete",
-    next: "Next"
+    next: "Next",
+    loading: "Loading Information..."
   },
   camera: {
     takePhoto: "Take a Photo",
