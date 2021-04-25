@@ -115,7 +115,7 @@
       <div
         class="flex flex-wrap"
         v-for="(family, index) in listFamilies"
-        :key="`${family.fullname}-${index}`"
+        :key="`${index}`"
       >
         <FamilyCard
           class="card flex-initial"
@@ -141,7 +141,15 @@ export default {
   created() {
     this.$store.commit("listFamilies");
     const user = localStorage.getItem("userInfo");
-    const { userId } = JSON.parse(user);
+    // const { userId } = JSON.parse(user);
+    const userInfo = JSON.parse(user);
+    if (!userInfo.onlineInfo.userId) {
+      this.$router.push({
+        name: "login"
+      });
+    }
+    const userId = userInfo.onlineInfo.userId;
+    console.log("userId", userInfo.onlineInfo.userId);
     const language = this.$store.state.calendarLocale;
     service()
       .family.list(userId, language)

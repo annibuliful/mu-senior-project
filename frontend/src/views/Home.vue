@@ -37,6 +37,8 @@
 import LoginForm from "@/components/auth/Login.vue";
 import RegisterForm from "@/components/auth/Register.vue";
 import services from "@/services";
+// import db from "../services/offline/db";
+
 export default {
   components: {
     LoginForm,
@@ -57,14 +59,17 @@ export default {
     }
   },
   computed: {
+    localeText: function() {
+      return this.$store.state.locale;
+    },
+    locale() {
+      return this.$store.state.locale;
+    },
     errorText: function() {
       return this.$store.state.locale.labelError;
     },
     labelText: function() {
       return this.$store.state.locale.label;
-    },
-    locale() {
-      return this.$store.state.locale;
     }
   },
   methods: {
@@ -72,19 +77,30 @@ export default {
       this.mode = mode;
       this.error = "";
     },
+
     async onLogin({ username, password }) {
       try {
-        const result = await services().auth.login({ username, password });
+        const result = await services().authOnline.login(username, password);
         this.$store.commit("setUserInfo", result);
-        localStorage.setItem("userInfo", JSON.stringify(result));
 
-        const isFirstTime = result.fullname === "";
-        if (isFirstTime) {
-          this.$router.push({ name: "dashboard-setting" });
-          return;
-        }
-        this.$store.commit("setFirstTime", false);
-        this.$router.push({ name: "dashboard-home" });
+        const oldUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+        console.log("oldUserInfo", oldUserInfo);
+        const loginInfo = await result.json();
+
+        const mergeInfo = {
+          ...oldUserInfo,
+          onlineUserId: loginInfo.userInfo.userId,
+          onlineInfo: { ...loginInfo.userInfo, username, password: "" }
+        };
+        localStorage.setItem("userInfo", JSON.stringify(mergeInfo));
+        localStorage.setItem("login-info", JSON.stringify(mergeInfo));
+
+        console.log("loginInfo.userInfo", mergeInfo);
+        console.log("mergeInfo.onlineUserId", mergeInfo.onlineUserId);
+        // this.deleteIDB();
+        // await services().revisionOnline.importDb(mergeInfo.onlineUserId);
+        // await db.open();
+        this.$router.push({ name: "dashboard-family" });
       } catch (e) {
         const message = e.message;
         if (message === "notFound") {
@@ -100,15 +116,26 @@ export default {
         }
       }
     },
-    async onRegister({ username, password, pin }) {
+    async onRegister({ username, password }) {
       try {
-        await services().auth.register({ username, password, pin });
+        await services().authOnline.register(username, password);
+
+        this.$fire({
+          title: this.labelText.regisSuccess,
+          type: "success",
+          timer: 3000
+        });
         this.mode = "login";
       } catch (e) {
         this.error = this.errorText.duplicate.replace(
           "{}",
           this.labelText.username
         );
+        this.$fire({
+          title: "สมัครสมาชิกไม่สำเร็จ",
+          type: "error",
+          timer: 3000
+        });
       }
     }
   }

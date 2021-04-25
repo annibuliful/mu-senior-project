@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Home from "../views/Home.vue";
+import Home from "../views/Home.vue";
 import DashboardIndex from "../views/Dashboard/Index.vue";
 import DashboardHome from "../views/Dashboard/Home.vue";
 import DashboardSetting from "../views/Dashboard/Setting.vue";
@@ -34,12 +34,26 @@ import BackUp from "../views/Dashboard/Backup.vue";
 import AboutUs from "../views/Dashboard/AboutUs.vue";
 
 Vue.use(VueRouter);
+function guardMyRoute(to, from, next) {
+  let isAuthenticated = !!localStorage.getItem("userInfo");
+  console.log("isAuthenticated", isAuthenticated);
+  if (isAuthenticated) {
+    next();
+  } else {
+    next("/login");
+  }
+}
 
 const routes = [
   {
     path: "/pin",
     name: "Pin",
     component: PinPassword
+  },
+  {
+    path: "/login",
+    name: "auth",
+    component: Home
   },
   {
     path: "/",
@@ -70,6 +84,8 @@ const routes = [
   {
     path: "/dashboard",
     component: DashboardIndex,
+    beforeEnter: guardMyRoute,
+
     children: [
       {
         path: "/",

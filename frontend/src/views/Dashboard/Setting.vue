@@ -49,14 +49,6 @@
           <CaretIcon />
         </div>
       </div>
-      <!-- <div class="ml-auto">
-        <button
-          class="hidden sm:block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
-          @click="onLogout"
-        >
-          {{ buttonLabel.logout }}
-        </button>
-      </div> -->
     </div>
 
     <div class="mb-10 mt-10">
@@ -99,11 +91,20 @@
     >
       {{ buttonLabel.logout }}
     </button> -->
+
+    <div class="ml-auto">
+      <button
+        class="sm:block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block ml-auto mr-6"
+        @click="onLogout"
+      >
+        {{ buttonLabel.logout }}
+      </button>
+    </div>
   </div>
 </template>
 <script>
 import CaretIcon from "@/components/icons/Caret.vue";
-import service from "@/services";
+// import service from "@/services";
 export default {
   components: {
     CaretIcon
@@ -192,7 +193,7 @@ export default {
       }).then(r => {
         if (r.value) {
           localStorage.removeItem("userInfo");
-          this.$router.push("/");
+          this.$router.push("/login");
           this.$fire({
             title: this.locale.label.logoutSuccess,
             type: "success",
@@ -201,86 +202,86 @@ export default {
         }
       });
     },
-    async submit() {
-      this.isSubmitted = true;
-      this.$v.$reset();
-      this.$v.$touch();
-      if (this.$v.$invalid) {
-        return;
-      }
+    // async submit() {
+    //   this.isSubmitted = true;
+    //   this.$v.$reset();
+    //   this.$v.$touch();
+    //   if (this.$v.$invalid) {
+    //     return;
+    //   }
 
-      try {
-        const data = {
-          fullname: this.fullname,
-          birthDate: this.birthDate,
-          receivedVaccines: [],
-          diseases: this.selectedDiseases,
-          pin: this.pinPassword
-        };
+    //   try {
+    //     const data = {
+    //       fullname: this.fullname,
+    //       birthDate: this.birthDate,
+    //       receivedVaccines: [],
+    //       diseases: this.selectedDiseases,
+    //       pin: this.pinPassword
+    //     };
 
-        this.$fire({
-          title: this.locale.label.confirmEdit,
-          showCancelButton: true,
-          confirmButtonText: this.locale.label.yes,
-          cancelButtonText: this.locale.label.no
-        }).then(async r => {
-          if (r.value) {
-            const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-            const newUserInfo = Object.assign(userInfo, data);
+    //     this.$fire({
+    //       title: this.locale.label.confirmEdit,
+    //       showCancelButton: true,
+    //       confirmButtonText: this.locale.label.yes,
+    //       cancelButtonText: this.locale.label.no
+    //     }).then(async r => {
+    //       if (r.value) {
+    //         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    //         const newUserInfo = Object.assign(userInfo, data);
 
-            this.$store.commit("setUserInfo", newUserInfo);
+    //         this.$store.commit("setUserInfo", newUserInfo);
 
-            localStorage.setItem("userInfo", JSON.stringify(newUserInfo));
-            this.$fire({
-              title: this.locale.label.saveInfo,
-              type: "success",
-              timer: 3000
-            });
+    //         localStorage.setItem("userInfo", JSON.stringify(newUserInfo));
+    //         this.$fire({
+    //           title: this.locale.label.saveInfo,
+    //           type: "success",
+    //           timer: 3000
+    //         });
 
-            if (this.isFirstTime) {
-              const data = {
-                fullname: this.fullname,
-                birthDate: this.birthDate,
-                diseases: this.selectedDiseases?.map(el => el.id) ?? [],
-                receivedVaccines: this.selectedVaccines?.map(el => el.id) ?? [],
-                profileImg: "",
-                userId: this.$store.state.userInfo.userId,
-                isParent: true,
-                pin: this.pinPassword
-              };
-              await service().family.create(data);
-              await service().user.update(
-                this.$store.state.userInfo.userId,
-                data
-              );
-              this.$store.commit("setFirstTime", false);
-            } else {
-              const listFamilies = await service().family.list();
-              const userFamilyId = listFamilies.find(
-                el =>
-                  el.fullname === this.userInfo.fullname &&
-                  el.userId === this.userInfo.userId
-              )?.familyId;
-              const data = {
-                fullname: this.fullname,
-                birthDate: this.birthDate,
-                diseases: this.selectedDiseases.map(el => el.id),
-                receivedVaccines: this.selectedVaccines.map(el => el.id),
-                profileImg: "",
-                userId: this.$store.state.userInfo.userId,
-                pin: this.pinPassword,
-                isParent: true
-              };
-              await service().family.update(userFamilyId, data);
-              await service().user.update(this.userInfo.userId, data);
-              this.$store.commit("setFirstTime", false);
-            }
-          }
-        });
-      } catch (e) {
-        this.errorMessage = e.message;
-      }
-    },
+    //         if (this.isFirstTime) {
+    //           const data = {
+    //             fullname: this.fullname,
+    //             birthDate: this.birthDate,
+    //             diseases: this.selectedDiseases?.map(el => el.id) ?? [],
+    //             receivedVaccines: this.selectedVaccines?.map(el => el.id) ?? [],
+    //             profileImg: "",
+    //             userId: this.$store.state.userInfo.userId,
+    //             isParent: true,
+    //             pin: this.pinPassword
+    //           };
+    //           await service().family.create(data);
+    //           await service().user.update(
+    //             this.$store.state.userInfo.userId,
+    //             data
+    //           );
+    //           this.$store.commit("setFirstTime", false);
+    //         } else {
+    //           const listFamilies = await service().family.list();
+    //           const userFamilyId = listFamilies.find(
+    //             el =>
+    //               el.fullname === this.userInfo.fullname &&
+    //               el.userId === this.userInfo.userId
+    //           )?.familyId;
+    //           const data = {
+    //             fullname: this.fullname,
+    //             birthDate: this.birthDate,
+    //             diseases: this.selectedDiseases.map(el => el.id),
+    //             receivedVaccines: this.selectedVaccines.map(el => el.id),
+    //             profileImg: "",
+    //             userId: this.$store.state.userInfo.userId,
+    //             pin: this.pinPassword,
+    //             isParent: true
+    //           };
+    //           await service().family.update(userFamilyId, data);
+    //           await service().user.update(this.userInfo.userId, data);
+    //           this.$store.commit("setFirstTime", false);
+    //         }
+    //       }
+    //     });
+    //   } catch (e) {
+    //     this.errorMessage = e.message;
+    //   }
+    // },
     onChangeLanguage(e) {
       this.$store.commit("changeLanguage", e.target.value);
     },

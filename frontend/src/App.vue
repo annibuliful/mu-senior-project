@@ -9,8 +9,8 @@
 </template>
 <script>
 import { setMode } from "@/services";
-import services from "./services";
-import { nanoid } from "nanoid";
+// import services from "./services";
+// import { nanoid } from "nanoid";
 import InternetToast from "@/components/Internet-toast.vue";
 import PWABadge from "pwa-badge";
 
@@ -29,7 +29,7 @@ export default {
   },
   mounted() {
     this.setAppBadge();
-    this.createNewUserWhenIdNotExist();
+    // this.createNewUserWhenIdNotExist();
     this.openNotification();
     this.testPushNotification();
     this.checkFirstTime();
@@ -101,28 +101,28 @@ export default {
       } else {
         this.$store.commit("changeLanguage", language);
       }
-    },
-    createNewUserWhenIdNotExist: async function() {
-      const userInfo = localStorage.getItem("login-info");
-      const isUserIdExist = await services().auth.isUserIdExist(
-        JSON.parse(userInfo)
-      );
-
-      if (!isUserIdExist) {
-        const loginData = { username: nanoid(), password: nanoid() };
-        localStorage.setItem("login-info", JSON.stringify(loginData));
-        await services().auth.register(loginData);
-      }
-      const loginInfo = JSON.parse(localStorage.getItem("login-info"));
-      const result = await services().auth.login(loginInfo);
-      const mergeInfo = { ...result, ...JSON.parse(userInfo) };
-      console.log("result", { ...result, userInfo });
-      this.$store.commit("setUserInfo", mergeInfo);
-      localStorage.setItem("userInfo", JSON.stringify(mergeInfo));
-      localStorage.setItem("login-info", JSON.stringify(mergeInfo));
-      // this.$router.push({ name: "dashboard-home" });
-      // this.$router.push({ name: "dashboard-family" });
     }
+    // createNewUserWhenIdNotExist: async function() {
+    //   const userInfo = localStorage.getItem("login-info");
+    //   const isUserIdExist = await services().auth.isUserIdExist(
+    //     JSON.parse(userInfo)
+    //   );
+
+    //   if (!isUserIdExist) {
+    //     const loginData = { username: nanoid(), password: nanoid() };
+    //     localStorage.setItem("login-info", JSON.stringify(loginData));
+    //     await services().auth.register(loginData);
+    //   }
+    //   const loginInfo = JSON.parse(localStorage.getItem("login-info"));
+    //   const result = await services().auth.login(loginInfo);
+    //   const mergeInfo = { ...result, ...JSON.parse(userInfo) };
+    //   console.log("result", { ...result, userInfo });
+    //   this.$store.commit("setUserInfo", mergeInfo);
+    //   localStorage.setItem("userInfo", JSON.stringify(mergeInfo));
+    //   localStorage.setItem("login-info", JSON.stringify(mergeInfo));
+    //   // this.$router.push({ name: "dashboard-home" });
+    //   // this.$router.push({ name: "dashboard-family" });
+    // }
   }
 };
 </script>
