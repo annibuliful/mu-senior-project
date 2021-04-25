@@ -136,7 +136,7 @@ export default {
     FamilyMemberHeader,
     History,
     // AppointmentCard,
-    RecordForm,
+    RecordForm
   },
   async created() {
     this.displayMode = "Roadmap";
@@ -147,7 +147,7 @@ export default {
         const language = this.$store.state.calendarLanguage;
         this.childId = Number(this.$route.params.id);
         this.childInfo = this.$store.state.listFamilies.find(
-          (el) => el.familyId === this.childId
+          el => el.familyId === this.childId
         );
         const listAppointments = await services().appointment.listByChildId(
           this.childId,
@@ -179,7 +179,7 @@ export default {
       isFilterShow: false,
       isNeedSuggestion: false,
       classHistoryLine: "",
-      classRoadmapLine: "",
+      classRoadmapLine: ""
     };
   },
   computed: {
@@ -197,7 +197,7 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    },
+    }
   },
   methods: {
     async onToggleEditAppointment(value, data) {
@@ -208,7 +208,7 @@ export default {
       console.log("toggle-appointment", {
         value,
         data,
-        appointmentInfo,
+        appointmentInfo
       });
 
       if (value === "false") {
@@ -224,13 +224,13 @@ export default {
           oldStatus: appointmentInfo.status,
           oldDot: appointmentInfo.dot,
           dot: "green",
-          status: "vaccinated",
+          status: "vaccinated"
         });
         await services().family.update(this.childInfo.familyId, childInfo);
         this.$store.commit("updateRecordIdToAppointment", {
           appointmentId: data.appointmentId,
           recordId,
-          recordCustomData: data.recordCustomData,
+          recordCustomData: data.recordCustomData
         });
       } else {
         await services().record.removeByAppointmentId(data.appointmentId);
@@ -239,7 +239,7 @@ export default {
         await services().appointment.update(Number(data.appointmentId), {
           recordId: null,
           dot: appointmentInfo.oldDot ?? "gray",
-          status: appointmentInfo.oldStatus ?? "in-progress",
+          status: appointmentInfo.oldStatus ?? "in-progress"
         });
       }
     },
@@ -249,21 +249,21 @@ export default {
       await services().appointment.update(Number(data.appointmentId), {
         recordCustomData: data.recordCustomData,
         dot: "green",
-        status: "vaccinated",
+        status: "vaccinated"
       });
       this.$store.commit("updateRecordIdToAppointment", {
         appointmentId: data.appointmentId,
         recordId: data.recordId,
-        recordCustomData: data.recordCustomData,
+        recordCustomData: data.recordCustomData
       });
     },
     onClickToSuggestion() {
       this.$store.commit("setTempFamilyInfo", {
         ...this.childInfo,
-        isUpdated: true,
+        isUpdated: true
       });
       this.$router.push({
-        name: "appointment-child-suggestion",
+        name: "appointment-child-suggestion"
       });
     },
     onClickFilter() {
@@ -287,13 +287,13 @@ export default {
           search: this.searchKeyword,
           filter: this.filter,
           sort: this.sort,
-          childId: this.childId,
+          childId: this.childId
         },
         language
       );
 
       this.$store.commit("setNewAppointmentList", data ?? []);
-    },
-  },
+    }
+  }
 };
 </script>
