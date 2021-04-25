@@ -13,7 +13,7 @@
     <div class="w-full flex mx-auto md:w-2/4 lg:w-2/4 justify-evenly my-8">
       <div
         :class="[
-          receiveStatus === 'received' ? 'border-blue-600' : 'border-gray-400'
+          receiveStatus === 'received' ? 'border-blue-600' : 'border-gray-400',
         ]"
         class="p-6 m-2 border-2 pointer language-box"
         @click="onChangeReceiveStatus('received')"
@@ -23,7 +23,7 @@
       <div
         @click="onChangeReceiveStatus('never')"
         :class="[
-          receiveStatus === 'never' ? 'border-blue-600' : 'border-gray-400'
+          receiveStatus === 'never' ? 'border-blue-600' : 'border-gray-400',
         ]"
         class="p-6 m-2 border-2 pointer language-box"
       >
@@ -113,11 +113,11 @@ export default {
       listReceiveDates: [
         {
           doseNumber: 1,
-          date: ""
-        }
+          date: "",
+        },
       ],
       vaccineId: "",
-      vaccineName: ""
+      vaccineName: "",
     };
   },
   computed: {
@@ -126,17 +126,17 @@ export default {
     },
     locale() {
       return this.$store.state.locale;
-    }
+    },
   },
   created: function() {
-    this.listVaccines = this.$store.state.listOverdueVaccines.map(el => ({
+    this.listVaccines = this.$store.state.listOverdueVaccines.map((el) => ({
       ...el,
       listReceiveDates: [
         {
           doseNumber: 1,
-          date: ""
-        }
-      ]
+          date: "",
+        },
+      ],
     }));
     this.vaccineId = this.listVaccines[0].vaccineId;
     this.limitDose = this.getLimitDoseOfVaccine(this.vaccineId);
@@ -161,14 +161,14 @@ export default {
           childname: fullname,
           childId: familyId,
           time: "09:30",
-          doseNumber: 1
-        }
+          doseNumber: 1,
+        },
       };
-      return await service().appointment.create(data);
+      return await service().appointment.create(data, this.calendarLocale);
     },
     getLimitDoseOfVaccine: function(vaccineId) {
       return (
-        listAllVaccines.find(el => el.vaccineId === vaccineId)
+        listAllVaccines.find((el) => el.vaccineId === vaccineId)
           ?.injectionPeriodTime?.length ?? 0
       );
     },
@@ -176,7 +176,7 @@ export default {
       const doseNumber = this.listReceiveDates.length + 1;
       this.listReceiveDates.push({
         doseNumber,
-        date: ""
+        date: "",
       });
     },
     removeReceiveDate: function(index) {
@@ -188,8 +188,8 @@ export default {
         this.listReceiveDates = [
           {
             doseNumber: 1,
-            date: ""
-          }
+            date: "",
+          },
         ];
       }
     },
@@ -198,7 +198,7 @@ export default {
         const tempVaccine = this.listVaccines[this.currentIndex];
         this.listVaccines[this.currentIndex] = {
           ...tempVaccine,
-          listReceiveDates: this.listReceiveDates
+          listReceiveDates: this.listReceiveDates,
         };
 
         this.currentIndex++;
@@ -206,8 +206,8 @@ export default {
         this.listReceiveDates = tempForNextVaccine.listReceiveDates ?? [
           {
             doseNumber: 1,
-            date: ""
-          }
+            date: "",
+          },
         ];
         this.vaccineId = tempForNextVaccine.vaccineId;
         this.vaccineName = tempForNextVaccine.vaccineNameNormal;
@@ -232,7 +232,7 @@ export default {
         const tempVaccine = this.listVaccines[this.currentIndex];
         this.listVaccines[this.currentIndex] = {
           ...tempVaccine,
-          listReceiveDates: this.listReceiveDates
+          listReceiveDates: this.listReceiveDates,
         };
         this.currentIndex--;
         const tempForNextVaccine = this.listVaccines[this.currentIndex];
@@ -240,8 +240,8 @@ export default {
         this.listReceiveDates = tempForNextVaccine.listReceiveDates ?? [
           {
             doseNumber: 1,
-            date: ""
-          }
+            date: "",
+          },
         ];
         this.vaccineId = tempForNextVaccine.vaccineId;
         this.vaccineName = tempForNextVaccine.vaccineNameNormal;
@@ -279,14 +279,14 @@ export default {
 
           listReceiveVaccines.push({
             vaccineId: vaccine.id,
-            receivedDate: listReceiveDates[j].date
+            receivedDate: listReceiveDates[j].date,
           });
 
           const filterByDoseData = {
             userId: this.childInfo.familyId,
             language: this.calendarLocale,
             doseNumber: listReceiveDates[j].doseNumber,
-            vaccineId: this.vaccineId
+            vaccineId: this.vaccineId,
           };
 
           const doseInfo = await services().appointment.filterByDose(
@@ -308,12 +308,12 @@ export default {
       const childInfo = (await service().family.getByChildId(familyId))[0];
 
       childInfo.receivedVaccines.push(
-        listReceiveVaccines.map(el => el.vaccineId)
+        listReceiveVaccines.map((el) => el.vaccineId)
       );
 
       await service().family.update(familyId, childInfo);
       const listVaccinesForNextTime = [
-        ...new Set(listReceiveVaccines.map(el => el.vaccineId))
+        ...new Set(listReceiveVaccines.map((el) => el.vaccineId)),
       ];
 
       const listGroupByVaccinId = groupBy(listReceiveVaccines, "vaccineId");
@@ -321,14 +321,14 @@ export default {
       for (let k = 0; k < listVaccinesForNextTime.length; k++) {
         const vaccineId = listVaccinesForNextTime[k];
         const listDates = listGroupByVaccinId[vaccineId];
-        const lastestDate = max(listDates.map(el => el.receivedDate));
+        const lastestDate = max(listDates.map((el) => el.receivedDate));
         await this.createNextAppoinment(vaccineId, lastestDate);
       }
 
       this.$fire({
         title: this.locale.label.saveInfo + " " + this.locale.label.success,
         type: "success",
-        timer: 3000
+        timer: 3000,
       });
       this.$router.push({ name: "dashboard-home" });
     },
@@ -347,7 +347,7 @@ export default {
         doctorInfo: null,
         freetext: "",
         recordImage: null,
-        photoDate: null
+        photoDate: null,
       };
 
       await Promise.all([
@@ -356,8 +356,8 @@ export default {
           dates: new Date(receiveDateInfo.date),
           key: receiveDateInfo.date.toString(),
           dot: "green",
-          status: "vaccinated"
-        })
+          status: "vaccinated",
+        }),
       ]);
       return;
     },
@@ -377,8 +377,8 @@ export default {
           this.calendarLocale
         )) ?? [];
 
-      const nextDate = duration => add(date, { days: duration });
-      const mapData = listNextAppointment.map(el => ({
+      const nextDate = (duration) => add(date, { days: duration });
+      const mapData = listNextAppointment.map((el) => ({
         dates: nextDate(el.nextDay),
         dot: "gray",
         key: nextDate(el.nextDay).toString(),
@@ -388,16 +388,16 @@ export default {
           note: "",
           childname: childInfo.fullname,
           childId: childInfo.familyId,
-          time: "09:30"
-        }
+          time: "09:30",
+        },
       }));
 
-      const listCallCreate = mapData.map(el =>
+      const listCallCreate = mapData.map((el) =>
         service().appointment.create(el)
       );
       await Promise.all(listCallCreate);
-    }
-  }
+    },
+  },
 };
 </script>
 
