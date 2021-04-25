@@ -54,6 +54,9 @@ export default {
     },
     listFamilies() {
       return this.$store.state.listFamilies;
+    },
+    calendarLocale() {
+      return this.$store.state.calendarLocale;
     }
   },
   data: function() {
@@ -206,7 +209,7 @@ export default {
           doseNumber
         }
       };
-      return await service().appointment.create(data);
+      return await service().appointment.create(data, this.calendarLocale);
     }
   }
 };

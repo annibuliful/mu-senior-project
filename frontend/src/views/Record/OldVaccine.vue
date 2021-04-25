@@ -164,7 +164,7 @@ export default {
           doseNumber: 1
         }
       };
-      return await service().appointment.create(data);
+      return await service().appointment.create(data, this.calendarLocale);
     },
     getLimitDoseOfVaccine: function(vaccineId) {
       return (

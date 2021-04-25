@@ -10,8 +10,13 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "@types/lodash": "^4.14.168",
+    "date-fns": "^2.21.1",
+    "date-fns-tz": "^1.1.4",
     "firebase-admin": "^9.6.0",
-    "firebase-functions": "^3.11.0"
+    "firebase-functions": "^3.11.0",
+    "lodash": "^4.17.21",
+    "p-queue": "^7.1.0"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.2.0",

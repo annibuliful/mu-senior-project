@@ -10,7 +10,7 @@ export const register = async (username, password) => {
       .collection("/users")
       .doc(username)
       .set({
-        deviceToken
+        deviceTokens: [deviceToken]
       });
 
     console.log("saveUsername", saveUsername);

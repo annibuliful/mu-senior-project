@@ -78,15 +78,15 @@ messaging.onBackgroundMessage(function(payload) {
   );
   // Customize notification here
   // const notificationTitle = "Background Message Title";
-  const notificationOptions = {
-    body: "Background Message body.",
-    icon: "/firebase-logo.png",
-  };
+  // const notificationOptions = {
+  //   body: "Background Message body.",
+  //   icon: "/firebase-logo.png",
+  // };
 
-  self.registration.showNotification(
-    payload.notification.title,
-    notificationOptions
-  );
+  // self.registration.showNotification(
+  //   payload.notification.title,
+  //   notificationOptions
+  // );
 });
 
 // const options = {

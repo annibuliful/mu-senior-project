@@ -179,12 +179,13 @@ export default {
             }
           };
           console.log("data", data);
-          listAppointments.push(service().appointment.create(data));
+          listAppointments.push(
+            service().appointment.create(data, this.calendarLocale)
+          );
         }
       }
 
-      const reul = await Promise.all(listAppointments);
-      console.log("reul", reul);
+      await Promise.all(listAppointments);
       this.$router.push({ name: "dashboard-index" });
     },
     onAddNewVaccine: function(vaccine) {

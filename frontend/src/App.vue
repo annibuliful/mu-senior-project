@@ -33,7 +33,8 @@ export default {
     this.openNotification();
     this.testPushNotification();
     this.checkFirstTime();
-    this.saveDeviceToken();
+    // this.saveDeviceToken();
+    this.saveDeviceTokenForUser();
     // this.onCloudMessage();
     this.$store.commit("getCovidInfo");
     window.navigator.onLine ? setMode("online") : setMode("offline");
@@ -51,6 +52,26 @@ export default {
     });
   },
   methods: {
+    saveDeviceTokenForUser: async function() {
+      const deviceToken = await messaging.getToken({ vapidKey: VAPID_KEY });
+      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      const userOnlineInfo = userInfo.onlineInfo;
+      const username = userOnlineInfo?.username;
+      if (!username) return;
+      const userQuery = await firestore
+        .collection("/users")
+        .doc(username)
+        .get();
+
+      const listDeviceToken = userQuery.data().deviceTokens ?? [];
+
+      await firestore
+        .collection("/users")
+        .doc(username)
+        .set({
+          deviceTokens: [...listDeviceToken, deviceToken]
+        });
+    },
     onCloudMessage: async function() {
       const token = await messaging.getToken({ vapidKey: VAPID_KEY });
       console.log("cloud-token", token);

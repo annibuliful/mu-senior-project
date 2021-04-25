@@ -260,7 +260,7 @@ export default {
       }));
 
       const listCallCreate = mapData.map(el =>
-        service().appointment.create(el)
+        service().appointment.create(el, this.calendarLocale)
       );
       await Promise.all(listCallCreate);
       await this.submit();
