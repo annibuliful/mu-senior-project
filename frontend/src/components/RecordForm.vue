@@ -1,7 +1,7 @@
 <template>
   <div
     class="shadow rounded p-6 my-2"
-    :class="hasRecord && !isEdited ? 'bg-green-200' : ''"
+    :class="isHasRecord && !isEdited ? 'bg-green-200' : ''"
   >
     <div class="flex flex-row items-center">
       <div class="w-2/12">
@@ -19,19 +19,21 @@
         </p>
         <!-- ถ้าฉีดแล้ว บอกว่า ฉีดไปแล้ววันที่ ถ้ายัง แนะนำให้ฉีดวันที่ -->
         <div class="text-gray-500 text-sm">
-          <span v-if="!hasRecord">{{ locale.suggestDate }}</span>
+          <span v-if="!isHasRecord">{{ locale.suggestDate }}</span>
           <span class="text-green-700 font-bold" v-else>{{
             locale.receivedVac
           }}</span>
 
-          <span class="text-gray-800" v-if="!hasRecord"> {{ dateFormat }}</span>
+          <span class="text-gray-800" v-if="!isHasRecord">
+            {{ dateFormat }}</span
+          >
           <span class="text-green-700 font-bold" v-else>
             {{ receivingDateFormat }}</span
           >
         </div>
         <div
           class="text-gray-500 text-sm"
-          :class="hasRecord ? 'text-green-700 font-bold' : ''"
+          :class="isHasRecord ? 'text-green-700 font-bold' : ''"
         >
           ({{ locale.recordVaccinePage.doseNumber }} {{ doseNumber }})
         </div>
@@ -41,11 +43,11 @@
       <div @click="toggleEditForm" class="cursor-pointer">
         <img
           class="opacity-50"
-          v-if="!isEdited && hasRecord"
+          v-if="!isEdited && isHasRecord"
           src="../assets/icons/down.svg"
           alt=""
         /><img
-          v-if="isEdited && hasRecord"
+          v-if="isEdited && isHasRecord"
           class="opacity-50"
           src="../assets/icons/up.svg"
           alt=""
@@ -204,7 +206,7 @@ import { th } from "date-fns/locale";
 export default {
   data: function() {
     return {
-      hasRecord: this.isHasRecord,
+      hasRecord: false,
       isEdited: false,
       receivingDate: new Date(),
       newSideEffect: "",
@@ -216,6 +218,15 @@ export default {
       base64UrlSideEffect: "",
       hospitalName: ""
     };
+  },
+  watch: {
+    isHasRecord: function(old, newVal) {
+      console.log("isHasRecord", this.vaccineId, this.vaccineName, {
+        old,
+        newVal
+      });
+      this.hasRecord = old;
+    }
   },
   props: {
     recordCustomData: {
@@ -254,6 +265,7 @@ export default {
   },
   mounted() {
     console.log("recordCustomData", this.recordCustomData);
+    this.hasRecord = this.isHasRecord;
     if (this.recordCustomData) {
       this.newSideEffect = this.recordCustomData.sideEffect;
       this.newBatchNumber = this.recordCustomData.batchNumber;

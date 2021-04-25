@@ -149,7 +149,6 @@ export default {
         this.childInfo = this.$store.state.listFamilies.find(
           el => el.familyId === this.childId
         );
-
         const listAppointments = await services().appointment.listByChildId(
           this.childId,
           language
@@ -205,9 +204,18 @@ export default {
       const [appointmentInfo] = await services().appointment.getById(
         data.appointmentId
       );
-      console.log("toggle-appointment", value, data, appointmentInfo);
+
+      console.log("toggle-appointment", {
+        value,
+        data,
+        appointmentInfo
+      });
 
       if (value === "false") {
+        const vaccineId = data.recordCustomData.vaccineId;
+        const childInfo = this.childInfo;
+
+        childInfo.receivedVaccines = [...childInfo.receivedVaccines, vaccineId];
         const tempData = data;
         delete tempData.recordId;
         const recordId = await services().record.create(data);
@@ -218,6 +226,7 @@ export default {
           dot: "green",
           status: "vaccinated"
         });
+        await services().family.update(this.childInfo.familyId, childInfo);
         this.$store.commit("updateRecordIdToAppointment", {
           appointmentId: data.appointmentId,
           recordId,
