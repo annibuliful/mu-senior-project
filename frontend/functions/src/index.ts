@@ -94,7 +94,7 @@ export const setNotificationByUsername = functions.https.onRequest(
 
 export const testGetAllUser = functions.https.onRequest(async (req, res) => {
   const startDate = new Date();
-  const endDate = add(new Date(), { days: 1 });
+  const endDate = add(new Date(), { days: 3 });
 
   const userQuery = await admin
     .firestore()
