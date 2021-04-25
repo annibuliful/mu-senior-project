@@ -94,7 +94,7 @@ export const setNotificationByUsername = functions.https.onRequest(
 );
 
 const getAllAppointmentToday = async () => {
-  const startDate = getUnixTime(sub(new Date(), { days: 1 }));
+  const startDate = getUnixTime(sub(new Date(), { days: 7 }));
   const endDate = getUnixTime(add(new Date(), { days: 7 }));
 
   const userQuery = await admin
