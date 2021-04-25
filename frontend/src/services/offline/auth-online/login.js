@@ -21,16 +21,16 @@ export const login = async (username, password) => {
       .collection("/users")
       .doc(username)
       .set({
-        deviceTokens: [...listDeviceTokens, deviceToken],
+        deviceTokens: [...listDeviceTokens, deviceToken]
       });
     console.log("saveUsername", saveUsername);
     return fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password })
     });
   } catch (e) {
     console.log("aaaa", e);
@@ -38,9 +38,9 @@ export const login = async (username, password) => {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password })
     });
   }
 };

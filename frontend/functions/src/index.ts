@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import { add, getUnixTime, sub } from "date-fns";
-import { groupBy } from "lodash";
+import { groupBy, uniq } from "lodash";
 // import PQueue from "p-queue";
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -36,12 +36,13 @@ export const sendNotificaton = functions.https.onRequest(async (req, res) => {
 });
 
 const buildNotification = (data: any) => {
-  const customData = data.customData;
+  const customData = data.data.customData;
   const childName = customData.childname;
   const time = customData.time;
-  const vaccineId = customData.vaccineId;
+  // const vaccineId = customData.vaccineId;
+  const vaccineNames = data.listVaccineNames;
   return {
-    title: `${childName} Today ,${vaccineId}:${time}`,
+    title: `${childName} Today:${time} with ${vaccineNames.join(",")}`,
   };
 };
 export const setNotificationByUsername = functions.https.onRequest(
@@ -92,65 +93,24 @@ export const setNotificationByUsername = functions.https.onRequest(
   }
 );
 
-// const getAllAppointmentToday = async () => {
-//   const startDate = getUnixTime(sub(new Date(), { days: 1 }));
-//   const endDate = getUnixTime(add(new Date(), { days: 3 }));
-
-//   const userQuery = await admin
-//     .firestore()
-//     .collection("/users")
-//     .get();
-
-//   const listUserIds: string[] = [];
-//   userQuery.forEach((user) => {
-//     listUserIds.push(user.id);
-//   });
-//   const listAppointments: any[] = [];
-
-//   for (let i = 0; i < listUserIds.length; i++) {
-//     const userId = listUserIds[i];
-//     const listUserAppointments = await admin
-//       .firestore()
-//       .collection("/users")
-//       .doc(userId)
-//       .collection("appointments")
-//       .get();
-
-//     listUserAppointments.forEach((appointment) => {
-//       listAppointments.push({ appointment: appointment.data(), userId });
-//     });
-//   }
-
-//   const listAppointmentInPeriod = listAppointments.filter(
-//     ({ appointment }) =>
-//       appointment.unixTimeStamp >= startDate &&
-//       appointment.unixTimeStamp <= endDate
-//   );
-//   const groupByUserId = groupBy(listAppointments, ({ userId }) => userId);
-//   return {
-//     listAppointmentInPeriod,
-//     groupByUserId,
-//   };
-// };
-
-export const testGetAllUser = functions.https.onRequest(async (req, res) => {
+const getAllAppointmentToday = async () => {
   const startDate = getUnixTime(sub(new Date(), { days: 1 }));
-  const endDate = getUnixTime(add(new Date(), { days: 3 }));
+  const endDate = getUnixTime(add(new Date(), { days: 7 }));
 
   const userQuery = await admin
     .firestore()
     .collection("/users")
     .get();
 
-  const listUserIds: any[] = [];
+  const listUsers: any[] = [];
   userQuery.forEach((user) => {
     const userData = user.data();
-    listUserIds.push({ userId: user.id, deviceTokens: userData.deviceTokens });
+    listUsers.push({ userId: user.id, deviceTokens: userData.deviceTokens });
   });
   const listAppointments: any[] = [];
 
-  for (let i = 0; i < listUserIds.length; i++) {
-    const userId = listUserIds[i].userId;
+  for (let i = 0; i < listUsers.length; i++) {
+    const userId = listUsers[i].userId;
     const listUserAppointments = await admin
       .firestore()
       .collection("/users")
@@ -170,23 +130,101 @@ export const testGetAllUser = functions.https.onRequest(async (req, res) => {
   );
   const groupByUserId = groupBy(listAppointments, ({ userId }) => userId);
 
-  res.send({
-    startDate,
-    endDate,
-    groupByUserId,
-    listUserIds,
-    listAppointments,
+  return {
     listAppointmentInPeriod,
+    groupByUserId,
+    listUsers,
+  };
+};
+
+// const queue = new PQueue({ concurrency: 2 });
+
+export const testGetAllUser = functions.https.onRequest(async (req, res) => {
+  const { listAppointmentInPeriod, listUsers } = await getAllAppointmentToday();
+  const listNotifications: any[] = [];
+
+  listUsers.forEach((user) => {
+    const listAppointments: any[] = listAppointmentInPeriod
+      .filter((appointment) => appointment.userId === user.userId)
+      .map(({ appointment }) => appointment);
+
+    const listDeviceTokens: string[] = user.deviceTokens;
+
+    for (let i = 0; i < listAppointments.length; i++) {
+      const appointment = listAppointments[i];
+
+      listNotifications.push({
+        appointment: buildNotification(appointment),
+        listDeviceTokens,
+      });
+    }
+  });
+
+  const messageResult: any[] = [];
+
+  for (let i = 0; i < listNotifications.length; i++) {
+    const notification = listNotifications[i];
+    const title = notification.appointment.title;
+    const listDeviceTokens: any[] = uniq(notification.listDeviceTokens);
+
+    const result = await admin.messaging().sendToDevice(listDeviceTokens[0], {
+      notification: {
+        title,
+      },
+    });
+
+    messageResult.push(result);
+  }
+  res.send({
+    listAppointmentInPeriod,
+    listUsers,
+    listNotifications,
+    messageResult,
   });
 });
 
-// const queue = new PQueue({concurrency: 1});
+export const sendNotificatonEveryDay = functions.pubsub
+  .schedule("0 8 * * *")
+  .timeZone("Asia/Bangkok")
+  .onRun(async (context) => {
+    const {
+      listAppointmentInPeriod,
+      listUsers,
+    } = await getAllAppointmentToday();
+    const listNotifications: any[] = [];
 
-// export const sendNotificatonEveryDay = functions.pubsub.schedule('0 8 * * *').timeZone('Asia/Bangkok').onRun(async(context)=>{
-//   const today = new Date();
-//   const listUsers = await admin.firestore().collection('/users').get()
+    listUsers.forEach((user) => {
+      const listAppointments: any[] = listAppointmentInPeriod
+        .filter((appointment) => appointment.userId === user.userId)
+        .map(({ appointment }) => appointment);
 
-//   // listUsers.forEach((user)=>{
-//   //   const listAppointmentsToday =  await admin.firestore().collection(`/users/${user.id}`)
-//   // })
-// })
+      const listDeviceTokens: string[] = user.deviceTokens;
+
+      for (let i = 0; i < listAppointments.length; i++) {
+        const appointment = listAppointments[i];
+
+        listNotifications.push({
+          appointment: buildNotification(appointment),
+          listDeviceTokens,
+        });
+      }
+    });
+
+    const messageResult: any[] = [];
+
+    for (let i = 0; i < listNotifications.length; i++) {
+      const notification = listNotifications[i];
+      const title = notification.appointment.title;
+      const listDeviceTokens: any[] = uniq(notification.listDeviceTokens);
+
+      const result = await admin.messaging().sendToDevice(listDeviceTokens[0], {
+        notification: {
+          title,
+        },
+      });
+
+      messageResult.push(result);
+    }
+
+    console.log(`message-result ${new Date().toDateString()}`, messageResult);
+  });
