@@ -169,7 +169,8 @@ export const testGetAllUser = functions.https.onRequest(async (req, res) => {
 
     const result = await admin.messaging().sendToDevice(listDeviceTokens[0], {
       notification: {
-        title,
+        title: "Vaccinet Notification",
+        body: title,
       },
     });
 
@@ -219,7 +220,8 @@ export const sendNotificatonEveryDay = functions.pubsub
 
       const result = await admin.messaging().sendToDevice(listDeviceTokens[0], {
         notification: {
-          title,
+          title: "Vaccinet Notification",
+          body: title,
         },
       });
 
