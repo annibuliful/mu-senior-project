@@ -39,12 +39,12 @@ const buildNotification = (data: any) => {
   const customData = data.data.customData;
   const childName = customData.childname;
   const time = customData.time;
-  // const vaccineId = customData.vaccineId;
   const vaccineNames = data.listVaccineNames;
   return {
     title: `${childName} Today:${time} with ${vaccineNames.join(",")}`,
   };
 };
+
 export const setNotificationByUsername = functions.https.onRequest(
   async (req, res) => {
     const username = req.body.username;
@@ -167,14 +167,16 @@ export const testGetAllUser = functions.https.onRequest(async (req, res) => {
     const title = notification.appointment.title;
     const listDeviceTokens: any[] = uniq(notification.listDeviceTokens);
 
-    const result = await admin.messaging().sendToDevice(listDeviceTokens[0], {
-      notification: {
-        title: "Vaccinet Notification",
-        body: title,
-      },
-    });
+    for (let j = 0; j < listDeviceTokens.length; j++) {
+      const result = await admin.messaging().sendToDevice(listDeviceTokens[j], {
+        notification: {
+          title: "Vaccinet Notification",
+          body: title,
+        },
+      });
 
-    messageResult.push(result);
+      messageResult.push(result);
+    }
   }
   res.send({
     listAppointmentInPeriod,
@@ -217,15 +219,18 @@ export const sendNotificatonEveryDay = functions.pubsub
       const notification = listNotifications[i];
       const title = notification.appointment.title;
       const listDeviceTokens: any[] = uniq(notification.listDeviceTokens);
+      for (let j = 0; j < listDeviceTokens.length; j++) {
+        const result = await admin
+          .messaging()
+          .sendToDevice(listDeviceTokens[j], {
+            notification: {
+              title: "Vaccinet Notification",
+              body: title,
+            },
+          });
 
-      const result = await admin.messaging().sendToDevice(listDeviceTokens[0], {
-        notification: {
-          title: "Vaccinet Notification",
-          body: title,
-        },
-      });
-
-      messageResult.push(result);
+        messageResult.push(result);
+      }
     }
 
     console.log(`message-result ${new Date().toDateString()}`, messageResult);
