@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-import { add } from "date-fns";
+import { add, getUnixTime, sub } from "date-fns";
 import { groupBy } from "lodash";
 // import PQueue from "p-queue";
 // // Start writing Firebase Functions
@@ -92,30 +92,70 @@ export const setNotificationByUsername = functions.https.onRequest(
   }
 );
 
+// const getAllAppointmentToday = async () => {
+//   const startDate = getUnixTime(sub(new Date(), { days: 1 }));
+//   const endDate = getUnixTime(add(new Date(), { days: 3 }));
+
+//   const userQuery = await admin
+//     .firestore()
+//     .collection("/users")
+//     .get();
+
+//   const listUserIds: string[] = [];
+//   userQuery.forEach((user) => {
+//     listUserIds.push(user.id);
+//   });
+//   const listAppointments: any[] = [];
+
+//   for (let i = 0; i < listUserIds.length; i++) {
+//     const userId = listUserIds[i];
+//     const listUserAppointments = await admin
+//       .firestore()
+//       .collection("/users")
+//       .doc(userId)
+//       .collection("appointments")
+//       .get();
+
+//     listUserAppointments.forEach((appointment) => {
+//       listAppointments.push({ appointment: appointment.data(), userId });
+//     });
+//   }
+
+//   const listAppointmentInPeriod = listAppointments.filter(
+//     ({ appointment }) =>
+//       appointment.unixTimeStamp >= startDate &&
+//       appointment.unixTimeStamp <= endDate
+//   );
+//   const groupByUserId = groupBy(listAppointments, ({ userId }) => userId);
+//   return {
+//     listAppointmentInPeriod,
+//     groupByUserId,
+//   };
+// };
+
 export const testGetAllUser = functions.https.onRequest(async (req, res) => {
-  const startDate = new Date();
-  const endDate = add(new Date(), { days: 3 });
+  const startDate = getUnixTime(sub(new Date(), { days: 1 }));
+  const endDate = getUnixTime(add(new Date(), { days: 3 }));
 
   const userQuery = await admin
     .firestore()
     .collection("/users")
     .get();
 
-  const listUserIds: string[] = [];
+  const listUserIds: any[] = [];
   userQuery.forEach((user) => {
-    listUserIds.push(user.id);
+    const userData = user.data();
+    listUserIds.push({ userId: user.id, deviceTokens: userData.deviceTokens });
   });
   const listAppointments: any[] = [];
 
   for (let i = 0; i < listUserIds.length; i++) {
-    const userId = listUserIds[i];
+    const userId = listUserIds[i].userId;
     const listUserAppointments = await admin
       .firestore()
-      .collection(`/users`)
+      .collection("/users")
       .doc(userId)
       .collection("appointments")
-      .where("dates", ">=", startDate)
-      .where("dates", "<=", endDate)
       .get();
 
     listUserAppointments.forEach((appointment) => {
@@ -123,9 +163,21 @@ export const testGetAllUser = functions.https.onRequest(async (req, res) => {
     });
   }
 
+  const listAppointmentInPeriod = listAppointments.filter(
+    ({ appointment }) =>
+      appointment.unixTimeStamp >= startDate &&
+      appointment.unixTimeStamp <= endDate
+  );
   const groupByUserId = groupBy(listAppointments, ({ userId }) => userId);
 
-  res.send({ groupByUserId });
+  res.send({
+    startDate,
+    endDate,
+    groupByUserId,
+    listUserIds,
+    listAppointments,
+    listAppointmentInPeriod,
+  });
 });
 
 // const queue = new PQueue({concurrency: 1});

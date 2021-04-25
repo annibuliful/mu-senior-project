@@ -53,17 +53,23 @@ export default {
   },
   methods: {
     saveDeviceTokenForUser: async function() {
-      const token = await messaging.getToken({ vapidKey: VAPID_KEY });
+      const deviceToken = await messaging.getToken({ vapidKey: VAPID_KEY });
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const userOnlineInfo = userInfo.onlineInfo;
       const username = userOnlineInfo?.username;
+      if (!username) return;
+      const userQuery = await firestore
+        .collection("/users")
+        .doc(username)
+        .get();
+
+      const listDeviceToken = userQuery.data().deviceTokens ?? [];
+
       await firestore
         .collection("/users")
         .doc(username)
-        .collection("deviceTokens")
-        .doc(token)
         .set({
-          deviceToken: true,
+          deviceTokens: [...listDeviceToken, deviceToken],
         });
     },
     onCloudMessage: async function() {

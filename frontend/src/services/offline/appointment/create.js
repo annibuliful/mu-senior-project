@@ -1,7 +1,7 @@
 import db from "../db";
 import { firestore } from "../../../firebase";
 import { getVaccineById } from "../vaccine/get";
-
+import { getUnixTime, format } from "date-fns";
 export default async (data) => {
   try {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -11,13 +11,13 @@ export default async (data) => {
     const listVaccineNames = listVaccineIds
       .map((id) => getVaccineById(id))
       .map((vaccine) => vaccine.vaccineNameNormal);
-    const appointmentDate = Math.round(new Date(data.dates).getTime() / 1000);
-
+    const unixTimeStamp = getUnixTime(data.dates);
+    const appointmentDate = format(data.dates, "yyyy-MM-dd");
     await firestore
       .collection(`/users`)
       .doc(username)
       .collection("appointments")
-      .add({ data, appointmentDate, listVaccineNames });
+      .add({ data, appointmentDate, unixTimeStamp, listVaccineNames });
     return db.table("appointments").add(data);
   } catch (e) {
     console.log("error", e);
