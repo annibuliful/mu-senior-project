@@ -215,7 +215,8 @@ export default {
     logout: "ออกจากระบบ",
     search: "ค้นหา",
     delete: "ลบ",
-    next: "ไปต่อ"
+    next: "ไปต่อ",
+    loading: "กำลังโหลดข้อมูล..."
   },
   camera: {
     takePhoto: "ถ่ายรูป",
