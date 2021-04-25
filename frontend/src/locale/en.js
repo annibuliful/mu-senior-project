@@ -130,6 +130,8 @@ their device.`,
     uploadFile: "Upload Image"
   },
   label: {
+    regisSuccess: "Register successful",
+    regisNotSuccess: "Register was not successful",
     doseTimes: "Dose",
     useNewestVersion: "You already use the lastest version",
     updateVersion: "Do you want to update the application now?",

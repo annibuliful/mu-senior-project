@@ -139,6 +139,8 @@ export default {
     uploadFile: "อัปโหลดภาพ"
   },
   label: {
+    regisSuccess: "สมัครสมาชิกสำเร็จ",
+    regisNotSuccess: "สมัครสมาชิกไม่สำเร็จ",
     doseTimes: "โด๊สที่",
     useNewestVersion: "คุณกำลังใช้เวอร์ชันล่าสุด",
     updateVersion: "ต้องการอัปเดตแอปพลิเคชันหรือไม่",
