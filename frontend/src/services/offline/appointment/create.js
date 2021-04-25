@@ -7,15 +7,20 @@ export default async (data) => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     const userOnlineInfo = userInfo.onlineInfo;
     const username = userOnlineInfo?.username;
-    const listVaccineIds = data.selectedVaccines;
-    const listVaccineNames = listVaccineIds.map((id) => getVaccineById(id));
+    const listVaccineIds = data.customData.selectedVaccines;
+    const listVaccineNames = listVaccineIds
+      .map((id) => getVaccineById(id))
+      .map((vaccine) => vaccine.vaccineNameNormal);
+    const appointmentDate = Math.round(new Date(data.dates).getTime() / 1000);
+
     await firestore
       .collection(`/users`)
       .doc(username)
       .collection("appointments")
-      .add({ data, listVaccineNames });
+      .add({ data, appointmentDate, listVaccineNames });
     return db.table("appointments").add(data);
   } catch (e) {
+    console.log("error", e);
     return db.table("appointments").add(data);
   }
 };

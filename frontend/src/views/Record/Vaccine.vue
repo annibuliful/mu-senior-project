@@ -174,7 +174,7 @@ export default {
   components: {
     TagInput,
     Camera,
-    Modal,
+    Modal
   },
   data() {
     return {
@@ -192,7 +192,7 @@ export default {
       base64Url: null,
       baseInfo: null,
       listNextAppointments: [],
-      photoDate: null,
+      photoDate: null
     };
   },
   created() {
@@ -201,7 +201,7 @@ export default {
 
     service()
       .appointment.getById(this.eventId, language)
-      .then((data) => {
+      .then(data => {
         this.baseInfo = data[0];
         this.recordTo = this.baseInfo.customData.childname;
         this.selectedVaccines = this.baseInfo.customData.selectedVaccines;
@@ -213,16 +213,16 @@ export default {
   filters: {
     dateFormat: function(val) {
       return format(new Date(val), "dd/MM/yyyy");
-    },
+    }
   },
   computed: {
     localeText: function() {
       return this.$store.state.locale.recordVaccinePage;
     },
     listVaccines() {
-      return this.$store.state.locale.vaccines.map((el) => ({
+      return this.$store.state.locale.vaccines.map(el => ({
         tag: el.vaccineNameNormal,
-        id: el.vaccineId,
+        id: el.vaccineId
       }));
     },
     calendarLocale() {
@@ -233,7 +233,7 @@ export default {
     },
     label() {
       return this.$store.state.locale.labelAddAppointment;
-    },
+    }
   },
   methods: {
     async createNextAppointment() {
@@ -244,8 +244,8 @@ export default {
         ({ isComplete }) => !isComplete
       );
 
-      const nextDate = (duration) => add(new Date(), { days: duration });
-      const mapData = listVaccinesForNextTime.map((el) => ({
+      const nextDate = duration => add(new Date(), { days: duration });
+      const mapData = listVaccinesForNextTime.map(el => ({
         dates: nextDate(el.nextDay),
         dot: "gray",
         key: nextDate(el.nextDay).toString(),
@@ -255,11 +255,11 @@ export default {
           note: "",
           childname,
           childId,
-          time: "09:30",
-        },
+          time: "09:30"
+        }
       }));
 
-      const listCallCreate = mapData.map((el) =>
+      const listCallCreate = mapData.map(el =>
         service().appointment.create(el, this.calendarLocale)
       );
       await Promise.all(listCallCreate);
@@ -270,7 +270,7 @@ export default {
       const language = this.$store.state.calendarLocale;
 
       const childId = this.baseInfo.customData.childId;
-      const listVaccines = this.selectedVaccines.map((el) => el.id);
+      const listVaccines = this.selectedVaccines.map(el => el.id);
       const listNextAppointments = await service().util.checkRemainTimeForAddVaccine(
         childId,
         listVaccines,
@@ -299,21 +299,21 @@ export default {
         freetext: this.freetext,
         recordImage: this.base64Url,
         photoDate: this.photoDate ?? new Date(),
-        appointmentId: this.eventId,
+        appointmentId: this.eventId
       };
 
       await Promise.all([
         service().record.create(data),
         service().appointment.update(Number(this.eventId), {
           dot: "green",
-          status: "vaccinated",
-        }),
+          status: "vaccinated"
+        })
       ]);
 
       const childInfo = (await service().family.getByChildId(childId))[0];
       childInfo.receivedVaccines = [
         ...childInfo.receivedVaccines,
-        ...this.selectedVaccines.map((el) => el.id),
+        ...this.selectedVaccines.map(el => el.id)
       ];
       await service().family.update(childId, childInfo);
       this.$router.push({ name: "dashboard-home" });
@@ -340,8 +340,8 @@ export default {
     },
     onDeleteVaccine(index) {
       this.selectedVaccines.splice(index, 1);
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>

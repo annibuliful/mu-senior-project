@@ -1,5 +1,8 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
+import { add } from "date-fns";
+import { groupBy } from "lodash";
+// import PQueue from "p-queue";
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
@@ -88,3 +91,50 @@ export const setNotificationByUsername = functions.https.onRequest(
     }
   }
 );
+
+export const testGetAllUser = functions.https.onRequest(async (req, res) => {
+  const startDate = new Date();
+  const endDate = add(new Date(), { days: 1 });
+
+  const userQuery = await admin
+    .firestore()
+    .collection("/users")
+    .get();
+
+  const listUserIds: string[] = [];
+  userQuery.forEach((user) => {
+    listUserIds.push(user.id);
+  });
+  const listAppointments: any[] = [];
+
+  for (let i = 0; i < listUserIds.length; i++) {
+    const userId = listUserIds[i];
+    const listUserAppointments = await admin
+      .firestore()
+      .collection(`/users`)
+      .doc(userId)
+      .collection("appointments")
+      .where("dates", ">=", startDate)
+      .where("dates", "<=", endDate)
+      .get();
+
+    listUserAppointments.forEach((appointment) => {
+      listAppointments.push({ appointment: appointment.data(), userId });
+    });
+  }
+
+  const groupByUserId = groupBy(listAppointments, ({ userId }) => userId);
+
+  res.send({ groupByUserId });
+});
+
+// const queue = new PQueue({concurrency: 1});
+
+// export const sendNotificatonEveryDay = functions.pubsub.schedule('0 8 * * *').timeZone('Asia/Bangkok').onRun(async(context)=>{
+//   const today = new Date();
+//   const listUsers = await admin.firestore().collection('/users').get()
+
+//   // listUsers.forEach((user)=>{
+//   //   const listAppointmentsToday =  await admin.firestore().collection(`/users/${user.id}`)
+//   // })
+// })
