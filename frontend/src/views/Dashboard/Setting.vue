@@ -93,12 +93,12 @@
       </div> -->
     </div>
 
-    <!-- <button
-      class="block sm:hidden bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-auto w-9/12"
+    <button
+      class="block  bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-auto w-9/12"
       @click="onLogout"
     >
       {{ buttonLabel.logout }}
-    </button> -->
+    </button>
   </div>
 </template>
 <script>
@@ -192,7 +192,9 @@ export default {
       }).then(r => {
         if (r.value) {
           localStorage.removeItem("userInfo");
-          this.$router.push("/");
+          localStorage.removeItem("login-info");
+
+          this.$router.push("/login");
           this.$fire({
             title: this.locale.label.logoutSuccess,
             type: "success",

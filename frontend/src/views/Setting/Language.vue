@@ -57,7 +57,7 @@ export default {
 
       this.$store.commit("changeLanguage", this.language);
       localStorage.setItem("language", this.language);
-      this.$router.push({ name: "dashboard-family" });
+      this.$router.push({ name: "auth" });
     }
   },
   computed: {
