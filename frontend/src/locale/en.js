@@ -13,6 +13,8 @@ export default {
   addMemberWarning2: "Click here to go to the family management page",
   year: "Year(s)",
   month: "Month(s)",
+  importSuccess: "Restore Data Successful",
+  exportSuccess: "Export Data Successful",
   home: "Appointment",
   vaccine: "Vaccine",
   learnVaccine: "Learn Vaccines",
@@ -33,7 +35,7 @@ export default {
   passwordRequire: "Password is required",
   passwordMismatch: "Repeat password is mismatch",
   passwordAtLeast: "Password must have at least",
-  packager: "Packager",
+  packager: "Packages",
   setting: "Settings",
   event: "events",
   welcome: "Welcome Dear,",
@@ -108,7 +110,7 @@ their device.`,
       "Referrence: Vaccine and immunization textbook 2019, Department of Disease Control, Ministry of Public Health"
   },
   vaccinePackagerPage: {
-    title: "Vaccine Packager"
+    title: "Vaccine Packages"
   },
   recordVaccinePage: {
     title: "Record Vaccine",

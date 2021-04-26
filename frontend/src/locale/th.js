@@ -10,6 +10,8 @@ export default {
   menu: "เมนู",
   year: "ปี",
   month: "เดือน",
+  importSuccess: "นำเข้าข้อมูลสำเร็จ",
+  exportSuccess: "สำรองข้อมูลสำเร็จ",
   addMemberWarning: "กรุณาเพิ่มสมาชิกในครอบครัวก่อนเพิ่มการนัดหมาย",
   addMemberWarning2: "คลิกที่นี่เพื่อไปหน้าจัดการครอบครัวได้เลยครับ",
   home: "การนัดหมาย",
