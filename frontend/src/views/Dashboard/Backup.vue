@@ -150,7 +150,7 @@ export default {
 
       await services().revisionOnline.exportDb(userId);
       this.$fire({
-        title: "this.localeText.exportSuccess",
+        title: this.localeText.exportSuccess,
         type: "success",
         timer: 3000
       });
@@ -162,7 +162,7 @@ export default {
       await services().revisionOnline.importDb(userInfo.onlineUserId);
       await db.open();
       this.$fire({
-        title: "this.localeText.importSuccess",
+        title: this.localeText.importSuccess,
         type: "success",
         timer: 3000
       });
