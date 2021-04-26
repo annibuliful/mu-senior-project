@@ -20,7 +20,8 @@
           {{ name }}
         </div>
         <div class="text-xs text-gray-600 font-normal">
-          {{ lebels.age }}: {{ ageInYear }} ปี {{ ageRemainingMonth }} เดือน
+          {{ lebels.age }}: {{ ageInYear }} {{ localeText.year }}
+          {{ ageRemainingMonth }} {{ localeText.month }}
         </div>
         <p class="text-gray-700 text-base">
           {{ lebels.disease }}
@@ -68,6 +69,9 @@ export default {
     );
   },
   computed: {
+    localeText() {
+      return this.$store.state.locale;
+    },
     lebels: function() {
       return this.$store.state.locale.label;
     },
