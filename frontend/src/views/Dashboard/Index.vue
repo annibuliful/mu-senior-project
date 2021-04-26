@@ -1,5 +1,29 @@
 <template>
   <div class="flex flex-col h-auto">
+    <Modal
+      :isActive="activeModal"
+      v-on:close="onCloseModal"
+      :title="listItem.notify"
+    >
+      <div v-if="vaccinatingList.length == 0">
+        <img
+          src="../../assets/doctor-stand.png"
+          class="w-32 md:w-48 mx-auto"
+          alt=""
+        />
+        <div class="text-center text-lg">{{ listItem.noNotiNow }}</div>
+      </div>
+      <div
+        v-for="appointment in vaccinatingList"
+        :key="appointment.appointmentId"
+      >
+        <NotificationCard :appointment="appointment"></NotificationCard>
+        <!-- <div>{{ appointment.customData.childname }}</div>
+        <div>{{ appointment.customData.doseNumber }}</div>
+        <div>{{ appointment.customData.selectedVaccines[0] }}</div>
+        <div>{{ appointment.dates }}</div> -->
+      </div>
+    </Modal>
     <div class="flex flex-col w-full bg-orange-400">
       <div class="flex flex-row">
         <div
@@ -23,8 +47,12 @@
             <img src="../../assets/icons/news.svg" alt="" />
           </div>
         </div>
-        <div class="mr-2  ">
-          <img src="../../assets/icons/notification.svg" alt="" />
+        <div class="mr-2 ">
+          <img
+            @click="openNotification"
+            src="../../assets/icons/notification.svg"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -278,10 +306,27 @@
   </div>
 </template>
 <script>
+import Modal from "@/components/common/Modal.vue";
+import NotificationCard from "@/components/NotificationCard.vue";
+
+import service from "../../services";
+
 export default {
+  components: {
+    Modal,
+    NotificationCard
+  },
+  async created() {
+    this.vaccinatingList = await service().appointment.getVaccinatingStatus(
+      this.locale
+    );
+    console.log("vaccinatingList at create", this.vaccinatingList);
+  },
   data() {
     return {
-      isOpen: false
+      activeModal: false,
+      isOpen: false,
+      vaccinatingList: []
     };
   },
   computed: {
@@ -290,9 +335,22 @@ export default {
     },
     currentPath() {
       return this.$route.path;
+    },
+    locale() {
+      return this.$store.state.calendarLocale;
     }
   },
   methods: {
+    async openNotification() {
+      this.vaccinatingList = await service().appointment.getVaccinatingStatus(
+        this.locale
+      );
+      console.log("vaccinatingList at method", this.vaccinatingList);
+      this.activeModal = !this.activeModal;
+    },
+    onCloseModal() {
+      this.activeModal = false;
+    },
     onClickLink: function(link) {
       this.isOpen = !this.isOpen;
       if (this.isCancelLink) {
