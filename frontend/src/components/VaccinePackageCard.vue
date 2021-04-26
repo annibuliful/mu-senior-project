@@ -7,12 +7,12 @@
       <div class="flex flex-row">
         <img
           class="p-2 w-24 h-24 lg:w-48 lg:h-48"
-          :src="require(`../assets/packager/${packageId}.png`)"
+          :src="require(`../assets/packager/${packageInfo.packageId}.png`)"
           alt=""
         />
         <div class="flex flex-col">
           <div class="text-xl ml-3 my-auto text-blue-800 font-bold">
-            {{ packageDetails.packageTitle }}
+            {{ packageInfo.packageTitle }}
           </div>
         </div>
       </div>
@@ -24,26 +24,26 @@
 <script>
 export default {
   props: {
-    packageId: {
-      type: String,
+    packageInfo: {
+      type: Object,
       required: true
     }
   },
 
   created() {
-    this.$store.commit("getPackagerDetail", this.packageId);
+    // this.$store.commit("getPackagerDetail", this.packageId);
   },
-  computed: {
-    packageDetails: function() {
-      return this.$store.state.selectedPackagerDetails;
-    }
-  },
+  // computed: {
+  //   packageDetails: function() {
+  //     return this.$store.state.selectedPackagerDetails;
+  //   }
+  // },
 
   methods: {
     onCardClicked() {
       // alert("test clicking card id : " +this.vaccineId)
       this.$router.push({
-        path: `/dashboard/vaccinepackager/details/${this.packageId}`
+        path: `/dashboard/vaccinepackager/details/${this.packageInfo.packageId}`
       });
     }
   }
