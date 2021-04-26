@@ -8,9 +8,17 @@
     </div>
 
     <div class="flex flex-col w-full">
+      <div v-if="listFamilies.length == 0">
+        <img
+          src="../../assets/doctor-stand.png"
+          class="w-32 md:w-48 mx-auto"
+          alt=""
+        />
+        <div class="text-center text-lg">{{ localePackager.noFamily }}</div>
+      </div>
       <div
         class="flex flex-row flex-wrap justify-center"
-        v-if="listFamilies != null"
+        v-if="listFamilies.length != 0"
       >
         <div
           v-for="(family, index) in listFamilies"
@@ -65,6 +73,9 @@ export default {
     },
     label() {
       return this.$store.state.locale.labelAddAppointment;
+    },
+    localePackager() {
+      return this.$store.state.locale;
     }
   },
   methods: {

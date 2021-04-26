@@ -30,6 +30,8 @@ export default {
   aboutUs: "About Us",
   login: "Login",
   backup: "Backup",
+  noFamily: "Please add family member before use this feature",
+
   register: "Register",
   username: "Username",
   password: "Password",
