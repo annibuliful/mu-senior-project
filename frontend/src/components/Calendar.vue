@@ -1,6 +1,7 @@
 <template>
   <div class="w-full">
     <v-date-picker
+      class="z-0"
       :locale="locale"
       :attributes="listEvents"
       @dayclick="dayClicked"

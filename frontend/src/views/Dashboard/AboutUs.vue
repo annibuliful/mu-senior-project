@@ -8,6 +8,7 @@
       <div class="flex flex-row border-orange-600 p-4 justify-center">
         <img class="w-32 md:w-48" src="../../assets/profile4.png" alt="" />
       </div>
+      <div class="text-center">{{ localeText.developBy }}</div>
 
       <div class="flex flex-row border-orange-600 p-4 justify-center">
         <div class="w-4/12 md:w-2/12">
