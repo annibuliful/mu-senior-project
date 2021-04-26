@@ -8,9 +8,9 @@
         {{ localeText.title }}
       </div>
 
-      <div v-for="item in displayedPackagerList" :key="item.packageId">
+      <div v-for="item in packageList" :key="item.packageId">
         <!-- {{ item.packageId }} -->
-        <VaccinePackageCard :packageId="item.packageId"></VaccinePackageCard>
+        <VaccinePackageCard :packageInfo="item"></VaccinePackageCard>
         <!-- <AchivementStatusCard
           v-for="vc in item.packageVaccine"
           :key="vc"
@@ -31,12 +31,12 @@ export default {
     // AchivementStatusCard,
   },
   created() {
-    this.displayedPackagerList = this.packageList;
+    // this.displayedPackagerList = this.packageList;
   },
   data() {
     return {
-      displayedPackagerList: [],
-      childId: 1
+      // displayedPackagerList: [],
+      // childId: 1
     };
   },
   computed: {
