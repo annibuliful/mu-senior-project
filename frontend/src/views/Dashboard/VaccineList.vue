@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
+    <p class="text-2xl mb-10 border-b-2 border-orange-700" style="width: auto;">
       {{ localeText.learnVaccine }}
     </p>
     <!-- Search Area -->

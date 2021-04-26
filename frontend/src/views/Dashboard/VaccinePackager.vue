@@ -2,7 +2,7 @@
   <div class="w-full">
     <div>
       <div
-        class="text-2xl mb-10 border-b-2 border-blue-700"
+        class="text-2xl mb-10 border-b-2 border-orange-700"
         style="width: auto;"
       >
         {{ localeText.title }}
