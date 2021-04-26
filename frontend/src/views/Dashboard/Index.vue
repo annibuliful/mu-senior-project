@@ -217,7 +217,7 @@
                 ]"
               >
                 <img class="inline w-8" src="@/assets/icons/vaccine.svg" />
-                <p class="inline mt-2 pl-3">{{ listItem.vaccine }}</p>
+                <p class="inline mt-2 pl-3">{{ listItem.learnVaccine }}</p>
               </div>
             </div>
 
