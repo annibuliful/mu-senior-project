@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <div class="text-blue-800 p-2 font-bold text-center text-lg lg:text-xl">
       {{ packagerDetails.packageTitle }}
     </div>
