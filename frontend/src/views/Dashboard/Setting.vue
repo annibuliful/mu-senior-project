@@ -102,6 +102,7 @@
   </div>
 </template>
 <script>
+import db from "../../services/offline/db";
 import CaretIcon from "@/components/icons/Caret.vue";
 import service from "@/services";
 export default {
@@ -152,6 +153,14 @@ export default {
     this.$store.commit("setUserInfo", userInfo);
   },
   methods: {
+    async deleteIDB() {
+      try {
+        await db.delete();
+        console.log("Database successfully deleted");
+      } catch (err) {
+        console.error("Could not delete database", err);
+      }
+    },
     refreshApp() {
       window.location.reload();
     },
@@ -189,11 +198,11 @@ export default {
         showCancelButton: true,
         confirmButtonText: this.locale.label.yes,
         cancelButtonText: this.locale.label.no
-      }).then(r => {
+      }).then(async r => {
         if (r.value) {
           localStorage.removeItem("userInfo");
           localStorage.removeItem("login-info");
-
+          await this.deleteIDB();
           this.$router.push("/login");
           this.$fire({
             title: this.locale.label.logoutSuccess,

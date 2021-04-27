@@ -158,9 +158,21 @@ export default {
     async onClickImport() {
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-      this.deleteIDB();
+      await this.deleteIDB();
+      await db.open();
       await services().revisionOnline.importDb(userInfo.onlineUserId);
       await db.open();
+
+      const listUsers = await services().user.get();
+      console.log("listUsers", { ...userInfo, ...(listUsers[0] ?? {}) });
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({ ...userInfo, ...(listUsers[0] ?? {}) })
+      );
+      localStorage.setItem(
+        "login-info",
+        JSON.stringify({ ...userInfo, ...(listUsers[0] ?? {}) })
+      );
       this.$fire({
         title: this.localeText.importSuccess,
         type: "success",
@@ -169,17 +181,13 @@ export default {
       this.$router.push({ name: "dashboard-family" });
     },
 
-    deleteIDB() {
-      db.delete()
-        .then(() => {
-          console.log("Database successfully deleted");
-        })
-        .catch(err => {
-          console.error("Could not delete database", err);
-        })
-        .finally(() => {
-          // Do what should be done next...
-        });
+    async deleteIDB() {
+      try {
+        await db.delete();
+        console.log("Database successfully deleted");
+      } catch (err) {
+        console.error("Could not delete database", err);
+      }
     },
     async onLogin({ username, password }) {
       try {
