@@ -10,12 +10,21 @@ var firebaseConfig = {
   storageBucket: "mu-senior.appspot.com",
   messagingSenderId: "430977039067",
   appId: "1:430977039067:web:08a7760c600730f688eafe",
-  measurementId: "G-FYFV5L0F2J"
+  measurementId: "G-FYFV5L0F2J",
 };
 
 firebase.initializeApp(firebaseConfig);
 
-export const messaging = firebase.messaging();
+let tempMessaging = null;
+if (firebase.messaging.isSupported()) {
+  console.log(
+    "firebase.messaging.isSupported()",
+    firebase.messaging.isSupported()
+  );
+  tempMessaging = firebase.messaging();
+}
+
+export const messaging = tempMessaging;
 export const firestore = firebase.firestore();
 export const storage = firebase.storage();
 

@@ -54,7 +54,6 @@
 
 // // });
 importScripts("https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/8.4.1/firebase-messaging.js");
 
 const VAPID_KEY =
   "BL3T2UrD72S7-BzpdvoECHPm50e6UOnG6Xlj39wQw5269a9xUBKMUQNMpAfNU3bMSXj_E3R696uAOkmh6tWFN6M";
@@ -69,9 +68,15 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-const messaging = firebase.messaging();
+let messaging = null;
+if (typeof Notification !== "undefined") {
+  importScripts(
+    "https://www.gstatic.com/firebasejs/8.4.1/firebase-messaging.js"
+  );
+  messaging = firebase?.messaging();
+}
 
-messaging.onBackgroundMessage(function(payload) {
+messaging?.onBackgroundMessage(function(payload) {
   console.log(
     "[firebase-messaging-sw.js] Received background message ",
     payload
