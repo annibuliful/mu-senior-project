@@ -15,7 +15,16 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-export const messaging = firebase.messaging();
+let tempMessaging = null;
+if (firebase.messaging.isSupported()) {
+  console.log(
+    "firebase.messaging.isSupported()",
+    firebase.messaging.isSupported()
+  );
+  tempMessaging = firebase.messaging();
+}
+
+export const messaging = tempMessaging;
 export const firestore = firebase.firestore();
 export const storage = firebase.storage();
 

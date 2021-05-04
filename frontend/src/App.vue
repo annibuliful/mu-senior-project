@@ -53,7 +53,8 @@ export default {
   },
   methods: {
     saveDeviceTokenForUser: async function() {
-      const deviceToken = await messaging.getToken({ vapidKey: VAPID_KEY });
+      const deviceToken = await messaging?.getToken({ vapidKey: VAPID_KEY });
+      if (!deviceToken) return;
       const userInfo = JSON.parse(localStorage.getItem("userInfo"));
       const userOnlineInfo = userInfo.onlineInfo;
       const username = userOnlineInfo?.username;
@@ -73,15 +74,17 @@ export default {
         });
     },
     onCloudMessage: async function() {
-      const token = await messaging.getToken({ vapidKey: VAPID_KEY });
-      console.log("cloud-token", token);
+      const token = await messaging?.getToken({ vapidKey: VAPID_KEY });
+      if (!token) return;
       messaging.onMessage(payload => {
         console.log("Message received. ", payload);
         new Notification(payload.notification.title);
       });
     },
     saveDeviceToken: async function() {
-      const token = await messaging.getToken({ vapidKey: VAPID_KEY });
+      const token = await messaging?.getToken({ vapidKey: VAPID_KEY });
+      if (!token) return;
+
       console.log("messging-token", { token });
       // firestore.collection('messeging-token').doc(token).set({token, createdDate: new Date()})
 
