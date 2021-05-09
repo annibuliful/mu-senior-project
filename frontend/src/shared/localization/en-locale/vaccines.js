@@ -27,7 +27,7 @@ export default [
     shortDes:
       "Hepatitis B will be suppressed after receiving the second dose of this vaccine. For the third dose, it only increases the effect of immunity. It has 90-95 percentage of success rate. For Thailand, it is recommended to get this vaccine up to four doses.",
     displayedSuggestAge:
-      "<ul><li>1st Dose: Shortly after birth within 24 hours</li><li>2nd Dose: 2 months </li><li>3rd Dose: 4 months</li><li>4th Dose: 6 months</li></ul><br><ul><li><b>For Adults</b></li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 1 month after the first dose</li><li>3rd Dose: 6 months after the second dose</li></ul>",
+      "<ul><li>1st Dose: Shortly after birth within 24 hours</li><li>2nd Dose: 2 months </li><li>3rd Dose: 4 months</li><li>4th Dose: 6 months</li></ul><ul><li>For Adults</li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 1 month after the first dose</li><li>3rd Dose: 6 months after the second dose</li></ul>",
     warning: "<ul><li>Immunosuppression</li><li>Pregnancy</li></ul>"
   },
   {
@@ -161,7 +161,7 @@ export default [
     shortDes:
       "Studies in American found that the immunity for Measles-Mumps-Rubella will grow for 95% of the 12 months children who receive this vaccine, and 98% for 15 months children.",
     displayedSuggestAge:
-      "<ul><li>1st Dose: 9-12 months</li><li>2nd Dose: 18 months</li></ul><br><ul><li><b>For Adults</b></li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 28 days after the first dose</li></ul>",
+      "<ul><li>1st Dose: 9-12 months</li><li>2nd Dose: 18 months</li></ul><ul><li>For Adults</li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 28 days after the first dose</li></ul>",
     warning:
       "<ul><li>People with immunodeficiency</li><li>Pregnancy</li><li> People who are severely allergic to neomycin and gelatin</li></ul>"
   },
@@ -178,7 +178,7 @@ export default [
     shortDes:
       "Studies in American found that the immunity for Measles-Mumps-Rubella will grow for 95% of the 12 months children who receive this vaccine, and 98% for 15 months children.",
     displayedSuggestAge:
-      "<ul><li>1st Dose: 9-12 months</li><li>2nd Dose: 4-6 years</li></ul><br><ul><li><b>For Adults</b></li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 28 days after the first dose</li></ul>",
+      "<ul><li>1st Dose: 9-12 months</li><li>2nd Dose: 4-6 years</li></ul><ul><li>For Adults</li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 28 days after the first dose</li></ul>",
     warning:
       "<ul><li>People with immunodeficiency</li><li>Pregnancy</li><li> People who are severely allergic to neomycin and gelatin</li><li>if there is seizures records, MMRV is not recommended</li></ul>"
   },
@@ -227,7 +227,7 @@ export default [
     shortDes:
       "Inactivated influenza vaccine will grow an immunity in 7-14 days, and live influenza vaccine has 70-95% of effectiveness depends on how much it match the disease.",
     displayedSuggestAge:
-      "<ul><li>1st Dose: 6-15 month</li><li>Next Dose: Annually</li></ul>",
+      "<ul><li>1st Dose: 6-15 month</li><li>Next Dose: Annually</li></ul><ul><li>For children aged 6 months - 9 years</li><li>1st Dose: Can be recevied the first dose from the age of 6 months</li><li>2nd Dose: 1 month after the first dose</li><li>Next Dose: 1 dose anually</li></ul><ul><li>For children aged more than 9 years</li><li>Recommended Dose: 1 dose anually</li></ul>",
     warning:
       "<ul><li> People who are severely allergic to eggs have to be in the care a doctor</li><li>Pregnancy</li></ul>"
   },
@@ -244,7 +244,7 @@ export default [
     shortDes:
       "If there is no HPV infection was found in a person before receving this vaccine, it will grow an immunity to 93% of effectiveness.",
     displayedSuggestAge:
-      "<ul><li>1st Dose: 11-12 years(Can be recevied the first dose from the age of 9)</li><li>2nd Dose: 11-12 years (1-2 months after the first dose)</li><li>3rd Dose: 11-12 years(6 months after the second dose)</li></ul><br><ul><li><b>For Adults</b></li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 1-2 months after the first dose</li><li>3rd Dose: 6 months after the second dose</li></ul>",
+      "<ul><li>1st Dose: 9-15 years(Can be recevied the first dose from the age of 9)</li><li>2nd Dose: 9-15 years (6 months after the first dose)</li></ul><ul><li>For Adults</li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 6 months after the first dose</li><li>3rd Dose: 12 months after the second dose</li></ul>",
     warning:
       "<ul><li> People who are severely allergic to yeast</li><li>Pregnancy</li></ul>"
   },
@@ -261,7 +261,7 @@ export default [
     shortDes:
       "For PCV13, it can prevent the serotype 7F and 19A from IPD with 76% and 70% respectively. ",
     displayedSuggestAge:
-      "<ul><li>1st Dose 2 months</li><li>2nd Dose: 4 months</li><li>3rd Dose: 6 months</li><li>4th Dose: 15 months</li></ul><br><ul><li><b>For Adults</b></li><li>1st Dose: For elderly whose age 65 years old or more</li></ul>",
+      "<ul><li>1st Dose 2 months</li><li>2nd Dose: 4 months</li><li>3rd Dose: 6 months</li><li>4th Dose: 15 months</li></ul><ul><li>For Adults</li><li>1st Dose: For elderly whose age 65 years old or more</li></ul>",
     warning: "<ul></ul>"
   },
   {
@@ -277,7 +277,7 @@ export default [
     shortDes:
       "Studies in America found that it can prevent the serotype that will cause IPD in adults and children to 85-95%, and 86.9-87.3% for Thailand. And it has ability to prevent the IPD itself to 56-81%",
     displayedSuggestAge:
-      "<ul><li>1st Dose: 2 year</li><li>2nd Dose: 7 year</li></ul><br><ul><li><b>For Adults</b></li><li>1st Dose: For elderly whose age 65 years old or more that already received PCV13 for at least 1 year</li></ul>",
+      "<ul><li>1st Dose: 2 year</li><li>2nd Dose: 7 year</li></ul><ul><li>For Adults</li><li>1st Dose: For elderly whose age 65 years old or more that already received PCV13 for at least 1 year</li></ul>",
     warning: "<ul></ul>"
   },
   {
@@ -327,7 +327,7 @@ export default [
     shortDes:
       "After receiving 1 dose, Hepatitis A vaccine can prevent this disease for 1 year. And after receiving boosted dose in 6th-12th month after the first dose will allow this vaccine to prevent the disease to 94-100%",
     displayedSuggestAge:
-      "<ul><li>1st Dose: 12-23 months</li><li>2st Dose: >18 months</li></ul><br><ul><li><b>For Adults</b></li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 6-12 months after the first dose</li></ul>",
+      "<ul><li>1st Dose: 12-23 months</li><li>2st Dose: >18 months</li></ul><ul><li>For Adults</li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 6-12 months after the first dose</li></ul>",
     warning: "<ul><li>-</li></ul>"
   },
   {
@@ -343,7 +343,7 @@ export default [
     shortDes:
       "In 1 year or more children age, found that after receiving the 1st dose will grow the immunity to 76-85%, and it will increase to 100% when receiving the 2nd does of the vaccine.",
     displayedSuggestAge:
-      "<ul><li>1st Dose: 12-18 months</li><li>2st Dose: >4-6 year</li></ul><br><ul><li><b>For Adults</b></li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 1 months after the first dose</li></ul>",
+      "<ul><li>1st Dose: 12-18 months</li><li>2st Dose: >4-6 year</li></ul><ul><li>For Adults</li><li>1st Dose: Can be recevied the first dose from the age of 19</li><li>2nd Dose: 1 months after the first dose</li></ul>",
     warning:
       "<ul><li> People who are severely allergic to gelatin, neomycin, streptomycin, and polymyxin </li><li>People with immunodeficiency</li><li>Pregnancy</li></ul>"
   },

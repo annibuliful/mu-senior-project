@@ -12,7 +12,9 @@
           />
           <div class="flex flex-col">
             <div class="flex flex-row">
-              <div class="text-2xl ml-5 mt-4 text-blue-800 font-bold">
+              <div
+                class="text-xl md:text-2xl ml-5 mt-4 text-blue-800 font-bold"
+              >
                 {{ vaccineDetails.vaccineMedicalName }}
               </div>
               <div
