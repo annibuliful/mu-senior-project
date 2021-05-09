@@ -86,21 +86,21 @@ their device.`,
   aboutInfo: {
     tarName: "Mr. Jarupong Pajakgo",
     benzName: "Mr. Dechapon Tongmak",
-    lifName: "Mr. Waranon Utsmanee"
+    lifName: "Mr. Waranon Utsmanee",
   },
   pin: {
-    label: "Enter PIN"
+    label: "Enter PIN",
   },
   networkMode: {
     offline: "You are Offline now",
-    online: "You are Online now"
+    online: "You are Online now",
   },
   covidStat: {
     title: "Covid-19 Stats in Thailand.",
     cases: "Cases",
     recovered: "Recovered",
     hospitalized: "Hospitalized",
-    death: "Death"
+    death: "Death",
   },
   vaccineDetailsPage: {
     back: "Go back",
@@ -112,10 +112,10 @@ their device.`,
     who: "Who Should Be Vaccinated ",
     warning: "Warning/Who should not use",
     vaccineReference:
-      "Referrence: Vaccine and immunization textbook 2019, Department of Disease Control, Ministry of Public Health"
+      "Referrence: Vaccine and immunization textbook 2019, Department of Disease Control, Ministry of Public Health",
   },
   vaccinePackagerPage: {
-    title: "Vaccine Packages"
+    title: "Vaccine Packages",
   },
   recordVaccinePage: {
     title: "Record Vaccine",
@@ -134,7 +134,7 @@ their device.`,
     sideEffect: "Side Effect",
     sideEffectImg: "Side Effect Image",
     evidenceImg: "Vaccination Evidence(Including Batch Number)",
-    uploadFile: "Upload Image"
+    uploadFile: "Upload Image",
   },
   label: {
     regisSuccess: "Register successful",
@@ -184,7 +184,7 @@ their device.`,
     deleteFamily: "Delete",
     deleteSuccess: "Delete Successful",
     confirmDelete: "Are you sure you want to delete this profile?",
-    cannotDelete: "Cannot delete the main profile"
+    cannotDelete: "Cannot delete the main profile",
   },
   labelAddAppointment: {
     child: "Child name",
@@ -196,7 +196,7 @@ their device.`,
     nextAppointMent: "Next Appointment",
     vcName: "Vaccine name",
     complete: "Complete",
-    day: "Days"
+    day: "Days",
   },
   labelError: {
     required: "{} is required",
@@ -204,14 +204,14 @@ their device.`,
     atLeast: "{} must have at least ",
     duplicate: " duplicate {}",
     notFound: "{} not found",
-    incorrect: "{} incorrect"
+    incorrect: "{} incorrect",
   },
   historyPage: {
     title: "History",
     received: "Received",
     hospital: "Hospital/Clinic",
     date: "Date",
-    nohistory: "doesn't take any vaccine before"
+    nohistory: "doesn't take any vaccine before",
   },
   button: {
     cancel: "Cancel",
@@ -222,10 +222,10 @@ their device.`,
     search: "Search",
     delete: "Delete",
     next: "Next",
-    loading: "Loading Information..."
+    loading: "Saving Information",
   },
   camera: {
     takePhoto: "Take a Photo",
-    reset: "reset"
-  }
+    reset: "reset",
+  },
 };
