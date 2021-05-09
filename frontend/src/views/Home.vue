@@ -42,12 +42,12 @@ import db from "../services/offline/db";
 export default {
   components: {
     LoginForm,
-    RegisterForm,
+    RegisterForm
   },
   data() {
     return {
       error: "",
-      mode: "register",
+      mode: "register"
     };
   },
   created: function() {
@@ -70,7 +70,7 @@ export default {
     },
     labelText: function() {
       return this.$store.state.locale.label;
-    },
+    }
   },
   methods: {
     onChangeFormMode(mode) {
@@ -110,7 +110,7 @@ export default {
         const mergeInfo = {
           ...oldUserInfo,
           onlineUserId: loginInfo.userInfo.userId,
-          onlineInfo: { ...loginInfo.userInfo, username, password: "" },
+          onlineInfo: { ...loginInfo.userInfo, username, password: "" }
         };
         localStorage.setItem("userInfo", JSON.stringify(mergeInfo));
         localStorage.setItem("login-info", JSON.stringify(mergeInfo));
@@ -146,7 +146,7 @@ export default {
         this.$fire({
           title: this.labelText.regisSuccess,
           type: "success",
-          timer: 3000,
+          timer: 3000
         });
         this.mode = "login";
       } catch (e) {
@@ -157,10 +157,10 @@ export default {
         this.$fire({
           title: "สมัครสมาชิกไม่สำเร็จ",
           type: "error",
-          timer: 3000,
+          timer: 3000
         });
       }
-    },
-  },
+    }
+  }
 };
 </script>
