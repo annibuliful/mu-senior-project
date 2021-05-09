@@ -214,53 +214,66 @@ export default {
       newNoteMessage: "",
       base64UrlEvidence: "",
       base64UrlSideEffect: "",
-      hospitalName: ""
+      hospitalName: "",
     };
   },
   watch: {
     isHasRecord: function(old) {
       this.hasRecord = old;
-    }
+    },
   },
   props: {
     recordCustomData: {
-      type: Object
+      type: Object,
     },
     isHasRecord: {
-      type: Boolean
+      type: Boolean,
     },
     doseNumber: {
-      type: Number
+      type: Number,
     },
     vaccineId: {
       type: String,
-      required: true
+      required: true,
     },
     childId: {
       type: Number,
-      required: true
+      required: true,
     },
     appointmentId: {
       type: Number,
-      required: true
+      required: true,
     },
     recordId: {
       type: Number,
-      required: true
+      required: true,
     },
     vaccineName: {
       type: String,
-      required: true
+      required: true,
     },
     receiveDate: {
       type: Date,
-      required: false
-    }
+      required: false,
+    },
+    suggestDate: {
+      type: Date,
+      require: false,
+    },
   },
   mounted() {
-    console.log("recordCustomData", this.recordCustomData);
-    this.hasRecord = this.isHasRecord;
+    console.log(
+      "recordCustomData",
+      // this.recordCustomData,
+      // this.isHasRecord,
+      this.receiveDate,
+      this.suggestDate
+    );
+
+    // this.hasRecord = this.isHasRecord;
     if (this.recordCustomData) {
+      this.hasRecord = true;
+      this.receivingDate = this.receiveDate ?? this.suggestDate;
       this.newSideEffect = this.recordCustomData.sideEffect;
       this.newBatchNumber = this.recordCustomData.batchNumber;
       this.newHospitalName = this.recordCustomData.hospitalName;
@@ -273,18 +286,22 @@ export default {
   computed: {
     dateFormat: function() {
       let date = "";
-      if (this.$store.state.calendarLocale === "th-TH") {
-        date = format(
-          addYears(new Date(this.receiveDate), 543),
-          "dd MMM yyyy",
-          {
-            locale: th
-          }
-        );
-      } else {
-        date = format(new Date(this.receiveDate), "dd MMM yyyy");
+      try {
+        if (this.$store.state.calendarLocale === "th-TH") {
+          date = format(
+            addYears(new Date(this.suggestDate), 543),
+            "dd MMM yyyy",
+            {
+              locale: th,
+            }
+          );
+        } else {
+          date = format(new Date(this.suggestDate), "dd MMM yyyy");
+        }
+        return date;
+      } catch (e) {
+        return date;
       }
-      return date;
     },
     receivingDateFormat() {
       let date = "";
@@ -293,7 +310,7 @@ export default {
           addYears(new Date(this.receivingDate), 543),
           "dd MMM yyyy",
           {
-            locale: th
+            locale: th,
           }
         );
       } else {
@@ -306,7 +323,7 @@ export default {
     },
     locale() {
       return this.$store.state.locale;
-    }
+    },
   },
   methods: {
     onFileSideEffectChange(e) {
@@ -337,15 +354,16 @@ export default {
           title: this.locale.deleteRecCon,
           showCancelButton: true,
           confirmButtonText: this.locale.label.yes,
-          cancelButtonText: this.locale.label.no
-        }).then(r => {
+          cancelButtonText: this.locale.label.no,
+        }).then((r) => {
           if (r.value) {
             const data = {
-              receivingDate: this.receivingDate,
               childId: this.childId,
               appointmentId: this.appointmentId,
               recordId: this.recordId,
+              receivingDate: this.receivingDate,
               recordCustomData: {
+                receivingDate: this.receivingDate,
                 sideEffect: this.newSideEffect,
                 batchNumber: this.newBatchNumber,
                 hospitalName: this.newHospitalName,
@@ -354,15 +372,15 @@ export default {
                 doseNumber: this.doseNumber,
                 vaccineId: this.vaccineId,
                 base64UrlSideEffect: this.base64UrlSideEffect,
-                base64UrlEvidence: this.base64UrlEvidence
-              }
+                base64UrlEvidence: this.base64UrlEvidence,
+              },
             };
             this.isEdited = false;
             this.$emit("on-record", checkBoxValue, data);
             this.$fire({
               title: this.locale.deleteRecSuc,
               type: "success",
-              timer: 3000
+              timer: 3000,
             });
           } else {
             this.hasRecord = true;
@@ -385,8 +403,8 @@ export default {
             doseNumber: this.doseNumber,
             vaccineId: this.vaccineId,
             base64UrlSideEffect: this.base64UrlSideEffect,
-            base64UrlEvidence: this.base64UrlEvidence
-          }
+            base64UrlEvidence: this.base64UrlEvidence,
+          },
         };
 
         this.$emit("on-record", checkBoxValue, data);
@@ -406,9 +424,9 @@ export default {
           doseNumber: this.doseNumber,
           vaccineId: this.vaccineId,
           base64UrlSideEffect: this.base64UrlSideEffect,
-          base64UrlEvidence: this.base64UrlEvidence
+          base64UrlEvidence: this.base64UrlEvidence,
         },
-        recordId: this.recordId
+        recordId: this.recordId,
       };
       this.isEdited = false;
       this.$emit("on-save", data);
@@ -416,9 +434,9 @@ export default {
       this.$fire({
         title: this.locale.label.updateRecord,
         type: "success",
-        timer: 3000
+        timer: 3000,
       });
-    }
-  }
+    },
+  },
 };
 </script>
