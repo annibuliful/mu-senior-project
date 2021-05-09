@@ -132,8 +132,8 @@ export default {
   },
   data() {
     return {
-      versionNumber: "1.0.1.0",
-      versionFromServer: "1.0.1.0",
+      versionNumber: "1.2.0",
+      versionFromServer: "1.2.0",
       isSubmmitted: false,
       fullname: "",
       pinPassword: "",

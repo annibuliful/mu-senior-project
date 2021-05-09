@@ -94,12 +94,6 @@ export default {
           "login-info",
           JSON.stringify({ ...userInfo, ...(listUsers[0] ?? {}) })
         );
-        this.$fire({
-          title: this.localeText.importSuccess,
-          type: "success",
-          timer: 3000,
-        });
-        this.$router.push({ name: "dashboard-family" });
       } catch (e) {
         console.error(e);
       }
@@ -124,7 +118,7 @@ export default {
         console.log("loginInfo.userInfo", mergeInfo);
         console.log("mergeInfo.onlineUserId", mergeInfo.onlineUserId);
         this.$store.commit("setUserInfo", mergeInfo);
-        this.onClickImport();
+        await this.onClickImport();
         // this.deleteIDB();
         // await services().revisionOnline.importDb(mergeInfo.onlineUserId);
         // await db.open();
