@@ -36,16 +36,18 @@
 <script>
 import LoginForm from "@/components/auth/Login.vue";
 import RegisterForm from "@/components/auth/Register.vue";
-import services from "@/services";
+import services from "../services";
+import db from "../services/offline/db";
+
 export default {
   components: {
     LoginForm,
-    RegisterForm
+    RegisterForm,
   },
   data() {
     return {
       error: "",
-      mode: "register"
+      mode: "register",
     };
   },
   created: function() {
@@ -68,12 +70,39 @@ export default {
     },
     labelText: function() {
       return this.$store.state.locale.label;
-    }
+    },
   },
   methods: {
     onChangeFormMode(mode) {
       this.mode = mode;
       this.error = "";
+    },
+    async onClickImport() {
+      try {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+        await services().revisionOnline.importDb(userInfo.onlineUserId);
+        await db.open();
+
+        const listUsers = await services().user.get();
+        console.log("listUsers", { ...userInfo, ...(listUsers[0] ?? {}) });
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify({ ...userInfo, ...(listUsers[0] ?? {}) })
+        );
+        localStorage.setItem(
+          "login-info",
+          JSON.stringify({ ...userInfo, ...(listUsers[0] ?? {}) })
+        );
+        this.$fire({
+          title: this.localeText.importSuccess,
+          type: "success",
+          timer: 3000,
+        });
+        this.$router.push({ name: "dashboard-family" });
+      } catch (e) {
+        console.error(e);
+      }
     },
     async onLogin({ username, password }) {
       try {
@@ -87,7 +116,7 @@ export default {
         const mergeInfo = {
           ...oldUserInfo,
           onlineUserId: loginInfo.userInfo.userId,
-          onlineInfo: { ...loginInfo.userInfo, username, password: "" }
+          onlineInfo: { ...loginInfo.userInfo, username, password: "" },
         };
         localStorage.setItem("userInfo", JSON.stringify(mergeInfo));
         localStorage.setItem("login-info", JSON.stringify(mergeInfo));
@@ -95,10 +124,11 @@ export default {
         console.log("loginInfo.userInfo", mergeInfo);
         console.log("mergeInfo.onlineUserId", mergeInfo.onlineUserId);
         this.$store.commit("setUserInfo", mergeInfo);
-
+        this.onClickImport();
         // this.deleteIDB();
         // await services().revisionOnline.importDb(mergeInfo.onlineUserId);
         // await db.open();
+
         this.$router.push({ name: "dashboard-family" });
       } catch (e) {
         const message = e.message;
@@ -122,7 +152,7 @@ export default {
         this.$fire({
           title: this.labelText.regisSuccess,
           type: "success",
-          timer: 3000
+          timer: 3000,
         });
         this.mode = "login";
       } catch (e) {
@@ -133,10 +163,10 @@ export default {
         this.$fire({
           title: "สมัครสมาชิกไม่สำเร็จ",
           type: "error",
-          timer: 3000
+          timer: 3000,
         });
       }
-    }
-  }
+    },
+  },
 };
 </script>
