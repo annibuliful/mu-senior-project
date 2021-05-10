@@ -1,7 +1,7 @@
 <template>
   <div
     class="shadow rounded p-6 my-2"
-    :class="hasRecord && !isEdited ? 'bg-green-200' : ''"
+    :class="hasRecord || isEdited ? 'bg-green-200' : ''"
   >
     <div class="flex flex-row items-center">
       <div class="w-2/12">
@@ -41,11 +41,11 @@
       <div @click="toggleEditForm" class="cursor-pointer">
         <img
           class="opacity-50"
-          v-if="!isEdited && isHasRecord"
+          v-if="!isEdited && hasRecord"
           src="../assets/icons/down.svg"
           alt=""
         /><img
-          v-if="isEdited && isHasRecord"
+          v-if="isEdited && hasRecord"
           class="opacity-50"
           src="../assets/icons/up.svg"
           alt=""
@@ -214,52 +214,52 @@ export default {
       newNoteMessage: "",
       base64UrlEvidence: "",
       base64UrlSideEffect: "",
-      hospitalName: ""
+      hospitalName: "",
     };
   },
   watch: {
     isHasRecord: function(old) {
       this.hasRecord = old;
-    }
+    },
   },
   props: {
     recordCustomData: {
-      type: Object
+      type: Object,
     },
     isHasRecord: {
-      type: Boolean
+      type: Boolean,
     },
     doseNumber: {
-      type: Number
+      type: Number,
     },
     vaccineId: {
       type: String,
-      required: true
+      required: true,
     },
     childId: {
       type: Number,
-      required: true
+      required: true,
     },
     appointmentId: {
       type: Number,
-      required: true
+      required: true,
     },
     recordId: {
       type: Number,
-      required: true
+      required: true,
     },
     vaccineName: {
       type: String,
-      required: true
+      required: true,
     },
     receiveDate: {
       type: Date,
-      required: false
+      required: false,
     },
     suggestDate: {
       type: Date,
-      require: false
-    }
+      require: false,
+    },
   },
   mounted() {
     console.log(
@@ -269,10 +269,8 @@ export default {
       this.receiveDate,
       this.suggestDate
     );
-
-    // this.hasRecord = this.isHasRecord;
+    this.hasRecord = this.isHasRecord;
     if (this.recordCustomData) {
-      this.hasRecord = true;
       this.receivingDate = this.receiveDate ?? this.suggestDate;
       this.newSideEffect = this.recordCustomData.sideEffect;
       this.newBatchNumber = this.recordCustomData.batchNumber;
@@ -292,7 +290,7 @@ export default {
             addYears(new Date(this.suggestDate), 543),
             "dd MMM yyyy",
             {
-              locale: th
+              locale: th,
             }
           );
         } else {
@@ -310,7 +308,7 @@ export default {
           addYears(new Date(this.receivingDate), 543),
           "dd MMM yyyy",
           {
-            locale: th
+            locale: th,
           }
         );
       } else {
@@ -323,7 +321,7 @@ export default {
     },
     locale() {
       return this.$store.state.locale;
-    }
+    },
   },
   methods: {
     onFileSideEffectChange(e) {
@@ -354,8 +352,8 @@ export default {
           title: this.locale.deleteRecCon,
           showCancelButton: true,
           confirmButtonText: this.locale.label.yes,
-          cancelButtonText: this.locale.label.no
-        }).then(r => {
+          cancelButtonText: this.locale.label.no,
+        }).then((r) => {
           if (r.value) {
             const data = {
               childId: this.childId,
@@ -372,15 +370,15 @@ export default {
                 doseNumber: this.doseNumber,
                 vaccineId: this.vaccineId,
                 base64UrlSideEffect: this.base64UrlSideEffect,
-                base64UrlEvidence: this.base64UrlEvidence
-              }
+                base64UrlEvidence: this.base64UrlEvidence,
+              },
             };
             this.isEdited = false;
             this.$emit("on-record", checkBoxValue, data);
             this.$fire({
               title: this.locale.deleteRecSuc,
               type: "success",
-              timer: 3000
+              timer: 3000,
             });
           } else {
             this.hasRecord = true;
@@ -388,7 +386,7 @@ export default {
         });
       } else {
         this.hasRecord = true;
-        this.isEdited = false;
+        this.isEdited = true;
         const data = {
           receivingDate: this.receivingDate,
           childId: this.childId,
@@ -403,8 +401,8 @@ export default {
             doseNumber: this.doseNumber,
             vaccineId: this.vaccineId,
             base64UrlSideEffect: this.base64UrlSideEffect,
-            base64UrlEvidence: this.base64UrlEvidence
-          }
+            base64UrlEvidence: this.base64UrlEvidence,
+          },
         };
 
         this.$emit("on-record", checkBoxValue, data);
@@ -424,9 +422,9 @@ export default {
           doseNumber: this.doseNumber,
           vaccineId: this.vaccineId,
           base64UrlSideEffect: this.base64UrlSideEffect,
-          base64UrlEvidence: this.base64UrlEvidence
+          base64UrlEvidence: this.base64UrlEvidence,
         },
-        recordId: this.recordId
+        recordId: this.recordId,
       };
       this.isEdited = false;
       this.$emit("on-save", data);
@@ -434,9 +432,9 @@ export default {
       this.$fire({
         title: this.locale.label.updateRecord,
         type: "success",
-        timer: 3000
+        timer: 3000,
       });
-    }
-  }
+    },
+  },
 };
 </script>
