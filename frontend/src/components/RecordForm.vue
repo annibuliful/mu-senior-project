@@ -134,16 +134,21 @@
             locale.recordVaccinePage.uploadFile
           }}</label>
         </div>
-        <input
-          class="input-primary hidden"
-          id="upload-evidence"
-          type="file"
-          accept="image/*"
-          @change="onFileEvidenceChange"
-        />
+        <div class="flex">
+          <input
+            class="hidden"
+            id="upload-evidence"
+            type="file"
+            accept="image/*"
+            @change="onFileEvidenceChange"
+          />
+          <button class="bg-red-500 text-white p-2">
+            X
+          </button>
+        </div>
       </div>
       <img
-        class="mx-auto w-1/2"
+        class="mx-auto w-1/4"
         v-if="base64UrlEvidence"
         :src="base64UrlEvidence"
       />
