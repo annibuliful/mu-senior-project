@@ -27,7 +27,7 @@
     <div class="flex flex-col w-full bg-orange-400">
       <div class="flex flex-row">
         <div
-          class="menu-open bg-orange-700  sm:visible lg:invisible text-white"
+          class="menu-open bg-orange-700 sm:visible lg:invisible text-white"
           @click="isOpen = !isOpen"
           v-if="!isOpen"
         >
@@ -35,7 +35,7 @@
         </div>
 
         <div
-          class="menu-open  bg-orange-700 sm:visible lg:invisible text-white"
+          class="menu-open bg-orange-700 sm:visible lg:invisible text-white"
           @click="isOpen = !isOpen"
           v-if="isOpen"
         >
@@ -43,22 +43,25 @@
         </div>
 
         <div @click="gotoNews()" class="ml-auto">
-          <div class="mr-2  ">
+          <div class="mr-2">
             <img src="../../assets/icons/news.svg" alt="" />
           </div>
         </div>
-        <div class="mr-2 ">
+        <div class="mr-2">
           <img
             @click="openNotification"
             src="../../assets/icons/notification.svg"
             alt=""
           />
         </div>
+        <div>
+          <img src="../../assets/logout.svg" class="h-full" @click="logout" />
+        </div>
       </div>
     </div>
 
     <!-- Page View Area for SM Mobile -->
-    <div class="flex w-full min-h-screen lg:hidden " v-if="!isOpen">
+    <div class="flex w-full min-h-screen lg:hidden" v-if="!isOpen">
       <router-view />
     </div>
 
@@ -80,7 +83,7 @@
         <div class="my-2 cursor-pointer">
           <div
             @click="onClickLink({ name: 'dashboard-family' })"
-            class=" pb-4 "
+            class="pb-4"
             :class="[
               currentPath === '/dashboard/family' ? 'link-active' : 'link-item'
             ]"
@@ -92,10 +95,10 @@
       </div>
 
       <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
-        <div class=" my-2 cursor-pointer">
+        <div class="my-2 cursor-pointer">
           <div
             @click="onClickLink({ name: 'dashboard-vaccine' })"
-            class=" pb-4 "
+            class="pb-4"
             :class="[
               currentPath === '/dashboard/vaccine' ? 'link-active' : 'link-item'
             ]"
@@ -110,7 +113,7 @@
         <div class="my-2 cursor-pointer">
           <div
             @click="onClickLink({ name: 'dashboard-home' })"
-            class=" pb-4 "
+            class="pb-4"
             :class="[
               currentPath === '/dashboard/home' ? 'link-active' : 'link-item'
             ]"
@@ -121,10 +124,10 @@
         </div>
       </div>
       <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
-        <div class=" my-2 cursor-pointer">
+        <div class="my-2 cursor-pointer">
           <div
             @click="onClickLink({ name: 'dashboard-packager' })"
-            class=" pb-4 "
+            class="pb-4"
             :class="[
               currentPath === '/dashboard/vaccinepackager'
                 ? 'link-active'
@@ -137,10 +140,10 @@
         </div>
       </div>
       <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
-        <div class=" my-2 cursor-pointer">
+        <div class="my-2 cursor-pointer">
           <div
             @click="onClickLink({ name: 'dashboard-backup' })"
-            class=" pb-4 "
+            class="pb-4"
             :class="[
               currentPath === '/dashboard/backup' ? 'link-active' : 'link-item'
             ]"
@@ -151,10 +154,10 @@
         </div>
       </div>
       <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
-        <div class=" my-2 cursor-pointer">
+        <div class="my-2 cursor-pointer">
           <div
             @click="onClickLink({ name: 'dashboard-setting' })"
-            class=" pb-4 "
+            class="pb-4"
             :class="[
               currentPath === '/dashboard/setting' ? 'link-active' : 'link-item'
             ]"
@@ -166,10 +169,10 @@
       </div>
 
       <div class="w-full md:w-4/12 mx-2 lg:w-3/12 text-center">
-        <div class=" my-2 cursor-pointer">
+        <div class="my-2 cursor-pointer">
           <div
             @click="onClickLink({ name: 'dashboard-about-us' })"
-            class=" pb-4 "
+            class="pb-4"
             :class="[
               currentPath === '/dashboard/about-us'
                 ? 'link-active'
@@ -186,15 +189,15 @@
     <!-- Sidebar for > MD Desktop -->
     <div class="lg:flex lg:flex-row lg:w-full hidden">
       <div
-        class="flex flex-col w-full px-2 lg:w-2/12 lg:px-4  shadow-xl  bg-orange-400 overflow-x-hidden  "
+        class="flex flex-col w-full px-2 lg:w-2/12 lg:px-4 shadow-xl bg-orange-400 overflow-x-hidden"
       >
         <div class="min-h-screen">
-          <div class="flex flex-col h-full ">
+          <div class="flex flex-col h-full">
             <img src="../../assets/menu_web_vac.png" class="mt-8" alt="" />
             <div class="my-2 cursor-pointer">
               <div
                 @click="onClickLink({ name: 'dashboard-family' })"
-                class=" pb-4 "
+                class="pb-4"
                 :class="[
                   currentPath === '/dashboard/family'
                     ? 'link-active'
@@ -206,10 +209,10 @@
               </div>
             </div>
 
-            <div class=" my-2 cursor-pointer">
+            <div class="my-2 cursor-pointer">
               <div
                 @click="onClickLink({ name: 'dashboard-vaccine' })"
-                class=" pb-4 "
+                class="pb-4"
                 :class="[
                   currentPath === '/dashboard/vaccine'
                     ? 'link-active'
@@ -224,7 +227,7 @@
             <div class="mt-4 my-2 cursor-pointer">
               <div
                 @click="onClickLink({ name: 'dashboard-home' })"
-                class=" pb-4 "
+                class="pb-4"
                 :class="[
                   currentPath === '/dashboard/home'
                     ? 'link-active'
@@ -238,10 +241,10 @@
                 <p class="inline mt-2 pl-3">{{ listItem.home }}</p>
               </div>
             </div>
-            <div class=" my-2 cursor-pointer">
+            <div class="my-2 cursor-pointer">
               <div
                 @click="onClickLink({ name: 'dashboard-packager' })"
-                class=" pb-4 "
+                class="pb-4"
                 :class="[
                   currentPath === '/dashboard/vaccinepackager'
                     ? 'link-active'
@@ -253,10 +256,10 @@
               </div>
             </div>
 
-            <div class=" my-2 cursor-pointer">
+            <div class="my-2 cursor-pointer">
               <div
                 @click="onClickLink({ name: 'dashboard-backup' })"
-                class=" pb-4 "
+                class="pb-4"
                 :class="[
                   currentPath === '/dashboard/backup'
                     ? 'link-active'
@@ -267,7 +270,7 @@
                 <p class="inline mt-2 pl-3">{{ listItem.backup }}</p>
               </div>
             </div>
-            <div class=" my-2 cursor-pointer">
+            <div class="my-2 cursor-pointer">
               <div
                 @click="onClickLink({ name: 'dashboard-setting' })"
                 class=""
@@ -282,7 +285,7 @@
               </div>
             </div>
 
-            <div class=" my-2 cursor-pointer">
+            <div class="my-2 cursor-pointer">
               <div
                 @click="onClickLink({ name: 'dashboard-about-us' })"
                 class=""
@@ -299,7 +302,7 @@
           </div>
         </div>
       </div>
-      <div class="flex w-full  min-h-screen">
+      <div class="flex w-full min-h-screen">
         <router-view />
       </div>
     </div>
@@ -308,6 +311,7 @@
 <script>
 import Modal from "@/components/common/Modal.vue";
 import NotificationCard from "@/components/NotificationCard.vue";
+import db from "../../services/offline/db";
 
 import service from "../../services";
 
@@ -341,6 +345,54 @@ export default {
     }
   },
   methods: {
+    logout() {
+      console.log("called");
+      this.$fire({
+        title: this.listItem.label.confirmLogout,
+        showCancelButton: true,
+        confirmButtonText: this.listItem.label.yes,
+        cancelButtonText: this.listItem.label.no
+      }).then(async r => {
+        // console.log("logout");
+        if (r.value) {
+          await this.onClickBackup();
+          localStorage.removeItem("userInfo");
+          localStorage.removeItem("login-info");
+
+          await this.deleteIDB();
+          this.$fire({
+            title: this.listItem.label.logoutSuccess,
+            type: "success",
+            timer: 3000
+          });
+          this.$router.push("/login");
+
+          this.refreshApp();
+          window.close();
+        }
+      });
+    },
+
+    async onClickBackup() {
+      const userId = await JSON.parse(localStorage.getItem("userInfo"))
+        .onlineUserId;
+
+      await service().revisionOnline.exportDb(userId);
+    },
+    refreshApp() {
+      window.location.reload();
+    },
+
+    async deleteIDB() {
+      try {
+        await db.delete();
+        await db.open();
+        console.log("Database successfully deleted");
+      } catch (err) {
+        console.error("Could not delete database", err);
+      }
+    },
+
     async openNotification() {
       this.vaccinatingList = await service().appointment.getVaccinatingStatus(
         this.locale

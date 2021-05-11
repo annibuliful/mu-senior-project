@@ -62,8 +62,10 @@ export default {
   notReceievedQA: "Never Received",
   loadmore: "Load More",
   nameRequired: "Please enter the name",
-  deleteRecCon: "Do you want to delete this record?",
-  deleteRecSuc: "Delete Vaccination Record Successful",
+  deleteRecCon: "Do you want to cancel this record?",
+  deleteRecSuc: "Cancel Vaccination Record Successful",
+  deleteIMGCon: "Do you want to delete this image?",
+  deleteIMGSUC: "Delete the image successful",
   bthRequired: "Please select birth date correctly",
   suggestDate: "Suggested date",
 
@@ -118,7 +120,7 @@ their device.`,
     title: "Vaccine Packages"
   },
   recordVaccinePage: {
-    title: "Record Vaccine",
+    title: "Vaccination Record",
     vaccineName: "Vaccine Name",
     batchNO: "Batch Number",
     receivingDate: "Receiving Date",
