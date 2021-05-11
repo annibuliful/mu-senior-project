@@ -10,9 +10,11 @@ export default async (data) => {
     const listVaccineIds = data.customData.selectedVaccines;
     if (listVaccineIds.length === 0) return;
 
-    const listVaccineNames = listVaccineIds
-      .map((id) => getVaccineById(id))
-      .map((vaccine) => vaccine.vaccineNameNormal);
+    const listVaccineNames =
+      listVaccineIds
+        ?.map((id) => getVaccineById(id))
+        ?.map((vaccine) => vaccine.vaccineNameNormal) ?? [];
+
     const unixTimeStamp = getUnixTime(data.dates);
     const appointmentDate = format(data.dates, "yyyy-MM-dd");
     await firestore
