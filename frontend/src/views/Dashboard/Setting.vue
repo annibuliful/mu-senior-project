@@ -166,11 +166,6 @@ export default {
       const userId = JSON.parse(localStorage.getItem("userInfo")).onlineUserId;
 
       await service().revisionOnline.exportDb(userId);
-      this.$fire({
-        title: this.locale.exportSuccess,
-        type: "success",
-        timer: 3000
-      });
     },
     refreshApp() {
       window.location.reload();
@@ -191,7 +186,9 @@ export default {
             type: "success",
             timer: 3000
           });
-          this.refreshApp();
+          window.location.reload();
+
+          // this.refreshApp();
           // }
           // else {
           //   this.$fire({

@@ -59,8 +59,10 @@ export default {
   loadmore: "เพิ่มเติม",
   nameRequired: "กรุณากรอกชื่อ",
   bthRequired: "กรุณาเลือกวันเกิดให้ถูกต้อง",
-  deleteRecCon: "คุณต้องการลบบันทึกการฉีดวันซีนครั้งนี้ใช่ไหม?",
-  deleteRecSuc: "ลบบันทึกการฉีดวัคซีนสำเร็จ",
+  deleteRecCon: "คุณต้องการยกเลิกบันทึกการฉีดวันซีนครั้งนี้ใช่ไหม?",
+  deleteRecSuc: "ยกเลิกบันทึกการฉีดวัคซีนสำเร็จ",
+  deleteIMGCon: "คุณต้องการลบภาพนี้ใช่ไหม",
+  deleteIMGSUC: "ลบภาพสำเร็จ",
   receievedQA: "เคยฉีด",
   notReceievedQA: "ไม่เคยฉีด",
   suggestDate: "วันที่แนะนำให้ฉีด",
@@ -126,7 +128,7 @@ export default {
     incorrect: "{}ไม่ถูกต้อง"
   },
   recordVaccinePage: {
-    title: "จดบันทึกวัคซีน",
+    title: "บันทึกการฉีดวัคซีน",
     vaccineName: "ชื่อวัคซีน",
     batchNO: "เลขล็อตการผลิต",
     receivingDate: "วันที่ได้รับวัคซีน",
