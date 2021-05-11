@@ -29,6 +29,7 @@
     "postcss-import": "^12.0.1",
     "pwa-badge": "^1.1.1",
     "register-service-worker": "^1.7.1",
+    "sequential-task-queue": "^1.2.1",
     "tailwindcss": "^1.6.0",
     "v-calendar": "^1.0.8",
     "vue": "^2.6.11",
