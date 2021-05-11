@@ -2,22 +2,52 @@ import db from "../db";
 import { firestore } from "../../../firebase";
 import { getVaccineById } from "../vaccine/get";
 import { getUnixTime, format } from "date-fns";
+import { SequentialTaskQueue } from "sequential-task-queue";
+
+const queue = new SequentialTaskQueue();
+
+export const addAppointmentToFirebase = async data => {
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const userOnlineInfo = userInfo.onlineInfo;
+  const username = userOnlineInfo?.username;
+  const listVaccineIds = data.customData.selectedVaccines;
+
+  const listVaccineNames =
+    listVaccineIds
+      ?.map(id => getVaccineById(id))
+      ?.map(vaccine => vaccine.vaccineNameNormal) ?? [];
+
+  const unixTimeStamp = getUnixTime(data.dates);
+  const appointmentDate = format(data.dates, "yyyy-MM-dd");
+
+  await firestore
+    .collection(`/users`)
+    .doc(username)
+    .collection("appointments")
+    .add({ data, appointmentDate, unixTimeStamp, listVaccineNames });
+};
+
+export const addAppointmentTask = data => () => {
+  return new Promise((resolve, reject) => {
+    addAppointmentToFirebase(data)
+      .then(() => {
+        console.log("[add appointment] added => ", data);
+        resolve();
+      })
+      .catch(e => {
+        console.error("[add appointment]", e);
+        reject();
+      });
+  });
+};
+
 export default async data => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    const userOnlineInfo = userInfo.onlineInfo;
-    const username = userOnlineInfo?.username;
     const listVaccineIds = data.customData.selectedVaccines;
-    const listVaccineNames = listVaccineIds
-      .map(id => getVaccineById(id))
-      .map(vaccine => vaccine.vaccineNameNormal);
-    const unixTimeStamp = getUnixTime(data.dates);
-    const appointmentDate = format(data.dates, "yyyy-MM-dd");
-    await firestore
-      .collection(`/users`)
-      .doc(username)
-      .collection("appointments")
-      .add({ data, appointmentDate, unixTimeStamp, listVaccineNames });
+    if (listVaccineIds.length === 0) return;
+
+    queue.push(addAppointmentTask(data));
+    // await addAppointmentToFirebase(data);
     return await db.table("appointments").add(data);
   } catch (e) {
     console.log("error", e);

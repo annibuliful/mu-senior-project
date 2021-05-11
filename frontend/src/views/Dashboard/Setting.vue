@@ -167,7 +167,7 @@ export default {
 
       await service().revisionOnline.exportDb(userId);
       this.$fire({
-        title: this.localeText.exportSuccess,
+        title: this.locale.exportSuccess,
         type: "success",
         timer: 3000
       });
@@ -210,6 +210,7 @@ export default {
         confirmButtonText: this.locale.label.yes,
         cancelButtonText: this.locale.label.no
       }).then(async r => {
+        console.log("logout");
         if (r.value) {
           await this.onClickBackup();
           localStorage.removeItem("userInfo");

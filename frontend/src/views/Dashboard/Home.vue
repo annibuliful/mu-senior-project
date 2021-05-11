@@ -97,17 +97,17 @@ export default {
 
         this.$store.commit("changeSelectedCalendarDate", new Date());
       });
-    service()
-      .appointment.getVaccinatingStatus(this.locale)
-      .then(data => {
-        if (navigator.setAppBadge) {
-          navigator.setAppBadge(data.length);
-        }
-        if (Notification.permission === "granted") {
-          // new Notification("Welcome to Vaccinet App");
-          service().util.showNotification(data);
-        }
-      });
+    // service()
+    //   .appointment.getVaccinatingStatus(this.locale)
+    //   .then(data => {
+    //     if (navigator.setAppBadge) {
+    //       navigator.setAppBadge(data.length);
+    //     }
+    //     if (Notification.permission === "granted") {
+    //       // new Notification("Welcome to Vaccinet App");
+    //       service().util.showNotification(data);
+    //     }
+    //   });
   },
   methods: {
     onSelectDate: function(date) {

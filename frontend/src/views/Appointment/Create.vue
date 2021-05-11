@@ -186,7 +186,7 @@ export default {
       }
 
       await Promise.all(listAppointments);
-      this.$router.push({ name: "dashboard-index" });
+      this.$router.push({ name: "dashboard-home" });
     },
     onAddNewVaccine: function(vaccine) {
       this.selectedVaccines.push(vaccine);
