@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="shadow rounded p-6 my-2"
-    :class="hasRecord || isEdited ? 'bg-green-200' : ''"
-  >
+  <div class="shadow rounded p-6 my-2" :class="hasRecord ? 'bg-green-200' : ''">
     <div class="flex flex-row items-center">
       <div class="w-2/12">
         <input
@@ -38,6 +35,7 @@
 
         <!-- <p v-if="receiveDate">receive date: {{ dateFormat(receiveDate) }}</p> -->
       </div>
+
       <div @click="toggleEditForm" class="cursor-pointer">
         <img
           class="opacity-50"
@@ -52,162 +50,187 @@
         />
       </div>
     </div>
-    <div v-if="isEdited">
-      <div class="mb-4 mt-4">
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="username"
-        >
-          {{ locale.recordVaccinePage.receivingDate }}
-        </label>
-        <v-date-picker
-          v-model="receivingDate"
-          :locale="calendarLocale"
-          class="block"
-        >
-          <template v-slot="{ inputValue, inputEvents }">
-            <input
-              class="bg-white border px-2 py-1 rounded w-full"
-              :value="inputValue"
-              v-on="inputEvents"
-            />
-          </template>
-        </v-date-picker>
-        <!-- <v-date-picker v-model="receivingDate" :locale="calendarLocale" /> -->
-      </div>
-      <div class="mb-4">
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="username"
-        >
-          {{ locale.recordVaccinePage.batchNO }}
-        </label>
-        <input
-          class="input-primary"
-          id="username"
-          type="text"
-          v-model="newBatchNumber"
-        />
-      </div>
 
-      <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2">
-          {{ locale.recordVaccinePage.sideEffect }}
-        </label>
-        <textarea
-          class="input-primary"
-          id="username"
-          type="text"
-          v-model="newSideEffect"
-        />
-      </div>
-
-      <div class="my-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2">
-          {{ locale.recordVaccinePage.sideEffectImg }}
-        </label>
-        <div class="input-primary text-center">
-          <label for="upload-side-effect">{{
-            locale.recordVaccinePage.uploadFile
-          }}</label>
+    <Modal
+      :isActive="isEdited"
+      v-on:close="onCloseModal"
+      :title="locale.recordVaccinePage.title"
+    >
+      <div v-if="isEdited">
+        <div class="mb-4 mt-4">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="username"
+          >
+            {{ locale.recordVaccinePage.receivingDate }}
+          </label>
+          <v-date-picker
+            v-model="receivingDate"
+            :locale="calendarLocale"
+            class="block"
+          >
+            <template v-slot="{ inputValue, inputEvents }">
+              <input
+                class="bg-white border px-2 py-1 rounded w-full"
+                :value="inputValue"
+                v-on="inputEvents"
+              />
+            </template>
+          </v-date-picker>
+          <!-- <v-date-picker v-model="receivingDate" :locale="calendarLocale" /> -->
         </div>
-        <input
-          class="input-primary hidden"
-          id="upload-side-effect"
-          type="file"
-          accept="image/*"
-          @change="onFileSideEffectChange"
-        />
-      </div>
-      <img
-        class="mx-auto w-1/2"
-        v-if="base64UrlSideEffect"
-        :src="base64UrlSideEffect"
-      />
-
-      <div class="my-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2">
-          {{ locale.recordVaccinePage.evidenceImg }}
-        </label>
-        <div class="input-primary text-center">
-          <label for="upload-evidence">{{
-            locale.recordVaccinePage.uploadFile
-          }}</label>
-        </div>
-        <div class="flex">
+        <div class="mb-4">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="username"
+          >
+            {{ locale.recordVaccinePage.batchNO }}
+          </label>
           <input
-            class="hidden"
-            id="upload-evidence"
+            class="input-primary"
+            id="username"
+            type="text"
+            v-model="newBatchNumber"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            {{ locale.recordVaccinePage.sideEffect }}
+          </label>
+          <textarea
+            class="input-primary"
+            id="username"
+            type="text"
+            v-model="newSideEffect"
+          />
+        </div>
+
+        <div class="my-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            {{ locale.recordVaccinePage.sideEffectImg }}
+          </label>
+          <div class="input-primary text-center">
+            <label for="upload-side-effect">{{
+              locale.recordVaccinePage.uploadFile
+            }}</label>
+          </div>
+          <input
+            class="input-primary hidden"
+            id="upload-side-effect"
             type="file"
             accept="image/*"
-            @change="onFileEvidenceChange"
+            @change="onFileSideEffectChange"
           />
-          <button class="bg-red-500 text-white p-2">
-            X
-          </button>
         </div>
-      </div>
-      <img
-        class="mx-auto w-1/4"
-        v-if="base64UrlEvidence"
-        :src="base64UrlEvidence"
-      />
-      <div class="mb-4">
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="username"
-        >
-          {{ locale.recordVaccinePage.hostpitalName }}
-        </label>
-        <input
-          class="input-primary"
-          id="hospitalName"
-          type="text"
-          v-model="newHospitalName"
+        <img
+          class="mx-auto w-1/2"
+          v-if="base64UrlSideEffect"
+          :src="base64UrlSideEffect"
         />
-      </div>
+        <button
+          class="bg-red-500 text-white p-2 mx-auto block mt-2"
+          @click="clearImg('effect')"
+          v-if="base64UrlSideEffect"
+        >
+          ลบภาพ
+        </button>
 
-      <div class="mb-4">
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="username"
-        >
-          {{ locale.recordVaccinePage.doctorInfo }}
-        </label>
-        <input
-          class="input-primary"
-          id="doctorName"
-          type="text"
-          v-model="newMedicalStaff"
+        <div class="my-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            {{ locale.recordVaccinePage.evidenceImg }}
+          </label>
+          <div class="input-primary text-center">
+            <label for="upload-evidence">{{
+              locale.recordVaccinePage.uploadFile
+            }}</label>
+          </div>
+          <div class="flex">
+            <input
+              class="hidden"
+              id="upload-evidence"
+              type="file"
+              accept="image/*"
+              @change="onFileEvidenceChange"
+            />
+          </div>
+        </div>
+        <img
+          class="mx-auto w-1/4"
+          v-if="base64UrlEvidence"
+          :src="base64UrlEvidence"
         />
-      </div>
-      <div class="mb-4">
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="username"
-        >
-          {{ locale.recordVaccinePage.freetext }}
-        </label>
-        <textarea
-          class="input-primary"
-          id="username"
-          type="text"
-          v-model="newNoteMessage"
-        />
-      </div>
 
-      <button class="btn-primary" @click="submit">
-        {{ locale.button.save }}
-      </button>
-    </div>
+        <button
+          class="bg-red-500 text-white p-2 mx-auto block mt-2"
+          @click="clearImg('evidence')"
+          v-if="base64UrlEvidence"
+        >
+          ลบภาพ
+        </button>
+        <div class="mb-4">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="username"
+          >
+            {{ locale.recordVaccinePage.hostpitalName }}
+          </label>
+          <input
+            class="input-primary"
+            id="hospitalName"
+            type="text"
+            v-model="newHospitalName"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="username"
+          >
+            {{ locale.recordVaccinePage.doctorInfo }}
+          </label>
+          <input
+            class="input-primary"
+            id="doctorName"
+            type="text"
+            v-model="newMedicalStaff"
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="username"
+          >
+            {{ locale.recordVaccinePage.freetext }}
+          </label>
+          <textarea
+            class="input-primary"
+            id="username"
+            type="text"
+            v-model="newNoteMessage"
+          />
+        </div>
+
+        <button class="btn-primary" @click="submit">
+          {{ locale.button.save }}
+        </button>
+      </div>
+    </Modal>
   </div>
 </template>
 <script>
 import { format, addYears } from "date-fns";
 import { th } from "date-fns/locale";
+import Modal from "@/components/common/Modal.vue";
+
 export default {
+  components: {
+    Modal
+  },
   data: function() {
     return {
+      activeModal: false,
       hasRecord: false,
       isEdited: false,
       receivingDate: new Date(),
@@ -328,6 +351,31 @@ export default {
     }
   },
   methods: {
+    clearImg(type) {
+      this.$fire({
+        title: this.locale.deleteIMGCon,
+        showCancelButton: true,
+        confirmButtonText: this.locale.label.yes,
+        cancelButtonText: this.locale.label.no
+      }).then(r => {
+        if (r.value) {
+          if (type === "effect") {
+            this.base64UrlSideEffect = "";
+          } else if (type === "evidence") {
+            this.base64UrlEvidence = "";
+          }
+          this.$fire({
+            title: this.locale.deleteIMGSUC,
+            type: "success",
+            timer: 3000
+          });
+        }
+      });
+    },
+    onCloseModal() {
+      this.activeModal = false;
+      this.isEdited = false;
+    },
     onFileSideEffectChange(e) {
       const file = e.target.files[0];
       const reader = new FileReader();
