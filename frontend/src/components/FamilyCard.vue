@@ -1,6 +1,6 @@
 <template>
   <div class="lg:rounded overflow-hidden lg:shadow-lg mx-12">
-    <div class="flex flex-row w-full">
+    <div class="flex flex-row w-full items-center">
       <div class="w-3/12 py-5 pl-2" @click="navigateToDetails">
         <!-- Check if there is profile image or not -->
         <img
@@ -44,7 +44,7 @@
           class="my-auto mx-auto "
           :to="{
             name: 'edit-family-profile',
-            params: { id: id }
+            params: { id: id },
           }"
         >
           <img class="h-8" src="../assets/icons/edit-icon.svg" alt="" />
@@ -60,12 +60,12 @@ import { differenceInYears, differenceInMonths } from "date-fns";
 export default {
   data() {
     return {
-      childInfo: null
+      childInfo: null,
     };
   },
   created() {
     this.childInfo = this.$store.state.listFamilies.find(
-      el => el.familyId === this.id
+      (el) => el.familyId === this.id
     );
   },
   computed: {
@@ -84,32 +84,32 @@ export default {
     },
     ageInYear() {
       return differenceInYears(new Date(), this.birthDate);
-    }
+    },
   },
   methods: {
     navigateToDetails() {
       this.$router.push({
         name: "summary-family-member",
-        params: { id: this.id }
+        params: { id: this.id },
       });
-    }
+    },
   },
   props: {
     id: {
       type: Number,
-      required: true
+      required: true,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     birthDate: {
       type: Date,
-      required: true
+      required: true,
     },
     diseases: {
-      type: Array
-    }
-  }
+      type: Array,
+    },
+  },
 };
 </script>

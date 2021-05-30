@@ -131,37 +131,20 @@ import History from "./HistoryFamilyMember.vue";
 import FamilyMemberHeader from "../../components/FamilyMemberHeaderInfo.vue";
 // import AppointmentCard from "@/components/AppointMentCardTimeLine.vue";
 import RecordForm from "@/components/RecordForm.vue";
+// import { isEqual } from "date-fns";
 
 export default {
   components: {
     FamilyMemberHeader,
     History,
     // AppointmentCard,
-    RecordForm
+    RecordForm,
   },
-  async created() {
+  created() {
     this.displayMode = "Roadmap";
     this.classRoadmapLine = "border-b-2 border-blue-700";
-    services()
-      .appointment.cronCheckStatus()
-      .then(async () => {
-        const language = this.$store.state.calendarLanguage;
-        this.childId = Number(this.$route.params.id);
-        this.childInfo = this.$store.state.listFamilies.find(
-          el => el.familyId === this.childId
-        );
-        const listAppointments = await services().appointment.listByChildId(
-          this.childId,
-          language
-        );
-        if (listAppointments.length === 0) {
-          this.isNeedSuggestion = true;
-        }
-
-        this.$store.commit("listAppointmentByChildId", this.childId);
-      });
+    this.getListAppointments();
   },
-
   mounted() {
     this.search();
     //  Very Stupid Hard Code FIXXXXXXXXXXX By Lordbenz If you don't want this just fix it (Problem with color not change when record)
@@ -180,7 +163,7 @@ export default {
       isFilterShow: false,
       isNeedSuggestion: false,
       classHistoryLine: "",
-      classRoadmapLine: ""
+      classRoadmapLine: "",
     };
   },
   computed: {
@@ -198,9 +181,27 @@ export default {
     },
     appointmentList() {
       return this.$store.state.appointmentList;
-    }
+    },
   },
   methods: {
+    async getListAppointments() {
+      await services().appointment.cronCheckStatus();
+
+      const language = this.$store.state.calendarLanguage;
+      this.childId = Number(this.$route.params.id);
+      this.childInfo = this.$store.state.listFamilies.find(
+        (el) => el.familyId === this.childId
+      );
+      const listAppointments = await services().appointment.listByChildId(
+        this.childId,
+        language
+      );
+      if (listAppointments.length === 0) {
+        this.isNeedSuggestion = true;
+      }
+
+      this.$store.commit("listAppointmentByChildId", this.childId);
+    },
     async onToggleEditAppointment(value, data) {
       const [appointmentInfo] = await services().appointment.getById(
         data.appointmentId
@@ -209,7 +210,7 @@ export default {
       console.log("toggle-appointment", {
         value,
         data,
-        appointmentInfo
+        appointmentInfo,
       });
 
       if (value === "false") {
@@ -226,13 +227,14 @@ export default {
           oldStatus: appointmentInfo.status,
           oldDot: appointmentInfo.dot,
           dot: "green",
-          status: "vaccinated"
+          status: "vaccinated",
         });
+
         await services().family.update(this.childInfo.familyId, childInfo);
         this.$store.commit("updateRecordIdToAppointment", {
           appointmentId: data.appointmentId,
           recordId,
-          recordCustomData: data.recordCustomData
+          recordCustomData: data.recordCustomData,
         });
       } else {
         await services().record.removeByAppointmentId(data.appointmentId);
@@ -242,32 +244,42 @@ export default {
           recordId: null,
           receivingDate: null,
           dot: appointmentInfo.oldDot ?? "gray",
-          status: appointmentInfo.oldStatus ?? "in-progress"
+          status: appointmentInfo.oldStatus ?? "in-progress",
         });
       }
     },
     async onSaveAppointment(data) {
       console.log("save-apointment", data);
+      const doseNumber = data.recordCustomData.doseNumber;
+      const appointmentVaccineId = data.recordCustomData.vaccineId;
+      const childId = data.childId;
+      await services().appointment.reScheduleAppointmentByVaccine(
+        appointmentVaccineId,
+        childId,
+        doseNumber,
+        data.receivingDate
+      );
+      await this.getListAppointments();
       await services().record.updateById(data.recordId, data);
       await services().appointment.update(Number(data.appointmentId), {
         receivingDate: data.receivingDate,
         recordCustomData: data.recordCustomData,
         dot: "green",
-        status: "vaccinated"
+        status: "vaccinated",
       });
       this.$store.commit("updateRecordIdToAppointment", {
         appointmentId: data.appointmentId,
         recordId: data.recordId,
-        recordCustomData: data.recordCustomData
+        recordCustomData: data.recordCustomData,
       });
     },
     onClickToSuggestion() {
       this.$store.commit("setTempFamilyInfo", {
         ...this.childInfo,
-        isUpdated: true
+        isUpdated: true,
       });
       this.$router.push({
-        name: "appointment-child-suggestion"
+        name: "appointment-child-suggestion",
       });
     },
     onClickFilter() {
@@ -291,13 +303,13 @@ export default {
           search: this.searchKeyword,
           filter: this.filter,
           sort: this.sort,
-          childId: this.childId
+          childId: this.childId,
         },
         language
       );
 
       this.$store.commit("setNewAppointmentList", data ?? []);
-    }
-  }
+    },
+  },
 };
 </script>
