@@ -16,20 +16,20 @@ export const reScheduleAppointmentByVaccine = async (
 ) => {
   const listVaccines = await db.table("appointments").toArray();
   const listChildVaccines = listVaccines.filter(
-    (vaccine) => vaccine.customData?.childId === childId
+    vaccine => vaccine.customData?.childId === childId
   );
   const listDoseVaccines = listChildVaccines.filter(
-    (vaccine) => vaccine.customData?.vaccineId === vaccineId
+    vaccine => vaccine.customData?.vaccineId === vaccineId
   );
   const listPeriodTimes = listVaccinesInfo.find(
-    (vaccine) => vaccine.doseNumber && vaccine.vaccineId === vaccineId
+    vaccine => vaccine.doseNumber && vaccine.vaccineId === vaccineId
   )?.injectionPeriodTime;
   if (!listPeriodTimes) return;
   const getListNextDose = listDoseVaccines.filter(
-    (vaccine) => vaccine.customData.doseNumber >= doseNumber
+    vaccine => vaccine.customData.doseNumber >= doseNumber
   );
   const listUpdateCall = [];
-  getListNextDose.forEach((appointment) => {
+  getListNextDose.forEach(appointment => {
     const doseNumber = appointment.customData.doseNumber;
     const periodTime = listPeriodTimes[doseNumber - 1];
     console.log("getListNextDose-appointment", {
@@ -37,11 +37,11 @@ export const reScheduleAppointmentByVaccine = async (
       doseNumber,
       periodTime,
       receivingDate,
-      newDate: add(receivingDate, { days: periodTime }),
+      newDate: add(receivingDate, { days: periodTime })
     });
     listUpdateCall.push(
       updateAppointment(appointment.appointmentId, {
-        dates: add(receivingDate, { days: periodTime }),
+        dates: add(receivingDate, { days: periodTime })
       })
     );
   });

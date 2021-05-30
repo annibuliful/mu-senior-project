@@ -20,5 +20,5 @@ export default {
   listNonDelete,
   filterByDose,
   getVaccinatingStatus,
-  reScheduleAppointmentByVaccine,
+  reScheduleAppointmentByVaccine
 };

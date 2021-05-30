@@ -11,7 +11,7 @@ export const getAppointmentById = async (childId, vaccineId) => {
       .where("appointmentId")
       .toArray()
   ).filter(
-    (appointment) =>
+    appointment =>
       appointment.customData.childId === childId &&
       appointment.customData.vaccineId === vaccineId
   );
@@ -25,20 +25,20 @@ export default async (id, language) => {
     .toArray();
 
   if (listLanguages.includes(language)) {
-    return listAppointments.map((appointment) => {
+    return listAppointments.map(appointment => {
       const vaccineInfo = appointment.customData?.selectedVaccines
-        .map((vaccine) => getListVaccines(vaccine, language))
-        .map((vaccine) => ({
+        .map(vaccine => getListVaccines(vaccine, language))
+        .map(vaccine => ({
           id: vaccine.vaccineId,
-          tag: vaccine.vaccineNameNormal,
+          tag: vaccine.vaccineNameNormal
         }));
 
       return {
         ...appointment,
         customData: {
           ...appointment.customData,
-          selectedVaccines: vaccineInfo,
-        },
+          selectedVaccines: vaccineInfo
+        }
       };
     });
   }
