@@ -289,13 +289,13 @@ export default {
     }
   },
   mounted() {
-    console.log(
-      "recordCustomData",
-      // this.recordCustomData,
-      // this.isHasRecord,
-      this.receiveDate,
-      this.suggestDate
-    );
+    // console.log(
+    //   "recordCustomData",
+    //   // this.recordCustomData,
+    //   // this.isHasRecord,
+    //   this.receiveDate,
+    //   this.suggestDate
+    // );
     this.hasRecord = this.isHasRecord;
     if (this.recordCustomData) {
       this.receivingDate = this.receiveDate ?? this.suggestDate;

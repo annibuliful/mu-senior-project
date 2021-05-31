@@ -4,6 +4,19 @@ import { getVaccineInfoById } from "../util/getVaccineInfo";
 
 const getListVaccines = (el, language) => getVaccineInfoById(el, language);
 
+export const getAppointmentById = async (childId, vaccineId) => {
+  return (
+    await db
+      .table("appointments")
+      .where("appointmentId")
+      .toArray()
+  ).filter(
+    appointment =>
+      appointment.customData.childId === childId &&
+      appointment.customData.vaccineId === vaccineId
+  );
+};
+
 export default async (id, language) => {
   const listAppointments = await db
     .table("appointments")

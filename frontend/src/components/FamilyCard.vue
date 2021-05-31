@@ -1,6 +1,6 @@
 <template>
   <div class="lg:rounded overflow-hidden lg:shadow-lg mx-12">
-    <div class="flex flex-row w-full">
+    <div class="flex flex-row w-full items-center">
       <div class="w-3/12 py-5 pl-2" @click="navigateToDetails">
         <!-- Check if there is profile image or not -->
         <img
