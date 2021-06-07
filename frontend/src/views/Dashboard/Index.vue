@@ -42,19 +42,19 @@
           <div class="mt-2">X</div>
         </div>
 
-        <div @click="gotoNews()" class="ml-auto">
+        <div @click="gotoNews()" class="ml-auto cursor-pointer">
           <div class="mr-2">
             <img src="../../assets/icons/news.svg" alt="" />
           </div>
         </div>
-        <div class="mr-2">
+        <div class="mr-2 cursor-pointer">
           <img
             @click="openNotification"
             src="../../assets/icons/notification.svg"
             alt=""
           />
         </div>
-        <div>
+        <div class="cursor-pointer">
           <img src="../../assets/logout.svg" class="h-full" @click="logout" />
         </div>
       </div>
