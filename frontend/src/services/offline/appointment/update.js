@@ -24,9 +24,9 @@ export const reScheduleAppointmentByVaccine = async (
   const listPeriodTimes = listVaccinesInfo.find(
     vaccine => vaccine.doseNumber && vaccine.vaccineId === vaccineId
   )?.injectionPeriodTime;
-  if (!listPeriodTimes) return;
+  if (!listPeriodTimes || !doseNumber) return;
   const getListNextDose = listDoseVaccines.filter(
-    vaccine => vaccine.customData.doseNumber >= doseNumber
+    vaccine => vaccine.customData?.doseNumber >= doseNumber
   );
   const listUpdateCall = [];
   getListNextDose.forEach(appointment => {

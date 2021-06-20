@@ -288,6 +288,7 @@ export default {
       require: false
     }
   },
+
   mounted() {
     // console.log(
     //   "recordCustomData",
@@ -375,6 +376,7 @@ export default {
     onCloseModal() {
       this.activeModal = false;
       this.isEdited = false;
+      this.resetForm();
     },
     onFileSideEffectChange(e) {
       const file = e.target.files[0];
@@ -392,9 +394,18 @@ export default {
         this.base64UrlEvidence = reader.result;
       };
     },
+    resetForm: function() {
+      this.receivingDate = this.receiveDate ?? this.suggestDate;
+      this.newSideEffect = this.recordCustomData.sideEffect;
+      this.newBatchNumber = this.recordCustomData.batchNumber;
+      this.newHospitalName = this.recordCustomData.hospitalName;
+      this.newMedicalStaff = this.recordCustomData.medicalStaff;
+      this.newNoteMessage = this.recordCustomData.noteMessage;
+      this.base64UrlEvidence = this.recordCustomData.base64UrlEvidence;
+      this.base64UrlSideEffect = this.recordCustomData.base64UrlSideEffect;
+    },
     toggleEditForm: function() {
       if (!this.hasRecord) return;
-
       this.isEdited = !this.isEdited;
     },
     onChangeCheckbox: function(event) {
