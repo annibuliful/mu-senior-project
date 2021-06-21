@@ -411,5 +411,38 @@ export default [
     displayedSuggestAge:
       "<ul><li>1st Dose: For elderly whose age 65 years old or more</li></ul>",
     warning: "<ul><li>People with immunodeficiency</li><li>Pregnancy</li><ul>"
+  },
+  {
+    vaccineId: "vac026",
+    category: "additional",
+    vaccineMedicalName: "Sinovac",
+    vaccineNameNormal: "Sinovac COVID-19 vaccine",
+    protectDisease: ["disease030"],
+    repeat: null,
+    injectionPeriodTime: [0, 14],
+    doseNumber: 2,
+    replaceableWith: ["vac027"],
+    shortDes: `The Sinovac vaccine is an inactivated virus COVID-19 vaccine. Currently recommended for people 18 years of age and older, given as two intramuscular injections 2 weeks apart, the vaccine is 77.9 percent effective overall in preventing symptomatic disease requiring medical attention. different for each country of study with the efficiency of 65.3, 91.25, and 77.9 percent in Indonesia, Turkey, and Brazil, respectively. Vaccines are 100% effective in preventing severe COVID-19 disease. and if counting including the prevention of disease with few symptoms without having to see a doctor Will find efficiency only 50.4% is interesting. A phase 2 study found that 28 days apart from the 1st and 2nd injections, the immune response was higher than 14 days, but the injections were 28 days apart. There were no results from the Phase 3 study. In addition, there is not enough data in Phase 3 studies in people aged 60 years and over. It is not recommended for general use in people over 60 years of age, but because the results of the Phase II study showed that people over 60 years of age did not respond differently to vaccines than those of younger people. and have no different side effects Therefore, it may be considered to be used if necessary and that it is more useful. and the elderly are at risk of severe disease.`,
+    displayedSuggestAge:
+      "<ul><li>2 doses with ths interval of 2–4 weeks between the first and second dose</li></ul>",
+    warning: "<ul><li>Under 18 years old</li><li>Pregnancy</li><ul>"
+  },
+  {
+    vaccineId: "vac027",
+    category: "additional",
+    vaccineMedicalName: "Oxford–AstraZeneca",
+    vaccineNameNormal: "Oxford/AstraZeneca COVID-19 vaccine",
+    protectDisease: ["disease030"],
+    repeat: null,
+    injectionPeriodTime: [0, 70],
+    doseNumber: 2,
+    replaceableWith: ["vac026"],
+    shortDes: `The Oxford–AstraZeneca COVID‑19 vaccine is used to provide protection against infection by the SARS-CoV-2 virus in order to prevent COVID-19 in adults aged 18 years and older. The medicine is administered by two 0.5 ml doses injected intramuscularly into the deltoid muscle (upper arm) four to twelve weeks apart, with the WHO recommending the second is given 8 to 12 weeks after the first for optimum efficacy.
+
+      An analysis published on 19 February 2021 showed an efficacy of 76.0% at preventing symptomatic COVID-19 beginning at 22 days following the first dose, increasing to 81.3% when the second dose is given 12 weeks or more after the first. Another analysis published by Public Health England showed that the vaccine was 66.0% effective at preventing symptomatic COVID-19 2 weeks after the second dose.      
+       `,
+    displayedSuggestAge:
+      "<ul><li>2 dose with the interval of 10-12 weeks between the first and second dose</li></ul>",
+    warning: "<ul><li>Under 18 years old</li><li>Pregnancy</li><ul>"
   }
 ];

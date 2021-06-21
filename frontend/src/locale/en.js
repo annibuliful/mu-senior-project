@@ -114,7 +114,9 @@ their device.`,
     who: "Who Should Be Vaccinated ",
     warning: "Warning/Who should not use",
     vaccineReference:
-      "Referrence: Vaccine and immunization textbook 2019, Department of Disease Control, Ministry of Public Health"
+      "Referrence: Vaccine and immunization textbook 2019, Department of Disease Control, Ministry of Public Health",
+    vaccineReference2:
+      "Guidelines for COVID-19 Vaccination by Department of Disease Control, 2021"
   },
   vaccinePackagerPage: {
     title: "Vaccine Packages"
@@ -139,6 +141,7 @@ their device.`,
     uploadFile: "Upload Image"
   },
   label: {
+    addVaccine: "Add a vaccine to the plan",
     regisSuccess: "Register successful",
     regisNotSuccess: "Register was not successful",
     doseTimes: "Dose",
