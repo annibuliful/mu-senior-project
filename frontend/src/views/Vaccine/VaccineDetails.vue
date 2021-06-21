@@ -1,6 +1,6 @@
 <template>
   <div class="mb-20 w-full">
-    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto;">
+    <p class="text-2xl mb-10 border-b-2 border-blue-700" style="width: auto">
       {{ localeText.title }}
     </p>
     <img
@@ -17,21 +17,21 @@
     </div>
 
     <div class="border w-10/12 mx-auto p-5 shadow-lg mb-6">
-      <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
+      <div class="text-blue-800 p-2 font-bold text-center text-lg lg:text-xl">
         {{ localeText.description }}
       </div>
       <div
         class="lg:text-center lg:w-10/12 mx-auto"
         v-html="vaccineDetails.shortDes"
       ></div>
-      <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
+      <div class="text-blue-800 p-2 font-bold text-center text-lg lg:text-xl">
         {{ localeText.suggestedAge }}
       </div>
       <div
         class="lg:text-center lg:w-10/12 mx-auto"
         v-html="vaccineDetails.displayedSuggestAge"
       ></div>
-      <div class=" text-blue-800 p-2 font-bold text-center text-lg lg:text-xl ">
+      <div class="text-blue-800 p-2 font-bold text-center text-lg lg:text-xl">
         {{ localeText.warning }}
       </div>
       <div
@@ -39,7 +39,16 @@
         v-html="vaccineDetails.warning"
       ></div>
 
-      <div class="lg:text-center lg:w-10/12 mx-auto mt-8 text-blue-800">
+      <div
+        class="lg:text-center lg:w-10/12 mx-auto mt-8 text-blue-800"
+        v-if="
+          vaccineDetails.vaccineId === 'vac027' ||
+            vaccineDetails.vaccineId === 'vac026'
+        "
+      >
+        {{ localeText.vaccineReference2 }}
+      </div>
+      <div class="lg:text-center lg:w-10/12 mx-auto mt-8 text-blue-800" v-else>
         {{ localeText.vaccineReference }}
       </div>
     </div>
@@ -52,7 +61,21 @@
     </button> -->
     <button
       @click="onCardClicked"
-      class="bg-blue-500 hover:bg-blue-800 w-8/12 text-white font-bold py-2 px-4 rounded-full mx-auto block m-2 focus:outline-none lg:w-4/12"
+      class="
+        bg-blue-500
+        hover:bg-blue-800
+        w-8/12
+        text-white
+        font-bold
+        py-2
+        px-4
+        rounded-full
+        mx-auto
+        block
+        m-2
+        focus:outline-none
+        lg:w-4/12
+      "
     >
       {{ localeText.back }}
     </button>

@@ -39,7 +39,16 @@
         v-html="vaccineDetails.warning"
       ></div>
 
-      <div class="lg:text-center lg:w-10/12 mx-auto mt-8 text-blue-800">
+      <div
+        class="lg:text-center lg:w-10/12 mx-auto mt-8 text-blue-800"
+        v-if="
+          vaccineDetails.vaccineId === 'vac027' ||
+            vaccineDetails.vaccineId === 'vac026'
+        "
+      >
+        {{ localeText.vaccineReference2 }}
+      </div>
+      <div class="lg:text-center lg:w-10/12 mx-auto mt-8 text-blue-800" v-else>
         {{ localeText.vaccineReference }}
       </div>
     </div>

@@ -19,10 +19,27 @@
       <div class="flex flex-row mt-4 mb-4">
         <!-- input area start-->
         <div
-          class="flex justify-center items-center md:w-full md:justify-center  mx-auto"
+          class="
+            flex
+            justify-center
+            items-center
+            md:w-full
+            md:justify-center
+            mx-auto
+          "
         >
           <input
-            class="border-gray-600 rounded-lg h-10 ml-4 border mr-2 pl-2 w-8/12 md:w-6/12"
+            class="
+              border-gray-600
+              rounded-lg
+              h-10
+              ml-4
+              border
+              mr-2
+              pl-2
+              w-8/12
+              md:w-6/12
+            "
             id="username"
             type="text"
             :placeholder="labelText.placeHolderSearch"
@@ -30,7 +47,16 @@
             @change="search()"
           />
           <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block "
+            class="
+              bg-blue-500
+              hover:bg-blue-700
+              text-white
+              font-bold
+              py-2
+              px-4
+              rounded
+              block
+            "
             @click="search()"
           >
             {{ localeText.button.search }}
@@ -50,13 +76,19 @@
       <!-- input area end -->
 
       <div
-        class=" justify-around mb-3 flex md:w-10/12 md:justify-center md:mx-auto"
+        class="justify-around mb-3 flex md:w-10/12 md:justify-center md:mx-auto"
         v-if="isFilterShow"
       >
         <div class="flex-col w-5/12 p-2 lg:w-3/12">
           <div>{{ labelText.filterBy }}</div>
           <select
-            class="w-full border-solid border border-gray-600 h-10  rounded-lg cursor-pointer"
+            class="
+              w-full
+              border-solid border border-gray-600
+              h-10
+              rounded-lg
+              cursor-pointer
+            "
             v-model="filter"
             @change="search()"
           >
@@ -70,7 +102,13 @@
         <div class="flex-col w-5/12 p-2 lg:w-3/12">
           <div>{{ labelText.sortBy }}</div>
           <select
-            class="w-full border-solid border border-gray-600 h-10  rounded-lg cursor-pointer"
+            class="
+              w-full
+              border-solid border border-gray-600
+              h-10
+              rounded-lg
+              cursor-pointer
+            "
             v-model="sort"
             @change="search()"
           >
@@ -84,9 +122,37 @@
       <button
         v-if="isNeedSuggestion"
         @click="onClickToSuggestion"
-        class="block mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
+        class="
+          block
+          mx-auto
+          bg-blue-500
+          hover:bg-blue-700
+          text-white
+          font-bold
+          py-2
+          px-4
+          rounded
+        "
       >
         {{ labelText.suggestedPlan }}
+      </button>
+
+      <button
+        class="
+               
+          font-bold
+          py-2
+          px-4
+          rounded
+          block
+          mx-auto
+          border-black
+          border-solid
+          border-2
+        "
+        @click="onLinkToAddAppointmentPage"
+      >
+        เพิ่มวัคซีนเข้าแผนการฉีด
       </button>
 
       <!-- <AppointmentCard
@@ -294,6 +360,9 @@ export default {
       this.displayMode = "Roadmap";
       this.classRoadmapLine = "border-b-2 border-blue-700";
       this.classHistoryLine = "";
+    },
+    onLinkToAddAppointmentPage: function() {
+      this.$router.push({ name: "appointment-create" });
     },
     async search() {
       const language = this.$store.state.calendarLocale;
